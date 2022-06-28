@@ -1,5 +1,13 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const nav = document.querySelector(".navbar");
 
-// Write your JavaScript code.
-
+window.addEventListener("scroll", () => {
+    const scrollHeight = window.scrollY;
+    // if (scrollHeight === 52) {
+    //   console.log("hoo");
+    // }
+    if (scrollHeight >= 52) {
+        nav.classList.add("nav_onscroll");
+    } else if (scrollHeight <= 52) {
+        nav.classList.remove("nav_onscroll");
+    }
+});

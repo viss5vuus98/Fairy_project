@@ -1,18 +1,149 @@
-﻿html {
-  font-size: 14px;
+﻿body {
+    background-color: #fafafa;
+    height: 2000px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+h3 {
+    font-size: 1rem;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+h4 {
+    font-size: 1rem;
 }
 
+p {
+    font-size: 0.75rem;
+}
 body {
-  margin-bottom: 60px;
+  background-color: #fafafa;
+  height: 2000px;
+}
+h3 {
+  font-size: 1rem;
+}
+h4 {
+  font-size: 1rem;
+}
+p {
+  font-size: 0.75rem;
+}
+header {
+    position: relative;
+    height: 52px;
+    width: 100%;
+    padding: 0 0.5rem;
+    background-color: #ddcfc2;
+    border: 1px solid tomato;
+}
+.navbar {
+    position: fixed;
+    top: 0px;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    width: 100%;
+    background-color: #ddcfc2;
+    transition: 0.3s linear;
+}
+
+.navbar_link,
+.navbar_icon {
+    display: none;
+}
+
+.navbar h2,
+.navbar label {
+    font-size: 1.4rem;
+    transition: 0.3s linear;
+    line-height: 1.8rem;
+}
+
+.nav_onscroll {
+    height: 35px;
+    transition: 0.4s linear;
+}
+
+    .nav_onscroll label,
+    .nav_onscroll h2 {
+        font-size: 0.8rem;
+        transition: 0.4s linear;
+    }
+
+.nav_section {
+    position: fixed;
+    top: 52px;
+    height: 69px;
+    width: 100%;
+    background-color: #ddcfc2;
+    margin-bottom: 5px;
+    z-index: 999;
+}
+
+.nav_items {
+    width: 30%;
+    margin: 0 auto;
+}
+/*  */
+.nav-toggle {
+    display: none;
+}
+
+.nav_section {
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 0.3s ease-out;
+}
+
+.nav_items {
+    opacity: 0;
+}
+
+.nav-toggle:checked ~ .nav_section {
+    transform: scale(1, 1);
+}
+.nav-toggle:checked ~ .nav_section .nav_items {
+        opacity: 1;
+        transition: opacity 0.3s ease-out;
+}
+
+@media screen and (min-width: 576px) {
+    .navbar .btn_humbuger {
+        display: none;
+    }
+
+    a {
+        font-size: 0.8rem;
+        color: #5c5858;
+        text-decoration: none;
+    }
+
+    li {
+        list-style-type: none;
+    }
+    .navbar_link {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex: 0 1 30%;
+        gap: 20px;
+    }
+
+    .nav_onscroll .navbar_link {
+        display: none;
+    }
+
+    .navbar_icon {
+        display: none;
+    }
+
+    .nav_onscroll .navbar_icon {
+        height: 100%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        flex: 0 1 30%;
+        gap: 20px;
+    }
 }
