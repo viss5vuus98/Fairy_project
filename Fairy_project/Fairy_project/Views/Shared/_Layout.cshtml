@@ -12,10 +12,10 @@
     <header class="header">
         <nav>
             <div class="navbar">
-                <h2>Fairy</h2>
+                <h2><a asp-area="" asp-controller="Home" asp-action="index">Fairy</a></h2>
                 <label for="humbuger" class="btn_humbuger">三</label>
                 <ul class="navbar_link">
-                    <li><a href="＃">會員頁面</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="exhibitionDetil">會員頁面</a></li>
                     <li><a href="＃">票券頁面</a></li>
                     <li><a href="＃">登入</a></li>
                 </ul>
@@ -61,9 +61,9 @@
     </main>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        @*<div class="container">
             &copy; 2022 - Fairy_project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        </div>*@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
