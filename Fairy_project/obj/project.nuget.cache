@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "hJb3ho3ThdkWkbf6d1mG2CmSSYCb2PrN4ZMbrd2fMV0aNVr3Lt38pzNCwsAJmfYRvtvxAl2X9Z8Jl3WTZnIHig==",
   "success": true,
   "projectFilePath": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/Fairy_project.csproj",
+=======
+  "dgSpecHash": "zOhs4z5vN8RFrg75m4sxQaPJobQ7wZov5OqgdqOGr2jod+xklPQShKuZhmJsJNZBdVxFFTJ9LuWrC9acZpCd1Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\Fairy_project.csproj",
+>>>>>>> GroupA
   "expectedPackageFiles": [
     "/Users/yiliang/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/yiliang/.nuget/packages/microsoft.aspnetcore.cryptography.internal/6.0.6/microsoft.aspnetcore.cryptography.internal.6.0.6.nupkg.sha512",

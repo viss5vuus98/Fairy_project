@@ -1575,19 +1575,41 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "/Users/yiliang/.nuget/packages/": {}
+=======
+    "C:\\Users\\Student\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+>>>>>>> GroupA
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/Fairy_project.csproj",
       "projectName": "Fairy_project",
       "projectPath": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/Fairy_project.csproj",
       "packagesPath": "/Users/yiliang/.nuget/packages/",
       "outputPath": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/obj/",
+=======
+      "projectUniqueName": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\Fairy_project.csproj",
+      "projectName": "Fairy_project",
+      "projectPath": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\Fairy_project.csproj",
+      "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\obj\\",
+>>>>>>> GroupA
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
+<<<<<<< HEAD
         "/Users/yiliang/.nuget/NuGet/NuGet.Config"
+=======
+        "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> GroupA
       ],
       "originalTargetFrameworks": [
         "net6.0"
