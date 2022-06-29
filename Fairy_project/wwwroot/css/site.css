@@ -193,6 +193,7 @@ header {
     width: 100%;
     background-color: #ddcfc2;
     transition: 0.3s linear;
+    padding: 0 1rem;
 }
 
 .navbar_link,
