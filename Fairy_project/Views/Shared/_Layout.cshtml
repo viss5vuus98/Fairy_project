@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Fairy_project.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Style", required: false)
+    @await RenderSectionAsync("Indexcss" , required:false)
 </head>
 <body>
     <header class="header">
@@ -16,7 +17,7 @@
                 <h2><a asp-area="" asp-controller="Home" asp-action="index">Fairy</a></h2>
                 <label for="humbuger" class="btn_humbuger">三</label>
                 <ul class="navbar_link">
-                    <li><a asp-area="" asp-controller="Home" asp-action="exhibitionDetil">會員頁面</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="exhibitionDetail">會員頁面</a></li>
                     <li><a href="＃">票券頁面</a></li>
                     <li><a href="＃">登入</a></li>
                 </ul>

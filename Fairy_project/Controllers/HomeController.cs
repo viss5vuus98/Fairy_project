@@ -23,7 +23,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult exhibitionDetil()
+    public IActionResult exhibitionDetail()
     {
         return View();
     }

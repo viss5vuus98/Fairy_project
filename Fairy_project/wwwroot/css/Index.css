@@ -1,0 +1,176 @@
+﻿body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.bg1 {
+    background-color: #fafafa;
+}
+
+.bg2 {
+    background-color: #ddcfc2;
+}
+
+.bg3 {
+    background-color: #eae0d7;
+}
+
+.bg4 {
+    background-color: #c0b0a2;
+}
+
+.c1 {
+    color: #fefcff;
+}
+
+.c2 {
+    color: #3b3131;
+}
+
+.c3 {
+    color: #5C5858;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#title {
+    text-decoration: none;
+}
+
+    #title:hover {
+        color: #fefcff;
+    }
+
+#p1 div button:hover {
+    transition: .4s;
+    opacity: 0.5;
+}
+
+#cardhead {
+    background-image: url("images/background.jpg");
+    height: 300px;
+}
+
+.imglist {
+    margin: 100px, 0px;
+    width: 7500px;
+    transform: translateX(-1500px);
+    transition: 0s;
+}
+
+    .imglist div {
+        flex-basis: 0;
+        flex-grow: 1;
+        margin-right: 200px;
+        transition: 1s;
+    }
+
+.ef-1 {
+    text-decoration: none;
+}
+
+    .ef-1 span {
+        text-decoration: none;
+        position: relative;
+        transition: .3s;
+    }
+
+    .ef-1:first-child img {
+        transform: scale(1);
+        transition: .6s;
+    }
+
+    .ef-1 span::after {
+        content: "";
+        position: absolute;
+        transition: .3s;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 1px;
+        transform: scale(0)
+    }
+
+    .ef-1 span:hover {
+        color: #3b3131;
+    }
+
+        .ef-1 span:hover::after {
+            text-decoration: none;
+            background-color: #3b3131;
+            transform: scale(1)
+        }
+
+    .ef-1:hover span {
+        color: #3b3131;
+    }
+
+        .ef-1:hover span::after {
+            text-decoration: none;
+            background-color: #3b3131;
+            transform: scale(1)
+        }
+
+    .ef-1:hover:first-child img {
+        transform: scale(1.1);
+        transition: .6s;
+    }
+
+@media (min-width :576px) {
+    #p1 {
+        top: 800px;
+        right: 100px;
+        background-color: rgb(221, 207, 194);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    #col1 {
+        height: 900px;
+    }
+
+    #titleimg {
+        height: 900px;
+    }
+
+    .imgwall {
+        height: 800px;
+    }
+}
+
+@media (min-width: 576px) and (max-width :922px) {
+    #p1 {
+        top: 600px;
+        right: 50px;
+    }
+
+    .imgwall {
+        height: 600px;
+    }
+}
+
+@media (max-width :576px) {
+    #p1 {
+        top: 300px;
+        left: 0px;
+        font-size: 16px;
+    }
+
+    #titleimg {
+        height: 550px;
+    }
+
+    #col1 {
+        height: 400px;
+    }
+
+    .imgwall {
+        height: 400px;
+    }
+
+    #cardhead {
+        height: 200px;
+    }
+}
