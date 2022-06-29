@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{160F8584-3AAA-4CEB-BF5C-47355F4D95FA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Home/exhibitionDetil.cshtml">
     <Files>
-      <File FileName="Fairy_project/Views/Shared/_Layout.cshtml" Line="9" Column="35" />
-      <File FileName="Fairy_project/wwwroot/css/site.css" Line="477" Column="1" />
-      <File FileName="Fairy_project/wwwroot/js/site.js" Line="13" Column="4" />
-      <File FileName="Fairy_project/Views/Home/Privacy.cshtml" Line="2" Column="5" />
-      <File FileName="Fairy_project/Views/Home/exhibitionDetil.cshtml" Line="54" Column="1" />
+      <File FileName="Fairy_project/wwwroot/css/site.css" Line="172" Column="20" />
+      <File FileName="Fairy_project/Views/Shared/_Layout.cshtml.css" Line="9" Column="1" />
+      <File FileName="Fairy_project/wwwroot/css/exhibitionDetil.css" Line="116" Column="5" />
+      <File FileName="Fairy_project/Views/Home/exhibitionDetil.cshtml" Line="6" Column="2" />
       <File FileName="Fairy_project/Views/Home/Index.cshtml" Line="1" Column="1" />
-      <File FileName="Fairy_project/Controllers/HomeController.cs" Line="24" Column="6" />
+      <File FileName="Fairy_project/Views/Shared/_Layout.cshtml" Line="14" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,11 +20,13 @@
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
                 <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
+                  <Node name="_Layout.cshtml" expanded="True" />
                 </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
+                <Node name="css" expanded="True">
+                  <Node name="site.css" selected="True" />
+                </Node>
                 <Node name="js" expanded="True" />
               </Node>
             </Node>
@@ -36,11 +38,10 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

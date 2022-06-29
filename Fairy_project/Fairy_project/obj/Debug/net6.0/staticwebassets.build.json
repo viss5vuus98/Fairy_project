@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uQwdcYNlQ7m7XntQgr+Z2zzvm8z5fdrUtzrCR2wUfME=",
+  "Hash": "Z1f+tcjtI9XqN51W+6A0/QUj2NB7w+UlLmfM32X6KJQ=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/Fairy_project/obj/Debug/net6.0/scopedcss/projectbundle/Fairy_project.bundle.scp.css"
+    },
+    {
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/Fairy_project/wwwroot/css/exhibitionDetil.css",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/Fairy_project/wwwroot/",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "css/exhibitionDetil.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/exhibitionDetil.css"
     },
     {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/Fairy_project/wwwroot/css/site.css",

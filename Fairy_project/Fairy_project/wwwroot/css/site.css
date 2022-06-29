@@ -167,6 +167,10 @@ h4 {
 p {
     font-size: 0.75rem;
 }
+a {
+    text-decoration: none;
+    color: #5c5858;
+}
 
 header {
     position: relative;
@@ -180,6 +184,7 @@ header {
 .navbar {
     position: fixed;
     top: 0px;
+    left: 0px;
     z-index: 999;
     display: flex;
     justify-content: space-between;
@@ -207,20 +212,24 @@ header {
     transition: 0.4s linear;
 }
 
-    .nav_onscroll label,
-    .nav_onscroll h2 {
-        font-size: 0.8rem;
-        transition: 0.4s linear;
-    }
+.nav_onscroll label,
+.nav_onscroll h2 {
+    font-size: 0.8rem;
+    transition: 0.4s linear;
+}
 
 .nav_section {
     position: fixed;
     top: 52px;
+    left: 0px;
+    transform: scale(1, 0);
+    transform-origin: top;
+    transition: transform 0.3s ease-out;
     height: 69px;
     width: 100%;
     background-color: #ddcfc2;
     margin-bottom: 5px;
-    z-index: 999;
+    z-index: 998;
 }
 
 .nav_items {
@@ -231,13 +240,6 @@ header {
 .nav-toggle {
     display: none;
 }
-
-.nav_section {
-    transform: scale(1, 0);
-    transform-origin: top;
-    transition: transform 0.3s ease-out;
-}
-
 .nav_items {
     opacity: 0;
 }
@@ -245,113 +247,9 @@ header {
 .nav-toggle:checked ~ .nav_section {
     transform: scale(1, 1);
 }
-
-    .nav-toggle:checked ~ .nav_section .nav_items {
+.nav-toggle:checked ~ .nav_section .nav_items {
         opacity: 1;
         transition: opacity 0.3s ease-out;
-    }
-
-.exhibition {
-    display: flex;
-    flex-direction: column;
-}
-
-.exhibition {
-    background: url(https://images.unsplash.com/photo-1522123472015-2d9f7ee5608d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80);
-}
-
-.exhibition_poster {
-    padding: 2rem;
-}
-
-.exhibition_info_title {
-    margin-bottom: 1rem;
-}
-
-.exhibition_info_date {
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.3rem;
-    font-weight: 300;
-}
-
-.exhibition_poster img {
-    width: 100%;
-    height: 380px;
-}
-
-.exhibition_info {
-    padding: 2rem;
-}
-
-.exhibition_info {
-    display: flex;
-    flex-flow: column;
-}
-
-.btn {
-    background-color: #c0b0a2;
-    color: #fff;
-    width: 100%;
-}
-
-.store-section {
-    padding-top: 3rem;
-    width: 100%;
-}
-
-.store_title {
-    margin-right: 10%;
-    text-align: right;
-}
-
-.card-content {
-    position: relative;
-    width: 90%;
-    height: 800px;
-    background-color: #eae0d7;
-}
-
-.cards {
-    position: absolute;
-    top: -5%;
-    left: 10%;
-}
-
-.store_cards_card {
-    width: 100%;
-    height: 250px;
-    text-align: center;
-    background-color: #eae0d7;
-    margin-bottom: 2rem;
-}
-
-img {
-    object-fit: cover;
-    width: 100%;
-    height: 70%;
-    margin-bottom: 0.7rem;
-}
-
-.recommend {
-    display: grid;
-    grid-template-columns: 2fr 0.7fr;
-    height: 250px;
-    margin-top: 20px;
-}
-
-.left_container {
-    background-color: #666;
-}
-
-.right_container {
-    background-color: #c0b0a2;
-}
-
-h4 {
-    -webkit-writing-mode: vertical-lr;
-    letter-spacing: 1rem;
-    margin-top: 50px;
-    color: #f8f8f8;
 }
 
 @media screen and (min-width: 576px) {
@@ -361,8 +259,7 @@ h4 {
 
     a {
         font-size: 0.8rem;
-        color: #5c5858;
-        text-decoration: none;
+        
     }
 
     li {
@@ -372,6 +269,7 @@ h4 {
     .navbar_link {
         height: 100%;
         display: flex;
+        justify-content: end;
         align-items: center;
         flex: 0 1 30%;
         gap: 20px;
@@ -393,84 +291,5 @@ h4 {
         flex: 0 1 30%;
         gap: 20px;
     }
-
-    .exhibition {
-        flex-direction: row;
-        height: 800px;
-    }
-
-    .more {
-        display: none;
-    }
-
-    .exhibition_poster {
-        flex: 1 0 50%;
-        height: 100%;
-        display: flex;
-        flex-flow: column;
-    }
-
-        .exhibition_poster img {
-            flex: 1 0 80%;
-        }
-
-    .exhibition_info {
-        flex: 1 0 50%;
-        height: 100%;
-        display: flex;
-        flex-flow: column;
-        justify-content: space-around;
-    }
-
-    .exhibition_info_date {
-        font-size: 2rem;
-        color: #e5e4e2;
-    }
-
-    h3 {
-        font-size: 1.3rem;
-        line-height: 2rem;
-    }
-
-    p {
-        line-height: 1.5rem;
-        font-size: 1rem;
-    }
-
-    hr ~ p {
-        margin-bottom: 2rem;
-    }
-
-    .btn_buy {
-        width: 180px;
-    }
-
-    .store_title {
-        margin-right: 5%;
-    }
-
-    .card-content {
-        height: 375px;
-        width: 95%;
-    }
-
-    .cards {
-        display: flex;
-        top: -50px;
-        left: 0;
-        width: 80%;
-        justify-content: center;
-        gap: 40px 40px;
-        margin-left: 30px;
-    }
-
-    .store_cards_card {
-        flex: 1 0 25%;
-        max-width: 300px;
-        height: 400px;
-    }
-
-    .recommend {
-        height: 400px;
-    }
 }
+
