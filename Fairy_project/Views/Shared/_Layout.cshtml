@@ -13,7 +13,7 @@
     <header class="header">
         <nav>
             <div class="navbar">
-                <h2><a asp-area="" asp-controller="Home" asp-action="index">Fairy</a></h2>
+                <h2 class="navbar_title"><a asp-area="" asp-controller="Home" asp-action="index">Fairy</a></h2>
                 <label for="humbuger" class="btn_humbuger">三</label>
                 <ul class="navbar_link">
                     <li><a asp-area="" asp-controller="Home" asp-action="exhibitionDetail">會員頁面</a></li>
@@ -21,9 +21,9 @@
                     <li><a href="＃">登入</a></li>
                 </ul>
                 <ul class="navbar_icon">
-                    <li><a href="＃"><i class="fa-solid fa-user-astronaut"></i></a></li>
-                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="MyTicket"><i class="fa-solid fa-ticket-simple"></i></a></li>
-                    <li><a href="＃"><i class="fa-solid fa-dungeon"></i></a></li>
+                    <li><a href="＃"><i class="fa-solid fa-user-astronaut navbar_icon_item"></i></a></li>
+                    <li><a class="nav-link text-dark " asp-area="" asp-controller="Member" asp-action="MyTicket"><i class="fa-solid fa-ticket-simple navbar_icon_item"></i></a></li>
+                    <li><a href="＃"><i class="fa-solid fa-dungeon navbar_icon_item"></i></a></li>
                 </ul>
             </div>
             <input type="checkbox" id="humbuger" class="nav-toggle">

@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/wwwroot/css/site.css">
     <Files>
-      <File FileName="Fairy_project/wwwroot/css/site.css" Line="238" Column="20" />
+      <File FileName="Fairy_project/wwwroot/js/site.js" Line="10" Column="37" />
+      <File FileName="Fairy_project/wwwroot/css/site.css" Line="279" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,14 +13,18 @@
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="Views" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
+                <Node name="css" expanded="True">
+                  <Node name="site.css" selected="True" />
+                </Node>
+                <Node name="js" expanded="True" />
               </Node>
             </Node>
           </Node>
