@@ -96,3 +96,33 @@
     height: 238px;
     margin: 0px;
 }
+.navbar-manufacture {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    width: 100%;
+    background-color: #544A4A;
+    transition: 0.3s linear;
+    padding: 0 1rem;
+}
+.footer-manufacture {
+   height: 113px;
+    width: 100%;
+    background-color: #544A4A;
+}
+.footer-text-center {
+    text-align: center;
+    color: #FEFCFF;
+}
+.navbar-text-color-manufacture {
+    color: #FEFCFF;
+}
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
