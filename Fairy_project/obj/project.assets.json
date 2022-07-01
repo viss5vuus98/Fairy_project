@@ -1575,24 +1575,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/yiliang/.nuget/packages/": {}
+    "C:\\Users\\Student\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/Fairy_project.csproj",
+      "projectUniqueName": "C:\\Users\\Student\\Desktop\\期末專題MVC\\Fairy_project\\Fairy_project\\Fairy_project.csproj",
       "projectName": "Fairy_project",
-      "projectPath": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/Fairy_project.csproj",
-      "packagesPath": "/Users/yiliang/.nuget/packages/",
-      "outputPath": "/Users/yiliang/ispan_dir/dotNetCore/Fairy_project/Fairy_project/obj/",
+      "projectPath": "C:\\Users\\Student\\Desktop\\期末專題MVC\\Fairy_project\\Fairy_project\\Fairy_project.csproj",
+      "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Student\\Desktop\\期末專題MVC\\Fairy_project\\Fairy_project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/yiliang/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1650,7 +1652,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
