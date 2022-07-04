@@ -1,4 +1,8 @@
-﻿.exhibition {
+﻿p {
+    color: #5C5858;
+}
+
+.exhibition {
     display: flex;
     flex-direction: column;
 }
