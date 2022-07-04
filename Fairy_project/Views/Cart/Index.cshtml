@@ -1,0 +1,249 @@
+﻿
+@{
+    ViewData["Title"] = "Cart Page";
+}
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@section Style{
+    <link rel="stylesheet" href="~/css/Cart.css" asp-append-version="true" />
+}
+
+    <main class="first">
+        <div class="container mt-7 mb-5">
+            <div class="row row-cols-3 row-cols-sm-3">
+                <div class="col text-center">
+                    <div class="check-step check-step-finished d-flex flex-column justify-content-center"><i
+                            class="fa-solid fa-list-check" style="font-size: 40px;"></i><span>STEP
+                            1</span><span>確認訂單</span>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="check-step d-flex flex-column justify-content-center"><i
+                            class="fa-solid fa-circle-minus" style="font-size: 40px;"></i><span>STEP
+                            2</span><span>建立訂單</span>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="check-step d-flex flex-column justify-content-center"><i
+                            class="fa-solid fa-circle-minus" style="font-size: 40px;"></i><span>STEP
+                            3</span><span>完成訂單</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="add">增加</button>
+        <div class="ticket">
+            <!-- <div class="container" style="border: 1px solid black;">
+                <div class="rowticket d-flex">
+                    <div class="col-xl-3"><img
+                            src="https://images.unsplash.com/photo-1535385793343-27dff1413c5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bXVzZXVtfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                            alt=""></div>
+                    <div class="col-xl-9">
+                        <div class="d-flex" style="justify-content: space-between;">
+                            <h3>2022 NTT-TIFA M&B雙人組(大湖) 劇場特映暨展覽</h3>
+                            <button type="button" class="btn btn-secondary"><i
+                                    class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                        <h5>2022/4/30(六) 14:30</h5>
+                        <h5>台中國家歌劇園中劇院</h5>
+                        <div class="price">
+                            <div class="d-flex originprice">
+                                原價$
+                                <p>200</p>元
+                            </div>
+                            <div class="d-flex" style="align-items:center">
+                                數量:<button type="button" class="minus"><i class="fa-solid fa-minus"></i></button>
+                                <input type="text" style="width:50px;text-align: center;" class="count" value="1"
+                                    oninput="value=value.replace(/[^0-9]/g,'')">
+                                <button type="button" class="plus"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <div class="d-flex smallcount">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="container">
+            <div class="total d-flex">
+                <div class="d-flex" style="font-size: 20px;" id="totalprice">
+
+                </div>
+                <div>
+                    <button type="button" class="btn1 col-md-7" style="background-color: #EAE0D7;"
+                        id="keepbuy">繼續選購</button>
+                    <button type="button" class="btn1 col-md-5" style="background-color: #EAE0D7;"
+                        id="gopay">前往付款</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="second">
+        <div class="container">
+            <div class="container mt-7">
+                <div class="row row-cols-3 row-cols-sm-3">
+                    <div class="col text-center">
+                        <div class="check-step check-step-finished d-flex flex-column justify-content-center"><i
+                                class="fa-solid fa-list-check" style="font-size: 40px;"></i><span>STEP
+                                1</span><span>確認訂單</span>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="check-step check-step-finished d-flex flex-column justify-content-center"><i
+                                class="fa-solid fa-address-card" style="font-size: 40px;"></i></i><span>STEP
+                                2</span><span>建立訂單</span>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="check-step d-flex flex-column justify-content-center"><i
+                                class="fa-solid fa-circle-minus" style="font-size: 40px;"></i><span>STEP
+                                3</span><span>完成訂單</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <svg width="240" height="39" viewBox="0 0 240 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5 22H126.5H239.5L226 39H0L13.5 22Z" fill="#EAE0D7" />
+                <path
+                    d="M20.544 7.972V9.988H34.908V7.972H20.544ZM27.46 8.812V28.496C27.46 29 27.292 29.168 26.76 29.168C26.228 29.196 24.464 29.196 22.56 29.112C22.868 29.756 23.232 30.68 23.316 31.268C25.78 31.268 27.376 31.24 28.3 30.876C29.224 30.54 29.56 29.924 29.56 28.496V8.812H27.46ZM10.38 13.964V15.644H19.116V13.964H10.38ZM10.548 6.488V8.168H19.144V6.488H10.548ZM10.38 17.716V19.396H19.116V17.716H10.38ZM9.064 10.156V11.892H20.208V10.156H9.064ZM11.36 21.496V23.232H17.156V27.908H11.36V29.672H19.032V21.496H11.36ZM10.352 21.496V30.96H12.228V21.496H10.352ZM47.396 7.916V9.512H62.18V7.916H47.396ZM46.752 14.608V16.204H62.768V14.608H46.752ZM46.668 24.996V26.62H62.88V24.996H46.668ZM48.124 11.192V12.76H61.704V11.192H48.124ZM50.812 5.508V15.252H52.688V5.508H50.812ZM56.86 5.508V15.252H58.736V5.508H56.86ZM53.78 15.308V25.5H55.656V15.308H53.78ZM59.268 17.828V29.056C59.268 29.42 59.156 29.504 58.764 29.532C58.4 29.56 57.028 29.56 55.572 29.504C55.824 30.008 56.076 30.736 56.16 31.212C58.176 31.212 59.464 31.24 60.248 30.932C60.976 30.624 61.2 30.092 61.2 29.056V17.828H59.268ZM48.46 17.828V31.268H50.364V19.424H60.108V17.828H48.46ZM49.44 21.44V22.896H60.052V21.44H49.44ZM39.696 24.772C39.164 26.816 38.128 28.804 36.868 30.148C37.316 30.428 38.1 30.988 38.464 31.268C39.752 29.784 40.928 27.516 41.6 25.22L39.696 24.772ZM43.224 25.472C44.092 26.844 45.044 28.72 45.464 29.896L47.144 29.084C46.724 27.936 45.716 26.116 44.792 24.744L43.224 25.472ZM40.144 13.544H44.344V17.156H40.144V13.544ZM40.144 18.78H44.344V22.448H40.144V18.78ZM40.144 8.308H44.344V11.892H40.144V8.308ZM38.296 6.544V24.184H46.22V6.544H38.296ZM76.544 6.348C76.348 10.072 76.348 23.54 64.924 29.364C65.568 29.84 66.268 30.484 66.632 31.016C78.224 24.716 78.644 10.744 78.868 6.348H76.544ZM78.784 6.908L76.768 7.104C76.964 9.68 77.748 25.332 89.62 31.016C89.956 30.428 90.6 29.728 91.216 29.252C79.68 23.96 78.868 9.092 78.784 6.908ZM94.688 7.552C96.648 8.168 99.252 9.176 100.568 9.904L101.492 8.28C100.148 7.58 97.544 6.628 95.612 6.124L94.688 7.552ZM93.288 13.46L94.1 15.308C96.228 14.664 98.86 13.796 101.408 12.984L101.184 11.332C98.272 12.144 95.304 12.984 93.288 13.46ZM105.3 7.552L104.068 9.148H116.556V7.552H105.3ZM115.996 7.552V7.86C115.436 9.036 114.484 10.436 113.588 11.304L115.268 11.892C116.276 10.912 117.312 9.344 118.096 7.888L116.696 7.468L116.332 7.552H115.996ZM108.772 8.112C108.296 11.304 106.784 13.04 101.604 13.908C101.968 14.272 102.416 14.972 102.612 15.42C108.324 14.272 110.116 12.088 110.704 8.112H108.772ZM110.62 8.616L108.912 8.784C109.64 11.724 111.04 14.748 117.676 15.896C117.9 15.364 118.376 14.608 118.768 14.188C112.552 13.292 111.18 10.996 110.62 8.616ZM105.748 5.48C105.02 7.16 103.592 9.092 101.492 10.52C101.996 10.744 102.724 11.192 103.088 11.584C105.272 9.904 106.7 7.832 107.652 5.788L105.748 5.48ZM99.084 20.124H113.196V22.028H99.084V20.124ZM99.084 23.4H113.196V25.36H99.084V23.4ZM99.084 16.848H113.196V18.752H99.084V16.848ZM97.04 15.448V26.76H115.296V15.448H97.04ZM108.324 28.188C111.376 29.196 114.428 30.4 116.192 31.324L118.516 30.26C116.5 29.308 113.112 28.076 110.032 27.124L108.324 28.188ZM101.744 27.068C99.728 28.16 96.368 29.14 93.484 29.756C93.96 30.12 94.688 30.932 95.024 31.352C97.824 30.568 101.38 29.28 103.648 27.936L101.744 27.068ZM131.844 6.908V8.924H142.96V6.908H131.844ZM131.564 16.456V18.444H140.944V16.456H131.564ZM135.372 8.056V14.832C135.372 19.76 134.952 25.416 130.472 29.868C130.976 30.176 131.704 30.876 132.04 31.324C136.884 26.508 137.388 20.32 137.388 14.832V8.056H135.372ZM141.896 6.908C141.924 19.844 141.644 30.092 144.948 31.128C146.376 31.688 147.3 30.708 147.636 26.06C147.3 25.78 146.712 25.08 146.32 24.576C146.236 26.928 146.012 29 145.788 28.944C143.828 28.496 143.912 18.836 144.052 6.908H141.896ZM122.38 13.964V15.644H130.584V13.964H122.38ZM122.464 6.488V8.168H130.472V6.488H122.464ZM122.38 17.716V19.396H130.584V17.716H122.38ZM121.064 10.156V11.892H131.508V10.156H121.064ZM123.304 21.496V23.232H128.736V27.908H123.304V29.672H130.584V21.496H123.304ZM122.352 21.496V30.96H124.172V21.496H122.352Z"
+                    fill="#3B3131" />
+            </svg>
+            <div class="form-group d-flex justify-content-center">
+                <label for="name">姓名:<input type="name" class="" id="name" name="name" placeholder="請輸入姓名"></label>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                <label for="cellphone">手機:<input type="cellphone" class="" id="cellphone"
+                        placeholder="請輸入您的手機號碼"></label>
+            </div>
+
+            <div class="form-group d-flex justify-content-center">
+                <label for="Email">Email:<input type="Email" class="" id="Email" placeholder="請輸入您的Email"></label>
+            </div>
+            <svg width="251" height="39" viewBox="0 0 251 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24.5 22H250.5L237 39H11L24.5 22Z" fill="#EAE0D7" />
+                <path
+                    d="M9.632 11.724V13.852H26.712V11.724H9.632ZM21.028 5.816V28.384C21.028 29.028 20.776 29.196 20.104 29.252C19.46 29.28 17.136 29.28 14.756 29.196C15.092 29.784 15.484 30.736 15.596 31.296C18.648 31.324 20.552 31.296 21.644 30.932C22.708 30.624 23.156 29.98 23.156 28.384V5.816H21.028ZM11.396 17.66C12.824 19.9 14.644 22.924 15.484 24.66L17.444 23.596C16.548 21.888 14.672 18.976 13.216 16.792L11.396 17.66ZM5.18 13.124V31.184H7.308V11.052L7.28 10.996L5.18 13.124ZM8.232 5.676C6.608 10.044 3.92 14.328 1.036 17.072C1.428 17.576 2.1 18.64 2.352 19.144C5.46 15.98 8.4 11.164 10.276 6.292L8.232 5.676ZM29.428 8.168V9.932H42.364V8.168H29.428ZM29.092 20.152V21.916H42.616V20.152H29.092ZM30.072 12.34V14.132H41.776V12.34H30.072ZM30.38 16.232V17.996H41.44V16.232H30.38ZM34.916 20.908V29.084C34.916 29.364 34.832 29.448 34.524 29.448C34.216 29.476 33.236 29.476 32.116 29.448C32.368 29.98 32.648 30.736 32.732 31.268C34.328 31.268 35.336 31.24 36.008 30.932C36.708 30.652 36.876 30.092 36.876 29.112V20.908H34.916ZM34.888 5.592V13.488H36.876V5.592H34.888ZM31.248 22.896C30.744 24.996 29.848 27.096 28.672 28.552C29.12 28.72 29.932 29.168 30.296 29.42C31.444 27.88 32.452 25.584 33.04 23.232L31.248 22.896ZM38.5 23.512C39.312 24.884 40.152 26.76 40.516 27.88L42.168 27.068C41.832 25.976 40.936 24.212 40.096 22.868L38.5 23.512ZM44.66 10.576V12.508H53.144V10.576H44.66ZM48.076 11.36H47.04V16.344C47.04 18.64 46.2 25.836 40.32 29.588C40.712 29.98 41.3 30.82 41.524 31.268C46.116 28.272 47.768 23.064 48.048 20.656C48.328 22.952 49.784 28.412 53.76 31.268C54.04 30.764 54.684 29.952 55.048 29.476C49.896 25.836 49.056 18.584 49.056 16.344V11.36H48.076ZM44.744 5.452C44.212 9.932 43.176 14.244 41.384 17.016C41.888 17.324 42.812 17.94 43.176 18.276C44.996 15.252 46.2 10.632 46.844 5.788L44.744 5.452ZM52.556 10.576V10.968C52.304 13.124 51.884 15.952 51.436 17.66L53.116 18.136C53.676 16.288 54.208 13.348 54.572 10.884L53.228 10.492L52.864 10.576H52.556ZM57.456 10.324V12.34H82.516V10.324H57.456ZM66.612 16.96V18.976H77.812V16.96H66.612ZM77.056 16.96L77.028 17.324C76.552 24.996 75.992 28.132 75.096 28.944C74.788 29.224 74.396 29.252 73.78 29.252C73.052 29.252 71.064 29.252 69.048 29.056C69.44 29.644 69.748 30.512 69.776 31.128C71.68 31.212 73.528 31.268 74.508 31.212C75.572 31.128 76.272 30.932 76.916 30.26C78.008 29.14 78.568 26.032 79.128 17.968C79.184 17.66 79.212 16.96 79.212 16.96H77.056ZM66.136 11.444C65.828 18.136 65.352 25.948 57.176 29.644C57.708 30.064 58.38 30.82 58.688 31.352C67.228 27.264 68.04 18.864 68.46 11.444H66.136ZM68.796 5.424V11.192H70.952V5.424H68.796ZM103.852 6.88C105.308 7.888 107.016 9.4 107.856 10.408L109.34 9.092C108.472 8.112 106.708 6.656 105.252 5.676L103.852 6.88ZM85.54 10.716V12.76H110.488V10.716H85.54ZM86.492 16.96V19.004H98.868V16.96H86.492ZM91.532 18.052V28.048H93.632V18.052H91.532ZM85.652 28.328L86.296 30.428C89.908 29.616 95.032 28.44 99.82 27.32L99.652 25.444C94.472 26.564 88.984 27.684 85.652 28.328ZM99.792 5.62C99.904 19.172 102.172 31.296 107.744 31.296C109.9 31.296 110.712 29.868 111.076 24.968C110.488 24.772 109.676 24.296 109.2 23.82C109.032 27.572 108.696 29.112 107.912 29.112C104.468 29.112 101.948 18.612 102.032 5.62H99.792Z"
+                    fill="#3B3131" />
+            </svg>
+
+
+            <div class="radio d-block ">
+                <input type="radio" value="LINEPAY" name='option' /> LINEPAY
+                <input type="radio" value="ATM轉帳" name='option' /> ATM轉帳
+                <input type="radio" value="信用卡付款" name='option' /> 信用卡付款
+            </div>
+            <div class="container">
+                <div class="total d-flex">
+                    <div class="d-flex" id="totalprice1" style="font-size: 20px;">
+
+                    </div>
+                    <div>
+                        <button type="button" class="btn1 col-md-7" style="background-color: #EAE0D7;"
+                            id="pre">上一步</button>
+                        <button type="submit" class="btn1 col-md-5" style="background-color: #EAE0D7;"
+                            id="pay">付款結帳</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <main class="third">
+        <div class="container">
+            <div class="container mt-7">
+                <div class="row row-cols-3 row-cols-sm-3">
+                    <div class="col text-center">
+                        <div class="check-step check-step-finished d-flex flex-column justify-content-center"><i
+                                class="fa-solid fa-list-check" style="font-size: 40px;"></i><span>STEP
+                                1</span><span>確認訂單</span>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="check-step check-step-finished d-flex flex-column justify-content-center"><i
+                                class="fa-solid fa-address-card" style="font-size: 40px;"></i><span>STEP
+                                2</span><span>建立訂單</span>
+                        </div>
+                    </div>
+                    <div class="col text-center">
+                        <div class="check-step check-step-finished d-flex flex-column justify-content-center"><i
+                                class="fa-solid fa-circle-check" style="font-size: 40px;"></i><span>STEP
+                                3</span><span>完成訂單</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pay">
+                <h3>訂單已付款,感謝您的訂購</h3>
+            </div>
+            <svg width="250" height="40" viewBox="0 0 250 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.0919 22.5641H250L235.908 40H0L14.0919 22.5641Z" fill="#EAE0D7" />
+                <path
+                    d="M37.964 8.972V10.988H52.328V8.972H37.964ZM44.88 9.812V29.496C44.88 30 44.712 30.168 44.18 30.168C43.648 30.196 41.884 30.196 39.98 30.112C40.288 30.756 40.652 31.68 40.736 32.268C43.2 32.268 44.796 32.24 45.72 31.876C46.644 31.54 46.98 30.924 46.98 29.496V9.812H44.88ZM27.8 14.964V16.644H36.536V14.964H27.8ZM27.968 7.488V9.168H36.564V7.488H27.968ZM27.8 18.716V20.396H36.536V18.716H27.8ZM26.484 11.156V12.892H37.628V11.156H26.484ZM28.78 22.496V24.232H34.576V28.908H28.78V30.672H36.452V22.496H28.78ZM27.772 22.496V31.96H29.648V22.496H27.772ZM66.244 15.44V32.24H68.4V15.44H66.244ZM59.888 20.172H75.12V22.608H59.888V20.172ZM59.888 16.168H75.12V18.548H59.888V16.168ZM57.844 14.46V24.288H77.248V14.46H57.844ZM55.016 26.444V28.292H79.852V26.444H55.016ZM58.992 9H64.368V11.66H58.992V9ZM57.088 7.6V13.06H66.328V7.6H57.088ZM70.5 9H75.932V11.66H70.5V9ZM68.596 7.6V13.06H77.92V7.6H68.596ZM84.108 8.552C86.068 9.168 88.672 10.176 89.988 10.904L90.912 9.28C89.568 8.58 86.964 7.628 85.032 7.124L84.108 8.552ZM82.708 14.46L83.52 16.308C85.648 15.664 88.28 14.796 90.828 13.984L90.604 12.332C87.692 13.144 84.724 13.984 82.708 14.46ZM94.72 8.552L93.488 10.148H105.976V8.552H94.72ZM105.416 8.552V8.86C104.856 10.036 103.904 11.436 103.008 12.304L104.688 12.892C105.696 11.912 106.732 10.344 107.516 8.888L106.116 8.468L105.752 8.552H105.416ZM98.192 9.112C97.716 12.304 96.204 14.04 91.024 14.908C91.388 15.272 91.836 15.972 92.032 16.42C97.744 15.272 99.536 13.088 100.124 9.112H98.192ZM100.04 9.616L98.332 9.784C99.06 12.724 100.46 15.748 107.096 16.896C107.32 16.364 107.796 15.608 108.188 15.188C101.972 14.292 100.6 11.996 100.04 9.616ZM95.168 6.48C94.44 8.16 93.012 10.092 90.912 11.52C91.416 11.744 92.144 12.192 92.508 12.584C94.692 10.904 96.12 8.832 97.072 6.788L95.168 6.48ZM88.504 21.124H102.616V23.028H88.504V21.124ZM88.504 24.4H102.616V26.36H88.504V24.4ZM88.504 17.848H102.616V19.752H88.504V17.848ZM86.46 16.448V27.76H104.716V16.448H86.46ZM97.744 29.188C100.796 30.196 103.848 31.4 105.612 32.324L107.936 31.26C105.92 30.308 102.532 29.076 99.452 28.124L97.744 29.188ZM91.164 28.068C89.148 29.16 85.788 30.14 82.904 30.756C83.38 31.12 84.108 31.932 84.444 32.352C87.244 31.568 90.8 30.28 93.068 28.936L91.164 28.068ZM121.264 7.908V9.924H132.38V7.908H121.264ZM120.984 17.456V19.444H130.364V17.456H120.984ZM124.792 9.056V15.832C124.792 20.76 124.372 26.416 119.892 30.868C120.396 31.176 121.124 31.876 121.46 32.324C126.304 27.508 126.808 21.32 126.808 15.832V9.056H124.792ZM131.316 7.908C131.344 20.844 131.064 31.092 134.368 32.128C135.796 32.688 136.72 31.708 137.056 27.06C136.72 26.78 136.132 26.08 135.74 25.576C135.656 27.928 135.432 30 135.208 29.944C133.248 29.496 133.332 19.836 133.472 7.908H131.316ZM111.8 14.964V16.644H120.004V14.964H111.8ZM111.884 7.488V9.168H119.892V7.488H111.884ZM111.8 18.716V20.396H120.004V18.716H111.8ZM110.484 11.156V12.892H120.928V11.156H110.484ZM112.724 22.496V24.232H118.156V28.908H112.724V30.672H120.004V22.496H112.724ZM111.772 22.496V31.96H113.592V22.496H111.772Z"
+                    fill="#3B3131" />
+            </svg>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <h5>訂單金額</h5>
+                    </div>
+                    <div class="col-6 orderprice d-flex justify-content-center">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>訂單編號</h5>
+                    </div>
+                    <div class="col-6 ordernum">
+                        <h5>A1511sr5g156r1g</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>訂單日期</h5>
+                    </div>
+                    <div class="col-6 ordertime">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>訂購人姓名</h5>
+                    </div>
+                    <div class="col-6 ordername">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>訂購人電話</h5>
+                    </div>
+                    <div class="col-6 orderphone">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <h5>訂購人Email</h5>
+                    </div>
+                    <div class="col-6 orderemail">
+
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex" style="justify-content: center;">
+                <button type="button" class="btn1" style="background-color: #EAE0D7;margin-top: 100px;"
+                    id="keepshop">繼續選購</button>
+            </div>
+        </div>
+    </main>
+   
+@section Scripts{
+    <script src="~/js/Cart.js" asp-append-version="true"></script>
+}

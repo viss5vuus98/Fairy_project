@@ -8,29 +8,28 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Fairy_project.styles.css" asp-append-version="true" />
     @await RenderSectionAsync("Style", required: false)
-    @await RenderSectionAsync("Indexcss" , required:false)
 </head>
 <body>
     <header class="header">
         <nav>
             <div class="navbar">
-                <h2><a asp-area="" asp-controller="Home" asp-action="index">Fairy</a></h2>
+                <h2 class="navbar_title"><a asp-area="" asp-controller="Home" asp-action="index">Fairy</a></h2>
                 <label for="humbuger" class="btn_humbuger">三</label>
                 <ul class="navbar_link">
                     <li><a asp-area="" asp-controller="Home" asp-action="exhibitionDetail">會員頁面</a></li>
-                    <li><a href="＃">票券頁面</a></li>
+                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="MyTicket">票券頁面</a></li>
                     <li><a href="＃">登入</a></li>
                 </ul>
                 <ul class="navbar_icon">
-                    <li><a href="＃"><i class="fa-solid fa-user-astronaut"></i></a></li>
-                    <li><a href="＃"><i class="fa-solid fa-ticket-simple"></i></a></li>
-                    <li><a href="＃"><i class="fa-solid fa-dungeon"></i></a></li>
+                    <li><a href="＃"><i class="fa-solid fa-user-astronaut navbar_icon_item"></i></a></li>
+                    <li><a class="nav-link text-dark " asp-area="" asp-controller="Member" asp-action="MyTicket"><i class="fa-solid fa-ticket-simple navbar_icon_item"></i></a></li>
+                    <li><a href="＃"><i class="fa-solid fa-dungeon navbar_icon_item"></i></a></li>
                 </ul>
             </div>
             <input type="checkbox" id="humbuger" class="nav-toggle">
             <div class="nav_section">
                 <ul class="nav_items">
-                    <li><a href="">票券頁</a></li>
+                   <li><a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="MyTicket">票券頁</a></li>
                     <li><a href="">購物車</a></li>
                 </ul>
             </div>

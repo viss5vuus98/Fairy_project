@@ -177,8 +177,6 @@ header {
     height: 52px;
     width: 100%;
     padding: 0 0.5rem;
-    background-color: #ddcfc2;
-    border: 1px solid tomato;
 }
 
 .navbar {
@@ -193,6 +191,7 @@ header {
     width: 100%;
     background-color: #ddcfc2;
     transition: 0.3s linear;
+    padding: 0 1rem;
 }
 
 .navbar_link,
@@ -257,6 +256,12 @@ header {
         display: none;
     }
 
+    .navbar_title a {
+        font-size: 1.8rem;
+        transition: 0.4s linear;
+        margin-bottom: .3rem;
+    }
+
     a {
         font-size: 0.8rem;
         
@@ -274,13 +279,22 @@ header {
         flex: 0 1 30%;
         gap: 20px;
     }
+    .navbar.nav_onscroll {
+        transition: 0.4s linear;
+    }
 
     .nav_onscroll .navbar_link {
         display: none;
     }
 
-    .navbar_icon {
-        display: none;
+    .navbar_icon_item {
+        font-size: 1rem;
+        color: #666;
+    }
+    .nav_onscroll .navbar_title a {
+        font-size: 1.5rem;
+        transition: 0.4s linear;
+        color: #666;
     }
 
     .nav_onscroll .navbar_icon {
