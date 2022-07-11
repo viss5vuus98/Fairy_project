@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ispanProject\\WooHouse_project\\Fairy_project\\Fairy_project.csproj": {}
+    "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj": {}
   },
   "projects": {
-    "E:\\ispanProject\\WooHouse_project\\Fairy_project\\Fairy_project.csproj": {
+    "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ispanProject\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+        "projectUniqueName": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
         "projectName": "Fairy_project",
-        "projectPath": "E:\\ispanProject\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\ispanProject\\WooHouse_project\\Fairy_project\\obj\\",
+        "projectPath": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+        "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
+        "outputPath": "D:\\WooHouse_project\\Fairy_project\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "E:\\Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
