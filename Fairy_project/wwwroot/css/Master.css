@@ -1,0 +1,40 @@
+﻿body {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+
+.bg1 {
+    background-color: #FEFCFF;
+}
+
+.container :first-child div {
+    overflow: hidden;
+    height: 350px;
+}
+
+    .container :first-child div a img:hover {
+        opacity: .7;
+        transition: .3s;
+    }
+
+    .container :first-child div a img {
+        opacity: 1;
+        transition: .3s;
+    }
+
+.container :first-child :hover i {
+    opacity: .3;
+    transition: .5s;
+}
+
+.container :first-child i {
+    opacity: 1;
+    transition: .5s;
+}
+
+img {
+    object-fit: cover;
+}
+
+#name {
+    transition: .5s;
+}

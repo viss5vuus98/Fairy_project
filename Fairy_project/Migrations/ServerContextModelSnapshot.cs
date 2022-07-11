@@ -67,7 +67,10 @@ namespace Fairy_project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("exhibitId"), 1L, 1);
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("datefrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("dateto")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("exhibitName")
@@ -101,6 +104,10 @@ namespace Fairy_project.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("manufactureName"), 1L, 1);
+
+                    b.Property<string>("manufacture")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("manufactureAcc")
                         .IsRequired()

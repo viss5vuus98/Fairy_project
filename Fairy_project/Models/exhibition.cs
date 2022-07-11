@@ -8,7 +8,9 @@ public class Exhibition
     [Key]
     public int exhibitId { get; set; }
     public string exhibitName { get; set; }
-    public DateTime Date { get; set; }
+    public DateTime datefrom { get; set; }
+    public DateTime dateto { get; set; }
+
     //Todo 時間格式
     public int exhibitStatus { get; set; }
     public string exhibit_P_img { get; set; }
