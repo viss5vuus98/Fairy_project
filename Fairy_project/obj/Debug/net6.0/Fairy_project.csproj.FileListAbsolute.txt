@@ -621,3 +621,15 @@ D:/WooHouse_project/Fairy_project/obj/Debug/net6.0/ref/Fairy_project.dll
 /Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/obj/Debug/net6.0/Fairy_project.pdb
 /Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/obj/Debug/net6.0/Fairy_project.genruntimeconfig.cache
 /Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/obj/Debug/net6.0/ref/Fairy_project.dll
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.csproj.AssemblyReference.cache
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.GeneratedMSBuildEditorConfig.editorconfig
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.AssemblyInfoInputs.cache
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.AssemblyInfo.cs
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.csproj.CoreCompileInputs.cache
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.MvcApplicationPartsAssemblyInfo.cs
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.MvcApplicationPartsAssemblyInfo.cache
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.RazorAssemblyInfo.cache
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.RazorAssemblyInfo.cs
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.dll
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\refint\Fairy_project.dll
+D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.pdb
