@@ -11,7 +11,7 @@ namespace Fairy_project.Models
         }
 
         public DbSet<Exhibition> exhibitions { get; set; }
-        public DbSet<Manufacture> manufactures { get; set; }
+        public DbSet<Manufactures> manufactures { get; set; }
         public DbSet<Member> members { get; set; }
         public DbSet<Permissions> Permissions { get; set; }
         public DbSet<Ticket> tickets { get; set; }
