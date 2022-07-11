@@ -9,25 +9,20 @@ namespace Fairy_project.Controllers
 {
     public class LoginController : Controller
     {
-        public class Member
+        private ServerContext _context;
+
+        public LoginController(ServerContext context)
         {
-            public string Uid { get; set; }
-            public string Pwd { get; set; }
-            public string Role { get; set; }
+            _context = context;
         }
 
-        public class MemberList
+        public Permissions GetMember(string uid, string pwd)
         {
-            public Member GetMember(string uid, string pwd)
-            {
-                IList<Member> members = new List<Member>();
-                members.Add(new Member { Uid = "jasper", Pwd = "123", Role = "Admin" });
-                members.Add(new Member { Uid = "mary", Pwd = "123", Role = "Member" });
-                members.Add(new Member { Uid = "anita", Pwd = "123", Role = "Member" });
-                var member = members.FirstOrDefault(m => m.Uid == uid && m.Pwd == pwd);
-                return member;
-            }
+            IList<Permissions> members = new List<Permissions>();
+            var member = _context.Permissions.FirstOrDefault(m => m.account == uid && m.password == pwd);
+            return member;           
         }
+
 
         public IActionResult Index()
         {
@@ -36,13 +31,12 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult Index(string uid, string pwd)
         {
-            var member = new MemberList().GetMember(uid, pwd);
-
+            var member = _context.Permissions.FirstOrDefault(m => m.account == uid && m.password == pwd);
             if (member != null)
             {
                 IList<Claim> claims = new List<Claim> {
-                       new Claim(ClaimTypes.Name, member.Uid),
-                       new Claim(ClaimTypes.Role, member.Role)
+                       new Claim(ClaimTypes.Name, member.account),
+                       new Claim(ClaimTypes.Role, member.permissionsLv.ToString())
                 };
 
                 var claimsIndentity = new ClaimsIdentity(claims,
@@ -52,9 +46,22 @@ namespace Fairy_project.Controllers
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIndentity),
                     authProperties);
-                return RedirectToAction("Index", member.Role);
+                string permissions = "";
+                switch(member.permissionsLv)
+                {
+                    case 1: 
+                        permissions="Member";
+                        break;
+                    case 2: 
+                        permissions="mfu";
+                        break;
+                    case 3:
+                        permissions = "Admin";
+                        break;
+                }
+                return RedirectToAction("Index", permissions);
             }
-            ViewBag.Show = "帳密錯誤";
+            ViewBag.Show = "帳號密碼錯誤";
             return View();
         }
 
