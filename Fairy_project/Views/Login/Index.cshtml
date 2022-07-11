@@ -1,0 +1,107 @@
+﻿
+@{
+    //Layout = null;
+}
+
+@section Style{
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true"/>
+}
+    
+
+    <div class="content">
+        <div class="form sign-in">
+            <form method="post" action="@Url.Action("Index")">
+                <h2>歡迎回來</h2>
+                <label>
+                    <span>電子郵件</span>
+                    <input type="text" name="uid"/>
+                </label>
+                <label>
+                    <span>密碼</span>
+                    <input type="password" name="pwd"/>
+                </label>
+                <!-- <p class="forgot-pass"><a href="javascript:">忘記密碼？</a></p> -->
+                <button type="submit" class="submit">登 入</button>
+            </form>
+            <h4>@ViewBag.Show</h4>
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h2>尚未成為會員？</h2>
+                    <p>立即註冊會員!</p>
+                </div>
+                <div class="img__text m--in">
+                    <h2>已有帳號？</h2>
+                    <p>帳號登入,好久不見!</p>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">會員註冊</span>
+                    <span class="m--in">登 入</span>
+                </div>
+                <div class="img__btn2">
+                    <span class="m--up">廠商註冊</span>
+                    <span class="m--in">登 入</span>
+                </div>
+            </div>
+            <div class="first">
+                <div class="form sign-up">
+                    <h2>會員註冊</h2>
+                    <label>
+                        <span>會員名稱</span>
+                        <input type="text" />
+                    </label>
+                    <label>
+                        <span>電子郵件</span>
+                        <input type="email" />
+                    </label>
+                    <label>
+                        <span>密碼</span>
+                        <input type="password" />
+                    </label>
+                    <button type="button" class="submit" id="member">註 冊</button>
+                </div>
+            </div>
+            <div class="second">
+                <div class="form sign-up">
+                    <h2>廠商註冊</h2>
+                    <label>
+                        <span>廠商名稱</span>
+                        <input type="text" />
+                    </label>
+                    <label>
+                        <span>統一編號</span>
+                        <input type="email" />
+                    </label>
+                    <label>
+                        <span>密碼</span>
+                        <input type="password" />
+                    </label>
+                    <button type="button" class="submit" id="company">註 冊</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+   
+    @section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $('.img__btn').on('click', function () {
+            $('.content').toggleClass('s--signup');
+            $(".first").show();
+            $(".second").hide();
+            $('.img__btn2').toggleClass('hidden');
+        })
+
+        $('.img__btn2').on('click', function () {
+            $('.content').toggleClass('s--signup');
+            $(".first").hide();
+            $(".second").show();
+            $('.img__btn').toggleClass('hidden');
+        })
+
+    </script>
+    }
+
+
