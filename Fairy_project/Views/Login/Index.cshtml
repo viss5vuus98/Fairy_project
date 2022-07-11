@@ -1,12 +1,10 @@
 ﻿
 @{
-    //Layout = null;
+    Layout = null;
 }
 
-@section Style{
+
     <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true"/>
-}
-    
 
     <div class="content">
         <div class="form sign-in">
@@ -14,11 +12,11 @@
                 <h2>歡迎回來</h2>
                 <label>
                     <span>電子郵件</span>
-                    <input type="text" name="uid"/>
+                    <input type="text" required name="uid"/>
                 </label>
                 <label>
                     <span>密碼</span>
-                    <input type="password" name="pwd"/>
+                    <input type="password" required name="pwd"/>
                 </label>
                 <!-- <p class="forgot-pass"><a href="javascript:">忘記密碼？</a></p> -->
                 <button type="submit" class="submit">登 入</button>
@@ -84,8 +82,8 @@
         
     </div>
    
-    @section Scripts{
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script>
         $('.img__btn').on('click', function () {
             $('.content').toggleClass('s--signup');
@@ -100,8 +98,7 @@
             $(".second").show();
             $('.img__btn').toggleClass('hidden');
         })
-
     </script>
-    }
+
 
 

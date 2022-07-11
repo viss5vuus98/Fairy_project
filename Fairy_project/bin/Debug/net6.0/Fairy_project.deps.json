@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Fairy_project/1.0.0": {
         "dependencies": {
+          "EO.WebBrowser": "22.1.67",
           "EntityFramework": "6.4.4",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "6.0.6",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.6",
@@ -38,6 +39,22 @@
           "lib/netstandard2.1/EntityFramework.dll": {
             "assemblyVersion": "6.0.0.0",
             "fileVersion": "6.400.420.21404"
+          }
+        }
+      },
+      "EO.WebBrowser/22.1.67": {
+        "runtime": {
+          "lib/EO.Base.dll": {
+            "assemblyVersion": "22.1.67.0",
+            "fileVersion": "22.1.67.0"
+          },
+          "lib/EO.WebBrowser.dll": {
+            "assemblyVersion": "22.1.67.0",
+            "fileVersion": "22.1.67.0"
+          },
+          "lib/EO.WebEngine.dll": {
+            "assemblyVersion": "22.1.67.0",
+            "fileVersion": "22.1.67.0"
           }
         }
       },
@@ -2578,6 +2595,13 @@
       "sha512": "sha512-yj1+/4tci7Panu3jKDHYizxwVm0Jvm7b7m057b5h4u8NUHGCR8WIWirBTw+8EptRffwftIWPBeIRGNKD1ewEMQ==",
       "path": "entityframework/6.4.4",
       "hashPath": "entityframework.6.4.4.nupkg.sha512"
+    },
+    "EO.WebBrowser/22.1.67": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nPPcFNJTevuLBuo5whxI6m1ASK+ACi+x4zNckLii7Oh+RMrI/Y+J/jSzZhVSzh5m2qp2E9hANlAZEMPGsKui2w==",
+      "path": "eo.webbrowser/22.1.67",
+      "hashPath": "eo.webbrowser.22.1.67.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

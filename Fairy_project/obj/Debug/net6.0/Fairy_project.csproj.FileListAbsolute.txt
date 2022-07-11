@@ -823,3 +823,6 @@ D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\scopedcss\projectbundle\Fairy
 D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.csproj.CopyComplete
 D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\Fairy_project.genruntimeconfig.cache
 D:\WooHouse_project\Fairy_project\obj\Debug\net6.0\ref\Fairy_project.dll
+D:\WooHouse_project\Fairy_project\bin\Debug\net6.0\EO.Base.dll
+D:\WooHouse_project\Fairy_project\bin\Debug\net6.0\EO.WebBrowser.dll
+D:\WooHouse_project\Fairy_project\bin\Debug\net6.0\EO.WebEngine.dll

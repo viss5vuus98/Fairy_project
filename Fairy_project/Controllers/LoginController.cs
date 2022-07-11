@@ -32,20 +32,9 @@ namespace Fairy_project.Controllers
         public IActionResult Index(string uid, string pwd)
         {
             var member = _context.Permissions.FirstOrDefault(m => m.account == uid && m.password == pwd);
+            //var account = member.account;
             if (member != null)
             {
-                IList<Claim> claims = new List<Claim> {
-                       new Claim(ClaimTypes.Name, member.account),
-                       new Claim(ClaimTypes.Role, member.permissionsLv.ToString())
-                };
-
-                var claimsIndentity = new ClaimsIdentity(claims,
-                    CookieAuthenticationDefaults.AuthenticationScheme);
-                var authProperties = new AuthenticationProperties { IsPersistent = true };
-
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIndentity),
-                    authProperties);
                 string permissions = "";
                 switch(member.permissionsLv)
                 {
@@ -59,6 +48,21 @@ namespace Fairy_project.Controllers
                         permissions = "Admin";
                         break;
                 }
+                //宣告身分識別
+                //var memberid = _context.members.FirstOrDefault(m => m.memberAc == account);
+                IList<Claim> claims = new List<Claim> {
+                       new Claim(ClaimTypes.Name, member.account),
+                       //new Claim(ClaimTypes.NameIdentifier, memberid.memberId.ToString()),
+                       new Claim(ClaimTypes.Role, permissions)
+                };
+
+                var claimsIndentity = new ClaimsIdentity(claims,
+                    CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties { IsPersistent = true };
+
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIndentity),
+                    authProperties);
                 return RedirectToAction("Index", permissions);
             }
             ViewBag.Show = "帳號密碼錯誤";

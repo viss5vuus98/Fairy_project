@@ -24,6 +24,19 @@
           "buildTransitive/netcoreapp3.0/EntityFramework.targets": {}
         }
       },
+      "EO.WebBrowser/22.1.67": {
+        "type": "package",
+        "compile": {
+          "lib/EO.Base.dll": {},
+          "lib/EO.WebBrowser.dll": {},
+          "lib/EO.WebEngine.dll": {}
+        },
+        "runtime": {
+          "lib/EO.Base.dll": {},
+          "lib/EO.WebBrowser.dll": {},
+          "lib/EO.WebEngine.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -3542,6 +3555,26 @@
         "tools/netcoreapp3.0/any/ef6.dll",
         "tools/netcoreapp3.0/any/ef6.pdb",
         "tools/netcoreapp3.0/any/ef6.runtimeconfig.json"
+      ]
+    },
+    "EO.WebBrowser/22.1.67": {
+      "sha512": "nPPcFNJTevuLBuo5whxI6m1ASK+ACi+x4zNckLii7Oh+RMrI/Y+J/jSzZhVSzh5m2qp2E9hANlAZEMPGsKui2w==",
+      "type": "package",
+      "path": "eo.webbrowser/22.1.67",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "eo.webbrowser.22.1.67.nupkg.sha512",
+        "eo.webbrowser.nuspec",
+        "lib/EO.Base.dll",
+        "lib/EO.Base.xml",
+        "lib/EO.WebBrowser.dll",
+        "lib/EO.WebBrowser.xml",
+        "lib/EO.WebEngine.dll",
+        "lib/EO.WebEngine.xml",
+        "tools/GACTools.exe",
+        "tools/eowp.exe"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -10676,6 +10709,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "EO.WebBrowser >= 22.1.67",
       "EntityFramework >= 6.4.4",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.6",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.6",
@@ -10688,20 +10722,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Student\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WoHouse_project\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+      "projectUniqueName": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
       "projectName": "Fairy_project",
-      "projectPath": "D:\\WoHouse_project\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
-      "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-      "outputPath": "D:\\WoHouse_project\\WooHouse_project\\Fairy_project\\obj\\",
+      "projectPath": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\WooHouse_project\\Fairy_project\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -10726,6 +10768,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "EO.WebBrowser": {
+            "target": "Package",
+            "version": "[22.1.67, )"
+          },
           "EntityFramework": {
             "target": "Package",
             "version": "[6.4.4, )"
@@ -10786,5 +10832,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "已使用 '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' 而非專案目標架構 'net6.0' 還原了套件 'EO.WebBrowser 22.1.67'。此套件與您的專案並非完全相容。",
+      "libraryId": "EO.WebBrowser",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
