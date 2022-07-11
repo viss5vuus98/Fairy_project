@@ -4,6 +4,7 @@ using Fairy_project.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fairy_project.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    partial class ServerContextModelSnapshot : ModelSnapshot
+    [Migration("20220711101521_ticket")]
+    partial class ticket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,13 +194,13 @@ namespace Fairy_project.Migrations
                     b.Property<int>("enterstate")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("entertime")
+                    b.Property<DateTime>("entertime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("m_Id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("ordertime")
+                    b.Property<DateTime>("ordertime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("price")

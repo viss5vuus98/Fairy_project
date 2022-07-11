@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Fairy_project.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fairy_project.Models
 {
@@ -16,6 +17,5 @@ namespace Fairy_project.Models
         public DbSet<Permissions> Permissions { get; set; }
         public DbSet<Ticket> tickets { get; set; }
         public DbSet<Booth> booths { get; set; }
-
     }
 }

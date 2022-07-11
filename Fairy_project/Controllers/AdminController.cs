@@ -1,6 +1,9 @@
 ﻿using Fairy_project.Models;
+using Fairy_project.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
 
 namespace Fairy_project.Controllers
 {
@@ -13,23 +16,37 @@ namespace Fairy_project.Controllers
             _context = context;
         }
         // GET: AdminController
-        public ActionResult Master()
+        public ActionResult Master(List<MasterViewModels> modellist)
         {
-            return View(_context.exhibitions);
+            foreach (var item in _context.exhibitions) 
+            {
+                MasterViewModels model = new MasterViewModels();
+
+                model.exhibitId = item.exhibitId;
+                model.exhibitName = item.exhibitName;
+                model.exhibit_Pre_img = item.exhibit_Pre_img;
+                model.exhibitStatus = item.exhibitStatus;
+                modellist.Add(model);
+            }
+
+            foreach(var item in modellist)
+            {
+                item.soldbooth = _context.booths.Where(b => b.e_Id == item.exhibitId).Count();
+                item.soldticket = _context.booths.Where(t => t.e_Id == item.exhibitId).Count();
+                item.enteredpeople = 3;
+            }
+            return View(modellist);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Master(IFormCollection collection)
+        public IActionResult MasterPreview(int exhibitId)
         {
-            try
+            int tickets = _context.tickets.Count(t => t.e_Id == exhibitId);
+            if (tickets != 0) 
             {
-                return RedirectToAction(nameof(Master));
+                ViewBag.ticketscount = tickets;
             }
-            catch
-            {
-                return View();
-            }
+            ViewBag.test = "test";
+            return ViewBag;
         }
 
 
