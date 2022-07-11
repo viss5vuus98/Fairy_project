@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DZYu805yWfggZeESIv6dWvitQFLbAlWhshM1mYovbQmuEwQzGewAQso0o0LKm/33+1Pu/UUrcO//aEed3iC6Zw==",
+  "dgSpecHash": "EPUSGexsWi8497yOmqR0KLS6B1ZtQ78+t/WXy1cuIM4fInDu1+n/sJ3m7hBvrbMSjl6GNIvRwCz2qXFanZnlxw==",
   "success": true,
-  "projectFilePath": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+  "projectFilePath": "D:\\WoHouse_project\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

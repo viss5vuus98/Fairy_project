@@ -10693,11 +10693,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+      "projectUniqueName": "D:\\WoHouse_project\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
       "projectName": "Fairy_project",
-      "projectPath": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+      "projectPath": "D:\\WoHouse_project\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
       "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-      "outputPath": "D:\\WooHouse_project\\Fairy_project\\obj\\",
+      "outputPath": "D:\\WoHouse_project\\WooHouse_project\\Fairy_project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
