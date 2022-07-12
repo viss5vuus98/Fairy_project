@@ -158,3 +158,129 @@ body {
     border-top-right-radius:15px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.container-Policy {
+    margin:auto;
+    background-color: #EAE0D7;
+    border-radius: 47px;
+    width: 1300px;
+    height: 1600px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align:center;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.container-process {
+
+    width: 1000px;
+    height: 500px;
+
+    
+}
+
+.container-ApplyStand {
+    margin: auto;
+    width: 1300px;
+    height: 1800px;
+    background-color: #F5EEE8;
+    border-radius: 47px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-ticket {
+    margin: auto;
+    background-color: #FEFCFF;
+    width: 1300px;
+    height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.row-bgcolor { /*Policy內的區塊*/
+    background-color: #F5EEE8;
+    width: 1140px;
+    height: 593px;
+    border-radius: 47px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #cccccc;
+    overflow: auto;
+    font-size:24px;
+    
+}
+.bg-c-Dtl {
+    background-color: #ACC2C2;
+    width: 80%;
+    height: 100%;
+    border-radius: 47px;
+}
+
+
+
+.block-1-margin{
+    margin-left:30px;
+
+}
+
+
+.block-top {
+    margin-top: 80px;
+   
+}
+
+.block-bottom {
+    margin-top: 160px;
+
+}
+
+textarea {
+    resize: none;
+}
+
+
+.row-center {
+    display: flex;
+    /* 水平置中 */
+   /* justify-content: center;*/
+    /* 垂直置中 */
+    align-items: center;
+    margin-top:80px;
+}
+
+
+.textarea-center {
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-end {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.col-10 {
+    flex: 0 0 auto;
+    width: 83.33333333%;
+ 
+}
+
+
+
+

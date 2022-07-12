@@ -9,6 +9,16 @@ namespace Fairy_project.Controllers
             return View();
         }
 
+        public IActionResult Policy()
+        {
+            return View();
+        }
+
+        public IActionResult ApplyStand()
+        {
+            return View();
+        }
+
 
     }
 }
