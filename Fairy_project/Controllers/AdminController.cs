@@ -16,9 +16,10 @@ namespace Fairy_project.Controllers
             _context = context;
         }
         // GET: AdminController
-        public ActionResult Master(List<MasterViewModels> modellist)
+        public IActionResult Master()
         {
-            foreach (var item in _context.exhibitions) 
+            List<MasterViewModels> modellist = new List<MasterViewModels>();
+            foreach (var item in _context.exhibitions)
             {
                 MasterViewModels model = new MasterViewModels();
 
@@ -29,24 +30,24 @@ namespace Fairy_project.Controllers
                 modellist.Add(model);
             }
 
-            foreach(var item in modellist)
-            {
-                item.soldbooth = _context.booths.Where(b => b.e_Id == item.exhibitId).Count();
-                item.soldticket = _context.booths.Where(t => t.e_Id == item.exhibitId).Count();
-                item.enteredpeople = 3;
-            }
+            //foreach (var item in modellist)
+            //{
+            //    item.soldbooth = _context.booths.Where(b => b.e_Id == item.exhibitId).Count();
+            //    item.soldticket = _context.booths.Where(t => t.e_Id == item.exhibitId).Count();
+            //    item.enteredpeople = 3;
+            //}
             return View(modellist);
         }
 
-        public IActionResult MasterPreview(int exhibitId)
+        public async Task<IActionResult> MasterPreview(int exhibitId)
         {
-            int tickets = _context.tickets.Count(t => t.e_Id == exhibitId);
+            int tickets = await _context.tickets.CountAsync(t => t.e_Id == exhibitId);
             if (tickets != 0) 
             {
                 ViewBag.ticketscount = tickets;
             }
             ViewBag.test = "test";
-            return ViewBag;
+            return View("_MasterPreviewPartial");
         }
 
 

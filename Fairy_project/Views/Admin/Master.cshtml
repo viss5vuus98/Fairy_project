@@ -12,12 +12,11 @@
             List<object> listmodel = new List<object>();
             foreach (var item in Model)
             {
-                            <div class="col-lg-4 col-md-6 col-12 my-4 overflow-hidden">
-                                <a href="/*@Url.Action("MasterPreview","Admin",new{item.exhibitId})*/" class="overflow-hidden">
-                                    <img class="w-100 h-100 rounded-3" src="@(Url.Content($"~/images/{item.exhibit_Pre_img}"))" alt="">
-                                </a>                        
-                                <h1>@item.exhibitId</h1>
-                            </div>
+                <div class="col-lg-4 col-md-6 col-12 my-4 overflow-hidden">
+                    <a asp-action="MasterPreview" asp-controller="Admin" asp-route-exhibitId="@item.exhibitId" class="overflow-hidden">
+                        <img class="w-100 h-100 rounded-3" src="@(Url.Content($"~/images/{item.exhibit_Pre_img}"))" alt="">
+                    </a>                        
+                </div>
                 listmodel.Add(item);        
             }
         }
@@ -98,18 +97,10 @@
     }
 
 
-    var modellist = [];
-    $(window).load(() => {
-        @foreach(var item in Model)
-        {
-            @:modellist.push(@item)
-        }
-        console.log(modellist[0])
-    })
-
     $('.container').first().find('a').on('click', (e) => {
         e.preventDefault()
 
+ 
         //$.ajax({
         //    type:"GET",
         //    url:"/Admin/MasterPreview/" + $(e.target).next().text(),
