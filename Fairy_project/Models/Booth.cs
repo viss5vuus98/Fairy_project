@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
 namespace Fairy_project.Models
 {
     public class Booth
@@ -14,5 +13,6 @@ namespace Fairy_project.Models
         public string? mf_Description { get; set; }
         public int checkStatus { get; set; }
         public int boothNumber { get; set; }
+        //舊的要刪除
     }
 }
