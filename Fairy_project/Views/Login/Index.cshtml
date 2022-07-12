@@ -1,17 +1,13 @@
 ﻿
-@{
-    Layout = null;
-}
-
 
     <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true"/>
-
+    
     <div class="content">
         <div class="form sign-in">
             <form method="post" action="@Url.Action("Index")">
                 <h2>歡迎回來</h2>
                 <label>
-                    <span>電子郵件</span>
+                    <span>帳號</span>
                     <input type="text" required name="uid"/>
                 </label>
                 <label>
@@ -23,6 +19,7 @@
             </form>
             <h4>@ViewBag.Show</h4>
         </div>
+        
         <div class="sub-cont">
             <div class="img">
                 <div class="img__text m--up">
@@ -46,16 +43,30 @@
                 <div class="form sign-up">
                     <h2>會員註冊</h2>
                     <label>
-                        <span>會員名稱</span>
-                        <input type="text" />
-                    </label>
-                    <label>
-                        <span>電子郵件</span>
+                        <span>電子郵件(登入帳號)</span>
                         <input type="email" />
                     </label>
                     <label>
                         <span>密碼</span>
                         <input type="password" />
+                    </label>
+                    <label>
+                        <span>會員名稱</span>
+                        <input type="text" />
+                    </label>
+                    <div class="gender">
+                        <input type="radio" name="gender" value="男">
+                        <label>男</label>
+                        <input type="radio" name="gender" value="女">
+                        <label>女</label>
+                    </div>
+                    <label>
+                        <span>地址</span>
+                        <input type="text" />
+                    </label>
+                    <label>
+                        <span>電話</span>
+                        <input type="text" />
                     </label>
                     <button type="button" class="submit" id="member">註 冊</button>
                 </div>
@@ -68,22 +79,32 @@
                         <input type="text" />
                     </label>
                     <label>
-                        <span>統一編號</span>
-                        <input type="email" />
+                        <span>統一編號(登入帳號)</span>
+                        <input type="text" />
                     </label>
                     <label>
                         <span>密碼</span>
                         <input type="password" />
                     </label>
-                    <button type="button" class="submit" id="company">註 冊</button>
+                    <label>
+                        <span>廠商負責人</span>
+                        <input type="text" />
+                    </label>
+                    <label>
+                        <span>廠商EMAIL</span>
+                        <input type="email" />
+                    </label>
+                    <label>
+                        <span>廠商電話</span>
+                        <input type="text" />
+                    </label>
+                    <button type="button" class="submit" id="man">註 冊</button>
                 </div>
             </div>
         </div>
-        
     </div>
-   
-
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+       
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script>
         $('.img__btn').on('click', function () {
             $('.content').toggleClass('s--signup');
@@ -99,6 +120,12 @@
             $('.img__btn').toggleClass('hidden');
         })
     </script>
+    @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
 
 
 

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+
 using Fairy_project.Models;
 
 namespace Fairy_project.Controllers
@@ -10,7 +10,6 @@ namespace Fairy_project.Controllers
     public class LoginController : Controller
     {
         private ServerContext _context;
-
         public LoginController(ServerContext context)
         {
             _context = context;
@@ -20,7 +19,7 @@ namespace Fairy_project.Controllers
         {
             IList<Permissions> members = new List<Permissions>();
             var member = _context.Permissions.FirstOrDefault(m => m.account == uid && m.password == pwd);
-            return member;           
+            return member;
         }
 
 
@@ -36,13 +35,13 @@ namespace Fairy_project.Controllers
             if (member != null)
             {
                 string permissions = "";
-                switch(member.permissionsLv)
+                switch (member.permissionsLv)
                 {
-                    case 1: 
-                        permissions="Member";
+                    case 1:
+                        permissions = "Member";
                         break;
-                    case 2: 
-                        permissions="mfu";
+                    case 2:
+                        permissions = "mfu";
                         break;
                     case 3:
                         permissions = "Admin";
@@ -63,9 +62,10 @@ namespace Fairy_project.Controllers
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIndentity),
                     authProperties);
+                TempData["Success"] = "登入成功";
                 return RedirectToAction("Index", permissions);
             }
-            ViewBag.Show = "帳號密碼錯誤";
+            TempData["Error"] = "帳密錯誤，請重新檢查";
             return View();
         }
 
