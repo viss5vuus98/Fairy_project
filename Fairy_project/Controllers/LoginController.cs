@@ -74,5 +74,32 @@ namespace Fairy_project.Controllers
             HttpContext.SignOutAsync();
             return RedirectToAction("Index");
         }
+
+        public IActionResult NoAuthorization()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult MemberCreate(Member member)
+        {
+            Console.WriteLine("hi");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.members.Add(member);
+                    _context.SaveChanges();
+                    TempData["Success"] = "會員新增成功";
+                    return RedirectToAction("Login");
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "會員新增失敗，帳號可能重複";
+                }
+            }
+            return View();
+        }
     }
 }

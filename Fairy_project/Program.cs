@@ -25,8 +25,8 @@ builder.Services.AddMvc();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
     options.Cookie.HttpOnly = true;
-    options.LoginPath = new PathString("/Home/Index");
-    options.AccessDeniedPath = new PathString("/Home/Index");
+    options.LoginPath = new PathString("/Login/Index");
+    options.AccessDeniedPath = new PathString("/Home/NoAuthorization");
 });
 
 var app = builder.Build();

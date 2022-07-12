@@ -65,7 +65,7 @@ button {
     transform: translate3d(-640px, 0, 0);
 }
 
-button {
+.button {
     display: block;
     margin: 0 auto;
     width: 260px;
@@ -274,12 +274,12 @@ h2 {
 label {
     display: block;
     width: 260px;
-    margin: 25px auto 0;
+    margin: 10px auto 0;
     text-align: center;
 }
 
     label span {
-        font-size: 14px;
+        font-size: 16px;
         color: #909399;
         text-transform: uppercase;
     }
