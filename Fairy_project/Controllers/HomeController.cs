@@ -33,6 +33,7 @@ public class HomeController : Controller
     public async Task<IActionResult> exhibitionDetail(int? exhibitId)
     {
         var theExhibition = await _context.Exhibitions.FirstOrDefaultAsync(m => m.exhibitId == Convert.ToInt32(exhibitId));
+        HttpClient
         return View(theExhibition);
     }
 
