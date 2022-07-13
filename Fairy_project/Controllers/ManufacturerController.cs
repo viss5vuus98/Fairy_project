@@ -18,6 +18,12 @@ namespace Fairy_project.Controllers
         {
             return View();
         }
+        public IActionResult StandProcess()
+        {
+            return View();
+        }
+
+
 
 
     }
