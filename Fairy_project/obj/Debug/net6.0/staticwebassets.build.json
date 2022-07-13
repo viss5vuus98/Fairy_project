@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5+cE2vrN+R/OCdSnZItaEJSCd/BhINLY/fhzoMpo0bQ=",
+  "Hash": "UhUXkmjoUhHuX2wAw26VE+DbKu+yXen14JHxEe60JYs=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -1071,6 +1071,23 @@
       "OriginalItemSpec": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/obj/Debug/net6.0/scopedcss/projectbundle/Fairy_project.bundle.scp.css"
     },
     {
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/css/Cart.css",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "css/Cart.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/Cart.css"
+    },
+    {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/css/exhibitionDetil.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -1732,6 +1749,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/verticalposter7.png"
+    },
+    {
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/js/Cart.js",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "js/Cart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/Cart.js"
     },
     {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/js/eDetail.js",
