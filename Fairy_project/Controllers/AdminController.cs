@@ -26,7 +26,7 @@ namespace Fairy_project.Controllers
                 model.exhibitId = item.exhibitId;
                 model.exhibitName = item.exhibitName;
                 model.exhibit_Pre_img = item.exhibit_Pre_img;
-                model.exhibitStatus = item.exhibitStatus;
+                //model.exhibitStatus = item.exhibitStatus;
                 modellist.Add(model);
             }
 

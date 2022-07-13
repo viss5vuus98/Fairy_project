@@ -6,9 +6,9 @@ namespace Fairy_project.Models
     {
         [Key]
         [MaxLength (250)]
-        public string account { get; set; }
+        public string? account { get; set; }
         [MaxLength(50)]
-        public string password { get; set; }
-        public int permissionsLv { get; set; }
+        public string? password { get; set; }
+        public int? permissionsLv { get; set; }
     }
 }
