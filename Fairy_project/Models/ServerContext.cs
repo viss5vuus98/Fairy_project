@@ -16,10 +16,9 @@ namespace Fairy_project.Models
         public DbSet<Member> members { get; set; }
         public DbSet<Permissions> Permissions { get; set; }
         public DbSet<Ticket> tickets { get; set; }
-        public DbSet<Booth> booths { get; set; }
         public DbSet<Apply> Applies { get; set; }
         public DbSet<Area> areas { get; set; }
-        public DbSet<BoothMap> boothMaps { get; set; }
+        public DbSet<Booths> boothMaps { get; set; }
         public DbSet<Manager> managers { get; set; }
     }
 }

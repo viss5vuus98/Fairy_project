@@ -6,9 +6,9 @@ namespace Fairy_project.Models;
 public class Ticket
 {
     [Key]
-    public int orderId { get; set; }
-    public int e_Id { get; set; }
-    public int m_Id { get; set; }
+    public int orderNum { get; set; }
+    public int? e_Id { get; set; }
+    public int? m_Id { get; set; }
     public int price { get; set; }
     public int enterstate { get; set; }
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}", ApplyFormatInEditMode = true)]
