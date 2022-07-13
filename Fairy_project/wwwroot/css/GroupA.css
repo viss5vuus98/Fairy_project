@@ -259,6 +259,14 @@ textarea {
     margin-top:80px;
 }
 
+.row-left {
+    /* 水平置中 */
+   /* justify-content: center;*/
+    /* 垂直置中 */
+    align-items: center;
+    margin-top:80px;
+}
+
 
 .textarea-center {
     vertical-align: middle;
@@ -272,12 +280,10 @@ textarea {
     right: 0px;
 }
 
-.col-10 {
-    flex: 0 0 auto;
-    width: 83.33333333%;
- 
+
+
+.apply-form {
+    display: inline;
+    text-align:right;
 }
-
-
-
 
