@@ -1,0 +1,139 @@
+﻿@model Fairy_project.ViewModels.LoginViewModels;
+
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true"/>
+    
+    <div class="content">
+        <div class="form sign-in mt-5">
+            <form method="post" action="@Url.Action("Index")">
+                <h2>歡迎回來</h2>
+                <label>
+                    <span>帳號</span>
+                    <input type="text" required name="uid"/>
+                </label>
+                <label>
+                    <span>密碼</span>
+                    <input type="password" required name="pwd"/>
+                </label>
+                <!-- <p class="forgot-pass"><a href="javascript:">忘記密碼？</a></p> -->
+                <button type="submit" class="submit button">登 入</button>
+            </form>
+        </div>
+        
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h2>尚未成為會員？</h2>
+                    <p>立即註冊會員!</p>
+                </div>
+                <div class="img__text m--in">
+                    <h2>已有帳號？</h2>
+                    <p>帳號登入,好久不見!</p>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">會員註冊</span>
+                    <span class="m--in">登 入</span>
+                </div>
+                <div class="img__btn2">
+                    <span class="m--up">廠商註冊</span>
+                    <span class="m--in">登 入</span>
+                </div>
+            </div>
+            <div class="first">
+                <form asp-action="MemberCreate">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form sign-up">
+                    <h2>會員註冊</h2>
+                    <label>
+                        <span>電子郵件(登入帳號)</span>
+                        <input asp-for="memberAc" type="email" />
+                    </label>
+                    <label>
+                        <span>密碼</span>
+                        <input asp-for="password" type="password" />
+                    </label>
+                    <label>
+                        <span>會員名稱</span>
+                        <input asp-for="memberName" type="text" />
+                    </label>
+                    <div class="gender">
+                        <input asp-for="gender" type="radio" name="gender" value="男">
+                        <label>男</label>
+                        <input asp-for="gender" type="radio" name="gender" value="女">
+                        <label>女</label>
+                    </div>
+                    <label>
+                        <span>地址</span>
+                        <input asp-for="address" type="text" />
+                    </label>
+                    <label>
+                        <span>電話</span>
+                        <input asp-for="phoneNumber" type="text" />
+                    <input asp-for="permissionsLv" type="number" value="1" style="visibility:hidden"/>
+                    </label>
+                    <div class="form-group">
+                        <input type="submit" value="註冊" class="button submit" />
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="second">
+                <div class="form sign-up">
+                    <h2>廠商註冊</h2>
+                    <label>
+                        <span>廠商名稱</span>
+                        <input asp-for="manufacture" type="text" />
+                    </label>
+                    <label>
+                        <span>統一編號(登入帳號)</span>
+                        <input asp-for="manufactureAcc" type="text" />
+                    </label>
+                    <label>
+                        <span>密碼</span>
+                        <input asp-for="password" type="password" />
+                    </label>
+                    <label>
+                        <span>廠商負責人</span>
+                        <input asp-for="mfPerson" type="text" />
+                    </label>
+                    <label>
+                        <span>廠商EMAIL</span>
+                        <input asp-for="mfEmail" type="email" />
+                    </label>
+                    <label>
+                        <span>廠商電話</span>
+                        <input asp-for="mfPhoneNum" type="text" />
+                    <input asp-for="permissionsLv" type="number" value="2" style="visibility:hidden"/>
+                    </label>
+                    <div class="form-group">
+                        <input type="submit" value="註冊" class="button submit" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        $('.img__btn').on('click', function () {
+            $('.content').toggleClass('s--signup');
+            $(".first").show();
+            $(".second").hide();
+            $('.img__btn2').toggleClass('hidden');
+        })
+
+        $('.img__btn2').on('click', function () {
+            $('.content').toggleClass('s--signup');
+            $(".first").hide();
+            $(".second").show();
+            $('.img__btn').toggleClass('hidden');
+        })
+    </script>
+    @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
+
+
