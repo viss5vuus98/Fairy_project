@@ -1,4 +1,16 @@
-﻿.exhibition {
+﻿h3 {
+    font-size: 1rem;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+p {
+    font-size: 0.75rem;
+    color: #5C5858;
+}
+.exhibition {
     display: flex;
     flex-direction: column;
 }

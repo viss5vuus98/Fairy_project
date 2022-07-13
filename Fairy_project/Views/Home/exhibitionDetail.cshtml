@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Fairy_project.Models.Exhibition;
+@{
     ViewData["Title"] = "Privacy Policy";
 
 }
@@ -10,17 +11,17 @@
     <div class="exhibition_poster"><img src="https://images.unsplash.com/photo-1584448097764-374f81551427?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt=""></div>
     <div class="more">down</div>
     <div class="exhibition_info">
-        <h3 class="exhibition_info_title">展覽標題</h3>
-        <p class="exhibition_info_date">2022/04/23</p>
-        <hr>
-        <p>
-            一般來講，我們都必須務必慎重的考慮考慮。安安似乎是一種巧合，但如果我們從一個更大的角度看待問題，這似乎是一種不可避免的事實。葛雷相信，野花香艷無人識，孤芳自賞枉多情。這不禁令我深思。博維曾經說過，失去了真誠等於失去了活力。這段話非常有意思。
-        </p>
+        <h3 class="exhibition_info_title">@Model.exhibitName</h3>
+        @*<p class="exhibition_info_date">@Model.dateFrom</p>*@
+        <hr
+        @*<p>@Model.decription</p>*@
         <div class="exhibition_info_btn">
-            <button class="btn btn_buy">購票</button>
+            <button class="btn btn_buy btn_cart"data-id="@Model.exhibitId">購票</button>
+            @*用js寫*@
         </div>
     </div>
 </section>
+@*VM or Js*@
 <div class="store-section">
     <h3 class="store_title">參展廠商</h3>
     <div class="card-content">
@@ -46,6 +47,7 @@
         </div>
     </div>
 </div>
+@*VM or Js*@
 <section class="recommend">
     <div class="left_container">
     </div>
@@ -54,4 +56,4 @@
         <div class="recommendMore"></div>
     </div>
 </section>
-
+<script src="~/js/site.js" asp-append-version="true"></script>

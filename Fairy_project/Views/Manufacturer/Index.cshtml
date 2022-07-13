@@ -1,0 +1,85 @@
+﻿@section Style{
+    <link rel="stylesheet" href="~/css/GroupA.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/slick-carousel/slick.css" asp-append-version="true" />
+}
+
+    <partial name="_MNavbarView" />
+    <div class="container ">
+        <div class="row">
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <button class="prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <i class="fa-solid fa-angle-left fa-4x"></i>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+            </div>
+            <div class="col-8">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-2 d-flex justify-content-center align-items-center">
+                <button class="next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <i class="fa-solid fa-angle-right fa-4x"></i>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-c-c">
+        <div class="row">
+            <div class="m-3">
+                <canvas id="canvasSize">
+                </canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+            </div>
+            <div class="col"><button class="btn btn-dark">A</button></div>
+            <div class="col"><button class="btn btn-dark">B</button></div>
+            <div class="col"><button class="btn btn-dark">C</button></div>
+        </div>
+        <div class="row">
+            <div class="m-3">
+                <canvas id="canvasNum">
+                </canvas>
+            </div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row"></div>
+            <div class="row ">
+                <div class="m-3">
+                    <canvas id="canvasDtl">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="bg-c-Dtl">
+                   ffdsffsdfsdfsfs
+                </div>
+            </div>
+            <div class="row">
+                <div class="m-3">
+                    <canvas id="canvasPrc">
+                    </canvas>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+               <button class="btn-size">申請此攤位</button>
+            </div>
+        </div>
+    </div>
+
+    <partial name="_MFooterView" />
+    @section Scripts{
+    <script src="~/lib/slick-carousel/slick.min.js" asp-append-version="true"></script>
+    <script src="~/js/manufacture.js" asp-append-version="true"></script>
+    }
