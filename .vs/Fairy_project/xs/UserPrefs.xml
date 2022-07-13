@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{160F8584-3AAA-4CEB-BF5C-47355F4D95FA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Models/ServerContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Home/exhibitionDetail.cshtml">
     <Files>
       <File FileName="Fairy_project/Models/Booth.cs" Line="12" Column="9" />
       <File FileName="Fairy_project/Models/ErrorViewModel.cs" Line="1" Column="1" />
@@ -15,6 +15,7 @@
       <File FileName="Fairy_project/Models/ServerContext.cs" Line="11" Column="105" />
       <File FileName="Fairy_project/appsettings.json" Line="3" Column="90" />
       <File FileName="Fairy_project/Program.cs" Line="1" Column="1" />
+      <File FileName="Fairy_project/Views/Home/exhibitionDetail.cshtml" Line="15" Column="64" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,12 +23,11 @@
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="ServerContext.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
+                <Node name="Manufacturer" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">

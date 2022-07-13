@@ -23,6 +23,7 @@
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">/Users/yiliang/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.2</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_CodeAnalysis_AnalyzerUtilities Condition=" '$(PkgMicrosoft_CodeAnalysis_AnalyzerUtilities)' == '' ">/Users/yiliang/.nuget/packages/microsoft.codeanalysis.analyzerutilities/3.3.0</PkgMicrosoft_CodeAnalysis_AnalyzerUtilities>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">/Users/yiliang/.nuget/packages/microsoft.entityframeworkcore.tools/6.0.6</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgEO_WebBrowser Condition=" '$(PkgEO_WebBrowser)' == '' ">/Users/yiliang/.nuget/packages/eo.webbrowser/22.1.67</PkgEO_WebBrowser>
     <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">/Users/yiliang/.nuget/packages/entityframework/6.4.4</PkgEntityFramework>
   </PropertyGroup>
 </Project>

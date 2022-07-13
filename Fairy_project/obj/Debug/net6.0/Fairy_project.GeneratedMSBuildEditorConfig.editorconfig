@@ -39,6 +39,46 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Login/MemberCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vTWVtYmVyQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Login/NoAuthorization.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTG9naW4vTm9BdXRob3JpemF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Manufacturer/ApplyStand.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL0FwcGx5U3RhbmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Manufacturer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Manufacturer/Policy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL1BvbGljeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Manufacturer/StandProcess.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL1N0YW5kUHJvY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Manufacturer/_MFooterView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL19NRm9vdGVyVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Manufacturer/_MNavbarView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWFudWZhY3R1cmVyL19NTmF2YmFyVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Member/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVtYmVyL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Member/MyTicket.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVtYmVyL015VGlja2V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -49,6 +89,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Shared/_ToastPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Ub2FzdFBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Shared/_ValidationScriptsPartial.cshtml]
