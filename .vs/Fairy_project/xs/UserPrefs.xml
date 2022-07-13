@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{160F8584-3AAA-4CEB-BF5C-47355F4D95FA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Models/Manufactures.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Models/ServerContext.cs">
     <Files>
       <File FileName="Fairy_project/Models/Booth.cs" Line="12" Column="9" />
       <File FileName="Fairy_project/Models/ErrorViewModel.cs" Line="1" Column="1" />
@@ -12,6 +12,9 @@
       <File FileName="Fairy_project/Models/BoothMap.cs" Line="2" Column="1" />
       <File FileName="Fairy_project/Models/Manager.cs" Line="13" Column="45" />
       <File FileName="Fairy_project/Models/Area.cs" Line="13" Column="1" />
+      <File FileName="Fairy_project/Models/ServerContext.cs" Line="11" Column="105" />
+      <File FileName="Fairy_project/appsettings.json" Line="3" Column="90" />
+      <File FileName="Fairy_project/Program.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,7 +23,7 @@
             <Node name="Fairy_project" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True">
-                <Node name="Manufactures.cs" selected="True" />
+                <Node name="ServerContext.cs" selected="True" />
               </Node>
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
@@ -29,6 +32,7 @@
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
+                <Node name="images" expanded="True" />
                 <Node name="js" expanded="True" />
               </Node>
             </Node>
