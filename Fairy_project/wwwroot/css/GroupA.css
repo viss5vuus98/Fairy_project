@@ -158,20 +158,27 @@ body {
     border-top-right-radius:15px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.container-Policy {
-    margin:auto;
+
+.bg1 {
     background-color: #EAE0D7;
     border-radius: 47px;
-    width: 1300px;
-    height: 1600px;
+}
+
+
+.container-Policy {
+    /*margin: auto;*/
+    background-color: #F5EEE8;
+    border-radius: 47px;
+        width: 80%;
+    height: 400px;
     display: flex;
     flex-wrap: wrap;
-    text-align:center;
-    align-content: space-between;
+    /*text-align: center;*/
+    align-content: stretch;
     justify-content: center;
     align-items: center;
-
-
+    margin-bottom: 10%;
+    overflow: auto;
 }
 
 .container-process {
@@ -209,17 +216,17 @@ body {
 
 
 .row-bgcolor { /*Policy內的區塊*/
-    background-color: #F5EEE8;
+/*    background-color: #F5EEE8;
     width: 1140px;
     height: 593px;
-    border-radius: 47px;
+    border-radius:47px;
+    border-color: #ACC2C2;
     margin-right: auto;
     margin-left: auto;
-    border: 1px solid #cccccc;
+    border: 3px solid #cccccc;
     overflow: auto;
-    font-size:24px;
-    
-}
+    font-size: 24px;
+*/}
 .bg-c-Dtl {
     background-color: #ACC2C2;
     width: 80%;
@@ -230,19 +237,19 @@ body {
 
 
 .block-1-margin{
-    margin-left:30px;
+    margin-left:5%;
+    margin-bottom:3%;
 
 }
 
 
-.block-top {
-    margin-top: 80px;
-   
-}
+/*.block-top {
+    margin-top: 5%;
+}*/
 
 .block-bottom {
-    margin-top: 160px;
-
+    margin-top: 5%;
+    margin-bottom: 10%;
 }
 
 textarea {
