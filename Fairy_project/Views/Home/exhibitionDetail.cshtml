@@ -1,4 +1,5 @@
-﻿@model Fairy_project.Models.Exhibition;
+﻿@*@model Fairy_project.Models.Exhibition;*@
+@model Fairy_project.ViewModels.eDrtailViewModel;
 @{
     ViewData["Title"] = "Privacy Policy";
 
@@ -8,16 +9,16 @@
     <link rel="stylesheet" href="~/css/exhibitionDetil.css" asp-append-version="true" />
 }
 <section class="exhibition">
-    <div class="exhibition_poster"><img src="https://images.unsplash.com/photo-1584448097764-374f81551427?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt=""></div>
+    <div class="exhibition_poster"><img src="@Model.Exhibition.exhibit_P_img" alt=""></div>
     <div class="more">down</div>
     <div class="exhibition_info">
-        <h3 class="exhibition_info_title">@Model.exhibitName</h3>
-        @*<p class="exhibition_info_date">@Model.dateFrom</p>*@
+        <h3 class="exhibition_info_title">@Model.Exhibition.exhibitName</h3>
+        <p class="exhibition_info_date">@String.Format($"{@Model.Exhibition.datefrom:dd/MM/yyyy}")</p> 
         <hr
-        @*<p>@Model.decription</p>*@
+        <p>我要去補展覽描述model</p>
+@*ToDo:展覽描述*@
         <div class="exhibition_info_btn">
-            <button class="btn btn_buy btn_cart"data-id="@Model.exhibitId">購票</button>
-            @*用js寫*@
+            <button class="btn btn_buy btn_cart"data-id="@Model.Exhibition.exhibitId">購票</button>
         </div>
     </div>
 </section>
@@ -29,7 +30,7 @@
             <div class="card store_cards_card border-0">
                 <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">奕翔展</p>
+                    <p class="card-text">@Model.Manufactures</p>
                 </div>
             </div>
             <div class="card store_cards_card border-0">
@@ -56,4 +57,4 @@
         <div class="recommendMore"></div>
     </div>
 </section>
-<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/eDetail.js" asp-append-version="true"></script>

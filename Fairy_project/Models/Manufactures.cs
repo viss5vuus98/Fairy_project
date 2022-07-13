@@ -11,6 +11,6 @@ namespace Fairy_project.Models
         //後面要改manufactureＮame
         public string? mfPerson { get; set; }
         public string? mfEmail { get; set; }
-        public int? mfPhoneNum { get; set; }
+        public string? mfPhoneNum { get; set; }
     }
 }
