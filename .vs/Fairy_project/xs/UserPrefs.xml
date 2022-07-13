@@ -1,7 +1,6 @@
 ﻿<Properties StartupConfiguration="{160F8584-3AAA-4CEB-BF5C-47355F4D95FA}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Models/ServerContext.cs">
     <Files>
-      <File FileName="Fairy_project/Models/BoothMap.cs" Line="15" Column="44" />
       <File FileName="Fairy_project/Models/Manager.cs" Line="13" Column="45" />
       <File FileName="Fairy_project/Models/Area.cs" Line="14" Column="1" />
       <File FileName="Fairy_project/Models/ServerContext.cs" Line="21" Column="28" />
@@ -15,9 +14,7 @@
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="ServerContext.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
