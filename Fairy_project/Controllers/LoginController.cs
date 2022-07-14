@@ -45,7 +45,7 @@ namespace Fairy_project.Controllers
                         permissions = "Member";
                         break;
                     case 2:
-                        permissions = "manufacturer";
+                        permissions = "Manufacturer";
                         break;
                     case 3:
                         permissions = "Admin";
