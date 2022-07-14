@@ -45,10 +45,12 @@ namespace Fairy_project.Controllers
                         permissions = "Member";
                         break;
                     case 2:
-                        permissions = "mfu";
+                        permissions = "manufacturer";
                         break;
                     case 3:
                         permissions = "Admin";
+                        break;
+                    default:
                         break;
                 }
                 //宣告身分識別
