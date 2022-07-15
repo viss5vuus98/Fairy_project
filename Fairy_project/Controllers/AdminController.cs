@@ -18,40 +18,45 @@ namespace Fairy_project.Controllers
         // GET: AdminController
         public IActionResult Master()
         {
-            List<MasterViewModels> modellist = new List<MasterViewModels>();
-            foreach (var item in _context.exhibitions)
-            {
-                MasterViewModels model = new MasterViewModels();
-
-                model.exhibitId = item.exhibitId;
-                model.exhibitName = item.exhibitName;
-                model.exhibit_Pre_img = item.exhibit_Pre_img;
-                //model.exhibitStatus = item.exhibitStatus;
-                modellist.Add(model);
-            }
-
-            //foreach (var item in modellist)
-            //{
-            //    item.soldbooth = _context.booths.Where(b => b.e_Id == item.exhibitId).Count();
-            //    item.soldticket = _context.booths.Where(t => t.e_Id == item.exhibitId).Count();
-            //    item.enteredpeople = 3;
-            //}
-            return View(modellist);
+            return View(_context.exhibitions);
         }
 
-        public async Task<IActionResult> MasterPreview(int exhibitId)
+        public IActionResult MasterDetail(int exhibitId)
         {
-            int tickets = await _context.tickets.CountAsync(t => t.e_Id == exhibitId);
-            if (tickets != 0) 
-            {
-                ViewBag.ticketscount = tickets;
-            }
-            ViewBag.test = "test";
-            return View("_MasterPreviewPartial");
+            return View();
         }
 
+        public IActionResult CreatExhibition(int idnew)
+        {
+            ViewBag.idnew = idnew;
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult CreatExhibition(CreatExhibitionViewModel model)
+        {
+            Exhibition exhibition = new Exhibition();
+            Booths booths = new Booths();
+            exhibition.exhibitName = model.exhibitName;
+            Console.Write(model.exhibitName + "22222222222222222222222");
+            exhibition.exhibitStatus = 1;
+            exhibition.datefrom = model.datefrom;
+            exhibition.dateto = model.dateto;
+            exhibition.ex_description = model.ex_description;
+            exhibition.ex_personTime = model.ex_personTime;
+            exhibition.ex_totalImcome = model.ex_totalImcome;
+            exhibition.ticket_Peice = model.ticket_Peice;
+            _context.exhibitions.Add(exhibition);
+            //for (int i=0;i<model.setboothslist.Count;i++)
+            //{
+            //    for (int j = 0; j < model.setboothslist[i].boothsum;j++)
+            //    {
 
+            //    }
+            //}
+            _context.SaveChanges();
+            return View();
+        }
 
 
 
