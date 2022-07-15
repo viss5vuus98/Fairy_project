@@ -1,0 +1,61 @@
+﻿body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #fafafa;
+    color: #5C5858;
+}
+
+.bg1 {
+    background-color: #E5E4E2;
+}
+
+.bg2 {
+    background-color: #fafafa;
+}
+
+.c1 {
+    color: #B6B6B4;
+}
+
+#titleinput {
+    transition: .2s;
+}
+
+    #titleinput:disabled {
+        color: #5C5858;
+        background-color: #fafafa;
+    }
+
+    #titleinput:focus {
+        background-color: #E5E4E2;
+    }
+
+#contentinput {
+    resize: none;
+    outline: none;
+}
+
+    #contentinput:focus {
+        background-color: #fafafa;
+    }
+
+#ticketpriceinput:disabled {
+    color: #5C5858;
+    background-color: #fafafa;
+}
+
+label {
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+}
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+#manufacturerreport ul li a:active {
+    background-color: #B6B6B4;
+}

@@ -1,0 +1,163 @@
+﻿@model IEnumerable<Fairy_project.ViewModels.CreatExhibitionViewModel>
+@section Style
+    {
+    <link rel="stylesheet" href="~/css/CreatExhibition.css" asp-append-version="true" />
+}
+
+    <div class="container">
+        <form action="">
+            <div class="row align-items-center my-3">
+                <div class="col-lg-1 col-sm-2 col-4">
+                    <a id="edittitle" href="" class="text-reset p-0 text-center">
+                        <i class="fa-regular fa-pen-to-square fa-4x opacity-75 text-center"></i>
+                    </a>
+                </div>
+                <div class="col-lg-10 col-sm-8 col-6 p-0 text-start">
+                    <input id="titleinput" type="text"
+                       class="my-3 py-3 mx-3 border-0 rounded-3 col-11 h1 text-center mx-0 bg2" value=""
+                       placeholder="輸入標題" autocomplete="off" disabled>
+                </div>
+                <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-black fs-3 py-4">規劃</span>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-12 my-5">
+                    <h2 class="mx-5 mb-5">No. @ViewBag.idnew</h2>
+                    <div class="position-relative my-4">
+                        <img id="ticketimg" class="rounded-3 border border-1 w-100" src="@Url.Content("~/images/ticketdefault.png")"
+                         alt="">
+                        <label for="ticketimginput" class="d-inline">
+                            <input type="file" id="ticketimginput" hidden accept=".png,.jpg">
+                            <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0 bg1"></i>
+                        </label>
+                    </div>
+                    <div class="position-relative">
+                        <img id="horizontalposterimage" class="rounded-3 border border-1 w-100"
+                         src="@Url.Content("~/images/horizontalposterdefault.png")" alt="">
+                        <label for="horizontalposterimageinput" class="d-inline">
+                            <input type="file" id="horizontalposterimageinput" hidden accept=".png,.jpg">
+                            <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0 bg1"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-12 p-lg-5 p-sm-2">
+                    <div class="position-relative p-3">
+                        <img id="verticalposterimage" class="rounded-3 border border-1 w-100"
+                         src="@Url.Content("~/images/verticalposterdefault.png")">                         
+                        <label for="verticalposterimageinput" class="d-inline">
+                            <input type="file" id="verticalposterimageinput" hidden accept=".png,.jpg">
+                            <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute bottom-0 end-0 translate-middle bg1"
+                           href="#"></i>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-evenly">
+                <div class="col-lg-1 col-sm-12 col-12 fs-1 text-center">從</div>
+                <div class="col-lg-5 col-sm-12 col-12 text-center">
+                    <input id="fromdateinput" type="datetime-local"
+                       class="w-75 h2 bg1 my-3 p-3 rounded-3 border-0"></input>
+                </div>
+                <div class="col-lg-1 col-sm-12 col-12 fs-1 text-center">到</div>
+                <div class="col-lg-5 col-sm-12 col-12 text-center">
+                    <input id="todateinput" type="datetime-local"
+                       class="w-75 h2 bg1 my-3 p-3 rounded-3 border-0"></input>
+                </div>
+            </div>
+            <div class="row align-items-center my-5">
+                <div class="col-12 rounded-3 position-relative text-center border bg1">
+                    <textarea id="contentinput" class="col-11 h3 rounded-3 border-0 my-5 bg1" rows="15"
+                          placeholder="輸入詳細" disabled></textarea>
+                    <a href="" id="editcontent" class="text-reset">
+                        <i class="fa-regular fa-pen-to-square fa-3x m-2 p-2 rounded-3 opacity-75 position-absolute bottom-0 end-0"
+                       href="#"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="row justify-content-between rounded-3 p-3 my-5 bg1">
+                <h2 class="col-6 p-0 m-0">票卷管理</h2>
+                <div class="col-6 text-end">
+                    <a id="ticketreportshow" href="" class="text-reset p-0 pt-1">
+                        <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
+                    </a>
+                </div>
+            </div>
+            <div id="ticketreport" class="row rounded-3 p-3 align-items-center bg1">
+                <div class="col-12 d-flex justify-content-lg-between justify-content-center flex-wrap p-0">
+                    <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                        <h2 class="m-3 fw-bold">預計進場人數</h2>
+                        <input id="expectedpeople" type="number"
+                           class="text-center border-0 border-secondary border-bottom m-3 p-3 h3 bg2"
+                           placeholder="輸入數字" autocomplete="off"></input>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                        <h2 class="m-3 fw-bold">預計收益金額</h2>
+                        <input id="expecteincome" type="number"
+                           class="text-center border-0 border-secondary border-bottom m-3 p-3 h3 bg2"
+                           placeholder="輸入數字" autocomplete="off"></input>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                        <h2 class="m-3 fw-bold">門票價格</h2>
+                        <input id="ticketpriceinput" type="number"
+                           class="h1 text-center border-0 border-secondary border-bottom fw-bold my-3 py-2 bg2"
+                           disabled autocomplete="off"></input>
+                        <div class="d-flex justify-content-center flex-wrap">
+                            <a id="editticketprice" href="" class="text-reset p-0 my-2 pt-1">
+                                <i class="fa-regular fa-pen-to-square fa-xl p-0 mx-3 opacity-75"> 自訂</i>
+                            </a>
+                            <a id="mathticket" href="" class="text-reset p-0 my-2 pt-1">
+                                <i class="fa-regular fa-keyboard fa-xl p-0 mx-3 opacity-75"> 試算</i></i>
+                            </a>
+                        </div>
+                        <!-- <h6 id="lowprice" class="visually-hidden my-1 text-danger">低於基本價格</h6>
+                        <h6 id="highprice" class="visually-hidden my-1 text-success">高於基本價格</h6> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row rounded-3 p-3 my-5 bg1">
+                <h2 class="col-6 p-0 m-0">攤位管理</h2>
+                <div class="col-6 text-end">
+                    <a id="manufacturerreportshow" href="" class="text-reset p-0 pt-1">
+                        <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
+                    </a>
+                </div>
+            </div>
+            <div id="manufacturerreport" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
+                <div class="col-lg-10 col-sm-12 my-3 py-3 d-flex flex-wrap rounded-pill text-center rounded-3 bg2">
+                    <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位等級</h3>
+                    <h3 class="col-lg-3 col-sm-6 col-12 m-0"></h3>
+                    <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位價格</h3>
+                    <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位數量</h3>
+                </div>
+                <div class="col-lg-10 col-sm-12 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2">
+                    <button class="w-25 btn px-0 rounded-pill bg2 d-flex justify-content-center"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="h3 m-0 c1">攤位等級</span>
+                        <i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i>
+                    </button>
+                    <ul class="dropdown-menu ms-5 text-center p-0">
+                        <li><a class="dropdown-item h4 m-0" href="#">大型</a></li>
+                        <li><a class="dropdown-item h4 m-0" href="#">中型</a></li>
+                        <li><a class="dropdown-item h4 m-0" href="#">小型</a></li>
+                    </ul>
+                    <h3 class="w-25 m-0"></h3>
+                    <div class="w-25">
+                        <input class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2"
+                           placeholder="輸入價格" autocomplete="off" type="number"></input>
+                    </div>
+                    <div class="w-25">
+                        <input class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2"
+                           placeholder="輸入數量" autocomplete="off" type="number"></input>
+                    </div>
+                </div>
+                <div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2">
+                    <a id="addbooth" href="#" class="w-100 h-100 border-0 text-reset bg2">
+                        <i class="w-100 h-100 fa-solid fa-plus fa-3x "></i>
+                    </a>
+                </div>
+        </form>
+    </div>
+    <div class="row justify-content-around my-5">
+        <button class="btn btn-dark col-lg-3 col-sm-3 col-4 fs-2">儲存修改</button>
+        @*<button class="btn btn-warning col-lg-3 col-sm-3 col-4 fs-2">進入籌備</button>*@
+        <button class="btn btn-danger col-lg-3 col-sm-3 col-4 fs-2">刪除展覽</button>
+    </div>
