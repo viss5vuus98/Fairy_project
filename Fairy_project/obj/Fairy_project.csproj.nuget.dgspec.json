@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ispan\\WooHouse_project\\Fairy_project\\Fairy_project.csproj": {}
+    "D:\\WooHouse\\WooHouse_project\\Fairy_project\\Fairy_project.csproj": {}
   },
   "projects": {
-    "D:\\ispan\\WooHouse_project\\Fairy_project\\Fairy_project.csproj": {
+    "D:\\WooHouse\\WooHouse_project\\Fairy_project\\Fairy_project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ispan\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+        "projectUniqueName": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
         "projectName": "Fairy_project",
-        "projectPath": "D:\\ispan\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+        "projectPath": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
         "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-        "outputPath": "D:\\ispan\\WooHouse_project\\Fairy_project\\obj\\",
+        "outputPath": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h98uhN9/7vHhGvhbImGjku4oSwCixj2895po3I8g5z0=",
+  "Hash": "3FS0+lzFL6wqU6LVzNtBJKY0H/8kQWokKPZuHHactyM=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "Fairy_project\\wwwroot",
       "Source": "Fairy_project",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "Pattern": "**"
     }
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "C:\\Users\\Student\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\6.0.6\\staticwebassets\\V5\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Fairy_project.styles.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Fairy_project.styles.css",
       "SourceId": "Fairy_project",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "Fairy_project.styles.css",
       "AssetKind": "All",
@@ -1051,13 +1051,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\ispan\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Fairy_project.styles.css"
+      "OriginalItemSpec": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Fairy_project.styles.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Fairy_project.bundle.scp.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Fairy_project.bundle.scp.css",
       "SourceId": "Fairy_project",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "Fairy_project.bundle.scp.css",
       "AssetKind": "All",
@@ -1068,13 +1068,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\ispan\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Fairy_project.bundle.scp.css"
+      "OriginalItemSpec": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Fairy_project.bundle.scp.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\css\\CreatExhibition.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\css\\CreatExhibition.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "css/CreatExhibition.css",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\css\\CreatExhibition.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\css\\exhibitionDetil.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\css\\exhibitionDetil.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "css/exhibitionDetil.css",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\css\\exhibitionDetil.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\css\\GroupA.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\css\\GroupA.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "css/GroupA.css",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\css\\GroupA.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\css\\GroupB.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\css\\GroupB.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "css/GroupB.css",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\css\\GroupB.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\css\\Index.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\css\\Index.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "css/Index.css",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Index.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\css\\login.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\css\\login.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "css/login.css",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\css\\login.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\css\\Master.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\css\\Master.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "css/Master.css",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Master.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\css\\site.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\css\\site.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\favicon.ico",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\favicon.ico",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\111.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\111.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/111.png",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\images\\111.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\222.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\222.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/222.png",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\images\\222.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\333.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\333.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/333.png",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\images\\333.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\444.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\444.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/444.png",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\images\\444.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\555.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\555.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/555.png",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\images\\555.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\background.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\background.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/background.jpg",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\images\\background.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\bg.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\bg.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/bg.jpg",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bg.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\card1.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\card1.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/card1.jpg",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\images\\card1.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\card2.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\card2.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/card2.jpg",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\images\\card2.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\card3.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\card3.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/card3.jpg",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\images\\card3.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\card4.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\card4.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/card4.jpg",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\images\\card4.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\header.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\header.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/header.png",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\images\\header.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter1.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter1.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/horizontalposter1.png",
       "AssetKind": "All",
@@ -1445,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\images\\horizontalposter1.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter2.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter2.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/horizontalposter2.png",
       "AssetKind": "All",
@@ -1462,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\images\\horizontalposter2.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter3.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter3.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/horizontalposter3.png",
       "AssetKind": "All",
@@ -1479,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\images\\horizontalposter3.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter4.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter4.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/horizontalposter4.png",
       "AssetKind": "All",
@@ -1496,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\images\\horizontalposter4.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter5.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter5.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/horizontalposter5.png",
       "AssetKind": "All",
@@ -1513,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\images\\horizontalposter5.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter6.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposter6.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/horizontalposter6.png",
       "AssetKind": "All",
@@ -1530,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\images\\horizontalposter6.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposterdefault.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\horizontalposterdefault.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/horizontalposterdefault.png",
       "AssetKind": "All",
@@ -1547,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\images\\horizontalposterdefault.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\master1.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\master1.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/master1.png",
       "AssetKind": "All",
@@ -1564,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\images\\master1.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\master2.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\master2.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/master2.jpg",
       "AssetKind": "All",
@@ -1581,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\images\\master2.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\master3.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\master3.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/master3.jpg",
       "AssetKind": "All",
@@ -1598,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\images\\master3.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\master4.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\master4.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/master4.jpg",
       "AssetKind": "All",
@@ -1615,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\images\\master4.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\PUI-PUI-天竺鼠車車S2_宣傳圖(直)_繁 .png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\PUI-PUI-天竺鼠車車S2_宣傳圖(直)_繁 .png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/PUI-PUI-天竺鼠車車S2_宣傳圖(直)_繁 .png",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\images\\PUI-PUI-天竺鼠車車S2_宣傳圖(直)_繁 .png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\PUI-PUI-天竺鼠車車S2_宣傳圖(直)_繁 .webp",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\PUI-PUI-天竺鼠車車S2_宣傳圖(直)_繁 .webp",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/PUI-PUI-天竺鼠車車S2_宣傳圖(直)_繁 .webp",
       "AssetKind": "All",
@@ -1649,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\images\\PUI-PUI-天竺鼠車車S2_宣傳圖(直)_繁 .webp"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\PUIUP1920x1080.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\PUIUP1920x1080.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/PUIUP1920x1080.jpg",
       "AssetKind": "All",
@@ -1666,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\images\\PUIUP1920x1080.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\ticket1.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\ticket1.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/ticket1.jpg",
       "AssetKind": "All",
@@ -1683,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\images\\ticket1.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\ticket2.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\ticket2.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/ticket2.png",
       "AssetKind": "All",
@@ -1700,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\images\\ticket2.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\ticket3.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\ticket3.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/ticket3.png",
       "AssetKind": "All",
@@ -1717,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\images\\ticket3.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\ticketdefault.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\ticketdefault.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/ticketdefault.png",
       "AssetKind": "All",
@@ -1734,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\images\\ticketdefault.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\tscc091149943.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\tscc091149943.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/tscc091149943.jpg",
       "AssetKind": "All",
@@ -1751,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\images\\tscc091149943.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter1.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter1.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/verticalposter1.png",
       "AssetKind": "All",
@@ -1768,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\images\\verticalposter1.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter2.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter2.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/verticalposter2.png",
       "AssetKind": "All",
@@ -1785,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\images\\verticalposter2.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter3.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter3.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/verticalposter3.png",
       "AssetKind": "All",
@@ -1802,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\images\\verticalposter3.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter4.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter4.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/verticalposter4.png",
       "AssetKind": "All",
@@ -1819,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\images\\verticalposter4.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter5.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter5.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/verticalposter5.png",
       "AssetKind": "All",
@@ -1836,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\images\\verticalposter5.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter6.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter6.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/verticalposter6.png",
       "AssetKind": "All",
@@ -1853,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\images\\verticalposter6.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter7.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter7.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/verticalposter7.png",
       "AssetKind": "All",
@@ -1870,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\images\\verticalposter7.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposterdefault.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposterdefault.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/verticalposterdefault.png",
       "AssetKind": "All",
@@ -1887,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\images\\verticalposterdefault.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\天竺鼠車車迴力車玩偶.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\天竺鼠車車迴力車玩偶.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/天竺鼠車車迴力車玩偶.jpg",
       "AssetKind": "All",
@@ -1904,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\images\\天竺鼠車車迴力車玩偶.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\水型展.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\水型展.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/水型展.jpg",
       "AssetKind": "All",
@@ -1921,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\images\\水型展.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\為己而來.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\為己而來.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/為己而來.jpg",
       "AssetKind": "All",
@@ -1938,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\images\\為己而來.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\美麗之島－臺灣古地圖與生活風貌展.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\美麗之島－臺灣古地圖與生活風貌展.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/美麗之島－臺灣古地圖與生活風貌展.jpg",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\images\\美麗之島－臺灣古地圖與生活風貌展.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\島嶼群像.jpg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\島嶼群像.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/島嶼群像.jpg",
       "AssetKind": "All",
@@ -1972,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\images\\島嶼群像.jpg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\images\\時間與時間意識.png",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\images\\時間與時間意識.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "images/時間與時間意識.png",
       "AssetKind": "All",
@@ -1989,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\images\\時間與時間意識.png"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\js\\eDetail.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\js\\eDetail.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "js/eDetail.js",
       "AssetKind": "All",
@@ -2006,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\js\\eDetail.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\js\\manufacture.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\js\\manufacture.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "js/manufacture.js",
       "AssetKind": "All",
@@ -2023,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\js\\manufacture.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\js\\site.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\js\\site.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -2040,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -2057,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -2074,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -2091,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -2108,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -2125,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -2142,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -2159,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -2176,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -2193,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -2210,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -2227,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -2244,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -2261,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -2295,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -2312,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2329,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2346,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2363,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2380,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2397,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2414,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2431,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2448,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2465,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2482,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2499,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2516,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2533,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2550,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2567,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2584,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2618,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2635,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2652,10 +2652,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2669,10 +2669,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2686,10 +2686,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2703,10 +2703,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2720,10 +2720,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2737,10 +2737,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2754,10 +2754,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2771,10 +2771,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2788,10 +2788,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2805,10 +2805,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2822,10 +2822,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2839,10 +2839,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2856,10 +2856,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -2873,10 +2873,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -2890,10 +2890,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -2907,10 +2907,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -2924,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -2941,10 +2941,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -2958,10 +2958,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -2975,10 +2975,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -2992,10 +2992,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -3009,10 +3009,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\ajax-loader.gif",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\ajax-loader.gif",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/ajax-loader.gif",
       "AssetKind": "All",
@@ -3026,10 +3026,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\ajax-loader.gif"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\fonts\\slick.eot",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\fonts\\slick.eot",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/fonts/slick.eot",
       "AssetKind": "All",
@@ -3043,10 +3043,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\fonts\\slick.eot"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\fonts\\slick.svg",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\fonts\\slick.svg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/fonts/slick.svg",
       "AssetKind": "All",
@@ -3060,10 +3060,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\fonts\\slick.svg"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\fonts\\slick.ttf",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\fonts\\slick.ttf",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/fonts/slick.ttf",
       "AssetKind": "All",
@@ -3077,10 +3077,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\fonts\\slick.ttf"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\fonts\\slick.woff",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\fonts\\slick.woff",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/fonts/slick.woff",
       "AssetKind": "All",
@@ -3094,10 +3094,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\fonts\\slick.woff"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/slick.css",
       "AssetKind": "All",
@@ -3111,10 +3111,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\slick.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/slick.js",
       "AssetKind": "All",
@@ -3128,10 +3128,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\slick.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/slick.min.css",
       "AssetKind": "All",
@@ -3145,10 +3145,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\slick.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/slick.min.css.map",
       "AssetKind": "All",
@@ -3162,10 +3162,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\slick.min.css.map"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.min.js",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick.min.js",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/slick.min.js",
       "AssetKind": "All",
@@ -3179,10 +3179,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\slick.min.js"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick-theme.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick-theme.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/slick-theme.css",
       "AssetKind": "All",
@@ -3196,10 +3196,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\slick-theme.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick-theme.min.css",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick-theme.min.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/slick-theme.min.css",
       "AssetKind": "All",
@@ -3213,10 +3213,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\slick-carousel\\slick-theme.min.css"
     },
     {
-      "Identity": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick-theme.min.css.map",
+      "Identity": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\lib\\slick-carousel\\slick-theme.min.css.map",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ispan\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "ContentRoot": "D:\\WooHouse\\WooHouse_project\\Fairy_project\\wwwroot\\",
       "BasePath": "_content/Fairy_project",
       "RelativePath": "lib/slick-carousel/slick-theme.min.css.map",
       "AssetKind": "All",
