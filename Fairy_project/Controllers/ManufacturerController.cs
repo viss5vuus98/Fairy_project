@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using Fairy_project.Models;
 namespace Fairy_project.Controllers
 {
     public class ManufacturerController : Controller

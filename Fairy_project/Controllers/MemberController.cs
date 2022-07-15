@@ -14,10 +14,5 @@ namespace Fairy_project.Controllers
             return View();
         }
 
-
-        public IActionResult MyTicket()
-        {
-            return View();
-        }
     }
 }

@@ -1,107 +1,7 @@
 ﻿
 
 @section Style{
-    <style>
-        .btn:focus, .btn-size-top:focus {
-            outline: none;
-            outline: 0;
-            box-shadow: none;
-        }
-
-        .fa-angle-left, .fa-angle-right {
-            color: #ACC2C2
-        }
-
-        .rh {
-            height: 160px;
-        }
-
-        .wrap {
-            width: 800px;
-            height: 234px;
-        }
-
-        .next {
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            color: #fff;
-            text-align: center;
-            background: none;
-            border: 0;
-            opacity: 0.5;
-            transition: opacity 0.15s ease;
-        }
-
-        .prev {
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            color: #fff;
-            text-align: center;
-            background: none;
-            border: 0;
-            opacity: 0.5;
-            transition: opacity 0.15s ease;
-        }
-
-
-        .btn-size-top {
-            border: 0;
-            outline: none;
-            width: 196px;
-            height: 117px;
-            display: inline-block;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #FEFCFF;
-            text-align: center;
-            text-decoration: none;
-            vertical-align: middle;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-            background-color: #ACC2C2;
-            border-bottom-color: #DDCFC2;
-            border-right: 4px solid #DDCFC2;
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
-            border-top-left-radius: 15px;
-            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-
-        .btn-size-bottom {
-            border: 0;
-            outline: none;
-            width: 196px;
-            height: 117px;
-            display: inline-block;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #FEFCFF;
-            text-align: center;
-            text-decoration: none;
-            vertical-align: middle;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-            background-color: #ACC2C2;
-            border-right: 4px solid #DDCFC2;
-            padding: 0.375rem 0.75rem;
-            font-size: 1rem;
-            border-bottom-left-radius: 15px;
-            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-
-        .w-100-h-setting {
-            width: 100%;
-            height: 238px;
-            margin:0px;
-        }
-
-    </style>
+ <link rel="stylesheet" href="~/css/GroupA.css" asp-append-version="true" />
 }
 
 
@@ -147,13 +47,13 @@
 
 
         <div class="row">
-            <div class="col-2 d-flex justify-content-center align-items-center">
+            <div class="col-2 col-sm-2 d-flex justify-content-center align-items-center">
                 <button class="prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <i class="fa-solid fa-angle-left fa-4x"></i>
                     <span class="visually-hidden">Previous</span>
                 </button>
             </div>
-            <div class="col-8">
+            <div class="col-8 col-sm-8">
                 <div id="carouselExampleIndicators" class="carousel slide" bs-data-wrap="false">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -171,7 +71,7 @@
 
 
                         <div class="carousel-item active">
-                            <div class=" d-flex">
+                            <div class=" d-flex w-auto">
                                 <div class="btn-group-vertical">
                                     <button type="button" class="btn-size-top">QRCODE</button>
                                     <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
@@ -220,7 +120,7 @@
                                     <button type="button" class="btn-size-bottom">分票</button>
 
                                 </div>
-                                <img src="~/images/444.png" class="d-block w-100-h-setting" alt="...">
+                                <img src="~/images/444.png" class="d-block w-100-h-setting img-fluid" alt="...">
                             </div>
                         </div>
 
@@ -233,14 +133,14 @@
                                     <button type="button" class="btn-size-bottom">分票</button>
 
                                 </div>
-                                <img src="~/images/555.png" class="d-block w-100-h-setting" alt="...">
+                                <img src="~/images/555.png" class="d-block w-100-h-setting img-fluid" alt="...">
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-2 d-flex justify-content-center align-items-center">
+            <div class="col-2 col-sm-2 d-flex justify-content-center align-items-center">
                 <button class="next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                     <i class="fa-solid fa-angle-right fa-4x"></i>
                     <span class="visually-hidden">Next</span>
