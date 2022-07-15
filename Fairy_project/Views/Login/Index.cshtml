@@ -40,14 +40,14 @@
                 </div>
             </div>
             <div class="first">
-                <form method="post" action="@Url.Action("Index")">
+                <form method="post" action="@Url.Action("MemberCreateAcc")">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form sign-up">
                     <h2>會員註冊</h2>
                     <label>
                         <span>電子郵件(登入帳號)</span>
                         <input asp-for="member.memberAc" id="memaccount" type="email" required placeholder="example@@gmail.com"/>
-                        <input asp-for="permissions.account" id="memaccount1" type="email" style="display:none"/>
+                        <input asp-for="permissions.account" id="memaccount1" type="email"/>
                     </label>
                     <label>
                         <span>密碼</span>
@@ -71,7 +71,7 @@
                     <label>
                         <span>電話</span>
                         <input asp-for="member.phoneNumber" type="text" required placeholder="09-1234-5678" maxlength="10"/>
-                        <input asp-for="permissions.permissionsLv" type="text" value="1" style="display:none"/>
+                        <input asp-for="permissions.permissionsLv" type="text" value="1"/>
                     </label>
                     <div class="form-group">
                         <input type="submit" value="註冊" class="button submit" id="btn" />
