@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fairy_project.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    [Migration("20220711101931_ticket1")]
-    partial class ticket1
+    [Migration("20220715054004_exTable")]
+    partial class exTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,30 +24,27 @@ namespace Fairy_project.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Fairy_project.Models.Booth", b =>
+            modelBuilder.Entity("Fairy_project.Models.Apply", b =>
                 {
-                    b.Property<int>("boothId")
+                    b.Property<int>("applyNum")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("boothId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("applyNum"), 1L, 1);
 
-                    b.Property<string>("boothImg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("boothNumber")
+                    b.Property<int?>("boothNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("checkStatus")
+                    b.Property<int?>("checkState")
                         .HasColumnType("int");
 
-                    b.Property<int>("e_Id")
+                    b.Property<int?>("e_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("mf_Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("mf_Id")
+                    b.Property<int?>("mf_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("mf_P_img")
@@ -56,9 +53,68 @@ namespace Fairy_project.Migrations
                     b.Property<string>("mf_logo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("boothId");
+                    b.HasKey("applyNum");
 
-                    b.ToTable("booths");
+                    b.ToTable("Applies");
+                });
+
+            modelBuilder.Entity("Fairy_project.Models.Area", b =>
+                {
+                    b.Property<int>("areaNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("areaNumber"), 1L, 1);
+
+                    b.Property<string>("areaSize")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("limitBooth")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("limitPeople")
+                        .HasColumnType("int");
+
+                    b.HasKey("areaNumber");
+
+                    b.ToTable("areas");
+                });
+
+            modelBuilder.Entity("Fairy_project.Models.Booths", b =>
+                {
+                    b.Property<int>("serialNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("serialNumber"), 1L, 1);
+
+                    b.Property<int?>("boothLv")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("boothNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("boothPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("boothState")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("e_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("mf_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("mf_P_img")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("mf_logo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("serialNumber");
+
+                    b.ToTable("boothMaps");
                 });
 
             modelBuilder.Entity("Fairy_project.Models.Exhibition", b =>
@@ -69,64 +125,99 @@ namespace Fairy_project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("exhibitId"), 1L, 1);
 
-                    b.Property<DateTime>("datefrom")
+                    b.Property<int?>("areaNum")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("datefrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("dateto")
+                    b.Property<DateTime?>("dateto")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ex_description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ex_personTime")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ex_totalImcome")
+                        .HasColumnType("int");
 
                     b.Property<string>("exhibitName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("exhibitStatus")
                         .HasColumnType("int");
 
                     b.Property<string>("exhibit_P_img")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("exhibit_Pre_img")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("exhibit_T_img")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ticket_Peice")
+                        .HasColumnType("int");
 
                     b.HasKey("exhibitId");
 
                     b.ToTable("exhibitions");
                 });
 
-            modelBuilder.Entity("Fairy_project.Models.Manufactures", b =>
+            modelBuilder.Entity("Fairy_project.Models.Manager", b =>
                 {
-                    b.Property<int>("manufactureName")
+                    b.Property<int>("managerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("manufactureName"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("managerId"), 1L, 1);
 
-                    b.Property<string>("manufacture")
-                        .IsRequired()
+                    b.Property<string>("address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("center")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("centerEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("managerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("managerId");
+
+                    b.ToTable("managers");
+                });
+
+            modelBuilder.Entity("Fairy_project.Models.Manufactures", b =>
+                {
+                    b.Property<int>("manufactureId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("manufactureId"), 1L, 1);
+
                     b.Property<string>("manufactureAcc")
-                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("manufactureName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("mfEmail")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("mfPerson")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("mfPhoneNum")
+                    b.Property<int?>("mfPhoneNum")
                         .HasColumnType("int");
 
-                    b.HasKey("manufactureName");
+                    b.HasKey("manufactureId");
 
                     b.ToTable("manufactures");
                 });
@@ -153,8 +244,8 @@ namespace Fairy_project.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("phoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("phoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("memberId");
 
@@ -168,11 +259,10 @@ namespace Fairy_project.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("password")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("permissionsLv")
+                    b.Property<int?>("permissionsLv")
                         .HasColumnType("int");
 
                     b.HasKey("account");
@@ -182,13 +272,13 @@ namespace Fairy_project.Migrations
 
             modelBuilder.Entity("Fairy_project.Models.Ticket", b =>
                 {
-                    b.Property<int>("orderId")
+                    b.Property<int>("orderNum")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("orderId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("orderNum"), 1L, 1);
 
-                    b.Property<int>("e_Id")
+                    b.Property<int?>("e_Id")
                         .HasColumnType("int");
 
                     b.Property<int>("enterstate")
@@ -197,16 +287,25 @@ namespace Fairy_project.Migrations
                     b.Property<DateTime?>("entertime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("m_Id")
+                    b.Property<int?>("m_Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ordertime")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("payTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("personNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("presonName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("price")
                         .HasColumnType("int");
 
-                    b.HasKey("orderId");
+                    b.HasKey("orderNum");
 
                     b.ToTable("tickets");
                 });
