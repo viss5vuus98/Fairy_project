@@ -1,5 +1,11 @@
 ﻿<Properties StartupConfiguration="{160F8584-3AAA-4CEB-BF5C-47355F4D95FA}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Models/ServerContext.cs">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Models/Permissions.cs">
     <Files>
       <File FileName="Fairy_project/Models/Manager.cs" Line="13" Column="45" />
       <File FileName="Fairy_project/Models/Area.cs" Line="14" Column="1" />
@@ -7,6 +13,10 @@
       <File FileName="Fairy_project/appsettings.json" Line="3" Column="90" />
       <File FileName="Fairy_project/Program.cs" Line="1" Column="1" />
       <File FileName="Fairy_project/Views/Home/exhibitionDetail.cshtml" Line="15" Column="64" />
+      <File FileName="Fairy_project/Models/exhibition.cs" Line="26" Column="1" />
+      <File FileName="Fairy_project/ViewModels/MasterViewModels.cs" Line="20" Column="1" />
+      <File FileName="Fairy_project/Models/Manufactures.cs" Line="1" Column="1" />
+      <File FileName="Fairy_project/Models/Permissions.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,8 +24,11 @@
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Permissions.cs" selected="True" />
+              </Node>
               <Node name="Properties" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
                 <Node name="Manufacturer" expanded="True" />
@@ -35,11 +48,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

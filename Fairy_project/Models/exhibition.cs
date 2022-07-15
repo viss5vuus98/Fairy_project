@@ -19,5 +19,7 @@ public class Exhibition
     public int? areaNum { get; set; }
     public int? ex_personTime { get; set; }
     public int? ex_totalImcome { get; set; }
+    public string? ex_description { get; set; }
+    public int? ticket_Peice { get; set; }
 }
 
