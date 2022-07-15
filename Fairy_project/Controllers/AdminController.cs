@@ -18,24 +18,40 @@ namespace Fairy_project.Controllers
         // GET: AdminController
         public IActionResult Master()
         {
-            return View(_context.exhibitions);
+            List<MasterViewModels> modellist = new List<MasterViewModels>();
+            foreach (var item in _context.exhibitions)
+            {
+                MasterViewModels model = new MasterViewModels();
+
+                model.exhibitId = item.exhibitId;
+                model.exhibitName = item.exhibitName;
+                model.exhibit_Pre_img = item.exhibit_Pre_img;
+                //model.exhibitStatus = item.exhibitStatus;
+                modellist.Add(model);
+            }
+
+            //foreach (var item in modellist)
+            //{
+            //    item.soldbooth = _context.booths.Where(b => b.e_Id == item.exhibitId).Count();
+            //    item.soldticket = _context.booths.Where(t => t.e_Id == item.exhibitId).Count();
+            //    item.enteredpeople = 3;
+            //}
+            return View(modellist);
         }
 
-        public IActionResult MasterDetail(int exhibitId)
+        public async Task<IActionResult> MasterPreview(int exhibitId)
         {
-            return View();
+            int tickets = await _context.tickets.CountAsync(t => t.e_Id == exhibitId);
+            if (tickets != 0) 
+            {
+                ViewBag.ticketscount = tickets;
+            }
+            ViewBag.test = "test";
+            return View("_MasterPreviewPartial");
         }
 
-        public IActionResult CreatExhibition(int idnew)
-        {
-            ViewBag.idnew = idnew;
-            return View();
-        }
-        [HttpPost]
-        public IActionResult CreatExhibition()
-        {
-            return View();
-        }
+
+
 
 
 

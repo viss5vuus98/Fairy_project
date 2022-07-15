@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 
 using Fairy_project.Models;
+using Fairy_project.ViewModels;
 
 namespace Fairy_project.Controllers
 {
@@ -28,8 +29,11 @@ namespace Fairy_project.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(string uid, string pwd)
+        public IActionResult Index(LoginViewModels mem, string uid, string pwd)
         {
+            //MemberCreate(mem);
+            //ManufacturerCreate(mem);
+            PermissionsCreate(mem);
             var member = _context.Permissions.FirstOrDefault(m => m.account == uid && m.password == pwd);
             //var account = member.account;
             if (member != null)
@@ -41,10 +45,12 @@ namespace Fairy_project.Controllers
                         permissions = "Member";
                         break;
                     case 2:
-                        permissions = "mfu";
+                        permissions = "Manufacturer";
                         break;
                     case 3:
                         permissions = "Admin";
+                        break;
+                    default:
                         break;
                 }
                 //宣告身分識別
@@ -69,6 +75,56 @@ namespace Fairy_project.Controllers
             return View();
         }
 
+        private void MemberCreate(LoginViewModels mem)
+        {
+            if (mem.member != null)
+            {
+                try
+                {
+                    _context.members.Add(mem.member);
+                    _context.SaveChanges();
+                    TempData["Success"] = "會員新增成功";
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "會員新增失敗，帳號可能重複";
+                }
+            }
+        }
+
+        private void ManufacturerCreate(LoginViewModels men)
+        {
+            if (men.manufactures != null)
+            {
+                try
+                {
+                    _context.manufactures.Add(men.manufactures);
+                    _context.SaveChanges();
+                    TempData["Success"] = "廠商新增成功";
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "廠商新增失敗，帳號可能重複";
+                }
+            }
+        }
+
+        private void PermissionsCreate(LoginViewModels men)
+        {
+            if (men.permissions != null)
+            {
+                try
+                {
+                    _context.Permissions.Add(men.permissions);
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync();
@@ -79,27 +135,6 @@ namespace Fairy_project.Controllers
         {
             return View();
         }
-
-
-        [HttpPost]
-        public IActionResult MemberCreate(Member member)
-        {
-            Console.WriteLine("hi");
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.members.Add(member);
-                    _context.SaveChanges();
-                    TempData["Success"] = "會員新增成功";
-                    return RedirectToAction("Login");
-                }
-                catch (Exception ex)
-                {
-                    TempData["Error"] = "會員新增失敗，帳號可能重複";
-                }
-            }
-            return View();
-        }
+        
     }
 }

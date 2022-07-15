@@ -361,3 +361,7 @@ input {
         width: 20px;
         display: inline;
     }
+
+    ::placeholder{
+        font-size: 12px;
+    }
