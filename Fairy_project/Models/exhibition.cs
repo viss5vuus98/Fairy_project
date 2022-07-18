@@ -12,14 +12,14 @@ public class Exhibition
     public DateTime? dateto { get; set; }
     
     //Todo 時間格式
-    public int exhibitStatus { get; set; }
+    public int? exhibitStatus { get; set; }
     public string? exhibit_P_img { get; set; }
     public string? exhibit_T_img { get; set; }
     public string? exhibit_Pre_img { get; set; }
     public int? areaNum { get; set; }
     public int? ex_personTime { get; set; }
     public int? ex_totalImcome { get; set; }
-    public string? ex_description { get; set; }
-    public int? ticket_Peice { get; set; }
+    //要補展覽描述
+    //要補展覽描述
 }
 

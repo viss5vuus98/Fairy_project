@@ -4,6 +4,9 @@ using Fairy_project.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
+using Fairy_project.ViewModels;
+using System.Collections.Generic;
 
 namespace Fairy_project.Controllers;
 
@@ -11,11 +14,14 @@ public class HomeController : Controller
 {
     
     private readonly ILogger<HomeController> _logger;
+    private readonly ServerContext _context;
+    private readonly string _path;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, ServerContext context, IWebHostEnvironment hostEnvironment)
     {
         _logger = logger;
-        
+        _context = context;
+        _path = $"{hostEnvironment.WebRootPath}\\images";
     }
 
     public IActionResult Index()
@@ -27,10 +33,18 @@ public class HomeController : Controller
     {
         return View();
     }
-
-    public IActionResult exhibitionDetail()
+    [Route("Home/exhibitionDetail/{exhibitId}")]
+    public async Task<IActionResult> exhibitionDetail(string exhibitId)
     {
-        return View();
+        int id = Convert.ToInt32(exhibitId);
+        var theExhibit = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == id);
+        if (theExhibit == null)
+        {
+            Console.WriteLine("NULLLLLLLLLLLLLLL");
+            return View();
+        }
+        IList<eDrtailViewModel> manufactures = (IList<eDrtailViewModel>)_context.boothMaps.OrderBy(m => m).Take(3);
+        return View(theExhibit);
     }
 
     public IActionResult exhibitionSearch()

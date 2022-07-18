@@ -1,7 +1,4 @@
-﻿//控制Scroll位置 Navbar
-
-
-const nav = document.querySelector(".navbar");
+﻿nav = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
     const scrollHeight = window.scrollY;
