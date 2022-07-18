@@ -32,7 +32,7 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult MemberCreateAcc(LoginViewModels mem)
         {
-            Console.WriteLine("1111111111" + mem.permissions);
+            
 
             if (mem.permissions != null)
             {
@@ -44,7 +44,7 @@ namespace Fairy_project.Controllers
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("perMisssssss2222222222");
+                    TempData["Error"] = "會員新增失敗，帳號可能重複";
                 }
             }
             if (mem.member != null)
@@ -60,7 +60,40 @@ namespace Fairy_project.Controllers
                     TempData["Error"] = "會員新增失敗，帳號可能重複";
                 }
             }
-            return RedirectToAction("Index");
+            return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult ManufacturesCreateAcc(LoginViewModels mem)
+        {
+            
+            if (mem.permissions != null)
+            {
+                try
+                {
+                    _context.Permissions.Add(mem.permissions);
+                    _context.SaveChanges();
+
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "會員新增失敗，帳號可能重複";
+                }
+            }
+            if (mem.manufactures != null)
+            {
+                try
+                {
+                    _context.manufactures.Add(mem.manufactures);
+                    _context.SaveChanges();
+                    TempData["Success"] = "廠商新增成功";
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "廠商新增失敗，帳號可能重複";
+                }
+            }
+            return View("Index");
         }
 
         [HttpPost]
