@@ -37,15 +37,15 @@ namespace Fairy_project.Controllers
         {
             Exhibition exhibition = new Exhibition();
             Booths booths = new Booths();
-            exhibition.exhibitName = model.exhibitName;
+            //exhibition.exhibitName = model.exhibitName;
             Console.Write(model.exhibitName + "22222222222222222222222");
             exhibition.exhibitStatus = 1;
             exhibition.datefrom = model.datefrom;
             exhibition.dateto = model.dateto;
-            exhibition.ex_description = model.ex_description;
+            //exhibition.ex_description = model.ex_description;
             exhibition.ex_personTime = model.ex_personTime;
             exhibition.ex_totalImcome = model.ex_totalImcome;
-            exhibition.ticket_Peice = model.ticket_Peice;
+            //exhibition.ticket_Peice = model.ticket_Peice;
             _context.exhibitions.Add(exhibition);
             //for (int i=0;i<model.setboothslist.Count;i++)
             //{

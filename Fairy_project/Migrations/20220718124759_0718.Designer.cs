@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fairy_project.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    [Migration("20220715054004_exTable")]
-    partial class exTable
+    [Migration("20220718124759_0718")]
+    partial class _0718
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -134,7 +134,7 @@ namespace Fairy_project.Migrations
                     b.Property<DateTime?>("dateto")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ex_description")
+                    b.Property<string>("ex_Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ex_personTime")
@@ -146,7 +146,7 @@ namespace Fairy_project.Migrations
                     b.Property<string>("exhibitName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("exhibitStatus")
+                    b.Property<int?>("exhibitStatus")
                         .HasColumnType("int");
 
                     b.Property<string>("exhibit_P_img")
@@ -158,7 +158,7 @@ namespace Fairy_project.Migrations
                     b.Property<string>("exhibit_T_img")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ticket_Peice")
+                    b.Property<int?>("ticket_Price")
                         .HasColumnType("int");
 
                     b.HasKey("exhibitId");
@@ -214,8 +214,8 @@ namespace Fairy_project.Migrations
                     b.Property<string>("mfPerson")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("mfPhoneNum")
-                        .HasColumnType("int");
+                    b.Property<string>("mfPhoneNum")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("manufactureId");
 

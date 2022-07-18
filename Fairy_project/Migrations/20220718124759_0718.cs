@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Fairy_project.Migrations
 {
-    public partial class exTable : Migration
+    public partial class _0718 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,15 +72,15 @@ namespace Fairy_project.Migrations
                     exhibitName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     datefrom = table.Column<DateTime>(type: "datetime2", nullable: true),
                     dateto = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    exhibitStatus = table.Column<int>(type: "int", nullable: false),
+                    exhibitStatus = table.Column<int>(type: "int", nullable: true),
                     exhibit_P_img = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     exhibit_T_img = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     exhibit_Pre_img = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     areaNum = table.Column<int>(type: "int", nullable: true),
                     ex_personTime = table.Column<int>(type: "int", nullable: true),
                     ex_totalImcome = table.Column<int>(type: "int", nullable: true),
-                    ex_description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ticket_Peice = table.Column<int>(type: "int", nullable: true)
+                    ex_Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ticket_Price = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -114,7 +114,7 @@ namespace Fairy_project.Migrations
                     manufactureName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     mfPerson = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     mfEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    mfPhoneNum = table.Column<int>(type: "int", nullable: true)
+                    mfPhoneNum = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

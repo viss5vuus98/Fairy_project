@@ -19,7 +19,7 @@ public class Exhibition
     public int? areaNum { get; set; }
     public int? ex_personTime { get; set; }
     public int? ex_totalImcome { get; set; }
-    //要補展覽描述
-    //要補展覽描述
+    public string? ex_Description { get; set; }
+    public int? ticket_Price { get; set; }
 }
 
