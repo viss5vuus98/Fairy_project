@@ -2,7 +2,7 @@
 {
     public class CreatBoothsViewModel
     {
-        public int? boothLv { get; set; }
+        public string? boothLv { get; set; }
         public int? boothPrice { get; set; }
         public int? boothsum { get; set; }
     }

@@ -16,8 +16,14 @@
     color: #B6B6B4;
 }
 
+i {
+    cursor: pointer;
+}
+
 #titleinput {
     transition: .2s;
+    pointer-events: none;
+    background-color: #fafafa;
 }
 
     #titleinput:disabled {
@@ -32,15 +38,17 @@
 #contentinput {
     resize: none;
     outline: none;
+    pointer-events: none;
 }
 
     #contentinput:focus {
         background-color: #fafafa;
+        pointer-events: all;
     }
 
-#ticketpriceinput:disabled {
+#ticketpriceinput {
     color: #5C5858;
-    background-color: #fafafa;
+    pointer-events: none;
 }
 
 label {
