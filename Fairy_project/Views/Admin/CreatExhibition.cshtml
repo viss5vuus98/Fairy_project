@@ -5,7 +5,7 @@
 }
 
     <div class="container">
-        <form action="@Url.Action("CreatExhibition")" method="post">
+        <form action="@Url.Action("CreatExhibition")" method="post" enctype="multipart/form-data">
             <div class="row align-items-center my-3">
                 <div class="col-lg-1 col-sm-2 col-4">
                     <i id="edittitle" class="fa-regular fa-pen-to-square fa-4x opacity-75 text-center"></i>
@@ -18,7 +18,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 col-sm-12 col-12 my-5">
-                    <h2 class="mx-5 mb-5">No. @ViewBag.idnew</h2>
+                    <h2 class="mx-5 mb-5">No.<input asp-for="exhibitId" class="h2 pe-none border-0 bg2" value="@ViewBag.idnew" readonly></h2>
                     <div class="position-relative my-4">
                         <img id="ticketimg" class="rounded-3 border border-1 w-100" src="@Url.Content("~/images/ticketdefault.png")"
                          alt="">
@@ -164,8 +164,12 @@
             $(e.target).css('pointer-events', 'none')
         })
 
+        $('#titleinput').on('focus', (e) => {
+            $(e.target).css('pointer-events', 'all')
+        })
+
         $('#titleinput').on('blur', (e) => {
-            $(e.target).addClass('text-center')
+            $(e.target).addClass('text-center').css('pointer-events', 'none')
             $('#edittitle').css('pointer-events', 'all')
         })
 
@@ -215,8 +219,13 @@
         })
 
         $('#editticketprice').on('click', (e) => {
-            $('#ticketpriceinput').trigger('focus').trigger('focus')
+            $('#ticketpriceinput').trigger('focus').css('pointer-events', 'all')
         })
+
+        $('#ticketpriceinput').on('blur', (e) => {
+            $(e.target).css('pointer-events', 'none')
+        })
+
 
         $('#mathticket').on('click', (e) => {
             e.preventDefault();

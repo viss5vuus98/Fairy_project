@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
 using System.Drawing;
+using System.IO;
+
 
 namespace Fairy_project.Controllers
 {
@@ -22,41 +24,76 @@ namespace Fairy_project.Controllers
             return View(_context.exhibitions);
         }
 
-        public IActionResult MasterDetail(int exhibitId)
+        public IActionResult ExhibitIdDetail(int exhibitId)
         {
+            ExhibitIdDetail_1_ model = new ExhibitIdDetail_1_();
+            Exhibition exhibition = (Exhibition)_context.exhibitions.Where(e => e.exhibitId == exhibitId);
+            List<Booths> booths = _context.boothMaps.Where(b => b.e_Id == exhibitId).ToList();
+
+            model.exhibitId = exhibition.exhibitId;
+            model.exhibitName = exhibition.exhibitName;
+            model.exhibitStatus = exhibition.exhibitStatus;
+            model.exhibit_P_img = exhibition.exhibit_P_img;
+            model.exhibit_T_img = exhibition.exhibit_T_img;
+            model.datefrom = exhibition.datefrom;
+            model.dateto = exhibition.dateto;
+            model.ex_description = exhibition.ex_Description;
+            model.ex_personTime = exhibition.ex_personTime;
+            model.ex_totalImcome = exhibition.ex_totalImcome;
+            model.ticket_Peice = exhibition.ticket_Price;
+            for(int i =0;i< booths.Count;i++)
+            {
+            }
+
             return View();
         }
 
+        [Route("/Admin/{action}/{idnew}")]
         public IActionResult CreatExhibition(int idnew)
         {
             ViewBag.idnew = idnew;
             return View();
         }
 
+        [Route("/Admin/{action}/{idnew}")]
         [HttpPost]
-        public ActionResult CreatExhibition(CreatExhibitionViewModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreatExhibition(CreatExhibitionViewModel model)
         {
-            Console.WriteLine("--------------------"+ model.exhibit_Pre_img);
-
-
+            string img_dir = @$"wwwroot/images/";
+            Random myRand = new Random();
             Exhibition exhibition = new Exhibition();
             exhibition.exhibitName = model.exhibitName;
             exhibition.exhibitStatus = 1;
-
-            FileInfo exhibit_P_img = new FileInfo(model.exhibit_P_img);
-            exhibition.exhibit_P_img = exhibit_P_img.Name;
-            FileInfo exhibit_T_img = new FileInfo(model.exhibit_T_img);
-            exhibition.exhibit_T_img = exhibit_T_img.Name;
-            FileInfo exhibit_Pre_img = new FileInfo(model.exhibit_Pre_img);
-            exhibition.exhibit_Pre_img = exhibit_Pre_img.Name;
-
             exhibition.datefrom = model.datefrom;
             exhibition.dateto = model.dateto;
             exhibition.ex_Description = model.ex_description;
             exhibition.ex_personTime = model.ex_personTime;
             exhibition.ex_totalImcome = model.ex_totalImcome;
             exhibition.ticket_Price = model.ticket_Peice;
+
+            string Pimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_P_img.FileName);
+            exhibition.exhibit_P_img = Pimgname;
+            using (var stream = System.IO.File.Create(img_dir + Pimgname))
+            {
+                await model.exhibit_P_img.CopyToAsync(stream);
+            }
+
+            string Timgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_T_img.FileName);
+            exhibition.exhibit_T_img = Timgname;
+            using (var stream = System.IO.File.Create(img_dir + Timgname))
+            {
+                await model.exhibit_T_img.CopyToAsync(stream);
+            }
+
+            string Preimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_Pre_img.FileName);
+            exhibition.exhibit_Pre_img = Preimgname;
+            using (var stream = System.IO.File.Create(img_dir + Preimgname))
+            {
+                await model.exhibit_Pre_img.CopyToAsync(stream);
+            }
             _context.exhibitions.Add(exhibition);
+
             int boothnumber = 1;
             for (int i = 0; i < model.setboothslist.Count; i++)
             {
@@ -78,12 +115,13 @@ namespace Fairy_project.Controllers
                         booths.boothLv = 1;
                     }
                     booths.boothPrice = model.setboothslist[i].boothPrice;
+                    booths.e_Id = model.exhibitId;
                     _context.boothMaps.Add(booths);
                     boothnumber++;
                 }
             }
-            _context.SaveChanges();
-            return View();
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Master");
         }
 
 

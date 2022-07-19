@@ -4,11 +4,13 @@
     {
     <link rel="stylesheet" href="~/css/Master.css" asp-append-version="true" />
 }
-@{int idnew = 0;}
+    @{
+    int idnew = 0;
+}
 
-    <div class="container">
-        <div class="row mb-3">
-            @foreach (var item in Model)
+<div class="container">
+    <div class="row mb-3">
+        @foreach (var item in Model)
         {
             string date = $"{Convert.ToDateTime(item.datefrom).ToString("yyyy/MM/dd")} ~ {Convert.ToDateTime(item.dateto).ToString("yyyy/MM/dd")}";
             string imgsrc = Url.Content($"~/images/{item.exhibit_Pre_img}");
@@ -30,8 +32,8 @@
                         }
                     </div>
                     <h3 class="h-25 fw-bold m-0 mx-3 text-light">@item.exhibitName</h3>
-                    <button asp-action="MasterDetail" asp-controller="Admin" asp-route-exhibitId="@item.exhibitId" class="px-3 text-center rounded-pill border border-1 border-light bg-secondary bg-opacity-75 text-light fs-4">
-                        編輯
+                    <button asp-action="ExhibitIdDetail" asp-controller="Admin" asp-route-exhibitId="@item.exhibitId" class="px-3 text-center rounded-pill border border-1 border-light bg-secondary bg-opacity-75 text-light fs-4">
+                        詳細
                     </button>
                 </div>
                 <img class=" w-100 h-100 rounded-3" src="@imgsrc" alt="">
