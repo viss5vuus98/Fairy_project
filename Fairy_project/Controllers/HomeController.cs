@@ -58,6 +58,17 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    
+    public async Task<IActionResult> shoppingcart(string exhibitId)
+    {
+        int id = Convert.ToInt32(exhibitId);
+        var theExhibit = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == id);
+        return View();
+    }
+
+    public void getexhibitionid(string exhibitId)
+    {
+
+    }
+
 }
 
