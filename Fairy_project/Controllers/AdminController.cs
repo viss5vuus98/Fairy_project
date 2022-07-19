@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
+using System.Drawing;
 
 namespace Fairy_project.Controllers
 {
@@ -35,9 +36,20 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public ActionResult CreatExhibition(CreatExhibitionViewModel model)
         {
+            Console.WriteLine("--------------------"+ model.exhibit_Pre_img);
+
+
             Exhibition exhibition = new Exhibition();
             exhibition.exhibitName = model.exhibitName;
             exhibition.exhibitStatus = 1;
+
+            FileInfo exhibit_P_img = new FileInfo(model.exhibit_P_img);
+            exhibition.exhibit_P_img = exhibit_P_img.Name;
+            FileInfo exhibit_T_img = new FileInfo(model.exhibit_T_img);
+            exhibition.exhibit_T_img = exhibit_T_img.Name;
+            FileInfo exhibit_Pre_img = new FileInfo(model.exhibit_Pre_img);
+            exhibition.exhibit_Pre_img = exhibit_Pre_img.Name;
+
             exhibition.datefrom = model.datefrom;
             exhibition.dateto = model.dateto;
             exhibition.ex_Description = model.ex_description;

@@ -6,9 +6,9 @@ namespace Fairy_project.ViewModels
     {
         public string? exhibitName { get; set; }
         public int exhibitStatus { get; set; }
-        public FileInfo? exhibit_P_img { get; set; }
-        public FileInfo? exhibit_T_img { get; set; }
-        public FileInfo? exhibit_Pre_img { get; set; }
+        public string? exhibit_P_img { get; set; }
+        public string? exhibit_T_img { get; set; }
+        public string? exhibit_Pre_img { get; set; }
         public DateTime? datefrom { get; set; }
         public DateTime? dateto { get; set; }
         public string? ex_description { get; set; }
