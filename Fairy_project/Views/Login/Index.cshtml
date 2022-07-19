@@ -40,14 +40,14 @@
                 </div>
             </div>
             <div class="first">
-                <form method="post" action="@Url.Action("Index")">
+                <form method="post" action="@Url.Action("MemberCreateAcc")">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form sign-up">
                     <h2>會員註冊</h2>
                     <label>
                         <span>電子郵件(登入帳號)</span>
-                        <input asp-for="member.memberAc" id="memaccount" type="email" required placeholder="example@@gmail.com"/>
-                        <input asp-for="permissions.account" id="memaccount1" type="email" style="display:none"/>
+                        <input asp-for="member.memberAc" id="memAccount" type="email" required placeholder="example@@gmail.com"/>
+                        <input asp-for="permissions.account" id="M_permissions" type="email" style="display:none"/>
                     </label>
                     <label>
                         <span>密碼</span>
@@ -90,8 +90,8 @@
                     </label>
                     <label>
                         <span>統一編號(登入帳號)</span>
-                        <input asp-for="manufactures.manufactureAcc" id="manaccount" type="text" required placeholder="00001111" maxlength="8"/>
-                        <input asp-for="permissions.account" id="manaccount1" type="email" style="display:none"/>
+                        <input asp-for="manufactures.manufactureAcc" id="manufacturesAcc" type="text" required placeholder="00001111" maxlength="8"/>
+                        <input asp-for="permissions.account" id="MF_permissions" type="number"/>
                     </label>
                     <label>
                         <span>密碼</span>
@@ -108,7 +108,7 @@
                     <label>
                         <span>廠商電話</span>
                         <input asp-for="manufactures.mfPhoneNum" type="text" required placeholder="09-1234-5678" maxlength="10"/>
-                        <input asp-for="permissions.permissionsLv" type="text" value="2" style="display:none"/>
+                        <input asp-for="permissions.permissionsLv" type="text" value="2"/>
                     </label>
                     <div class="form-group">
                         <input type="submit" value="註冊" class="button submit" />
@@ -137,13 +137,14 @@
         $('.gender input:radio[name=gender]').click(function () {
             $('#gender').val($(".gender input:radio[name=gender]:checked").val())
         })
-        $('#memaccount').change(function () {
-            $('#memaccount1').val($('#account').val());
+        @*$('#memaccount').change(function () {
+            $('#permissionsAcc').val($('#account').val());
         })
-        $('#manaccount').change(function () {
-            $('#manaccount1').val($('#account').val());
-        })
+        $('#manufacturesAcc').change(function () {
+            $('#Ma_permissionsAcc').val($('#account').val());
+        })*@
     </script>
+    <script src="~/js/CreateAcc.js"></script>
     @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

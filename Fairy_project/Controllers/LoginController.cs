@@ -28,6 +28,74 @@ namespace Fairy_project.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult MemberCreateAcc(LoginViewModels mem)
+        {
+            
+
+            if (mem.permissions != null)
+            {
+                try
+                {
+                    _context.Permissions.Add(mem.permissions);
+                    _context.SaveChanges();
+                    
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "會員新增失敗，帳號可能重複";
+                }
+            }
+            if (mem.member != null)
+            {
+                try
+                {
+                    _context.members.Add(mem.member);
+                    _context.SaveChanges();
+                    TempData["Success"] = "會員新增成功";
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "會員新增失敗，帳號可能重複";
+                }
+            }
+            return View("Index");
+        }
+
+        [HttpPost]
+        public IActionResult ManufacturesCreateAcc(LoginViewModels mem)
+        {
+            
+            if (mem.permissions != null)
+            {
+                try
+                {
+                    _context.Permissions.Add(mem.permissions);
+                    _context.SaveChanges();
+
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "會員新增失敗，帳號可能重複";
+                }
+            }
+            if (mem.manufactures != null)
+            {
+                try
+                {
+                    _context.manufactures.Add(mem.manufactures);
+                    _context.SaveChanges();
+                    TempData["Success"] = "廠商新增成功";
+                }
+                catch (Exception ex)
+                {
+                    TempData["Error"] = "廠商新增失敗，帳號可能重複";
+                }
+            }
+            return View("Index");
+        }
+
         [HttpPost]
         public IActionResult Index(LoginViewModels mem, string uid, string pwd)
         {
