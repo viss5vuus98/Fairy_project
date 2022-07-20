@@ -112,20 +112,28 @@ $(() => {
     let ul = $("ul#train");
     let li = $("ul#train li")
     console.log(li.css("width"))
-    const MOVE = parseInt( li.css("width").replace('px', ''))+40;
+    const MOVE = parseInt(li.css("width").replace('px', '')) + 40;
+    const MAX_ULWIDTH = parseInt(ul.css("width").replace('px', ''))+200;
     let next = $("#btn-next");
     let prev = $("#btn-prev");
     let position = 0;
     
     next.click((e) => {
-       
+        if (position > -MAX_ULWIDTH) {
+            ul.css("transform", `translateX(${position -= MOVE}px)`)
+        }
+
+    })
+
+    prev.click((e) => {
         if (position < 0) {
 
-        ul.css("transform", `translateX(${position += MOVE}px)`)
+            ul.css("transform", `translateX(${position += MOVE}px)`)
         }
     })
-    prev.click((e) => {
-        ul.css("transform", `translateX(${position -= MOVE}px)`)
+    li.click((e) => {
+       
+        console.log(li[e.target].
     })
 
     //點中到中間 該項目
