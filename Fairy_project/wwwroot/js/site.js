@@ -11,3 +11,4 @@ window.addEventListener("scroll", () => {
         nav.classList.remove("nav_onscroll");
     }
 });
+

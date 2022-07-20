@@ -7,6 +7,7 @@ using System.Data.Entity;
 
 namespace Fairy_project.Controllers
 {
+    
     public class AdminController : Controller
     {
         private readonly ServerContext _context;

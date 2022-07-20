@@ -5,7 +5,7 @@ namespace Fairy_project.Controllers
 {
     public class ManufacturerController : Controller
     {
-        [Authorize(Roles = "Admin,Manufacturer")]
+        //[Authorize(Roles = "Admin,Manufacturer")]
         public IActionResult Index()
         {
             return View();
