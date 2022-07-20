@@ -1,0 +1,55 @@
+﻿body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #fafafa;
+    color: #5C5858;
+}
+
+.bg1 {
+    background-color: #E5E4E2;
+}
+
+.bg2 {
+    background-color: #fafafa;
+}
+
+.c1 {
+    color: #B6B6B4;
+}
+
+i {
+    cursor: pointer;
+}
+
+#titleinput {
+    outline: none;
+    transition: .2s;
+    pointer-events: none;
+    background-color: #fafafa;
+}
+
+    #titleinput:focus {
+        background-color: #E5E4E2;
+    }
+
+#contentinput {
+    resize: none;
+    outline: none;
+}
+
+    #contentinput:focus {
+        background-color: #fafafa;
+    }
+
+label {
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+}
+
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
