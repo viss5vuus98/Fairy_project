@@ -8,105 +8,105 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Fairy_project
 build_property.RootNamespace = Fairy_project
-build_property.ProjectDir = D:\Woo\WooHouse_project\Fairy_project\
+build_property.ProjectDir = E:\WooHouse_project\Fairy_project\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Woo\WooHouse_project\Fairy_project
+build_property.MSBuildProjectDirectory = E:\WooHouse_project\Fairy_project
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Areas/Identity/Pages/_ViewStart.cshtml]
+[E:/WooHouse_project/Fairy_project/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Admin/CreatExhibition.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Admin/CreatExhibition.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRFeGhpYml0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Admin/Master.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Admin/Master.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFzdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Home/exhibitionDetail.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Home/exhibitionDetail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxleGhpYml0aW9uRGV0YWlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Home/exhibitionSearch.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Home/exhibitionSearch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxleGhpYml0aW9uU2VhcmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Home/Index.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Home/Privacy.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Home/shoppingcart.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Home/shoppingcart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxzaG9wcGluZ2NhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Login/Index.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Login/NoAuthorization.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Login/NoAuthorization.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTm9BdXRob3JpemF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Manufacturer/ApplyStand.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Manufacturer/ApplyStand.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3R1cmVyXEFwcGx5U3RhbmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Manufacturer/Index.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Manufacturer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3R1cmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Manufacturer/Policy.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Manufacturer/Policy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3R1cmVyXFBvbGljeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Manufacturer/StandProcess.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Manufacturer/StandProcess.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3R1cmVyXFN0YW5kUHJvY2Vzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Manufacturer/_MFooterView.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Manufacturer/_MFooterView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3R1cmVyXF9NRm9vdGVyVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Manufacturer/_MNavbarView.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Manufacturer/_MNavbarView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3R1cmVyXF9NTmF2YmFyVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Member/Index.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Member/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Shared/Error.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Shared/_LoginPartial.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Shared/_ToastPartial.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Shared/_ToastPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ub2FzdFBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/_ViewImports.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/_ViewStart.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Woo/WooHouse_project/Fairy_project/Views/Shared/_Layout.cshtml]
+[E:/WooHouse_project/Fairy_project/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-h2ceqrdr0p

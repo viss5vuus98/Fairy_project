@@ -91,12 +91,11 @@
             e.preventDefault();
             console.log(e.target);
             $.ajax({
-                method: "Get",
-                url: @Url.Action("shoppingcart","Home"),
+                method: "GET",
+                url: "Home/shoppingcart/exid=1",
                 data: data,
             }).done((result) => {
                 alert(result);
-
             })
         })
     </script>

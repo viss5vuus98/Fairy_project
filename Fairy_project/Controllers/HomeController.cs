@@ -62,7 +62,7 @@ public class HomeController : Controller
 
     public ActionResult shoppingcart(string exid)
     {
-        Console.WriteLine("---------------------"+exid);
+        Console.WriteLine("---------------------" + exid);
         //var id = data.Split('|');
         ////List<Exhibition> exhibitions = new List<Exhibition>();
         //for (int i = 0; i < id.Length; i++)
