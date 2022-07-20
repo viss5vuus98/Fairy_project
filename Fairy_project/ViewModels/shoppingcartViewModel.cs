@@ -4,7 +4,7 @@ namespace Fairy_project.ViewModels
 {
     public class shoppingcartViewModel
     {
-        public Exhibition exhibition { get; set; }
+        public Exhibition Exhibition { get; set; }
         public Ticket ticket { get; set; }
     }
 }

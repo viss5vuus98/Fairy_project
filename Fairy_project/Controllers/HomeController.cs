@@ -43,7 +43,7 @@ public class HomeController : Controller
             Console.WriteLine("NULLLLLLLLLLLLLLL");
             return View();
         }
-        IList<eDrtailViewModel> manufactures = (IList<eDrtailViewModel>)_context.boothMaps.OrderBy(m => m).Take(3);
+        //IList<eDrtailViewModel> manufactures = (IList<eDrtailViewModel>)_context.boothMaps.OrderBy(m => m).Take(3);
         return View(theExhibit);
     }
 
@@ -58,17 +58,22 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    public async Task<IActionResult> shoppingcart(string exhibitId)
+
+
+    public ActionResult shoppingcart(string exid)
     {
-        int id = Convert.ToInt32(exhibitId);
-        var theExhibit = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == id);
-        return View();
+        Console.WriteLine("---------------------"+exid);
+        //var id = data.Split('|');
+        ////List<Exhibition> exhibitions = new List<Exhibition>();
+        //for (int i = 0; i < id.Length; i++)
+        //{
+        //    int exid = Convert.ToInt32(id[i]);
+        //    var exhibitbuy = _context.exhibitions.Where(m => m.exhibitId == exid).Select(m => new { m.exhibitName, m.exhibit_T_img, m.ticket_Price }).ToList();
+        //    Console.WriteLine(exhibitbuy);
+        //}
+        return Content(exid);
     }
 
-    public void getexhibitionid(string exhibitId)
-    {
-
-    }
 
 }
 

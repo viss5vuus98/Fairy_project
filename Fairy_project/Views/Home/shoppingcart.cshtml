@@ -1,4 +1,4 @@
-﻿@model Fairy_project.ViewModels.shoppingcartViewModel
+﻿@model IEnumerable<Fairy_project.ViewModels.shoppingcartViewModel>
 
 
 @section Style{
@@ -30,25 +30,26 @@
         </div>
         @*<button id="add">增加</button>*@
         <div class="ticket">
-            @*@foreach(var item in )
-            {*@
+            @*@foreach(var item in Model)
+            {
             <div class="container" style="border: 1px solid black;">
                 <div class="rowticket d-flex">
                     <div class="col-xl-3"><img
                             src="https://images.unsplash.com/photo-1535385793343-27dff1413c5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bXVzZXVtfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                            src="@Html.DisplayFor(modelitem=>item.Exhibition.exhibit_T_img)"
                             alt=""></div>
                     <div class="col-xl-9">
                         <div class="d-flex" style="justify-content: space-between;">
-                            <h3>2022 NTT-TIFA M&B雙人組(大湖) 劇場特映暨展覽</h3>
+                            <h3>2022 NTT-TIFA M&B雙人組(大湖) 劇場特映暨展覽@Html.DisplayFor(modelitem=>item.Exhibition.exhibitName)</h3>
                             <button type="button" class="btn btn-secondary"><i
                                     class="fa-solid fa-trash-can"></i></button>
                         </div>
-                        <h5>2022/4/30(六) 14:30</h5>
+                        <h5>2022/4/30(六) 14:30@Html.DisplayFor(modelitem=>item.Exhibition.ex_personTime)</h5>
                         <h5>台中國家歌劇園中劇院</h5>
                         <div class="price">
                             <div class="d-flex originprice">
                                 原價$
-                                <p>200</p>元
+                                <p>200@Html.DisplayFor(modelitem=>item.ticket.price)</p>元
                             </div>
                             <div class="d-flex" style="align-items:center">
                                 數量:<button type="button" class="minus"><i class="fa-solid fa-minus"></i></button>
@@ -63,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            @*}*@
+            }*@
         </div>
         <div class="container">
             <div class="total d-flex">
@@ -256,6 +257,24 @@
 
         //})
         //動態生成
+
+        //const value = JSON.parse(sessionStorage.getItem('tickets')) || []
+        //console.log(value)  // [{id : 34}] value[0].id
+        //let data = "34|35";
+        //for (let i = 0; i < value.length;i++) {
+        //    data += value[i].id + "|";
+        //}
+        //console.log(data);
+        //$.ajax({
+        //    method: "post",
+        //    url: "@Url.Action("shoppingcart","id")",
+        //    dataType: "text",
+        //    data: data,
+        //    success: function(data) {
+        //        alert(data);
+        //    }
+        //})
+        
         //$(".first").on("click", "#add", function () {
         //    $(".ticket").append(`<div class="container" style="border: 1px solid black;">
         //        <div class="rowticket d-flex">
