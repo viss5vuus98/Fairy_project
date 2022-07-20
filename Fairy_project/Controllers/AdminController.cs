@@ -21,20 +21,28 @@ namespace Fairy_project.Controllers
         // GET: AdminController
         public IActionResult Master()
         {
+            foreach(var exhibition in _context.exhibitions)
+            {
+                if (exhibition.exhibitStatus == 2 && DateTime.Compare(DateTime.Now, (DateTime)exhibition.datefrom) == 1)
+                {
+                    exhibition.exhibitStatus = 3;
+                    _context.exhibitions.Update(exhibition);
+                }
+            }
+            _context.SaveChanges();
             return View(_context.exhibitions);
         }
 
-        //[Route("/Admin/{action}/{exhibitId}")]
-        public IActionResult ExhibitIdDetail (int exhibitId)
+        [Route("/Admin/{action}/{exhibitId}")]
+        public async Task<IActionResult> ExhibitIdDetail (int exhibitId)
         {
-            exhibitId = 34;
             ExhibitIdDetail_1_ model = new ExhibitIdDetail_1_();
             model.setboothslist = new List<CreatBoothsViewModel>();
             var e = _context.exhibitions.Where(e => e.exhibitId == exhibitId);
             Exhibition exhibition = e.FirstOrDefault();
-            List<Booths> booths3 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 3).ToList();
-            List<Booths> booths2 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 2).ToList();
-            List<Booths> booths1 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 1).ToList();
+            List<Booths> booths3 =  _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 3).ToList();
+            List<Booths> booths2 =  _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 2).ToList();
+            List<Booths> booths1 =  _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 1).ToList();
 
             model.exhibitId = exhibition.exhibitId;
             model.exhibitName = exhibition.exhibitName;
@@ -76,13 +84,14 @@ namespace Fairy_project.Controllers
             return View(model);
         }
 
+        [Route("/Admin/{action}/{exhibitId}")]
         [HttpPost]
         public async Task<IActionResult> ExhibitIdDetail(ExhibitIdDetail_1_ model)
         {
             string img_dir = @$"wwwroot/images/";
             Random myRand = new Random();
             var e = _context.exhibitions.Where(e => e.exhibitId == model.exhibitId);
-            Exhibition exhibition = e.FirstOrDefault();
+            Exhibition exhibition =  e.FirstOrDefault();
             exhibition.exhibitName = model.exhibitName;
             exhibition.exhibitStatus = 1;
             exhibition.datefrom = model.datefrom;
@@ -125,16 +134,13 @@ namespace Fairy_project.Controllers
              
             _context.exhibitions.Update(exhibition);
 
-            var q = from b in _context.boothMaps
-                    where b.e_Id == model.exhibitId
-                    select b;
-            //var b = await _context.boothMaps.FindAsync(model.exhibitId);
-            //var b = _context.boothMaps.Where(b => b.e_Id == model.exhibitId).ToList();
-            //var b = _context.boothMaps.Distinct().ToList();
-
-            _context.boothMaps.Remove((Booths)q);
-
-
+            foreach(var booth in _context.boothMaps)
+            {
+                if (booth.e_Id == model.exhibitId)
+                {
+                    _context.boothMaps.Remove(booth);
+                }
+            }
 
             int boothnumber = 1;
             for (int i = 0; i < model.setboothslist.Count; i++)
@@ -158,7 +164,7 @@ namespace Fairy_project.Controllers
                     }
                     booths.boothPrice = model.setboothslist[i].boothPrice;
                     booths.e_Id = model.exhibitId;
-                    //_context.boothMaps.Add(booths);
+                    await _context.boothMaps.AddAsync(booths);
                     boothnumber++;
                 }
             }
@@ -167,16 +173,15 @@ namespace Fairy_project.Controllers
         }
 
 
-        //[Route("/Admin/{action}/{idnew}")]
+        [Route("/Admin/{action}/{idnew}")]
         public IActionResult CreatExhibition(int idnew)
         {
             ViewBag.idnew = idnew;
             return View();
         }
 
-        //[Route("/Admin/{action}/{idnew}")]
+        [Route("/Admin/{action}/{idnew}")]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatExhibition(CreatExhibitionViewModel model)
         {
             string img_dir = @$"wwwroot/images/";
@@ -243,6 +248,14 @@ namespace Fairy_project.Controllers
             return RedirectToAction("Master");
         }
 
+        public async Task<IActionResult> ChangeExhibitState(int exhibitId)
+        {
+            var e = _context.exhibitions.Where(e => e.exhibitId == exhibitId);
+            Exhibition exhibition = e.FirstOrDefault();
+            exhibition.exhibitStatus = 2;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Master");
+        }
 
 
 
