@@ -59,19 +59,27 @@ public class HomeController : Controller
     }
 
 
-
-    public ActionResult shoppingcart(string exid)
+    public IActionResult shoppingcart()
     {
-        Console.WriteLine("---------------------" + exid);
-        //var id = data.Split('|');
-        ////List<Exhibition> exhibitions = new List<Exhibition>();
-        //for (int i = 0; i < id.Length; i++)
-        //{
-        //    int exid = Convert.ToInt32(id[i]);
-        //    var exhibitbuy = _context.exhibitions.Where(m => m.exhibitId == exid).Select(m => new { m.exhibitName, m.exhibit_T_img, m.ticket_Price }).ToList();
-        //    Console.WriteLine(exhibitbuy);
-        //}
-        return Content(exid);
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult shoppingcart(string i)
+    {
+        Console.WriteLine(i);
+        var id = i.Split('|').ToArray();
+        Console.WriteLine(id.Length);
+        //List<Exhibition> exhibitions = new List<Exhibition>();
+        for (int a = 0; a < id.Length; a++)
+        {
+            int exid = Convert.ToInt32(id[a]);
+            Console.WriteLine(exid);
+            var exhibitbuy = _context.exhibitions.Where(m => m.exhibitId == exid).Select(m => new { m.exhibitName, m.exhibit_T_img, m.ticket_Price }).ToList();
+            Console.WriteLine(exhibitbuy);
+            return View(exhibitbuy);
+        }
+        return Json("失敗");
     }
 
 

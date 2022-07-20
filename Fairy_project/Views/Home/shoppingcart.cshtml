@@ -72,8 +72,7 @@
 
                 </div>
                 <div>
-                    <button type="button" class="btn1 col-md-7" style="background-color: #EAE0D7;"
-                        id="keepbuy">繼續選購</button>
+                    <a asp-controller="Home" asp-action="exhibitionDetail"><button type="button" class="btn1 col-md-7" style="background-color: #EAE0D7;" id="keepbuy">繼續選購</button></a>
                     <button type="button" class="btn1 col-md-5" style="background-color: #EAE0D7;"
                         id="gopay">前往付款</button>
                 </div>
@@ -196,14 +195,14 @@
 
                     </div>
                 </div>
-                <div class="row">
+                @*<div class="row">
                     <div class="col-6">
                         <h5>訂單編號</h5>
                     </div>
                     <div class="col-6 ordernum">
-                        @*<h5>A1511sr5g156r1g</h5>*@
+                        <h5>A1511sr5g156r1g</h5>
                     </div>
-                </div>
+                </div>*@
                 <div class="row">
                     <div class="col-6">
                         <h5>訂單日期</h5>
@@ -256,25 +255,7 @@
         //$("keepbuy").click(function () {
 
         //})
-        //動態生成
-
-        //const value = JSON.parse(sessionStorage.getItem('tickets')) || []
-        //console.log(value)  // [{id : 34}] value[0].id
-        //let data = "34|35";
-        //for (let i = 0; i < value.length;i++) {
-        //    data += value[i].id + "|";
-        //}
-        //console.log(data);
-        //$.ajax({
-        //    method: "post",
-        //    url: "@Url.Action("shoppingcart","id")",
-        //    dataType: "text",
-        //    data: data,
-        //    success: function(data) {
-        //        alert(data);
-        //    }
-        //})
-        
+        //動態生成      
         //$(".first").on("click", "#add", function () {
         //    $(".ticket").append(`<div class="container" style="border: 1px solid black;">
         //        <div class="rowticket d-flex">
@@ -430,7 +411,7 @@
             $("#Email").val();
             $(".radio input:radio[name=option]:checked").val();
             $(".orderprice").append(`<h5>${total}</h5>元`);
-            $(".ordernum").append(`<h5>A${orderid}</h5>`)
+            //$(".ordernum").append(`<h5>A${orderid}</h5>`)
             $(".ordertime").append(`<h5>${currentDateTime}</h5>`)
             $(".ordername").append(`<h5>${$("#name").val()}</h5>`);
             $(".orderphone").append(`<h5>${$("#cellphone").val()}</h5>`);
