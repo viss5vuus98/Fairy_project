@@ -65,21 +65,27 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult shoppingcart(string i)
+    public async Task<IActionResult> shoppingcart(string i)
     {
         Console.WriteLine(i);
         var id = i.Split('|').ToArray();
         Console.WriteLine(id.Length);
-        //List<Exhibition> exhibitions = new List<Exhibition>();
+        List <shoppingcartViewModel> exhibitions = new List<shoppingcartViewModel>();
+
         for (int a = 0; a < id.Length; a++)
         {
             int exid = Convert.ToInt32(id[a]);
             Console.WriteLine(exid);
-            var exhibitbuy = _context.exhibitions.Where(m => m.exhibitId == exid).Select(m => new { m.exhibitName, m.exhibit_T_img, m.ticket_Price }).ToList();
-            Console.WriteLine(exhibitbuy);
-            return View(exhibitbuy);
+            shoppingcartViewModel model = new shoppingcartViewModel()
+            {
+                exhibition = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == exid),
+                ticket = await _context.tickets.Where(m => m.e_Id == exid).FirstOrDefaultAsync(),
+            };
+            exhibitions.Add(model);
         }
-        return Json("失敗");
+        //ViewBag.exhibitions = exhibitions;
+        //Console.WriteLine(exhibitions[1].exhibition.datefrom);
+        return Json(exhibitions);
     }
 
 
