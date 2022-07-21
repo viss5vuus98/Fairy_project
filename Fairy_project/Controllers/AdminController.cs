@@ -21,28 +21,38 @@ namespace Fairy_project.Controllers
         // GET: AdminController
         public IActionResult Master()
         {
-            foreach(var exhibition in _context.exhibitions)
+            foreach (var exhibition in _context.exhibitions)
             {
                 if (exhibition.exhibitStatus == 2 && DateTime.Compare(DateTime.Now, (DateTime)exhibition.datefrom) == 1)
                 {
                     exhibition.exhibitStatus = 3;
                     _context.exhibitions.Update(exhibition);
                 }
+                else if (exhibition.exhibitStatus == 3 && DateTime.Compare(DateTime.Now, (DateTime)exhibition.dateto) == 1)
+                {
+                    exhibition.exhibitStatus = 4;
+                    _context.exhibitions.Update(exhibition);
+                }
             }
             _context.SaveChanges();
-            return View(_context.exhibitions);
+
+            var q = from e in _context.exhibitions where e.exhibitStatus != 4 orderby e.exhibitStatus select e;
+            List<Exhibition> el = new List<Exhibition>();
+            el = q.ToList();
+            el.Reverse();
+            return View(el);
         }
 
         [Route("/Admin/{action}/{exhibitId}")]
-        public async Task<IActionResult> ExhibitIdDetail (int exhibitId)
+        public async Task<IActionResult> ExhibitIdDetail(int exhibitId)
         {
             ExhibitIdDetail_1_ model = new ExhibitIdDetail_1_();
             model.setboothslist = new List<CreatBoothsViewModel>();
             var e = _context.exhibitions.Where(e => e.exhibitId == exhibitId);
             Exhibition exhibition = e.FirstOrDefault();
-            List<Booths> booths3 =  _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 3).ToList();
-            List<Booths> booths2 =  _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 2).ToList();
-            List<Booths> booths1 =  _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 1).ToList();
+            List<Booths> booths3 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 3).ToList();
+            List<Booths> booths2 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 2).ToList();
+            List<Booths> booths1 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 1).ToList();
 
             model.exhibitId = exhibition.exhibitId;
             model.exhibitName = exhibition.exhibitName;
@@ -57,7 +67,7 @@ namespace Fairy_project.Controllers
             model.ex_totalImcome = exhibition.ex_totalImcome;
             model.ticket_Peice = exhibition.ticket_Price;
 
-            if (booths3.Count >0)
+            if (booths3.Count > 0)
             {
                 CreatBoothsViewModel booth3 = new CreatBoothsViewModel();
                 booth3.boothLv = "大型";
@@ -91,9 +101,8 @@ namespace Fairy_project.Controllers
             string img_dir = @$"wwwroot/images/";
             Random myRand = new Random();
             var e = _context.exhibitions.Where(e => e.exhibitId == model.exhibitId);
-            Exhibition exhibition =  e.FirstOrDefault();
+            Exhibition exhibition = e.FirstOrDefault();
             exhibition.exhibitName = model.exhibitName;
-            exhibition.exhibitStatus = 1;
             exhibition.datefrom = model.datefrom;
             exhibition.dateto = model.dateto;
             exhibition.ex_Description = model.ex_description;
@@ -131,10 +140,9 @@ namespace Fairy_project.Controllers
                 }
 
             }
-             
             _context.exhibitions.Update(exhibition);
 
-            foreach(var booth in _context.boothMaps)
+            foreach (var booth in _context.boothMaps)
             {
                 if (booth.e_Id == model.exhibitId)
                 {
@@ -143,31 +151,36 @@ namespace Fairy_project.Controllers
             }
 
             int boothnumber = 1;
-            for (int i = 0; i < model.setboothslist.Count; i++)
+            if (model.setboothslist != null)
             {
-                for (int j = 0; j < model.setboothslist[i].boothsum; j++)
+                for (int i = 0; i < model.setboothslist.Count; i++)
                 {
-                    Booths booths = new Booths();
-                    booths.boothNumber = boothnumber;
-                    booths.boothState = 0;
-                    if (model.setboothslist[i].boothLv == "大型")
+                    for (int j = 0; j < model.setboothslist[i].boothsum; j++)
                     {
-                        booths.boothLv = 3;
+                        Booths booths = new Booths();
+                        booths.boothNumber = boothnumber;
+                        booths.boothState = 0;
+                        if (model.setboothslist[i].boothLv == "大型")
+                        {
+                            booths.boothLv = 3;
+                        }
+                        else if (model.setboothslist[i].boothLv == "中型")
+                        {
+                            booths.boothLv = 2;
+                        }
+                        else if (model.setboothslist[i].boothLv == "小型")
+                        {
+                            booths.boothLv = 1;
+                        }
+                        booths.boothPrice = model.setboothslist[i].boothPrice;
+                        booths.e_Id = model.exhibitId;
+                        await _context.boothMaps.AddAsync(booths);
+                        boothnumber++;
                     }
-                    else if (model.setboothslist[i].boothLv == "中型")
-                    {
-                        booths.boothLv = 2;
-                    }
-                    else if (model.setboothslist[i].boothLv == "小型")
-                    {
-                        booths.boothLv = 1;
-                    }
-                    booths.boothPrice = model.setboothslist[i].boothPrice;
-                    booths.e_Id = model.exhibitId;
-                    await _context.boothMaps.AddAsync(booths);
-                    boothnumber++;
                 }
+
             }
+
             await _context.SaveChangesAsync();
             return RedirectToAction("Master");
         }
@@ -218,31 +231,35 @@ namespace Fairy_project.Controllers
             }
             _context.exhibitions.Add(exhibition);
 
-            int boothnumber = 1;
-            for (int i = 0; i < model.setboothslist.Count; i++)
+            if (model.setboothslist != null)
             {
-                for (int j = 0; j < model.setboothslist[i].boothsum; j++)
+                int boothnumber = 1;
+                for (int i = 0; i < model.setboothslist.Count; i++)
                 {
-                    Booths booths = new Booths();
-                    booths.boothNumber = boothnumber;
-                    booths.boothState = 0;
-                    if (model.setboothslist[i].boothLv == "大型")
+                    for (int j = 0; j < model.setboothslist[i].boothsum; j++)
                     {
-                        booths.boothLv = 3;
+                        Booths booths = new Booths();
+                        booths.boothNumber = boothnumber;
+                        booths.boothState = 0;
+                        if (model.setboothslist[i].boothLv == "大型")
+                        {
+                            booths.boothLv = 3;
+                        }
+                        else if (model.setboothslist[i].boothLv == "中型")
+                        {
+                            booths.boothLv = 2;
+                        }
+                        else if (model.setboothslist[i].boothLv == "小型")
+                        {
+                            booths.boothLv = 1;
+                        }
+                        booths.boothPrice = model.setboothslist[i].boothPrice;
+                        booths.e_Id = model.exhibitId;
+                        _context.boothMaps.Add(booths);
+                        boothnumber++;
                     }
-                    else if (model.setboothslist[i].boothLv == "中型")
-                    {
-                        booths.boothLv = 2;
-                    }
-                    else if (model.setboothslist[i].boothLv == "小型")
-                    {
-                        booths.boothLv = 1;
-                    }
-                    booths.boothPrice = model.setboothslist[i].boothPrice;
-                    booths.e_Id = model.exhibitId;
-                    _context.boothMaps.Add(booths);
-                    boothnumber++;
                 }
+
             }
             await _context.SaveChangesAsync();
             return RedirectToAction("Master");
@@ -257,18 +274,20 @@ namespace Fairy_project.Controllers
             return RedirectToAction("Master");
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
+        public async Task<IActionResult> DeleteExhibition(int exhibitId)
+        {
+            var e = _context.exhibitions.Find(exhibitId);
+            _context.exhibitions.Remove(e);
+            foreach (var booth in _context.boothMaps)
+            {
+                if (booth.e_Id == exhibitId)
+                {
+                    _context.boothMaps.Remove(booth);
+                }
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Master");
+        }
 
 
 

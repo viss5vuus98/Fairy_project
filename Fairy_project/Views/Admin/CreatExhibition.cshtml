@@ -245,8 +245,9 @@
 
 
 
+        var i = 0;
+
         $('#manufacturerreport').on('click', (e) => {
-            console.log(e.target);
             $('#boothlevel').removeClass('c1').addClass('c2')
             if ($(e.target).hasClass('dropdown-item')) {
                 e.preventDefault();
@@ -260,12 +261,30 @@
                     $(e.target).closest('ul').prev().find('input').val($(e.target).text())
                 }
             }
+            else if ($(e.target).hasClass('deletebooth')) {
+                $(e.target).parent().parent().remove();
+                i = 0;
+                $('#manufacturerreport').find('.blv').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothLv`)
+                    i++;
+                })
+                i = 0;
+                $('#manufacturerreport').find('.bpri').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothPrice`)
+                    i++;
+                })
+                i = 0;
+                $('#manufacturerreport').find('.bsum').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothsum`)
+                    i++;
+                })
+            }
         })
 
-        var boothsum = 0;
         $('#addbooth').on('click', (e) => {
-            $(e.target).closest('div').before(`<div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2"><button class=" w-25 btn px-0 rounded-pill bg2 d-flex justify-content-center" data-bs-toggle="dropdown" aria-expanded="false"><input name="setboothslist[${boothsum}].boothLv" class="pe-none w-75 text-center border-0 h3 m-0 bg2 c1" value="攤位等級"></input><i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button><ul class="dropdown-menu ms-5 text-center p-0"><li><a class="dropdown-item h4 m-0" href="#">大型</a></li><li><a class="dropdown-item h4 m-0" href="#">中型</a></li><li><a class="dropdown-item h4 m-0" href="#">小型</a></li></ul><h3 class="w-25 m-0"></h3><div class="w-25"><input name="setboothslist[${boothsum}].boothPrice" class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2"placeholder="輸入價格" type="number" autocomplete="off"></input></div><div class="w-25"><input name="setboothslist[${boothsum}].boothsum" class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2"placeholder="輸入數量" type="number" autocomplete="off"></input></div></div>`)
-            boothsum++
+            e.preventDefault();
+            $(e.target).closest('div').before(`<div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2"><button class="w-25 btn px-0 rounded-pill bg2 d-flex justify-content-center" data-bs-toggle="dropdown" aria-expanded="false"><input name="setboothslist[${i}].boothLv" class="pe-none w-75 text-center border-0 h3 m-0 bg2 c1 blv" value="攤位等級"></input><i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button><ul class="dropdown-menu ms-5 text-center p-0"><li><a class="dropdown-item h4 m-0" href="#">大型</a></li><li><a class="dropdown-item h4 m-0" href="#">中型</a></li><li><a class="dropdown-item h4 m-0" href="#">小型</a></li></ul><h3 class="w-25 m-0"></h3><div class="w-25"><input name="setboothslist[${i}].boothPrice" class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2 bpri"placeholder="輸入價格" type="number" autocomplete="off"></input></div><div class="w-25"><input name="setboothslist[${i}].boothsum" class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2 bsum"placeholder="輸入數量" type="number" autocomplete="off"></input><i class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i></div></div>`)
+            i++
         })
 
 
