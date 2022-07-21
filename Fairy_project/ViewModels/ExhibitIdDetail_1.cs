@@ -1,4 +1,6 @@
-﻿namespace Fairy_project.ViewModels
+﻿using Fairy_project.Models;
+
+namespace Fairy_project.ViewModels
 {
     public class ExhibitIdDetail_1_
     {
@@ -19,6 +21,10 @@
         public int? ticket_Peice { get; set; }
 
         public List<CreatBoothsViewModel>? setboothslist { get; set; }
+
+        //---------------------------------------------------
+
+        public List<CheckApplyViewModel>? applylist { get; set; }
 
     }
 }
