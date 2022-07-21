@@ -1918,8 +1918,6 @@ E:\WooHouse_project\Fairy_project\bin\Debug\net6.0\runtimes\win-arm\native\Micro
 E:\WooHouse_project\Fairy_project\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 E:\WooHouse_project\Fairy_project\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 E:\WooHouse_project\Fairy_project\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-E:\WooHouse_project\Fairy_project\bin\Debug\net6.0\runtimes\win-arm\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
-E:\WooHouse_project\Fairy_project\bin\Debug\net6.0\runtimes\win-arm64\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
 E:\WooHouse_project\Fairy_project\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
 E:\WooHouse_project\Fairy_project\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
 E:\WooHouse_project\Fairy_project\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
