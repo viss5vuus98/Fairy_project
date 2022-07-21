@@ -88,12 +88,31 @@ function drawLabelFifth() {
     context.fillText('展覽區域', 1, 26);
 
 }
+function drawLabelSixth() {
+    let canvas = document.getElementById('canvasName')
+    let context = canvas.getContext('2d')
+    canvas.width = 140
+    canvas.height = 31
+    context.beginPath();
+    context.fillStyle = "#DDCFC2";
+    context.moveTo(33, 31);
+    context.lineTo(38, 16);
+    context.lineTo(140, 16);
+    context.lineTo(135, 31);
+    context.fill();
+    context.beginPath();
+    context.fillStyle = "#3B3131"
+    context.font = "bold 32px Noto Sans TC";
+    context.fillText('展覽名稱', 1, 26);
+
+}
 function load() {
     doLabelFirst();
     drawLabelSec();
     drawLabelThird();
     drawLabelForth();
     drawLabelFifth();
+    drawLabelSixth();
 }
 window.addEventListener('load', load);
 
@@ -108,16 +127,17 @@ $(() => {
 });
 //展覽輪播
 $(() => {
-    
+
     let ul = $("ul#train");
     let li = $("ul#train li")
     console.log(li.css("width"))
     const MOVE = parseInt(li.css("width").replace('px', '')) + 40;
-    const MAX_ULWIDTH = parseInt(ul.css("width").replace('px', ''))+200;
+    const MAX_ULWIDTH = parseInt(ul.css("width").replace('px', '')) + 100;
+    console.log(MAX_ULWIDTH);
     let next = $("#btn-next");
     let prev = $("#btn-prev");
     let position = 0;
-    
+
     next.click((e) => {
         if (position > -MAX_ULWIDTH) {
             ul.css("transform", `translateX(${position -= MOVE}px)`)
@@ -131,10 +151,21 @@ $(() => {
             ul.css("transform", `translateX(${position += MOVE}px)`)
         }
     })
-    li.click((e) => {
-       
-        console.log(li[e.target].
+
+    $(() => {
+        li.click((e) => {
+
+
+            let itemWidth = $(e.target).eq(0).css('width').replace('px', '');
+            let index = li.index
+            console.log(li)
+            console.log(itemWidth)
+            console.log(index)
+            let centerPos = (position - (index * itemWidth))
+            ul.css("transform", `translateX(${centerPos}px)`)
+        })
     })
+
 
     //點中到中間 該項目
 })

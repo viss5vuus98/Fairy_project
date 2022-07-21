@@ -1,13 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Fairy_project.Models;
+using Fairy_project.ViewModels;
 
 namespace Fairy_project.Controllers
 {
     public class ManufacturerController : Controller
     {
-        //[Authorize(Roles = "Admin,Manufacturer")]
-        public IActionResult Index()
+        private readonly ServerContext _context;
+
+        public ManufacturerController(ServerContext context)
         {
+            _context = context;
+        }
+        //[Authorize(Roles = "Admin,Manufacturer")]
+        [HttpGet]
+        public IActionResult Index(GetBoothsViewModel model)
+        {
+            Exhibition exhibition =new Exhibition();
+            Booths booths  = new Booths();
             return View();
         }
 

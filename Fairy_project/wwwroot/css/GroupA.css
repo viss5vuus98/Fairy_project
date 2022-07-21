@@ -214,7 +214,7 @@ body {
 
 .bg-c-Dtl {
     background-color: #ACC2C2;
-    width: 80%;
+    width: 75%;
     height: 100%;
     border-radius: 47px;
 }
@@ -279,7 +279,8 @@ textarea {
 }
 
 .zonebtn {
-    margin: 0px;
+    margin: 1rem;
+    width: 1rem;
     background-color: #ACC2C2;
 }
 
@@ -288,6 +289,7 @@ textarea {
     }
 
     .zonebtn:active,.zonebtn:focus {
+        
         border: groove 5px #e1e9e9;
     }
 

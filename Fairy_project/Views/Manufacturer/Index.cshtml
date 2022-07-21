@@ -1,4 +1,6 @@
-﻿@section Style{
+﻿@model IEnumerable<Fairy_project.ViewModels.GetBoothsViewModel>
+@using Fairy_project.ViewModels;
+@section Style{
     <link rel="stylesheet" href="~/css/GroupA.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/slick-carousel/slick.css" asp-append-version="true" />
     <style>
@@ -16,11 +18,19 @@
                 </canvas>
             </div>
         </div>
-        <div class="row  tab ">
-            <ul class="tab-title d-flex">
-                <li><a class="btn zonebtn m-2" role="button" href="#aZone">A區</a></li>
-                <li><a class="btn zonebtn m-2" role="button" href="#bZone">B區</a></li>
-            </ul>
+        <div class="row  tab">
+            <div class="w-75">
+                <ul class="tab-title d-flex ">
+                    <li><a class="btn zonebtn " role="button" href="#aZone">A區</a></li>
+                    <li><a class="btn zonebtn " role="button" href="#bZone">B區</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="m-3">
+                <canvas id="canvasName">
+                </canvas>
+            </div>
         </div>
         <div class="row show-list" id="aZone">
             <div class="col-2 d-flex justify-content-center align-items-center">
@@ -31,62 +41,19 @@
             </div>
             <div class="col-8 p-0 d-flex show-wrap">
                 @*動態產生的區塊*@
+               @{
+                    //foreach(var item in Model){
+                    
+
+                    //}
+                }
                 <ul class="show-list m-0 align-items-center d-flex justify-content-start w-100 " id="train" role="tablist">
                     <li>
                         <button class="btn btn-woo btn-sm">
                             AAA
                         </button>
                     </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            BBB
-                        </button>
-                    </li>
+
                 </ul>
             </div>
             <div class="col-2 d-flex justify-content-center align-items-center">
@@ -134,9 +101,9 @@
         <div class="row">
             <div class="col">
             </div>
-            <div class="col"><button class="btn btn-dark">A</button></div>
-            <div class="col"><button class="btn btn-dark">B</button></div>
-            <div class="col"><button class="btn btn-dark">C</button></div>
+            <div class="col"><button class="btn btn-dark">大型</button></div>
+            <div class="col"><button class="btn btn-dark">中型</button></div>
+            <div class="col"><button class="btn btn-dark">小型</button></div>
         </div>
         <div class="row">
             <div class="m-3">
