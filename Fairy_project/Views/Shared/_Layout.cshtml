@@ -80,25 +80,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     @await Html.PartialAsync("_ToastPartial")
-    <script>
-        //$('.cart').click(function(e) {
-        //    //e.preventDefault();
-        //    const value = JSON.parse(sessionStorage.getItem('tickets')) || []
-        //    console.log(value)  // [{id : 34}] value[0].id
-        //    var data = "34|35";
-        //    //for (let i = 0; i < value.length; i++) {
-        //    //    data += value[i].id + "|";
-        //    //}
-        //    $.ajax({
-        //        type: "POST",
-        //        url: "@Url.Action("shoppingcart")",
-        //        dataType: "json",
-        //        data: { i: data },
-        //    }).done(function(data) {
-        //        console.log(data);
-        //    });
-        //})
-    </script>
 </body>
 </html>
 

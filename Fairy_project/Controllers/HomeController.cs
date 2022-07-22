@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Fairy_project.ViewModels;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Fairy_project.Controllers;
 
@@ -65,27 +66,41 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> shoppingcart(string i)
+    public async Task<IActionResult> shoppingcart(string i, [Formbody]Ticket str)
     {
-        Console.WriteLine(i);
-        var id = i.Split('|').ToArray();
-        Console.WriteLine(id.Length);
-        List <shoppingcartViewModel> exhibitions = new List<shoppingcartViewModel>();
-
-        for (int a = 0; a < id.Length; a++)
+        Console.WriteLine(str + "---------------------------------");
+        //_context.tickets.Add(str);
+        //_context.SaveChanges();
+        if (string.IsNullOrEmpty(i))
         {
-            int exid = Convert.ToInt32(id[a]);
-            Console.WriteLine(exid);
-            shoppingcartViewModel model = new shoppingcartViewModel()
-            {
-                exhibition = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == exid),
-                ticket = await _context.tickets.Where(m => m.e_Id == exid).FirstOrDefaultAsync(),
-            };
-            exhibitions.Add(model);
+            return RedirectToAction("exhibitionDetail");
         }
-        //ViewBag.exhibitions = exhibitions;
-        //Console.WriteLine(exhibitions[1].exhibition.datefrom);
-        return Json(exhibitions);
+        else
+        {
+            Console.WriteLine(i);
+            var id = i.Split("|").SkipLast(1).ToArray();
+            Console.WriteLine(id.Length);
+            List<shoppingcartViewModel> exhibitions = new List<shoppingcartViewModel>();
+
+            for (int a = 0; a < id.Length; a++)
+            {
+                int exid = Convert.ToInt32(id[a]);
+                Console.WriteLine(exid);
+                shoppingcartViewModel model = new shoppingcartViewModel()
+                {
+                    exhibition = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == exid),
+                    //ticket = await _context.tickets.Where(m => m.e_Id == exid).FirstOrDefaultAsync(),
+                };
+                exhibitions.Add(model);
+            }
+            //ViewBag.exhibitions = exhibitions;
+            //Console.WriteLine(exhibitions[1].exhibition.datefrom);
+            return Json(exhibitions);
+        }
+        //List<Ticket> result = new List<Ticket>();
+        //var result = JsonConvert.DeserializeObject<Ticket>(str);
+        
+        //Console.WriteLine(result);
     }
 
 
