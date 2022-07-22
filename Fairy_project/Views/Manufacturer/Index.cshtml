@@ -40,21 +40,12 @@
                 </button>
             </div>
             <div class="col-8 p-0 d-flex show-wrap">
-                @*動態產生的區塊*@
-               @{
-                    foreach(var item in Model){
-                    
-                <ul class="show-list m-0 align-items-center d-flex justify-content-start w-100 " id="train" role="tablist">
-                    <li>
-                        <button class="btn btn-woo btn-sm">
-                            @
-                        </button>
+
+                <ul class="m-0 align-items-center d-flex justify-content-start w-100 " id="train" role="tablist">
+                    <li class="showName">
+
                     </li>
-
                 </ul>
-
-                    }
-                }
             </div>
             <div class="col-2 d-flex justify-content-center align-items-center">
                 <button id="btn-next" class="next" type="button">
@@ -66,27 +57,21 @@
 
         <div id="bZone" class="row show-list">
             <div class="col-2 d-flex justify-content-center align-items-center">
-                <button class="prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <button id="btn-prev" class="prev" type="button">
                     <i class="fa-solid fa-angle-left fa-4x"></i>
                     <span class="visually-hidden">Previous</span>
                 </button>
             </div>
-            <div class="col-8">
-                @*動態產生的區塊*@
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+            <div class="col-8 p-0 d-flex show-wrap">
+
+                <ul class="m-0 align-items-center d-flex justify-content-start w-100 " id="train" role="tablist">
+                    <li class="showName">
+
                     </li>
                 </ul>
             </div>
             <div class="col-2 d-flex justify-content-center align-items-center">
-                <button class="next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <button id="btn-next" class="next" type="button">
                     <i class="fa-solid fa-angle-right fa-4x"></i>
                     <span class="visually-hidden">Next</span>
                 </button>

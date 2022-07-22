@@ -280,7 +280,7 @@ textarea {
 
 .zonebtn {
     margin: 1rem;
-    width: 1rem;
+    width: auto;
     background-color: #ACC2C2;
 }
 

@@ -1,4 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using Fairy_project.Models;
 using Fairy_project.ViewModels;
@@ -15,12 +21,12 @@ namespace Fairy_project.Controllers
         }
         //[Authorize(Roles = "Admin,Manufacturer")]
         [HttpGet]
-        public IActionResult Index(GetBoothsViewModel model)
+        public async Task<IActionResult> Index(GetBoothsViewModel model)
         {
             Exhibition exhibition =new Exhibition();
             Booths booths  = new Booths();
             
-            return View();
+            return View(/*await model.*/);
         }
 
         public IActionResult Policy()

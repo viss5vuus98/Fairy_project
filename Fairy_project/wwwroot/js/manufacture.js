@@ -134,8 +134,8 @@ $(() => {
     const MOVE = parseInt(li.css("width").replace('px', '')) + 40;
     const MAX_ULWIDTH = parseInt(ul.css("width").replace('px', '')) + 100;
     console.log(MAX_ULWIDTH);
-    let next = $("#btn-next");
-    let prev = $("#btn-prev");
+    let next = $(".next");
+    let prev = $(".prev");
     let position = 0;
 
     next.click((e) => {
@@ -169,10 +169,49 @@ $(() => {
 
     //點中到中間 該項目
 })
+//展覽按鈕串資料庫
+
+
+$(() => {
+    let show = [
+        ["a", "ACC"],
+        ["a", "AAA"],
+        ["a", "ABB"],
+        ["b", "BAA"],
+        ["b", "BBB"],
+        ["b", "BCC"],
+        ["a", "ACC"],
+        ["a", "AAA"],
+        ["a", "ABB"],
+        ["b", "BAA"],
+        ["b", "BBB"],
+        ["b", "BCC"],
+    ]
+    let aZone = $("#aZone");
+    let bZone = $("#bZone");
+
+    for (let i = 0; i < show.length; i++) {
+
+        if (show[i][0] === "a") {
+            $(aZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
+                           ${show[i][1]}
+                        </button>`)
+            console.log(i)
+        }
+        if (show[i][0] === "b") {
+            $(bZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
+                           ${show[i][1]}
+                        </button>`)
+
+        }
+    }
+})
+
 //選擇展覽
 $(() => {
 
     let li = $("ul.show-list li");
     $(li.eq(0).addClass("active").find("button")).siblings(".btn-woo").hide();
 })
+
 
