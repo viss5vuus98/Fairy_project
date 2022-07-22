@@ -12,9 +12,7 @@
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="ViewModels" expanded="True">
-                <Node name="CreatBoothsViewModel.cs" selected="True" />
-              </Node>
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Login" expanded="True" />
                 <Node name="Shared" expanded="True" />
