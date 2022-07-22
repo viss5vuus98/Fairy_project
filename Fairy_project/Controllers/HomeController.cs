@@ -34,17 +34,25 @@ public class HomeController : Controller
         return View();
     }
     [Route("Home/exhibitionDetail/{exhibitId}")]
-    public async Task<IActionResult> exhibitionDetail(string exhibitId)
+    public IActionResult exhibitionDetail(string exhibitId)
     {
-        int id = Convert.ToInt32(exhibitId);
-        var theExhibit = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == id);
-        if (theExhibit == null)
+        
+        var id = Convert.ToInt32(exhibitId);
+        eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
+        {
+            Exhibition = _context.exhibitions.FirstOrDefault(m => m.exhibitId == id),
+        };
+
+
+        //var theExhibit =  _context.exhibitions.FirstOrDefault(m => m.exhibitId == id);
+
+        if (eDrtailViewModel == null)
         {
             Console.WriteLine("NULLLLLLLLLLLLLLL");
             return View();
         }
-        IList<eDrtailViewModel> manufactures = (IList<eDrtailViewModel>)_context.boothMaps.OrderBy(m => m).Take(3);
-        return View(theExhibit);
+        //IList<eDrtailViewModel> manufactures = _context.boothMaps.OrderBy(m => m).Take(3);
+        return View(eDrtailViewModel);
     }
 
     public IActionResult exhibitionSearch()

@@ -14,5 +14,5 @@ public class Member
     public string? gender { get; set; }
     public string? address { get; set; }
     public string? phoneNumber { get; set; }
-
+    //public Permissions Permissions { get; set; }
 }

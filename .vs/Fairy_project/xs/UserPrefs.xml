@@ -5,46 +5,22 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Login/Index.cshtml">
-    <Files>
-      <File FileName="Fairy_project/wwwroot/js/CreateAcc.js" Line="6" Column="1" />
-      <File FileName="Fairy_project/Views/Home/exhibitionDetail.cshtml" Line="15" Column="61" />
-      <File FileName="Fairy_project/Views/Login/Index.cshtml" Line="83" Column="58" />
-      <File FileName="Fairy_project/wwwroot/js/eDetail.js" Line="1" Column="1" />
-      <File FileName="Fairy_project/wwwroot/js/manufacture.js" Line="1" Column="1" />
-      <File FileName="Fairy_project/wwwroot/js/site.js" Line="1" Column="1" />
-      <File FileName="Fairy_project/Views/Login/NoAuthorization.cshtml" Line="1" Column="1" />
-      <File FileName="Fairy_project/Views/Manufacturer/_MNavbarView.cshtml" Line="1" Column="1" />
-      <File FileName="Fairy_project/Views/Manufacturer/_MFooterView.cshtml" Line="1" Column="1" />
-      <File FileName="Fairy_project/Controllers/LoginController.cs" Line="105" Column="2" />
-      <File FileName="Fairy_project/Controllers/HomeController.cs" Line="1" Column="1" />
-      <File FileName="Fairy_project/Models/exhibition.cs" Line="1" Column="1" />
-      <File FileName="Fairy_project/Models/ErrorViewModel.cs" Line="1" Column="1" />
-      <File FileName="Fairy_project/Models/Apply.cs" Line="1" Column="1" />
-      <File FileName="Fairy_project/Models/Area.cs" Line="1" Column="1" />
-      <File FileName="Fairy_project/Models/Member.cs" Line="16" Column="25" />
-      <File FileName="Fairy_project/Models/Permissions.cs" Line="1" Column="1" />
-      <File FileName="Fairy_project/Models/ServerContext.cs" Line="1" Column="1" />
-      <File FileName="Fairy_project/Models/Manufactures.cs" Line="17" Column="1" />
-      <File FileName="Fairy_project/Views/Home/exhibitionSearch.cshtml" Line="57" Column="65" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True" />
-              <Node name="ViewModels" expanded="True" />
+              <Node name="ViewModels" expanded="True">
+                <Node name="CreatBoothsViewModel.cs" selected="True" />
+              </Node>
               <Node name="Views" expanded="True">
-                <Node name="Admin" expanded="True" />
-                <Node name="Home" expanded="True" />
                 <Node name="Login" expanded="True" />
-                <Node name="Manufacturer" expanded="True" />
+                <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True" />
+                <Node name="css" expanded="True" />
               </Node>
             </Node>
           </Node>

@@ -10,5 +10,6 @@ namespace Fairy_project.Models
         [MaxLength(50)]
         public string? password { get; set; }
         public int? permissionsLv { get; set; }
+        //public List<Member> Members { get; set; }
     }
 }

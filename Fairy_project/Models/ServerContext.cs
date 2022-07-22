@@ -11,6 +11,16 @@ namespace Fairy_project.Models
             optionsBuilder.UseSqlServer("Server=tcp:wowoo.database.windows.net,1433;Initial Catalog=wowoo;Persist Security Info=False;User ID=ispanwo;Password=P@ssw0rd-iii;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Member>()
+        //        .HasOne(p => p.Permissions)
+        //        .WithMany(b => b.Members);
+        //    modelBuilder.Entity<Permissions>()
+        //        .HasMany(p => p.Members)
+        //        .WithOne();
+        //}
+
         public DbSet<Exhibition> exhibitions { get; set; }
         public DbSet<Manufactures> manufactures { get; set; }
         public DbSet<Member> members { get; set; }

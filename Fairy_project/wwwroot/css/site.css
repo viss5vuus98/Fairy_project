@@ -182,12 +182,16 @@ header {
     padding: 0 1rem;
 }
 
+.navbar_title {
+    margin: auto 0;
+}
+
 .navbar_link,
 .navbar_icon {
     display: none;
 }
 
-.navbar h2,
+.navbar_title,
 .navbar label {
     font-size: 1.4rem;
     transition: 0.3s linear;
@@ -268,14 +272,21 @@ header {
 }
 
 @media screen and (min-width: 576px) {
-    .navbar .btn_humbuger {
+    .navbar_title {
+        margin: 0;
+        line-height: 0;
+        height: 80%;
+    }
+    ._humbuger,
+    ._humbuger::before,
+    ._humbuger::after {
         display: none;
     }
 
     .navbar_title a {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
         transition: 0.4s linear;
-        margin-bottom: .3rem;
+        line-height: 100%;
     }
 
     .navbar_link_a {
@@ -288,10 +299,11 @@ header {
 
     .navbar_link {
         height: 100%;
+        min-width: 300px;
         display: flex;
         justify-content: end;
         align-items: center;
-        flex: 0 1 30%;
+        flex: 0 0 30%;
         gap: 20px;
     }
     .navbar.nav_onscroll {
@@ -307,7 +319,7 @@ header {
         color: #666;
     }
     .nav_onscroll .navbar_title a {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         transition: 0.4s linear;
         color: #666;
     }

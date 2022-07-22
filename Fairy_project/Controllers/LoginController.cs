@@ -5,11 +5,13 @@ using System.Security.Claims;
 
 using Fairy_project.Models;
 using Fairy_project.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace Fairy_project.Controllers
 {
     public class LoginController : Controller
     {
+
         private ServerContext _context;
         public LoginController(ServerContext context)
         {
@@ -32,7 +34,6 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult MemberCreateAcc(LoginViewModels mem)
         {
-            
 
             if (mem.permissions != null)
             {
@@ -99,9 +100,6 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult Index(LoginViewModels mem, string uid, string pwd)
         {
-            //MemberCreate(mem);
-            //ManufacturerCreate(mem);
-            PermissionsCreate(mem);
             var member = _context.Permissions.FirstOrDefault(m => m.account == uid && m.password == pwd);
             //var account = member.account;
             if (member != null)
@@ -110,7 +108,7 @@ namespace Fairy_project.Controllers
                 switch (member.permissionsLv)
                 {
                     case 1:
-                        permissions = "Member";
+                        permissions = "Home";
                         break;
                     case 2:
                         permissions = "Manufacturer";
@@ -125,6 +123,7 @@ namespace Fairy_project.Controllers
                 //var memberid = _context.members.FirstOrDefault(m => m.memberAc == account);
                 IList<Claim> claims = new List<Claim> {
                        new Claim(ClaimTypes.Name, member.account),
+                       new Claim(ClaimValueTypes.Email, "123"),
                        //new Claim(ClaimTypes.NameIdentifier, memberid.memberId.ToString()),
                        new Claim(ClaimTypes.Role, permissions)
                 };
@@ -137,6 +136,17 @@ namespace Fairy_project.Controllers
                     new ClaimsPrincipal(claimsIndentity),
                     authProperties);
                 TempData["Success"] = "登入成功";
+                var account = member.account;
+                if (permissions == "Home")
+                {
+                    var person = _context.members.FirstOrDefault(m => m.memberAc == account);
+                    TempData["MemberId"] = person.memberId;
+                }else if (permissions == "Manufacturer")
+                {
+                    var person = _context.manufactures.FirstOrDefault(m => m.manufactureAcc == account);
+                    TempData["manufactureId"] = person.manufactureId;
+                }
+               
                 return RedirectToAction("Index", permissions);
             }
             TempData["Error"] = "帳密錯誤，請重新檢查";

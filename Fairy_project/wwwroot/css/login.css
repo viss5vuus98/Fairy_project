@@ -20,7 +20,7 @@ button {
 }
 
 .tip {
-    font-size: 20px;
+    m--up font-size: 20px;
     margin: 40px auto 50px;
     text-align: center;
 }
@@ -74,6 +74,11 @@ button {
     color: #fff;
     font-size: 15px;
     cursor: pointer;
+}
+
+.submit:hover {
+    opacity: 0.8;
+    border: 1px solid #ccc;
 }
 
 .img {
@@ -167,6 +172,7 @@ button {
     text-transform: uppercase;
     font-size: 15px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
     .img__btn:after {
@@ -199,6 +205,7 @@ button {
             -webkit-transform: translateY(-72px);
             transform: translateY(-72px);
         }
+
 
 .content.s--signup .img__btn span.m--in {
     -webkit-transform: translateY(0);
@@ -292,6 +299,14 @@ input {
     font-size: 16px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
     text-align: center;
+}
+
+#MF_permissions {
+    display: none;
+}
+
+#MF_permissionsLv {
+    display: none;
 }
 
 .forgot-pass {

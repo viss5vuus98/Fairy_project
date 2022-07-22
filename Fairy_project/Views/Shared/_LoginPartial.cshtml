@@ -1,27 +1,30 @@
-﻿@*@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
-@if (SignInManager.IsSignedIn(User))
-{
-    <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
-    </li>
-}
-</ul>*@
+    @if (TempData["MemberId"] != null)
+    {
+        <ul class="navbar_link">
+            <li class="navbar_li"><a class="navbar_link_a" href="#">@User.Identity.Name.Split("@")[0] 你好</a></li>
+            <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Home" asp-action="#">購物車</a></li>
+            <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Member" asp-action="MyTicket">票券頁面</a></li>
+            <li class="navbar_li"><a href="@Url.Action("Index", "Home")" class="navbar_link_a">登出</a></li>
+        </ul>
+        <ul class="navbar_icon">
+            <li class="navbar_li"><a href="＃"><i class="fa-solid fa-cart-shopping navbar_icon_item"></i></a></li>
+            <li class="navbar_li"><a href="＃" class="navbar_link_a"><i class="fa-solid fa-user-astronaut navbar_icon_item"></i></a></li>
+            <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Member" asp-action="MyTicket"><i class="fa-solid fa-ticket-simple navbar_icon_item"></i></a></li>
+            <li class="navbar_li"><a href="@Url.Action("Index", "Home")"><i class="fa-solid fa-dungeon navbar_icon_item navbar_link_a"></i></a></li>
+        </ul>
+    }
+    else
+    {
+        <ul class="navbar_link">            
+            <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Login" asp-action="Index">登入</a></li>
+        </ul>
+        <ul class="navbar_icon">
+            <li class="navbar_li"><a  asp-area="" asp-controller="Login" asp-action="Index"><i class="fa-solid fa-dungeon navbar_icon_item navbar_link_a"></i></a></li>
+        </ul>
+    }
+
 
