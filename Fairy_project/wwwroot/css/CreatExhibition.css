@@ -26,11 +26,6 @@ i {
     background-color: #fafafa;
 }
 
-    #titleinput:disabled {
-        color: #5C5858;
-        background-color: #fafafa;
-    }
-
     #titleinput:focus {
         background-color: #E5E4E2;
     }
@@ -65,5 +60,9 @@ input {
     }
 
 #manufacturerreport ul li a:active {
+    background-color: #B6B6B4;
+}
+
+#areaedit ul li a:active {
     background-color: #B6B6B4;
 }

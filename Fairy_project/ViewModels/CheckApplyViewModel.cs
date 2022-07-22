@@ -24,5 +24,10 @@ namespace Fairy_project.ViewModels
         public string? manufactureName { get; set; }
         public string? mfPerson { get; set; }
         public string? mfPhoneNum { get; set; }
+
+
+        public int? boothLv { get; set; }
+        public int? boothPrice { get; set; }
+
     }
 }

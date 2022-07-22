@@ -34,7 +34,43 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-12 my-5">
-                <h2 class="mx-5 mb-5">No.<input asp-for="exhibitId" class="h2 pe-none border-0 bg2" value="@Model.exhibitId" readonly></h2>
+                @{
+                    if (Model.exhibitStatus == 1)
+                    {
+                        <div id="areaedit" class="d-flex justify-content-around">
+                            <h2 class="mx-5 mb-5 w-50">No.<input asp-for="exhibitId" class="h2 pe-none border-0 w-50 bg2" value="@Model.exhibitId" readonly></h2>
+                            <button class="w-25 h-25 btn px-0 bg2 border border-1 d-flex justify-content-center"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <input asp-for="areaNumstring" type="text" id="areainput" class="pe-none w-75 text-center border-0 h3 m-0 bg2 c1"
+                               value="@Model.areaNumstring"></input>
+                                <i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i>
+                            </button>
+                            <ul class="dropdown-menu text-center p-0">
+                                <li><a class="dropdown-item h4 m-0" href="#">A</a></li>
+                                <li><a class="dropdown-item h4 m-0" href="#">B</a></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex justify-content-around">
+                            <h2 class="mx-5 mb-5 w-50">No.<input asp-for="exhibitId" class="h2 pe-none border-0 w-50 bg2" value="@Model.exhibitId" readonly></h2>
+                            @{
+                                if (Model.areaNumstring == "A")
+                                {
+                                    <h3 class="w-25 h-25 py-2 px-0 bg2 border border-1 text-center">展區 @Model.areaNumstring</h3>
+                                }
+                                else if (Model.areaNumstring == "B")
+                                {
+                                    <h3 class="w-25 h-25 py-2 px-0 bg2 border border-1 text-center">展區 @Model.areaNumstring</h3>
+                                }
+                            }
+                        </div>
+                    }
+                }
+
+
+
                 <div class="position-relative my-4">
                     <img id="ticketimg" class="rounded-3 border border-1 w-100" src="@Url.Content($"~/images/{Model.exhibit_T_img}")" alt="">
                     @{
@@ -261,7 +297,7 @@
                         }
                     }
                     <div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2">
-                        <a id="addbooth" href="#" class="w-100 h-100 border-0 text-reset bg2">
+                        <a id="addbooth" class="w-100 h-100 border-0 text-reset bg2">
                             <i class="w-100 h-100 fa-solid fa-plus fa-3x "></i>
                         </a>
                     </div>
@@ -272,7 +308,7 @@
                     <a asp-action="DeleteExhibition" asp-route-exhibitId="@Model.exhibitId" class="col-lg-3 col-sm-3 col-4 btn btn-danger fs-2">刪除展覽</a>
                 </div>
             }
-            else
+            else if (Model.exhibitStatus == 2 || Model.exhibitStatus == 3)
             {
                 <div class=" row rounded-3 p-3 my-5 bg1">
                     <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">承租額</h2>
@@ -309,17 +345,17 @@
             e.preventDefault()
         })
 
-        $(window).on('load', () => {
-            $.ajax({
-                type: "GET",
-                url: @Url.Action("_ApplyPartial","Admin",new {exhibitId = @Model.exhibitId}),
-            }).done((result) => {
-                alert("1");
-            }).fail(() => {
-                alert("0");
+        //$(window).on('load', () => {
+        //    $.ajax({
+        //        type: "GET",
+        //        url: @Url.Action("_ApplyPartial", "Admin", new { exhibitId = @Model.exhibitId }),
+        //    }).done((result) => {
+        //        alert("1");
+        //    }).fail(() => {
+        //        alert("0");
+        //    })
+        //})
 
-            })
-        })
 
         $('#edittitle').on('click', (e) => {
             $('#titleinput').removeClass('text-center').trigger('focus')
@@ -333,6 +369,16 @@
         $('#titleinput').on('blur', (e) => {
             $(e.target).addClass('text-center').css('pointer-events', 'none')
             $('#edittitle').css('pointer-events', 'all')
+        })
+
+        $('#areaedit').on('click', (e) => {
+            console.log(e.target)
+            if ($(e.target).text() == 'A') {
+                $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+            }
+            else if ($(e.target).text() == 'B') {
+                $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+            }
         })
 
         $('#ticketimginput').on('change', (e) => {

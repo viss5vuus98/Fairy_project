@@ -61,11 +61,20 @@ namespace Fairy_project.Controllers
             model.exhibit_T_img = exhibition.exhibit_T_img;
             model.exhibit_Pre_img = exhibition.exhibit_Pre_img;
             model.datefrom = exhibition.datefrom;
-            model.dateto = exhibition.dateto;
+            model.dateto = exhibition.dateto;            
             model.ex_description = exhibition.ex_Description;
             model.ex_personTime = exhibition.ex_personTime;
             model.ex_totalImcome = exhibition.ex_totalImcome;
             model.ticket_Peice = exhibition.ticket_Price;
+
+            if (exhibition.areaNum == 1)
+            {
+                model.areaNumstring = "A";
+            }
+            else if (exhibition.areaNum == 2)
+            {
+                model.areaNumstring = "B";
+            }
 
             if (booths3.Count > 0)
             {
@@ -93,32 +102,35 @@ namespace Fairy_project.Controllers
             }
 
 
-            //List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
-
-            model.applylist = new List<CheckApplyViewModel>();
-            List<Apply> applies = _context.Applies.Where(a => a.e_Id == exhibitId).ToList();
-            for (int i = 0; i < applies.Count; i++)
+            if (exhibition.exhibitStatus != 1)
             {
-                CheckApplyViewModel checkapply = new CheckApplyViewModel();
-                checkapply.applyNum = applies[i].applyNum;
-                checkapply.mf_Id = applies[i].mf_Id;
-                checkapply.mf_Id = applies[i].mf_Id;
-                checkapply.boothNumber = applies[i].boothNumber;
-                checkapply.checkState = applies[i].checkState;
-                checkapply.mf_logo = applies[i].mf_logo;
-                checkapply.mf_P_img = applies[i].mf_P_img;
-                checkapply.mf_Description = applies[i].mf_Description;
-                var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
-                Manufactures manufactures = m.FirstOrDefault();
-                checkapply.manufactureId = manufactures.manufactureId;
-                checkapply.manufactureAcc = manufactures.manufactureAcc;
-                checkapply.manufactureName = manufactures.manufactureName;
-                checkapply.mfPerson = manufactures.mfPerson;
-                checkapply.mfPhoneNum = manufactures.mfPhoneNum;
-                model.applylist.Add(checkapply);
+                model.applylist = new List<CheckApplyViewModel>();
+                List<Apply> applies = _context.Applies.Where(a => a.e_Id == exhibitId).ToList();
+                for (int i = 0; i < applies.Count; i++)
+                {
+                    CheckApplyViewModel checkapply = new CheckApplyViewModel();
+                    checkapply.applyNum = applies[i].applyNum;
+                    checkapply.mf_Id = applies[i].mf_Id;
+                    checkapply.boothNumber = applies[i].boothNumber;
+                    checkapply.checkState = applies[i].checkState;
+                    checkapply.mf_logo = applies[i].mf_logo;
+                    checkapply.mf_P_img = applies[i].mf_P_img;
+                    checkapply.mf_Description = applies[i].mf_Description;
+                    var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
+                    Manufactures manufactures = m.FirstOrDefault();
+                    checkapply.manufactureId = manufactures.manufactureId;
+                    checkapply.manufactureAcc = manufactures.manufactureAcc;
+                    checkapply.manufactureName = manufactures.manufactureName;
+                    checkapply.mfPerson = manufactures.mfPerson;
+                    checkapply.mfPhoneNum = manufactures.mfPhoneNum;
+                    model.applylist.Add(checkapply);
+                    var b = _context.boothMaps.Where(b => b.boothNumber == applies[i].boothNumber && b.e_Id == applies[i].e_Id);
+                    Booths booths = b.FirstOrDefault();
+                    checkapply.boothLv = booths.boothLv;
+                    checkapply.boothPrice = booths.boothPrice;
+                }
+
             }
-
-
 
             return View(model);
         }
@@ -138,6 +150,15 @@ namespace Fairy_project.Controllers
             exhibition.ex_personTime = model.ex_personTime;
             exhibition.ex_totalImcome = model.ex_totalImcome;
             exhibition.ticket_Price = model.ticket_Peice;
+
+            if (model.areaNumstring =="A")
+            {
+                exhibition.areaNum = 1;
+            }
+            else if (model.areaNumstring =="B")
+            {
+                exhibition.areaNum = 2;
+            }
 
             if (model.fexhibit_T_img != null)
             {
@@ -237,6 +258,14 @@ namespace Fairy_project.Controllers
             exhibition.ex_personTime = model.ex_personTime;
             exhibition.ex_totalImcome = model.ex_totalImcome;
             exhibition.ticket_Price = model.ticket_Peice;
+            if (model.areaNum == "A")
+            {
+                exhibition.areaNum = 1;
+            }
+            if (model.areaNum == "B")
+            {
+                exhibition.areaNum = 2;
+            }
 
             string Pimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_P_img.FileName);
             exhibition.exhibit_P_img = Pimgname;
