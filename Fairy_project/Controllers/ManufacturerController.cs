@@ -19,6 +19,7 @@ namespace Fairy_project.Controllers
         {
             Exhibition exhibition =new Exhibition();
             Booths booths  = new Booths();
+            
             return View();
         }
 
