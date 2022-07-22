@@ -115,7 +115,7 @@ function load() {
     drawLabelSixth();
 }
 window.addEventListener('load', load);
-
+let ul = $("ul#train");
 //展覽區域選擇顯示
 $(() => {
     let li = $("ul.tab-title li");
@@ -123,12 +123,13 @@ $(() => {
     li.click(function () {
         $($(this).find('a').attr("href")).show().siblings(".show-list").hide();
         $(this).addClass('active').siblings(".active").removeClass("active");
+        ul.css("transform", `translateX(0px)`)
     });
 });
 //展覽輪播
 $(() => {
 
-    let ul = $("ul#train");
+   
     let li = $("ul#train li")
     console.log(li.css("width"))
     const MOVE = parseInt(li.css("width").replace('px', '')) + 40;
@@ -172,40 +173,41 @@ $(() => {
 //展覽按鈕串資料庫
 
 
-$(() => {
-    let show = [
-        ["a", "ACC"],
-        ["a", "AAA"],
-        ["a", "ABB"],
-        ["b", "BAA"],
-        ["b", "BBB"],
-        ["b", "BCC"],
-        ["a", "ACC"],
-        ["a", "AAA"],
-        ["a", "ABB"],
-        ["b", "BAA"],
-        ["b", "BBB"],
-        ["b", "BCC"],
-    ]
-    let aZone = $("#aZone");
-    let bZone = $("#bZone");
+//$(() => {
+    
+//    let show = [
+//        ["a", "ACC"],
+//        ["a", "AAA"],
+//        ["a", "ABB"],
+//        ["b", "BAA"],
+//        ["b", "BBB"],
+//        ["b", "BCC"],
+//        ["a", "ACC"],
+//        ["a", "AAA"],
+//        ["a", "ABB"],
+//        ["b", "BAA"],
+//        ["b", "BBB"],
+//        ["b", "BCC"],
+//    ]
+//    let aZone = $("#aZone");
+//    let bZone = $("#bZone");
 
-    for (let i = 0; i < show.length; i++) {
+//    for (let i = 0; i < show.length; i++) {
 
-        if (show[i][0] === "a") {
-            $(aZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
-                           ${show[i][1]}
-                        </button>`)
-            console.log(i)
-        }
-        if (show[i][0] === "b") {
-            $(bZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
-                           ${show[i][1]}
-                        </button>`)
+//        if (show[i][0] === "a") {
+//            $(aZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
+                           
+//                        </button>`)
+//            console.log(i)
+//        }
+//        if (show[i][0] === "b") {
+//            $(bZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
+//                           ${show[i][1]}
+//                        </button>`)
 
-        }
-    }
-})
+//        }
+//    }
+//})
 
 //選擇展覽
 $(() => {

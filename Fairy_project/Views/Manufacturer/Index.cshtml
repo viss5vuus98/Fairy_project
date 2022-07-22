@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Fairy_project.ViewModels.GetBoothsViewModel>
-@using Fairy_project.ViewModels;
+﻿@using Fairy_project.ViewModels;
+@model IEnumerable<GetShowViewModels>
 @section Style{
     <link rel="stylesheet" href="~/css/GroupA.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/slick-carousel/slick.css" asp-append-version="true" />
@@ -126,7 +126,36 @@
     <script src="~/lib/slick-carousel/slick.min.js" asp-append-version="true"></script>
     <script src="~/js/manufacture.js" asp-append-version="true"></script>
     <script>
+        axios.get('@Url.Action("showName")').then(res => console.log(res.data)).catch(err=>console.log(err))
+        //$(() => {
+        //           $.ajax({
+        //    type: "POST",
+        //    url: "@Url.Action("showName")",
+        //    dataType: "json",
+           
+        //           }).done(function(data) {
+        //               console.log(data);
+        //           })
 
+            let aZone = $("#aZone");
+            let bZone = $("#bZone");
+
+            //for (let i = 0; i < show.length; i++) {
+
+            //    if (show[i][0] === "a") {
+            //        $(aZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
+
+            //                    </button>`)
+            //        console.log(i)
+            //    }
+            //    if (show[i][0] === "b") {
+            //        $(bZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
+            //                       ${show[i][1]}
+            //                    </button>`)
+
+            //    }
+            //}
+       // })
 
     </script>
     }

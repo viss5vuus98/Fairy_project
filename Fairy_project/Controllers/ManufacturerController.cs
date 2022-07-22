@@ -21,12 +21,18 @@ namespace Fairy_project.Controllers
         }
         //[Authorize(Roles = "Admin,Manufacturer")]
         [HttpGet]
-        public async Task<IActionResult> Index(GetBoothsViewModel model)
+        public ActionResult showName()
         {
-            Exhibition exhibition =new Exhibition();
-            Booths booths  = new Booths();
-            
-            return View(/*await model.*/);
+            GetShowViewModels m =new GetShowViewModels();
+            var a = _context.boothMaps.FirstOrDefault(m => m.boothLv == 1);
+            //m.bList = _context.boothMaps.FirstOrDefault(m=>m.boothLv==1);
+            //m.elist = _context.exhibitions;
+
+            return Json(a);
+        }
+        public IActionResult Index()
+        {
+            return View();
         }
 
         public IActionResult Policy()
