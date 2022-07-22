@@ -40,6 +40,14 @@ i {
         background-color: #fafafa;
     }
 
+.checkmao:hover {
+    opacity: .6;
+}
+
+.checkmax:hover {
+    opacity: .6;
+}
+
 label {
     cursor: pointer;
 }
@@ -48,8 +56,20 @@ input {
     outline: none;
 }
 
+#pagelist li button:hover {
+    background-color: #B6B6B4;
+}
 
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-    }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+
+#manufacturerreport ul li a:active {
+    background-color: #B6B6B4;
+}
+
+#areaedit ul li a:active {
+    background-color: #B6B6B4;
+}

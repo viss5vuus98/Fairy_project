@@ -61,7 +61,7 @@ namespace Fairy_project.Controllers
             model.exhibit_T_img = exhibition.exhibit_T_img;
             model.exhibit_Pre_img = exhibition.exhibit_Pre_img;
             model.datefrom = exhibition.datefrom;
-            model.dateto = exhibition.dateto;            
+            model.dateto = exhibition.dateto;
             model.ex_description = exhibition.ex_Description;
             model.ex_personTime = exhibition.ex_personTime;
             model.ex_totalImcome = exhibition.ex_totalImcome;
@@ -151,11 +151,11 @@ namespace Fairy_project.Controllers
             exhibition.ex_totalImcome = model.ex_totalImcome;
             exhibition.ticket_Price = model.ticket_Peice;
 
-            if (model.areaNumstring =="A")
+            if (model.areaNumstring == "A")
             {
                 exhibition.areaNum = 1;
             }
-            else if (model.areaNumstring =="B")
+            else if (model.areaNumstring == "B")
             {
                 exhibition.areaNum = 2;
             }
@@ -192,11 +192,14 @@ namespace Fairy_project.Controllers
             }
             _context.exhibitions.Update(exhibition);
 
-            foreach (var booth in _context.boothMaps)
+            if (model.exhibitStatus == 1)
             {
-                if (booth.e_Id == model.exhibitId)
+                foreach (var booth in _context.boothMaps)
                 {
-                    _context.boothMaps.Remove(booth);
+                    if (booth.e_Id == model.exhibitId)
+                    {
+                        _context.boothMaps.Remove(booth);
+                    }
                 }
             }
 

@@ -20,11 +20,11 @@
         </a>
     </div>
     @{
-        if (Model.applylist.Count < 11)
+        for (int i = 0; i < Model.applylist.Count; i++)
         {
-            for (int i = 0; i < Model.applylist.Count; i++)
+            if (i < 10)
             {
-                <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 bg2">
+                <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 bg2 apply">
                     <h3 class="w-25 m-0">@Model.applylist[i].manufactureName</h3>
                     <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
 
@@ -100,73 +100,111 @@
                         }
                     }
                 </div>
-            }
 
+            }
+            else
+            {
+                <div class="d-none col-lg-10 my-3 py-3 d-flex text-center rounded-3 bg2 apply">
+                    <h3 class="w-25 m-0">@Model.applylist[i].manufactureName</h3>
+                    <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
+
+
+                    <a href="" class="w-25 m-0 border-0 text-reset bg2" data-bs-toggle="modal"
+               data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">
+                        <h3>@Model.applylist[i].boothNumber</h3>
+                    </a>
+                    <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content bg2">
+                                <form>
+                                    <div class="row mx-3">
+                                        <div class="col-9">
+                                            <div class="d-flex justify-content-between pt-4">
+                                                <h2 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h2>
+
+                                                @{
+                                                    if (Model.applylist[i].boothLv == 3)
+                                                    {
+                                                        <h3 class="m-0">大型 / @Model.applylist[i].boothPrice $</h3>
+                                                    }
+                                                    else if (Model.applylist[i].boothLv == 2)
+                                                    {
+                                                        <h3 class="m-0">中型 / @Model.applylist[i].boothPrice $</h3>
+                                                    }
+                                                    else if (Model.applylist[i].boothLv == 1)
+                                                    {
+                                                        <h3 class="m-0">小型 / @Model.applylist[i].boothPrice $</h3>
+                                                    }
+
+                                                }
+                                            </div>
+                                            <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_P_img}")" alt="">
+                                            <p class="text-start h5 mx-3 p-4">
+                                                @Model.applylist[i].mf_Description
+                                            </p>
+                                        </div>
+                                        <div class="col-3 d-flex flex-column justify-content-center">
+                                            <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
+                                            <h4 class="my-2">@Model.applylist[i].manufactureName</h4>
+                                            <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
+                                            <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
+                                            <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
+                                            <div class="d-flex h-25 flex-column align-items-start mt-5 ms-5 my-3">
+                                                <i class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao">
+                                                    <span class="h5">通過</span>
+                                                </i>
+                                                <i class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax">
+                                                    <span class="h5">未通過</span>
+                                                </i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    @{
+                        if (Model.applylist[i].checkState == 0)
+                        {
+                            <h3 class="w-25 m-0 text-warning">待審核</h3>
+                        }
+                        else if (Model.applylist[i].checkState == 1)
+                        {
+                            <h3 class="w-25 m-0 text-danger">尚未付款</h3>
+                        }
+                        else if (Model.applylist[i].checkState == 2)
+                        {
+                            <h3 class="w-25 m-0 text-success">已付款</h3>
+                        }
+                    }
+                </div>
+
+            }
         }
+
     }
 
-    <div class="col-lg-3 col-sm-2 col-1 text-center my-3">
+    <div class="col-lg-2 col-sm-1 col-1 text-start my-3 mx-2">
         <a href="" class="text-reset p-0 my-3">
-            <i class="fa-solid fa-chevron-left opacity-75 fa-3x p-0"></i>
+            <i class="fa-solid fa-chevron-left opacity-75 fa-2x p-0"></i>
         </a>
     </div>
 
-    <div class="col-lg-6 col-sm-8 col-10 d-flex justify-content-center my-3">
+    <ul id="pagelist" class="col-lg-7 col-sm-8 col-8 d-flex list-unstyled justify-content-center align-items-center text-center m-0">
         @{
-            if (Model.applylist.Count > 0)
+            int page = 1;
+            for (int i = 0; i < Model.applylist.Count; i += 10)
             {
-                <div class="mx-lg-4 mx-sm-3 mx-2 mext-center">
-                    <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-1 opacity-75 fa-xl p-0"></i></a>
-                </div>
-            }
-            else if (Model.applylist.Count > 10)
-            {
-                <div class="mx-lg-4 mx-sm-3 mx-2 mext-center">
-                    <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-1 opacity-75 fa-xl p-0"></i></a>
-                </div>
-            }
-            else if (Model.applylist.Count > 20)
-            {
-                <div class="mx-lg-4 mx-sm-3 mx-2 text-center">
-                    <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-2 opacity-75 fa-xl p-0"></i></a>
-                </div>
-            }
-            else if (Model.applylist.Count > 30)
-            {
-                <div class="mx-lg-4 mx-sm-3 mx-2 text-center">
-                    <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-3 opacity-75 fa-xl p-0"></i></a>
-                </div>
-            }
-            else if (Model.applylist.Count > 40)
-            {
-                <div class="mx-lg-4 mx-sm-3 mx-2 text-center">
-                    <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-4 opacity-75 fa-xl p-0"></i></a>
-                </div>
+                <li><button class="border-0 h3 px-lg-3 py-2 mx-lg-3 mx-sm-1 rounded-pill bg1">@Html.Raw(page)</button></li>
+                page++;
             }
         }
-
-
-
-
-        @*        <div class="mx-lg-4 mx-sm-3 mx-2 text-center">
-        <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-5 opacity-75 fa-xl p-0"></i></a>
-        </div>
-        <div class="mx-lg-4 mx-sm-3 mx-2 text-center">
-        <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-6 opacity-75 fa-xl p-0"></i></a>
-        </div>
-        <div class="mx-lg-4 mx-sm-3 mx-2 text-center">
-        <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-7 opacity-75 fa-xl p-0"></i></a>
-        </div>
-        <div class="mx-lg-4 mx-sm-3 mx-2 text-center">
-        <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-8 opacity-75 fa-xl p-0"></i></a>
-        </div>
-        <div class="mx-lg-4 mx-sm-3 mx-2 text-center">
-        <a href="" class="text-reset p-0 my-3"><i class="fa-solid fa-9 opacity-75 fa-xl p-0"></i></a>
-        </div>*@
-    </div>
-    <div class="col-lg-3 col-sm-2 col-1 text-center my-3">
+    </ul>
+    <div class="col-lg-2 col-sm-1 col-1 text-end my-3 mx-2">
         <a href="" class="text-reset p-0 my-3">
-            <i class="fa-solid fa-chevron-right opacity-75 fa-3x p-0"></i>
+            <i class="fa-solid fa-chevron-right opacity-75 fa-2x p-0"></i>
         </a>
     </div>
 </div>
