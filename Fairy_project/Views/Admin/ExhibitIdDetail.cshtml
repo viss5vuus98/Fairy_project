@@ -345,18 +345,6 @@
         //    e.preventDefault()
         //})
 
-        //$(window).on('load', () => {
-        //    $.ajax({
-        //        type: "GET",
-        //        url: @Url.Action("_ApplyPartial", "Admin", new { exhibitId = @Model.exhibitId }),
-        //    }).done((result) => {
-        //        alert("1");
-        //    }).fail(() => {
-        //        alert("0");
-        //    })
-        //})
-
-
         $('#edittitle').on('click', (e) => {
             $('#titleinput').removeClass('text-center').trigger('focus')
             $(e.target).css('pointer-events', 'none')
@@ -463,7 +451,6 @@
         var i = @Model.setboothslist.Count;
 
         $('#manufacturerreport').on('click', (e) => {
-            console.log(e.target)
             if ($(e.target).hasClass('dropdown-item')) {
                 e.preventDefault();
                 if ($(e.target).text() == '大型') {
@@ -492,6 +479,22 @@
                     $(this).attr('name', `setboothslist[${i}].boothsum`)
                     i++;
                 })
+            } else if ($(e.target).hasClass('page')) {
+                e.preventDefault();
+                let from = ($(e.target).text() * 10) - 10
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("_ApplyPartial_ChangePage")',
+                    data: {
+                        exhibitId: @Model.exhibitId,
+                        offset: from,
+                    },
+                }).done((result) => {
+                    $('#manufacturerreport').html(result)
+                }).fail(() => {
+                    console.log("pagefail")
+                })
+
             }
         })
 
@@ -519,23 +522,19 @@
             return Math.round(ticketoriginal / parseInt(price)) * parseInt(price)
         }
 
-        $('#pagelist').on('click', (e) => {
-            console.log(e.target)
-            e.preventDefault();
-            //$('#pagelist').find('button').attr('disabled','')
-            $(e.target).attr('disabled', 'disabled')
-            let from = ($(e.target).text() * 10) - 10
-            let to = ($(e.target).text() * 10) - 1
-            for (let i = 0; i < $('.apply').length; i++) {
-                if (i >= from && i <= to) {
-                    $('.apply').eq(i).toggleClass('d-none')
-                }
-                else {
-                    if (!$('.apply').eq(i).hasClass('d-done')) {
-                        $('.apply').eq(i).addClass('d-none')
-                    }
-                }
-            }
+        $(window).on('load', () => {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("_ApplyPartial_ChangePage")',
+                data: {
+                    exhibitId: @Model.exhibitId,
+                    offset: 0,
+                },
+            }).done((result) => {
+                $('#manufacturerreport').html(result)
+            }).fail(() => {
+                console.log("pagefail")
+            })
         })
     </script>
     }

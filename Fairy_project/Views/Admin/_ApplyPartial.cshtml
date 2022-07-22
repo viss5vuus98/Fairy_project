@@ -1,210 +1,135 @@
 ﻿@model Fairy_project.ViewModels.ExhibitIdDetail_1_
+@{
+    if (Model.exhibitStatus != 1)
+    {
+        <div id="manufacturerreport" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
+            <input type="text" placeholder="輸入廠商ID"
+               class="col-lg-3 col-sm-6 col-6 m-3 py-2 text-center fw-lighter rounded-pill h2 border-0 bg2">
+            <div class="btn-group col-lg-3 col-sm-4 col-4">
+                <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <span id="searchstate" class="h2 c1">狀態</span>
+                </button>
+                <ul class="dropdown-menu w-75 mx-3 text-center p-0">
+                    <li><a class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
+                    <li><a class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
+                    <li><a class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-1 col-sm-1 col-1 text-center">
+                <a class="text-reset p-0 my-3">
+                    <i id="searchapply" class="fa-solid fa-magnifying-glass opacity-75 fa-3x p-0"></i>
+                </a>
+            </div>
+            @{
+                if (Model.applylist != null)
+                {
+                    for (int i = 0; i < Model.applylist.Count; i++)
+                    {
+                        <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 bg2 apply">
+                            <h3 class="w-25 m-0">@Model.applylist[i].manufactureName</h3>
+                            <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
 
-<div id="manufacturerreport" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
-    <input type="text" placeholder="輸入廠商ID"
-           class="col-lg-3 col-sm-6 col-6 m-3 py-2 text-center fw-lighter rounded-pill h2 border-0 bg2">
-    <div class="btn-group col-lg-3 col-sm-4 col-4">
-        <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
-                aria-expanded="false">
-            <span id="searchstate" class="h2 c1">狀態</span>
-        </button>
-        <ul class="dropdown-menu w-75 mx-3 text-center p-0">
-            <li><a class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
-            <li><a class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
-            <li><a class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
-        </ul>
-    </div>
-    <div class="col-lg-1 col-sm-1 col-1 text-center">
-        <a href="" class="text-reset p-0 my-3">
-            <i class="fa-solid fa-magnifying-glass opacity-75 fa-3x p-0"></i>
-        </a>
-    </div>
-    @{
-        for (int i = 0; i < Model.applylist.Count; i++)
-        {
-            if (i < 10)
-            {
-                <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 bg2 apply">
-                    <h3 class="w-25 m-0">@Model.applylist[i].manufactureName</h3>
-                    <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
 
+                            <a href="" class="w-25 m-0 border-0 text-reset bg2" data-bs-toggle="modal"
+                   data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">
+                                <h3>@Model.applylist[i].boothNumber</h3>
+                            </a>
+                            <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content bg2">
+                                        <form>
+                                            <div class="row mx-3">
+                                                <div class="col-9">
+                                                    <div class="d-flex justify-content-between pt-4">
+                                                        <h2 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h2>
 
-                    <a href="" class="w-25 m-0 border-0 text-reset bg2" data-bs-toggle="modal"
-               data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">
-                        <h3>@Model.applylist[i].boothNumber</h3>
-                    </a>
-                    <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content bg2">
-                                <form>
-                                    <div class="row mx-3">
-                                        <div class="col-9">
-                                            <div class="d-flex justify-content-between pt-4">
-                                                <h2 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h2>
+                                                        @{
+                                                            if (Model.applylist[i].boothLv == 3)
+                                                            {
+                                                                <h3 class="m-0">大型 / @Model.applylist[i].boothPrice $</h3>
+                                                            }
+                                                            else if (Model.applylist[i].boothLv == 2)
+                                                            {
+                                                                <h3 class="m-0">中型 / @Model.applylist[i].boothPrice $</h3>
+                                                            }
+                                                            else if (Model.applylist[i].boothLv == 1)
+                                                            {
+                                                                <h3 class="m-0">小型 / @Model.applylist[i].boothPrice $</h3>
+                                                            }
 
-                                                @{
-                                                    if (Model.applylist[i].boothLv == 3)
-                                                    {
-                                                        <h3 class="m-0">大型 / @Model.applylist[i].boothPrice $</h3>
-                                                    }
-                                                    else if (Model.applylist[i].boothLv == 2)
-                                                    {
-                                                        <h3 class="m-0">中型 / @Model.applylist[i].boothPrice $</h3>
-                                                    }
-                                                    else if (Model.applylist[i].boothLv == 1)
-                                                    {
-                                                        <h3 class="m-0">小型 / @Model.applylist[i].boothPrice $</h3>
-                                                    }
-
-                                                }
+                                                        }
+                                                    </div>
+                                                    <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_P_img}")" alt="">
+                                                    <p class="text-start h5 mx-3 p-4">
+                                                        @Model.applylist[i].mf_Description
+                                                    </p>
+                                                </div>
+                                                <div class="col-3 d-flex flex-column justify-content-center">
+                                                    <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
+                                                    <h4 class="my-2">@Model.applylist[i].manufactureName</h4>
+                                                    <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
+                                                    <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
+                                                    <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
+                                                    <div class="d-flex h-25 flex-column align-items-start mt-5 ms-5 my-3">
+                                                        <i class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao">
+                                                            <span class="h5">通過</span>
+                                                        </i>
+                                                        <i class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax">
+                                                            <span class="h5">未通過</span>
+                                                        </i>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_P_img}")" alt="">
-                                            <p class="text-start h5 mx-3 p-4">
-                                                @Model.applylist[i].mf_Description
-                                            </p>
-                                        </div>
-                                        <div class="col-3 d-flex flex-column justify-content-center">
-                                            <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
-                                            <h4 class="my-2">@Model.applylist[i].manufactureName</h4>
-                                            <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
-                                            <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
-                                            <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
-                                            <div class="d-flex h-25 flex-column align-items-start mt-5 ms-5 my-3">
-                                                <i class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao">
-                                                    <span class="h5">通過</span>
-                                                </i>
-                                                <i class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax">
-                                                    <span class="h5">未通過</span>
-                                                </i>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    @{
-                        if (Model.applylist[i].checkState == 0)
-                        {
-                            <h3 class="w-25 m-0 text-warning">待審核</h3>
-                        }
-                        else if (Model.applylist[i].checkState == 1)
-                        {
-                            <h3 class="w-25 m-0 text-danger">尚未付款</h3>
-                        }
-                        else if (Model.applylist[i].checkState == 2)
-                        {
-                            <h3 class="w-25 m-0 text-success">已付款</h3>
-                        }
+                            @{
+                                if (Model.applylist[i].checkState == 0)
+                                {
+                                    <h3 class="w-25 m-0 text-warning">待審核</h3>
+                                }
+                                else if (Model.applylist[i].checkState == 1)
+                                {
+                                    <h3 class="w-25 m-0 text-danger">尚未付款</h3>
+                                }
+                                else if (Model.applylist[i].checkState == 2)
+                                {
+                                    <h3 class="w-25 m-0 text-success">已付款</h3>
+                                }
+                            }
+                        </div>
                     }
-                </div>
+
+                }
 
             }
-            else
-            {
-                <div class="d-none col-lg-10 my-3 py-3 d-flex text-center rounded-3 bg2 apply">
-                    <h3 class="w-25 m-0">@Model.applylist[i].manufactureName</h3>
-                    <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
 
+            <div class="col-lg-2 col-sm-1 col-1 text-start my-3 mx-2">
+                <a href="" class="text-reset p-0 my-3">
+                    <i class="fa-solid fa-chevron-left opacity-75 fa-2x p-0"></i>
+                </a>
+            </div>
 
-                    <a href="" class="w-25 m-0 border-0 text-reset bg2" data-bs-toggle="modal"
-               data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">
-                        <h3>@Model.applylist[i].boothNumber</h3>
-                    </a>
-                    <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                        <div class="modal-dialog modal-xl">
-                            <div class="modal-content bg2">
-                                <form>
-                                    <div class="row mx-3">
-                                        <div class="col-9">
-                                            <div class="d-flex justify-content-between pt-4">
-                                                <h2 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h2>
-
-                                                @{
-                                                    if (Model.applylist[i].boothLv == 3)
-                                                    {
-                                                        <h3 class="m-0">大型 / @Model.applylist[i].boothPrice $</h3>
-                                                    }
-                                                    else if (Model.applylist[i].boothLv == 2)
-                                                    {
-                                                        <h3 class="m-0">中型 / @Model.applylist[i].boothPrice $</h3>
-                                                    }
-                                                    else if (Model.applylist[i].boothLv == 1)
-                                                    {
-                                                        <h3 class="m-0">小型 / @Model.applylist[i].boothPrice $</h3>
-                                                    }
-
-                                                }
-                                            </div>
-                                            <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_P_img}")" alt="">
-                                            <p class="text-start h5 mx-3 p-4">
-                                                @Model.applylist[i].mf_Description
-                                            </p>
-                                        </div>
-                                        <div class="col-3 d-flex flex-column justify-content-center">
-                                            <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
-                                            <h4 class="my-2">@Model.applylist[i].manufactureName</h4>
-                                            <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
-                                            <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
-                                            <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
-                                            <div class="d-flex h-25 flex-column align-items-start mt-5 ms-5 my-3">
-                                                <i class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao">
-                                                    <span class="h5">通過</span>
-                                                </i>
-                                                <i class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax">
-                                                    <span class="h5">未通過</span>
-                                                </i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    @{
-                        if (Model.applylist[i].checkState == 0)
-                        {
-                            <h3 class="w-25 m-0 text-warning">待審核</h3>
-                        }
-                        else if (Model.applylist[i].checkState == 1)
-                        {
-                            <h3 class="w-25 m-0 text-danger">尚未付款</h3>
-                        }
-                        else if (Model.applylist[i].checkState == 2)
-                        {
-                            <h3 class="w-25 m-0 text-success">已付款</h3>
-                        }
+            <ul id="pagelist" class="col-lg-7 col-sm-8 col-8 d-flex list-unstyled justify-content-center align-items-center text-center m-0">
+                @{
+                    int page = 1;
+                    for (int i = 0; i < Model.applysum; i += 10)
+                    {
+                        <li><a class="btn border-0 fs-4 px-lg-3 mx-lg-3 mx-sm-1 rounded-pill bg1 page">@Html.Raw(page)</a></li>
+                        page++;
                     }
-                </div>
-
-            }
-        }
+                }
+            </ul>
+            <div class="col-lg-2 col-sm-1 col-1 text-end my-3 mx-2">
+                <a href="" class="text-reset p-0 my-3">
+                    <i class="fa-solid fa-chevron-right opacity-75 fa-2x p-0"></i>
+                </a>
+            </div>
+        </div>
 
     }
-
-    <div class="col-lg-2 col-sm-1 col-1 text-start my-3 mx-2">
-        <a href="" class="text-reset p-0 my-3">
-            <i class="fa-solid fa-chevron-left opacity-75 fa-2x p-0"></i>
-        </a>
-    </div>
-
-    <ul id="pagelist" class="col-lg-7 col-sm-8 col-8 d-flex list-unstyled justify-content-center align-items-center text-center m-0">
-        @{
-            int page = 1;
-            for (int i = 0; i < Model.applylist.Count; i += 10)
-            {
-                <li><button class="border-0 h3 px-lg-3 py-2 mx-lg-3 mx-sm-1 rounded-pill bg1">@Html.Raw(page)</button></li>
-                page++;
-            }
-        }
-    </ul>
-    <div class="col-lg-2 col-sm-1 col-1 text-end my-3 mx-2">
-        <a href="" class="text-reset p-0 my-3">
-            <i class="fa-solid fa-chevron-right opacity-75 fa-2x p-0"></i>
-        </a>
-    </div>
-</div>
+}

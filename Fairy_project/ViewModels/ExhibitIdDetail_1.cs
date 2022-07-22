@@ -27,5 +27,6 @@ namespace Fairy_project.ViewModels
 
         public List<CheckApplyViewModel>? applylist { get; set; }
 
+        public int applysum { get; set; }
     }
 }
