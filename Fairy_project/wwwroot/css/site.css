@@ -218,9 +218,10 @@ header {
     transition: transform 0.3s ease-out;
     height: 69px;
     width: 100%;
-    background-color: #ddcfc2;
+    background-color: #eae0d7;
     margin-bottom: 5px;
     z-index: 998;
+    padding: .3rem 0;
 }
 
 .nav_items {
@@ -232,8 +233,8 @@ header {
 ._humbuger,
 ._humbuger::before,
 ._humbuger::after {
-    width: 30px;
-    height: 3px;
+    width: 20px;
+    height: 2px;
     background: #666;
 }
 
@@ -249,11 +250,19 @@ header {
 }
 
 ._humbuger::before {
-    top: 8px;
+    top: 6px;
 }
 
 ._humbuger::after {
-    bottom: 8px;
+    bottom: 6px;
+}
+
+._humbuger:hover,
+._humbuger::before:hover,
+._humbuger::after:hover {
+    width: 30px;
+    height: 5px;
+    background: #666;
 }
 
 .nav-toggle {
@@ -262,6 +271,11 @@ header {
 .nav_items {
     opacity: 0;
 }
+
+    .nav_items .navbar_li {
+        list-style: none;
+        font-size: .9rem;
+    }
 
 .nav-toggle:checked ~ .nav_section {
     transform: scale(1, 1);
@@ -331,6 +345,10 @@ header {
         align-items: center;
         flex: 0 1 30%;
         gap: 20px;
+    }
+
+    .nav_section {
+        display: none;
     }
 }
 

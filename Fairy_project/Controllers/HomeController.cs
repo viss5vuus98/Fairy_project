@@ -55,6 +55,20 @@ public class HomeController : Controller
         return View(eDrtailViewModel);
     }
 
+    public ActionResult GetData()
+    {
+        var theExhibit = _context.exhibitions.OrderBy(m => m.exhibitId);
+        var theManufactures = _context.manufactures.OrderBy(m => m.manufactureId);
+        
+        return Json(theExhibit);
+    }
+
+    public IActionResult GetManufactures()
+    {
+        var theManufactures = _context.manufactures.OrderBy(m => m.manufactureId);
+        return Json(theManufactures);
+    }
+
     public IActionResult exhibitionSearch()
     {
         return View();

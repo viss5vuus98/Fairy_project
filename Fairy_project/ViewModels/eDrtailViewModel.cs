@@ -7,7 +7,7 @@ namespace Fairy_project.ViewModels
     public class eDrtailViewModel
     {
 
-        public Manufactures? Manufactures
+        public Manufactures Manufactures
         {
             get;
             set;

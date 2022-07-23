@@ -91,6 +91,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Shared/_phoneNavPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19waG9uZU5hdlBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Shared/_ToastIndexPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Ub2FzdEluZGV4UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Shared/_ToastPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Ub2FzdFBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
