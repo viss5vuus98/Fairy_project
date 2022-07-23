@@ -3,7 +3,7 @@ namespace Fairy_project.Models
 {
     public class invide
     {
-        public Manufactures Manufactures
+        public IList<Manufactures> Manufactures
         {
             get;
             set;

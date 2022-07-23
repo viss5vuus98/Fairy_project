@@ -96,19 +96,25 @@
 
     window.addEventListener("load", () => {
 
-        axios.get('@Url.Action("getData")')
-            .then(res => {
-                console.log(res.data)
-            })
-            .catch(err => console.log(err));
+        @*axios.get('@Url.Action("GetManufactures")')
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))*@
 
-        axios.get('@Url.Action("GetManufactures")')
+
+        @*axios.get('@Url.Action("getAllExhibition")')
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))*@
+
+        @*axios.post('@Url.Action("GetTheManufactures")', {"Mf_id": 1})
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))*@
+
+        axios.post('@Url.Action("GetAllBooth", "Manufacturer")', {"Ex_id": 38})
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
-
     })
 
-    
+
 
     var leftclick;
     var rightclick;
