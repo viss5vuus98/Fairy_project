@@ -101,36 +101,6 @@ namespace Fairy_project.Controllers
                 model.setboothslist.Add(booth1);
             }
 
-
-            //if (exhibition.exhibitStatus != 1)
-            //{
-            //    model.applylist = new List<CheckApplyViewModel>();
-            //    List<Apply> applies = _context.Applies.Where(a => a.e_Id == exhibitId).ToList();
-            //    for (int i = 0; i < applies.Count; i++)
-            //    {
-            //        CheckApplyViewModel checkapply = new CheckApplyViewModel();
-            //        checkapply.applyNum = applies[i].applyNum;
-            //        checkapply.mf_Id = applies[i].mf_Id;
-            //        checkapply.boothNumber = applies[i].boothNumber;
-            //        checkapply.checkState = applies[i].checkState;
-            //        checkapply.mf_logo = applies[i].mf_logo;
-            //        checkapply.mf_P_img = applies[i].mf_P_img;
-            //        checkapply.mf_Description = applies[i].mf_Description;
-            //        var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
-            //        Manufactures manufactures = m.FirstOrDefault();
-            //        checkapply.manufactureId = manufactures.manufactureId;
-            //        checkapply.manufactureAcc = manufactures.manufactureAcc;
-            //        checkapply.manufactureName = manufactures.manufactureName;
-            //        checkapply.mfPerson = manufactures.mfPerson;
-            //        checkapply.mfPhoneNum = manufactures.mfPhoneNum;
-            //        model.applylist.Add(checkapply);
-            //        var b = _context.boothMaps.Where(b => b.boothNumber == applies[i].boothNumber && b.e_Id == applies[i].e_Id);
-            //        Booths booths = b.FirstOrDefault();
-            //        checkapply.boothLv = booths.boothLv;
-            //        checkapply.boothPrice = booths.boothPrice;
-            //    }
-            //}
-
             return View(model);
         }
 
@@ -349,7 +319,7 @@ namespace Fairy_project.Controllers
             return RedirectToAction("Master");
         }
 
-        public async Task<IActionResult> _ApplyPartial(int exhibitId, int offset)
+        public IActionResult _ApplyPartial(int exhibitId, int offset)
         {
             List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
             var a = _context.Applies.Where(a => a.e_Id == exhibitId).Skip(offset).Take(10);
@@ -376,7 +346,129 @@ namespace Fairy_project.Controllers
             ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
             amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
             amodel.applylist = modellist;
-            return PartialView("_ApplyPartial", amodel);
+            return PartialView(amodel);
+        }
+
+        public IActionResult _ApplyPartial_Search(int exhibitId, int? m_id, int? checkstate)
+        {
+            Console.WriteLine("------------------------------------", exhibitId, m_id, checkstate);
+            if (checkstate.HasValue && m_id.HasValue)
+            {
+                List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
+                var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.mf_Id == m_id && a.checkState == checkstate);
+                List<Apply> applies = a.ToList();
+                for (int i = 0; i < applies.Count; i++)
+                {
+                    CheckApplyViewModel model = new CheckApplyViewModel();
+                    model.applyNum = applies[i].applyNum;
+                    model.mf_Id = applies[i].mf_Id;
+                    model.boothNumber = applies[i].boothNumber;
+                    model.checkState = applies[i].checkState;
+                    model.mf_logo = applies[i].mf_logo;
+                    model.mf_P_img = applies[i].mf_P_img;
+                    model.mf_Description = applies[i].mf_Description;
+                    var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
+                    Manufactures manufactures = m.FirstOrDefault();
+                    model.manufactureId = manufactures.manufactureId;
+                    model.manufactureAcc = manufactures.manufactureAcc;
+                    model.manufactureName = manufactures.manufactureName;
+                    model.mfPerson = manufactures.mfPerson;
+                    model.mfPhoneNum = manufactures.mfPhoneNum;
+                    modellist.Add(model);
+                }
+                ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
+                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
+                amodel.applylist = modellist;
+                return PartialView("_ApplyPartial",amodel);
+            }
+            else if (checkstate.HasValue)
+            {
+                List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
+                var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate);
+                List<Apply> applies = a.ToList();
+                for (int i = 0; i < applies.Count; i++)
+                {
+                    CheckApplyViewModel model = new CheckApplyViewModel();
+                    model.applyNum = applies[i].applyNum;
+                    model.mf_Id = applies[i].mf_Id;
+                    model.boothNumber = applies[i].boothNumber;
+                    model.checkState = applies[i].checkState;
+                    model.mf_logo = applies[i].mf_logo;
+                    model.mf_P_img = applies[i].mf_P_img;
+                    model.mf_Description = applies[i].mf_Description;
+                    var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
+                    Manufactures manufactures = m.FirstOrDefault();
+                    model.manufactureId = manufactures.manufactureId;
+                    model.manufactureAcc = manufactures.manufactureAcc;
+                    model.manufactureName = manufactures.manufactureName;
+                    model.mfPerson = manufactures.mfPerson;
+                    model.mfPhoneNum = manufactures.mfPhoneNum;
+                    modellist.Add(model);
+                }
+                ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
+                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
+                amodel.applylist = modellist;
+                return PartialView("_ApplyPartial", amodel);
+            }
+            else if (m_id.HasValue)
+            {
+                List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
+                var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.mf_Id == m_id);
+                List<Apply> applies = a.ToList();
+                for (int i = 0; i < applies.Count; i++)
+                {
+                    CheckApplyViewModel model = new CheckApplyViewModel();
+                    model.applyNum = applies[i].applyNum;
+                    model.mf_Id = applies[i].mf_Id;
+                    model.boothNumber = applies[i].boothNumber;
+                    model.checkState = applies[i].checkState;
+                    model.mf_logo = applies[i].mf_logo;
+                    model.mf_P_img = applies[i].mf_P_img;
+                    model.mf_Description = applies[i].mf_Description;
+                    var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
+                    Manufactures manufactures = m.FirstOrDefault();
+                    model.manufactureId = manufactures.manufactureId;
+                    model.manufactureAcc = manufactures.manufactureAcc;
+                    model.manufactureName = manufactures.manufactureName;
+                    model.mfPerson = manufactures.mfPerson;
+                    model.mfPhoneNum = manufactures.mfPhoneNum;
+                    modellist.Add(model);
+                }
+                ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
+                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
+                amodel.applylist = modellist;
+                return PartialView("_ApplyPartial", amodel);
+
+            }
+            else
+            {
+                List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
+                var a = _context.Applies.Where(a => a.e_Id == exhibitId);
+                List<Apply> applies = a.ToList();
+                for (int i = 0; i < applies.Count; i++)
+                {
+                    CheckApplyViewModel model = new CheckApplyViewModel();
+                    model.applyNum = applies[i].applyNum;
+                    model.mf_Id = applies[i].mf_Id;
+                    model.boothNumber = applies[i].boothNumber;
+                    model.checkState = applies[i].checkState;
+                    model.mf_logo = applies[i].mf_logo;
+                    model.mf_P_img = applies[i].mf_P_img;
+                    model.mf_Description = applies[i].mf_Description;
+                    var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
+                    Manufactures manufactures = m.FirstOrDefault();
+                    model.manufactureId = manufactures.manufactureId;
+                    model.manufactureAcc = manufactures.manufactureAcc;
+                    model.manufactureName = manufactures.manufactureName;
+                    model.mfPerson = manufactures.mfPerson;
+                    model.mfPhoneNum = manufactures.mfPhoneNum;
+                    modellist.Add(model);
+                }
+                ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
+                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
+                amodel.applylist = modellist;
+                return PartialView("_ApplyPartial", amodel);
+            }
         }
 
         // GET: AdminController/Details/5

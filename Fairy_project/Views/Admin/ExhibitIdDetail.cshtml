@@ -254,12 +254,12 @@
                 <div class="row rounded-3 p-3 my-5 bg1">
                     <h2 class="col-6 p-0 m-0">攤位管理</h2>
                     <div class="col-6 text-end">
-                        <a id="manufacturerreportshow" href="" class="text-reset p-0 pt-1">
+                        <a id="manufacturerreport1show" href="" class="text-reset p-0 pt-1">
                             <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
                         </a>
                     </div>
                 </div>
-                <div id="manufacturerreport" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
+                <div id="manufacturerreport1" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
                     <div class="col-lg-10 col-sm-12 my-3 py-3 d-flex flex-wrap rounded-pill text-center rounded-3 bg2">
                         <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位等級</h3>
                         <h3 class="col-lg-3 col-sm-6 col-12 m-0"></h3>
@@ -316,12 +316,14 @@
                         24 / NT <span class="text-success">$35,050</span>
                     </h2>
                     <div class="col-lg-1 col-sm-2 col-1 text-end">
-                        <a id="manufacturerreportshow" href="" class="text-reset p-0 pt-1">
+                        <a id="manufacturerreport23show" href="" class="text-reset p-0 pt-1">
                             <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
                         </a>
                     </div>
                 </div>
                 <partial name="_ApplyPartial.cshtml" />
+                <div id="manufacturerreport23" class="row rounded-3 p-3 align-items-center justify-content-center bg1"></div>
+
                 <div class="row justify-content-around my-5">
                     <button type="submit" class="btn btn-dark col-lg-3 col-sm-3 col-4 fs-2">儲存修改</button>
                     <a asp-action="Master" class="btn btn-dark col-lg-3 col-sm-3 col-4 fs-2">回上一頁</a>
@@ -441,16 +443,34 @@
             }
         })
 
-        $('#manufacturerreportshow').on('click', (e) => {
+        $('#manufacturerreport1show').on('click', (e) => {
             e.preventDefault();
-            $('#manufacturerreport').toggleClass('d-none')
+            $('#manufacturerreport1').toggleClass('d-none')
+            $(e.target).toggleClass('fa-chevron-left')
+        })
+
+        $('#manufacturerreport23show').on('click', (e) => {
+            e.preventDefault();
+            $('#manufacturerreport23').toggleClass('d-none')
             $(e.target).toggleClass('fa-chevron-left')
         })
 
 
+        $('.dropdown-menu li').on('click', (e) => {
+            if ($(e.target).text() == '待審核') {
+                $('#searchstate').text($(e.target).text()).removeClass('text-danger').removeClass('text-success').addClass('text-warning')
+            }
+            else if ($(e.target).text() == '尚未付款') {
+                $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-success').addClass('text-danger')
+            }
+            else if ($(e.target).text() == '已付款') {
+                $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').addClass('text-success')
+            }
+        })
+
         var i = @Model.setboothslist.Count;
 
-        $('#manufacturerreport').on('click', (e) => {
+        $('#manufacturerreport1').on('click', (e) => {
             if ($(e.target).hasClass('dropdown-item')) {
                 e.preventDefault();
                 if ($(e.target).text() == '大型') {
@@ -465,32 +485,64 @@
             } else if ($(e.target).hasClass('deletebooth')) {
                 $(e.target).parent().parent().remove();
                 i = 0;
-                $('#manufacturerreport').find('.blv').each(function() {
+                $('#manufacturerreport1').find('.blv').each(function() {
                     $(this).attr('name', `setboothslist[${i}].boothLv`)
                     i++;
                 })
                 i = 0;
-                $('#manufacturerreport').find('.bpri').each(function() {
+                $('#manufacturerreport1').find('.bpri').each(function() {
                     $(this).attr('name', `setboothslist[${i}].boothPrice`)
                     i++;
                 })
                 i = 0;
-                $('#manufacturerreport').find('.bsum').each(function() {
+                $('#manufacturerreport1').find('.bsum').each(function() {
                     $(this).attr('name', `setboothslist[${i}].boothsum`)
                     i++;
                 })
-            } else if ($(e.target).hasClass('page')) {
-                e.preventDefault();
+            }
+        })
+
+        $('#manufacturerreport23').on('click', (e) => {
+            e.preventDefault();
+            if ($(e.target).hasClass('page')) {
                 let from = ($(e.target).text() * 10) - 10
                 $.ajax({
                     type: 'GET',
-                    url: '@Url.Action("_ApplyPartial_ChangePage")',
+                    url: '@Url.Action("_ApplyPartial")',
                     data: {
                         exhibitId: @Model.exhibitId,
                         offset: from,
                     },
                 }).done((result) => {
-                    $('#manufacturerreport').html(result)
+                    $('#manufacturerreport23').html(result)
+                }).fail(() => {
+                    console.log("pagefail")
+                })
+            } else if ($(e.target).hasClass('dropdown-item')) {
+                if ($(e.target).text() == '待審核') {
+                    $('#searchstate').text($(e.target).text()).removeClass('text-danger').removeClass('text-success').addClass('text-warning').attr('data-state', 0)
+                }
+                else if ($(e.target).text() == '尚未付款') {
+                    $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-success').addClass('text-danger').attr('data-state', 1)
+                }
+                else if ($(e.target).text() == '已付款') {
+                    $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').addClass('text-success').attr('data-state', 2)
+                }
+            } else if ($(e.target).attr('id') == 'searchapply') {
+                let m_id = $('#searchmidinput').val();
+                let checkstate = $('#searchstate').attr('data-state');
+                console.log(m_id, checkstate)
+
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("_ApplyPartial_Search")',
+                    data: {
+                        exhibitId: @Model.exhibitId,
+                        m_id: m_id,
+                        checkstate: checkstate,
+                    },
+                }).done((result) => {
+                    $('#manufacturerreport23').html(result)
                 }).fail(() => {
                     console.log("pagefail")
                 })
@@ -523,19 +575,35 @@
         }
 
         $(window).on('load', () => {
+            //$.ajax({
+            //    type: 'GET',
+            //    url: '@Url.Action("_ApplyPartial")',
+            //    data: {
+            //        exhibitId: @Model.exhibitId,
+            //        offset: 0,
+            //    },
+            //}).done((result) => {
+            //    $('#manufacturerreport23').html(result)
+            //    alert(result)
+            //}).fail(() => {
+            //    console.log("pagefail")
+            //})
+
             $.ajax({
                 type: 'GET',
-                url: '@Url.Action("_ApplyPartial_ChangePage")',
+                url: '@Url.Action("_ApplyPartial_Search")',
                 data: {
                     exhibitId: @Model.exhibitId,
-                    offset: 0,
+                    //m_id: 1,
+                    checkstate:0,
                 },
             }).done((result) => {
-                $('#manufacturerreport').html(result)
+                $('#manufacturerreport23').html(result)
+                alert(result)
             }).fail(() => {
                 console.log("pagefail")
             })
         })
     </script>
-    }
+        }
 
