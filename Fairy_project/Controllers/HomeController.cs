@@ -66,11 +66,8 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> shoppingcart(string i, [Formbody]Ticket str)
+    public async Task<IActionResult> shoppingcart(string i)
     {
-        Console.WriteLine(str + "---------------------------------");
-        //_context.tickets.Add(str);
-        //_context.SaveChanges();
         if (string.IsNullOrEmpty(i))
         {
             return RedirectToAction("exhibitionDetail");
@@ -93,25 +90,19 @@ public class HomeController : Controller
                 };
                 exhibitions.Add(model);
             }
-            //ViewBag.exhibitions = exhibitions;
             //Console.WriteLine(exhibitions[1].exhibition.datefrom);
             return Json(exhibitions);
         }
-        //List<Ticket> result = new List<Ticket>();
-        //var result = JsonConvert.DeserializeObject<Ticket>(str);
-        
-        //Console.WriteLine(result);
     }
 
     [HttpPost]
     public IActionResult clearCart([Formbody] List<TicketRoot> obj)
     {
-        for (int i = 0; i < obj.Count; i++)
-        {
-            _context.tickets.Add(obj[i].ticket);
-
-        }
-            _context.SaveChanges();
+        //for (int i = 0; i < obj.Count; i++)
+        //{
+        //    _context.tickets.Add(obj[i].ticket);
+        //}
+        //_context.SaveChanges();
         return Json(obj);
     }
 }

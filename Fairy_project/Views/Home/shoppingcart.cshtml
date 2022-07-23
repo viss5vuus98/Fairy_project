@@ -254,36 +254,36 @@
             $('.ticket').children().hide();
             for (let i = 0; i < data.length; i++) {
                 $(".ticket").append(`<div class="container" style="border: 1px solid black;">
-                                                                        <div class="rowticket d-flex">
-                                                                            <div class="col-xl-3"><img
-                                                                                    src="${data[i].exhibition.exhibit_T_img}"
-                                                                                    alt=""></div>
-                                                                            <div class="col-xl-9">
-                                                                                <div class="d-flex" style="justify-content: space-between;">
-                                                                                    <h3>${data[i].exhibition.exhibitName}</h3>
-                                                                                    <button type="button" class="btn btn-secondary"><i
-                                                                                            class="fa-solid fa-trash-can"></i></button>
-                                                                                </div>
-                                                                                <h5>${data[i].exhibition.datefrom}~${data[i].exhibition.dateto}</h5>
-                                                                                <h5>台中國家歌劇園中劇院</h5>
-                                                                                <div class="price">
-                                                                                    <div class="d-flex originprice">
-                                                                                        原價$
-                                                                                        <p>${data[i].exhibition.ticket_Price}</p>元
-                                                                                    </div>
-                                                                                    <div class="d-flex" style="align-items:center">
-                                                                                        數量:<button type="button" class="minus"><i class="fa-solid fa-minus"></i></button>
-                                                                                        <input type="text" style="width:50px;text-align: center;" class="count" value="1"
-                                                                                        oninput="value=value.replace(/[^0-9]/g,'')">
-                                                                                        <button type="button" class="plus"><i class="fa-solid fa-plus"></i></button>
-                                                                                    </div>
-                                                                                    <div class="d-flex smallcount">
+                                                                                <div class="rowticket d-flex">
+                                                                                    <div class="col-xl-3"><img
+                                                                                            src="${data[i].exhibition.exhibit_T_img}"
+                                                                                            alt=""></div>
+                                                                                    <div class="col-xl-9">
+                                                                                        <div class="d-flex" style="justify-content: space-between;">
+                                                                                            <h3>${data[i].exhibition.exhibitName}</h3>
+                                                                                            <button type="button" class="btn btn-secondary"><i
+                                                                                                    class="fa-solid fa-trash-can"></i></button>
+                                                                                        </div>
+                                                                                        <h5>${data[i].exhibition.datefrom}~${data[i].exhibition.dateto}</h5>
+                                                                                        <h5>台中國家歌劇園中劇院</h5>
+                                                                                        <div class="price">
+                                                                                            <div class="d-flex originprice">
+                                                                                                原價$
+                                                                                                <p>${data[i].exhibition.ticket_Price}</p>元
+                                                                                            </div>
+                                                                                            <div class="d-flex" style="align-items:center">
+                                                                                                數量:<button type="button" class="minus"><i class="fa-solid fa-minus"></i></button>
+                                                                                                <input type="text" style="width:50px;text-align: center;" class="count" value="1"
+                                                                                                oninput="value=value.replace(/[^0-9]/g,'')">
+                                                                                                <button type="button" class="plus"><i class="fa-solid fa-plus"></i></button>
+                                                                                            </div>
+                                                                                            <div class="d-flex smallcount">
 
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>`)
+                                                                            </div>`)
                 $(".minus").attr('disabled', true);
                 $(".smallcount").last().append(`小計:<p>${parseInt($(".originprice").children().last().text()) * $(".count").last().val()}</p>`);
             }
@@ -402,7 +402,7 @@
         })
 
         //submit表單送出
-        let jsonstring = '';
+
         $("#pay").click(function() {
             //if ($("#name").val() == '' || $("#cellphone").val() == '' || $("#Email").val() == '' || $(".radio input:radio[name=option]:checked").val() == null) {
             //    alert('請輸入完整資訊');
@@ -418,68 +418,67 @@
             $(".first").hide();
             $(".second").hide();
             $(".third").show();
-            console.log(array);
+            //console.log(array);
             let input = [];
             $('.count').each(function(index) {
                 if ($(this).val() != '') {
                     input.push($(this).val());
                 }
             });
-            console.log(input);
+            //console.log(input);
             let ticket = [];
             for (let i = 0; i < array.length; i++) {
                 for (let j = 0; j < input[i]; j++) {
-                    jsonstring += `{"Ticket":{"e_Id":"${array[i].exhibition.exhibitId}","m_Id":"1","price":"${array[i].exhibition.ticket_Price}","enterstate":"0","personName":"${$("#name").val()}","personNumber":"${$("#cellphone").val()}","paytime":"${time}"}},`;
+                    ticket.push(JSON.parse(`{"Ticket":{"e_Id":"${array[i].exhibition.exhibitId}","m_Id":"1","price":"${array[i].exhibition.ticket_Price}","enterstate":"0","personName":"${$("#name").val()}","personNumber":"${$("#cellphone").val()}","paytime":"${time}"}}`))
                 }
             }
-            ticket.push(jsonstring);
-            @*console.log(ticket);*@
-            const ticketobj = [
-                {
-                    "Ticket": {
-                        "e_Id": "34",
-                        "m_Id": "1",
-                        "price": "200",
-                        "enterstate": "0",
-                        "personName": "",
-                        "personNumber": "",
-                        "paytime": "2022-7-23 21:13:43"
-                    }
-                },
-                {
-                    "Ticket": {
-                        "e_Id": "34",
-                        "m_Id": "1",
-                        "price": "200",
-                        "enterstate": "0",
-                        "personName": "",
-                        "personNumber": "",
-                        "paytime": "2022-7-23 21:13:43"
-                    }
-                },
-                {
-                    "Ticket": {
-                        "e_Id": "34",
-                        "m_Id": "1",
-                        "price": "200",
-                        "enterstate": "0",
-                        "personName": "",
-                        "personNumber": "",
-                        "paytime": "2022-7-23 21:13:43"
-                    }
-                },
+            console.log(ticket);
+            //const ticketobj = [
+            //    {
+            //        "Ticket": {
+            //            "e_Id": "34",
+            //            "m_Id": "1",
+            //            "price": "200",
+            //            "enterstate": "0",
+            //            "personName": "",
+            //            "personNumber": "",
+            //            "paytime": "2022-7-23 21:13:43"
+            //        }
+            //    },
+            //    {
+            //        "Ticket": {
+            //            "e_Id": "34",
+            //            "m_Id": "1",
+            //            "price": "200",
+            //            "enterstate": "0",
+            //            "personName": "",
+            //            "personNumber": "",
+            //            "paytime": "2022-7-23 21:13:43"
+            //        }
+            //    },
+            //    {
+            //        "Ticket": {
+            //            "e_Id": "34",
+            //            "m_Id": "1",
+            //            "price": "200",
+            //            "enterstate": "0",
+            //            "personName": "",
+            //            "personNumber": "",
+            //            "paytime": "2022-7-23 21:13:43"
+            //        }
+            //    },
 
-            ]
+            //]
 
             $.ajax({
-            type: "POST",
-            url: "@Url.Action("clearCart")",
-            dataType: "json",
-            data: { obj: ticketobj},
-        }).done(function(data) {
-            alert("成功")
-            console.log(data)
-        })
+                type: "POST",
+                url: "@Url.Action("clearCart")",
+                dataType: "json",
+                data: { obj: ticket },
+            }).done(function(data) {
+                //alert("成功")
+                console.log(data)
+            })
             //}
         })
 
