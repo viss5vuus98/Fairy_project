@@ -433,14 +433,52 @@
                 }
             }
             ticket.push(jsonstring);
-            console.log(ticket);
+            @*console.log(ticket);*@
+            const ticketobj = [
+                {
+                    "Ticket": {
+                        "e_Id": "34",
+                        "m_Id": "1",
+                        "price": "200",
+                        "enterstate": "0",
+                        "personName": "",
+                        "personNumber": "",
+                        "paytime": "2022-7-23 21:13:43"
+                    }
+                },
+                {
+                    "Ticket": {
+                        "e_Id": "34",
+                        "m_Id": "1",
+                        "price": "200",
+                        "enterstate": "0",
+                        "personName": "",
+                        "personNumber": "",
+                        "paytime": "2022-7-23 21:13:43"
+                    }
+                },
+                {
+                    "Ticket": {
+                        "e_Id": "34",
+                        "m_Id": "1",
+                        "price": "200",
+                        "enterstate": "0",
+                        "personName": "",
+                        "personNumber": "",
+                        "paytime": "2022-7-23 21:13:43"
+                    }
+                },
+
+            ]
+
             $.ajax({
             type: "POST",
-            url: "@Url.Action("shoppingcart")",
+            url: "@Url.Action("clearCart")",
             dataType: "json",
-            data: {str:ticket},
+            data: { obj: ticketobj},
         }).done(function(data) {
             alert("成功")
+            console.log(data)
         })
             //}
         })
