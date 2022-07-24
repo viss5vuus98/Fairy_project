@@ -2,25 +2,6 @@
 @{
     if (Model.applylist != null)
     {
-        <input id="searchmidinput" type="text" placeholder="輸入廠商ID" value=""
-           class="col-lg-3 col-sm-6 col-6 m-3 py-2 text-center fw-lighter rounded-pill h2 border-0 bg2">
-        <div class="btn-group col-lg-3 col-sm-4 col-4">
-            <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <span id="searchstate" class="h2 c1" data-state="">狀態</span>
-            </button>
-            <ul class="dropdown-menu w-75 mx-3 text-center p-0">
-                <li><a id="state0" class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
-                <li><a id="state1" class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
-                <li><a id="state2" class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
-            </ul>
-        </div>
-        <div class="col-lg-1 col-sm-1 col-1 text-center">
-            <a class="text-reset p-0 my-3">
-                <i id="searchapply" class="fa-solid fa-magnifying-glass opacity-75 fa-3x p-0"></i>
-            </a>
-        </div>
-
         for (int i = 0; i < Model.applylist.Count; i++)
         {
             <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 bg2 apply">
@@ -101,26 +82,30 @@
             </div>
         }
 
-        <div class="col-lg-2 col-sm-1 col-1 text-start my-3 mx-2">
-            <a href="" class="text-reset p-0 my-3">
-                <i class="fa-solid fa-chevron-left opacity-75 fa-2x p-0"></i>
-            </a>
-        </div>
 
-        <ul id="pagelist" class="col-lg-7 col-sm-8 col-8 d-flex list-unstyled justify-content-center align-items-center text-center m-0">
-            @{
-                int page = 1;
-                for (int i = 0; i < Model.applysum; i += 10)
-                {
-                    <li><a class="btn border-0 fs-4 px-lg-3 mx-lg-3 mx-sm-1 rounded-pill bg1 page">@Html.Raw(page)</a></li>
-                    page++;
+
+        <div class="d-flex justify-content-around w-100">
+            <div class="col-lg-2 col-sm-1 col-1 text-start my-3 mx-2">
+                <a href="" class="text-reset p-0 my-3">
+                    <i class="fa-solid fa-chevron-left opacity-75 fa-2x p-0"></i>
+                </a>
+            </div>
+
+            <ul id="pagelist" class="col-lg-7 col-sm-8 col-8 d-flex list-unstyled justify-content-center align-items-center text-center m-0">
+                @{
+                    int page = 1;
+                    for (int i = 0; i < Model.applysum; i += 10)
+                    {
+                        <li><a class="btn border-0 fs-4 px-lg-3 mx-lg-3 mx-sm-1 rounded-pill bg1 page">@Html.Raw(page)</a></li>
+                        page++;
+                    }
                 }
-            }
-        </ul>
-        <div class="col-lg-2 col-sm-1 col-1 text-end my-3 mx-2">
-            <a href="" class="text-reset p-0 my-3">
-                <i class="fa-solid fa-chevron-right opacity-75 fa-2x p-0"></i>
-            </a>
+            </ul>
+            <div class="col-lg-2 col-sm-1 col-1 text-end my-3 mx-2">
+                <a href="" class="text-reset p-0 my-3">
+                    <i class="fa-solid fa-chevron-right opacity-75 fa-2x p-0"></i>
+                </a>
+            </div>
         </div>
     }
 
