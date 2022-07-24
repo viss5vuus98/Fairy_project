@@ -60,7 +60,7 @@ public class HomeController : Controller
     }
 
 
-    public IActionResult shoppingcart()
+    public IActionResult shoppingcartAsync()
     {
         return View();
     }

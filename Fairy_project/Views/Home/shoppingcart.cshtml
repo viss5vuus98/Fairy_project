@@ -2,6 +2,7 @@
 @using Fairy_project.ViewModels
 
 
+
 @section Style{
     <link href="~/css/shoppingcart.css" rel="stylesheet" asp-append-version="true" />
 }
@@ -234,14 +235,16 @@
         var currentDateTime = today.getFullYear() + '年' + (today.getMonth() + 1) + '月' + today.getDate() + '日';
         var time = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
         //console.log(time);
-        let array = []
+
+
         //取得資料動態生成
+        let array = []
         const value = JSON.parse(sessionStorage.getItem('tickets')) || []
-        //console.log(value)  // [{id : 34}] value[0].id
-        var id = "34|36|";
-        //for (let i = 0; i < value.length; i++) {
-        //    id += value[i].id + "|";
-        //}
+        ////console.log(value)  // [{id : 34}] value[0].id
+        var id = "";
+        for (let i = 0; i < value.length; i++) {
+            id += value[i].id + "|";
+        }
         //console.log(id);
         $.ajax({
             type: "POST",
@@ -313,6 +316,11 @@
             $("#totalprice").text("");
             $("#totalprice").append(`總金額:<p>${sum}</p>元`);
             //total = sum;
+            const ticketid = JSON.parse(sessionStorage.getItem('tickets'))
+            console.log(ticketid);
+            ticketid.splice($(this).index, 1);
+            console.log(ticketid);
+            sessionStorage.setItem('tickets', JSON.stringify(ticketid))
         })
 
         $(".ticket").on("keyup", ".count", function() {
@@ -433,42 +441,42 @@
                 }
             }
             console.log(ticket);
-            //const ticketobj = [
-            //    {
-            //        "Ticket": {
-            //            "e_Id": "34",
-            //            "m_Id": "1",
-            //            "price": "200",
-            //            "enterstate": "0",
-            //            "personName": "",
-            //            "personNumber": "",
-            //            "paytime": "2022-7-23 21:13:43"
-            //        }
-            //    },
-            //    {
-            //        "Ticket": {
-            //            "e_Id": "34",
-            //            "m_Id": "1",
-            //            "price": "200",
-            //            "enterstate": "0",
-            //            "personName": "",
-            //            "personNumber": "",
-            //            "paytime": "2022-7-23 21:13:43"
-            //        }
-            //    },
-            //    {
-            //        "Ticket": {
-            //            "e_Id": "34",
-            //            "m_Id": "1",
-            //            "price": "200",
-            //            "enterstate": "0",
-            //            "personName": "",
-            //            "personNumber": "",
-            //            "paytime": "2022-7-23 21:13:43"
-            //        }
-            //    },
+            @*const ticketobj = [
+                {
+                    "Ticket": {
+                        "e_Id": "34",
+                        "m_Id": "1",
+                        "price": "200",
+                        "enterstate": "0",
+                        "personName": "",
+                        "personNumber": "",
+                        "paytime": "2022-7-23 21:13:43"
+                    }
+                },
+                {
+                    "Ticket": {
+                        "e_Id": "34",
+                        "m_Id": "1",
+                        "price": "200",
+                        "enterstate": "0",
+                        "personName": "",
+                        "personNumber": "",
+                        "paytime": "2022-7-23 21:13:43"
+                    }
+                },
+                {
+                    "Ticket": {
+                        "e_Id": "34",
+                        "m_Id": "1",
+                        "price": "200",
+                        "enterstate": "0",
+                        "personName": "",
+                        "personNumber": "",
+                        "paytime": "2022-7-23 21:13:43"
+                    }
+                },
 
-            //]
+            ]*@
 
             $.ajax({
                 type: "POST",
@@ -479,6 +487,7 @@
                 //alert("成功")
                 console.log(data)
             })
+            sessionStorage.clear();
             //}
         })
 
