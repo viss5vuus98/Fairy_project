@@ -109,9 +109,17 @@
             .then(res => console.log(res.data))
             .catch(err => console.log(err))*@
 
-        axios.post('@Url.Action("GetAllBooth", "Manufacturer")', {"Ex_id": 38})
+        @*axios.post('@Url.Action("searchKeyWord")', {"ex_keyWord": "試"})
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))*@
+
+        axios.post('@Url.Action("searchDate")', {"dateStart": "2022-07-01", "dateEnd": "2022-12-30"})
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
+
+         @*axios.post('@Url.Action("getVerificationCode")', { "Ex_id": 1 })
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))*@ 
     })
 
 

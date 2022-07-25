@@ -7,6 +7,7 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Fairy_project.ViewModels;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Fairy_project.Controllers;
 
@@ -153,6 +154,47 @@ public class HomeController : Controller
     {
         var theManufactures = _context.manufactures.Where(m => m.manufactureId == idClass.Mf_id);
         return Json(theManufactures);
+    }
+
+    //search exhibition keyword
+    [HttpPost]
+    public IActionResult searchKeyWord([FromBody] KeyWord keyWord)
+    {
+        Console.WriteLine(keyWord.ex_keyWord + "1111111111111");
+        string key = Regex.Replace(keyWord.ex_keyWord, @"\s", "");
+        var exhibitions = _context.exhibitions.Where(m => m.exhibitName.Contains(key) && m.exhibitStatus == 1);
+        return Json(exhibitions);
+    }
+
+    //search exhibition date
+    [HttpPost]
+    public IActionResult searchDate([FromBody] SearchDate searchDate)
+    {
+        DateTime dtStart = Convert.ToDateTime(searchDate.dateStart);
+        DateTime dtEnd = Convert.ToDateTime(searchDate.dateEnd);
+        var exhibitions = _context.exhibitions.Where(m => m.dateto > dtStart && m.datefrom < dtEnd && m.exhibitStatus == 1);
+        return Json(exhibitions);
+    }
+
+    //radom tickets VerificationCode
+    [HttpPost]
+    public IActionResult getVerificationCode([FromBody] GetIdClassModel idClass)
+    {
+        string VfCode = "";
+        string dt = DateTime.Now.ToString("ddMMyyyyHHmmss");
+        string id = idClass.Ex_id.ToString();
+        VfCode += dt;
+        VfCode += id;
+        Random radom = new Random();
+        for (int i = 0; i < 5; i++)
+        {
+            int radomNum = radom.Next(97, 122);
+            string vfStr = ((char)radomNum).ToString();
+            VfCode += vfStr;
+        }
+        //ToDo：修改Tickets資料表中的驗證碼欄位
+        //ToDO: 前端產生QR_code
+        return Json(VfCode);
     }
 }
 
