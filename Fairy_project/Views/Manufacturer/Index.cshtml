@@ -41,7 +41,7 @@
             </div>
             <div class="col-8 p-0 d-flex show-wrap">
 
-                <ul class="m-0 align-items-center d-flex justify-content-start w-100 " id="train" role="tablist">
+                <ul class="m-0 align-items-center d-flex justify-content-start w-100 ultrain" id="train" role="tablist">
                     <li class="showName">
 
                     </li>
@@ -64,10 +64,7 @@
             </div>
             <div class="col-8 p-0 d-flex show-wrap">
 
-                <ul class="m-0 align-items-center d-flex justify-content-start w-100 " id="train" role="tablist">
-                    <li class="showName">
-
-                    </li>
+                <ul class="m-0 align-items-center d-flex justify-content-start w-100 ultrain" id="train" role="tablist">
                 </ul>
             </div>
             <div class="col-2 d-flex justify-content-center align-items-center">
@@ -87,9 +84,9 @@
 
             <div class="col">
             </div>
-            <div class="col d-flex justify-content-center"><button class="btn btnBoothLv">大型</button></div>
-            <div class="col d-flex justify-content-center"><button class="btn btnBoothLv">中型</button></div>
-            <div class="col d-flex justify-content-center"><button class="btn btnBoothLv">小型</button></div>
+            <div class="col d-flex justify-content-center"><button id="btnBoothB" class="btn btnBoothLv">大型</button></div>
+            <div class="col d-flex justify-content-center"><button id="btnBoothM" class="btn btnBoothLv">中型</button></div>
+            <div class="col d-flex justify-content-center"><button id="btnBoothS" class="btn btnBoothLv">小型</button></div>
         </div>
         <div class="row">
             <div class="m-3">
@@ -104,10 +101,7 @@
                     </button>
                 </div>
                 <div class="col-8 p-0 d-flex show-wrap">
-                    <ul class="m-0 align-items-center d-flex justify-content-start w-100 " id="train" role="tablist">
-                        <li class="showName">
-
-                        </li>
+                    <ul class="m-0 align-items-center d-flex justify-content-start w-100 booth" id="boothtrain" role="tablist">
                     </ul>
                 </div>
                 <div class="col-2 d-flex justify-content-center align-items-center">
@@ -127,7 +121,6 @@
             </div>
             <div class="row justify-content-center">
                 <div class="bg-c-Dtl">
-                    ffdsffsdfsdfsfs
                 </div>
             </div>
             <div class="row">
@@ -152,7 +145,7 @@
         axios.get('@Url.Action("getAllExhibition")')
             .then(res => exhibition = res.data)
             .then(res => showExhibitName(exhibition))
-            .then(res =>  showStandNum())
+
             .catch(err => console.log(err));
         function showExhibitName(exhibition) {
             let aZone = $("#aZone");
@@ -160,23 +153,48 @@
             for (let i = 0; i < exhibition.length; i++) {
 
                 if (exhibition[i].areaNum == 1) {
-                    $(aZone).find("li.showName").append(` <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm">
-                                                            ${exhibition[i].exhibitName}
-                                                                        </button>`)
+                    $(aZone).find("#train").append(`<li class="showName"> <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm">
+                                                                                            ${exhibition[i].exhibitName}
+                                                                                                        </button> </li>`)
                 }
                 if (exhibition[i].areaNum == 2) {
-                    $(bZone).find("li.showName").append(` <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm">
-                                                                          ${exhibition[i].exhibitName}
-                                                                        </button>`)
+                    $(bZone).find("#train").append(`<li class="showName"> <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm">
+                                                                                                          ${exhibition[i].exhibitName}
+                                                                                                        </button> </li>`)
                 }
             }
         }
-        function showStandNum() {
-          let id = e.taget.dataset.id
-            console.log(id);
-            axios.post('@Url.Action("GetAllBooth")', {"Ex_id": id})
-                .then(res => console.log(res))
-                .catch(err => console.log(err));
+        let id;
+        $(".ultrain").click((e) => {
+            if ($(e.target).hasClass("btn-woo")) {
+                id = $(e.target).data('id')
+                console.log(id);
+                axios.post('@Url.Action("GetAllBooth")', { "Ex_id": id })
+                    .then(res => chooseLv(res.data))
+                    .catch(err => console.log(err));
+            }
+
+        })
+        let btnLv = $(".btnBoothLv")
+        function chooseLv(arr = new Array) {
+            console.log( arr[2].boothLv)
+            btnLv.click((e) => {
+                let id = $(e.target).attr("id");
+
+                for (let i = 0; i > arr.length; i++) {
+                    if (id == "btnBoothB" && arr[i].boothLv==3) {
+                        console.log(arr[i])
+                       $('.booth').append(`${ arr[i].boothNumber}`)
+                    } else if (id == "btnBoothM"  && arr[i].boothLv==2) {
+                        console.log(arr[i])
+                        $('.booth').append(`${ arr[i].boothNumber}`)
+                    } else if (id == "btnBoothS"  && arr[i].boothLv==1) {
+                        console.log(arr[i])
+                       $('.booth').append(`${ arr[i].boothNumber}`)
+                    }
+                }
+            })
+
         }
     </script>
     }

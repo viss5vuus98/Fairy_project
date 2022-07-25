@@ -40,6 +40,7 @@
     opacity: 0.5;
     transition: opacity 0.15s ease;
 }
+
 .showNext {
     align-items: center;
     justify-content: center;
@@ -205,10 +206,6 @@ body {
     overflow: auto;
     /* overflow: scroll;*/
     /*overflow-y: scroll;*/
-
-
-
-
 }
 
 
@@ -337,64 +334,72 @@ textarea {
         border: groove 5px #e1e9e9;
     }
 
-    .zonebtn:active,.zonebtn:focus {
-        
+    .zonebtn:active, .zonebtn:focus {
         border: groove 5px #e1e9e9;
     }
 
 .btn-woo {
-    width:auto;
+    width: auto;
     color: #3b3131;
     padding: 0.5rem 1rem;
     background-color: #e6d4c4;
 }
+
     .btn-woo:hover {
         color: #3b3131;
-        font-size:1.25rem;
+        font-size: 1.25rem;
         padding: 2rem 2rem;
         border: solid 5px rgb(230,212,196,0.5);
     }
-    .btn-woo:active, .btn-woo:focus{
+
+    .btn-woo:active, .btn-woo:focus {
         color: #3b3131;
         font-size: 1rem;
         padding: 2rem 2rem;
         background-color: #cfad8e;
     }
+
 .btnBoothLv {
     width: auto;
     color: #3b3131;
     padding: 0.5rem 1rem;
     background-color: #e6d4c4;
 }
+
     .btnBoothLv:hover {
         color: #3b3131;
         border: solid 5px rgb(230,212,196,0.5);
     }
+
     .btnBoothLv:active, .btnBoothLv:focus {
         color: #3b3131;
         background-color: #cfad8e;
     }
+
 ul#train {
     padding: 0;
     transform: translateX(-0px);
     transition: .5s;
 }
+
 li.showName {
     margin-right: 40px;
     flex-basis: 0;
     flex-grow: 1;
     /*border: 3px solid red;*/
 }
+
 .show-wrap {
     overflow: hidden;
     position: relative;
 }
-#btn-prev i.fa-angle-left:active{
-   color:#80a2a2;
 
+#btn-prev i.fa-angle-left:active {
+    color: #80a2a2;
 }
-#btn-next i.fa-angle-right:active{
-   color:#80a2a2;
+
+#btn-next i.fa-angle-right:active {
+    color: #80a2a2;
 }
 
 
@@ -415,7 +420,7 @@ li.showName {
     background: #ACC2C2;
     border-radius: 3px;
 }
- /* 滑鼠移到滑動的區塊上 */
-::-webkit-scrollbar-thumb:hover {
+    /* 滑鼠移到滑動的區塊上 */
+    ::-webkit-scrollbar-thumb:hover {
         background: #aaa;
     }
