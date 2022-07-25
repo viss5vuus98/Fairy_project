@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Fairy_project.Migrations
 {
-    public partial class _0718 : Migration
+    public partial class wow0725 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
