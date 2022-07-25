@@ -7,12 +7,13 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using Fairy_project.ViewModels;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Fairy_project.Controllers;
 
 public class HomeController : Controller
 {
-
+    
     private readonly ILogger<HomeController> _logger;
     private readonly ServerContext _context;
     private readonly string _path;
@@ -34,50 +35,17 @@ public class HomeController : Controller
         return View();
     }
     [Route("Home/exhibitionDetail/{exhibitId}")]
-    public IActionResult exhibitionDetail(string exhibitId)
+    public async Task<IActionResult> exhibitionDetail(string exhibitId)
     {
-
-        var id = Convert.ToInt32(exhibitId);
-        eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
-        {
-            Exhibition = _context.exhibitions.FirstOrDefault(m => m.exhibitId == id),
-        };
-
-
-        //var theExhibit =  _context.exhibitions.FirstOrDefault(m => m.exhibitId == id);
-
-        if (eDrtailViewModel == null)
+        int id = Convert.ToInt32(exhibitId);
+        var theExhibit = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == id);
+        if (theExhibit == null)
         {
             Console.WriteLine("NULLLLLLLLLLLLLLL");
             return View();
         }
-        //IList<eDrtailViewModel> manufactures = _context.boothMaps.OrderBy(m => m).Take(3);
-        return View(eDrtailViewModel);
-    }
-
-    public ActionResult GetData()
-    {
-        var theExhibit = _context.exhibitions.OrderBy(m => m.exhibitId);
-        var theManufactures = _context.manufactures.OrderBy(m => m.manufactureId);
-
-        return Json(theExhibit);
-    }
-
-    public IActionResult GetManufactures()
-    {
-        var theManufactures = _context.manufactures.OrderBy(m => m.manufactureId);
-        return Json(theManufactures);
-    }
-
-    [HttpGet]
-    public IActionResult getViewMode()
-    {
-        invide invide = new invide()
-        {
-            Exhibition = _context.exhibitions.FirstOrDefault(m => m.exhibitId == 34) ?? new Exhibition(),
-            Manufactures = _context.manufactures.Where(m => m.manufactureId > 0).ToList()
-        };
-        return Json(invide);
+        //IList<eDrtailViewModel> manufactures = (IList<eDrtailViewModel>)_context.boothMaps.OrderBy(m => m).Take(3);
+        return View(theExhibit);
     }
 
     public IActionResult exhibitionSearch()
@@ -91,68 +59,51 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    //get Member
-    [HttpGet]
-    public IActionResult getMember(int id)
+
+    public IActionResult shoppingcartAsync()
     {
-        var theMember = _context.members.FirstOrDefault(m => m.memberId == id) ?? new Member();
-        return Json(theMember);
+        return View();
     }
-
-    //updata Member
-
-
-    //get All exhibition
-    [HttpGet]
-    public IActionResult getAllExhibition()
-    {
-        DateTime dtToday = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
-        var exhibitions = _context.exhibitions.Where(m => m.datefrom > dtToday);
-        return Json(exhibitions);
-    }
-
-    //post id for the exhibition
-    [HttpPost]
-    public IActionResult getTheExhibition([FromBody] GetIdClassModel idClass)
-    {
-        //Console.WriteLine(idClass.Ex_id + "-------------------");
-        //var id = Convert.ToInt32(idClass.Ex_id);
-        var exhibition = _context.exhibitions.FirstOrDefault(m => m.exhibitId == idClass.Ex_id);
-        return Json(exhibition);
-    }
-
-    //get the exhibition of applies
 
     [HttpPost]
-    public IActionResult getExApplies([FromBody] GetIdClassModel idClass)
+    public async Task<IActionResult> shoppingcart(string i)
     {
-        var applies = _context.Applies.Where(m => m.e_Id == idClass.Ex_id);
-        return Json(applies);
+        if (string.IsNullOrEmpty(i))
+        {
+            return RedirectToAction("exhibitionDetail");
+        }
+        else
+        {
+            Console.WriteLine(i);
+            var id = i.Split("|").SkipLast(1).ToArray();
+            Console.WriteLine(id.Length);
+            List<shoppingcartViewModel> exhibitions = new List<shoppingcartViewModel>();
+
+            for (int a = 0; a < id.Length; a++)
+            {
+                int exid = Convert.ToInt32(id[a]);
+                Console.WriteLine(exid);
+                shoppingcartViewModel model = new shoppingcartViewModel()
+                {
+                    exhibition = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == exid),
+                    //ticket = await _context.tickets.Where(m => m.e_Id == exid).FirstOrDefaultAsync(),
+                };
+                exhibitions.Add(model);
+            }
+            //Console.WriteLine(exhibitions[1].exhibition.datefrom);
+            return Json(exhibitions);
+        }
     }
 
-    //create the exhibition of applies
     [HttpPost]
-    public bool createApplies([FromBody]Apply apply)
+    public IActionResult clearCart([Formbody] List<TicketRoot> obj)
     {
-        _context.Applies.Add(apply);
-        _context.SaveChanges();
-        return true;
-    }
-
-    //get the manufactures of applies
-    [HttpPost]
-    public IActionResult getMfApplies([FromBody] GetIdClassModel idClass)
-    {
-        var applies = _context.Applies.Where(m => m.mf_Id == idClass.Mf_id);
-        return Json(applies);
-    }
-
-    //get the manufactures 
-    [HttpPost]
-    public IActionResult GetTheManufactures([FromBody] GetIdClassModel idClass)
-    {
-        var theManufactures = _context.manufactures.Where(m => m.manufactureId == idClass.Mf_id);
-        return Json(theManufactures);
+        //for (int i = 0; i < obj.Count; i++)
+        //{
+        //    _context.tickets.Add(obj[i].ticket);
+        //}
+        //_context.SaveChanges();
+        return Json(obj);
     }
 }
 
