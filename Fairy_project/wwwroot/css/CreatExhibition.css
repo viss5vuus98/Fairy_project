@@ -16,14 +16,15 @@
     color: #B6B6B4;
 }
 
-#titleinput {
-    transition: .2s;
+i {
+    cursor: pointer;
 }
 
-    #titleinput:disabled {
-        color: #5C5858;
-        background-color: #fafafa;
-    }
+#titleinput {
+    transition: .2s;
+    pointer-events: none;
+    background-color: #fafafa;
+}
 
     #titleinput:focus {
         background-color: #E5E4E2;
@@ -32,15 +33,17 @@
 #contentinput {
     resize: none;
     outline: none;
+    pointer-events: none;
 }
 
     #contentinput:focus {
         background-color: #fafafa;
+        pointer-events: all;
     }
 
-#ticketpriceinput:disabled {
+#ticketpriceinput {
     color: #5C5858;
-    background-color: #fafafa;
+    pointer-events: none;
 }
 
 label {
@@ -57,5 +60,9 @@ input {
     }
 
 #manufacturerreport ul li a:active {
+    background-color: #B6B6B4;
+}
+
+#areaedit ul li a:active {
     background-color: #B6B6B4;
 }

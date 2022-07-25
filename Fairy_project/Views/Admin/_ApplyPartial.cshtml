@@ -1,0 +1,112 @@
+﻿@model Fairy_project.ViewModels.ExhibitIdDetail_1_
+@{
+    if (Model.applylist != null)
+    {
+        for (int i = 0; i < Model.applylist.Count; i++)
+        {
+            <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 bg2 apply">
+                <h3 class="w-25 m-0">@Model.applylist[i].manufactureName</h3>
+                <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
+
+
+                <a href="" class="w-25 m-0 border-0 text-reset bg2" data-bs-toggle="modal"
+           data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">
+                    <h3>@Model.applylist[i].boothNumber</h3>
+                </a>
+                <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content bg2">
+                            <form>
+                                <div class="row mx-3">
+                                    <div class="col-9">
+                                        <div class="d-flex justify-content-between pt-4">
+                                            <h2 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h2>
+
+                                            @{
+                                                if (Model.applylist[i].boothLv == 3)
+                                                {
+                                                    <h3 class="m-0">大型 / @Model.applylist[i].boothPrice $</h3>
+                                                }
+                                                else if (Model.applylist[i].boothLv == 2)
+                                                {
+                                                    <h3 class="m-0">中型 / @Model.applylist[i].boothPrice $</h3>
+                                                }
+                                                else if (Model.applylist[i].boothLv == 1)
+                                                {
+                                                    <h3 class="m-0">小型 / @Model.applylist[i].boothPrice $</h3>
+                                                }
+
+                                            }
+                                        </div>
+                                        <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_P_img}")" alt="">
+                                        <p class="text-start h5 mx-3 p-4">
+                                            @Model.applylist[i].mf_Description
+                                        </p>
+                                    </div>
+                                    <div class="col-3 d-flex flex-column justify-content-center">
+                                        <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
+                                        <h4 class="my-2">@Model.applylist[i].manufactureName</h4>
+                                        <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
+                                        <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
+                                        <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
+                                        <div class="d-flex h-25 flex-column align-items-start mt-5 ms-5 my-3">
+                                            <i class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao">
+                                                <span class="h5">通過</span>
+                                            </i>
+                                            <i class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax">
+                                                <span class="h5">未通過</span>
+                                            </i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                @{
+                    if (Model.applylist[i].checkState == 0)
+                    {
+                        <h3 class="w-25 m-0 text-warning">待審核</h3>
+                    }
+                    else if (Model.applylist[i].checkState == 1)
+                    {
+                        <h3 class="w-25 m-0 text-danger">尚未付款</h3>
+                    }
+                    else if (Model.applylist[i].checkState == 2)
+                    {
+                        <h3 class="w-25 m-0 text-success">已付款</h3>
+                    }
+                }
+            </div>
+        }
+
+
+
+        <div class="d-flex justify-content-around w-100">
+            <div class="col-lg-2 col-sm-1 col-1 text-start my-3 mx-2">
+                <a href="" class="text-reset p-0 my-3">
+                    <i class="fa-solid fa-chevron-left opacity-75 fa-2x p-0"></i>
+                </a>
+            </div>
+
+            <ul id="pagelist" class="col-lg-7 col-sm-8 col-8 d-flex list-unstyled justify-content-center align-items-center text-center m-0">
+                @{
+                    int page = 1;
+                    for (int i = 0; i < Model.applysum; i += 10)
+                    {
+                        <li><a class="btn border-0 fs-4 px-lg-3 mx-lg-3 mx-sm-1 rounded-pill bg1 page">@Html.Raw(page)</a></li>
+                        page++;
+                    }
+                }
+            </ul>
+            <div class="col-lg-2 col-sm-1 col-1 text-end my-3 mx-2">
+                <a href="" class="text-reset p-0 my-3">
+                    <i class="fa-solid fa-chevron-right opacity-75 fa-2x p-0"></i>
+                </a>
+            </div>
+        </div>
+    }
+
+}

@@ -3,25 +3,33 @@
     {
     <link rel="stylesheet" href="~/css/CreatExhibition.css" asp-append-version="true" />
 }
-
     <div class="container">
-        <form action="@Url.Action("CreatExhibition")" method="post">
+        <form action="@Url.Action("CreatExhibition")" method="post" enctype="multipart/form-data">
             <div class="row align-items-center my-3">
                 <div class="col-lg-1 col-sm-2 col-4">
-                    <a id="edittitle" href="" class="text-reset p-0 text-center">
-                        <i class="fa-regular fa-pen-to-square fa-4x opacity-75 text-center"></i>
-                    </a>
+                    <i id="edittitle" class="fa-regular fa-pen-to-square fa-4x opacity-75 text-center"></i>
                 </div>
                 <div class="col-lg-10 col-sm-8 col-6 p-0 text-start">
-                    <input asp-for="exhibitName" id="titleinput" type="text"
-                       class="my-3 py-3 mx-3 border-0 rounded-3 col-11 h1 text-center mx-0 bg2" value=""
-                       placeholder="輸入標題" autocomplete="off" disabled>
+                    <input asp-for="exhibitName" id="titleinput" type="text" class="text-center my-3 py-3 mx-3 border-0 rounded-3 col-11 h1 mx-0 bg1"
+                       placeholder="輸入標題" autocomplete="off">
                 </div>
                 <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-black fs-3 py-4">規劃</span>
             </div>
             <div class="row">
                 <div class="col-lg-6 col-sm-12 col-12 my-5">
-                    <h2 class="mx-5 mb-5">No. @ViewBag.idnew</h2>
+                    <div id="areaedit" class="d-flex justify-content-around">
+                        <h2 class="mx-5 mb-5 w-50">No.<input asp-for="exhibitId" class="h2 pe-none border-0 w-50 bg2" value="@ViewBag.idnew" readonly></h2>
+                        <button class="w-25 h-25 btn px-0 bg2 border border-1 d-flex justify-content-center"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <input asp-for="areaNum" type="text" id="areainput" class="pe-none w-75 text-center border-0 h3 m-0 bg2 c1"
+                               value="展區"></input>
+                            <i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i>
+                        </button>
+                        <ul class="dropdown-menu text-center p-0">
+                            <li><a class="dropdown-item h4 m-0" href="#">A</a></li>
+                            <li><a class="dropdown-item h4 m-0" href="#">B</a></li>
+                        </ul>
+                    </div>
                     <div class="position-relative my-4">
                         <img id="ticketimg" class="rounded-3 border border-1 w-100" src="@Url.Content("~/images/ticketdefault.png")"
                          alt="">
@@ -66,11 +74,10 @@
             <div class="row align-items-center my-5">
                 <div class="col-12 rounded-3 position-relative text-center border bg1">
                     <textarea asp-for="ex_description" id="contentinput" class="col-11 h3 rounded-3 border-0 my-5 bg1" rows="15"
-                          placeholder="輸入詳細" disabled></textarea>
-                    <a href="" id="editcontent" class="text-reset">
-                        <i class="fa-regular fa-pen-to-square fa-3x m-2 p-2 rounded-3 opacity-75 position-absolute bottom-0 end-0"
-                       href="#"></i>
-                    </a>
+                          placeholder="輸入詳細" autocomplete="off" readonly></textarea>
+                    <i id="editcontent"
+                   class="fa-regular fa-pen-to-square fa-3x m-2 p-2 rounded-3 opacity-75 position-absolute bottom-0 end-0"
+                   href="#"></i>
                 </div>
             </div>
             <div class="row justify-content-between rounded-3 p-3 my-5 bg1">
@@ -99,7 +106,7 @@
                         <h2 class="m-3 fw-bold">門票價格</h2>
                         <input asp-for="ticket_Peice" id="ticketpriceinput" type="number"
                            class="h1 text-center border-0 border-secondary border-bottom fw-bold my-3 py-2 bg2"
-                           disabled autocomplete="off"></input>
+                           autocomplete="off"></input>
                         <div class="d-flex justify-content-center flex-wrap">
                             <a id="editticketprice" href="" class="text-reset p-0 my-2 pt-1">
                                 <i class="fa-regular fa-pen-to-square fa-xl p-0 mx-3 opacity-75"> 自訂</i>
@@ -128,6 +135,9 @@
                     <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位價格</h3>
                     <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位數量</h3>
                 </div>
+
+
+
                 <div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2">
                     <a id="addbooth" href="#" class="w-100 h-100 border-0 text-reset bg2">
                         <i class="w-100 h-100 fa-solid fa-plus fa-3x "></i>
@@ -141,21 +151,12 @@
             </div>
         </form>
     </div>
+    @section Scripts
+    {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
         integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
-        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                                                                                                   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
-        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
-        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
@@ -164,15 +165,26 @@
         })
 
         $('#edittitle').on('click', (e) => {
-            $('#titleinput').removeAttr('disabled').trigger('focus')
+            $('#titleinput').removeClass('text-center').trigger('focus')
+            $(e.target).css('pointer-events', 'none')
         })
 
         $('#titleinput').on('focus', (e) => {
-            $(e.target).removeClass('text-center')
+            $(e.target).css('pointer-events', 'all')
         })
 
         $('#titleinput').on('blur', (e) => {
-            $(e.target).addClass('text-center').attr('disabled', 'disabled')
+            $(e.target).addClass('text-center').css('pointer-events', 'none')
+            $('#edittitle').css('pointer-events', 'all')
+        })
+
+        $('#areaedit').on('click', (e) => {
+            if ($(e.target).text() == 'A') {
+                $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+            }
+            else if ($(e.target).text() == 'B') {
+                $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+            }
         })
 
         $('#ticketimginput').on('change', (e) => {
@@ -200,7 +212,8 @@
         })
 
         $('#editcontent').on('click', (e) => {
-            $('#contentinput').removeAttr('disabled').trigger('focus')
+            $('#contentinput').removeAttr('readonly').trigger('focus')
+            $(e.target).css('pointer-events', 'none')
         })
 
         $('#contentinput').on('focus', (e) => {
@@ -208,7 +221,8 @@
         })
 
         $('#contentinput').on('blur', (e) => {
-            $(e.target).attr('disabled', 'disabled').toggleClass('bg1').parent().toggleClass('bg1').toggleClass('border-secondary');
+            $(e.target).attr('readonly', 'readonly').toggleClass('bg1').parent().toggleClass('bg1').toggleClass('border-secondary');
+            $('#editcontent').css('pointer-events', 'all')
         })
 
         $('#ticketreportshow').on('click', (e) => {
@@ -217,7 +231,11 @@
         })
 
         $('#editticketprice').on('click', (e) => {
-            $('#ticketpriceinput').removeAttr('disabled').trigger('focus').trigger('focus')
+            $('#ticketpriceinput').trigger('focus').css('pointer-events', 'all')
+        })
+
+        $('#ticketpriceinput').on('blur', (e) => {
+            $(e.target).css('pointer-events', 'none')
         })
 
         $('#mathticket').on('click', (e) => {
@@ -239,17 +257,18 @@
             }
         })
 
-        $('#ticketpriceinput').on('blur', (e) => {
-            $(e.target).attr('disabled', 'disabled')
-        })
-
         $('#manufacturerreportshow').on('click', (e) => {
             $('#manufacturerreport').toggleClass('d-none')
             $(e.target).toggleClass('fa-chevron-left')
         })
 
+
+
+
+
+        var i = 0;
+
         $('#manufacturerreport').on('click', (e) => {
-            console.log(e.target);
             $('#boothlevel').removeClass('c1').addClass('c2')
             if ($(e.target).hasClass('dropdown-item')) {
                 e.preventDefault();
@@ -263,13 +282,32 @@
                     $(e.target).closest('ul').prev().find('input').val($(e.target).text())
                 }
             }
+            else if ($(e.target).hasClass('deletebooth')) {
+                $(e.target).parent().parent().remove();
+                i = 0;
+                $('#manufacturerreport').find('.blv').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothLv`)
+                    i++;
+                })
+                i = 0;
+                $('#manufacturerreport').find('.bpri').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothPrice`)
+                    i++;
+                })
+                i = 0;
+                $('#manufacturerreport').find('.bsum').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothsum`)
+                    i++;
+                })
+            }
         })
 
-        var boothsum = 0;
         $('#addbooth').on('click', (e) => {
-            $(e.target).closest('div').before(`<div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2"><button class="w-25 btn px-0 rounded-pill bg2 d-flex justify-content-center" data-bs-toggle="dropdown" aria-expanded="false"><input asp-for="setboothslist[${boothsum}].boothLv" class="w-75 text-center border-0 h3 m-0 bg2 c1" value="攤位等級" disabled></input><i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button><ul class="dropdown-menu ms-5 text-center p-0"><li><a class="dropdown-item h4 m-0" href="#">大型</a></li><li><a class="dropdown-item h4 m-0" href="#">中型</a></li><li><a class="dropdown-item h4 m-0" href="#">小型</a></li></ul><h3 class="w-25 m-0"></h3><div class="w-25"><input class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2"placeholder="輸入價格" type="number" autocomplete="off"></input></div><div class="w-25"><input class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2"placeholder="輸入價格" type="number" autocomplete="off"></input></div></div>`)
-            boothsum++
+            e.preventDefault();
+            $(e.target).closest('div').before(`<div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2"><button class="w-25 btn px-0 rounded-pill bg2 d-flex justify-content-center" data-bs-toggle="dropdown" aria-expanded="false"><input name="setboothslist[${i}].boothLv" class="pe-none w-75 text-center border-0 h3 m-0 bg2 c1 blv" value="攤位等級"></input><i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button><ul class="dropdown-menu ms-5 text-center p-0"><li><a class="dropdown-item h4 m-0" href="#">大型</a></li><li><a class="dropdown-item h4 m-0" href="#">中型</a></li><li><a class="dropdown-item h4 m-0" href="#">小型</a></li></ul><h3 class="w-25 m-0"></h3><div class="w-25"><input name="setboothslist[${i}].boothPrice" class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2 bpri"placeholder="輸入價格" type="number" autocomplete="off"></input></div><div class="w-25"><input name="setboothslist[${i}].boothsum" class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2 bsum"placeholder="輸入數量" type="number" autocomplete="off"></input><i class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i></div></div>`)
+            i++
         })
+
 
         function mathticket(expectedpeople, expecteincome) {
             let lowpeople = expectedpeople * 0.5
@@ -286,4 +324,12 @@
                 price += "0"
             }
             return Math.round(ticketoriginal / parseInt(price)) * parseInt(price)
-        }</script>
+        }
+    </script>
+
+
+
+}
+
+
+

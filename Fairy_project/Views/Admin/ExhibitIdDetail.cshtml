@@ -1,0 +1,627 @@
+﻿@model Fairy_project.ViewModels.ExhibitIdDetail_1_
+@section Style
+
+    {
+    <link rel="stylesheet" href="~/css/MasterExhibitionDetail.css" asp-append-version="true" />
+
+}
+    <div class="container">
+        <form action="@Url.Action("ExhibitIdDetail")" method="post" enctype="multipart/form-data">
+            <div class="row align-items-center my-3">
+                <div class="col-lg-1 col-sm-2 col-4">
+                    <i id="edittitle" class="fa-regular fa-pen-to-square fa-4x opacity-75 text-center"></i>
+
+                </div>
+                <div class="col-lg-10 col-sm-8 col-6 p-0  text-start">
+                    <input asp-for="exhibitName" id="titleinput" type="text"
+                       class="text-center my-3 py-3 mx-3 border-0 rounded-3 col-11 h1 mx-0 bg1" value="@Model.exhibitName"
+                       placeholder="輸入標題" autocomplete="off">
+                </div>
+                @{
+                if (Model.exhibitStatus == 1)
+                {
+                    <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-black fs-3 py-4">規劃</span>
+                }
+                else if (Model.exhibitStatus == 2)
+                {
+                    <span class="col-lg-1 col-sm-2 col-2 badge bg-warning text-black fs-3 py-4">籌備</span>
+                }
+                else if (Model.exhibitStatus == 3)
+                {
+                    <span class="col-lg-1 col-sm-2 col-2 badge bg-success text-black fs-3 py-4">舉辦</span>
+                }
+            }
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 col-12 my-5">
+                @{
+                    if (Model.exhibitStatus == 1)
+                    {
+                        <div id="areaedit" class="d-flex justify-content-around">
+                            <h2 class="mx-5 mb-5 w-50">No.<input asp-for="exhibitId" class="h2 pe-none border-0 w-50 bg2" value="@Model.exhibitId" readonly></h2>
+                            <button class="w-25 h-25 btn px-0 bg2 border border-1 d-flex justify-content-center"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <input asp-for="areaNumstring" type="text" id="areainput" class="pe-none w-75 text-center border-0 h3 m-0 bg2 c1"
+                               value="@Model.areaNumstring"></input>
+                                <i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i>
+                            </button>
+                            <ul class="dropdown-menu text-center p-0">
+                                <li><a class="dropdown-item h4 m-0" href="#">A</a></li>
+                                <li><a class="dropdown-item h4 m-0" href="#">B</a></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex justify-content-around">
+                            <h2 class="mx-5 mb-5 w-50">No.<input asp-for="exhibitId" class="h2 pe-none border-0 w-50 bg2" value="@Model.exhibitId" readonly></h2>
+                            @{
+                                if (Model.areaNumstring == "A")
+                                {
+                                    <h3 class="w-25 h-25 py-2 px-0 bg2 border border-1 text-center">展區 @Model.areaNumstring</h3>
+                                }
+                                else if (Model.areaNumstring == "B")
+                                {
+                                    <h3 class="w-25 h-25 py-2 px-0 bg2 border border-1 text-center">展區 @Model.areaNumstring</h3>
+                                }
+                            }
+                        </div>
+                    }
+                }
+
+
+
+                <div class="position-relative my-4">
+                    <img id="ticketimg" class="rounded-3 border border-1 w-100" src="@Url.Content($"~/images/{Model.exhibit_T_img}")" alt="">
+                    @{
+                        if (Model.exhibitStatus != 3)
+                        {
+                            <label for="ticketimginput" class="d-inline">
+                                <input asp-for="fexhibit_T_img" type="file" value="@Url.Content($"~/images/{Model.exhibit_T_img}")" id="ticketimginput" hidden accept=".png,.jpg">
+                                <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0 bg1"></i>
+                            </label>
+                        }
+                    }
+                </div>
+                <div class="position-relative">
+                    <img id="horizontalposterimage" class="rounded-3 border border-1 w-100"
+                         src="@Url.Content($"~/images/{Model.exhibit_Pre_img}")" alt="">
+                    @{
+                        if (Model.exhibitStatus != 3)
+                        {
+                            <label for="horizontalposterimageinput" class="d-inline">
+                                <input asp-for="fexhibit_Pre_img" type="file" id="horizontalposterimageinput" hidden accept=".png,.jpg">
+                                <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0 bg1"></i>
+                            </label>
+                        }
+
+                    }
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 col-12 p-lg-5 p-sm-2">
+                <div class="position-relative p-3">
+                    <img id="verticalposterimage" class="rounded-3 border border-1 w-100"
+                         src="@Url.Content($"~/images/{Model.exhibit_P_img}")">
+                    @{
+                        if (Model.exhibitStatus != 3)
+                        {
+                            <label for="verticalposterimageinput" class="d-inline">
+                                <input asp-for="fexhibit_P_img" type="file" id="verticalposterimageinput" hidden accept=".png,.jpg">
+                                <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute bottom-0 end-0 translate-middle bg1"
+                               href="#"></i>
+                            </label>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        @{
+            if (Model.exhibitStatus == 1)
+            {
+                <div class="row align-items-center justify-content-evenly">
+                    <div class="col-lg-1 col-sm-12 col-12 fs-1 text-center">從</div>
+                    <div class="col-lg-5 col-sm-12 col-12 text-center">
+                        <input asp-for="datefrom" id="fromdateinput" type="datetime-local" class="w-75 h2 bg1 my-3 p-3 rounded-3 border-0"
+                       value="@Convert.ToDateTime(Model.datefrom).ToString("yyyy-MM-dd hh:mm")"></input>
+                    </div>
+                    <div class="col-lg-1 col-sm-12 col-12 fs-1 text-center">到</div>
+                    <div class="col-lg-5 col-sm-12 col-12 text-center">
+                        <input asp-for="dateto" id="todateinput" type="datetime-local" class="w-75 h2 bg1 my-3 p-3 rounded-3 border-0"
+                       value="@Convert.ToDateTime(Model.dateto).ToString("yyyy-MM-dd hh:mm")"></input>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row align-items-center justify-content-evenly">
+                    <div class="col-lg-1 col-sm-12 col-12 fs-1 text-center">從</div>
+                    <div class="col-lg-5 col-sm-12 col-12 text-center">
+                        <input asp-for="datefrom" id="fromdateinput" type="datetime-local" class="w-75 h2 bg1 my-3 p-3 rounded-3 border-0"
+                       value="@Convert.ToDateTime(Model.datefrom).ToString("yyyy-MM-dd hh:mm")" readonly></input>
+                    </div>
+                    <div class="col-lg-1 col-sm-12 col-12 fs-1 text-center">到</div>
+                    <div class="col-lg-5 col-sm-12 col-12 text-center">
+                        <input asp-for="dateto" id="todateinput" type="datetime-local" class="w-75 h2 bg1 my-3 p-3 rounded-3 border-0"
+                       value="@Convert.ToDateTime(Model.dateto).ToString("yyyy-MM-dd hh:mm")" readonly></input>
+                    </div>
+                </div>
+            }
+        }
+        <div class="row align-items-center my-5">
+            <div class="col-12 rounded-3 position-relative text-center border bg1">
+                <textarea asp-for="ex_description" id="contentinput" class="col-11 h3 rounded-3 border-0 my-5 bg1" rows="15"
+                          placeholder="輸入詳細" autocomplete="off" readonly>@Model.ex_description</textarea>
+                <i id="editcontent"
+                   class="fa-regular fa-pen-to-square fa-3x m-2 p-2 rounded-3 opacity-75 position-absolute bottom-0 end-0"
+                   href="#"></i>
+            </div>
+        </div>
+        @{
+            if (Model.exhibitStatus == 1 || Model.exhibitStatus == 2)
+            {
+                <div class="row justify-content-between rounded-3 p-3 my-5 bg1">
+                    <h2 class="col-6 p-0 m-0">票卷管理</h2>
+                    <div class="col-6 text-end">
+                        <a id="ticketreportshow" href="" class="text-reset p-0 pt-1">
+                            <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="ticketreport" class="row rounded-3 p-3 align-items-center bg1">
+                    <div class="col-12 d-flex justify-content-lg-between justify-content-center flex-wrap p-0">
+                        <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                            <h2 class="m-3 fw-bold">預計進場人數</h2>
+                            <input asp-for="ex_personTime" id="expectedpeople" type="number"
+                           class="text-center border-0 border-secondary border-bottom m-3 p-3 h3 bg2"
+                           placeholder="輸入數字" autocomplete="off" value="@Model.ex_personTime"></input>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                            <h2 class="m-3 fw-bold">預計收益金額</h2>
+                            <input asp-for="ex_totalImcome" id="expecteincome" type="number"
+                           class="text-center border-0 border-secondary border-bottom m-3 p-3 h3 bg2"
+                           placeholder="輸入數字" autocomplete="off" value="@Model.ex_totalImcome"></input>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                            <h2 class="m-3 fw-bold">門票價格</h2>
+                            <input asp-for="ticket_Peice" id="ticketpriceinput" type="number"
+                           class="h1 text-center border-0 border-secondary border-bottom fw-bold my-3 py-2 bg2"
+                           autocomplete="off" value="@Model.ticket_Peice"></input>
+                            <div class="d-flex justify-content-center flex-wrap">
+                                <a id="editticketprice" href="" class="text-reset p-0 my-2 pt-1">
+                                    <i class="fa-regular fa-pen-to-square fa-xl p-0 mx-3 opacity-75"> 自訂</i>
+                                </a>
+                                <a id="mathticket" href="" class="text-reset p-0 my-2 pt-1">
+                                    <i class="fa-regular fa-keyboard fa-xl p-0 mx-3 opacity-75"> 試算</i>
+                                </a>
+                            </div>
+                            <!-- <h6 id="lowprice" class="visually-hidden my-1 text-danger">低於基本價格</h6>
+                            <h6 id="highprice" class="visually-hidden my-1 text-success">高於基本價格</h6> -->
+                        </div>
+                    </div>
+                </div>
+
+            }
+            else if (Model.exhibitStatus == 3)
+            {
+                <div class="row rounded-3 p-3 my-5 bg1">
+                    <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">售票額</h2>
+                    <h2 class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
+                        807 / NT <span class="text-success">$65,050</span>
+                    </h2>
+                    <div class="col-lg-1 col-sm-2 col-1 text-end">
+                        <a id="ticketreportshow" href="" class="text-reset p-0 pt-1">
+                            <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="ticketreport" class="row rounded-3 p-3 align-items-center bg1">
+                    <h2 class="col-lg-5 col-sm-4 col-4 text-end my-3">門票單價</h2>
+                    <div class="col-lg-1 col-sm-3 col-2 text-center">
+                        <a id="editticketprice" href="" class="text-reset p-0 my-3">
+                            <i class="fa-regular fa-pen-to-square opacity-75 fa-3x p-0"></i>
+                        </a>
+                    </div>
+                    <input id="ticketpriceinput" type="text"
+                       class="col-lg-3  col-sm-4 col-5 my-3 py-2 text-center fw-bold rounded-pill border-0 h2 bg2"
+                       value="200$" disabled>
+                    <div class="col-lg-3 col-sm-1 col-1"></div>
+                    <div class="col-12 d-flex justify-content-lg-between justify-content-center flex-wrap p-0">
+                        <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                            <h2 class="m-3">平均進場人數</h2>
+                            <h2 class="m-3 p-3 h1 fw-bold">504</h2>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center justify-content-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                            <h2 class="m-3">昨日進場人數</h2>
+                            <div class="d-flex  justify-content-center align-items-center">
+                                <h2 class="m-3 p-3 h1 fw-bold text-danger">504</h2><i class="fa-solid fa-sort-down fa-2xl text-danger end-0 pb-3 pe-3"></i>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                            <h2 class="m-3">累積銷售</h2>
+                            <h2 class="h1 fw-bold">647</h2>
+                            <h3 class="p-2">807 / NT <span class="text-success">$65,050</span></h3>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }
+        @{
+            if (Model.exhibitStatus == 1)
+            {
+                <div class="row rounded-3 p-3 my-5 bg1">
+                    <h2 class="col-6 p-0 m-0">攤位管理</h2>
+                    <div class="col-6 text-end">
+                        <a id="manufacturerreport1show" href="" class="text-reset p-0 pt-1">
+                            <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="manufacturerreport1" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
+                    <div class="col-lg-10 col-sm-12 my-3 py-3 d-flex flex-wrap rounded-pill text-center rounded-3 bg2">
+                        <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位等級</h3>
+                        <h3 class="col-lg-3 col-sm-6 col-12 m-0"></h3>
+                        <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位價格</h3>
+                        <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位數量</h3>
+                    </div>
+                    @{
+                        int bsum = 0;
+                        foreach (var Booths in Model.setboothslist)
+                        {
+                            <div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2">
+                                <button class="w-25 btn px-0 rounded-pill bg2 d-flex justify-content-center" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <input asp-for="setboothslist[bsum].boothLv"
+                           class="pe-none w-75 text-center border-0 h3 m-0 bg2 c1" value="@Booths.boothLv"></input><i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3 blv"></i>
+                                </button>
+                                <ul class="dropdown-menu ms-5 text-center p-0">
+                                    <li><a class="dropdown-item h4 m-0" href="#">大型</a></li>
+                                    <li><a class="dropdown-item h4 m-0" href="#">中型</a></li>
+                                    <li><a class="dropdown-item h4 m-0" href="#">小型</a></li>
+                                </ul>
+                                <h3 class="w-25 m-0"></h3>
+                                <div class="w-25">
+                                    <input asp-for="setboothslist[bsum].boothPrice"
+                           class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2 bpri"
+                           placeholder="輸入價格" type="number" autocomplete="off" value="@Booths.boothPrice"></input>
+                                </div>
+                                <div class="w-25">
+                                    <input asp-for="setboothslist[bsum].boothsum"
+                           class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2 bsum"
+                           placeholder="輸入數量" type="number" autocomplete="off" value="@Booths.boothsum"></input>
+                                    <i class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
+                                </div>
+                            </div>
+                            bsum++;
+                        }
+                    }
+                    <div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2">
+                        <a id="addbooth" class="w-100 h-100 border-0 text-reset bg2">
+                            <i class="w-100 h-100 fa-solid fa-plus fa-3x "></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="row justify-content-around my-5">
+                    <button type="submit" class="btn btn-dark col-lg-3 col-sm-3 col-4 fs-2">儲存修改</button>
+                    <a asp-action="ChangeExhibitState" asp-route-exhibitId="@Model.exhibitId" class="col-lg-3 col-sm-3 col-4 btn btn-warning fs-2">進入籌備</a>
+                    <a asp-action="DeleteExhibition" asp-route-exhibitId="@Model.exhibitId" class="col-lg-3 col-sm-3 col-4 btn btn-danger fs-2">刪除展覽</a>
+                </div>
+            }
+            else if (Model.exhibitStatus == 2 || Model.exhibitStatus == 3)
+            {
+                <div class=" row rounded-3 p-3 my-5 bg1">
+                    <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">承租額</h2>
+                    <h2 class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
+                        24 / NT <span class="text-success">$35,050</span>
+                    </h2>
+                    <div class="col-lg-1 col-sm-2 col-1 text-end">
+                        <a id="manufacturerreport23show" href="" class="text-reset p-0 pt-1">
+                            <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="manufacturerreport23" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
+                    <input id="searchmidinput" type="text" placeholder="輸入廠商ID"
+                       class="col-lg-3 col-sm-6 col-6 m-3 py-2 text-center fw-lighter rounded-pill h2 border-0 bg2">
+                    <div class="btn-group col-lg-3 col-sm-4 col-4">
+                        <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <span id="searchstate" class="h2 c1" data-state="">狀態</span>
+                        </button>
+                        <ul class="dropdown-menu w-75 mx-3 text-center p-0">
+                            <li><a id="state0" class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
+                            <li><a id="state1" class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
+                            <li><a id="state2" class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-1 col-sm-1 col-1 text-center">
+                        <a class="text-reset p-0 my-3">
+                            <i id="searchapply" class="fa-solid fa-magnifying-glass opacity-75 fa-3x p-0"></i>
+                        </a>
+                    </div>
+                    <partial name="_ApplyPartial.cshtml" />
+                    <div id="partial" class="d-flex flex-column justify-content-center align-items-center"></div>
+                </div>
+
+                <div class="row justify-content-around my-5">
+                    <button type="submit" class="btn btn-dark col-lg-3 col-sm-3 col-4 fs-2">儲存修改</button>
+                    <a asp-action="Master" class="btn btn-dark col-lg-3 col-sm-3 col-4 fs-2">回上一頁</a>
+                </div>
+            }
+        }
+    </form>
+</div>
+
+@section Scripts
+
+    {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        //$('a').on('click', (e) => {
+        //    e.preventDefault()
+        //})
+
+        $('#edittitle').on('click', (e) => {
+            $('#titleinput').removeClass('text-center').trigger('focus')
+            $(e.target).css('pointer-events', 'none')
+        })
+
+        $('#titleinput').on('focus', (e) => {
+            $(e.target).css('pointer-events', 'all')
+        })
+
+        $('#titleinput').on('blur', (e) => {
+            $(e.target).addClass('text-center').css('pointer-events', 'none')
+            $('#edittitle').css('pointer-events', 'all')
+        })
+
+        $('#areaedit').on('click', (e) => {
+            console.log(e.target)
+            if ($(e.target).text() == 'A') {
+                $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+            }
+            else if ($(e.target).text() == 'B') {
+                $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+            }
+        })
+
+        $('#ticketimginput').on('change', (e) => {
+            let readfile = new FileReader();
+            readfile.readAsDataURL(e.target.files[0])
+            readfile.addEventListener('load', () => {
+                $('#ticketimg').attr('src', `${readfile.result}`)
+            })
+        })
+
+        $('#horizontalposterimageinput').on('change', (e) => {
+            let readfile = new FileReader();
+            readfile.readAsDataURL(e.target.files[0])
+            readfile.addEventListener('load', () => {
+                $('#horizontalposterimage').attr('src', `${readfile.result}`)
+            })
+        })
+
+        $('#verticalposterimageinput').on('change', (e) => {
+            let readfile = new FileReader();
+            readfile.readAsDataURL(e.target.files[0])
+            readfile.addEventListener('load', () => {
+                $('#verticalposterimage').attr('src', `${readfile.result}`)
+            })
+        })
+
+        $('#editcontent').on('click', (e) => {
+            $('#contentinput').removeAttr('readonly').trigger('focus')
+            $(e.target).css('pointer-events', 'none')
+        })
+
+        $('#contentinput').on('focus', (e) => {
+            $(e.target).toggleClass('bg1').parent().toggleClass('bg1').toggleClass('border-secondary')
+        })
+
+        $('#contentinput').on('blur', (e) => {
+            $(e.target).attr('readonly', 'readonly').toggleClass('bg1').parent().toggleClass('bg1').toggleClass('border-secondary');
+            $('#editcontent').css('pointer-events', 'all')
+        })
+
+        $('#ticketreportshow').on('click', (e) => {
+            e.preventDefault();
+            $('#ticketreport').toggleClass('d-none')
+            $(e.target).toggleClass('fa-chevron-left')
+        })
+
+        $('#editticketprice').on('click', (e) => {
+            e.preventDefault();
+            $('#ticketpriceinput').trigger('focus').css('pointer-events', 'all')
+        })
+
+        $('#ticketpriceinput').on('blur', (e) => {
+            $(e.target).css('pointer-events', 'none')
+        })
+
+        $('#mathticket').on('click', (e) => {
+            e.preventDefault();
+            $('#ticketpriceinput').removeClass('text-danger').removeClass('text-success')
+            if ($('#expectedpeople').val() != 0 && $('#expecteincome').val() != 0) {
+                $('#ticketpriceinput').val(mathticket($('#expectedpeople').val(), $('#expecteincome').val()))
+            }
+        })
+
+        $('#ticketpriceinput').on('change', (e) => {
+            if ($('#expectedpeople').val() != 0 && $('#expecteincome').val() != 0) {
+                if (e.target.value < mathticket($('#expectedpeople').val(), $('#expecteincome').val())) {
+                    $(e.target).removeClass('text-success').addClass('text-danger')
+                }
+                else {
+                    $(e.target).removeClass('text-danger').addClass('text-success')
+                }
+            }
+        })
+
+        $('#manufacturerreport1show').on('click', (e) => {
+            e.preventDefault();
+            $('#manufacturerreport1').toggleClass('d-none')
+            $(e.target).toggleClass('fa-chevron-left')
+        })
+
+        $('#manufacturerreport23show').on('click', (e) => {
+            e.preventDefault();
+            $('#manufacturerreport23').toggleClass('d-none')
+            $(e.target).toggleClass('fa-chevron-left')
+        })
+
+
+        $('.dropdown-menu li').on('click', (e) => {
+            if ($(e.target).text() == '待審核') {
+                $('#searchstate').text($(e.target).text()).removeClass('text-danger').removeClass('text-success').addClass('text-warning')
+            }
+            else if ($(e.target).text() == '尚未付款') {
+                $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-success').addClass('text-danger')
+            }
+            else if ($(e.target).text() == '已付款') {
+                $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').addClass('text-success')
+            }
+        })
+
+        var i = @Model.setboothslist.Count;
+
+        $('#manufacturerreport1').on('click', (e) => {
+            if ($(e.target).hasClass('dropdown-item')) {
+                e.preventDefault();
+                if ($(e.target).text() == '大型') {
+                    $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+                }
+                else if ($(e.target).text() == '中型') {
+                    $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+                }
+                else if ($(e.target).text() == '小型') {
+                    $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+                }
+            } else if ($(e.target).hasClass('deletebooth')) {
+                $(e.target).parent().parent().remove();
+                i = 0;
+                $('#manufacturerreport1').find('.blv').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothLv`)
+                    i++;
+                })
+                i = 0;
+                $('#manufacturerreport1').find('.bpri').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothPrice`)
+                    i++;
+                })
+                i = 0;
+                $('#manufacturerreport1').find('.bsum').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothsum`)
+                    i++;
+                })
+            }
+        })
+
+        $('#manufacturerreport23').on('click', (e) => {
+            e.preventDefault();
+            let data = {
+                exhibitId: @Model.exhibitId,
+                offset: 0,
+            }
+            if ($('#searchmidinput').val() != '') {
+                data.m_id = $('#searchmidinput').val()
+            }
+            if ($('#searchstate').text() != '狀態') {
+                data.checkstate = $('#searchstate').attr('data-state')
+            }
+            if ($(e.target).attr('id') == 'searchapply') {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("_ApplyPartial_Search")',
+                    data,
+                }).done((result) => {
+                    $('#partial').html(result)
+                }).fail(() => {
+                    console.log("pagefail")
+                })
+            }
+            else if ($(e.target).hasClass('page')) {
+                data.offset = ($(e.target).text() * 10) - 10
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("_ApplyPartial_Search")',
+                    data,
+                }).done((result) => {
+                    $('#partial').html(result)
+                }).fail(() => {
+                    console.log("pagefail")
+                })
+            } else if ($(e.target).hasClass('dropdown-item')) {
+                if ($(e.target).text() == '待審核') {
+                    $('#searchstate').text($(e.target).text()).removeClass('text-danger').removeClass('text-success').addClass('text-warning').attr('data-state', 0)
+                }
+                else if ($(e.target).text() == '尚未付款') {
+                    $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-success').addClass('text-danger').attr('data-state', 1)
+                }
+                else if ($(e.target).text() == '已付款') {
+                    $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').addClass('text-success').attr('data-state', 2)
+                }
+            }
+        })
+
+        $('#addbooth').on('click', (e) => {
+            e.preventDefault();
+            $(e.target).closest('div').before(`<div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2"><button class="w-25 btn px-0 rounded-pill bg2 d-flex justify-content-center" data-bs-toggle="dropdown" aria-expanded="false"><input name="setboothslist[${i}].boothLv" class="pe-none w-75 text-center border-0 h3 m-0 bg2 c1 blv" value="攤位等級"></input><i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button><ul class="dropdown-menu ms-5 text-center p-0"><li><a class="dropdown-item h4 m-0" href="#">大型</a></li><li><a class="dropdown-item h4 m-0" href="#">中型</a></li><li><a class="dropdown-item h4 m-0" href="#">小型</a></li></ul><h3 class="w-25 m-0"></h3><div class="w-25"><input name="setboothslist[${i}].boothPrice" class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2 bpri"placeholder="輸入價格" type="number" autocomplete="off"></input></div><div class="w-25"><input name="setboothslist[${i}].boothsum" class="w-50 text-center h4 m-0 border-0 border-secondary border-bottom py-2 bg2 bsum"placeholder="輸入數量" type="number" autocomplete="off"></input><i class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i></div></div>`)
+            i++
+        })
+
+
+        function mathticket(expectedpeople, expecteincome) {
+            let lowpeople = expectedpeople * 0.5
+            let heightpeople = expectedpeople * 1.5
+            let ticketformath = ((expecteincome / lowpeople) + (expecteincome / heightpeople) + (expecteincome / expectedpeople)) / 3
+            let ticketoriginal = Math.floor(((expecteincome / lowpeople) + (expecteincome / heightpeople) + (expecteincome / expectedpeople)) / 3)
+            let integer = 0
+            let price = "1"
+            while (ticketformath >= 1) {
+                ticketformath = ticketformath / 10
+                integer++
+            }
+            for (let i = 0; i < integer - 2; i++) {
+                price += "0"
+            }
+            return Math.round(ticketoriginal / parseInt(price)) * parseInt(price)
+        }
+
+        $(window).on('load', () => {
+            //$.ajax({
+            //    type: 'GET',
+            //    url: '@Url.Action("_ApplyPartial")',
+            //    data: {
+            //        exhibitId: @Model.exhibitId,
+            //        offset: 0,
+            //    },
+            //}).done((result) => {
+            //    $('#manufacturerreport23').html(result)
+            //    alert(result)
+            //}).fail(() => {
+            //    console.log("pagefail")
+            //})
+
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("_ApplyPartial_Search")',
+                data: {
+                    exhibitId: @Model.exhibitId,
+                    offset: 0,
+                },
+            }).done((result) => {
+                $('#partial').html(result)
+                alert(result)
+            }).fail(() => {
+                console.log("pagefail")
+            })
+        })
+    </script>
+        }
+

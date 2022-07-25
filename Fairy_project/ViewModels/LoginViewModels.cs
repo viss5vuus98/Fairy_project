@@ -9,3 +9,4 @@ namespace Fairy_project.ViewModels
         public Manufactures manufactures { get; set; }
     }
 }
+

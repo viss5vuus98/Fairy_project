@@ -135,6 +135,7 @@ body {
     background-color: #F5EEE8;
     border-radius: 47px;
 }
+
 .btn-size {
     border: 0;
     outline: none;
@@ -154,8 +155,8 @@ body {
     background-color: #ACC2C2;
     padding: 0.375rem 0.75rem;
     font-size: 2rem;
-    border-top-left-radius:15px;
-    border-top-right-radius:15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -168,8 +169,8 @@ body {
 .container-Policy {
     /*margin: auto;*/
     background-color: #F5EEE8;
-    border-radius: 47px;
-        width: 80%;
+    border-radius: 30px;
+    width: 80%;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
@@ -179,13 +180,19 @@ body {
     align-items: center;
     margin-bottom: 10%;
     overflow: auto;
+    /* overflow: scroll;*/
+    /*overflow-y: scroll;*/
+
+
+
+
 }
 
+
+
+
+
 .container-process {
-
-
-
-    
 }
 
 .container-ApplyStand {
@@ -216,7 +223,7 @@ body {
 
 
 .row-bgcolor { /*Policy內的區塊*/
-/*    background-color: #F5EEE8;
+    /*    background-color: #F5EEE8;
     width: 1140px;
     height: 593px;
     border-radius:47px;
@@ -226,7 +233,9 @@ body {
     border: 3px solid #cccccc;
     overflow: auto;
     font-size: 24px;
-*/}
+*/
+}
+
 .bg-c-Dtl {
     background-color: #ACC2C2;
     width: 80%;
@@ -236,10 +245,10 @@ body {
 
 
 
-.block-1-margin{
-    margin-left:5%;
-    margin-bottom:3%;
-
+.block-1-margin {
+    margin-left: 5%;
+    margin-bottom: 3%;
+    padding-top: 8%;
 }
 
 
@@ -260,18 +269,18 @@ textarea {
 .row-center {
     display: flex;
     /* 水平置中 */
-   /* justify-content: center;*/
+    /* justify-content: center;*/
     /* 垂直置中 */
     align-items: center;
-    margin-top:80px;
+    margin-top: 80px;
 }
 
 .row-left {
     /* 水平置中 */
-   /* justify-content: center;*/
+    /* justify-content: center;*/
     /* 垂直置中 */
     align-items: center;
-    margin-top:80px;
+    margin-top: 80px;
 }
 
 
@@ -291,6 +300,28 @@ textarea {
 
 .apply-form {
     display: inline;
-    text-align:right;
+    text-align: center;
 }
 
+
+/* 整個捲軸 */
+::-webkit-scrollbar {
+    width: 1em;
+}
+/* 捲軸的軌道 */
+::-webkit-scrollbar-track {
+    background: #EAE0D7;
+}
+/*捲軸尚未滑到的軌道*/
+::-webkit-scrollbar-track-piece {
+    background: #EAE0D7;
+}
+/* 滑動的區塊 */
+::-webkit-scrollbar-thumb {
+    background: #ACC2C2;
+    border-radius: 3px;
+}
+ /* 滑鼠移到滑動的區塊上 */
+::-webkit-scrollbar-thumb:hover {
+        background: #aaa;
+    }
