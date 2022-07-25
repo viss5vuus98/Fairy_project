@@ -2,7 +2,7 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-    @if (TempData["MemberId"] != null)
+    @if (User.Identity.Name != null)
     {
         <ul class="navbar_link">
             <li class="navbar_li"><a class="navbar_link_a" href="#">@User.Identity.Name.Split("@")[0] 你好</a></li>

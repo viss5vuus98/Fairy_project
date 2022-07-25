@@ -155,7 +155,9 @@
 
 @section Scripts
     {
-    <script>
+
+        <script src="~/js/memberTickets.js" asp-append-version="true"></script>
+    @*<script>
         sessionStorage.removeItem('Info')
 
         const personId = @TempData["ppid"];
@@ -164,6 +166,6 @@
         };
 
         sessionStorage.setItem('Info', JSON.stringify(personInfos));
-    </script>
+    </script>*@
 }
 
