@@ -23,8 +23,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ3JlYXRFeGhpYml0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Admin/ExhibitIdDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRXhoaWJpdElkRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Admin/Master.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vTWFzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Admin/_ApplyPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vX0FwcGx5UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Home/exhibitionDetail.cshtml]
@@ -41,6 +49,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Home/shoppingcart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9zaG9wcGluZ2NhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/Views/Login/Index.cshtml]

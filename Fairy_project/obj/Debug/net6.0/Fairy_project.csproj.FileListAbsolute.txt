@@ -718,8 +718,6 @@ E:/ispanProject/WooHouse_project/Fairy_project/bin/Debug/net6.0/runtimes/win/lib
 /Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/bin/Debug/net6.0/tr/Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 /Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/bin/Debug/net6.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 /Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/bin/Debug/net6.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
-/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/bin/Debug/net6.0/runtimes/win-arm/lib/net6.0/dotnet-aspnet-codegenerator-design.exe
-/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/bin/Debug/net6.0/runtimes/win-arm64/lib/net6.0/dotnet-aspnet-codegenerator-design.exe
 /Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/bin/Debug/net6.0/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll
 /Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/bin/Debug/net6.0/runtimes/unix/lib/net6.0/System.Drawing.Common.dll
 /Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/bin/Debug/net6.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll
