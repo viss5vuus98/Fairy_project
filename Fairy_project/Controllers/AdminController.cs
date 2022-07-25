@@ -410,7 +410,7 @@ namespace Fairy_project.Controllers
             return modellist;
         }
 
-        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? boothNumber)
+        public async void ChangeBoothApplyState(int exhibitId, int? boothNumber)
         {
             var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.boothNumber == boothNumber);
             var b = _context.boothMaps.Where(b => b.e_Id == exhibitId && b.boothNumber == boothNumber);
@@ -425,7 +425,6 @@ namespace Fairy_project.Controllers
             amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
             List<Apply> applies = r.ToList();
             amodel.applylist = Search(applies);
-            return PartialView("_ApplyPartial", amodel);
         }
 
         // GET: AdminController/Details/5
