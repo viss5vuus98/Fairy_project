@@ -17,7 +17,7 @@
              aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content bg2">
-                            <form>
+                            <form action="@Url.Action("ChangeBoothApplyState")" method="get" enctype="multipart/form-data">
                                 <div class="row mx-3">
                                     <div class="col-9">
                                         <div class="d-flex justify-content-between pt-4">
@@ -51,10 +51,10 @@
                                         <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
                                         <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
                                         <div class="d-flex h-25 flex-column align-items-start mt-5 ms-5 my-3">
-                                            <i class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao">
+                                            <i id="applypass" class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao" data-bum="@Model.applylist[i].boothNumber">
                                                 <span class="h5">通過</span>
                                             </i>
-                                            <i class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax">
+                                            <i id="applyfail" href="" class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax" data-bum="@Model.applylist[i].boothNumber">
                                                 <span class="h5">未通過</span>
                                             </i>
                                         </div>
