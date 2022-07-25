@@ -6,8 +6,8 @@
     {
         <ul class="navbar_link">
             <li class="navbar_li"><a class="navbar_link_a" href="#">@User.Identity.Name.Split("@")[0] 你好</a></li>
-            <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Home" asp-action="#">購物車</a></li>
-            <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Member" asp-action="MyTicket">票券頁面</a></li>
+            <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Home" asp-action="shoppingcart">購物車</a></li>
+            <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Member" asp-action="Index">票券頁面</a></li>
             <li class="navbar_li"><a href="@Url.Action("Index", "Home")" class="navbar_link_a">登出</a></li>
         </ul>
         <ul class="navbar_icon">

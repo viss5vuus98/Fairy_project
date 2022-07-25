@@ -196,5 +196,51 @@ public class HomeController : Controller
         //ToDO: 前端產生QR_code
         return Json(VfCode);
     }
+
+    public IActionResult shoppingcart()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> shoppingcart(string i)
+    {
+        if (string.IsNullOrEmpty(i))
+        {
+            return RedirectToAction("exhibitionDetail");
+        }
+        else
+        {
+            Console.WriteLine(i);
+            var id = i.Split("|").SkipLast(1).ToArray();
+            Console.WriteLine(id.Length);
+            List<shoppingcartViewModel> exhibitions = new List<shoppingcartViewModel>();
+
+            for (int a = 0; a < id.Length; a++)
+            {
+                int exid = Convert.ToInt32(id[a]);
+                Console.WriteLine(exid);
+                shoppingcartViewModel model = new shoppingcartViewModel()
+                {
+                    exhibition = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == exid),
+                    //ticket = await _context.tickets.Where(m => m.e_Id == exid).FirstOrDefaultAsync(),
+                };
+                exhibitions.Add(model);
+            }
+            //Console.WriteLine(exhibitions[1].exhibition.datefrom);
+            return Json(exhibitions);
+        }
+    }
+
+    [HttpPost]
+    public IActionResult clearCart([Formbody] List<TicketRoot> obj)
+    {
+        //for (int i = 0; i < obj.Count; i++)
+        //{
+        //    _context.tickets.Add(obj[i].ticket);
+        //}
+        //_context.SaveChanges();
+        return Json(obj);
+    }
 }
 
