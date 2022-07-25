@@ -5,7 +5,7 @@ using Fairy_project.Models;
 
 namespace Fairy_project.Controllers
 {
-    [Authorize(Roles = "Member")]
+    [Authorize(Roles = "Home")]
     [ApiController]
     [Route("api/Member/Post")]
     public class MemberController : Controller
@@ -14,6 +14,12 @@ namespace Fairy_project.Controllers
         {
             return View();
         }
+
+        //[HttpPost]
+        //public IActionResult getTickets([FromBody] GetIdClassModel getIdClass)
+        //{
+            
+        //}
 
     }
 }
