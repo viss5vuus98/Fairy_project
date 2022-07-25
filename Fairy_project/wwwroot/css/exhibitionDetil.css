@@ -10,6 +10,7 @@ p {
     font-size: 0.75rem;
     color: #5C5858;
 }
+
 .exhibition {
     display: flex;
     flex-direction: column;
@@ -125,7 +126,7 @@ h4 {
 }
 
 @media screen and (min-width: 576px) {
-    
+
 
     .exhibition {
         flex-direction: row;

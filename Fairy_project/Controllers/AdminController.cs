@@ -4,11 +4,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
-using System.Net.Mail;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 
 namespace Fairy_project.Controllers
 {
-    
     public class AdminController : Controller
     {
         private readonly ServerContext _context;
@@ -20,63 +21,404 @@ namespace Fairy_project.Controllers
         // GET: AdminController
         public IActionResult Master()
         {
-            return View(_context.exhibitions);
+            foreach (var exhibition in _context.exhibitions)
+            {
+                if (exhibition.exhibitStatus == 2 && DateTime.Compare(DateTime.Now, (DateTime)exhibition.datefrom) == 1)
+                {
+                    exhibition.exhibitStatus = 3;
+                    _context.exhibitions.Update(exhibition);
+                }
+                else if (exhibition.exhibitStatus == 3 && DateTime.Compare(DateTime.Now, (DateTime)exhibition.dateto) == 1)
+                {
+                    exhibition.exhibitStatus = 4;
+                    _context.exhibitions.Update(exhibition);
+                }
+            }
+            _context.SaveChanges();
+
+            var q = from e in _context.exhibitions where e.exhibitStatus != 4 orderby e.exhibitStatus select e;
+            List<Exhibition> el = new List<Exhibition>();
+            el = q.ToList();
+            el.Reverse();
+            return View(el);
         }
 
-        public IActionResult MasterDetail(int exhibitId)
+        [Route("/Admin/{action}/{exhibitId}")]
+        public async Task<IActionResult> ExhibitIdDetail(int exhibitId)
         {
-            return View();
+            ExhibitIdDetail_1_ model = new ExhibitIdDetail_1_();
+            model.setboothslist = new List<CreatBoothsViewModel>();
+            var e = _context.exhibitions.Where(e => e.exhibitId == exhibitId);
+            Exhibition exhibition = e.FirstOrDefault();
+            List<Booths> booths3 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 3).ToList();
+            List<Booths> booths2 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 2).ToList();
+            List<Booths> booths1 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 1).ToList();
+
+            model.exhibitId = exhibition.exhibitId;
+            model.exhibitName = exhibition.exhibitName;
+            model.exhibitStatus = exhibition.exhibitStatus;
+            model.exhibit_P_img = exhibition.exhibit_P_img;
+            model.exhibit_T_img = exhibition.exhibit_T_img;
+            model.exhibit_Pre_img = exhibition.exhibit_Pre_img;
+            model.datefrom = exhibition.datefrom;
+            model.dateto = exhibition.dateto;
+            model.ex_description = exhibition.ex_Description;
+            model.ex_personTime = exhibition.ex_personTime;
+            model.ex_totalImcome = exhibition.ex_totalImcome;
+            model.ticket_Peice = exhibition.ticket_Price;
+
+            if (exhibition.areaNum == 1)
+            {
+                model.areaNumstring = "A";
+            }
+            else if (exhibition.areaNum == 2)
+            {
+                model.areaNumstring = "B";
+            }
+
+            if (booths3.Count > 0)
+            {
+                CreatBoothsViewModel booth3 = new CreatBoothsViewModel();
+                booth3.boothLv = "大型";
+                booth3.boothPrice = booths3[0].boothPrice;
+                booth3.boothsum = booths3.Count;
+                model.setboothslist.Add(booth3);
+            }
+            if (booths2.Count > 0)
+            {
+                CreatBoothsViewModel booth2 = new CreatBoothsViewModel();
+                booth2.boothLv = "中型";
+                booth2.boothPrice = booths2[0].boothPrice;
+                booth2.boothsum = booths2.Count;
+                model.setboothslist.Add(booth2);
+            }
+            if (booths1.Count > 0)
+            {
+                CreatBoothsViewModel booth1 = new CreatBoothsViewModel();
+                booth1.boothLv = "小型";
+                booth1.boothPrice = booths1[0].boothPrice;
+                booth1.boothsum = booths1.Count;
+                model.setboothslist.Add(booth1);
+            }
+
+            return View(model);
         }
 
+        [Route("/Admin/{action}/{exhibitId}")]
+        [HttpPost]
+        public async Task<IActionResult> ExhibitIdDetail(ExhibitIdDetail_1_ model)
+        {
+            string img_dir = @$"wwwroot/images/";
+            Random myRand = new Random();
+            var e = _context.exhibitions.Where(e => e.exhibitId == model.exhibitId);
+            Exhibition exhibition = e.FirstOrDefault();
+            exhibition.exhibitName = model.exhibitName;
+            exhibition.datefrom = model.datefrom;
+            exhibition.dateto = model.dateto;
+            exhibition.ex_Description = model.ex_description;
+            exhibition.ex_personTime = model.ex_personTime;
+            exhibition.ex_totalImcome = model.ex_totalImcome;
+            exhibition.ticket_Price = model.ticket_Peice;
+
+            if (model.areaNumstring == "A")
+            {
+                exhibition.areaNum = 1;
+            }
+            else if (model.areaNumstring == "B")
+            {
+                exhibition.areaNum = 2;
+            }
+
+            if (model.fexhibit_T_img != null)
+            {
+                string Timgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.fexhibit_T_img.FileName);
+                exhibition.exhibit_T_img = Timgname;
+                using (var stream = System.IO.File.Create(img_dir + Timgname))
+                {
+                    await model.fexhibit_T_img.CopyToAsync(stream);
+                }
+            }
+
+            if (model.fexhibit_P_img != null)
+            {
+                string Pimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.fexhibit_P_img.FileName);
+                exhibition.exhibit_P_img = Pimgname;
+                using (var stream = System.IO.File.Create(img_dir + Pimgname))
+                {
+                    await model.fexhibit_P_img.CopyToAsync(stream);
+                }
+            }
+
+            if (model.fexhibit_Pre_img != null)
+            {
+                string Preimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.fexhibit_Pre_img.FileName);
+                exhibition.exhibit_Pre_img = Preimgname;
+                using (var stream = System.IO.File.Create(img_dir + Preimgname))
+                {
+                    await model.fexhibit_Pre_img.CopyToAsync(stream);
+                }
+
+            }
+            _context.exhibitions.Update(exhibition);
+
+            if (model.exhibitStatus == 1)
+            {
+                foreach (var booth in _context.boothMaps)
+                {
+                    if (booth.e_Id == model.exhibitId)
+                    {
+                        _context.boothMaps.Remove(booth);
+                    }
+                }
+            }
+
+            int boothnumber = 1;
+            if (model.setboothslist != null)
+            {
+                for (int i = 0; i < model.setboothslist.Count; i++)
+                {
+                    for (int j = 0; j < model.setboothslist[i].boothsum; j++)
+                    {
+                        Booths booths = new Booths();
+                        booths.boothNumber = boothnumber;
+                        booths.boothState = 0;
+                        if (model.setboothslist[i].boothLv == "大型")
+                        {
+                            booths.boothLv = 3;
+                        }
+                        else if (model.setboothslist[i].boothLv == "中型")
+                        {
+                            booths.boothLv = 2;
+                        }
+                        else if (model.setboothslist[i].boothLv == "小型")
+                        {
+                            booths.boothLv = 1;
+                        }
+                        booths.boothPrice = model.setboothslist[i].boothPrice;
+                        booths.e_Id = model.exhibitId;
+                        await _context.boothMaps.AddAsync(booths);
+                        boothnumber++;
+                    }
+                }
+
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Master");
+        }
+
+
+        [Route("/Admin/{action}/{idnew}")]
         public IActionResult CreatExhibition(int idnew)
         {
             ViewBag.idnew = idnew;
             return View();
         }
 
+        [Route("/Admin/{action}/{idnew}")]
         [HttpPost]
-        public ActionResult CreatExhibition(CreatExhibitionViewModel model)
+        public async Task<IActionResult> CreatExhibition(CreatExhibitionViewModel model)
         {
+            string img_dir = @$"wwwroot/images/";
+            Random myRand = new Random();
             Exhibition exhibition = new Exhibition();
-            Booths booths = new Booths();
-            //exhibition.exhibitName = model.exhibitName;
-            Console.Write(model.exhibitName + "22222222222222222222222");
+            exhibition.exhibitName = model.exhibitName;
             exhibition.exhibitStatus = 1;
             exhibition.datefrom = model.datefrom;
             exhibition.dateto = model.dateto;
-            //exhibition.ex_description = model.ex_description;
+            exhibition.ex_Description = model.ex_description;
             exhibition.ex_personTime = model.ex_personTime;
             exhibition.ex_totalImcome = model.ex_totalImcome;
-            //exhibition.ticket_Peice = model.ticket_Peice;
+            exhibition.ticket_Price = model.ticket_Peice;
+            if (model.areaNum == "A")
+            {
+                exhibition.areaNum = 1;
+            }
+            if (model.areaNum == "B")
+            {
+                exhibition.areaNum = 2;
+            }
+
+            string Pimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_P_img.FileName);
+            exhibition.exhibit_P_img = Pimgname;
+            using (var stream = System.IO.File.Create(img_dir + Pimgname))
+            {
+                await model.exhibit_P_img.CopyToAsync(stream);
+            }
+
+            string Timgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_T_img.FileName);
+            exhibition.exhibit_T_img = Timgname;
+            using (var stream = System.IO.File.Create(img_dir + Timgname))
+            {
+                await model.exhibit_T_img.CopyToAsync(stream);
+            }
+
+            string Preimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_Pre_img.FileName);
+            exhibition.exhibit_Pre_img = Preimgname;
+            using (var stream = System.IO.File.Create(img_dir + Preimgname))
+            {
+                await model.exhibit_Pre_img.CopyToAsync(stream);
+            }
             _context.exhibitions.Add(exhibition);
-            //for (int i=0;i<model.setboothslist.Count;i++)
-            //{
-            //    for (int j = 0; j < model.setboothslist[i].boothsum;j++)
-            //    {
 
-            //    }
-            //}
-            _context.SaveChanges();
-            return View();
-    
+            if (model.setboothslist != null)
+            {
+                int boothnumber = 1;
+                for (int i = 0; i < model.setboothslist.Count; i++)
+                {
+                    for (int j = 0; j < model.setboothslist[i].boothsum; j++)
+                    {
+                        Booths booths = new Booths();
+                        booths.boothNumber = boothnumber;
+                        booths.boothState = 0;
+                        if (model.setboothslist[i].boothLv == "大型")
+                        {
+                            booths.boothLv = 3;
+                        }
+                        else if (model.setboothslist[i].boothLv == "中型")
+                        {
+                            booths.boothLv = 2;
+                        }
+                        else if (model.setboothslist[i].boothLv == "小型")
+                        {
+                            booths.boothLv = 1;
+                        }
+                        booths.boothPrice = model.setboothslist[i].boothPrice;
+                        booths.e_Id = model.exhibitId;
+                        _context.boothMaps.Add(booths);
+                        boothnumber++;
+                    }
+                }
 
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Master");
         }
 
+        public async Task<IActionResult> ChangeExhibitState(int exhibitId)
+        {
+            var e = _context.exhibitions.Where(e => e.exhibitId == exhibitId);
+            Exhibition exhibition = e.FirstOrDefault();
+            exhibition.exhibitStatus = 2;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Master");
+        }
 
+        public async Task<IActionResult> DeleteExhibition(int exhibitId)
+        {
+            var e = _context.exhibitions.Find(exhibitId);
+            _context.exhibitions.Remove(e);
+            foreach (var booth in _context.boothMaps)
+            {
+                if (booth.e_Id == exhibitId)
+                {
+                    _context.boothMaps.Remove(booth);
+                }
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Master");
+        }
 
+        public IActionResult _ApplyPartial(int exhibitId, int offset)
+        {
+            List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
+            var a = _context.Applies.Where(a => a.e_Id == exhibitId).Skip(offset).Take(10);
+            List<Apply> applies = a.ToList();
+            for (int i = 0; i < applies.Count; i++)
+            {
+                CheckApplyViewModel model = new CheckApplyViewModel();
+                model.applyNum = applies[i].applyNum;
+                model.mf_Id = applies[i].mf_Id;
+                model.boothNumber = applies[i].boothNumber;
+                model.checkState = applies[i].checkState;
+                model.mf_logo = applies[i].mf_logo;
+                model.mf_P_img = applies[i].mf_P_img;
+                model.mf_Description = applies[i].mf_Description;
+                var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
+                Manufactures manufactures = m.FirstOrDefault();
+                model.manufactureId = manufactures.manufactureId;
+                model.manufactureAcc = manufactures.manufactureAcc;
+                model.manufactureName = manufactures.manufactureName;
+                model.mfPerson = manufactures.mfPerson;
+                model.mfPhoneNum = manufactures.mfPhoneNum;
+                modellist.Add(model);
+            }
+            ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
+            amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
+            amodel.applylist = modellist;
+            return PartialView(amodel);
+        }
 
+        public IActionResult _ApplyPartial_Search(int exhibitId, int? m_id, int? checkstate, int? offset)
+        {
+            ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
+            if (m_id.HasValue && checkstate.HasValue)
+            {
+                var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate && a.mf_Id == m_id).Skip((int)offset).Take(10);
+                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate && a.mf_Id == m_id).Count();
+                List<Apply> applies = a.ToList();
+                if (offset.HasValue)
+                {
+                    applies.Skip((int)offset).Take(10);
+                }
+                amodel.applylist = Search(applies);
+            }
+            else if (m_id.HasValue)
+            {
+                var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.mf_Id == m_id).Skip((int)offset).Take(10);
+                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId && a.mf_Id == m_id).Count();
+                List<Apply> applies = a.ToList();
+                if (offset.HasValue)
+                {
+                    applies.Skip((int)offset).Take(10);
+                }
+                amodel.applylist = Search(applies);
+            }
+            else if(checkstate.HasValue)
+            {
+                var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate).Skip((int)offset).Take(10);
+                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate).Count();
+                List<Apply> applies = a.ToList();
+                if (offset.HasValue)
+                {
+                    applies.Skip((int)offset).Take(10);
+                }
+                amodel.applylist = Search(applies);
+            }
+            else
+            {
+                var a = _context.Applies.Where(a => a.e_Id == exhibitId).Skip((int)offset).Take(10);
+                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
+                List<Apply> applies = a.ToList();
+                amodel.applylist = Search(applies);
+            }
+            return PartialView("_ApplyPartial", amodel);
+        }
 
-
-
-
-
-
-
-
-
-
-
-
+        List<CheckApplyViewModel> Search(List<Apply> applies)
+        {
+            List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
+            for (int i = 0; i < applies.Count; i++)
+            {
+                CheckApplyViewModel model = new CheckApplyViewModel();
+                model.applyNum = applies[i].applyNum;
+                model.mf_Id = applies[i].mf_Id;
+                model.boothNumber = applies[i].boothNumber;
+                model.checkState = applies[i].checkState;
+                model.mf_logo = applies[i].mf_logo;
+                model.mf_P_img = applies[i].mf_P_img;
+                model.mf_Description = applies[i].mf_Description;
+                var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
+                Manufactures manufactures = m.FirstOrDefault();
+                model.manufactureId = manufactures.manufactureId;
+                model.manufactureAcc = manufactures.manufactureAcc;
+                model.manufactureName = manufactures.manufactureName;
+                model.mfPerson = manufactures.mfPerson;
+                model.mfPhoneNum = manufactures.mfPhoneNum;
+                modellist.Add(model);
+            }
+            return modellist;
+        }
 
         // GET: AdminController/Details/5
         public ActionResult Details(int id)

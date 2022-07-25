@@ -4,11 +4,13 @@
     {
     <link rel="stylesheet" href="~/css/Master.css" asp-append-version="true" />
 }
-@{int idnew = 0;}
+    @{
+    int idnew = 0;
+}
 
-    <div class="container">
-        <div class="row mb-3">
-            @foreach (var item in Model)
+<div class="container">
+    <div class="row mb-3">
+        @foreach (var item in Model)
         {
             string date = $"{Convert.ToDateTime(item.datefrom).ToString("yyyy/MM/dd")} ~ {Convert.ToDateTime(item.dateto).ToString("yyyy/MM/dd")}";
             string imgsrc = Url.Content($"~/images/{item.exhibit_Pre_img}");
@@ -30,9 +32,11 @@
                         }
                     </div>
                     <h3 class="h-25 fw-bold m-0 mx-3 text-light">@item.exhibitName</h3>
-                    <button asp-action="MasterDetail" asp-controller="Admin" asp-route-exhibitId="@item.exhibitId" class="px-3 text-center rounded-pill border border-1 border-light bg-secondary bg-opacity-75 text-light fs-4">
-                        編輯
-                    </button>
+                    <a asp-controller="Admin" asp-action="ExhibitIdDetail" asp-route-exhibitId="@item.exhibitId">
+                        <button class="px-3 text-center rounded-pill border border-1 border-light bg-secondary bg-opacity-75 text-light fs-4">
+                            詳細
+                        </button>
+                    </a>
                 </div>
                 <img class=" w-100 h-100 rounded-3" src="@imgsrc" alt="">
             </div>
@@ -46,16 +50,19 @@
             </a>
         </div>
     </div>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
             integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
             crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
-            integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
-            crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+
     <script>
+        $('#btn').on('click', (e) => {
+            console.log(e.target);
+            alert();
+        })
     </script>
