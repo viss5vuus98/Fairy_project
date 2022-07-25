@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Entity;
+using System.Net.Mail;
 
 namespace Fairy_project.Controllers
 {
+    
     public class AdminController : Controller
     {
         private readonly ServerContext _context;
@@ -56,6 +58,8 @@ namespace Fairy_project.Controllers
             //}
             _context.SaveChanges();
             return View();
+    
+
         }
 
 
