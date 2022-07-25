@@ -1,5 +1,5 @@
 ﻿@using Fairy_project.ViewModels;
-@model IEnumerable<GetShowViewModels>
+
 @section Style{
     <link rel="stylesheet" href="~/css/GroupA.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/slick-carousel/slick.css" asp-append-version="true" />
@@ -84,18 +84,39 @@
             </div>
         </div>
         <div class="row">
+
             <div class="col">
             </div>
-            <div class="col"><button class="btn btn-dark">大型</button></div>
-            <div class="col"><button class="btn btn-dark">中型</button></div>
-            <div class="col"><button class="btn btn-dark">小型</button></div>
+            <div class="col d-flex justify-content-center"><button class="btn btnBoothLv">大型</button></div>
+            <div class="col d-flex justify-content-center"><button class="btn btnBoothLv">中型</button></div>
+            <div class="col d-flex justify-content-center"><button class="btn btnBoothLv">小型</button></div>
         </div>
         <div class="row">
             <div class="m-3">
                 <canvas id="canvasNum">
                 </canvas>
             </div>
-            <div class="row"></div>
+            <div class="row">
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <button id="btn-prev" class="showPrev" type="button">
+                        <i class="fa-solid fa-angle-left fa-4x"></i>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                </div>
+                <div class="col-8 p-0 d-flex show-wrap">
+                    <ul class="m-0 align-items-center d-flex justify-content-start w-100 " id="train" role="tablist">
+                        <li class="showName">
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-2 d-flex justify-content-center align-items-center">
+                    <button id="btn-next" class="showNext" type="button">
+                        <i class="fa-solid fa-angle-right fa-4x"></i>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
             <div class="row"></div>
             <div class="row"></div>
             <div class="row ">
@@ -126,36 +147,36 @@
     <script src="~/lib/slick-carousel/slick.min.js" asp-append-version="true"></script>
     <script src="~/js/manufacture.js" asp-append-version="true"></script>
     <script>
-        axios.get('@Url.Action("showName")').then(res => console.log(res.data)).catch(err=>console.log(err))
-        //$(() => {
-        //           $.ajax({
-        //    type: "POST",
-        //    url: "@Url.Action("showName")",
-        //    dataType: "json",
-           
-        //           }).done(function(data) {
-        //               console.log(data);
-        //           })
-
+        let exhibition = new Array();
+        let exhibitionObj = new Object();
+        axios.get('@Url.Action("getAllExhibition")')
+            .then(res => exhibition = res.data)
+            .then(res => showExhibitName(exhibition))
+            .then(res =>  showStandNum())
+            .catch(err => console.log(err));
+        function showExhibitName(exhibition) {
             let aZone = $("#aZone");
             let bZone = $("#bZone");
+            for (let i = 0; i < exhibition.length; i++) {
 
-            //for (let i = 0; i < show.length; i++) {
-
-            //    if (show[i][0] === "a") {
-            //        $(aZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
-
-            //                    </button>`)
-            //        console.log(i)
-            //    }
-            //    if (show[i][0] === "b") {
-            //        $(bZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
-            //                       ${show[i][1]}
-            //                    </button>`)
-
-            //    }
-            //}
-       // })
-
+                if (exhibition[i].areaNum == 1) {
+                    $(aZone).find("li.showName").append(` <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm">
+                                                            ${exhibition[i].exhibitName}
+                                                                        </button>`)
+                }
+                if (exhibition[i].areaNum == 2) {
+                    $(bZone).find("li.showName").append(` <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm">
+                                                                          ${exhibition[i].exhibitName}
+                                                                        </button>`)
+                }
+            }
+        }
+        function showStandNum() {
+          let id = e.taget.dataset.id
+            console.log(id);
+            axios.post('@Url.Action("GetAllBooth")', {"Ex_id": id})
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+        }
     </script>
     }

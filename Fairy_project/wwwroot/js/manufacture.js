@@ -139,14 +139,14 @@ $(() => {
     let prev = $(".prev");
     let position = 0;
 
-    next.click((e) => {
+    next.click(() => {
         if (position > -MAX_ULWIDTH) {
             ul.css("transform", `translateX(${position -= MOVE}px)`)
         }
 
     })
 
-    prev.click((e) => {
+    prev.click(() => {
         if (position < 0) {
 
             ul.css("transform", `translateX(${position += MOVE}px)`)

@@ -11,7 +11,7 @@ namespace Fairy_project.Controllers
         {
             _context = context;
         }
-        [Authorize(Roles = "Admin,Manufacturer")]
+      //  [Authorize(Roles = "Admin,Manufacturer")]
         public IActionResult Index()
         {
             return View();
@@ -35,8 +35,8 @@ namespace Fairy_project.Controllers
         [HttpGet]
         public IActionResult getAllExhibition()
         {
-            DateTime dtToday = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
-            var exhibitions = _context.exhibitions.Where(m => m.datefrom > dtToday);
+           // DateTime dtToday = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+            var exhibitions = _context.exhibitions.Where(m => m.exhibitStatus == 2);
             return Json(exhibitions);
         }
 
