@@ -398,7 +398,7 @@ namespace Fairy_project.Controllers
                 model.mf_logo = applies[i].MfLogo;
                 model.mf_P_img = applies[i].MfPImg;
                 model.mf_Description = applies[i].MfDescription;
-                var m = _context.Managersses.Where(m => m.ManufactureId == applies[i].MfId);
+                var m = _context.Manufacturesses.Where(m => m.ManufactureId == applies[i].MfId);
                 Manufacturess manufactures = m.FirstOrDefault();
                 model.manufactureId = manufactures.ManufactureId;
                 model.manufactureAcc = manufactures.ManufactureAcc;
@@ -412,18 +412,15 @@ namespace Fairy_project.Controllers
 
         public async void ChangeBoothApplyState(int exhibitId, int? boothNumber)
         {
-            var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.boothNumber == boothNumber);
-            var b = _context.boothMaps.Where(b => b.e_Id == exhibitId && b.boothNumber == boothNumber);
-            Apply apply = a.FirstOrDefault();
-            Booths booth = b.FirstOrDefault();
-            apply.checkState = 1;
-            booth.boothState = 1;
+            var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == boothNumber);
+            Appliess apply = a.FirstOrDefault();
+            apply.CheckState = 1;
             await _context.SaveChangesAsync();
 
             ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
-            var r = _context.Applies.Where(a => a.e_Id == exhibitId).Skip(0).Take(10);
-            amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
-            List<Apply> applies = r.ToList();
+            var r = _context.Appliesses.Where(a => a.EId == exhibitId).Skip(0).Take(10);
+            amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId).Count();
+            List<Appliess> applies = r.ToList();
             amodel.applylist = Search(applies);
         }
 
