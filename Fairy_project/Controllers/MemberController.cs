@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Fairy_project.Models;
 using Fairy_project.ViewModels;
+using NuGet.Packaging;
 
 namespace Fairy_project.Controllers
 {
@@ -10,9 +11,9 @@ namespace Fairy_project.Controllers
     [Route("api/Member/Post")]
     public class MemberController : Controller
     {
-        private readonly ServerContext _context;
+        private readonly woowoContext _context;
 
-        public MemberController(ServerContext context)
+        public MemberController(woowoContext context)
         {
             _context = context;
         }
@@ -26,15 +27,15 @@ namespace Fairy_project.Controllers
         [HttpPost, Route("getTicketsss")]
         public IActionResult getTicketsss([FromBody] GetIdClassModel idClass)
         {
-            var tickets = _context.tickets.Where(m => m.m_Id == idClass.Mf_id).ToList();
+            var tickets = _context.Ticketsses.Where(m => m.MId == idClass.Mf_id).ToList();
 
-            List<Exhibition> exhibitions = new List<Exhibition>();
+            List<Exhibitionss> exhibitions = new List<Exhibitionss>();
             if (tickets != null)
             {
                 foreach (var ticket in tickets)
                 {
-                    Console.WriteLine(ticket.e_Id);
-                    exhibitions.AddRange(_context.exhibitions.Where(ex => ex.exhibitId == ticket.e_Id).ToList());
+                    Console.WriteLine(ticket.EId);
+                    exhibitions.AddRange(_context.Exhibitionsses.Where(ex => ex.ExhibitId == ticket.EId).ToList());
                 }
                 TicketsViewModel ticketsViewModel = new TicketsViewModel()
                 {

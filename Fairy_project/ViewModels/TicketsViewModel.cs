@@ -5,8 +5,8 @@ namespace Fairy_project.ViewModels
 {
     public class TicketsViewModel
     {
-        public IList<Exhibition> exhibition { get; set; }
-        public IList<Ticket> tickets { get; set; }
+        public IList<Exhibitionss> exhibition { get; set; }
+        public IList<Ticketss> tickets { get; set; }
     }
 }
 
