@@ -35,12 +35,12 @@ namespace Fairy_project.Controllers
 
         //get All exhibition 找所有展覽
         [HttpGet]
-     /*   public IActionResult getAllExhibition()
+        public IActionResult getAllExhibition()
         {
            // DateTime dtToday = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
-      //      var exhibitions = _woowocontext.Exhibitionsses.Where(m => m.ExhibitStatus == 2);
+           var exhibitions = _woowocontext.Exhibitionsses.Where(m => m.ExhibitStatus == 2);
             return Json(exhibitions);
-        }*/
+        }
 
         //post id for the exhibition 傳入Ex_id 找展覽
         [HttpPost]
