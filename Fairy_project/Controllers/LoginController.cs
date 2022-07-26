@@ -12,16 +12,16 @@ namespace Fairy_project.Controllers
     public class LoginController : Controller
     {
 
-        private ServerContext _context;
-        public LoginController(ServerContext context)
+        private woowoContext _context;
+        public LoginController(woowoContext context)
         {
             _context = context;
         }
 
-        public Permissions GetMember(string uid, string pwd)
+        public Permissionss GetMember(string uid, string pwd)
         {
-            IList<Permissions> members = new List<Permissions>();
-            var member = _context.Permissions.FirstOrDefault(m => m.account == uid && m.password == pwd);
+            IList<Permissionss> members = new List<Permissionss>();
+            var member = _context.Permissionsses.FirstOrDefault(m => m.Account == uid && m.Password == pwd);
             return member;
         }
 
@@ -39,7 +39,7 @@ namespace Fairy_project.Controllers
             {
                 try
                 {
-                    _context.Permissions.Add(mem.permissions);
+                    _context.Permissionsses.Add(mem.permissions);
                     _context.SaveChanges();
                     
                 }
@@ -52,7 +52,7 @@ namespace Fairy_project.Controllers
             {
                 try
                 {
-                    _context.members.Add(mem.member);
+                    _context.Membersses.Add(mem.member);
                     _context.SaveChanges();
                     TempData["Success"] = "會員新增成功";
                 }
@@ -72,7 +72,7 @@ namespace Fairy_project.Controllers
             {
                 try
                 {
-                    _context.Permissions.Add(mem.permissions);
+                    _context.Permissionsses.Add(mem.permissions);
                     _context.SaveChanges();
 
                 }
@@ -85,7 +85,7 @@ namespace Fairy_project.Controllers
             {
                 try
                 {
-                    _context.manufactures.Add(mem.manufactures);
+                    _context.Manufacturesses.Add(mem.manufactures);
                     _context.SaveChanges();
                     TempData["Success"] = "廠商新增成功";
                 }
@@ -100,12 +100,12 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult Index(LoginViewModels mem, string uid, string pwd)
         {
-            var member = _context.Permissions.FirstOrDefault(m => m.account == uid && m.password == pwd);
+            var member = _context.Permissionsses.FirstOrDefault(m => m.Account == uid && m.Password == pwd);
             //var account = member.account;
             if (member != null)
             {
                 string permissions = "";
-                switch (member.permissionsLv)
+                switch (member.PermissionsLv)
                 {
                     case 1:
                         permissions = "Home";
@@ -122,7 +122,7 @@ namespace Fairy_project.Controllers
                 //宣告身分識別
                 //var memberid = _context.members.FirstOrDefault(m => m.memberAc == account);
                 IList<Claim> claims = new List<Claim> {
-                       new Claim(ClaimTypes.Name, member.account),
+                       new Claim(ClaimTypes.Name, member.Account),
                        new Claim(ClaimValueTypes.Email, "123"),
                        //new Claim(ClaimTypes.NameIdentifier, memberid.memberId.ToString()),
                        new Claim(ClaimTypes.Role, permissions)
@@ -136,15 +136,15 @@ namespace Fairy_project.Controllers
                     new ClaimsPrincipal(claimsIndentity),
                     authProperties);
                 TempData["Success"] = "登入成功";
-                var account = member.account;
+                var account = member.Account;
                 if (permissions == "Home")
                 {
-                    var person = _context.members.FirstOrDefault(m => m.memberAc == account);
-                    TempData["MemberId"] = person.memberId;
+                    var person = _context.Membersses.FirstOrDefault(m => m.MemberAc == account);
+                    TempData["MemberId"] = person.MemberId;
                 }else if (permissions == "Manufacturer")
                 {
-                    var person = _context.manufactures.FirstOrDefault(m => m.manufactureAcc == account);
-                    TempData["manufactureId"] = person.manufactureId;
+                    var person = _context.Manufacturesses.FirstOrDefault(m => m.ManufactureAcc == account);
+                    TempData["manufactureId"] = person.ManufactureId;
                 }
                
                 return RedirectToAction("Index", permissions);
@@ -153,55 +153,7 @@ namespace Fairy_project.Controllers
             return View();
         }
 
-        private void MemberCreate(LoginViewModels mem)
-        {
-            if (mem.member != null)
-            {
-                try
-                {
-                    _context.members.Add(mem.member);
-                    _context.SaveChanges();
-                    TempData["Success"] = "會員新增成功";
-                }
-                catch (Exception ex)
-                {
-                    TempData["Error"] = "會員新增失敗，帳號可能重複";
-                }
-            }
-        }
-
-        private void ManufacturerCreate(LoginViewModels men)
-        {
-            if (men.manufactures != null)
-            {
-                try
-                {
-                    _context.manufactures.Add(men.manufactures);
-                    _context.SaveChanges();
-                    TempData["Success"] = "廠商新增成功";
-                }
-                catch (Exception ex)
-                {
-                    TempData["Error"] = "廠商新增失敗，帳號可能重複";
-                }
-            }
-        }
-
-        private void PermissionsCreate(LoginViewModels men)
-        {
-            if (men.permissions != null)
-            {
-                try
-                {
-                    _context.Permissions.Add(men.permissions);
-                    _context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-        }
+        
 
         public IActionResult Logout()
         {

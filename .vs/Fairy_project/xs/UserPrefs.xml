@@ -6,21 +6,21 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/wwwroot/js/memberTickets.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Controllers/LoginController.cs">
     <Files>
-      <File FileName="Fairy_project/Models/Ticketss.cs" Line="1" Column="1" />
-      <File FileName="Fairy_project/Controllers/MemberController.cs" Line="41" Column="18" />
-      <File FileName="Fairy_project/Models/Ticket.cs" Line="17" Column="14" />
-      <File FileName="Fairy_project/Models/Exhibitionss.cs" Line="8" Column="16" />
-      <File FileName="Fairy_project/ViewModels/TicketsViewModel.cs" Line="13" Column="21" />
-      <File FileName="Fairy_project/wwwroot/js/memberTickets.js" Line="6" Column="1" />
+      <File FileName="Fairy_project/Views/Shared/_LoginPartial.cshtml" Line="17" Column="63" />
+      <File FileName="Fairy_project/Views/Login/Index.cshtml" Line="7" Column="1" />
+      <File FileName="Fairy_project/Controllers/LoginController.cs" Line="160" Column="40" />
+      <File FileName="Fairy_project/Views/Login/_loginLay.cshtml" Line="24" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="LoginController.cs" selected="True" />
+              </Node>
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="ViewModels" expanded="True" />
@@ -33,8 +33,9 @@
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True">
-                  <Node name="memberTickets.js" selected="True" />
+                <Node name="js" expanded="True" />
+                <Node name="lib" expanded="True">
+                  <Node name="qrcode" expanded="True" />
                 </Node>
               </Node>
             </Node>

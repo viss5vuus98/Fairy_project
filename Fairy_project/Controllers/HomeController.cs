@@ -16,15 +16,14 @@ public class HomeController : Controller
 {
 
     private readonly ILogger<HomeController> _logger;
-    private readonly ServerContext _context;
+    private readonly woowoContext _context;
     private readonly woowoContext _woocontext;
     private readonly string _path;
 
-    public HomeController(ILogger<HomeController> logger, ServerContext context, woowoContext woowoContext, IWebHostEnvironment hostEnvironment)
+    public HomeController(ILogger<HomeController> logger, woowoContext woowoContext, IWebHostEnvironment hostEnvironment)
     {
         _logger = logger;
-        _context = context;
-        _woocontext = woowoContext;
+        _context = woowoContext;
         _path = $"{hostEnvironment.WebRootPath}\\images";
     }
 
@@ -37,32 +36,32 @@ public class HomeController : Controller
     {
         return View();
     }
-    [Route("Home/exhibitionDetail/{exhibitId}")]
-    public IActionResult exhibitionDetail(string exhibitId)
-    {
+    //[Route("Home/exhibitionDetail/{exhibitId}")]
+    //public IActionResult exhibitionDetail(string exhibitId)
+    //{
 
-        var id = Convert.ToInt32(exhibitId);
-        eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
-        {
-            Exhibition = _context.exhibitions.FirstOrDefault(m => m.exhibitId == id),
-        };
+    //    var id = Convert.ToInt32(exhibitId);
+    //    eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
+    //    {
+    //        Exhibition = _context.Exhibitionsses.FirstOrDefault(m => m.ExhibitId == id),
+    //    };
 
 
-        //var theExhibit =  _context.exhibitions.FirstOrDefault(m => m.exhibitId == id);
+    //    //var theExhibit =  _context.exhibitions.FirstOrDefault(m => m.exhibitId == id);
 
-        if (eDrtailViewModel == null)
-        {
-            Console.WriteLine("NULLLLLLLLLLLLLLL");
-            return View();
-        }
-        //IList<eDrtailViewModel> manufactures = _context.boothMaps.OrderBy(m => m).Take(3);
-        return View(eDrtailViewModel);
-    }
+    //    if (eDrtailViewModel == null)
+    //    {
+    //        Console.WriteLine("NULLLLLLLLLLLLLLL");
+    //        return View();
+    //    }
+    //    //IList<eDrtailViewModel> manufactures = _context.boothMaps.OrderBy(m => m).Take(3);
+    //    return View(eDrtailViewModel);
+    //}
 
     public ActionResult GetData()
     {
-        var theExhibit = _context.exhibitions.OrderBy(m => m.exhibitId);
-        var theManufactures = _context.manufactures.OrderBy(m => m.manufactureId);
+        var theExhibit = _context.Exhibitionsses.OrderBy(m => m.ExhibitId);
+        var theManufactures = _context.Manufacturesses.OrderBy(m => m.ManufactureId);
 
         return Json(theExhibit);
     }
@@ -79,8 +78,8 @@ public class HomeController : Controller
     {
         invide invide = new invide()
         {
-            Exhibition = _context.exhibitions.FirstOrDefault(m => m.exhibitId == 34) ?? new Exhibition(),
-            Manufactures = _context.manufactures.Where(m => m.manufactureId > 0).ToList()
+            Exhibitionsses = _context.Exhibitionsses.FirstOrDefault(m => m.ExhibitId == 34) ?? new Exhibitionss(),
+            Manufactures = _context.Manufacturesses.Where(m => m.ManufactureId > 0).ToList()
         };
         return Json(invide);
     }
@@ -100,7 +99,7 @@ public class HomeController : Controller
     [HttpGet]
     public IActionResult getMember(int id)
     {
-        var theMember = _context.members.FirstOrDefault(m => m.memberId == id) ?? new Member();
+        var theMember = _context.Membersses.FirstOrDefault(m => m.MemberId == id) ?? new Memberss();
         return Json(theMember);
     }
 
@@ -112,7 +111,7 @@ public class HomeController : Controller
     public IActionResult getAllExhibition()
     {
         DateTime dtToday = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
-        var exhibitions = _context.exhibitions.Where(m => m.datefrom > dtToday);
+        var exhibitions = _context.Exhibitionsses.Where(m => m.Datefrom > dtToday);
         return Json(exhibitions);
     }
 
@@ -122,7 +121,7 @@ public class HomeController : Controller
     {
         //Console.WriteLine(idClass.Ex_id + "-------------------");
         //var id = Convert.ToInt32(idClass.Ex_id);
-        var exhibition = _context.exhibitions.FirstOrDefault(m => m.exhibitId == idClass.Ex_id);
+        var exhibition = _context.Exhibitionsses.FirstOrDefault(m => m.ExhibitId == idClass.Ex_id);
         return Json(exhibition);
     }
 
@@ -131,15 +130,15 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult getExApplies([FromBody] GetIdClassModel idClass)
     {
-        var applies = _context.Applies.Where(m => m.e_Id == idClass.Ex_id);
+        var applies = _context.Appliesses.Where(m => m.EId == idClass.Ex_id);
         return Json(applies);
     }
 
     //create the exhibition of applies
     [HttpPost]
-    public bool createApplies([FromBody]Apply apply)
+    public bool createApplies([FromBody]Appliess apply)
     {
-        _context.Applies.Add(apply);
+        _context.Appliesses.Add(apply);
         _context.SaveChanges();
         return true;
     }
@@ -148,7 +147,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult getMfApplies([FromBody] GetIdClassModel idClass)
     {
-        var applies = _context.Applies.Where(m => m.mf_Id == idClass.Mf_id);
+        var applies = _context.Appliesses.Where(m => m.MfId == idClass.Mf_id);
         return Json(applies);
     }
 
@@ -156,7 +155,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult GetTheManufactures([FromBody] GetIdClassModel idClass)
     {
-        var theManufactures = _context.manufactures.Where(m => m.manufactureId == idClass.Mf_id);
+        var theManufactures = _context.Manufacturesses.Where(m => m.ManufactureId == idClass.Mf_id);
         return Json(theManufactures);
     }
 
@@ -166,7 +165,7 @@ public class HomeController : Controller
     {
         Console.WriteLine(keyWord.ex_keyWord + "1111111111111");
         string key = Regex.Replace(keyWord.ex_keyWord, @"\s", "");
-        var exhibitions = _context.exhibitions.Where(m => m.exhibitName.Contains(key) && m.exhibitStatus == 1);
+        var exhibitions = _context.Exhibitionsses.Where(m => m.ExhibitName.Contains(key) && m.ExhibitStatus == 1);
         return Json(exhibitions);
     }
 
@@ -176,7 +175,7 @@ public class HomeController : Controller
     {
         DateTime dtStart = Convert.ToDateTime(searchDate.dateStart);
         DateTime dtEnd = Convert.ToDateTime(searchDate.dateEnd);
-        var exhibitions = _context.exhibitions.Where(m => m.dateto > dtStart && m.datefrom < dtEnd && m.exhibitStatus == 1);
+        var exhibitions = _context.Exhibitionsses.Where(m => m.Dateto > dtStart && m.Datefrom < dtEnd && m.ExhibitStatus == 1);
         return Json(exhibitions);
     }
 
@@ -215,9 +214,9 @@ public class HomeController : Controller
         }
         else
         {
-            Console.WriteLine(i);
+            //Console.WriteLine(i);
             var id = i.Split("|").SkipLast(1).ToArray();
-            Console.WriteLine(id.Length);
+            //Console.WriteLine(id.Length);
             List<shoppingcartViewModel> exhibitions = new List<shoppingcartViewModel>();
 
             for (int a = 0; a < id.Length; a++)
@@ -226,7 +225,7 @@ public class HomeController : Controller
                 Console.WriteLine(exid);
                 shoppingcartViewModel model = new shoppingcartViewModel()
                 {
-                    exhibition = await _context.exhibitions.FirstOrDefaultAsync(m => m.exhibitId == exid),
+                    exhibition = await _context.Exhibitionsses.FirstOrDefaultAsync(m => m.ExhibitId == exid),
                     //ticket = await _context.tickets.Where(m => m.e_Id == exid).FirstOrDefaultAsync(),
                 };
                 exhibitions.Add(model);
@@ -239,11 +238,11 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult clearCart([Formbody] List<TicketRoot> obj)
     {
-        //for (int i = 0; i < obj.Count; i++)
-        //{
-        //    _context.tickets.Add(obj[i].ticket);
-        //}
-        //_context.SaveChanges();
+        for (int i = 0; i < obj.Count; i++)
+        {
+            _context.Ticketsses.Add(obj[i].ticket);
+        }
+        _context.SaveChanges();
         return Json(obj);
     }
 

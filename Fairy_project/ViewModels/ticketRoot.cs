@@ -5,7 +5,7 @@ namespace Fairy_project.ViewModels
 {
     public class TicketRoot
     {
-        public Ticket ticket { get; set; }
+        public Ticketss ticket { get; set; }
     }
 }
 

@@ -4,9 +4,9 @@ namespace Fairy_project.ViewModels
 {
     public class LoginViewModels
     {
-        public Member member { get; set; }
-        public Permissions permissions { get; set; }
-        public Manufactures manufactures { get; set; }
+        public Memberss member { get; set; }
+        public Permissionss permissions { get; set; }
+        public Manufacturess manufactures { get; set; }
     }
 }
 

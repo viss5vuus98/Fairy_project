@@ -65,70 +65,70 @@
                 <div class="carousel-inner">
                     @*content*@
                     @*<div class="carousel-item active">
-                        <div class=" d-flex w-auto">
-                            <div class="btn-group-vertical">
-                                <button type="button" class="btn-size-top">QRCODE</button>
-                                <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                <button type="button" class="btn-size-bottom">分票</button>
+                            <div class=" d-flex w-auto">
+                                <div class="btn-group-vertical">
+                                    <button type="button" class="btn-size-top">QRCODE</button>
+                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
+                                    <button type="button" class="btn-size-bottom">分票</button>
 
+                                </div>
+                                <img src="~/images/111.png" class="d-block w-100-h-setting" alt="...">
                             </div>
-                            <img src="~/images/111.png" class="d-block w-100-h-setting" alt="...">
-                        </div>
-                    </div>*@
+                        </div>*@
                     @*content*@
                     @*<div class="carousel-item">
-                        <div class=" d-flex">
-                            <div class="btn-group-vertical">
-                                <button type="button" class="btn-size-top">QRCODE</button>
-                                <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                <button type="button" class="btn-size-bottom">分票</button>
+                            <div class=" d-flex">
+                                <div class="btn-group-vertical">
+                                    <button type="button" class="btn-size-top">QRCODE</button>
+                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
+                                    <button type="button" class="btn-size-bottom">分票</button>
 
+                                </div>
+                                <img src="~/images/222.png" class="d-block w-100-h-setting" alt="...">
                             </div>
-                            <img src="~/images/222.png" class="d-block w-100-h-setting" alt="...">
                         </div>
-                    </div>
 
 
-                    <div class="carousel-item ">
-                        <div class=" d-flex">
-                            <div class="btn-group-vertical">
+                        <div class="carousel-item ">
+                            <div class=" d-flex">
+                                <div class="btn-group-vertical">
 
 
 
-                                <button type="button" class="btn-size-top">QRCODE</button>
-                                <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                <button type="button" class="btn-size-bottom">分票</button>
+                                    <button type="button" class="btn-size-top">QRCODE</button>
+                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
+                                    <button type="button" class="btn-size-bottom">分票</button>
 
+                                </div>
+                                <img src="~/images/333.png" class="d-block w-100-h-setting" alt="...">
                             </div>
-                            <img src="~/images/333.png" class="d-block w-100-h-setting" alt="...">
                         </div>
-                    </div>
 
 
-                    <div class="carousel-item ">
-                        <div class=" d-flex">
-                            <div class="btn-group-vertical">
-                                <button type="button" class="btn-size-top">QRCODE</button>
-                                <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                <button type="button" class="btn-size-bottom">分票</button>
+                        <div class="carousel-item ">
+                            <div class=" d-flex">
+                                <div class="btn-group-vertical">
+                                    <button type="button" class="btn-size-top">QRCODE</button>
+                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
+                                    <button type="button" class="btn-size-bottom">分票</button>
 
+                                </div>
+                                <img src="~/images/444.png" class="d-block w-100-h-setting img-fluid" alt="...">
                             </div>
-                            <img src="~/images/444.png" class="d-block w-100-h-setting img-fluid" alt="...">
                         </div>
-                    </div>
 
 
-                    <div class="carousel-item ">
-                        <div class=" d-flex">
-                            <div class="btn-group-vertical">
-                                <button type="button" class="btn-size-top">QRCODE</button>
-                                <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                <button type="button" class="btn-size-bottom">分票</button>
+                        <div class="carousel-item ">
+                            <div class=" d-flex">
+                                <div class="btn-group-vertical">
+                                    <button type="button" class="btn-size-top">QRCODE</button>
+                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
+                                    <button type="button" class="btn-size-bottom">分票</button>
 
+                                </div>
+                                <img src="~/images/555.png" class="d-block w-100-h-setting img-fluid" alt="...">
                             </div>
-                            <img src="~/images/555.png" class="d-block w-100-h-setting img-fluid" alt="...">
-                        </div>
-                    </div>*@
+                        </div>*@
 
                 </div>
             </div>
@@ -148,17 +148,7 @@
 
 @section Scripts
     {
-
-        <script src="~/js/memberTicket.js" asp-append-version="true"></script>
-    @*<script>
-        sessionStorage.removeItem('Info')
-
-        const personId = @TempData["ppid"];                             
-        const personInfos = {
-            id: personId,
-        };
-
-        sessionStorage.setItem('Info', JSON.stringify(personInfos));
-    </script>*@
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="~/js/memberTicket.js" asp-append-version="true"></script>
 }
 
