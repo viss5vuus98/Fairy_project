@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Fairy_project.ViewModels;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Fairy_project.Controllers;
 
@@ -64,6 +65,7 @@ public class HomeController : Controller
         return Json(theExhibit);
     }
 
+    [HttpGet, Route("GetManufactures")]
     public IActionResult GetManufactures()
     {
         var theManufactures = _context.manufactures.OrderBy(m => m.manufactureId);
@@ -242,5 +244,6 @@ public class HomeController : Controller
         //_context.SaveChanges();
         return Json(obj);
     }
+
 }
 
