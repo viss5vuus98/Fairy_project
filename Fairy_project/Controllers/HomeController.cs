@@ -68,11 +68,11 @@ public class HomeController : Controller
     }
 
     [HttpGet, Route("GetManufactures")]
-    public IActionResult GetManufactures()
+  /*  public IActionResult GetManufactures()
     {
-        var theManufactures = _woocontext.Manufacturesses.OrderBy(m => m.ManufactureId);
-        return Json(theManufactures);
-    }
+   //     var theManufactures = _woocontext.Manufacturesses.OrderBy(m => m.ManufactureId);
+   //     return Json(theManufactures);
+    }*/
 
     [HttpGet]
     public IActionResult getViewMode()

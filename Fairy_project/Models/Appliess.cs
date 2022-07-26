@@ -13,5 +13,6 @@ namespace Fairy_project.Models
         public string? MfLogo { get; set; }
         public string? MfPImg { get; set; }
         public string? MfDescription { get; set; }
+        public string? Message { get; set; }
     }
 }
