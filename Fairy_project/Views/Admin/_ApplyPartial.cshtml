@@ -9,58 +9,55 @@
                 <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
 
 
-                <a href="" class="w-25 m-0 border-0 text-reset bg2" data-bs-toggle="modal"
+                <h3 href="" class="w-25 m-0 border-0 text-reset bg2" data-bs-toggle="modal"
            data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">
-                    <h3>@Model.applylist[i].boothNumber</h3>
-                </a>
+                    <a href="" class="text-reset">@Model.applylist[i].boothNumber</a>
+                </h3>
                 <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content bg2">
-                            <form>
-                                <div class="row mx-3">
-                                    <div class="col-9">
-                                        <div class="d-flex justify-content-between pt-4">
-                                            <h2 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h2>
+                            <div class="row mx-3">
+                                <div class="col-9">
+                                    <div class="d-flex justify-content-between pt-4">
+                                        <h2 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h2>
 
-                                            @{
-                                                if (Model.applylist[i].boothLv == 3)
-                                                {
-                                                    <h3 class="m-0">大型 / @Model.applylist[i].boothPrice $</h3>
-                                                }
-                                                else if (Model.applylist[i].boothLv == 2)
-                                                {
-                                                    <h3 class="m-0">中型 / @Model.applylist[i].boothPrice $</h3>
-                                                }
-                                                else if (Model.applylist[i].boothLv == 1)
-                                                {
-                                                    <h3 class="m-0">小型 / @Model.applylist[i].boothPrice $</h3>
-                                                }
-
+                                        @{
+                                            if (Model.applylist[i].boothLv == 3)
+                                            {
+                                                <h3 class="m-0">大型 / @Model.applylist[i].boothPrice $</h3>
                                             }
-                                        </div>
-                                        <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_P_img}")" alt="">
-                                        <p class="text-start h5 mx-3 p-4">
-                                            @Model.applylist[i].mf_Description
-                                        </p>
+                                            else if (Model.applylist[i].boothLv == 2)
+                                            {
+                                                <h3 class="m-0">中型 / @Model.applylist[i].boothPrice $</h3>
+                                            }
+                                            else if (Model.applylist[i].boothLv == 1)
+                                            {
+                                                <h3 class="m-0">小型 / @Model.applylist[i].boothPrice $</h3>
+                                            }
+                                        }
                                     </div>
-                                    <div class="col-3 d-flex flex-column justify-content-center">
-                                        <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
-                                        <h4 class="my-2">@Model.applylist[i].manufactureName</h4>
-                                        <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
-                                        <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
-                                        <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
-                                        <div class="d-flex h-25 flex-column align-items-start mt-5 ms-5 my-3">
-                                            <i class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao">
-                                                <span class="h5">通過</span>
-                                            </i>
-                                            <i class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax">
-                                                <span class="h5">未通過</span>
-                                            </i>
-                                        </div>
+                                    <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_P_img}")" alt="">
+                                    <p class="text-start h5 mx-3 p-4">
+                                        @Model.applylist[i].mf_Description
+                                    </p>
+                                </div>
+                                <div class="col-3 d-flex flex-column justify-content-center">
+                                    <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
+                                    <h4 class="my-2">@Model.applylist[i].manufactureName</h4>
+                                    <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
+                                    <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
+                                    <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
+                                    <div class="d-flex h-25 flex-column align-items-start mt-5 ms-5 my-3">
+                                        <i id="applypass" class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao" data-bum="@Model.applylist[i].boothNumber">
+                                            <span class="h5">通過</span>
+                                        </i>
+                                        <i id="applyfail" href="" class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax" data-bum="@Model.applylist[i].boothNumber">
+                                            <span class="h5">未通過</span>
+                                        </i>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -313,7 +313,7 @@
                 <div class=" row rounded-3 p-3 my-5 bg1">
                     <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">承租額</h2>
                     <h2 class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
-                        24 / NT <span class="text-success">$35,050</span>
+                        @Model.applysum / NT <span class="text-success">$ @Model.applysumprice</span>
                     </h2>
                     <div class="col-lg-1 col-sm-2 col-1 text-end">
                         <a id="manufacturerreport23show" href="" class="text-reset p-0 pt-1">
@@ -323,13 +323,14 @@
                 </div>
                 <div id="manufacturerreport23" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
                     <input id="searchmidinput" type="text" placeholder="輸入廠商ID"
-                       class="col-lg-3 col-sm-6 col-6 m-3 py-2 text-center fw-lighter rounded-pill h2 border-0 bg2">
+                       class="col-lg-3 col-sm-6 col-6 m-3 py-2 text-center fw-lighter rounded-pill h2 border-0 bg2" autocomplete="off">
                     <div class="btn-group col-lg-3 col-sm-4 col-4">
                         <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <span id="searchstate" class="h2 c1" data-state="">狀態</span>
+                            <span id="searchstate" class="h2 c1" data-state="">全部<span>
                         </button>
                         <ul class="dropdown-menu w-75 mx-3 text-center p-0">
+                            <li><a class="dropdown-item h4 m-0" href="#">全部</a></li>
                             <li><a id="state0" class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
                             <li><a id="state1" class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
                             <li><a id="state2" class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
@@ -531,7 +532,7 @@
             if ($('#searchmidinput').val() != '') {
                 data.m_id = $('#searchmidinput').val()
             }
-            if ($('#searchstate').text() != '狀態') {
+            if ($('#searchstate').text() != '全部') {
                 data.checkstate = $('#searchstate').attr('data-state')
             }
             if ($(e.target).attr('id') == 'searchapply') {
@@ -566,6 +567,9 @@
                 else if ($(e.target).text() == '已付款') {
                     $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').addClass('text-success').attr('data-state', 2)
                 }
+                else if ($(e.target).text() == '全部') {
+                    $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').removeClass('text-success')
+                }
             }
         })
 
@@ -594,20 +598,6 @@
         }
 
         $(window).on('load', () => {
-            //$.ajax({
-            //    type: 'GET',
-            //    url: '@Url.Action("_ApplyPartial")',
-            //    data: {
-            //        exhibitId: @Model.exhibitId,
-            //        offset: 0,
-            //    },
-            //}).done((result) => {
-            //    $('#manufacturerreport23').html(result)
-            //    alert(result)
-            //}).fail(() => {
-            //    console.log("pagefail")
-            //})
-
             $.ajax({
                 type: 'GET',
                 url: '@Url.Action("_ApplyPartial_Search")',
@@ -622,6 +612,30 @@
                 console.log("pagefail")
             })
         })
+
+        $('#partial').on('click', (e) => {
+            e.preventDefault();
+            if ($(e.target).attr('id') == 'applypass') {
+                $('.modal-backdrop').remove();
+                $(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
+                $('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("ChangeBoothApplyState")',
+                    data: {
+                        exhibitId: @Model.exhibitId,
+                        boothNumber: $(e.target).attr('data-bum')
+                    },
+                }).done(() => {
+                    $(e.target).closest('.modal').next().text('尚未付款').removeClass('text-warning').addClass('text-danger')
+                }).fail(() => {
+                    console.log("pagefail")
+                })
+                
+            }
+        })
+
+
     </script>
         }
 

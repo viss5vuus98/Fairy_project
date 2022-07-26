@@ -66,6 +66,22 @@ namespace Fairy_project.Controllers
             model.ex_personTime = exhibition.ex_personTime;
             model.ex_totalImcome = exhibition.ex_totalImcome;
             model.ticket_Peice = exhibition.ticket_Price;
+            model.applysumprice = 0;
+            model.applysum = _context.Applies.Where(a => a.e_Id == model.exhibitId && a.checkState == 2).Count();
+            var a = _context.Applies.Where(a => a.e_Id == model.exhibitId && a.checkState == 2);
+            var b = _context.boothMaps.Where(b => b.e_Id == model.exhibitId);
+            List<Apply> applies = a.ToList();
+            List<Booths> booths = b.ToList();
+            foreach (Apply apply in applies)
+            {
+                foreach (Booths booth in booths)
+                {
+                    if (booth.boothNumber == apply.boothNumber)
+                    {
+                        model.applysumprice += booth.boothPrice;
+                    }
+                }
+            }
 
             if (exhibition.areaNum == 1)
             {
@@ -319,36 +335,6 @@ namespace Fairy_project.Controllers
             return RedirectToAction("Master");
         }
 
-        public IActionResult _ApplyPartial(int exhibitId, int offset)
-        {
-            List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
-            var a = _context.Applies.Where(a => a.e_Id == exhibitId).Skip(offset).Take(10);
-            List<Apply> applies = a.ToList();
-            for (int i = 0; i < applies.Count; i++)
-            {
-                CheckApplyViewModel model = new CheckApplyViewModel();
-                model.applyNum = applies[i].applyNum;
-                model.mf_Id = applies[i].mf_Id;
-                model.boothNumber = applies[i].boothNumber;
-                model.checkState = applies[i].checkState;
-                model.mf_logo = applies[i].mf_logo;
-                model.mf_P_img = applies[i].mf_P_img;
-                model.mf_Description = applies[i].mf_Description;
-                var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
-                Manufactures manufactures = m.FirstOrDefault();
-                model.manufactureId = manufactures.manufactureId;
-                model.manufactureAcc = manufactures.manufactureAcc;
-                model.manufactureName = manufactures.manufactureName;
-                model.mfPerson = manufactures.mfPerson;
-                model.mfPhoneNum = manufactures.mfPhoneNum;
-                modellist.Add(model);
-            }
-            ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
-            amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
-            amodel.applylist = modellist;
-            return PartialView(amodel);
-        }
-
         public IActionResult _ApplyPartial_Search(int exhibitId, int? m_id, int? checkstate, int? offset)
         {
             ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
@@ -362,6 +348,7 @@ namespace Fairy_project.Controllers
                     applies.Skip((int)offset).Take(10);
                 }
                 amodel.applylist = Search(applies);
+                amodel.exhibitId = exhibitId;
             }
             else if (m_id.HasValue)
             {
@@ -373,8 +360,9 @@ namespace Fairy_project.Controllers
                     applies.Skip((int)offset).Take(10);
                 }
                 amodel.applylist = Search(applies);
+                amodel.exhibitId = exhibitId;
             }
-            else if(checkstate.HasValue)
+            else if (checkstate.HasValue)
             {
                 var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate).Skip((int)offset).Take(10);
                 amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate).Count();
@@ -384,6 +372,7 @@ namespace Fairy_project.Controllers
                     applies.Skip((int)offset).Take(10);
                 }
                 amodel.applylist = Search(applies);
+                amodel.exhibitId = exhibitId;
             }
             else
             {
@@ -391,6 +380,7 @@ namespace Fairy_project.Controllers
                 amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
                 List<Apply> applies = a.ToList();
                 amodel.applylist = Search(applies);
+                amodel.exhibitId = exhibitId;
             }
             return PartialView("_ApplyPartial", amodel);
         }
@@ -418,6 +408,23 @@ namespace Fairy_project.Controllers
                 modellist.Add(model);
             }
             return modellist;
+        }
+
+        public async void ChangeBoothApplyState(int exhibitId, int? boothNumber)
+        {
+            var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.boothNumber == boothNumber);
+            var b = _context.boothMaps.Where(b => b.e_Id == exhibitId && b.boothNumber == boothNumber);
+            Apply apply = a.FirstOrDefault();
+            Booths booth = b.FirstOrDefault();
+            apply.checkState = 1;
+            booth.boothState = 1;
+            await _context.SaveChangesAsync();
+
+            ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
+            var r = _context.Applies.Where(a => a.e_Id == exhibitId).Skip(0).Take(10);
+            amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
+            List<Apply> applies = r.ToList();
+            amodel.applylist = Search(applies);
         }
 
         // GET: AdminController/Details/5
