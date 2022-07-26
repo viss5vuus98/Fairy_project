@@ -12,32 +12,32 @@ namespace Fairy_project.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly ServerContext _context;
+        private readonly woowoContext _context;
 
-        public AdminController(ServerContext context)
+        public AdminController(woowoContext context)
         {
             _context = context;
         }
         // GET: AdminController
         public IActionResult Master()
         {
-            foreach (var exhibition in _context.exhibitions)
+            foreach (var exhibition in _context.Exhibitionsses)
             {
-                if (exhibition.exhibitStatus == 2 && DateTime.Compare(DateTime.Now, (DateTime)exhibition.datefrom) == 1)
+                if (exhibition.ExhibitStatus == 2 && DateTime.Compare(DateTime.Now, (DateTime)exhibition.Datefrom) == 1)
                 {
-                    exhibition.exhibitStatus = 3;
-                    _context.exhibitions.Update(exhibition);
+                    exhibition.ExhibitStatus = 3;
+                    _context.Exhibitionsses.Update(exhibition);
                 }
-                else if (exhibition.exhibitStatus == 3 && DateTime.Compare(DateTime.Now, (DateTime)exhibition.dateto) == 1)
+                else if (exhibition.ExhibitStatus == 3 && DateTime.Compare(DateTime.Now, (DateTime)exhibition.Dateto) == 1)
                 {
-                    exhibition.exhibitStatus = 4;
-                    _context.exhibitions.Update(exhibition);
+                    exhibition.ExhibitStatus = 4;
+                    _context.Exhibitionsses.Update(exhibition);
                 }
             }
             _context.SaveChanges();
 
-            var q = from e in _context.exhibitions where e.exhibitStatus != 4 orderby e.exhibitStatus select e;
-            List<Exhibition> el = new List<Exhibition>();
+            var q = from e in _context.Exhibitionsses where e.ExhibitStatus != 4 orderby e.ExhibitStatus select e;
+            List<Exhibitionss> el = new List<Exhibitionss>();
             el = q.ToList();
             el.Reverse();
             return View(el);
@@ -48,46 +48,46 @@ namespace Fairy_project.Controllers
         {
             ExhibitIdDetail_1_ model = new ExhibitIdDetail_1_();
             model.setboothslist = new List<CreatBoothsViewModel>();
-            var e = _context.exhibitions.Where(e => e.exhibitId == exhibitId);
-            Exhibition exhibition = e.FirstOrDefault();
-            List<Booths> booths3 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 3).ToList();
-            List<Booths> booths2 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 2).ToList();
-            List<Booths> booths1 = _context.boothMaps.Where(b => b.e_Id == exhibitId & b.boothLv == 1).ToList();
+            var e = _context.Exhibitionsses.Where(e => e.ExhibitId == exhibitId);
+            Exhibitionss exhibition = e.FirstOrDefault();
+            List<BoothMapss> booths3 = _context.BoothMapsses.Where(b => b.EId == exhibitId & b.BoothLv == 3).ToList();
+            List<BoothMapss> booths2 = _context.BoothMapsses.Where(b => b.EId == exhibitId & b.BoothLv == 2).ToList();
+            List<BoothMapss> booths1 = _context.BoothMapsses.Where(b => b.EId == exhibitId & b.BoothLv == 1).ToList();
 
-            model.exhibitId = exhibition.exhibitId;
-            model.exhibitName = exhibition.exhibitName;
-            model.exhibitStatus = exhibition.exhibitStatus;
-            model.exhibit_P_img = exhibition.exhibit_P_img;
-            model.exhibit_T_img = exhibition.exhibit_T_img;
-            model.exhibit_Pre_img = exhibition.exhibit_Pre_img;
-            model.datefrom = exhibition.datefrom;
-            model.dateto = exhibition.dateto;
-            model.ex_description = exhibition.ex_Description;
-            model.ex_personTime = exhibition.ex_personTime;
-            model.ex_totalImcome = exhibition.ex_totalImcome;
-            model.ticket_Peice = exhibition.ticket_Price;
+            model.exhibitId = exhibition.ExhibitId;
+            model.exhibitName = exhibition.ExhibitName;
+            model.exhibitStatus = exhibition.ExhibitStatus;
+            model.exhibit_P_img = exhibition.ExhibitPImg;
+            model.exhibit_T_img = exhibition.ExhibitTImg;
+            model.exhibit_Pre_img = exhibition.ExhibitPreImg;
+            model.datefrom = exhibition.Datefrom;
+            model.dateto = exhibition.Dateto;
+            model.ex_description = exhibition.ExDescription;
+            model.ex_personTime = exhibition.ExPersonTime;
+            model.ex_totalImcome = exhibition.ExTotalImcome;
+            model.ticket_Peice = exhibition.TicketPrice;
             model.applysumprice = 0;
-            model.applysum = _context.Applies.Where(a => a.e_Id == model.exhibitId && a.checkState == 2).Count();
-            var a = _context.Applies.Where(a => a.e_Id == model.exhibitId && a.checkState == 2);
-            var b = _context.boothMaps.Where(b => b.e_Id == model.exhibitId);
-            List<Apply> applies = a.ToList();
-            List<Booths> booths = b.ToList();
-            foreach (Apply apply in applies)
+            model.applysum = _context.Appliesses.Where(a => a.EId == model.exhibitId && a.CheckState == 2).Count();
+            var a = _context.Appliesses.Where(a => a.EId == model.exhibitId && a.CheckState == 2);
+            var b = _context.BoothMapsses.Where(b => b.EId == model.exhibitId);
+            List<Appliess> applies = a.ToList();
+            List<BoothMapss> booths = b.ToList();
+            foreach (Appliess apply in applies)
             {
-                foreach (Booths booth in booths)
+                foreach (BoothMapss booth in booths)
                 {
-                    if (booth.boothNumber == apply.boothNumber)
+                    if (booth.BoothNumber == apply.BoothNumber)
                     {
-                        model.applysumprice += booth.boothPrice;
+                        model.applysumprice += booth.BoothPrice;
                     }
                 }
             }
 
-            if (exhibition.areaNum == 1)
+            if (exhibition.AreaNum == 1)
             {
                 model.areaNumstring = "A";
             }
-            else if (exhibition.areaNum == 2)
+            else if (exhibition.AreaNum == 2)
             {
                 model.areaNumstring = "B";
             }
@@ -96,7 +96,7 @@ namespace Fairy_project.Controllers
             {
                 CreatBoothsViewModel booth3 = new CreatBoothsViewModel();
                 booth3.boothLv = "大型";
-                booth3.boothPrice = booths3[0].boothPrice;
+                booth3.boothPrice = booths3[0].BoothPrice;
                 booth3.boothsum = booths3.Count;
                 model.setboothslist.Add(booth3);
             }
@@ -104,7 +104,7 @@ namespace Fairy_project.Controllers
             {
                 CreatBoothsViewModel booth2 = new CreatBoothsViewModel();
                 booth2.boothLv = "中型";
-                booth2.boothPrice = booths2[0].boothPrice;
+                booth2.boothPrice = booths2[0].BoothPrice;
                 booth2.boothsum = booths2.Count;
                 model.setboothslist.Add(booth2);
             }
@@ -112,7 +112,7 @@ namespace Fairy_project.Controllers
             {
                 CreatBoothsViewModel booth1 = new CreatBoothsViewModel();
                 booth1.boothLv = "小型";
-                booth1.boothPrice = booths1[0].boothPrice;
+                booth1.boothPrice = booths1[0].BoothPrice;
                 booth1.boothsum = booths1.Count;
                 model.setboothslist.Add(booth1);
             }
@@ -126,29 +126,29 @@ namespace Fairy_project.Controllers
         {
             string img_dir = @$"wwwroot/images/";
             Random myRand = new Random();
-            var e = _context.exhibitions.Where(e => e.exhibitId == model.exhibitId);
-            Exhibition exhibition = e.FirstOrDefault();
-            exhibition.exhibitName = model.exhibitName;
-            exhibition.datefrom = model.datefrom;
-            exhibition.dateto = model.dateto;
-            exhibition.ex_Description = model.ex_description;
-            exhibition.ex_personTime = model.ex_personTime;
-            exhibition.ex_totalImcome = model.ex_totalImcome;
-            exhibition.ticket_Price = model.ticket_Peice;
+            var e = _context.Exhibitionsses.Where(e => e.ExhibitId == model.exhibitId);
+            Exhibitionss exhibition = e.FirstOrDefault();
+            exhibition.ExhibitName = model.exhibitName;
+            exhibition.Datefrom = model.datefrom;
+            exhibition.Dateto = model.dateto;
+            exhibition.ExDescription = model.ex_description;
+            exhibition.ExPersonTime = model.ex_personTime;
+            exhibition.ExTotalImcome = model.ex_totalImcome;
+            exhibition.TicketPrice = model.ticket_Peice;
 
             if (model.areaNumstring == "A")
             {
-                exhibition.areaNum = 1;
+                exhibition.AreaNum = 1;
             }
             else if (model.areaNumstring == "B")
             {
-                exhibition.areaNum = 2;
+                exhibition.AreaNum = 2;
             }
 
             if (model.fexhibit_T_img != null)
             {
                 string Timgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.fexhibit_T_img.FileName);
-                exhibition.exhibit_T_img = Timgname;
+                exhibition.ExhibitTImg = Timgname;
                 using (var stream = System.IO.File.Create(img_dir + Timgname))
                 {
                     await model.fexhibit_T_img.CopyToAsync(stream);
@@ -158,7 +158,7 @@ namespace Fairy_project.Controllers
             if (model.fexhibit_P_img != null)
             {
                 string Pimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.fexhibit_P_img.FileName);
-                exhibition.exhibit_P_img = Pimgname;
+                exhibition.ExhibitPImg = Pimgname;
                 using (var stream = System.IO.File.Create(img_dir + Pimgname))
                 {
                     await model.fexhibit_P_img.CopyToAsync(stream);
@@ -168,22 +168,22 @@ namespace Fairy_project.Controllers
             if (model.fexhibit_Pre_img != null)
             {
                 string Preimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.fexhibit_Pre_img.FileName);
-                exhibition.exhibit_Pre_img = Preimgname;
+                exhibition.ExhibitPreImg = Preimgname;
                 using (var stream = System.IO.File.Create(img_dir + Preimgname))
                 {
                     await model.fexhibit_Pre_img.CopyToAsync(stream);
                 }
 
             }
-            _context.exhibitions.Update(exhibition);
+            _context.Exhibitionsses.Update(exhibition);
 
             if (model.exhibitStatus == 1)
             {
-                foreach (var booth in _context.boothMaps)
+                foreach (var booth in _context.BoothMapsses)
                 {
-                    if (booth.e_Id == model.exhibitId)
+                    if (booth.EId == model.exhibitId)
                     {
-                        _context.boothMaps.Remove(booth);
+                        _context.BoothMapsses.Remove(booth);
                     }
                 }
             }
@@ -195,24 +195,24 @@ namespace Fairy_project.Controllers
                 {
                     for (int j = 0; j < model.setboothslist[i].boothsum; j++)
                     {
-                        Booths booths = new Booths();
-                        booths.boothNumber = boothnumber;
-                        booths.boothState = 0;
+                        BoothMapss booths = new BoothMapss();
+                        booths.BoothNumber = boothnumber;
+                        booths.BoothState = 0;
                         if (model.setboothslist[i].boothLv == "大型")
                         {
-                            booths.boothLv = 3;
+                            booths.BoothLv = 3;
                         }
                         else if (model.setboothslist[i].boothLv == "中型")
                         {
-                            booths.boothLv = 2;
+                            booths.BoothLv = 2;
                         }
                         else if (model.setboothslist[i].boothLv == "小型")
                         {
-                            booths.boothLv = 1;
+                            booths.BoothLv = 1;
                         }
-                        booths.boothPrice = model.setboothslist[i].boothPrice;
-                        booths.e_Id = model.exhibitId;
-                        await _context.boothMaps.AddAsync(booths);
+                        booths.BoothPrice = model.setboothslist[i].boothPrice;
+                        booths.EId = model.exhibitId;
+                        await _context.BoothMapsses.AddAsync(booths);
                         boothnumber++;
                     }
                 }
@@ -237,45 +237,45 @@ namespace Fairy_project.Controllers
         {
             string img_dir = @$"wwwroot/images/";
             Random myRand = new Random();
-            Exhibition exhibition = new Exhibition();
-            exhibition.exhibitName = model.exhibitName;
-            exhibition.exhibitStatus = 1;
-            exhibition.datefrom = model.datefrom;
-            exhibition.dateto = model.dateto;
-            exhibition.ex_Description = model.ex_description;
-            exhibition.ex_personTime = model.ex_personTime;
-            exhibition.ex_totalImcome = model.ex_totalImcome;
-            exhibition.ticket_Price = model.ticket_Peice;
+            Exhibitionss exhibition = new Exhibitionss();
+            exhibition.ExhibitName = model.exhibitName;
+            exhibition.ExhibitStatus = 1;
+            exhibition.Datefrom = model.datefrom;
+            exhibition.Dateto = model.dateto;
+            exhibition.ExDescription = model.ex_description;
+            exhibition.ExPersonTime = model.ex_personTime;
+            exhibition.ExTotalImcome = model.ex_totalImcome;
+            exhibition.TicketPrice = model.ticket_Peice;
             if (model.areaNum == "A")
             {
-                exhibition.areaNum = 1;
+                exhibition.AreaNum = 1;
             }
             if (model.areaNum == "B")
             {
-                exhibition.areaNum = 2;
+                exhibition.AreaNum = 2;
             }
 
             string Pimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_P_img.FileName);
-            exhibition.exhibit_P_img = Pimgname;
+            exhibition.ExhibitPImg = Pimgname;
             using (var stream = System.IO.File.Create(img_dir + Pimgname))
             {
                 await model.exhibit_P_img.CopyToAsync(stream);
             }
 
             string Timgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_T_img.FileName);
-            exhibition.exhibit_T_img = Timgname;
+            exhibition.ExhibitTImg = Timgname;
             using (var stream = System.IO.File.Create(img_dir + Timgname))
             {
                 await model.exhibit_T_img.CopyToAsync(stream);
             }
 
             string Preimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_Pre_img.FileName);
-            exhibition.exhibit_Pre_img = Preimgname;
+            exhibition.ExhibitPreImg = Preimgname;
             using (var stream = System.IO.File.Create(img_dir + Preimgname))
             {
                 await model.exhibit_Pre_img.CopyToAsync(stream);
             }
-            _context.exhibitions.Add(exhibition);
+            _context.Exhibitionsses.Add(exhibition);
 
             if (model.setboothslist != null)
             {
@@ -284,24 +284,24 @@ namespace Fairy_project.Controllers
                 {
                     for (int j = 0; j < model.setboothslist[i].boothsum; j++)
                     {
-                        Booths booths = new Booths();
-                        booths.boothNumber = boothnumber;
-                        booths.boothState = 0;
+                        BoothMapss booths = new BoothMapss();
+                        booths.BoothNumber = boothnumber;
+                        booths.BoothState = 0;
                         if (model.setboothslist[i].boothLv == "大型")
                         {
-                            booths.boothLv = 3;
+                            booths.BoothLv = 3;
                         }
                         else if (model.setboothslist[i].boothLv == "中型")
                         {
-                            booths.boothLv = 2;
+                            booths.BoothLv = 2;
                         }
                         else if (model.setboothslist[i].boothLv == "小型")
                         {
-                            booths.boothLv = 1;
+                            booths.BoothLv = 1;
                         }
-                        booths.boothPrice = model.setboothslist[i].boothPrice;
-                        booths.e_Id = model.exhibitId;
-                        _context.boothMaps.Add(booths);
+                        booths.BoothPrice = model.setboothslist[i].boothPrice;
+                        booths.EId = model.exhibitId;
+                        _context.BoothMapsses.Add(booths);
                         boothnumber++;
                     }
                 }
@@ -313,22 +313,22 @@ namespace Fairy_project.Controllers
 
         public async Task<IActionResult> ChangeExhibitState(int exhibitId)
         {
-            var e = _context.exhibitions.Where(e => e.exhibitId == exhibitId);
-            Exhibition exhibition = e.FirstOrDefault();
-            exhibition.exhibitStatus = 2;
+            var e = _context.Exhibitionsses.Where(e => e.ExhibitId == exhibitId);
+            Exhibitionss exhibition = e.FirstOrDefault();
+            exhibition.ExhibitStatus = 2;
             await _context.SaveChangesAsync();
             return RedirectToAction("Master");
         }
 
         public async Task<IActionResult> DeleteExhibition(int exhibitId)
         {
-            var e = _context.exhibitions.Find(exhibitId);
-            _context.exhibitions.Remove(e);
-            foreach (var booth in _context.boothMaps)
+            var e = _context.Exhibitionsses.Find(exhibitId);
+            _context.Exhibitionsses.Remove(e);
+            foreach (var booth in _context.BoothMapsses)
             {
-                if (booth.e_Id == exhibitId)
+                if (booth.EId == exhibitId)
                 {
-                    _context.boothMaps.Remove(booth);
+                    _context.BoothMapsses.Remove(booth);
                 }
             }
             await _context.SaveChangesAsync();
@@ -340,9 +340,9 @@ namespace Fairy_project.Controllers
             ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
             if (m_id.HasValue && checkstate.HasValue)
             {
-                var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate && a.mf_Id == m_id).Skip((int)offset).Take(10);
-                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate && a.mf_Id == m_id).Count();
-                List<Apply> applies = a.ToList();
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate && a.MfId == m_id).Skip((int)offset).Take(10);
+                amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate && a.MfId == m_id).Count();
+                List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
                 {
                     applies.Skip((int)offset).Take(10);
@@ -352,9 +352,9 @@ namespace Fairy_project.Controllers
             }
             else if (m_id.HasValue)
             {
-                var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.mf_Id == m_id).Skip((int)offset).Take(10);
-                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId && a.mf_Id == m_id).Count();
-                List<Apply> applies = a.ToList();
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.MfId == m_id).Skip((int)offset).Take(10);
+                amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.MfId == m_id).Count();
+                List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
                 {
                     applies.Skip((int)offset).Take(10);
@@ -364,9 +364,9 @@ namespace Fairy_project.Controllers
             }
             else if (checkstate.HasValue)
             {
-                var a = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate).Skip((int)offset).Take(10);
-                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId && a.checkState == checkstate).Count();
-                List<Apply> applies = a.ToList();
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate).Skip((int)offset).Take(10);
+                amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate).Count();
+                List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
                 {
                     applies.Skip((int)offset).Take(10);
@@ -376,35 +376,35 @@ namespace Fairy_project.Controllers
             }
             else
             {
-                var a = _context.Applies.Where(a => a.e_Id == exhibitId).Skip((int)offset).Take(10);
-                amodel.applysum = _context.Applies.Where(a => a.e_Id == exhibitId).Count();
-                List<Apply> applies = a.ToList();
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId).Skip((int)offset).Take(10);
+                amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId).Count();
+                List<Appliess> applies = a.ToList();
                 amodel.applylist = Search(applies);
                 amodel.exhibitId = exhibitId;
             }
             return PartialView("_ApplyPartial", amodel);
         }
 
-        List<CheckApplyViewModel> Search(List<Apply> applies)
+        List<CheckApplyViewModel> Search(List<Appliess> applies)
         {
             List<CheckApplyViewModel> modellist = new List<CheckApplyViewModel>();
             for (int i = 0; i < applies.Count; i++)
             {
                 CheckApplyViewModel model = new CheckApplyViewModel();
-                model.applyNum = applies[i].applyNum;
-                model.mf_Id = applies[i].mf_Id;
-                model.boothNumber = applies[i].boothNumber;
-                model.checkState = applies[i].checkState;
-                model.mf_logo = applies[i].mf_logo;
-                model.mf_P_img = applies[i].mf_P_img;
-                model.mf_Description = applies[i].mf_Description;
-                var m = _context.manufactures.Where(m => m.manufactureId == applies[i].mf_Id);
-                Manufactures manufactures = m.FirstOrDefault();
-                model.manufactureId = manufactures.manufactureId;
-                model.manufactureAcc = manufactures.manufactureAcc;
-                model.manufactureName = manufactures.manufactureName;
-                model.mfPerson = manufactures.mfPerson;
-                model.mfPhoneNum = manufactures.mfPhoneNum;
+                model.applyNum = applies[i].ApplyNum;
+                model.mf_Id = applies[i].MfId;
+                model.boothNumber = applies[i].BoothNumber;
+                model.checkState = applies[i].CheckState;
+                model.mf_logo = applies[i].MfLogo;
+                model.mf_P_img = applies[i].MfPImg;
+                model.mf_Description = applies[i].MfDescription;
+                var m = _context.Managersses.Where(m => m.ManufactureId == applies[i].MfId);
+                Manufacturess manufactures = m.FirstOrDefault();
+                model.manufactureId = manufactures.ManufactureId;
+                model.manufactureAcc = manufactures.ManufactureAcc;
+                model.manufactureName = manufactures.ManufactureName;
+                model.mfPerson = manufactures.MfPerson;
+                model.mfPhoneNum = manufactures.MfPhoneNum;
                 modellist.Add(model);
             }
             return modellist;
