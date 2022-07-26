@@ -424,3 +424,6 @@ li.showName {
     ::-webkit-scrollbar-thumb:hover {
         background: #aaa;
     }
+ul {
+    list-style-type: none;
+}
