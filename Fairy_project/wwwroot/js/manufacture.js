@@ -126,6 +126,15 @@ $(() => {
         ul.css("transform", `translateX(0px)`)
     });
 });
+//攤位大小選擇
+$(() => {
+    let li = $("ul.size-title li")
+    $(li.eq(1).addClass("active").find("a").attr('href')).sibling(".booth-list").hide();
+    li.click((e) => {
+        $($(e.target).find('a').attr("href")).show().siblings(".booth-list").hide();
+        $(e.target).addClass('active').siblings(".active").removeClass("active");
+    })
+})
 //展覽輪播
 $(() => {
 
@@ -139,14 +148,14 @@ $(() => {
     let prev = $(".prev");
     let position = 0;
 
-    next.click((e) => {
+    next.click(() => {
         if (position > -MAX_ULWIDTH) {
             ul.css("transform", `translateX(${position -= MOVE}px)`)
         }
 
     })
 
-    prev.click((e) => {
+    prev.click(() => {
         if (position < 0) {
 
             ul.css("transform", `translateX(${position += MOVE}px)`)
@@ -170,44 +179,6 @@ $(() => {
 
     //點中到中間 該項目
 })
-//展覽按鈕串資料庫
-
-
-//$(() => {
-    
-//    let show = [
-//        ["a", "ACC"],
-//        ["a", "AAA"],
-//        ["a", "ABB"],
-//        ["b", "BAA"],
-//        ["b", "BBB"],
-//        ["b", "BCC"],
-//        ["a", "ACC"],
-//        ["a", "AAA"],
-//        ["a", "ABB"],
-//        ["b", "BAA"],
-//        ["b", "BBB"],
-//        ["b", "BCC"],
-//    ]
-//    let aZone = $("#aZone");
-//    let bZone = $("#bZone");
-
-//    for (let i = 0; i < show.length; i++) {
-
-//        if (show[i][0] === "a") {
-//            $(aZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
-                           
-//                        </button>`)
-//            console.log(i)
-//        }
-//        if (show[i][0] === "b") {
-//            $(bZone).find(".showName").append(` <button class="btn btn-woo btn-sm">
-//                           ${show[i][1]}
-//                        </button>`)
-
-//        }
-//    }
-//})
 
 //選擇展覽
 $(() => {

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fairy_project.Migrations
 {
     [DbContext(typeof(ServerContext))]
-    [Migration("20220725015407_wow0725")]
-    partial class wow0725
+    [Migration("20220726063211_232")]
+    partial class _232
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
