@@ -63,14 +63,8 @@
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
                 </div>
                 <div class="carousel-inner">
-
-
-
-
-
-
-
-                    <div class="carousel-item active">
+                    @*content*@
+                    @*<div class="carousel-item active">
                         <div class=" d-flex w-auto">
                             <div class="btn-group-vertical">
                                 <button type="button" class="btn-size-top">QRCODE</button>
@@ -80,10 +74,9 @@
                             </div>
                             <img src="~/images/111.png" class="d-block w-100-h-setting" alt="...">
                         </div>
-                    </div>
-
-
-                    <div class="carousel-item">
+                    </div>*@
+                    @*content*@
+                    @*<div class="carousel-item">
                         <div class=" d-flex">
                             <div class="btn-group-vertical">
                                 <button type="button" class="btn-size-top">QRCODE</button>
@@ -135,7 +128,7 @@
                             </div>
                             <img src="~/images/555.png" class="d-block w-100-h-setting img-fluid" alt="...">
                         </div>
-                    </div>
+                    </div>*@
 
                 </div>
             </div>
@@ -156,11 +149,11 @@
 @section Scripts
     {
 
-        <script src="~/js/memberTickets.js" asp-append-version="true"></script>
+        <script src="~/js/memberTicket.js" asp-append-version="true"></script>
     @*<script>
         sessionStorage.removeItem('Info')
 
-        const personId = @TempData["ppid"];
+        const personId = @TempData["ppid"];                             
         const personInfos = {
             id: personId,
         };
