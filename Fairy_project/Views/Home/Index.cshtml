@@ -52,7 +52,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 px-sm-3 border-0 text-center">
                 <a class="ef-1" href="">
                     <div class="h-50 rounded-1 overflow-hidden my-5">
-                        <img src="images\card1.jpg" alt="">
+                        <img src="~\images\card1.jpg" alt="">
                     </div>
                     <span class="fs-4 c3" href="">你，到底應該如何實</span>
                 </a>
@@ -96,9 +96,9 @@
 
     window.addEventListener("load", () => {
 
-        @*axios.get('@Url.Action("GetManufactures")')
+        axios.get('@Url.Action("GetManufactures")')
             .then(res => console.log(res.data))
-            .catch(err => console.log(err))*@
+            .catch(err => console.log(err))
 
 
         @*axios.get('@Url.Action("getAllExhibition")')

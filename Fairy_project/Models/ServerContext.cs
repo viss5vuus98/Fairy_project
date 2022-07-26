@@ -8,7 +8,7 @@ namespace Fairy_project.Models
         public ServerContext(DbContextOptions<ServerContext> options) : base(options) { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=tcp:wowoo.database.windows.net,1433;Initial Catalog=wow;Persist Security Info=False;User ID=ispanwo;Password=P@ssw0rd-iii;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            optionsBuilder.UseSqlServer("Server=tcp:wowoo.database.windows.net,1433;Initial Catalog=woowo;Persist Security Info=False;User ID=ispanwo;Password=P@ssw0rd-iii;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)

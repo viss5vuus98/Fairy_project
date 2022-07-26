@@ -16,12 +16,14 @@ public class HomeController : Controller
 
     private readonly ILogger<HomeController> _logger;
     private readonly ServerContext _context;
+    private readonly woowoContext _woocontext;
     private readonly string _path;
 
-    public HomeController(ILogger<HomeController> logger, ServerContext context, IWebHostEnvironment hostEnvironment)
+    public HomeController(ILogger<HomeController> logger, ServerContext context, woowoContext woowoContext, IWebHostEnvironment hostEnvironment)
     {
         _logger = logger;
         _context = context;
+        _woocontext = woowoContext;
         _path = $"{hostEnvironment.WebRootPath}\\images";
     }
 
@@ -66,7 +68,7 @@ public class HomeController : Controller
 
     public IActionResult GetManufactures()
     {
-        var theManufactures = _context.manufactures.OrderBy(m => m.manufactureId);
+        var theManufactures = _woocontext.Manufacturesses.OrderBy(m => m.ManufactureId);
         return Json(theManufactures);
     }
 
