@@ -241,7 +241,7 @@
         let array = []
         const value = JSON.parse(sessionStorage.getItem('tickets')) || []
         ////console.log(value)  // [{id : 34}] value[0].id
-        var id = "";
+        var id = "1|2|3|";
         for (let i = 0; i < value.length; i++) {
             id += value[i].id + "|";
         }
@@ -259,20 +259,20 @@
                 $(".ticket").append(`<div class="container" style="border: 1px solid black;">
                                                                                 <div class="rowticket d-flex">
                                                                                     <div class="col-xl-3"><img
-                                                                                            src="${data[i].exhibition.exhibit_T_img}"
+                                                                                            src="${data[i].exhibitions.exhibitTImg}"
                                                                                             alt=""></div>
                                                                                     <div class="col-xl-9">
                                                                                         <div class="d-flex" style="justify-content: space-between;">
-                                                                                            <h3>${data[i].exhibition.exhibitName}</h3>
+                                                                                            <h3>${data[i].exhibitions.exhibitName}</h3>
                                                                                             <button type="button" class="btn btn-secondary"><i
                                                                                                     class="fa-solid fa-trash-can"></i></button>
                                                                                         </div>
-                                                                                        <h5>${data[i].exhibition.datefrom}~${data[i].exhibition.dateto}</h5>
+                                                                                        <h5>${data[i].exhibitions.datefrom}~${data[i].exhibitions.dateto}</h5>
                                                                                         <h5>台中國家歌劇園中劇院</h5>
                                                                                         <div class="price">
                                                                                             <div class="d-flex originprice">
                                                                                                 原價$
-                                                                                                <p>${data[i].exhibition.ticket_Price}</p>元
+                                                                                                <p>${data[i].exhibitions.ticketPrice}</p>元
                                                                                             </div>
                                                                                             <div class="d-flex" style="align-items:center">
                                                                                                 數量:<button type="button" class="minus"><i class="fa-solid fa-minus"></i></button>
@@ -299,7 +299,7 @@
             //console.log(sum);
             $("#totalprice").text("");
             $("#totalprice").append(`總金額:<p>${sum}</p>元`);
-            //console.log(array)
+            console.log(array)
         });
 
         //按鈕事件
@@ -437,7 +437,7 @@
             let ticket = [];
             for (let i = 0; i < array.length; i++) {
                 for (let j = 0; j < input[i]; j++) {
-                    ticket.push(JSON.parse(`{"Ticket":{"e_Id":"${array[i].exhibition.exhibitId}","m_Id":"1","price":"${array[i].exhibition.ticket_Price}","enterstate":"0","personName":"${$("#name").val()}","personNumber":"${$("#cellphone").val()}","paytime":"${time}"}}`))
+                    ticket.push(JSON.parse(`{"ticket":{"eId":"${array[i].exhibitions.exhibitId}","mId":"6","price":"${array[i].exhibitions.ticketPrice}","enterstate":"0","presonName":"${$("#name").val()}","personNumber":"${$("#cellphone").val()}","payTime":"${time}"}}`))
                 }
             }
             console.log(ticket);

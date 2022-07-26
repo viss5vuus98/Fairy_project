@@ -225,7 +225,7 @@ public class HomeController : Controller
                 Console.WriteLine(exid);
                 shoppingcartViewModel model = new shoppingcartViewModel()
                 {
-                    exhibition = await _context.Exhibitionsses.FirstOrDefaultAsync(m => m.ExhibitId == exid),
+                    exhibitions = await _context.Exhibitionsses.FirstOrDefaultAsync(m => m.ExhibitId == exid),
                     //ticket = await _context.tickets.Where(m => m.e_Id == exid).FirstOrDefaultAsync(),
                 };
                 exhibitions.Add(model);
