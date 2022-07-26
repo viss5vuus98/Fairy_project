@@ -70,13 +70,13 @@ namespace Fairy_project.Controllers
             model.applysum = _context.Appliesses.Where(a => a.EId == model.exhibitId && a.CheckState == 2).Count();
             var a = _context.Appliesses.Where(a => a.EId == model.exhibitId && a.CheckState == 2);
             var b = _context.BoothMapsses.Where(b => b.EId == model.exhibitId);
-            List<Appliess> applies = a.ToList();
-            List<BoothMapss> booths = b.ToList();
-            foreach (Appliess apply in applies)
+            List<Appliess> Appliess = a.ToList();
+            List<BoothMapss> boothMapsses = b.ToList();
+            foreach (Appliess Apply in Appliess)
             {
-                foreach (BoothMapss booth in booths)
+                foreach(BoothMapss booth in boothMapsses)
                 {
-                    if (booth.BoothNumber == apply.BoothNumber)
+                    if (Apply.BoothNumber == booth.BoothNumber)
                     {
                         model.applysumprice += booth.BoothPrice;
                     }
@@ -410,18 +410,46 @@ namespace Fairy_project.Controllers
             return modellist;
         }
 
-        public async void ChangeBoothApplyState(int exhibitId, int? boothNumber)
+        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? boothNumber,bool? fail)
         {
             var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == boothNumber);
+            var b = _context.BoothMapsses.Where(b => b.EId == exhibitId && b.BoothNumber == boothNumber);
             Appliess apply = a.FirstOrDefault();
-            apply.CheckState = 1;
+            BoothMapss booth = b.FirstOrDefault();
+            if (fail.HasValue)
+            {
+                apply.CheckState = 3;
+            }
+            if (apply.CheckState == 0)
+            {
+                apply.CheckState = 1;
+                booth.BoothState = 1;
+            }
+            else if (apply.CheckState == 1)
+            {
+                apply.CheckState = 2;
+            }
             await _context.SaveChangesAsync();
 
-            ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
-            var r = _context.Appliesses.Where(a => a.EId == exhibitId).Skip(0).Take(10);
-            amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId).Count();
-            List<Appliess> applies = r.ToList();
-            amodel.applylist = Search(applies);
+            int applysum = 0;
+            int? applysumprice = 0;
+            applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Count();
+            var aa = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2);
+            var bb = _context.BoothMapsses.Where(b => b.EId == exhibitId);
+            List<Appliess> Appliess = aa.ToList();
+            List<BoothMapss> boothMapsses = bb.ToList();
+            foreach (Appliess Apply in Appliess)
+            {
+                foreach (BoothMapss Booth in boothMapsses)
+                {
+                    if (Apply.BoothNumber == booth.BoothNumber)
+                    {
+                        applysumprice += booth.BoothPrice;
+                    }
+                }
+            }
+
+            return Json(new { applysum = applysum, applysumprice = applysumprice });
         }
 
         // GET: AdminController/Details/5

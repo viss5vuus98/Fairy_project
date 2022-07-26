@@ -9,9 +9,9 @@
                 <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
 
 
-                <h3 href="" class="w-25 m-0 border-0 text-reset bg2" data-bs-toggle="modal"
-           data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">
-                    <a href="" class="text-reset">@Model.applylist[i].boothNumber</a>
+                <h3 href="" class="w-25 m-0 border-0 text-reset bg2">
+                    <a href="" class="text-reset" data-bs-toggle="modal"
+               data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">@Model.applylist[i].boothNumber</a>
                 </h3>
                 <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
@@ -48,16 +48,57 @@
                                     <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
                                     <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
                                     <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
-                                    <div class="d-flex h-25 flex-column align-items-start mt-5 ms-5 my-3">
-                                        <i id="applypass" class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao" data-bum="@Model.applylist[i].boothNumber">
-                                            <span class="h5">通過</span>
-                                        </i>
-                                        <i id="applyfail" href="" class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax" data-bum="@Model.applylist[i].boothNumber">
-                                            <span class="h5">未通過</span>
-                                        </i>
+                                    <div class="d-flex h-25 justify-content-around align-items-center mt-5 my-3">
+
+                                        @{
+                                            if (Model.applylist[i].checkState == 0)
+                                            {
+                                                <i class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao" data-bum="@Model.applylist[i].boothNumber">
+                                                </i>
+                                                <i href="" class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax" data-bum="@Model.applylist[i].boothNumber"></i>
+                                            }
+                                            else if (Model.applylist[i].checkState == 1 || Model.applylist[i].checkState == 2)
+                                            {
+
+                                                <i class="pe-none my-3 fa-solid fa-clipboard-check fa-4x text-success">
+                                                    <span class="h5">PASS</span>
+                                                </i>
+                                            }
+                                            else if (Model.applylist[i].checkState == 3)
+                                            {
+                                                <i class="pe-none my-3 fa-solid fa-file-excel fa-4x text-danger">
+                                                    <span class="h5">FAIL</span>
+                                                </i>
+                                            }
+                                        }
+
                                     </div>
                                 </div>
                             </div>
+                            @{
+                                if (Model.applylist[i].checkState == 1)
+                                {
+                                    <hr>
+                                    <div class="row justify-content-around align-items-center my-3">
+                                        <h4 class="col-4">匯款日期：2022 / 7 / 26</h4>
+                                        <h4 class="col-4"> 匯款末五碼：12345</h4>
+                                        <i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-bum="@Model.applylist[i].boothNumber">
+                                            <span class="h5 fw-bolder">對帳</span>
+                                        </i>
+                                    </div>
+                                }
+                                if(Model.applylist[i].checkState == 2)
+                                {
+                                    <hr>
+                                    <div class="row justify-content-around align-items-center my-3">
+                                        <h4 class="col-4">匯款日期：2022 / 7 / 26</h4>
+                                        <h4 class="col-4"> 匯款末五碼：12345</h4>
+                                        <i class="col-2 my-3 fa-regular fa-square-check fa-4x checkmoney" data-bum="@Model.applylist[i].boothNumber">
+                                            <span class="h5 fw-bolder">對帳</span>
+                                        </i>
+                                    </div>                                    
+                                }
+                            }
                         </div>
                     </div>
                 </div>
@@ -74,6 +115,10 @@
                     else if (Model.applylist[i].checkState == 2)
                     {
                         <h3 class="w-25 m-0 text-success">已付款</h3>
+                    }
+                    else if (Model.applylist[i].checkState == 3)
+                    {
+                        <h3 class="w-25 m-0 text-secondary">未通過</h3>
                     }
                 }
             </div>

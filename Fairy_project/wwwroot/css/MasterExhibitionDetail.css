@@ -47,6 +47,9 @@ i {
 .checkmax:hover {
     opacity: .6;
 }
+.checkmoney:hover {
+    opacity: .6;
+}
 
 label {
     cursor: pointer;
