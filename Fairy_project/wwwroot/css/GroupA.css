@@ -201,8 +201,9 @@ body {
     border-radius: 47px;
     position: relative;
     display: flex;
-    flex-wrap: wrap;
-    text-align: center;
+    /*flex-wrap: wrap;*/
+    flex-wrap: nowrap;
+    /*text-align: center;*/
     align-content: space-between;
     justify-content: center;
     align-items: center;
@@ -382,3 +383,7 @@ ul.show-list {
 ::-webkit-scrollbar-thumb:hover {
         background: #aaa;
     }
+
+
+
+
