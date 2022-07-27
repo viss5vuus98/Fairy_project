@@ -34,6 +34,7 @@ namespace Fairy_project.Controllers
             {
                 foreach (var ticket in tickets)
                 {
+                    Console.WriteLine(ticket.EId);
                     exhibitions.AddRange(_context.Exhibitionsses.Where(ex => ex.ExhibitId == ticket.EId).ToList());
                 }
                 TicketsViewModel ticketsViewModel = new TicketsViewModel()

@@ -55,81 +55,18 @@
         </div>
         <div class="col-8 col-sm-8">
             <div id="carouselExampleIndicators" class="carousel slide" bs-data-wrap="false">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                </div>
                 <div class="carousel-inner">
-                    @*content*@
-                    @*<div class="carousel-item active">
-                            <div class=" d-flex w-auto">
-                                <div class="btn-group-vertical">
-                                    <button type="button" class="btn-size-top">QRCODE</button>
-                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                    <button type="button" class="btn-size-bottom">分票</button>
+                    <div class="carousel-item active">
+                        <div class=" d-flex w-auto">
+                            <div class="btn-group-vertical">
+                                <button type="button" class="btn-size-top">QRCODE</button>
+                                <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
+                                <button type="button" class="btn-size-bottom">分票</button>
 
-                                </div>
-                                <img src="~/images/111.png" class="d-block w-100-h-setting" alt="...">
                             </div>
-                        </div>*@
-                    @*content*@
-                    @*<div class="carousel-item">
-                            <div class=" d-flex">
-                                <div class="btn-group-vertical">
-                                    <button type="button" class="btn-size-top">QRCODE</button>
-                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                    <button type="button" class="btn-size-bottom">分票</button>
-
-                                </div>
-                                <img src="~/images/222.png" class="d-block w-100-h-setting" alt="...">
-                            </div>
+                            <img src="~/images/333.png" class="d-block w-100-h-setting" alt="...">
                         </div>
-
-
-                        <div class="carousel-item ">
-                            <div class=" d-flex">
-                                <div class="btn-group-vertical">
-
-
-
-                                    <button type="button" class="btn-size-top">QRCODE</button>
-                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                    <button type="button" class="btn-size-bottom">分票</button>
-
-                                </div>
-                                <img src="~/images/333.png" class="d-block w-100-h-setting" alt="...">
-                            </div>
-                        </div>
-
-
-                        <div class="carousel-item ">
-                            <div class=" d-flex">
-                                <div class="btn-group-vertical">
-                                    <button type="button" class="btn-size-top">QRCODE</button>
-                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                    <button type="button" class="btn-size-bottom">分票</button>
-
-                                </div>
-                                <img src="~/images/444.png" class="d-block w-100-h-setting img-fluid" alt="...">
-                            </div>
-                        </div>
-
-
-                        <div class="carousel-item ">
-                            <div class=" d-flex">
-                                <div class="btn-group-vertical">
-                                    <button type="button" class="btn-size-top">QRCODE</button>
-                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                    <button type="button" class="btn-size-bottom">分票</button>
-
-                                </div>
-                                <img src="~/images/555.png" class="d-block w-100-h-setting img-fluid" alt="...">
-                            </div>
-                        </div>*@
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -139,16 +76,67 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
-
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 
-@section Scripts
+        @section Scripts
     {
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-    <script src="~/js/memberTicket.js" asp-append-version="true"></script>
-}
+            <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+            <script>const ticketList = []
+
+                axios.post('/api/Member/Post/getTicketsss', { "Mf_id": 6 })
+                    .then(res => {
+
+                        for (let i = 0; i < res.data.tickets.length; i++) {
+                            const ticketobj = new Object()
+                            ticketobj.ticket = res.data.tickets[i]
+                            ticketobj.exhibition = res.data.exhibition[i]
+                            ticketList.push(ticketobj)
+                        }
+                        renderCards(ticketList)
+                    })
+                    .catch(err =>
+                        console.log(err)
+                    )
+
+
+
+                function renderCards(ticketList) {
+                    const carouselInner = document.querySelector('.carousel-inner')
+                    let pannelHTML = '';
+                    for (let i = 0; i < ticketList.length; i++) {
+                        if (i == 0) {
+                            pannelHTML += `
+                                        <div class="carousel-item active">
+                                            <div class=" d-flex w-auto">
+                                                <div class="btn-group-vertical">
+                                                    <button type="button" class="btn-size-top" data-ExId="${ticketList[i].exhibition.exhibitId}">QRCODE</button>
+                                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
+                                                    <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
+                                                </div>
+                                                <img src="${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="...">
+                                            </div>
+                                        </div>
+                                        `
+                        } else {
+                            pannelHTML += `
+                                            <div class="carousel-item">
+                                                <div class=" d-flex w-auto">
+                                                    <div class="btn-group-vertical">
+                                                        <button type="button" class="btn-size-top" data-ExId="${ticketList[i].exhibition.exhibitId}">QRCODE</button>
+                                                        <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
+                                                        <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
+                                                    </div>
+                                                    <img src="${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="...">
+                                                </div>
+                                            </div>
+                                            `
+                        }
+                    }
+                    console.log(pannelHTML)
+                    carouselInner.innerHTML = pannelHTML
+                }</script>
+        }
 
