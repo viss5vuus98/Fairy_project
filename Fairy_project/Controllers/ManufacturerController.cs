@@ -48,7 +48,7 @@ namespace Fairy_project.Controllers
         {
             //Console.WriteLine(idClass.Ex_id + "-------------------");
             //var id = Convert.ToInt32(idClass.Ex_id);
-            var exhibition = _context.exhibitions.FirstOrDefault(m => m.exhibitId == idClass.Ex_id);
+            var exhibition = _woowocontext.Exhibitionsses.FirstOrDefault(m => m.ExhibitId == idClass.Ex_id);
             return Json(exhibition);
         }
 
@@ -57,16 +57,16 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult getExApplies([FromBody] GetIdClassModel idClass)
         {
-            var applies = _context.Applies.Where(m => m.e_Id == idClass.Ex_id);
+            var applies = _woowocontext.Appliesses.Where(m => m.EId == idClass.Ex_id);
             return Json(applies);
         }
 
         //create the exhibition of applies 新增申請 傳入applies內的物件
         [HttpPost]
-        public bool createApplies([FromBody] Apply apply)
+        public bool createApplies([FromBody] Appliess apply)
         {
-            _context.Applies.Add(apply);
-            _context.SaveChanges();
+            _woowocontext.Appliesses.Add(apply);
+            _woowocontext.SaveChanges();
             return true;
         }
 
@@ -74,7 +74,7 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult getMfApplies([FromBody] GetIdClassModel idClass)
         {
-            var applies = _context.Applies.Where(m => m.mf_Id == idClass.Mf_id);
+            var applies = _woowocontext.Appliesses.Where(m => m.MfId == idClass.Mf_id);
             return Json(applies);
         }
 
@@ -82,7 +82,7 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult GetTheManufactures([FromBody] GetIdClassModel idClass)
         {
-            var theManufactures = _context.manufactures.Where(m => m.manufactureId == idClass.Mf_id);
+            var theManufactures = _woowocontext.Manufacturesses.Where(m => m.ManufactureId == idClass.Mf_id);
             return Json(theManufactures);
         }
 
@@ -90,7 +90,7 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult GetAllBooth([FromBody] GetIdClassModel idClass)
         {
-            var booths = _context.boothMaps.Where(m => m.e_Id == idClass.Ex_id);
+            var booths = _woowocontext.BoothMapsses.Where(m => m.EId == idClass.Ex_id);
             return Json(booths);
         }
     }
