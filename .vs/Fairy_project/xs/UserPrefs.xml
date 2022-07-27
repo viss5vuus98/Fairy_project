@@ -5,9 +5,9 @@
       <File FileName="Fairy_project/Views/Shared/_LoginPartial.cshtml" Line="17" Column="63" />
       <File FileName="Fairy_project/Views/Login/_loginLay.cshtml" Line="34" Column="67" />
       <File FileName="Fairy_project/Controllers/LoginController.cs" Line="158" Column="38" />
-      <File FileName="Fairy_project/Controllers/MemberController.cs" Line="23" Column="27" />
-      <File FileName="Fairy_project/Views/Member/Index.cshtml" Line="15" Column="17" />
-      <File FileName="Fairy_project/wwwroot/js/memberTicket.js" Line="80" Column="28" />
+      <File FileName="Fairy_project/Controllers/MemberController.cs" Line="75" Column="15" />
+      <File FileName="Fairy_project/Views/Member/Index.cshtml" Line="9" Column="36" />
+      <File FileName="Fairy_project/wwwroot/js/memberTicket.js" Line="4" Column="1" />
       <File FileName="Fairy_project/ViewModels/QrcodeModal.cs" Line="12" Column="40" />
       <File FileName="Fairy_project/Models/Ticketss.cs" Line="18" Column="9" />
     </Files>

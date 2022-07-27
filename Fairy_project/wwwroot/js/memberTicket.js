@@ -28,7 +28,7 @@ function renderCards(ticketList) {
             <div class="carousel-item active">
                 <div class=" d-flex w-auto">
                     <div class="btn-group-vertical">
-                        <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
+                        <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
                         <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
                         <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
                     </div>
@@ -41,7 +41,7 @@ function renderCards(ticketList) {
                 <div class="carousel-item">
                     <div class=" d-flex w-auto">
                         <div class="btn-group-vertical">
-                            <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
+                            <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
                             <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
                             <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
                         </div>
@@ -61,14 +61,14 @@ function renderCards(ticketList) {
 carouselInner.addEventListener('click', event => {
     const target = event.target
     if (target.matches('.btn-qrcode')) {
-        showQRcodeModal(target.dataset.exid)
+        showQRcodeModal(target.dataset.exid, target.dataset.order)
     }
 })
 
-function showQRcodeModal(id) {
+function showQRcodeModal(id, order) {
     const QRTtitle = document.querySelector('#QRModal-title');
     const QRBody = document.querySelector('#QR-body');
-    axios.post('/api/Member/Post/getVerificationCode', { "Ex_id": id })
+    axios.post('/api/Member/Post/getVerificationCode', { "Ex_id": id, "Mf_id": order})
         .then(res => {
             const exhibition = res.data
             QRTtitle.textContent = exhibition.exhibitName;
@@ -85,3 +85,5 @@ function showQRcodeModal(id) {
         })
         .catch(err => console.log(err))
 }
+
+

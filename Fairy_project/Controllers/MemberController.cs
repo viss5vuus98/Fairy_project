@@ -52,6 +52,7 @@ namespace Fairy_project.Controllers
         [HttpPost, Route("getVerificationCode")]
         public IActionResult getVerificationCode([FromBody] GetIdClassModel idClass)
         {
+            //產生QR_code
             string VfCode = "";
             string dt = DateTime.Now.ToString("ddMMyyyyHHmmss");
             string id = idClass.Ex_id.ToString();
@@ -73,8 +74,21 @@ namespace Fairy_project.Controllers
                 VerificationCode = VfCode
             };
             //ToDo：修改Tickets資料表中的驗證碼欄位
-            //ToDO: 前端產生QR_code
+            updateVfcode(VfCode, idClass.Mf_id);
+
+
             return Json(qrcodeModal);
+        }
+
+        [HttpPost, Route("updateVfcode")]
+        public void updateVfcode(string vfCode, int orderNum)
+        {
+            var ticket = _context.Ticketsses.First(t => t.OrderNum == orderNum);
+            if(ticket != null)
+            {
+                ticket.VerificationCode = vfCode;
+                _context.SaveChanges();
+            }
         }
     }
 }
