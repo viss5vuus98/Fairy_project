@@ -21,14 +21,17 @@
                 if (Model.exhibitStatus == 1)
                 {
                     <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-black fs-3 py-4">規劃</span>
+                    <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden />
                 }
                 else if (Model.exhibitStatus == 2)
                 {
                     <span class="col-lg-1 col-sm-2 col-2 badge bg-warning text-black fs-3 py-4">籌備</span>
+                    <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden />
                 }
                 else if (Model.exhibitStatus == 3)
                 {
                     <span class="col-lg-1 col-sm-2 col-2 badge bg-success text-black fs-3 py-4">舉辦</span>
+                    <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden/>
                 }
             }
         </div>
