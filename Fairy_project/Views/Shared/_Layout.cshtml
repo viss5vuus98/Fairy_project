@@ -62,27 +62,27 @@
     <script src="~/lib/axios/axios.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     @await Html.PartialAsync("_ToastIndexPartial")
-    <script>
+<script>
     if (sessionStorage.getItem('acount') != null) {
         $('.navbar').append(`<ul class="navbar_link">
                 <li class="navbar_li"><a href="#" class="navbar_link_a">@User.Identity.Name.Split("@")[0] 你好</a></li>
-                <li class="navbar_li"><a class="navbar_link_a" href="Home/shoppingcart">購物車</a></li>
-                <li class="navbar_li"><a class="navbar_link_a" href="api/Member/Post">票券頁面</a></li>
-                <li class="navbar_li"><a href="Login/Logout" class="navbar_link_a">登出</a></li>
+                <li class="navbar_li"><a class="navbar_link_a" href="@Url.Action("shoppingcart", "Home")">購物車</a></li>
+                <li class="navbar_li"><a class="navbar_link_a" href="@Url.Action("index", "Member")">票券頁面</a></li>
+                <li class="navbar_li"><a href="@Url.Action("Logout", "Login")" class="navbar_link_a">登出</a></li>
             </ul>
             <ul class="navbar_icon">
-                <li class="navbar_li"><a href="＃"><i class="fa-solid fa-cart-shopping navbar_icon_item"></i></a></li>
+                <li class="navbar_li"><a href="@Url.Action("shoppingcart", "Home")"><i class="fa-solid fa-cart-shopping navbar_icon_item"></i></a></li>
                 <li class="navbar_li"><a href="＃" class="navbar_link_a"><i class="fa-solid fa-user-astronaut navbar_icon_item"></i></a></li>
-                <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Member" asp-action="Index"><i class="fa-solid fa-ticket-simple navbar_icon_item"></i></a></li>
-                <li class="navbar_li"><a asp-area="" asp-controller="Login" asp-action="Logout"><i class="fa-solid fa-dungeon navbar_icon_item navbar_link_a"></i></a></li>
+                <li class="navbar_li"><a class="navbar_link_a" href="@Url.Action("index", "Member")"><i class="fa-solid fa-ticket-simple navbar_icon_item"></i></a></li>
+                <li class="navbar_li"><a href="@Url.Action("Logout", "Login")"><i class="fa-solid fa-dungeon navbar_icon_item navbar_link_a"></i></a></li>
             </ul>`)
     }
     else {
         $('.navbar').append(`<ul class="navbar_link">
-                <li class="navbar_li"><a class="navbar_link_a" href="Login">登入</a></li>
+                <li class="navbar_li"><a class="navbar_link_a" href="@Url.Action("index", "Login")">登入</a></li>
             </ul>
             <ul class="navbar_icon">
-                <li class="navbar_li"><a href="Login"><i class="fa-solid fa-dungeon navbar_icon_item navbar_link_a"></i></a></li>
+                <li class="navbar_li"><a href="@Url.Action("index", "Login")"><i class="fa-solid fa-dungeon navbar_icon_item navbar_link_a"></i></a></li>
             </ul>`)
     }
 </script>

@@ -4,6 +4,7 @@
 
 //render member's tickets
 const ticketList = []
+const memberId = JSON.parse(sessionStorage.getItem("Info"))
 const carouselInner = document.querySelector('.carousel-inner')
 
 axios.post('/api/Member/Post/getTicketsss', { "Mf_id": 6 })

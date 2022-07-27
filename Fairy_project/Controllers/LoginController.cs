@@ -141,7 +141,7 @@ namespace Fairy_project.Controllers
                 if (permissions == "Home")
                 {
                     var person = _context.Membersses.FirstOrDefault(m => m.MemberAc == account);
-                    //TempData["MemberId"] = person.MemberId;
+                    TempData["MemberId"] = person.MemberId;
                     HttpContext.Session.SetString("MemberId", person.MemberId.ToString());
                     //ViewBag.id = HttpContext.Session.GetString("MemberId");
                 }
