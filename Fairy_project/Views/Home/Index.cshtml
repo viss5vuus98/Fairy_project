@@ -103,9 +103,9 @@
             .then(res => console.log(res.data))
             .catch(err => console.log(err))*@
 
-        @*axios.get('@Url.Action("getAllExhibition")')
+        axios.get('@Url.Action("getViewMode")')
             .then(res => console.log(res.data))
-            .catch(err => console.log(err))*@
+            .catch(err => console.log(err))
 
         @*axios.post('@Url.Action("GetTheManufactures")', {"Mf_id": 1})
             .then(res => console.log(res.data))

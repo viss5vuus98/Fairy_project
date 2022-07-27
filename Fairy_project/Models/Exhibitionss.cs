@@ -8,7 +8,6 @@ namespace Fairy_project.Models
         public Exhibitionss()
         {
             BoothMapsses = new HashSet<BoothMapss>();
-            Ticketsses = new HashSet<Ticketss>();
         }
 
         public int ExhibitId { get; set; }
@@ -26,6 +25,5 @@ namespace Fairy_project.Models
         public int? TicketPrice { get; set; }
 
         public virtual ICollection<BoothMapss> BoothMapsses { get; set; }
-        public virtual ICollection<Ticketss> Ticketsses { get; set; }
     }
 }

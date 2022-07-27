@@ -107,11 +107,6 @@ namespace Fairy_project.Models
                     .WithMany(p => p.BoothMapsses)
                     .HasForeignKey(d => d.EId)
                     .HasConstraintName("FK_boothMapss_exhibitionss");
-
-                entity.HasOne(d => d.Mf)
-                    .WithMany(p => p.BoothMapsses)
-                    .HasForeignKey(d => d.MfId)
-                    .HasConstraintName("FK_boothMapss_manufacturess");
             });
 
             modelBuilder.Entity<Exhibitionss>(entity =>
@@ -257,16 +252,6 @@ namespace Fairy_project.Models
                 entity.Property(e => e.Price).HasColumnName("price");
 
                 entity.Property(e => e.VerificationCode).HasColumnName("verificationCode");
-
-                entity.HasOne(d => d.EIdNavigation)
-                    .WithMany(p => p.Ticketsses)
-                    .HasForeignKey(d => d.EId)
-                    .HasConstraintName("FK_ticketss_exhibitionss");
-
-                entity.HasOne(d => d.MIdNavigation)
-                    .WithMany(p => p.Ticketsses)
-                    .HasForeignKey(d => d.MId)
-                    .HasConstraintName("FK_ticketss_memberss");
             });
 
             OnModelCreatingPartial(modelBuilder);

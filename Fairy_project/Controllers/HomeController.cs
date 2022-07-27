@@ -78,8 +78,8 @@ public class HomeController : Controller
     {
         invide invide = new invide()
         {
-            Exhibitionsses = _context.Exhibitionsses.FirstOrDefault(m => m.ExhibitId == 34) ?? new Exhibitionss(),
-            Manufactures = _context.Manufacturesses.Where(m => m.ManufactureId > 0).ToList()
+            Exhibitionsses = _context.Exhibitionsses.Where(m => m.ExhibitId > 1).ToList(),
+            Manufactures = _context.Ticketsses.Where(m => m.MId == 6).ToList()
         };
         return Json(invide);
     }

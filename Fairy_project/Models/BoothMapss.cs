@@ -16,6 +16,5 @@ namespace Fairy_project.Models
         public int? BoothPrice { get; set; }
 
         public virtual Exhibitionss? EIdNavigation { get; set; }
-        public virtual Manufacturess? Mf { get; set; }
     }
 }

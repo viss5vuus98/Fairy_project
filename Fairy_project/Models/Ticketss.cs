@@ -16,8 +16,5 @@ namespace Fairy_project.Models
         public string? PersonNumber { get; set; }
         public DateTime? PayTime { get; set; }
         public string? VerificationCode { get; set; }
-
-        public virtual Exhibitionss? EIdNavigation { get; set; }
-        public virtual Memberss? MIdNavigation { get; set; }
     }
 }
