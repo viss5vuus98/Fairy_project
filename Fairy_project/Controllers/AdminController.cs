@@ -442,9 +442,9 @@ namespace Fairy_project.Controllers
             {
                 foreach (BoothMapss Booth in boothMapsses)
                 {
-                    if (Apply.BoothNumber == booth.BoothNumber)
+                    if (Apply.BoothNumber == Booth.BoothNumber)
                     {
-                        applysumprice += booth.BoothPrice;
+                        applysumprice += Booth.BoothPrice;
                     }
                 }
             }

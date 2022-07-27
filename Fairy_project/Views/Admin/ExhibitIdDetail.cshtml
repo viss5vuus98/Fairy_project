@@ -312,9 +312,10 @@
             {
                 <div class=" row rounded-3 p-3 my-5 bg1">
                     <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">承租額</h2>
-                    <h2 id="applysum" class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
-                        @Model.applysum / NT <span id="applysumprice" class="text-success">$ @Model.applysumprice</span>
-                    </h2>
+                    <div class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
+                        <span id="applysum" class="h2">@Model.applysum / NT </span>
+                        <span id="applysumprice" class="h2 text-success">$ @Model.applysumprice</span>
+                    </div>
                     <div class="col-lg-1 col-sm-2 col-1 text-end">
                         <a id="manufacturerreport23show" href="" class="text-reset p-0 pt-1">
                             <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
@@ -671,6 +672,7 @@
                     $(e.target).closest('.modal').next().text('已付款').removeClass('text-danger').addClass('text-success')
                     $('#applysum').text(`${result.applysum} / NT `)
                     $('#applysumprice').text(`${result.applysumprice}`)
+                    $(e.target).removeClass('checkmoney').addClass('pe-none')
                 }).fail(() => {
                     console.log("pagefail")
                 })
