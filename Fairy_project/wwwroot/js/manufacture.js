@@ -129,8 +129,7 @@ $(() => {
 //攤位大小選擇顯示
 $(() => {
     let li = $("ul.size-title li")
-    $(li.eq(1).addClass("active").find("a").attr('href')).sibling(".booth-list").hide();
-    $(li.eq(2).addClass("active").find("a").attr('href')).sibling(".booth-list").hide();
+    $(li.eq(1).addClass("active").find("a").attr('href')).siblings(".booth-list").hide();
     li.click(function ()  {
         $($(this).find('a').attr("href")).show().siblings(".booth-list").hide();
         $(this).addClass('active').siblings(".active").removeClass("active");

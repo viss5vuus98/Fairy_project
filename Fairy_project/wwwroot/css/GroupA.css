@@ -427,3 +427,11 @@ li.showName {
 ul {
     list-style-type: none;
 }
+.btnboothnum {
+    margin: 1rem;
+    width: auto;
+    background-color: #ACC2C2;
+}
+    .btnboothnum:active {
+        background-color: #e1e9e9;
+    }
