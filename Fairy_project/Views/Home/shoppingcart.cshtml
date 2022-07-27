@@ -303,6 +303,13 @@
             console.log(array)
         });
 
+        const cartList = JSON.parse(sessionStorage.getItem('tickets')) || []
+        cartList.push(1)
+        cartList.push(2)
+        cartList.push(3)
+        sessionStorage.setItem('tickets', JSON.stringify(cartList))
+
+
         //按鈕事件
         var sum = 0;
         $(".ticket").on("click", ".btn-secondary", function() {
