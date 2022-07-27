@@ -228,6 +228,7 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script>
+        const root = @Url.Content("~/images/")
         $(".second").hide();
         $(".third").hide();
         //取得今天日期
@@ -260,7 +261,7 @@
                 $(".ticket").append(`<div class="container" style="border: 1px solid black;">
                     <div class="rowticket d-flex">
                         <div class="col-xl-3"><img
-                                src="${data[i].exhibitions.exhibitTImg}"
+                                src="${root}${data[i].exhibitions.exhibitTImg}"
                                 alt=""></div>
                         <div class="col-xl-9">
                             <div class="d-flex" style="justify-content: space-between;">

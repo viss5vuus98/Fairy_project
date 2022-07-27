@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5WNcEBBmSvRIShB299z6FbTkETQr0ejMycCa+mNXKck=",
+  "Hash": "DZ8O6mqunfoAcqat5jnU921ZM1tfl0RU3Xdw3K9w1ak=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -2074,23 +2074,6 @@
       "OriginalItemSpec": "wwwroot\\images\\202207251549555215.png"
     },
     {
-      "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\images\\222.png",
-      "SourceId": "Fairy_project",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\",
-      "BasePath": "_content/Fairy_project",
-      "RelativePath": "images/222.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\222.png"
-    },
-    {
       "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\images\\333.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -2616,6 +2599,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\S__4431884.jpg"
+    },
+    {
+      "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\images\\tic_222.png",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/tic_222.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\tic_222.png"
     },
     {
       "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\images\\ticket1.jpg",
