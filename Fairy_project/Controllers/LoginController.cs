@@ -6,6 +6,7 @@ using System.Security.Claims;
 using Fairy_project.Models;
 using Fairy_project.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 
 namespace Fairy_project.Controllers
 {
@@ -140,8 +141,11 @@ namespace Fairy_project.Controllers
                 if (permissions == "Home")
                 {
                     var person = _context.Membersses.FirstOrDefault(m => m.MemberAc == account);
-                    TempData["MemberId"] = person.MemberId;
-                }else if (permissions == "Manufacturer")
+                    //TempData["MemberId"] = person.MemberId;
+                    HttpContext.Session.SetString("MemberId", person.MemberId.ToString());
+                    //ViewBag.id = HttpContext.Session.GetString("MemberId");
+                }
+                else if (permissions == "Manufacturer")
                 {
                     var person = _context.Manufacturesses.FirstOrDefault(m => m.ManufactureAcc == account);
                     TempData["manufactureId"] = person.ManufactureId;

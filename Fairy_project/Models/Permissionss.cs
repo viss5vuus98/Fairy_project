@@ -15,5 +15,6 @@ namespace Fairy_project.Models
         public int? PermissionsLv { get; set; }
 
         public virtual ICollection<Memberss> Membersses { get; set; }
+
     }
 }
