@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="~/css/MasterExhibitionDetail.css" asp-append-version="true" />
 
 }
+
     <div class="container">
         <form action="@Url.Action("ExhibitIdDetail")" method="post" enctype="multipart/form-data">
             <div class="row align-items-center my-3">
@@ -31,7 +32,7 @@
                 else if (Model.exhibitStatus == 3)
                 {
                     <span class="col-lg-1 col-sm-2 col-2 badge bg-success text-black fs-3 py-4">舉辦</span>
-                    <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden/>
+                    <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden />
                 }
             }
         </div>
@@ -326,22 +327,27 @@
                     </div>
                 </div>
                 <div id="manufacturerreport23" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
-                    <input id="searchmidinput" type="text" placeholder="輸入廠商ID"
+                    <input id="searchbnuminput" type="text" placeholder="輸入攤位編號"
                        class="col-lg-3 col-sm-6 col-6 m-3 py-2 text-center fw-lighter rounded-pill h2 border-0 bg2" autocomplete="off">
-                    <div class="btn-group col-lg-3 col-sm-4 col-4">
-                        <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <span id="searchstate" class="h2 c1" data-state="">全部<span>
-                        </button>
-                        <ul class="dropdown-menu w-75 mx-3 text-center p-0">
-                            <li><a class="dropdown-item h4 m-0" href="#">全部</a></li>
-                            <li><a id="state0" class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
-                            <li><a id="state1" class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
-                            <li><a id="state2" class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
-                            <li><a id="state3" class="dropdown-item h4 m-0 text-secondary" href="#">未通過</a></li>
+                    @{
+                        if (Model.exhibitStatus == 2)
+                        {
+                            <div class="btn-group col-lg-3 col-sm-4 col-4">
+                                <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                    <span id="searchstate" class="h2 c1" data-state="">全部<span>
+                                </button>
+                                <ul class="dropdown-menu w-75 mx-3 text-center p-0">
+                                    <li><a class="dropdown-item h4 m-0" href="#">全部</a></li>
+                                    <li><a id="state0" class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
+                                    <li><a id="state1" class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
+                                    <li><a id="state2" class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
+                                    <li><a id="state3" class="dropdown-item h4 m-0 text-secondary" href="#">未通過</a></li>
 
-                        </ul>
-                    </div>
+                                </ul>
+                            </div>
+                        }
+                    }
                     <div class="col-lg-1 col-sm-1 col-1 text-center">
                         <a class="text-reset p-0 my-3">
                             <i id="searchapply" class="fa-solid fa-magnifying-glass opacity-75 fa-3x p-0"></i>
@@ -522,9 +528,10 @@
             let data = {
                 exhibitId: @Model.exhibitId,
                 offset: 0,
+                status: @Model.exhibitStatus,
             }
-            if ($('#searchmidinput').val() != '') {
-                data.m_id = $('#searchmidinput').val()
+            if ($('#searchbnuminput').val() != '') {
+                data.b_num = $('#searchbnuminput').val()
             }
             if ($('#searchstate').text() != '全部') {
                 data.checkstate = $('#searchstate').attr('data-state')
@@ -541,13 +548,18 @@
                 })
             }
             else if ($(e.target).hasClass('page')) {
+                $(e.target).addClass('bg2').removeClass('bg1')
+
                 data.offset = ($(e.target).text() * 10) - 10
                 $.ajax({
                     type: 'GET',
                     url: '@Url.Action("_ApplyPartial_Search")',
                     data,
                 }).done((result) => {
+                    console.log(e.target)
                     $('#partial').html(result)
+                    $(e.target).parent().siblings().children().removeClass('bg2').addClass('bg1')
+                    $(e.target).addClass('bg2').removeClass('bg1')
                 }).fail(() => {
                     console.log("pagefail")
                 })
@@ -602,6 +614,7 @@
                 data: {
                     exhibitId: @Model.exhibitId,
                     offset: 0,
+                    status: @Model.exhibitStatus,
                 },
             }).done((result) => {
                 $('#partial').html(result)
@@ -610,6 +623,7 @@
                 console.log("pagefail")
             })
         })
+
 
         $('#partial').on('click', (e) => {
             e.preventDefault();
