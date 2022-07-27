@@ -32,7 +32,7 @@ function renderCards(ticketList) {
                         <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
                         <button type="button" class="btn-size-bottom btn-give" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#give_Modal">分票</button>
                     </div>
-                    <img src="${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="...">
+                    <img src="${root}${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="...">
                 </div>
             </div>
             `
@@ -45,7 +45,7 @@ function renderCards(ticketList) {
                             <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
                             <button type="button" class="btn-size-bottom btn-give" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#give_Modal">分票</button>
                         </div>
-                        <img src="${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="Ticket Image">
+                        <img src="${root}${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="Ticket Image">
                     </div>
                 </div>
                 `

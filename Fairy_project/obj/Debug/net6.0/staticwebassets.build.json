@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TiM/T1SMiYGGmof/3gUt7mm08WHX2tGwz0LN2NC9pKc=",
+  "Hash": "ZlOPVi9CRYERn8vh465dxKyryebl0w/v0FVDUadld9M=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -2108,23 +2108,6 @@
       "OriginalItemSpec": "wwwroot/images/222.png"
     },
     {
-      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/333.png",
-      "SourceId": "Fairy_project",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
-      "BasePath": "_content/Fairy_project",
-      "RelativePath": "images/333.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/333.png"
-    },
-    {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/444.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -2635,6 +2618,23 @@
       "OriginalItemSpec": "wwwroot/images/S__4431884.jpg"
     },
     {
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/tic_222.png",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/tic_222.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/tic_222.png"
+    },
+    {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/ticket1.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -3024,23 +3024,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/memberTicket.js"
-    },
-    {
-      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/js/memberTickets.js",
-      "SourceId": "Fairy_project",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
-      "BasePath": "_content/Fairy_project",
-      "RelativePath": "js/memberTickets.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/js/memberTickets.js"
     },
     {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/js/site.js",
