@@ -183,11 +183,16 @@ body {
     border-top-right-radius: 15px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+    .btn-size a {
+        color: #3B3131;
+        text-align: center;
+        text-decoration: none;
+    }
 
-.bg1 {
-    background-color: #EAE0D7;
-    border-radius: 47px;
-}
+    .bg1 {
+        background-color: #EAE0D7;
+        border-radius: 47px;
+    }
 
 
 .container-Policy {

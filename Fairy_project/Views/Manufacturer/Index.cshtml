@@ -171,12 +171,15 @@
         <div class="row justify-content-center">
             <div class="m-3 bg-c-p">
                 <h3 class="priceAppear">
-
                 </h3>
             </div>
         </div>
         <div class="row justify-content-center">
-            <button class="btn-size">申請此攤位</button>
+            <form method="post" action="@Url.Action("ApplyStand")">
+            <input id="eId" name="e_Id" value="" style="display:none"/>
+            <input id="bNum" name="boothId" value=""style="display:none" />
+            </form>
+            <button type="submit" class="btn-size"  ><a style="text-decoration:none"asp-action="ApplyStand" >請此攤位</a></button>
         </div>
     </div>
 
@@ -198,14 +201,10 @@
             for (let i = 0; i < exhibition.length; i++) {
 
                 if (exhibition[i].areaNum == 1) {
-                    $(aZone).find("#train").append(`<li class="showName"> <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm">
-                                                                                                                                                                                                                                    ${exhibition[i].exhibitName}
-                                                                                                                                                                                                                                                </button> </li>`)
+                    $(aZone).find("#train").append(`<li class="showName"> <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm"> ${exhibition[i].exhibitName} </button> </li>`)
                 }
                 if (exhibition[i].areaNum == 2) {
-                    $(bZone).find("#train").append(`<li class="showName"> <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm">
-                                                                                                                                                                                                                                                  ${exhibition[i].exhibitName}
-                                                                                                                                                                                                                                                </button> </li>`)
+                    $(bZone).find("#train").append(`<li class="showName"> <button data-id="${exhibition[i].exhibitId}" class="btn btn-woo btn-sm">  ${exhibition[i].exhibitName} </button> </li>`)
                 }
             }
         }
@@ -215,6 +214,7 @@
             if ($(e.target).hasClass("btn-woo")) {
                 id = $(e.target).data('id')
                 console.log(id);
+                $('#eId').val(id);
                 axios.post('@Url.Action("GetAllBooth")', { "Ex_id": id })
                     .then(res => data = res.data)
                     .then(res => chooseLv(data))
@@ -227,6 +227,7 @@
             boothdata = data
             return boothdata;
         }
+        //遍例攤位
         btnLv.click((e) => {
             let id = $(e.target).attr("id");
             console.log(id);
@@ -261,16 +262,16 @@
 
             }
         })
+        //顯示可選攤位
+        $("ul.booth").click((e) => {
+            $(".bg-c-Dtl").empty();
+            $(".priceAppear").empty();
 
-       
-
-$("ul.booth").click((e) => {
-    $(".bg-c-Dtl").empty();
-    $(".priceAppear").empty();
-
-                let currentBooth = $(e.target);
-                 let boothDetail = [
-            `
+            let currentBooth = $(e.target);
+            $('#bNum').val(currentBooth.val());
+            
+            let boothDetail = [
+                `
                     <h3 class="m-3">
                         攤位編號：${currentBooth.val()}
                     </h3>
@@ -306,98 +307,97 @@ $("ul.booth").click((e) => {
                     <div class="m-3">
                         如因天氣問題、戰爭等或其他任何不可抗力之因素而需取消、延後活動，請申請者自行承擔該風險；可參加延期的活動或是退還攤費。
                     </div>`,
-            `
-                    <h3 class="m-3">
-                        攤位編號：${currentBooth.val()}
-                    </h3>
-                    <h3 class="m-3">
-                        攤位尺寸︰240cm x 120cm
-                    </h3>
-                    <div class="m-3">
-                        **每攤位提供兩張椅子及含兩張免費攤主門票，如有需要可另外加購最多2張攤主門票，持攤主門票者可提早於11:00開始入場；
-                        門票可於提交攤位申請前選擇加購（表單中會有加購選項），也可選擇於現場加購；
-                        ** 請注意︰請不要自行攜帶椅子或桌子，每個攤位（每張桌子）不得擺放超過3張椅子，以免對旁邊攤位造成影響；
-                    </div>
-                    <h3 class="m-3">
-                        攤位安排
-                    </h3>
-                    <div class="m-3">
-                        除了個別排在中間位置會阻塞通道及影響到鄰攤的攤位會被安排在靠邊位置外（根據過往市集經驗作出評估），其他的攤位會用抽籤的方法去安排位置。如需跟朋友的攤位連攤（即攤位相連一起擺攤），請事前與朋友商討決定好申請的區域，不同申請區域則無法安排連攤。連攤前請先問好朋友的攤位名字，提交表格時於表格中填寫，方便處理。
-                    </div>
-                    <h4 class="m-3">
-                        注意事項
-                    </h4>
-                    <div class="m-3">
-                        不得販售任何盜版物品，包括但不限於分裝卡、貼紙等。
-                    </div>
-                    <div class="m-3">
-                        需要跟朋友合租一攤之攤主朋友請自行與朋友商討解決，只需合共提交一張申請表格、個人資料的內容填寫其中一位負責人的資料即可（不要填寫多過一位負責人的資料）。
-                    </div>
-                    <div class="m-3">
-                        在此處好意提醒一下，找合攤的同好請盡量找身邊的朋友或是平日有交流的坑友，以免因為一些事情而鬧得不愉快，開心最重要喔﹗
-                    </div>
-                    <div class="m-3">
-                        如申請已通過及完成付款，則不接受任何原因之退攤或取消申請，所支付的攤費將不予以退還，敬請注意。因此也請思考清楚才提交申請，感謝。
-                    </div>
-                    <div class="m-3">
-                        如因天氣問題、戰爭等或其他任何不可抗力之因素而需取消、延後活動，請申請者自行承擔該風險；可參加延期的活動或是退還攤費。
-                    </div>`,
-            `
-                    <h3 class="m-3">
-                        攤位編號：${currentBooth.val()}
-                    </h3>
-                    <h3 class="m-3">
-                        攤位尺寸︰120cm x 60cm
-                    </h3>
-                    <div class="m-3">
-                        **每攤位提供兩張椅子及含兩張免費攤主門票，如有需要可另外加購最多2張攤主門票，持攤主門票者可提早於11:00開始入場；
-                        門票可於提交攤位申請前選擇加購（表單中會有加購選項），也可選擇於現場加購；
-                        ** 請注意︰請不要自行攜帶椅子或桌子，每個攤位（每張桌子）不得擺放超過3張椅子，以免對旁邊攤位造成影響；
-                    </div>
-                    <h3 class="m-3">
-                        攤位安排
-                    </h3>
-                    <div class="m-3">
-                        除了個別排在中間位置會阻塞通道及影響到鄰攤的攤位會被安排在靠邊位置外（根據過往市集經驗作出評估），其他的攤位會用抽籤的方法去安排位置。如需跟朋友的攤位連攤（即攤位相連一起擺攤），請事前與朋友商討決定好申請的區域，不同申請區域則無法安排連攤。連攤前請先問好朋友的攤位名字，提交表格時於表格中填寫，方便處理。
-                    </div>
-                    <h4 class="m-3">
-                        注意事項
-                    </h4>
-                    <div class="m-3">
-                        不得販售任何盜版物品，包括但不限於分裝卡、貼紙等。
-                    </div>
-                    <div class="m-3">
-                        需要跟朋友合租一攤之攤主朋友請自行與朋友商討解決，只需合共提交一張申請表格、個人資料的內容填寫其中一位負責人的資料即可（不要填寫多過一位負責人的資料）。
-                    </div>
-                    <div class="m-3">
-                        在此處好意提醒一下，找合攤的同好請盡量找身邊的朋友或是平日有交流的坑友，以免因為一些事情而鬧得不愉快，開心最重要喔﹗
-                    </div>
-                    <div class="m-3">
-                        如申請已通過及完成付款，則不接受任何原因之退攤或取消申請，所支付的攤費將不予以退還，敬請注意。因此也請思考清楚才提交申請，感謝。
-                    </div>
-                    <div class="m-3">
-                        如因天氣問題、戰爭等或其他任何不可抗力之因素而需取消、延後活動，請申請者自行承擔該風險；可參加延期的活動或是退還攤費。
-                    </div>`
-        ]
-                let currentBoothLv = currentBooth.data('lv') 
-             console.log(currentBoothLv);
-            if (currentBoothLv==3) {
+                `
+                <h3 class="m-3">
+                    攤位編號：${currentBooth.val()}
+                </h3>
+                <h3 class="m-3">
+                    攤位尺寸︰240cm x 120cm
+                </h3>
+                <div class="m-3">
+                    **每攤位提供兩張椅子及含兩張免費攤主門票，如有需要可另外加購最多2張攤主門票，持攤主門票者可提早於11:00開始入場；
+                    門票可於提交攤位申請前選擇加購（表單中會有加購選項），也可選擇於現場加購；
+                    ** 請注意︰請不要自行攜帶椅子或桌子，每個攤位（每張桌子）不得擺放超過3張椅子，以免對旁邊攤位造成影響；
+                </div>
+                <h3 class="m-3">
+                    攤位安排
+                </h3>
+                <div class="m-3">
+                    除了個別排在中間位置會阻塞通道及影響到鄰攤的攤位會被安排在靠邊位置外（根據過往市集經驗作出評估），其他的攤位會用抽籤的方法去安排位置。如需跟朋友的攤位連攤（即攤位相連一起擺攤），請事前與朋友商討決定好申請的區域，不同申請區域則無法安排連攤。連攤前請先問好朋友的攤位名字，提交表格時於表格中填寫，方便處理。
+                </div>
+                <h4 class="m-3">
+                    注意事項
+                </h4>
+                <div class="m-3">
+                    不得販售任何盜版物品，包括但不限於分裝卡、貼紙等。
+                </div>
+                <div class="m-3">
+                    需要跟朋友合租一攤之攤主朋友請自行與朋友商討解決，只需合共提交一張申請表格、個人資料的內容填寫其中一位負責人的資料即可（不要填寫多過一位負責人的資料）。
+                </div>
+                <div class="m-3">
+                    在此處好意提醒一下，找合攤的同好請盡量找身邊的朋友或是平日有交流的坑友，以免因為一些事情而鬧得不愉快，開心最重要喔﹗
+                </div>
+                <div class="m-3">
+                    如申請已通過及完成付款，則不接受任何原因之退攤或取消申請，所支付的攤費將不予以退還，敬請注意。因此也請思考清楚才提交申請，感謝。
+                </div>
+                <div class="m-3">
+                    如因天氣問題、戰爭等或其他任何不可抗力之因素而需取消、延後活動，請申請者自行承擔該風險；可參加延期的活動或是退還攤費。
+                </div>`,
+                `
+                <h3 class="m-3">
+                    攤位編號：${currentBooth.val()}
+                </h3>
+                <h3 class="m-3">
+                    攤位尺寸︰120cm x 60cm
+                </h3>
+                <div class="m-3">
+                    **每攤位提供兩張椅子及含兩張免費攤主門票，如有需要可另外加購最多2張攤主門票，持攤主門票者可提早於11:00開始入場；
+                    門票可於提交攤位申請前選擇加購（表單中會有加購選項），也可選擇於現場加購；
+                    ** 請注意︰請不要自行攜帶椅子或桌子，每個攤位（每張桌子）不得擺放超過3張椅子，以免對旁邊攤位造成影響；
+                </div>
+                <h3 class="m-3">
+                    攤位安排
+                </h3>
+                <div class="m-3">
+                    除了個別排在中間位置會阻塞通道及影響到鄰攤的攤位會被安排在靠邊位置外（根據過往市集經驗作出評估），其他的攤位會用抽籤的方法去安排位置。如需跟朋友的攤位連攤（即攤位相連一起擺攤），請事前與朋友商討決定好申請的區域，不同申請區域則無法安排連攤。連攤前請先問好朋友的攤位名字，提交表格時於表格中填寫，方便處理。
+                </div>
+                <h4 class="m-3">
+                    注意事項
+                </h4>
+                <div class="m-3">
+                    不得販售任何盜版物品，包括但不限於分裝卡、貼紙等。
+                </div>
+                <div class="m-3">
+                    需要跟朋友合租一攤之攤主朋友請自行與朋友商討解決，只需合共提交一張申請表格、個人資料的內容填寫其中一位負責人的資料即可（不要填寫多過一位負責人的資料）。
+                </div>
+                <div class="m-3">
+                    在此處好意提醒一下，找合攤的同好請盡量找身邊的朋友或是平日有交流的坑友，以免因為一些事情而鬧得不愉快，開心最重要喔﹗
+                </div>
+                <div class="m-3">
+                    如申請已通過及完成付款，則不接受任何原因之退攤或取消申請，所支付的攤費將不予以退還，敬請注意。因此也請思考清楚才提交申請，感謝。
+                </div>
+                <div class="m-3">
+                    如因天氣問題、戰爭等或其他任何不可抗力之因素而需取消、延後活動，請申請者自行承擔該風險；可參加延期的活動或是退還攤費。
+                </div>`
+            ]
+            let currentBoothLv = currentBooth.data('lv')
+            console.log($('#bNum').val());
+            if (currentBoothLv == 3) {
                 $(".bg-c-Dtl").append(`${boothDetail[0]}`)
                 $(".priceAppear").append(`本期價格：${currentBooth.data(`price`)}`)
             }
-            else if (currentBoothLv==2) {
+            else if (currentBoothLv == 2) {
                 $(".bg-c-Dtl").append(`${boothDetail[1]}`)
                 $(".priceAppear").append(`本期價格：${currentBooth.data(`price`)}`)
 
             }
-            else if (currentBoothLv==1) {
+            else if (currentBoothLv == 1) {
                 $(".bg-c-Dtl").append(`${boothDetail[2]}`)
                 $(".priceAppear").append(`本期價格：${currentBooth.data(`price`)}`)
 
             }
+        })
         
-}) 
 
-                
     </script>
     }

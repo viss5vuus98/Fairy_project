@@ -24,7 +24,7 @@ namespace Fairy_project.Controllers
             return View();
         }
 
-        public IActionResult ApplyStand()
+        public IActionResult ApplyStand(int boothId,int e_Id)
         {
             return View();
         }
