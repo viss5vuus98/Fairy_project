@@ -13,3 +13,7 @@ manufacturesAcc.addEventListener('input', event => {
     MF_permissions.value = data;
 })
 
+
+$('#login').click(function () {
+    sessionStorage.setItem('acount', $('#ac').val())
+})

@@ -17,7 +17,6 @@ public class HomeController : Controller
 
     private readonly ILogger<HomeController> _logger;
     private readonly woowoContext _context;
-    private readonly woowoContext _woocontext;
     private readonly string _path;
 
     public HomeController(ILogger<HomeController> logger, woowoContext woowoContext, IWebHostEnvironment hostEnvironment)
