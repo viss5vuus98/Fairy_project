@@ -40,7 +40,7 @@
         </div>
 
         <div class="ticket">
-            <h3 style="text-align:center;">購物車空空如也~~</h3>
+            <h3 style="text-align:center;margin-top:200px;margin-bottom:200px;">購物車空空如也~~</h3>
         </div>
         <div class="container">
             <div class="total d-flex">
@@ -253,6 +253,7 @@
             data: { i: id },
         }).done(function(data) {
             array = data;
+            console.log(data);
         }).then(function(data) {
             $('.ticket').children().hide();
             for (let i = 0; i < data.length; i++) {
@@ -434,10 +435,12 @@
                 }
             });
             //console.log(input);
+            const memberid = JSON.parse(sessionStorage.getItem('Info'))
+            //console.log(memberid.id);
             let ticket = [];
             for (let i = 0; i < array.length; i++) {
-                for (let j = 0; j < input[i]; j++) {
-                    ticket.push(JSON.parse(`{"ticket":{"eId":"${array[i].exhibitions.exhibitId}","mId":"6","price":"${array[i].exhibitions.ticketPrice}","enterstate":"0","presonName":"${$("#name").val()}","personNumber":"${$("#cellphone").val()}","payTime":"${time}"}}`))
+                for (let j = 0; j < input[i]; j++) {                                //"mId":"${memberid.id}"
+                ticket.push(JSON.parse(`{"ticket":{"eId":"${array[i].exhibitions.exhibitId}","mId":"6","price":"${array[i].exhibitions.ticketPrice}","enterstate":"0","presonName":"${$("#name").val()}","personNumber":"${$("#cellphone").val()}","payTime":"${time}"}}`))
                 }
             }
             console.log(ticket);
