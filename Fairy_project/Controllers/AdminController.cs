@@ -489,114 +489,36 @@ namespace Fairy_project.Controllers
 
             return Json(new { applysum = applysum, applysumprice = applysumprice });
         }
+
+
         [HttpPost]
         public async Task<IActionResult> SearchTicketReport(int exhibitId,DateTime datefrom,DateTime dateto)
         {
-            //DateTime.Compare((DateTime)t.Entertime, datefrom) == 1 && DateTime.Compare((DateTime)t.Entertime, dateto) == -1
-            var t = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate==1);
+            var t = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate==1 && DateTime.Compare((DateTime)t.Entertime, datefrom) == 1 && DateTime.Compare((DateTime)t.Entertime, dateto.AddDays(1)) == -1).OrderBy(t => t.Entertime);
             List<Ticketss>ticketsses = t.ToList();
-
             List<string> reportday = new List<string>();
             List<int> reportsum = new List<int>();
 
+            int i = 0;
 
-            for (var day = datefrom.Date; day.Date <= dateto.Date; day = day.AddDays(1))
+            for (var day = datefrom; day <= dateto; day = day.AddDays(1))
             {
+                reportsum.Add(0);
                 reportday.Add(Convert.ToDateTime(day).ToString("MM-dd"));
-                for (int i=0;i<ticketsses.Count;i++)
+                for (int j = 0; j < ticketsses.Count; j++)
                 {
-                    if( ticketsses[i].Entertime == day)
+                    if (Convert.ToDateTime(ticketsses[j].Entertime).Date==day.Date)
                     {
-                        reportsum[i] += 1;
+                        reportsum[i]++;
+                    }
+                    else
+                    {
+                        continue;
                     }
                 }
+                i++;
             }
-
-            return Content(reportday.ToString());
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // GET: AdminController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: AdminController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AdminController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AdminController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: AdminController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: AdminController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: AdminController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return Json(new { reportday = reportday, reportsum = reportsum });
         }
     }
 }
