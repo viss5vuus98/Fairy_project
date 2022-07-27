@@ -30,7 +30,7 @@ function renderCards(ticketList) {
                     <div class="btn-group-vertical">
                         <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
                         <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                        <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
+                        <button type="button" class="btn-size-bottom btn-give" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#give_Modal">分票</button>
                     </div>
                     <img src="${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="...">
                 </div>
@@ -43,9 +43,9 @@ function renderCards(ticketList) {
                         <div class="btn-group-vertical">
                             <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
                             <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                            <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
+                            <button type="button" class="btn-size-bottom btn-give" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#give_Modal">分票</button>
                         </div>
-                        <img src="${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="...">
+                        <img src="${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="Ticket Image">
                     </div>
                 </div>
                 `
@@ -55,16 +55,18 @@ function renderCards(ticketList) {
 }
 
 
-//render QRcode modal
 
 
 carouselInner.addEventListener('click', event => {
     const target = event.target
     if (target.matches('.btn-qrcode')) {
         showQRcodeModal(target.dataset.exid, target.dataset.order)
+    } else if (target.matches('.btn-give')) {
+        giveTicket(target.dataset.order)
     }
 })
 
+//render QRcode modal
 function showQRcodeModal(id, order) {
     const QRTtitle = document.querySelector('#QRModal-title');
     const QRBody = document.querySelector('#QR-body');
@@ -86,4 +88,20 @@ function showQRcodeModal(id, order) {
         .catch(err => console.log(err))
 }
 
+// give ticket
 
+function giveTicket(orderNum) {
+    const giveOrder = document.querySelector('.give_order')
+    giveOrder.value = orderNum
+}
+
+const submit = document.querySelector('.submit')
+
+submit.addEventListener('click', e => {
+    e.preventDefault()
+    const email = document.querySelector('#give_modal_email').value
+    const order = Number(document.querySelector('.give_order').value)
+    axios.post('/api/Member/Post/giveTicket', { "eamil": email, "order": order })
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
+})

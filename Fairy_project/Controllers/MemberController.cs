@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Fairy_project.Models;
 using Fairy_project.ViewModels;
 using NuGet.Packaging;
+using System.Diagnostics;
 
 namespace Fairy_project.Controllers
 {
@@ -34,7 +35,6 @@ namespace Fairy_project.Controllers
             {
                 foreach (var ticket in tickets)
                 {
-                    Console.WriteLine(ticket.EId);
                     exhibitions.AddRange(_context.Exhibitionsses.Where(ex => ex.ExhibitId == ticket.EId).ToList());
                 }
                 TicketsViewModel ticketsViewModel = new TicketsViewModel()
@@ -80,7 +80,7 @@ namespace Fairy_project.Controllers
             return Json(qrcodeModal);
         }
 
-        [HttpPost, Route("updateVfcode")]
+        [NonAction]
         public void updateVfcode(string vfCode, int orderNum)
         {
             var ticket = _context.Ticketsses.First(t => t.OrderNum == orderNum);
@@ -89,6 +89,26 @@ namespace Fairy_project.Controllers
                 ticket.VerificationCode = vfCode;
                 _context.SaveChanges();
             }
+        }
+
+        [HttpPost, Route("giveTicket")]
+        public IActionResult giveTicket([FromBody] SussessMessage message)
+        {
+
+            Console.WriteLine(message.eamil + "---------------------------");
+            var targetMember = _context.Membersses.First(m => m.MemberAc == message.eamil) ?? new Memberss();
+            if (targetMember.MemberAc != null)
+            {
+                int orderNum = Convert.ToInt32(message.order);
+                var ticket = _context.Ticketsses.First(t => t.OrderNum == orderNum);
+                ticket.MId = targetMember.MemberId;
+                _context.SaveChanges();
+            }
+            else
+            {
+                return Json("無此會員");
+            }
+            return Json("123");
         }
     }
 }
