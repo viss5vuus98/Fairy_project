@@ -128,6 +128,7 @@ namespace Fairy_project.Controllers
             Random myRand = new Random();
             var e = _context.Exhibitionsses.Where(e => e.ExhibitId == model.exhibitId);
             Exhibitionss exhibition = e.FirstOrDefault();
+
             exhibition.ExhibitName = model.exhibitName;
             exhibition.Datefrom = model.datefrom;
             exhibition.Dateto = model.dateto;
@@ -488,6 +489,46 @@ namespace Fairy_project.Controllers
 
             return Json(new { applysum = applysum, applysumprice = applysumprice });
         }
+        [HttpPost]
+        public async Task<IActionResult> SearchTicketReport(int exhibitId,DateTime datefrom,DateTime dateto)
+        {
+            //DateTime.Compare((DateTime)t.Entertime, datefrom) == 1 && DateTime.Compare((DateTime)t.Entertime, dateto) == -1
+            var t = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate==1);
+            List<Ticketss>ticketsses = t.ToList();
+
+            List<string> reportday = new List<string>();
+            List<int> reportsum = new List<int>();
+
+
+            for (var day = datefrom.Date; day.Date <= dateto.Date; day = day.AddDays(1))
+            {
+                reportday.Add(Convert.ToDateTime(day).ToString("MM-dd"));
+                for (int i=0;i<ticketsses.Count;i++)
+                {
+                    if( ticketsses[i].Entertime == day)
+                    {
+                        reportsum[i] += 1;
+                    }
+                }
+            }
+
+            return Content(reportday.ToString());
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // GET: AdminController/Details/5
         public ActionResult Details(int id)

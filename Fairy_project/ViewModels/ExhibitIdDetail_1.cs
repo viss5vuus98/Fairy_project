@@ -13,8 +13,8 @@ namespace Fairy_project.ViewModels
         public IFormFile? fexhibit_P_img { get; set; }
         public IFormFile? fexhibit_T_img { get; set; }
         public IFormFile? fexhibit_Pre_img { get; set; }
-        public DateTime? datefrom { get; set; }
-        public DateTime? dateto { get; set; }
+        public DateTime datefrom { get; set; }
+        public DateTime dateto { get; set; }
         public string? areaNumstring { get; set; }
         public string? ex_description { get; set; }
         public int? ex_personTime { get; set; }
@@ -29,6 +29,8 @@ namespace Fairy_project.ViewModels
 
         public int? applysum { get; set; }
         public int? applysumprice { get; set; }
+
+        //---------------------------------------------------
 
 
 
