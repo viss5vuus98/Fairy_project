@@ -72,7 +72,16 @@ function showQRcodeModal(id) {
         .then(res => {
             const exhibition = res.data
             QRTtitle.textContent = exhibition.exhibitName;
-            QRBody.textContent = exhibition.verificationCode
+            QRBody.innerHTML = '<div id="QRcode"></div>'
+            //new QRCode(document.getElementById("QRcode"), exhibition.verificationCode);
+            new QRCode(document.getElementById("QRcode"), {
+                text: exhibition.verificationCode,
+                width: 400,
+                height: 400,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
         })
         .catch(err => console.log(err))
 }
