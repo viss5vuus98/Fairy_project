@@ -48,16 +48,33 @@ namespace Fairy_project.Controllers
             return Json(tickets);
         }
 
-        //[HttpGet]
-        //public IActionResult getViewMode()
-        //{
-        //    invide invide = new invide()
-        //    {
-        //        Exhibition = _context.exhibitions.FirstOrDefault(m => m.exhibitId == 34) ?? new Exhibition(),
-        //        Manufactures = _context.manufactures.Where(m => m.manufactureId > 0).ToList()
-        //    };
-        //    return Json(invide);
-        //}
-
+        //radom tickets VerificationCode
+        [HttpPost, Route("getVerificationCode")]
+        public IActionResult getVerificationCode([FromBody] GetIdClassModel idClass)
+        {
+            string VfCode = "";
+            string dt = DateTime.Now.ToString("ddMMyyyyHHmmss");
+            string id = idClass.Ex_id.ToString();
+            VfCode += dt;
+            VfCode += id;
+            Random radom = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                int radomNum = radom.Next(97, 122);
+                string vfStr = ((char)radomNum).ToString();
+                VfCode += vfStr;
+            }
+            var exhibition = _context.Exhibitionsses.FirstOrDefault(e => e.ExhibitId == idClass.Ex_id); ;
+            QrcodeModal qrcodeModal = new QrcodeModal()
+            {
+                ExhibitName = exhibition.ExhibitName,
+                Datefrom = exhibition.Datefrom,
+                Dateto = exhibition.Dateto,
+                VerificationCode = VfCode
+            };
+            //ToDo：修改Tickets資料表中的驗證碼欄位
+            //ToDO: 前端產生QR_code
+            return Json(qrcodeModal);
+        }
     }
 }

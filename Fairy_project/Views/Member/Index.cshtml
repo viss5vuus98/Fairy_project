@@ -4,7 +4,22 @@
     <link rel="stylesheet" href="~/css/GroupA.css" asp-append-version="true" />
 }
 
-
+<div class="modal fade" id="QRcode_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="QRModal-title">Ex title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="QRmodal-body" id="QR-body">
+                ...
+            </div>
+            <div class="QRmodal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     @*<h1>@User.Identity.Name</h1>*@
     @*<h1>@User.Claims.ToString()</h1>*@
@@ -59,7 +74,7 @@
                     <div class="carousel-item active">
                         <div class=" d-flex w-auto">
                             <div class="btn-group-vertical">
-                                <button type="button" class="btn-size-top">QRCODE</button>
+                                <button type="button" class="btn-size-top" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
                                 <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
                                 <button type="button" class="btn-size-bottom">分票</button>
 
@@ -84,59 +99,6 @@
         @section Scripts
     {
             <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-            <script>const ticketList = []
-
-                axios.post('/api/Member/Post/getTicketsss', { "Mf_id": 6 })
-                    .then(res => {
-
-                        for (let i = 0; i < res.data.tickets.length; i++) {
-                            const ticketobj = new Object()
-                            ticketobj.ticket = res.data.tickets[i]
-                            ticketobj.exhibition = res.data.exhibition[i]
-                            ticketList.push(ticketobj)
-                        }
-                        renderCards(ticketList)
-                    })
-                    .catch(err =>
-                        console.log(err)
-                    )
-
-
-
-                function renderCards(ticketList) {
-                    const carouselInner = document.querySelector('.carousel-inner')
-                    let pannelHTML = '';
-                    for (let i = 0; i < ticketList.length; i++) {
-                        if (i == 0) {
-                            pannelHTML += `
-                                        <div class="carousel-item active">
-                                            <div class=" d-flex w-auto">
-                                                <div class="btn-group-vertical">
-                                                    <button type="button" class="btn-size-top" data-ExId="${ticketList[i].exhibition.exhibitId}">QRCODE</button>
-                                                    <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                                    <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
-                                                </div>
-                                                <img src="${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="...">
-                                            </div>
-                                        </div>
-                                        `
-                        } else {
-                            pannelHTML += `
-                                            <div class="carousel-item">
-                                                <div class=" d-flex w-auto">
-                                                    <div class="btn-group-vertical">
-                                                        <button type="button" class="btn-size-top" data-ExId="${ticketList[i].exhibition.exhibitId}">QRCODE</button>
-                                                        <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                                                        <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
-                                                    </div>
-                                                    <img src="${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="...">
-                                                </div>
-                                            </div>
-                                            `
-                        }
-                    }
-                    console.log(pannelHTML)
-                    carouselInner.innerHTML = pannelHTML
-                }</script>
+            <script src="~/js/memberTicket.js" asp-append-version="true"></script>
         }
 

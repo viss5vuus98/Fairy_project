@@ -1,5 +1,10 @@
 ﻿
+//ToDo:重構 分類 
+
+
+//render member's tickets
 const ticketList = []
+const carouselInner = document.querySelector('.carousel-inner')
 
 axios.post('/api/Member/Post/getTicketsss', { "Mf_id": 6 })
     .then(res => {
@@ -15,11 +20,7 @@ axios.post('/api/Member/Post/getTicketsss', { "Mf_id": 6 })
     .catch(err =>
         console.log(err)
     )
-
-
-
 function renderCards(ticketList) {
-    const carouselInner = document.querySelector('.carousel-inner')
     let pannelHTML = '';
     for (let i = 0; i < ticketList.length; i++) {
         if (i == 0) {
@@ -27,7 +28,7 @@ function renderCards(ticketList) {
             <div class="carousel-item active">
                 <div class=" d-flex w-auto">
                     <div class="btn-group-vertical">
-                        <button type="button" class="btn-size-top" data-ExId="${ticketList[i].exhibition.exhibitId}">QRCODE</button>
+                        <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
                         <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
                         <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
                     </div>
@@ -40,7 +41,7 @@ function renderCards(ticketList) {
                 <div class="carousel-item">
                     <div class=" d-flex w-auto">
                         <div class="btn-group-vertical">
-                            <button type="button" class="btn-size-top" data-ExId="${ticketList[i].exhibition.exhibitId}">QRCODE</button>
+                            <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
                             <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
                             <button type="button" class="btn-size-bottom" data-orderNum="${ticketList[i].ticket.orderNum}">分票</button>
                         </div>
@@ -50,6 +51,28 @@ function renderCards(ticketList) {
                 `
         }
     }
-    console.log(pannelHTML)
     carouselInner.innerHTML = pannelHTML
+}
+
+
+//render QRcode modal
+
+
+carouselInner.addEventListener('click', event => {
+    const target = event.target
+    if (target.matches('.btn-qrcode')) {
+        showQRcodeModal(target.dataset.exid)
+    }
+})
+
+function showQRcodeModal(id) {
+    const QRTtitle = document.querySelector('#QRModal-title');
+    const QRBody = document.querySelector('#QR-body');
+    axios.post('/api/Member/Post/getVerificationCode', { "Ex_id": id })
+        .then(res => {
+            const exhibition = res.data
+            QRTtitle.textContent = exhibition.exhibitName;
+            QRBody.textContent = exhibition.verificationCode
+        })
+        .catch(err => console.log(err))
 }
