@@ -25,19 +25,32 @@
     margin-left: calc(var(--bs-gutter-x)*-0.5);
 }
 
+.ticket {
+    width: 75%;
+    margin: 0 auto;
+    height: 640px;
+    overflow-y: scroll;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 3px 3px 9px rgba(100,112,134,0.2);
+    margin-bottom: 100px;
+}
+
 .text-center {
     text-align: center !important;
+}
+
+
+.check-step {
+    height: 150px;
+    font-size: 20px;
+    box-shadow: 3px 3px 9px rgba(100,112,134,0.2);
 }
 
 .check-step-finished {
     background: #6b7288;
     color: #ffc62d;
-}
-
-.check-step {
-    height: 150px;
-    font-size: 20px;
-    box-shadow: 3px 3px 9px gray;
+    box-shadow: 1px 2px 9px 3px rgba(120,132,154,0.8);
 }
 
 .row {
@@ -106,7 +119,6 @@
 .btn1 {
     width: 196px;
     height: 34px;
-    margin-top: 100px;
     margin-bottom: 150px;
 }
 
@@ -155,7 +167,6 @@ h5 {
 }
 
 #totalprice{
-    margin-top: 100px;
     font-size: 24px;
 }
 
@@ -179,3 +190,4 @@ input{
     text-align: center;
     font-size: 16px;
 }
+

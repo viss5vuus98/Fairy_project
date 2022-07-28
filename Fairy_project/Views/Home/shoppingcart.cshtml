@@ -254,11 +254,11 @@
         }).then(function(data) {
             $('.ticket').children().hide();
             for (let i = 0; i < data.length; i++) {
-                $(".ticket").append(`<div class="container" style="border: 1px solid gray;border-radio:10px;box-shadow: 3px 3px 9px gray;">
+                $(".ticket").append(`<div class="container" style="box-shadow: 3px 3px 9px rgba(100,112,134,0.1);">
                     <div class="rowticket d-flex">
                         <div class="col-xl-3"><img
                                 src="${root}${data[i].exhibitions.exhibitTImg}"
-                                alt=""></div>
+                                alt="${data[i].exhibitions.exhibitTImg}" style="border:1px solid gray"></div>
                         <div class="col-xl-9">
                             <div class="d-flex" style="justify-content: space-between;">
                                 <h3 style="font-weight: bold;font-style: italic;">${data[i].exhibitions.exhibitName}</h3>
