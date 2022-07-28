@@ -5,11 +5,39 @@
     <link rel="stylesheet" href="~/css/Master.css" asp-append-version="true" />
 }
     @{
-    int idnew =1;
+    int idnew = 1;
 }
 
+@*<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <input class="col-2 m-3 p-2 fs-4 h-50 border-1 border-secondary bg2" type="text" placeholder="關鍵字">
+            <span class="h3">自</span>
+            <input class="col-1 h4 bg2 p-1 my-3 mx-3 rounded-3 border-0" type="date">
+            <span class="h3">到</span>
+            <input class="col-1 h4 bg2 p-1 my-3 mx-3 rounded-3 border-0" type="date">
+            <input type="checkbox" class="btn-check " id="btn-1" autocomplete="off">
+            <label class="btn btn-outline-danger rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-1">規劃中</label>
+            <input type="checkbox" class="btn-check " id="btn-2" autocomplete="off">
+            <label class="btn btn-outline-warning rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-2">籌備中</label>
+            <input type="checkbox" class="btn-check " id="btn-3" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-3">舉辦中</label>
+            <input type="checkbox" class="btn-check " id="btn-4" autocomplete="off">
+            <label class="btn btn-outline-dark rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-4">已結束</label>
+            <i class="fa-solid fa-magnifying-glass opacity-75 fa-2x mx-2"></i>
+        </div>
+    </div>
+</div>*@
 <div class="container">
     <div class="row mb-3">
+        <div class="col-lg-4 col-md-6 col-12 my-4">
+            <a asp-action="CreatExhibition" asp-controller="Admin" asp-route-idnew="@idnew" class="text-reset">
+                <button class="w-100 h-100 border-0 bg-secondary bg-opacity-10 rounded-3 ">
+                    <i class="fa-solid fa-plus fa-4x "></i>
+                </button>
+            </a>
+        </div>
+
         @foreach (var item in Model)
         {
             string date = $"{Convert.ToDateTime(item.Datefrom).ToString("yyyy/MM/dd")} ~ {Convert.ToDateTime(item.Dateto).ToString("yyyy/MM/dd")}";
@@ -42,27 +70,20 @@
             </div>
             @*idnew = item.ExhibitId + 1;*@
         }
-        <div class="col-lg-4 col-md-6 col-12 my-4">
-            <a asp-action="CreatExhibition" asp-controller="Admin" asp-route-idnew="@idnew" class="text-reset">
-                <button class="w-100 h-100 border-0 bg-secondary bg-opacity-10 rounded-3 ">
-                    <i class="fa-solid fa-plus fa-4x "></i>
-                </button>
-            </a>
-        </div>
     </div>
 </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
-            integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-            crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
-    <script>
-        $('#btn').on('click', (e) => {
-            console.log(e.target);
-            alert();
-        })
-    </script>
+<script>
+    $('#btn').on('click', (e) => {
+        console.log(e.target);
+        alert();
+    })
+</script>

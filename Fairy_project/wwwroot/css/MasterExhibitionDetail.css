@@ -59,6 +59,10 @@ input {
     outline: none;
 }
 
+select{
+    outline:none;
+}
+
 #pagelist li a:hover {
     background-color: #B6B6B4;
 }
