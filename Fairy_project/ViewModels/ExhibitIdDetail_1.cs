@@ -32,7 +32,10 @@ namespace Fairy_project.ViewModels
 
         //---------------------------------------------------
 
-
+        public int? averageperson { get; set; }
+        public int? yesterdayperson { get; set; }
+        public int? soldprice { get; set; }
+        public int? soldsum { get; set; }
 
     }
 }

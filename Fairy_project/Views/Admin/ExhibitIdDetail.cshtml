@@ -212,7 +212,7 @@
                 <div class="row rounded-3 p-3 my-5 bg1">
                     <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">售票額</h2>
                     <h2 class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
-                        807 / NT <span class="text-success">$65,050</span>
+                        @Model.soldsum / NT <span class="text-success">$ @Model.soldprice</span>
                     </h2>
                     <div class="col-lg-1 col-sm-2 col-1 text-end">
                         <a id="ticketreportshow" href="" class="text-reset p-0 pt-1">
@@ -225,18 +225,34 @@
                     <div class="col-12 d-flex justify-content-lg-between justify-content-center flex-wrap p-0">
                         <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
                             <h2 class="m-3">平均進場人數</h2>
-                            <h2 class="m-3 p-3 h1 fw-bold">504</h2>
+                            <h2 class="m-3 p-3 h1 fw-bold">@Model.averageperson</h2>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center justify-content-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
                             <h2 class="m-3">昨日進場人數</h2>
-                            <div class="d-flex  justify-content-center align-items-center">
-                                <h2 class="m-3 p-3 h1 fw-bold text-danger">504</h2><i class="fa-solid fa-sort-down fa-2xl text-danger end-0 pb-3 pe-3"></i>
-                            </div>
+                            @{
+                                if (Model.yesterdayperson < Model.averageperson)
+                                {
+                                    <div class="d-flex  justify-content-center align-items-center">
+                                        <h2 class="m-3 p-3 h1 fw-bold text-danger">@Model.yesterdayperson</h2>
+                                        <i class="pe-none fa-solid fa-sort-down fa-2xl text-danger pt-3"></i>
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <h2 class="m-3 p-3 h1 fw-bold text-success">@Model.yesterdayperson</h2>
+                                        <i class="pe-none fa-solid fa-sort-up fa-2xl text-success pt-3"></i>
+                                    </div>
+
+                                }
+                            }
+
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
                             <h2 class="m-3">累積銷售</h2>
-                            <h2 class="h1 fw-bold">647</h2>
-                            <h3 class="p-2">807 / NT <span class="text-success">$65,050</span></h3>
+                            <h2 class="h1 fw-bold">@Model.soldsum</h2>
+                            <h3 class="p-2">@Model.soldsum / NT <span class="text-success">$ @Model.soldprice</span></h3>
                         </div>
                     </div>
                     <div class="col-12 d-flex justify-content-around align-items-center fs-2">

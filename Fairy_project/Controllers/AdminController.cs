@@ -1,5 +1,6 @@
 ﻿using Fairy_project.Models;
 using Fairy_project.ViewModels;
+using Humanizer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -117,6 +118,24 @@ namespace Fairy_project.Controllers
                 model.setboothslist.Add(booth1);
             }
 
+            int days = new TimeSpan(Convert.ToDateTime(exhibition.Dateto).Ticks - Convert.ToDateTime(exhibition.Datefrom).Ticks).Days;
+            int totalperson = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).Count();
+            model.averageperson = totalperson / days;
+            List<Ticketss> tl = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).ToList();
+            //var t = from tl in _context.Ticketsses where tl.EId == exhibitId && tl.Enterstate == 1 && tl.Entertime. == DateTime.Now.AddDays(-1).Date select tl;
+            //t.Entertime == DateTime.Now.AddDays(-1).Date
+            int yesterdayperson = 0;
+            foreach (var item in tl)
+            {
+                if (Convert.ToDateTime(item.Entertime).Date == DateTime.Now.AddDays(-1).Date)
+                {
+                    yesterdayperson++;
+                }
+            }
+            Console.WriteLine("=========================================================" + yesterdayperson);
+            model.yesterdayperson = yesterdayperson;
+            model.soldprice = exhibition.TicketPrice * totalperson;
+            model.soldsum = _context.Ticketsses.Where(t => t.EId == exhibitId).Count();
             return View(model);
         }
 
