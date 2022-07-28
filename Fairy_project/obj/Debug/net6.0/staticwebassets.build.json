@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mN5WPu7F7f/gmX7JNnxfy1m09CE2Tzj1YPnOJ5ZZSK4=",
+  "Hash": "+MBSYHqZzIfMUz1fp3Okn1kOe5uJQHCfqWhZTLrpva8=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -3024,6 +3024,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\memberTickets.js"
+    },
+    {
+      "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\js\\mfnPolicy.js",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "js/mfnPolicy.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\mfnPolicy.js"
     },
     {
       "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\js\\site.js",

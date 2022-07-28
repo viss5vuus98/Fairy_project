@@ -13,15 +13,20 @@
 
 
     <partial name="_MNavbarView" />
-    
+
     <h1 style="text-align:center;font-weight:bold;margin-top:3%">申請規範</h1>
 
-    <div class="container bg1" style="margin-top:3%">
+    <div class="container bg1 pt-3" style="margin-top:3%">
 
-            <div class="row block-1-margin" style="font-size:28px;color:#3B3131 ;font-weight:bold; ">法律規定</div>
-            <div class="d-flex justify-content-center">
-        <dl class="row container-Policy p-3">
-      <dt class="col-sm-2" style="text-align:center;">第1條</dt>
+        <div class="row block-1-margin" style="font-size:28px;color:#3B3131 ;font-weight:bold; ">
+            <div class="m-3">
+                <canvas id="canvasRole">
+                </canvas>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <dl class="row container-Policy p-3">
+                <dt class="col-sm-2" style="text-align:center;">第1條</dt>
                 <dd class="col-sm-10" style="text-align:left;">為規範商品之展覽，特訂定本辦法。</dd>
 
                 <dt class="col-sm-2" style="text-align:center;">第2條</dt>
@@ -131,14 +136,18 @@
                     本辦法中華民國八十八年六月二十九日修正條文自中華民國八十八年七月
                     一日施行。
                 </dd>
-        </dl>
-    </div>
+            </dl>
+        </div>
 
 
-    <div class="row block-1-margin" style="font-size:28px;color:#3B3131 ;font-weight:bold; ">會場規定</div>
-            <div class="d-flex justify-content-center">
-        <dl class="row container-Policy p-3">
-      <dt class="col-sm-2" style="text-align:center;">第1條</dt>
+        <div class="row block-1-margin" style="font-size:28px;color:#3B3131 ;font-weight:bold; ">
+            <div class="m-3">
+                <canvas id="canvasRule">
+                </canvas>
+            </div></div>
+        <div class="d-flex justify-content-center">
+            <dl class="row container-Policy p-3">
+                <dt class="col-sm-2" style="text-align:center;">第1條</dt>
                 <dd class="col-sm-10" style="text-align:left;">為規範商品之展覽，特訂定本辦法。</dd>
 
                 <dt class="col-sm-2" style="text-align:center;">第2條</dt>
@@ -248,10 +257,14 @@
                     本辦法中華民國八十八年六月二十九日修正條文自中華民國八十八年七月
                     一日施行。
                 </dd>
-        </dl>
-    </div>
+            </dl>
+        </div>
 
     </div>
     <partial name="_MFooterView" />
+    @section Scripts{
+    <script src="~/js/mfnPolicy.js" asp-append-version="true"></script>
+
+    }
 
 
