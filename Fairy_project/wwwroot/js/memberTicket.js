@@ -79,8 +79,8 @@ function showQRcodeModal(id, order) {
             //new QRCode(document.getElementById("QRcode"), exhibition.verificationCode);
             new QRCode(document.getElementById("QRcode"), {
                 text: exhibition.verificationCode,
-                width: 400,
-                height: 400,
+                width: 300,
+                height: 300,
                 colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
