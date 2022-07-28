@@ -35,27 +35,27 @@ public class HomeController : Controller
     {
         return View();
     }
-    //[Route("Home/exhibitionDetail/{exhibitId}")]
-    //public IActionResult exhibitionDetail(string exhibitId)
-    //{
+    [Route("Home/exhibitionDetail/{exhibitId}")]
+    public IActionResult exhibitionDetail(string exhibitId)
+    {
 
-    //    var id = Convert.ToInt32(exhibitId);
-    //    eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
-    //    {
-    //        Exhibition = _context.Exhibitionsses.FirstOrDefault(m => m.ExhibitId == id),
-    //    };
+        var id = Convert.ToInt32(exhibitId);
+        //eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
+        //{
+        var exhibition = _context.Exhibitionsses.First(m => m.ExhibitId == id);
+        //};
 
 
-    //    //var theExhibit =  _context.exhibitions.FirstOrDefault(m => m.exhibitId == id);
+        //var theExhibit =  _context.exhibitions.FirstOrDefault(m => m.exhibitId == id);
 
-    //    if (eDrtailViewModel == null)
-    //    {
-    //        Console.WriteLine("NULLLLLLLLLLLLLLL");
-    //        return View();
-    //    }
-    //    //IList<eDrtailViewModel> manufactures = _context.boothMaps.OrderBy(m => m).Take(3);
-    //    return View(eDrtailViewModel);
-    //}
+        //if (eDrtailViewModel == null)
+        //{
+        //    Console.WriteLine("NULLLLLLLLLLLLLLL");
+        //    return View();
+        //}
+        //IList<eDrtailViewModel> manufactures = _context.boothMaps.OrderBy(m => m).Take(3);
+        return View(exhibition);
+    }
 
     public ActionResult GetData()
     {

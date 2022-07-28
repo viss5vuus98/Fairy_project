@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZlOPVi9CRYERn8vh465dxKyryebl0w/v0FVDUadld9M=",
+  "Hash": "95fwHOZB3xP3ItbMQu0j/AGKlxGR0XOhNDOEzLzhguM=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -1256,6 +1256,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/css/TicketModal.css",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "css/TicketModal.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/TicketModal.css"
     },
     {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/favicon.ico",
