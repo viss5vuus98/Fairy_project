@@ -11,122 +11,312 @@
 {
     <link rel="stylesheet" href="~/css/Index.css" asp-append-version="true" />
 }
-<div class="container-fluid">
-    <div class="row my-5 py-5 position-relative">
-        <div class="col-lg-1 col-md-2 col-sm-2"></div>
-        <div id="col1" class="col-lg-11 col-md-10 col-sm-10 col-12 px-0 position-static bg3">
-            <div class="col-lg-10 col-md-9 col-sm-10 col-12 position-absolute top-0 start-0">
-                <img id="titleimg" src="images\header.png" alt="">
+@*<div class="container-fluid">
+        <div class="row my-5 py-5 position-relative">
+            <div class="col-lg-1 col-md-2 col-sm-2"></div>
+            <div id="col1" class="col-lg-11 col-md-10 col-sm-10 col-12 px-0 position-static bg3">
+                <div class="col-lg-10 col-md-9 col-sm-10 col-12 position-absolute top-0 start-0">
+                    <img id="titleimg" src="images\header.png" alt="">
+                </div>
+                <div id="p1" class="col-lg-4 col-md-7 col-sm-8 col-12 p-3 position-absolute">
+                    <h3 class="py-2 px-3 c2">每個人的一生中</h3>
+                    <p class="px-4 mb-2 c3">
+                        既然，謹慎地來說，我們必須考慮到所有可能。我們都有個共識，若問題很困難，那就勢必不好解決。世界上若沒有展覽，對於人類的改變可想而知。對於人類的改變可想而知。
+                    </p>
+                    <div class="text-center">
+                        <a asp-action="exhibitionDetail" asp-controller="Home" class="btn w-75 py-2 my-2 border-0 rounded-3 bg4 c1">詳細</a>
+                    </div>
+                </div>
             </div>
-            <div id="p1" class="col-lg-4 col-md-7 col-sm-8 col-12 p-3 position-absolute">
-                <h3 class="py-2 px-3 c2">每個人的一生中</h3>
-                <p class="px-4 mb-2 c3">
-                    既然，謹慎地來說，我們必須考慮到所有可能。我們都有個共識，若問題很困難，那就勢必不好解決。世界上若沒有展覽，對於人類的改變可想而知。對於人類的改變可想而知。
-                </p>
-                <div class="text-center">
-                    <a asp-action="exhibitionDetail" asp-controller="Home" class="btn w-75 py-2 my-2 border-0 rounded-3 bg4 c1">詳細</a>
+        </div>
+        <div class="row my-5"></div>
+        <div class="row justify-content-between my-5 py-5 position-relative">
+            <div class="col-12 p-0 position-relative overflow-hidden imgwall">
+                <div class="d-flex h-100 imglist">
+                    <div><a asp-action="exhibitionDetail" asp-route-exhibitId="1"><img src="images\card4.jpg" alt=""></a></div>
+                    <div><a asp-action="exhibitionDetail" asp-route-exhibitId="1"><img src="images\header.png" alt=""></a></div>
+                    <div><a asp-action="exhibitionDetail" asp-route-exhibitId="1"><img src="images\card1.jpg" alt=""></a></div>
+                    <div><img src="images\card2.jpg" alt=""><a asp-action="exhibitionDetail" asp-route-exhibitId="1"></a></div>
+                    <div><img src="images\card3.jpg" alt=""><a asp-action="exhibitionDetail" asp-route-exhibitId="1"></a></div>
+                </div>
+            </div>
+            <div class="col-12 d-flex justify-content-between position-absolute top-50">
+                <a href="" class="col-2 p-0 mx-4 text-start"><i class="fa-solid fa-chevron-left fa-2x c1"></i></a>
+                <a href="" class="col-2 p-0 mx-4 text-end"><i class="fa-solid fa-chevron-right fa-2x c1"></i></a>
+            </div>
+        </div>
+        <div class="row my-5"></div>
+        <div id="cardhead" class="row"></div>
+        <div class="row px-lg-5 px-md-3 px-sm-0 bg3">
+            <div class="d-flex flex-wrap w-100 position-relative" style="top:-150px">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 px-sm-3 border-0 text-center">
+                    <a class="ef-1" href="">
+                        <div class="h-50 rounded-1 overflow-hidden my-5">
+                            <img src="images\card1.jpg" alt="">
+                        </div>
+                        <span class="fs-4 c3" href="">你，到底應該如何實</span>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 px-sm-3 border-0 text-center">
+                    <a class="ef-1" href="">
+                        <div class="h-50 rounded-1 overflow-hidden my-5">
+                            <img src="images\card2.jpg" alt="">
+                        </div>
+                        <span class="fs-4 c3" href="">你，到底應該如何實</span>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 px-sm-3 border-0 text-center">
+                    <a class="ef-1" href="">
+                        <div class="h-50 rounded-1 overflow-hidden my-5">
+                            <img src="images\card3.jpg" alt="">
+                        </div>
+                        <span class="fs-4 c3" href="">你，到底應該如何實</span>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 px-sm-3 border-0 text-center">
+                    <a class="ef-1" href="">
+                        <div class="h-50 rounded-1 overflow-hidden my-5">
+                            <img src="images\card4.jpg" alt="">
+                        </div>
+                        <span class="fs-4 c3" href="">你，到底應該如何實</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+@*==================================================
+    Slider Section Start
+    ================================================== -->*@
+<section id="hero-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="block wow fadeInUp" data-wow-delay=".3s">
+
+                    <!-- Slider -->
+                    <section class="cd-intro">
+                        <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s">
+                            <span>合展屋展覽館</span><br>
+                            <span class="cd-words-wrapper">
+                                <b class="is-visible">獨特空間氛圍</b>
+                                <b>新型態展覽館</b>
+                                <b>電子化票券</b>
+                            </span>
+                        </h1>
+                    </section> <!-- cd-intro -->
+                    <!-- /.slider -->
+                    <h2 class="wow fadeInUp animated" data-wow-delay=".6s">
+                        人們來到展覽館的目的，除了靜態地觀賞作品、學習藝術知識之外，合展屋更強調提供來訪觀眾不同於日常生活的空間體驗。
+                    </h2>
+                    <a class="btn-lines dark light wow fadeInUp animated btn btn-default btn-green hvr-bounce-to-right"
+                       data-wow-delay=".9s" href="#exhibitions_content">查看當期展覽</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row my-5"></div>
-    <div class="row justify-content-between my-5 py-5 position-relative">
-        <div class="col-12 p-0 position-relative overflow-hidden imgwall">
-            <div class="d-flex h-100 imglist">
-                <div><a asp-action="exhibitionDetail" asp-route-exhibitId="1"><img src="images\card4.jpg" alt=""></a></div>
-                <div><a asp-action="exhibitionDetail" asp-route-exhibitId="1"><img src="images\header.png" alt=""></a></div>
-                <div><a asp-action="exhibitionDetail" asp-route-exhibitId="1"><img src="images\card1.jpg" alt=""></a></div>
-                <div><img src="images\card2.jpg" alt=""><a asp-action="exhibitionDetail" asp-route-exhibitId="1"></a></div>
-                <div><img src="images\card3.jpg" alt=""><a asp-action="exhibitionDetail" asp-route-exhibitId="1"></a></div>
+</section>
+<!--/#main-slider-->
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
+                    <h2>
+                        ABOUT ME
+                    </h2>
+                    <p>
+                        這裡可以變成選擇入口的地方
+                    </p>
+                    <p>
+                        會員登入後這邊可以變成輪波
+                    </p>
+                </div>
+
             </div>
-        </div>
-        <div class="col-12 d-flex justify-content-between position-absolute top-50">
-            <a href="" class="col-2 p-0 mx-4 text-start"><i class="fa-solid fa-chevron-left fa-2x c1"></i></a>
-            <a href="" class="col-2 p-0 mx-4 text-end"><i class="fa-solid fa-chevron-right fa-2x c1"></i></a>
-        </div>
-    </div>
-    <div class="row my-5"></div>
-    <div id="cardhead" class="row"></div>
-    <div class="row px-lg-5 px-md-3 px-sm-0 bg3">
-        <div class="d-flex flex-wrap w-100 position-relative" style="top:-150px">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 px-sm-3 border-0 text-center">
-                <a class="ef-1" href="">
-                    <div class="h-50 rounded-1 overflow-hidden my-5">
-                        <img src="images\card1.jpg" alt="">
-                    </div>
-                    <span class="fs-4 c3" href="">你，到底應該如何實</span>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 px-sm-3 border-0 text-center">
-                <a class="ef-1" href="">
-                    <div class="h-50 rounded-1 overflow-hidden my-5">
-                        <img src="images\card2.jpg" alt="">
-                    </div>
-                    <span class="fs-4 c3" href="">你，到底應該如何實</span>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 px-sm-3 border-0 text-center">
-                <a class="ef-1" href="">
-                    <div class="h-50 rounded-1 overflow-hidden my-5">
-                        <img src="images\card3.jpg" alt="">
-                    </div>
-                    <span class="fs-4 c3" href="">你，到底應該如何實</span>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12 px-5 px-sm-3 border-0 text-center">
-                <a class="ef-1" href="">
-                    <div class="h-50 rounded-1 overflow-hidden my-5">
-                        <img src="images\card4.jpg" alt="">
-                    </div>
-                    <span class="fs-4 c3" href="">你，到底應該如何實</span>
-                </a>
+            <div class="col-md-6 col-sm-6">
+                <div class="block wow fadeInRight" data-wow-delay=".3s" data-wow-duration="500ms">
+                    <img src="./images/about/about.jpg" alt="">
+                </div>
             </div>
         </div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
-        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
-        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
-        crossorigin="anonymous"></script>
-<script>
+</section> <!-- /#about -->
+<!-- #works -->
+<section id="works" class="works">
+    <div class="container">
+        <div class="section-heading">
+            <h1 class="title wow fadeInDown" data-wow-delay=".3s">當期展覽</h1>
+            <p class="wow fadeInDown" data-wow-delay=".5s">
+                Aliquam lobortis. Maecenas vestibulum mollis diam. Pellentesque auctor neque nec urna. Nulla sit amet est.
+                Aenean posuere <br> tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis
+                lacus.
+            </p>
+        </div>
+        <div class="row" id="exhibitions_content">
+            <div class="col-md-4 col-sm-6">
+                <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                    <div class="img-wrapper">
+                        <img src="images/portfolio/item-1.jpg" class="img-fluid" alt="this is a title">
+                        <div class="overlay">
+                            <div class="buttons">
+                                <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
+                                <a target="_blank" href="single-portfolio.html">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <h4>
+                            <a href="#">
+                                展覽名稱
+                            </a>
+                        </h4>
+                        <p>
+                            展覽簡介
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
 
-    window.addEventListener("load", () => {
+            <div class="col-md-4 col-sm-6">
+                <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="600ms">
+                    <div class="img-wrapper">
+                        <img src="images/portfolio/item-4.jpg" class="img-fluid" alt="">
+                        <div class="overlay">
+                            <div class="buttons">
+                                <a rel="gallery" class="fancybox" href="images/portfolio/item-4.jpg">買票</a>
+                                <a target="_blank" href="single-portfolio.html">詳細</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <h4>
+                            <a href="#">
+                                展覽名稱
+                            </a>
+                        </h4>
+                        <p>
+                            展覽簡介
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="900ms">
+                    <div class="img-wrapper">
+                        <img src="images/portfolio/item-5.jpg" class="img-fluid" alt="">
+                        <div class="overlay">
+                            <div class="buttons">
+                                <a rel="gallery" class="fancybox" href="images/portfolio/item-5.jpg">Demo</a>
+                                <a target="_blank" href="single-portfolio.html">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <h4>
+                            <a href="#">
+                                展覽名稱
+                            </a>
+                        </h4>
+                        <p>
+                            展覽簡介
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="1200ms">
+                    <div class="img-wrapper">
+                        <img src="images/portfolio/item-6.jpg" class="img-fluid" alt="">
+                        <div class="overlay">
+                            <div class="buttons">
+                                <a rel="gallery" class="fancybox" href="images/portfolio/item-6.jpg">Demo</a>
+                                <a target="_blank" href="single-portfolio.html">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <h4>
+                            <a href="#">
+                                展覽名稱
+                            </a>
+                        </h4>
+                        <p>
+                            展覽簡介
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section> <!-- #works -->
+<!--
+            ==================================================
+            Call To Action Section Start
+            ================================================== -->
+<section id="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
+                        還沒有加入會員 ?</h1>
+                        <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">加入會員立即使用電子票券，一起來看展吧</p>
+                        <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s"
+                           data-wow-duration="500ms">立即註冊</a>
+                </div>
+            </div>
 
-        @*axios.get('/GetManufactures')
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))*@
-        @*axios.post('@Url.Action("getTicketsss")', { "Mf_id": 1})
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))*@
-
-        @*axios.get('@Url.Action("getViewMode")')
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))*@
-
-        @*axios.post('@Url.Action("GetTheManufactures")', {"Mf_id": 1})
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))*@
-
-        @*axios.post('@Url.Action("searchKeyWord")', {"ex_keyWord": "試"})
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))*@
-
-        @*axios.post('@Url.Action("searchDate")', {"dateStart": "2022-07-01", "dateEnd": "2022-12-30"})
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))*@
-
-         @*axios.post('@Url.Action("getVerificationCode")', { "Ex_id": 1 })
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))*@
-    })
+        </div>
+    </div>
+</section>
 
 
 
-    var leftclick;
+@*<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
+            integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+            integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+            crossorigin="anonymous"></script>
+    <script>*@
+
+@*window.addEventListener("load", () => {*@
+
+@*axios.get('/GetManufactures')
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))*@
+@*axios.post('@Url.Action("getTicketsss")', { "Mf_id": 1})
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))*@
+
+@*axios.get('@Url.Action("getViewMode")')
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))*@
+
+@*axios.post('@Url.Action("GetTheManufactures")', {"Mf_id": 1})
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))*@
+
+@*axios.post('@Url.Action("searchKeyWord")', {"ex_keyWord": "試"})
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))*@
+
+@*axios.post('@Url.Action("searchDate")', {"dateStart": "2022-07-01", "dateEnd": "2022-12-30"})
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))*@
+
+@*axios.post('@Url.Action("getVerificationCode")', { "Ex_id": 1 })
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))*@
+@*})*@
+
+
+
+@*var leftclick;
     var rightclick;
     var isopacity;
     $('.fa-chevron-left').parent().click((e) => {
@@ -164,19 +354,21 @@
     $('.imglist div').on('transitionend', (e) => {
         e.stopPropagation();
         $('.imglist div').css('opacity', '1');
-    })</script>
+    })</script>*@
 
 
 @section Scripts
     {
     <script>
-        sessionStorage.removeItem('Info')
+        @*sessionStorage.removeItem('Info')
 
         const personId = @TempData["memberId"];
         const personInfos = {
             id: personId,
-        };
+        }
+        sessionStorage.setItem('Info', JSON.stringify(personInfos))*@
 
-        sessionStorage.setItem('Info', JSON.stringify(personInfos));
+        const root = @Url.Content("~/images/")
     </script>
+    <script src="~/js/HomeIndex.js" asp-append-version="true"></script>
 }

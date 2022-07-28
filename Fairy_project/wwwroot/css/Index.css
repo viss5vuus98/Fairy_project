@@ -1,8 +1,16 @@
-﻿body {
+﻿html {
+    scroll-behavior: smooth;
+}
+
+body {
     font-family: 'Noto Sans TC', sans-serif;
 }
 
-.bg1 {
+.card_description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/*.bg1 {
     background-color: #fafafa;
 }
 
@@ -174,3 +182,4 @@ img {
         height: 200px;
     }
 }
+*/
