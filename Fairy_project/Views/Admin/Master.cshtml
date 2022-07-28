@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="~/css/Master.css" asp-append-version="true" />
 }
     @{
-    int idnew =0;
+    int idnew =1;
 }
 
 <div class="container">
@@ -40,7 +40,7 @@
                 </div>
                 <img class=" w-100 h-100 rounded-3" src="@imgsrc" alt="">
             </div>
-            idnew = item.ExhibitId + 1;
+            @*idnew = item.ExhibitId + 1;*@
         }
         <div class="col-lg-4 col-md-6 col-12 my-4">
             <a asp-action="CreatExhibition" asp-controller="Admin" asp-route-idnew="@idnew" class="text-reset">
