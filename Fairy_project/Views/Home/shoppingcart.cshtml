@@ -48,7 +48,7 @@
                 </div>
                 <div>
                     <a asp-controller="Home" asp-action="exhibitionDetail"><button type="button" class="btn1 col-md-7" id="keepbuy">繼續選購</button></a>
-                    <button type="button" class="btn1 col-md-5" id="gopay">
+                    <button type="button" class="btn1 col-md-7" id="gopay">
                         前往付款
                     </button>
                 </div>
@@ -127,7 +127,7 @@
                         <button type="button" class="btn1 col-md-7" id="pre">
                             上一步
                         </button>
-                        <button type="submit" class="btn1 col-md-5" id="pay">
+                        <button type="submit" class="btn1 col-md-7" id="pay">
                             付款結帳
                         </button>
                     </div>
@@ -266,7 +266,7 @@
                                 <button type="button" class="btn btn-secondary"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
                             <h5 style="font-size:16px;">${data[i].exhibitions.datefrom}~${data[i].exhibitions.dateto}</h5>
-                            <h5>合展屋展覽館</h5>
+                            <h5 style="display:none">合展屋展覽館</h5>
                             <div class="price">
                                 <div class="d-flex originprice">
                                     原價$
