@@ -8,6 +8,12 @@ namespace Fairy_project.ViewModels
         public IList<Exhibitionss> exhibition { get; set; }
         public IList<Ticketss> tickets { get; set; }
     }
+
+    public class SussessMessage
+    {
+        public string eamil { get; set; }
+        public int order { get; set; }
+    }
 }
 
                     

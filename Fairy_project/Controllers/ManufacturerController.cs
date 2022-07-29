@@ -7,10 +7,8 @@ namespace Fairy_project.Controllers
     public class ManufacturerController : Controller
     {
         private readonly woowoContext _woowocontext;
-        private readonly ServerContext _context;
-        public ManufacturerController(ServerContext context , woowoContext woowocontext)
+        public ManufacturerController(woowoContext woowocontext)
         {
-            _context = context;
             _woowocontext = woowocontext;
         }
       //  [Authorize(Roles = "Admin,Manufacturer")]

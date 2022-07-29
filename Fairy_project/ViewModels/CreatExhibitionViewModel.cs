@@ -10,8 +10,8 @@ namespace Fairy_project.ViewModels
         public IFormFile? exhibit_P_img { get; set; }
         public IFormFile? exhibit_T_img { get; set; }
         public IFormFile? exhibit_Pre_img { get; set; }
-        public DateTime? datefrom { get; set; }
-        public DateTime? dateto { get; set; }
+        public DateTime datefrom { get; set; }
+        public DateTime dateto { get; set; }
         public string? areaNum { get; set; }
         public string? ex_description { get; set; }
         public int? ex_personTime { get; set; }

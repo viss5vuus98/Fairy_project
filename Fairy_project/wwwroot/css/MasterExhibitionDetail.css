@@ -15,6 +15,9 @@
 .c1 {
     color: #B6B6B4;
 }
+.c2 {
+    color: #5C5858;
+}
 
 i {
     cursor: pointer;
@@ -47,6 +50,9 @@ i {
 .checkmax:hover {
     opacity: .6;
 }
+.checkmoney:hover {
+    opacity: .6;
+}
 
 label {
     cursor: pointer;
@@ -54,6 +60,10 @@ label {
 
 input {
     outline: none;
+}
+
+select{
+    outline:none;
 }
 
 #pagelist li a:hover {

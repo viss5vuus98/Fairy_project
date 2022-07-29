@@ -1,10 +1,10 @@
 ﻿using System;
 namespace Fairy_project.Models
 {
-    public class OrrPermissions : Permissions
+    public class OrrPermissions : Permissionss
     {
-        public List<Member>? Members { get; set; }
-        public List<Manufactures>? Manufactures { get; set; }
+        public List<Memberss>? Members { get; set; }
+        public List<Manufacturess>? Manufactures { get; set; }
     }
 }
 

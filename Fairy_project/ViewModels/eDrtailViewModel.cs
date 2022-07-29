@@ -7,18 +7,18 @@ namespace Fairy_project.ViewModels
     public class eDrtailViewModel
     {
 
-        public Manufactures Manufactures
+        public Manufacturess Manufactures
         {
             get;
             set;
         }
-        public Exhibition Exhibition
+        public Exhibitionss Exhibition
         {
             get;
             set;
         }
 
-        public IList<Booths> booths
+        public IList<BoothMapss> booths
         {
             get;
             set;

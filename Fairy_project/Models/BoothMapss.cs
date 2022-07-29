@@ -14,7 +14,5 @@ namespace Fairy_project.Models
         public string? MfLogo { get; set; }
         public string? MfPImg { get; set; }
         public int? BoothPrice { get; set; }
-
-        public virtual Exhibitionss? EIdNavigation { get; set; }
     }
 }
