@@ -43,3 +43,7 @@
 img {
     object-fit: cover;
 }
+
+input{
+    outline:none;
+}

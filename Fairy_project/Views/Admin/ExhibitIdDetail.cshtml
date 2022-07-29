@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="~/css/MasterExhibitionDetail.css" asp-append-version="true" />
 
 }
+
     <div class="container">
         <form action="@Url.Action("ExhibitIdDetail")" method="post" enctype="multipart/form-data">
             <div class="row align-items-center my-3">
@@ -21,14 +22,17 @@
                 if (Model.exhibitStatus == 1)
                 {
                     <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-black fs-3 py-4">規劃</span>
+                    <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden />
                 }
                 else if (Model.exhibitStatus == 2)
                 {
                     <span class="col-lg-1 col-sm-2 col-2 badge bg-warning text-black fs-3 py-4">籌備</span>
+                    <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden />
                 }
                 else if (Model.exhibitStatus == 3)
                 {
                     <span class="col-lg-1 col-sm-2 col-2 badge bg-success text-black fs-3 py-4">舉辦</span>
+                    <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden />
                 }
             }
         </div>
@@ -208,7 +212,7 @@
                 <div class="row rounded-3 p-3 my-5 bg1">
                     <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">售票額</h2>
                     <h2 class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
-                        807 / NT <span class="text-success">$65,050</span>
+                        @Model.soldsum / NT <span class="text-success">$ @Model.soldprice</span>
                     </h2>
                     <div class="col-lg-1 col-sm-2 col-1 text-end">
                         <a id="ticketreportshow" href="" class="text-reset p-0 pt-1">
@@ -216,33 +220,84 @@
                         </a>
                     </div>
                 </div>
-                <div id="ticketreport" class="row rounded-3 p-3 align-items-center bg1">
-                    <h2 class="col-lg-5 col-sm-4 col-4 text-end my-3">門票單價</h2>
-                    <div class="col-lg-1 col-sm-3 col-2 text-center">
-                        <a id="editticketprice" href="" class="text-reset p-0 my-3">
-                            <i class="fa-regular fa-pen-to-square opacity-75 fa-3x p-0"></i>
-                        </a>
-                    </div>
-                    <input id="ticketpriceinput" type="text"
-                       class="col-lg-3  col-sm-4 col-5 my-3 py-2 text-center fw-bold rounded-pill border-0 h2 bg2"
-                       value="200$" disabled>
+                <div id="ticketreport" class="row rounded-3 p-3 justify-content-center align-items-center bg1">
                     <div class="col-lg-3 col-sm-1 col-1"></div>
                     <div class="col-12 d-flex justify-content-lg-between justify-content-center flex-wrap p-0">
                         <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
                             <h2 class="m-3">平均進場人數</h2>
-                            <h2 class="m-3 p-3 h1 fw-bold">504</h2>
+                            <h2 class="m-3 p-3 h1 fw-bold">@Model.averageperson</h2>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center justify-content-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
                             <h2 class="m-3">昨日進場人數</h2>
-                            <div class="d-flex  justify-content-center align-items-center">
-                                <h2 class="m-3 p-3 h1 fw-bold text-danger">504</h2><i class="fa-solid fa-sort-down fa-2xl text-danger end-0 pb-3 pe-3"></i>
-                            </div>
+                            @{
+                                if (Model.yesterdayperson < Model.averageperson)
+                                {
+                                    <div class="d-flex  justify-content-center align-items-center">
+                                        <h2 class="m-3 p-3 h1 fw-bold text-danger">@Model.yesterdayperson</h2>
+                                        <i class="pe-none fa-solid fa-sort-down fa-2xl text-danger pt-3"></i>
+                                    </div>
+
+                                }
+                                else
+                                {
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <h2 class="m-3 p-3 h1 fw-bold text-success">@Model.yesterdayperson</h2>
+                                        <i class="pe-none fa-solid fa-sort-up fa-2xl text-success pt-3"></i>
+                                    </div>
+
+                                }
+                            }
+
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
-                            <h2 class="m-3">累積銷售</h2>
-                            <h2 class="h1 fw-bold">647</h2>
-                            <h3 class="p-2">807 / NT <span class="text-success">$65,050</span></h3>
+                            <h2 class="m-3">距離預期</h2>
+                            @{
+                                if (Model.insum < Model.ex_personTime)
+                                {
+                                    <h2 class="h1 fw-bold text-danger">@(Model.insum -Model.ex_personTime) <span class="c2">人</span></h2>
+                                }
+                                else
+                                {
+                                    <h2 class="h1 fw-bold text-success">+@(Model.insum -Model.ex_personTime) <span class="c2">人</span></h2>
+                                }
+                                if (Model.soldprice < Model.ex_totalImcome)
+                                {
+                                    <h3 class="p-2 text-danger">@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
+                                }
+                                else
+                                {
+                                    <h3 class="p-2 text-success">+@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
+
+                                }
+                            }
                         </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-around align-items-center fs-2">
+                        <div class="col-2 text-end">門票定價</div>
+                        <input id="ticketpriceinput" type="text"
+                           class="col-2 my-3 p-2 text-center fw-bold rounded-3 border-0 rounded-pill h3 bg2" value="200$"
+                           disabled>
+                        自<select id="searchdatefrom" class="col-2 h3 bg2 my-3 mx-3 p-2 rounded-3 border-0">
+                            @{
+                                for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
+                                {
+                                    <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
+                                }
+                            }
+
+                        </select>
+                        到<select id="searchdateto" class="col-2 h3 bg2 my-3 mx-3 p-2 rounded-3 border-0">
+                            @{
+                                for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
+                                {
+                                    <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
+                                }
+                            }
+                        </select>
+                        <i id="searchticketreport" class="fa-solid fa-magnifying-glass opacity-75 fa-l p-0"></i>
+                    </div>
+                    <div class="col-11 my-3 bg2">
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
             }
@@ -312,9 +367,10 @@
             {
                 <div class=" row rounded-3 p-3 my-5 bg1">
                     <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">承租額</h2>
-                    <h2 class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
-                        @Model.applysum / NT <span class="text-success">$ @Model.applysumprice</span>
-                    </h2>
+                    <div class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
+                        <span id="applysum" class="h2">@Model.applysum / NT </span>
+                        <span id="applysumprice" class="h2 text-success">$ @Model.applysumprice</span>
+                    </div>
                     <div class="col-lg-1 col-sm-2 col-1 text-end">
                         <a id="manufacturerreport23show" href="" class="text-reset p-0 pt-1">
                             <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
@@ -322,20 +378,27 @@
                     </div>
                 </div>
                 <div id="manufacturerreport23" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
-                    <input id="searchmidinput" type="text" placeholder="輸入廠商ID"
+                    <input id="searchbnuminput" type="text" placeholder="輸入攤位編號"
                        class="col-lg-3 col-sm-6 col-6 m-3 py-2 text-center fw-lighter rounded-pill h2 border-0 bg2" autocomplete="off">
-                    <div class="btn-group col-lg-3 col-sm-4 col-4">
-                        <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <span id="searchstate" class="h2 c1" data-state="">全部<span>
-                        </button>
-                        <ul class="dropdown-menu w-75 mx-3 text-center p-0">
-                            <li><a class="dropdown-item h4 m-0" href="#">全部</a></li>
-                            <li><a id="state0" class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
-                            <li><a id="state1" class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
-                            <li><a id="state2" class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
-                        </ul>
-                    </div>
+                    @{
+                        if (Model.exhibitStatus == 2)
+                        {
+                            <div class="btn-group col-lg-3 col-sm-4 col-4">
+                                <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                    <span id="searchstate" class="h2 c1" data-state="">全部<span>
+                                </button>
+                                <ul class="dropdown-menu w-75 mx-3 text-center p-0">
+                                    <li><a class="dropdown-item h4 m-0" href="#">全部</a></li>
+                                    <li><a id="state0" class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
+                                    <li><a id="state1" class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
+                                    <li><a id="state2" class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
+                                    <li><a id="state3" class="dropdown-item h4 m-0 text-secondary" href="#">未通過</a></li>
+
+                                </ul>
+                            </div>
+                        }
+                    }
                     <div class="col-lg-1 col-sm-1 col-1 text-center">
                         <a class="text-reset p-0 my-3">
                             <i id="searchapply" class="fa-solid fa-magnifying-glass opacity-75 fa-3x p-0"></i>
@@ -362,11 +425,123 @@
     <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
         integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"
+        integrity="sha512-zjlf0U0eJmSo1Le4/zcZI51ks5SjuQXkU0yOdsOBubjSmio9iCUp8XPLkEAADZNBdR9crRy3cniZ65LF2w8sRA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         //$('a').on('click', (e) => {
         //    e.preventDefault()
         //})
+
+
+        $(window).on('load', () => {
+            console.log('@Model.datefrom.Date.ToString("yyyy-MM-dd")')
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("_ApplyPartial_Search")',
+                data: {
+                    exhibitId: @Model.exhibitId,
+                    offset: 0,
+                    status: @Model.exhibitStatus,
+                },
+            }).done((result) => {
+                $('#partial').html(result)
+                //alert(result)
+            }).fail(() => {
+                console.log("pagefail")
+            })
+
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SearchTicketReport")',
+                data: {
+                    exhibitId: @Model.exhibitId,
+                    datefrom: '@Model.datefrom.Date.ToString("yyyy-MM-dd")',
+                    dateto: '@Model.datefrom.Date.AddDays(6).ToString("yyyy-MM-dd")',
+                },
+            }).done((result) => {
+                let chartStatus = Chart.getChart("myChart");
+                if (chartStatus != undefined) {
+                    chartStatus.destroy();
+                }
+                var ctx = document.getElementById('myChart');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: result.reportday,
+                        datasets: [{
+                            label: '進場人數',
+                            data: result.reportsum,
+                            backgroundColor: [
+                                '#5C5858',
+                            ],
+                            borderWidth: 0,
+                        }]
+                    },
+                    options: {
+                        parsing: {
+                            xAxisKey: 'Red',
+                            yAxisKey: 'Red'
+                        }
+                    }
+                });
+            }).fail(() => {
+                console.log("pagefail")
+            })
+
+        })
+
+        $('#searchticketreport').on('click', (e) => {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SearchTicketReport")',
+                data: {
+                    exhibitId: @Model.exhibitId,
+                    datefrom: $('#searchdatefrom').val(),
+                    dateto: $('#searchdateto').val(),
+                },
+            }).done((result) => {
+                let chartStatus = Chart.getChart("myChart");
+                if (chartStatus != undefined) {
+                    chartStatus.destroy();
+                }
+                var ctx = document.getElementById('myChart');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: result.reportday,
+                        datasets: [{
+                            label: '進場人數',
+                            data: result.reportsum,
+                            backgroundColor: [
+                                '#5C5858',
+                            ],
+                            borderWidth: 0,
+                        }]
+                    },
+                    options: {
+                        parsing: {
+                            xAxisKey: 'Red',
+                            yAxisKey: 'Red'
+                        }
+                    }
+                });
+            }).fail(() => {
+                console.log("pagefail")
+            })
+        })
+
+
+
+
+
+
+
+
+
+
 
         $('#edittitle').on('click', (e) => {
             $('#titleinput').removeClass('text-center').trigger('focus')
@@ -477,18 +652,6 @@
         })
 
 
-        $('.dropdown-menu li').on('click', (e) => {
-            if ($(e.target).text() == '待審核') {
-                $('#searchstate').text($(e.target).text()).removeClass('text-danger').removeClass('text-success').addClass('text-warning')
-            }
-            else if ($(e.target).text() == '尚未付款') {
-                $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-success').addClass('text-danger')
-            }
-            else if ($(e.target).text() == '已付款') {
-                $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').addClass('text-success')
-            }
-        })
-
         var i = @Model.setboothslist.Count;
 
         $('#manufacturerreport1').on('click', (e) => {
@@ -528,9 +691,10 @@
             let data = {
                 exhibitId: @Model.exhibitId,
                 offset: 0,
+                status: @Model.exhibitStatus,
             }
-            if ($('#searchmidinput').val() != '') {
-                data.m_id = $('#searchmidinput').val()
+            if ($('#searchbnuminput').val() != '') {
+                data.b_num = $('#searchbnuminput').val()
             }
             if ($('#searchstate').text() != '全部') {
                 data.checkstate = $('#searchstate').attr('data-state')
@@ -547,31 +711,40 @@
                 })
             }
             else if ($(e.target).hasClass('page')) {
+                $(e.target).addClass('bg2').removeClass('bg1')
+
                 data.offset = ($(e.target).text() * 10) - 10
                 $.ajax({
                     type: 'GET',
                     url: '@Url.Action("_ApplyPartial_Search")',
                     data,
                 }).done((result) => {
+                    console.log(e.target)
                     $('#partial').html(result)
+                    $(e.target).parent().siblings().children().removeClass('bg2').addClass('bg1')
+                    $(e.target).addClass('bg2').removeClass('bg1')
                 }).fail(() => {
                     console.log("pagefail")
                 })
             } else if ($(e.target).hasClass('dropdown-item')) {
                 if ($(e.target).text() == '待審核') {
-                    $('#searchstate').text($(e.target).text()).removeClass('text-danger').removeClass('text-success').addClass('text-warning').attr('data-state', 0)
+                    $('#searchstate').text($(e.target).text()).removeClass('text-secondary').removeClass('text-danger').removeClass('text-success').addClass('text-warning').attr('data-state', 0)
                 }
                 else if ($(e.target).text() == '尚未付款') {
-                    $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-success').addClass('text-danger').attr('data-state', 1)
+                    $('#searchstate').text($(e.target).text()).removeClass('text-secondary').removeClass('text-warning').removeClass('text-success').addClass('text-danger').attr('data-state', 1)
                 }
                 else if ($(e.target).text() == '已付款') {
-                    $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').addClass('text-success').attr('data-state', 2)
+                    $('#searchstate').text($(e.target).text()).removeClass('text-secondary').removeClass('text-warning').removeClass('text-danger').addClass('text-success').attr('data-state', 2)
                 }
                 else if ($(e.target).text() == '全部') {
-                    $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').removeClass('text-success')
+                    $('#searchstate').text($(e.target).text()).removeClass('text-secondary').removeClass('text-warning').removeClass('text-danger').removeClass('text-success')
+                }
+                else if ($(e.target).text() == '未通過') {
+                    $('#searchstate').text($(e.target).text()).removeClass('text-warning').removeClass('text-danger').removeClass('text-success').addClass('text-secondary').attr('data-state', 3)
                 }
             }
         })
+
 
         $('#addbooth').on('click', (e) => {
             e.preventDefault();
@@ -597,25 +770,12 @@
             return Math.round(ticketoriginal / parseInt(price)) * parseInt(price)
         }
 
-        $(window).on('load', () => {
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("_ApplyPartial_Search")',
-                data: {
-                    exhibitId: @Model.exhibitId,
-                    offset: 0,
-                },
-            }).done((result) => {
-                $('#partial').html(result)
-                alert(result)
-            }).fail(() => {
-                console.log("pagefail")
-            })
-        })
+
 
         $('#partial').on('click', (e) => {
             e.preventDefault();
-            if ($(e.target).attr('id') == 'applypass') {
+            if ($(e.target).hasClass('checkmao')) {
+                let boothNumber = $(e.target).attr('data-bum')
                 $('.modal-backdrop').remove();
                 $(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
                 $('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
@@ -624,17 +784,64 @@
                     url: '@Url.Action("ChangeBoothApplyState")',
                     data: {
                         exhibitId: @Model.exhibitId,
-                        boothNumber: $(e.target).attr('data-bum')
+                        boothNumber,
                     },
                 }).done(() => {
                     $(e.target).closest('.modal').next().text('尚未付款').removeClass('text-warning').addClass('text-danger')
+                    $(e.target).before('<i class="pe-none my-3 fa-solid fa-clipboard-check fa-4x text-success"><span class="h5">PASS</span></i>')
+                    $(e.target).closest('.row').after(`<hr><div class="row justify-content-around align-items-center my-3"><h4 class="col-4">匯款日期：2022 / 7 / 26</h4><h4 class="col-4"> 匯款末五碼：12345</h4><i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-bum="${boothNumber}"><span class="h5 fw-bolder">對帳</span></i></div>`)
+                    $(e.target).next().remove()
+                    $(e.target).remove()
                 }).fail(() => {
                     console.log("pagefail")
                 })
-                
+            }
+            if ($(e.target).hasClass('checkmax')) {
+                let boothNumber = $(e.target).attr('data-bum')
+                $('.modal-backdrop').remove();
+                $(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
+                $('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("ChangeBoothApplyState")',
+                    data: {
+                        exhibitId: @Model.exhibitId,
+                        boothNumber,
+                        fail: true,
+                    },
+                }).done(() => {
+                    $(e.target).closest('.modal').next().text('未通過').removeClass('text-warning').addClass('text-secondary')
+                    $(e.target).after('<i class="pe-none my-3 fa-solid fa-file-excel fa-4x text-danger"><span class="h5">FAIL</span></i>')
+                    $(e.target).prev().remove()
+                    $(e.target).remove()
+                }).fail(() => {
+                    console.log("pagefail")
+                })
+            }
+            if ($(e.target).hasClass('checkmoney')) {
+                $(e.target).toggleClass('fa-square').toggleClass('fa-square-check')
+                $('.modal-backdrop').remove();
+                $(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
+                $('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
+
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("ChangeBoothApplyState")',
+                    data: {
+                        exhibitId: @Model.exhibitId,
+                        boothNumber: $(e.target).attr('data-bum')
+                    },
+                }).done((result) => {
+                    console.log(result)
+                    $(e.target).closest('.modal').next().text('已付款').removeClass('text-danger').addClass('text-success')
+                    $('#applysum').text(`${result.applysum} / NT `)
+                    $('#applysumprice').text(`${result.applysumprice}`)
+                    $(e.target).removeClass('checkmoney').addClass('pe-none')
+                }).fail(() => {
+                    console.log("pagefail")
+                })
             }
         })
-
 
     </script>
         }
