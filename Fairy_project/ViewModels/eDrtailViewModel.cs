@@ -12,13 +12,13 @@ namespace Fairy_project.ViewModels
             get;
             set;
         }
-        public Exhibition Exhibition
+        public Exhibitionss Exhibition
         {
             get;
             set;
         }
 
-        public IList<Booths> booths
+        public IList<BoothMapss> booths
         {
             get;
             set;
