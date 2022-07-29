@@ -5,11 +5,6 @@ namespace Fairy_project.Models
 {
     public partial class Exhibitionss
     {
-        public Exhibitionss()
-        {
-            BoothMapsses = new HashSet<BoothMapss>();
-        }
-
         public int ExhibitId { get; set; }
         public string? ExhibitName { get; set; }
         public DateTime? Datefrom { get; set; }
@@ -23,7 +18,5 @@ namespace Fairy_project.Models
         public int? ExTotalImcome { get; set; }
         public string? ExDescription { get; set; }
         public int? TicketPrice { get; set; }
-
-        public virtual ICollection<BoothMapss> BoothMapsses { get; set; }
     }
 }
