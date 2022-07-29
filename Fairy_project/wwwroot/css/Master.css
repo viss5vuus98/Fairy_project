@@ -2,33 +2,33 @@
     font-family: 'Noto Sans TC', sans-serif;
 }
 
-.container :first-child div {
+.ecard {
     height: 350px;
 }
 
-    .container :first-child div div {
-        visibility: hidden;
-        opacity: 0;
-        transition: .3s;
-        z-index: 1;
-    }
+.ecard div {
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    z-index: 1;
+}
 
-    .container :first-child div:hover div {
-        visibility: visible;
-        opacity: 1;
-        transition: .3s;
-        z-index: 1;
-    }
+.ecard:hover div {
+    visibility: visible;
+    opacity: 1;
+    transition: .3s;
+    z-index: 1;
+}
 
-    .container :first-child div img {
-        -webkit-filter: brightness(100%);
-        transition: .3s;
-    }
+.ecard img {
+    -webkit-filter: brightness(100%);
+    transition: .3s;
+}
 
-    .container :first-child div:hover img {
-        -webkit-filter: brightness(60%);
-        transition: .3s;
-    }
+.ecard:hover img {
+    -webkit-filter: brightness(60%);
+    transition: .3s;
+}
 
 .container :first-child :hover i {
     opacity: .3;
