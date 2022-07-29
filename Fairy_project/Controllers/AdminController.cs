@@ -136,6 +136,7 @@ namespace Fairy_project.Controllers
             model.yesterdayperson = yesterdayperson;
             model.soldprice = exhibition.TicketPrice * totalperson;
             model.soldsum = _context.Ticketsses.Where(t => t.EId == exhibitId).Count();
+            model.insum = totalperson;
             return View(model);
         }
 
