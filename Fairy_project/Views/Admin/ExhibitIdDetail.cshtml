@@ -258,15 +258,15 @@
                                 }
                                 else
                                 {
-                                    <h2 class="h1 fw-bold text-success">+ @(Model.insum -Model.ex_personTime) <span class="c2">人</span></h2>
+                                    <h2 class="h1 fw-bold text-success">+@(Model.insum -Model.ex_personTime) <span class="c2">人</span></h2>
                                 }
                                 if (Model.soldprice < Model.ex_totalImcome)
                                 {
-                                    <h3 class="p-2 text-danger">$@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
+                                    <h3 class="p-2 text-danger">@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
                                 }
                                 else
                                 {
-                                    <h3 class="p-2 text-success">+ @(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
+                                    <h3 class="p-2 text-success">+@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
 
                                 }
                             }
