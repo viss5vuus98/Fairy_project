@@ -266,7 +266,7 @@
                                 <button type="button" class="btn btn-secondary"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
                             <h5 style="font-size:16px;">${data[i].exhibitions.datefrom}~${data[i].exhibitions.dateto}</h5>
-                            <h5>台中國家歌劇園中劇院</h5>
+                            <h5>合展屋展覽館</h5>
                             <div class="price">
                                 <div class="d-flex originprice">
                                     原價$
@@ -295,7 +295,7 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:24px;">${sum}</p>元`);
+            $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);
             console.log(array)
         });
 
@@ -317,7 +317,7 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:24px;">${sum}</p>元`);          
+            $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);          
 
             // 刪除 sessionStorage
             console.log($(this).prev().val())
@@ -348,7 +348,7 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:24px;">${sum}</p>元`);
+            $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);
         })
 
         $(".ticket").on("click", ".plus", function() {
@@ -367,7 +367,7 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:24px;">${sum}</p>元`);
+            $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);
         })
 
         $(".ticket").on("click", ".minus", function() {
@@ -384,21 +384,23 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:24px;">${sum}</p>元`);
+            $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);
         })
 
         //前往付款
         $("#gopay").click(function() {
-            if ($("*.count").val() == "") {
+            console.log($('#totalprice').children().text())
+            if ($("*.count").val() == "" || $('#totalprice').children().text() == '0') {
                 alert("數量不能為空值")
-            } else {
+            }   
+            else {
                 console.log(sum);
                 $(window).scrollTop(0);
                 $(".first").hide();
                 $(".second").show();
                 $(".third").hide();
                 $("#totalprice1").text("");
-                $("#totalprice1").append(`總金額:<p style="font-size: 24px;">${sum}</p>元`);
+                $("#totalprice1").append(`總金額:<p style="font-size: 24px;margin-top: 5px;">${sum}</p>元`)
             }
         })
 

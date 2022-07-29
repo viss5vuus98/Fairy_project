@@ -2,6 +2,10 @@
     margin: 0 auto;
 }
 
+.first{
+    margin-top: 200px;
+}
+
 .container {
     margin: 0 auto;
     width: 100%;
@@ -26,13 +30,14 @@
 }
 
 .ticket {
-    width: 75%;
+    width: 65%;
     margin: 0 auto;
     height: 640px;
     overflow-y: scroll;
     border: 1px solid #dee2e6;
     border-radius: 8px;
     box-shadow: 3px 3px 9px rgba(100,112,134,0.2);
+    margin-top:200px;
     margin-bottom: 100px;
 }
 
