@@ -25,18 +25,32 @@
     margin-left: calc(var(--bs-gutter-x)*-0.5);
 }
 
+.ticket {
+    width: 75%;
+    margin: 0 auto;
+    height: 640px;
+    overflow-y: scroll;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 3px 3px 9px rgba(100,112,134,0.2);
+    margin-bottom: 100px;
+}
+
 .text-center {
     text-align: center !important;
+}
+
+
+.check-step {
+    height: 150px;
+    font-size: 20px;
+    box-shadow: 3px 3px 9px rgba(100,112,134,0.2);
 }
 
 .check-step-finished {
     background: #6b7288;
     color: #ffc62d;
-}
-
-.check-step {
-    height: 150px;
-    font-size: 20px;
+    box-shadow: 1px 2px 9px 3px rgba(120,132,154,0.8);
 }
 
 .row {
@@ -50,21 +64,21 @@
     display: flex;
 }
 
-    .rowinfor div {
-        width: 80px;
-        margin: 0 115px;
-        text-align: center;
-    }
+.rowinfor div {
+    width: 80px;
+    margin: 0 115px;
+    text-align: center;
+}
 
 @media (max-width: 576px) {
-    .rowinfor {
-        justify-content: center;
-    }
+.rowinfor {
+    justify-content: center;
+}
 
-        .rowinfor div {
-            margin: 0 45px;
-            text-align: center;
-        }
+.rowinfor div {
+    margin: 0 45px;
+    text-align: center;
+}
 }
 
 .rowticket {
@@ -73,11 +87,11 @@
     margin-bottom: 10px;
 }
 
-    .rowticket img {
-        width: 263px;
-        height: 100%;
-        object-fit: cover;
-    }
+.rowticket img {
+    width: 263px;
+    height: 100%;
+    object-fit: cover;
+}
 
 .col-xl-9 {
     height: 100%;
@@ -88,9 +102,9 @@
     margin-top: 85px;
 }
 
-    .price div {
-        margin-top: 10px;
-    }
+.price div {
+    margin-top: 10px;
+}
 
 
 .total {
@@ -98,13 +112,14 @@
     justify-content: space-between;
 }
 
-    .total p {
-        font-size: 20px;
-    }
+.total p {
+    font-size: 20px;
+}
 
 .btn1 {
     width: 196px;
     height: 34px;
+    margin-bottom: 150px;
 }
 
 .btn {
@@ -125,9 +140,9 @@ svg {
     text-align: center;
 }
 
-    .radio input {
-        margin-left: 20px;
-    }
+.radio input {
+    margin-left: 20px;
+}
 
 .pay h3 {
     margin-top: 100px;
@@ -147,6 +162,32 @@ h5 {
     font-size: 20px;
 }
 
-    .form-group label input {
-        margin-left: 20px;
-    }
+.form-group label input {
+    margin-left: 20px;
+}
+
+#totalprice{
+    font-size: 24px;
+}
+
+button {
+    border-radius: 10px;
+    background-color: #c0b0a2;
+    color: white;
+}
+
+button:hover {
+    color: #3b3131;
+    background-color: #eae0d7;
+}
+
+input{
+    border-radius: 10px;
+    text-align: center;
+}
+
+::placeholder {
+    text-align: center;
+    font-size: 16px;
+}
+
