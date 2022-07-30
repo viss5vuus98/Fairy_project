@@ -2,6 +2,11 @@
 @section Style
     {
     <link rel="stylesheet" href="~/css/CreatExhibition.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style_back.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/bootstrap-admin.css">
+}
+    @{
+    Layout = "_Admin_Layout";
 }
     <div class="container">
         <form action="@Url.Action("CreatExhibition")" method="post" enctype="multipart/form-data">

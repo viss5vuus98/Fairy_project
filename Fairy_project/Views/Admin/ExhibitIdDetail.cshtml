@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="~/css/MasterExhibitionDetail.css" asp-append-version="true" />
 
 }
+    @{
+    Layout = "_Admin_Layout";
+}
 
     <div class="container">
         <form action="@Url.Action("ExhibitIdDetail")" method="post" enctype="multipart/form-data">

@@ -245,14 +245,11 @@ namespace Fairy_project.Controllers
         }
 
 
-        [Route("/Admin/{action}/{idnew}")]
-        public IActionResult CreatExhibition(int idnew)
+        public IActionResult CreatExhibition()
         {
-            ViewBag.idnew = idnew;
             return View();
         }
 
-        [Route("/Admin/{action}/{idnew}")]
         [HttpPost]
         public async Task<IActionResult> CreatExhibition(CreatExhibitionViewModel model)
         {

@@ -3,7 +3,8 @@
 @section Style
     {
     <link rel="stylesheet" href="~/css/Master.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/style_back.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/bootstrap-admin.css">
 
 }
     @{
@@ -35,12 +36,13 @@
     </div>
 </div>*@
 <div class="container">
-    <div class="row mb-3">
-        <div class="col-lg-4 col-md-6 col-12 my-4">
-            <a asp-action="CreatExhibition" asp-controller="Admin" asp-route-idnew="@idnew" class="text-reset">
-                <button class="w-100 h-100 border-0 bg-secondary bg-opacity-10 rounded-3 ">
-                    <i class="fa-solid fa-plus fa-4x "></i>
-                </button>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-xs-12 p-0">
+            <a href="@Url.Action("CreatExhibition")" class="text-reset" style="text-decoration: none
+">
+                <div class="card h-75 justify-content-center align-items-center">
+                    <i class="fa-solid fa-plus fa-2xl"></i>
+                </div>
             </a>
         </div>
 
@@ -48,33 +50,36 @@
         {
             string date = $"{Convert.ToDateTime(item.Datefrom).ToString("yyyy/MM/dd")} ~ {Convert.ToDateTime(item.Dateto).ToString("yyyy/MM/dd")}";
             string imgsrc = Url.Content($"~/images/{item.ExhibitPreImg}");
-            <div class="col-lg-4 col-md-6 col-12 my-4 px-2 overflow-hidden position-relative ecard">
-                <div class="position-absolute pe-3 text-center d-flex flex-column justify-content-around align-items-center w-100 h-100 rounded-3 py-3">
-                    <div class="h-25 d-flex align-items-center">
-                        <h5 class="mx-3 m-0 text-light fw-light text-decoration-underline">@date</h5>
-                        @if (item.ExhibitStatus == 1)
-                        {
-                            <span class="mx-3 badge bg-danger text-black fs-5 fw-normal">規劃</span>
-                        }
-                        else if (item.ExhibitStatus == 2)
-                        {
-                            <span class="mx-3 badge bg-warning text-black fs-5 fw-normal">籌備</span>
-                        }
-                        else if (item.ExhibitStatus == 3)
-                        {
-                            <span class="mx-3 badge bg-success text-black fs-5 fw-normal">舉辦</span>
-                        }
+            <div class="col-lg-4 col-md-6 col-xs-12 p-0">
+                <div class="card">
+                    <div class="card-img"
+                     style="background-image:url(@imgsrc);">
+                        <div class="overlay">
+                            <div class="overlay-content">
+                                <a asp-controller="Admin" asp-action="ExhibitIdDetail" asp-route-exhibitId="@item.ExhibitId">編輯</a>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="h-25 fw-bold m-0 mx-3 text-light">@item.ExhibitName</h3>
-                    <a asp-controller="Admin" asp-action="ExhibitIdDetail" asp-route-exhibitId="@item.ExhibitId">
-                        <button class="px-3 text-center rounded-pill border border-1 border-light bg-secondary bg-opacity-75 text-light fs-4">
-                            詳細
-                        </button>
-                    </a>
+                    <div class="card-content">
+                        <div class="d-flex justify-content-around">
+                            <h2>@item.ExhibitName</h2>
+                            @if (item.ExhibitStatus == 1)
+                            {
+                                <span class="mx-3 badge bg-danger text-dark fs-6 fw-normal h-25">規劃</span>
+                            }
+                            else if (item.ExhibitStatus == 2)
+                            {
+                                <span class="mx-3 badge bg-warning text-dark fs-6 fw-normal h-25">籌備</span>
+                            }
+                            else if (item.ExhibitStatus == 3)
+                            {
+                                <span class="mx-3 badge bg-success text-dark fs-6 fw-normal h-25">舉辦</span>
+                            }
+                        </div>
+                        <p>@item.ExDescription</p>
+                    </div>
                 </div>
-                <img class=" w-100 h-100 rounded-3" src="@imgsrc" alt="">
-           </div>
-            @*idnew = item.ExhibitId + 1;*@
+            </div>
         }
     </div>
 </div>

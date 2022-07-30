@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/a0DZiaHyCu8nsVA6fL+wXxeMu1F4B//o3Ma59TA0GI=",
+  "Hash": "gRVFjN9PihdcZ00tmaS+Cn4FI96/lxGj6YuNo75DtTc=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -1088,6 +1088,23 @@
       "OriginalItemSpec": "wwwroot\\css\\adminlayout.css"
     },
     {
+      "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\css\\bootstrap-admin.css",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "css/bootstrap-admin.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootstrap-admin.css"
+    },
+    {
       "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\css\\CreatExhibition.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -1258,23 +1275,6 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\css\\style _admin.css",
-      "SourceId": "Fairy_project",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\",
-      "BasePath": "_content/Fairy_project",
-      "RelativePath": "css/style _admin.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\style _admin.css"
-    },
-    {
       "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\css\\style.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -1290,6 +1290,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\css\\style_back.css",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "css/style_back.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style_back.css"
+    },
+    {
+      "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\css\\style-admin.css",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "css/style-admin.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\style-admin.css"
     },
     {
       "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\css\\TicketModal.css",
