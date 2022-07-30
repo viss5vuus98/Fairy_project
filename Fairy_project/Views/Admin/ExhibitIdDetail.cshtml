@@ -9,19 +9,19 @@
     Layout = "_Admin_Layout";
 }
 
-    <div class="container">
-        <form action="@Url.Action("ExhibitIdDetail")" method="post" enctype="multipart/form-data">
-            <div class="row align-items-center my-3">
-                <div class="col-lg-1 col-sm-2 col-4">
-                    <i id="edittitle" class="fa-regular fa-pen-to-square fa-4x opacity-75 text-center"></i>
+<div class="container">
+    <form action="@Url.Action("ExhibitIdDetail")" method="post" enctype="multipart/form-data">
+        <div class="row align-items-center my-3">
+            <div class="col-lg-1 col-sm-2 col-4">
+                <i id="edittitle" class="fa-regular fa-pen-to-square fa-4x opacity-75 text-center"></i>
 
-                </div>
-                <div class="col-lg-10 col-sm-8 col-6 p-0  text-start">
-                    <input asp-for="exhibitName" id="titleinput" type="text"
+            </div>
+            <div class="col-lg-10 col-sm-8 col-6 p-0  text-start">
+                <input asp-for="exhibitName" id="titleinput" type="text"
                        class="text-center my-3 py-3 mx-3 border-0 rounded-3 col-11 h1 mx-0 bg1" value="@Model.exhibitName"
                        placeholder="輸入標題" autocomplete="off">
-                </div>
-                @{
+            </div>
+            @{
                 if (Model.exhibitStatus == 1)
                 {
                     <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-black fs-3 py-4">規劃</span>
@@ -423,11 +423,7 @@
 @section Scripts
 
     {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
-        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-        crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"
         integrity="sha512-zjlf0U0eJmSo1Le4/zcZI51ks5SjuQXkU0yOdsOBubjSmio9iCUp8XPLkEAADZNBdR9crRy3cniZ65LF2w8sRA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
