@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "twMhttfZyeOOejNBe+wkWUBWUy3eR/TY1pj2Ej1MAIU=",
+  "Hash": "VeqwJNEmxsawWFMmwDVN6TvHvGz6mLPWPvk70+g7kcw=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -1256,6 +1256,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\style.css"
+    },
+    {
+      "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\css\\templateB5.css",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "css/templateB5.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\templateB5.css"
     },
     {
       "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\css\\TicketModal.css",
