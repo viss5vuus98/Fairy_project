@@ -257,6 +257,7 @@
                 $(".ticket").append(`<div class="container" style="box-shadow: 3px 3px 9px rgba(100,112,134,0.1);">
                     <div class="rowticket d-flex">
                         <div class="col-xl-3"><img
+@*圖片小*@
                                 src="${root}${data[i].exhibitions.exhibitTImg}"
                                 alt="${data[i].exhibitions.exhibitTImg}" style="border:1px solid gray"></div>
                         <div class="col-xl-9">
@@ -266,6 +267,7 @@
                                 <button type="button" class="btn btn-secondary"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
                             <h5 style="font-size:16px;">${data[i].exhibitions.datefrom}~${data[i].exhibitions.dateto}</h5>
+@*h5 刪掉 時間刪掉*@
                             <h5>合展屋展覽館</h5>
                             <div class="price">
                                 <div class="d-flex originprice">
