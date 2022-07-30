@@ -27,7 +27,7 @@
 }
 
 .ticket {
-    width: 68%;
+    width: 60%;
     margin: 0 auto;
     height: 550px;
     overflow-y: scroll;
@@ -73,17 +73,6 @@
     text-align: center;
 }
 
-@media (max-width: 576px) {
-.rowinfor {
-    justify-content: center;
-}
-
-.rowinfor div {
-    margin: 0 45px;
-    text-align: center;
-}
-}
-
 .rowticket {
     justify-content: center;
     margin-top: 10px;
@@ -98,7 +87,7 @@
     object-fit: cover;
 }
 
-.col-xl-9 {
+.col-xl-8 {
     padding-top: 10px;
     height: 100%;
     padding-left: 20px;
@@ -114,6 +103,7 @@
 
 
 .total {
+    width: 100%;
     margin-top: 50px;
     justify-content: space-between;
 }
@@ -123,9 +113,10 @@
 }
 
 .btn1 {
-    width: 196px;
-    height: 34px;
-    margin-bottom: 150px;
+    background-color: black;
+    color: #ffffff;
+    width: 150px;
+    margin-bottom: 100px;
 }
 
 .btn {
@@ -136,9 +127,9 @@ svg {
     margin-top: 100px;
 }
 
-.form-group {
+/*.form-group {
     margin-top: 100px;
-}
+}*/
 
 .radio {
     font-size: 20px;
@@ -156,7 +147,7 @@ svg {
 }
 
 .col-6 {
-    margin-top: 100px;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -164,13 +155,13 @@ h5 {
     margin-right: 50px;
 }
 
-.form-group label {
+/*.form-group label {
     font-size: 20px;
 }
 
 .form-group label input {
     margin-left: 20px;
-}
+}*/
 
 #totalprice{
     font-size: 24px;
@@ -190,4 +181,76 @@ input {
 button{
     border: 0.5px solid gray; 
 }
+
+.checkout-form{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.form-group input {
+    font-size: 20px;
+    font-weight: 200;
+    height: 45px;
+}
+
+.checkout-form .form-group {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.checkout-form .form-group label {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    right: auto;
+    bottom: auto;
+    color: black;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    opacity: 1 !important;
+    width: 85px;
+}
+
+.checkout-form .form-group input {
+    border-radius: 0;
+    display: block;
+    padding: 6px 10px 5px 100px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    height: 50px;
+}
+
+.checkout-form .checkout-country-code .form-group {
+    float: left;
+}
+
+.checkout-form .checkout-country-code .form-group:first-child {
+    width: calc(45% - 2px);
+    margin-right: 4px;
+}
+
+.checkout-form .checkout-country-code .form-group:last-child {
+    width: calc(55% - 2px);
+}
+
+@media (max-width: 770px) {
+    .rowinfor {
+        justify-content: center;
+    }
+
+    .rowinfor div {
+        margin: 0 45px;
+        text-align: center;
+    }
+
+    .btn1 {
+        width: 196px;
+        height: 34px;
+        margin-bottom: 0px;
+    }
+}
+
 
