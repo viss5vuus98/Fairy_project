@@ -20,6 +20,11 @@ i {
     cursor: pointer;
 }
 
+/*body::selection {
+    background: #e5e9f2;
+    color: white;
+}
+*/
 #titleinput {
     transition: .2s;
     pointer-events: none;
@@ -28,7 +33,28 @@ i {
 
     #titleinput:focus {
         background-color: #E5E4E2;
+        border-color: rgb(222, 226, 230);
+        box-shadow: none;
     }
+
+/* #ticketimg {
+                min-width: 590px;
+                min-height: 204px;
+                max-width: 624px;
+                max-height: 204px;
+                border: #B6B6B4 2px dashed;
+            }
+
+            #horizontalposterimage {
+                min-width: 670px;
+                min-height: 475px;
+            }
+
+            #verticalposterimage {
+                min-width: 650px;
+                min-height: 770px;
+            } */
+
 
 #contentinput {
     resize: none;
@@ -39,6 +65,8 @@ i {
     #contentinput:focus {
         background-color: #fafafa;
         pointer-events: all;
+        border-color: #e5e9f2;
+        background: none
     }
 
 #ticketpriceinput {
@@ -52,12 +80,26 @@ label {
 
 input {
     outline: none;
+    background:none;
+}
+textarea{
+    background:none
 }
 
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-    }
+image {
+    overflow: hidden;
+}
+
+input[type="datetime-local"]:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 
 #manufacturerreport ul li a:active {
     background-color: #B6B6B4;
@@ -66,3 +108,4 @@ input {
 #areaedit ul li a:active {
     background-color: #B6B6B4;
 }
+

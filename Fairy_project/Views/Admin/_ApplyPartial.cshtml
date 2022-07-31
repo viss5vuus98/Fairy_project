@@ -4,11 +4,9 @@
     {
         for (int i = 0; i < Model.applylist.Count; i++)
         {
-            <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 bg2 apply">
+            <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 border border-1 bg2 apply">
                 <h3 class="w-25 m-0">@Model.applylist[i].manufactureName</h3>
                 <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
-
-
                 <h3 href="" class="w-25 m-0 border-0 text-reset bg2">
                     <a href="" class="text-reset" data-bs-toggle="modal"
                data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">@Model.applylist[i].boothNumber</a>
