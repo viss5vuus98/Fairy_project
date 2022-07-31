@@ -168,6 +168,32 @@ public class HomeController : Controller
         return Json(exhibitions);
     }
 
+    public IActionResult search(int id = 1)
+    {
+        var exhibitions = _context.Exhibitionsses.Where(m => m.ExhibitId > 0).ToList();
+        IList<Exhibitionss> products = null;
+
+        if (id == 1)
+        {
+            products = exhibitions.OrderBy(x => x.TicketPrice).ToList();
+        }
+        else if (id == 2)
+        {
+            products = exhibitions.OrderByDescending(x => x.TicketPrice).ToList();
+        }
+
+        return View(products);
+    }
+
+    [HttpPost]
+    public IActionResult search(string txtKeyword)
+    {
+        var exhibitions = _context.Exhibitionsses
+            .Where(m => m.ExhibitName.Contains(txtKeyword) || m.ExDescription.Contains(txtKeyword) && m.ExhibitStatus == 1)
+            .ToList();
+        return View(exhibitions);
+    }
+
     //search exhibition date
     [HttpPost]
     public IActionResult searchDate([FromBody] SearchDate searchDate)

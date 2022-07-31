@@ -17,5 +17,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <_SelectedScaffolderID>ModelBasedCrudRazorPageScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Common</_SelectedScaffolderCategoryPath>
+    <WebStackScaffolding_DbContextTypeFullName>Fairy_project.Models.woowoContext</WebStackScaffolding_DbContextTypeFullName>
   </PropertyGroup>
 </Project>
