@@ -17,8 +17,8 @@
         <div class="row tab">
             <div class="w-75">
                 <ul class="tab-title d-flex ">
-                    <li><a class="btn zonebtn " role="button" href="#aZone">A區</a></li>
-                    <li><a class="btn zonebtn " role="button" href="#bZone">B區</a></li>
+                    <li><a class="btn btn-sm btn-primary " role="button" href="#aZone">A區</a></li>
+                    <li><a class="btn btn-sm btn-primary " role="button" href="#bZone">B區</a></li>
                 </ul>
             </div>
         </div>
@@ -176,10 +176,10 @@
         </div>
         <div class="row justify-content-center">
             <form method="post" action="@Url.Action("ApplyStand")">
-            <input id="eId" name="e_Id" value="" style="display:none"/>
-            <input id="bNum" name="boothId" value=""style="display:none" />
-            </form>
+            <input id="eId" name="e_Id" value="" />
+            <input id="bNum" name="boothId" value="" />
             <button type="submit" class="btn-size"  ><a style="text-decoration:none"asp-action="ApplyStand" >申請此攤位</a></button>
+            </form>
         </div>
     </div>
 

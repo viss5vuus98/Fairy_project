@@ -16,6 +16,10 @@ namespace Fairy_project.Controllers
         {
             return View();
         }
+         public IActionResult IndexNew()
+        {
+            return View();
+        }
 
         public IActionResult Policy()
         {
@@ -24,8 +28,8 @@ namespace Fairy_project.Controllers
 
         public IActionResult ApplyStand(int boothId,int e_Id)
         {
-            var sss = boothId;
-            var aaa = e_Id;
+            ViewBag.BId = boothId;
+            ViewBag.EId = e_Id;
             return View();
         }
         public IActionResult StandProcess()

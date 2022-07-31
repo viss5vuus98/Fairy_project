@@ -2735,9 +2735,9 @@ C:/Users/Student/Documents/GitHub/Fairy_project/Fairy_project/obj/Debug/net6.0/F
 C:/Users/Student/Documents/GitHub/Fairy_project/Fairy_project/obj/Debug/net6.0/ref/Fairy_project.dll
 G:\RE0CODING\Fairy_project\Fairy_project\bin\Debug\net6.0\appsettings.Development.json
 G:\RE0CODING\Fairy_project\Fairy_project\bin\Debug\net6.0\appsettings.json
-G:\RE0CODING\Fairy_project\Fairy_project\bin\Debug\net6.0\app.db
 G:\RE0CODING\Fairy_project\Fairy_project\bin\Debug\net6.0\libman.json
 G:\RE0CODING\Fairy_project\Fairy_project\bin\Debug\net6.0\Fairy_project.staticwebassets.runtime.json
+G:\RE0CODING\Fairy_project\Fairy_project\bin\Debug\net6.0\app.db
 G:\RE0CODING\Fairy_project\Fairy_project\bin\Debug\net6.0\Fairy_project.exe
 G:\RE0CODING\Fairy_project\Fairy_project\bin\Debug\net6.0\Fairy_project.deps.json
 G:\RE0CODING\Fairy_project\Fairy_project\bin\Debug\net6.0\Fairy_project.runtimeconfig.json
