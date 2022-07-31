@@ -274,97 +274,131 @@
                 </div>
 
             }
-            else if (Model.exhibitStatus == 3) //待改
+            else if (Model.exhibitStatus == 3)
             {
-                <div class="row rounded-3 p-3 my-5 bg1">
-                    <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">售票額</h2>
-                    <h2 class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
-                        @Model.soldsum / NT <span class="text-success">$ @Model.soldprice</span>
-                    </h2>
-                    <div class="col-lg-1 col-sm-2 col-1 text-end">
-                        <a id="ticketreportshow" href="" class="text-reset p-0 pt-1">
-                            <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
-                        </a>
-                    </div>
-                </div>
-                <div id="ticketreport" class="row rounded-3 p-3 justify-content-center align-items-center bg1">
-                    <div class="col-lg-3 col-sm-1 col-1"></div>
-                    <div class="col-12 d-flex justify-content-lg-between justify-content-center flex-wrap p-0">
-                        <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
-                            <h2 class="m-3">平均進場人數</h2>
-                            <h2 class="m-3 p-3 h1 fw-bold">@Model.averageperson</h2>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center justify-content-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
-                            <h2 class="m-3">昨日進場人數</h2>
-                            @{
-                                if (Model.yesterdayperson < Model.averageperson)
-                                {
-                                    <div class="d-flex  justify-content-center align-items-center">
-                                        <h2 class="m-3 p-3 h1 fw-bold text-danger">@Model.yesterdayperson</h2>
-                                        <i class="pe-none fa-solid fa-sort-down fa-2xl text-danger pt-3"></i>
+                <div class="row">
+                    <div class="accordion p-0" id="accordionHeaderBorderBottom">
+                        <div class="card">
+                            <div class="card-header" id="headingBorderBottomOne">
+                                <h2 class="mb-0">
+                                    <div class="d-flex justify-content-between">
+                                        <h2 class="m-0 px-3 my-3">售票額</h2>
+                                        <div class="d-flex align-items-center w-25  justify-content-end">
+                                            <span id="applysum" class="h4">@Model.soldsum / NT </span>
+                                            <span id="applysumprice" class="h4 text-success">$ @Model.soldprice</span>
+                                            <button type="button" data-toggle="collapse"
+                                                data-target="#collapseBorderBottomOe" aria-expanded="true"
+                                                aria-controls="collapseBorderBottomOne">
+                                                <i class="fa-solid fa-chevron-down fa-1x mx-3 opacity-75"></i>
+                                            </button>
+                                        </div>
                                     </div>
+                                </h2>
+                            </div>
+                            <div id="collapseBorderBottomOe" class="collapse show" aria-labelledby="headingBorderBottomOne"
+                             data-parent="#accordionHeaderBorderBottom">
+                                <div id="ticketreport"
+                                 class="row rounded-3 p-3 my-4 align-items-center justify-content-center">
 
-                                }
-                                else
-                                {
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <h2 class="m-3 p-3 h1 fw-bold text-success">@Model.yesterdayperson</h2>
-                                        <i class="pe-none fa-solid fa-sort-up fa-2xl text-success pt-3"></i>
+                                    <div class="col-md-6 col-xl-4">
+                                        <div class="card mx-4 my-2 p-4 border border-1">
+                                            <div class="card-body text-center">
+                                                <h3 class="card-title my-4">平均進場人數</h3>
+                                                <h2 class="m-3 p-3 h1 fw-bold">@Model.averageperson</h2>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="col-md-6 col-xl-4">
+                                        <div class="card mx-4 my-2  p-4 border border-1">
+                                            <div class="card-body text-center">
+                                                <h3 class="card-title my-4">昨日進場人數</h3>
+                                                @{
+                                                    if (Model.yesterdayperson < Model.averageperson)
+                                                    {
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <h2 class="m-3 p-3 h1 fw-bold text-danger">@Model.yesterdayperson</h2>
+                                                            <i class="pe-none fa-solid fa-sort-up fa-2xl text-success pt-3"></i>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <h2 class="m-3 p-3 h1 fw-bold text-success">@Model.yesterdayperson</h2>
+                                                            <i class="pe-none fa-solid fa-sort-up fa-2xl text-success pt-3"></i>
+                                                        </div>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-xl-4 my-3">
+                                        <div class="card mx-4 my-2  p-4 border border-1">
+                                            <div class="card-body text-center">
+                                                <h3 class="card-title my-4">距離預期</h3>
+                                                @{
+                                                    if (Model.insum < Model.ex_personTime)
+                                                    {
+                                                        <h2 class="h1 fw-bold text-danger">@(Model.insum -Model.ex_personTime) <span class="c2">人</span></h2>
+                                                    }
+                                                    else
+                                                    {
+                                                        <h2 class="h1 fw-bold text-success">+@(Model.insum -Model.ex_personTime) <span class="c2">人</span></h2>
+                                                    }
+                                                    if (Model.soldprice < Model.ex_totalImcome)
+                                                    {
+                                                        <h3 class="p-2 text-danger">@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
+                                                    }
+                                                    else
+                                                    {
+                                                        <h3 class="p-2 text-success">+@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
 
-                                }
-                            }
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="col-12 d-flex justify-content-around align-items-center my-2 fs-5">
+                                        <div class="input-group col-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="">門票定價</span>
+                                            </div>
+                                            <input id="ticketpriceinput" type="text" class="form-control text-center fs-4"
+                                               placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"
+                                               value="200$" readonly>
+                                        </div>
 
+
+                                        <div class="form-group col-3 d-flex align-items-center m-0">
+                                            自<select class="form-control rounded-0 bg-light mx-2" id="searchdatefrom">
+                                                @{
+                                                    for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
+                                                    {
+                                                        <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-3 d-flex align-items-center  m-0">
+                                            到<select class="form-control rounded-0 bg-light mx-2" id="searchdateto">
+                                                @{
+                                                    for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
+                                                    {
+                                                        <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <i id="searchticketreport"
+                                       class="fa-solid fa-magnifying-glass opacity-75 fa-xl p-0"></i>
+                                    </div>
+                                    <div class="col-11 my-3">
+                                        <canvas id="myChart"></canvas>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
-                            <h2 class="m-3">距離預期</h2>
-                            @{
-                                if (Model.insum < Model.ex_personTime)
-                                {
-                                    <h2 class="h1 fw-bold text-danger">@(Model.insum -Model.ex_personTime) <span class="c2">人</span></h2>
-                                }
-                                else
-                                {
-                                    <h2 class="h1 fw-bold text-success">+@(Model.insum -Model.ex_personTime) <span class="c2">人</span></h2>
-                                }
-                                if (Model.soldprice < Model.ex_totalImcome)
-                                {
-                                    <h3 class="p-2 text-danger">@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
-                                }
-                                else
-                                {
-                                    <h3 class="p-2 text-success">+@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h3>
-
-                                }
-                            }
-                        </div>
-                    </div>
-                    <div class="col-12 d-flex justify-content-around align-items-center fs-2">
-                        <div class="col-2 text-end">門票定價</div>
-                        <input id="ticketpriceinput" type="text"
-                           class="col-2 my-3 p-2 text-center fw-bold rounded-3 border-0 rounded-pill h3 bg2" value="200$"
-                           disabled>
-                        自<select id="searchdatefrom" class="col-2 h3 bg2 my-3 mx-3 p-2 rounded-3 border-0">
-                            @{
-                                for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
-                                {
-                                    <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
-                                }
-                            }
-
-                        </select>
-                        到<select id="searchdateto" class="col-2 h3 bg2 my-3 mx-3 p-2 rounded-3 border-0">
-                            @{
-                                for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
-                                {
-                                    <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
-                                }
-                            }
-                        </select>
-                        <i id="searchticketreport" class="fa-solid fa-magnifying-glass opacity-75 fa-l p-0"></i>
-                    </div>
-                    <div class="col-11 my-3 bg2">
-                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
             }
@@ -507,65 +541,18 @@
                                        class="fa-solid fa-magnifying-glass opacity-75 fa-3x p-0"></i>
                                     </a>
                                 </div>
-
-                                @*<div class=" row rounded-3 p-3 my-5 bg1">
-                        <h2 class="col-lg-7 col-sm-4 col-2 p-0 m-0">承租額</h2>
-                        <div class="col-lg-4 col-sm-6 col-9 p-0 m-0 text-end">
-                        <span id="applysum" class="h2">@Model.applysum / NT </span>
-                        <span id="applysumprice" class="h2 text-success">$ @Model.applysumprice</span>
-                        </div>
-                        <div class="col-lg-1 col-sm-2 col-1 text-end">
-                        <a id="manufacturerreport23show" href="" class="text-reset p-0 pt-1">
-                        <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
-                        </a>
-                        </div>
-                        </div>
-                        <div id="manufacturerreport23" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
-                        <input id="searchbnuminput" type="text" placeholder="輸入攤位編號"
-                        class="col-lg-3 col-sm-6 col-6 m-3 py-2 text-center fw-lighter rounded-pill h2 border-0 bg2" autocomplete="off">
-                        @{
-                        if (Model.exhibitStatus == 2)
-                        {
-                        <div class="btn-group col-lg-3 col-sm-4 col-4">
-                        <button class="w-100 btn px-0 mx-2 rounded-pill bg2" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span id="searchstate" class="h2 c1" data-state="">全部<span>
-                        </button>
-                        <ul class="dropdown-menu w-75 mx-3 text-center p-0">
-                        <li><a class="dropdown-item h4 m-0" href="#">全部</a></li>
-                        <li><a id="state0" class="dropdown-item h4 m-0 text-warning" href="#">待審核</a></li>
-                        <li><a id="state1" class="dropdown-item h4 m-0 text-danger" href="#">尚未付款</a></li>
-                        <li><a id="state2" class="dropdown-item h4 m-0 text-success" href="#">已付款</a></li>
-                        <li><a id="state3" class="dropdown-item h4 m-0 text-secondary" href="#">未通過</a></li>
-
-                        </ul>
-                        </div>
-                        }
-                        }
-                        <div class="col-lg-1 col-sm-1 col-1 text-center">
-                        <a class="text-reset p-0 my-3">
-                        <i id="searchapply" class="fa-solid fa-magnifying-glass opacity-75 fa-3x p-0"></i>
-                        </a>
-                        </div>*@
-
                                 <partial name="_ApplyPartial.cshtml" />
                                 <div id="partial" class="d-flex flex-column justify-content-center align-items-center"></div>
                             </div>
-                            @*<div class="row justify-content-around my-5">
-                    <button type="submit" class="btn btn-dark col-lg-3 col-sm-3 col-4 fs-2">儲存修改</button>
-                    <a asp-action="Master" class="btn btn-dark col-lg-3 col-sm-3 col-4 fs-2">回上一頁</a>
-                    </div>*@
                         </div>
                     </div>
                 </div>
-            <div class="row justify-content-around my-5">
-                <button type="submit" class="btn btn-lg btn-dark col-lg-3 col-sm-3 col-4 fs-2">儲存修改</button>
-                <a asp-action="Master" class="btn btn-lg btn-dark col-lg-3 col-sm-3 col-4 fs-2">回上一頁</a>
-            </div>
+                <div class="row justify-content-around my-5">
+                    <button type="submit" class="btn btn-lg btn-dark col-lg-3 col-sm-3 col-4 fs-2">儲存修改</button>
+                    <a asp-action="Master" class="btn btn-lg btn-dark col-lg-3 col-sm-3 col-4 fs-2">回上一頁</a>
+                </div>
 
             }
-
-
         }
     </form>
 </div>
@@ -1303,30 +1290,30 @@
         $('#addbooth').on('click', (e) => {
             e.preventDefault();
             $(e.target).closest('div').before(`<div
-                                                                                                                                                                                                                                        class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
-                                                                                                                                                                                                                                        <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
-                                                                                                                                                                                                                                            data-toggle="dropdown" aria-expanded="false"><input
-                                                                                                                                                                                                                                                name="setboothslist[${i}].boothLv"
-                                                                                                                                                                                                                                                class="pe-none w-75 text-center border-0 h4 m-0 c1 blv"
-                                                                                                                                                                                                                                                value="攤位等級"></input><i
-                                                                                                                                                                                                                                                class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button>
-                                                                                                                                                                                                                                        <ul class="dropdown-menu ms-5 text-center p-0">
-                                                                                                                                                                                                                                            <li><a class="dropdown-item h4 m-0" href="#">大型</a></li>
-                                                                                                                                                                                                                                            <li><a class="dropdown-item h4 m-0" href="#">中型</a></li>
-                                                                                                                                                                                                                                            <li><a class="dropdown-item h4 m-0" href="#">小型</a></li>
-                                                                                                                                                                                                                                        </ul>
+                                                                                                                                                                                                                                                                                        class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
+                                                                                                                                                                                                                                                                                        <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
+                                                                                                                                                                                                                                                                                            data-toggle="dropdown" aria-expanded="false"><input
+                                                                                                                                                                                                                                                                                                name="setboothslist[${i}].boothLv"
+                                                                                                                                                                                                                                                                                                class="pe-none w-75 text-center border-0 h4 m-0 c1 blv"
+                                                                                                                                                                                                                                                                                                value="攤位等級"></input><i
+                                                                                                                                                                                                                                                                                                class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button>
+                                                                                                                                                                                                                                                                                        <ul class="dropdown-menu ms-5 text-center p-0">
+                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h4 m-0" href="#">大型</a></li>
+                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h4 m-0" href="#">中型</a></li>
+                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h4 m-0" href="#">小型</a></li>
+                                                                                                                                                                                                                                                                                        </ul>
 
-                                                                                                                                                                                                                                        <h3 class="w-25 m-0"></h3>
-                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothPrice"
-                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
-                                                                                                                                                                                                                                                placeholder="輸入價格" type="number" autocomplete="off"></input></div>
-                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothsum"
-                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
-                                                                                                                                                                                                                                                placeholder="輸入數量" type="number" autocomplete="off"></input><i
-                                                                                                                                                                                                                                                class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
-                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                `)
+                                                                                                                                                                                                                                                                                        <h3 class="w-25 m-0"></h3>
+                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothPrice"
+                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
+                                                                                                                                                                                                                                                                                                placeholder="輸入價格" type="number" autocomplete="off"></input></div>
+                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothsum"
+                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
+                                                                                                                                                                                                                                                                                                placeholder="輸入數量" type="number" autocomplete="off"></input><i
+                                                                                                                                                                                                                                                                                                class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
+                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                `)
             i++
         })
 

@@ -126,6 +126,10 @@ namespace Fairy_project.Controllers
                 {
                     model.averageperson = totalperson / days;
                 }
+                else
+                {
+                    model.averageperson = 0;
+                }
                 List<Ticketss> tl = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).ToList();
                 //var t = from tl in _context.Ticketsses where tl.EId == exhibitId && tl.Enterstate == 1 && tl.Entertime. == DateTime.Now.AddDays(-1).Date select tl;
                 //t.Entertime == DateTime.Now.AddDays(-1).Date
