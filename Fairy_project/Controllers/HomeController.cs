@@ -170,26 +170,28 @@ public class HomeController : Controller
 
     public IActionResult search(int id = 1)
     {
-        var exhibitions = _context.Exhibitionsses.Where(m => m.ExhibitId > 0).ToList();
+        var exhibitions = _context.Exhibitionsses.Where(m => m.ExhibitStatus == 1).OrderBy(m => m.ExhibitId).ToList();
         IList<Exhibitionss> products = null;
 
         if (id == 1)
         {
             products = exhibitions.OrderBy(x => x.TicketPrice).ToList();
+            return View(products);
         }
         else if (id == 2)
         {
             products = exhibitions.OrderByDescending(x => x.TicketPrice).ToList();
+            return View(products);
         }
-
-        return View(products);
+        return View(exhibitions);
     }
 
     [HttpPost]
     public IActionResult search(string txtKeyword)
     {
         var exhibitions = _context.Exhibitionsses
-            .Where(m => m.ExhibitName.Contains(txtKeyword) || m.ExDescription.Contains(txtKeyword) && m.ExhibitStatus == 1)
+            .Where(m => m.ExhibitName.Contains(txtKeyword) && m.ExhibitStatus == 1)
+            .OrderBy(m => m.ExhibitId)
             .ToList();
         return View(exhibitions);
     }
