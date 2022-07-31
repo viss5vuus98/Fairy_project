@@ -24,6 +24,8 @@ namespace Fairy_project.Controllers
 
         public IActionResult ApplyStand(int boothId,int e_Id)
         {
+            var sss = boothId;
+            var aaa = e_Id;
             return View();
         }
         public IActionResult StandProcess()
