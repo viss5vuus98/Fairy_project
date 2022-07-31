@@ -188,6 +188,16 @@ button{
     justify-content: center;
 }
 
+.buttons a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#keepshop a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
 
 .form-group input {
     font-size: 20px;
@@ -247,9 +257,13 @@ button{
     }
 
     .btn1 {
-        width: 196px;
-        height: 34px;
         margin-bottom: 0px;
+    }
+
+    .buttons{
+        display: flex;
+        flex-wrap: nowrap;
+        flex-shrink: 1;
     }
 }
 
