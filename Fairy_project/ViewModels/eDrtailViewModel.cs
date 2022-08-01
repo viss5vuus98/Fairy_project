@@ -12,6 +12,7 @@ namespace Fairy_project.ViewModels
             get;
             set;
         }
+
         public Exhibitionss Exhibition
         {
             get;

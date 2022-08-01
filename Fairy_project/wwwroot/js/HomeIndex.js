@@ -22,7 +22,7 @@ const View = {
                 <div class="col-md-4 col-sm-6">
                 <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
                     <div class="img-wrapper">
-                        <img src="" class="img-fluid" alt="this is a title">
+                        <img src="${root}${data[i].exhibitPImg}" class="img-fluid" alt="this is a title">
                         <div class="overlay">
                             <div class="buttons">
                                 <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
