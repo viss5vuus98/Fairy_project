@@ -123,7 +123,6 @@ $(() => {
     li.click(function () {
         $($(this).find('a').attr("href")).show().siblings(".show-list").hide();
         $(this).addClass('active').siblings(".active").removeClass("active");
-        ul.css("transform", `translateX(0px)`)
     });
 });
 //攤位大小選擇顯示
