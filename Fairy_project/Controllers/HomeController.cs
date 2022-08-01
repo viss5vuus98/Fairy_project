@@ -187,13 +187,23 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult search(string txtKeyword)
+    public IActionResult search(string txtKeyword,string dtStart, string dtEnd)
     {
-        var exhibitions = _context.Exhibitionsses
+        if (string.IsNullOrEmpty(txtKeyword))
+        {
+            DateTime dateStart = Convert.ToDateTime(dtStart);
+            DateTime dateEnd = Convert.ToDateTime(dtEnd);
+            var exhibitions = _context.Exhibitionsses.Where(m => m.Datefrom > dateStart && m.Dateto < dateEnd && m.ExhibitStatus == 1);
+            return View(exhibitions);           
+        }
+        else
+        {
+            var exhibitions = _context.Exhibitionsses
             .Where(m => m.ExhibitName.Contains(txtKeyword) && m.ExhibitStatus == 1)
             .OrderBy(m => m.ExhibitId)
             .ToList();
-        return View(exhibitions);
+            return View(exhibitions);
+        }
     }
 
     //search exhibition date
