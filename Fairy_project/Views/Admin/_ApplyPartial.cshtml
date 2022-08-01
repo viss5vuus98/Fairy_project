@@ -8,15 +8,15 @@
                 <h3 class="w-25 m-0">@Model.applylist[i].manufactureName</h3>
                 <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
                 <h3 href="" class="w-25 m-0 border-0 text-reset bg2">
-                    <a href="" class="text-reset" data-bs-toggle="modal"
-               data-bs-target="#A_@Model.applylist[i].applyNum" data-bs-whatever="@@mdo">@Model.applylist[i].boothNumber</a>
+                    <a href="" class="text-reset" data-toggle="modal"
+               data-target="#A_@Model.applylist[i].applyNum" data-whatever="@@mdo">@Model.applylist[i].boothNumber</a>
                 </h3>
                 <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content bg2">
                             <div class="row mx-3">
-                                <div class="col-9">
+                                <div class="col-lg-9 col-md-12 col-12">
                                     <div class="d-flex justify-content-between pt-4">
                                         <h2 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h2>
 
@@ -40,7 +40,7 @@
                                         @Model.applylist[i].mf_Description
                                     </p>
                                 </div>
-                                <div class="col-3 d-flex flex-column justify-content-center">
+                                <div class="col-lg-3 col-md-12 col-12 d-flex flex-column justify-content-center">
                                     <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
                                     <h4 class="my-2">@Model.applylist[i].manufactureName</h4>
                                     <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
@@ -78,8 +78,8 @@
                                 {
                                     <hr>
                                     <div class="row justify-content-around align-items-center my-3">
-                                        <h4 class="col-4">匯款日期：2022 / 7 / 26</h4>
-                                        <h4 class="col-4"> 匯款末五碼：12345</h4>
+                                        <h4 class="col-lg-4 col-12">匯款日期：2022 / 7 / 26</h4>
+                                        <h4 class="col-lg-4 col-12"> 匯款末五碼：12345</h4>
                                         <i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-bum="@Model.applylist[i].boothNumber">
                                             <span class="h5 fw-bolder">對帳</span>
                                         </i>
@@ -89,9 +89,9 @@
                                 {
                                     <hr>
                                     <div class="row justify-content-around align-items-center my-3">
-                                        <h4 class="col-4">匯款日期：2022 / 7 / 26</h4>
-                                        <h4 class="col-4"> 匯款末五碼：12345</h4>
-                                        <i class="col-2 my-3 fa-regular fa-square-check fa-4x pe-none" data-bum="@Model.applylist[i].boothNumber">
+                                        <h4 class="col-lg-4 col-12">匯款日期：2022 / 7 / 26</h4>
+                                        <h4 class="col-lg-4 col-12"> 匯款末五碼：12345</h4>
+                                        <i class="col-lg-2 col-12 my-3 fa-regular fa-square-check fa-4x pe-none" data-bum="@Model.applylist[i].boothNumber">
                                             <span class="h5 fw-bolder">對帳</span>
                                         </i>
                                     </div>                                    

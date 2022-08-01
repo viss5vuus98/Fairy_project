@@ -283,7 +283,7 @@
                                 <h2 class="mb-0">
                                     <div class="d-flex justify-content-between">
                                         <h2 class="m-0 px-3 my-3">售票額</h2>
-                                        <div class="d-flex align-items-center w-25  justify-content-end">
+                                        <div class="d-flex align-items-center w-75 w-lg-25  justify-content-end">
                                             <span id="applysum" class="h4">@Model.soldsum / NT </span>
                                             <span id="applysumprice" class="h4 text-success">$ @Model.soldprice</span>
                                             <button type="button" data-toggle="collapse"
@@ -358,8 +358,8 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="col-12 d-flex justify-content-around align-items-center my-2 fs-5">
-                                        <div class="input-group col-3">
+                                    <div class="col-12 d-flex flex-wrap justify-content-around align-items-center my-2 fs-5">
+                                        <div class="input-group col-lg-3 col-md-4 col-12">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="">門票定價</span>
                                             </div>
@@ -368,29 +368,31 @@
                                                value="200$" readonly>
                                         </div>
 
+                                        <div class="col-lg-9 col-md-8 col-12 my-3 d-flex">
+                                            <div class="form-group d-flex align-items-center w-50 m-0">
+                                                自<select class="form-control rounded-0 bg-light mx-2" id="searchdatefrom">
+                                                    @{
+                                                        for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
+                                                        {
+                                                            <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div class="form-group d-flex align-items-center w-50 m-0">
+                                                到<select class="form-control rounded-0 bg-light mx-2" id="searchdateto">
+                                                    @{
+                                                        for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
+                                                        {
+                                                            <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                            <i id="searchticketreport"
+                                           class="fa-solid fa-magnifying-glass opacity-75 col-xs-12 fa-xl p-0 mt-4"></i>
 
-                                        <div class="form-group col-3 d-flex align-items-center m-0">
-                                            自<select class="form-control rounded-0 bg-light mx-2" id="searchdatefrom">
-                                                @{
-                                                    for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
-                                                    {
-                                                        <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
-                                                    }
-                                                }
-                                            </select>
                                         </div>
-                                        <div class="form-group col-3 d-flex align-items-center  m-0">
-                                            到<select class="form-control rounded-0 bg-light mx-2" id="searchdateto">
-                                                @{
-                                                    for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
-                                                    {
-                                                        <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
-                                                    }
-                                                }
-                                            </select>
-                                        </div>
-                                        <i id="searchticketreport"
-                                       class="fa-solid fa-magnifying-glass opacity-75 fa-xl p-0"></i>
                                     </div>
                                     <div class="col-11 my-3">
                                         <canvas id="myChart"></canvas>
@@ -496,7 +498,7 @@
                                 <h2 class="mb-0">
                                     <div class="d-flex justify-content-between">
                                         <h2 class="m-0 px-3 my-3">承租額</h2>
-                                        <div class="d-flex align-items-center w-25  justify-content-end">
+                                        <div class="d-flex align-items-center w-75 w-lg-25 justify-content-end">
                                             <span id="applysum" class="h4">@Model.applysum / NT </span>
                                             <span id="applysumprice" class="h4 text-success">$ @Model.applysumprice</span>
                                             <button type="button" data-toggle="collapse"
@@ -1290,30 +1292,30 @@
         $('#addbooth').on('click', (e) => {
             e.preventDefault();
             $(e.target).closest('div').before(`<div
-                                                                                                                                                                                                                                                                                        class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
-                                                                                                                                                                                                                                                                                        <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
-                                                                                                                                                                                                                                                                                            data-toggle="dropdown" aria-expanded="false"><input
-                                                                                                                                                                                                                                                                                                name="setboothslist[${i}].boothLv"
-                                                                                                                                                                                                                                                                                                class="pe-none w-75 text-center border-0 h4 m-0 c1 blv"
-                                                                                                                                                                                                                                                                                                value="攤位等級"></input><i
-                                                                                                                                                                                                                                                                                                class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button>
-                                                                                                                                                                                                                                                                                        <ul class="dropdown-menu ms-5 text-center p-0">
-                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h4 m-0" href="#">大型</a></li>
-                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h4 m-0" href="#">中型</a></li>
-                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h4 m-0" href="#">小型</a></li>
-                                                                                                                                                                                                                                                                                        </ul>
+                                                                                                                                                                                                                                                                                                                class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
+                                                                                                                                                                                                                                                                                                                <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
+                                                                                                                                                                                                                                                                                                                    data-toggle="dropdown" aria-expanded="false"><input
+                                                                                                                                                                                                                                                                                                                        name="setboothslist[${i}].boothLv"
+                                                                                                                                                                                                                                                                                                                        class="pe-none w-75 text-center border-0 h4 m-0 c1 blv"
+                                                                                                                                                                                                                                                                                                                        value="攤位等級"></input><i
+                                                                                                                                                                                                                                                                                                                        class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button>
+                                                                                                                                                                                                                                                                                                                <ul class="dropdown-menu ms-5 text-center p-0">
+                                                                                                                                                                                                                                                                                                                    <li><a class="dropdown-item h4 m-0" href="#">大型</a></li>
+                                                                                                                                                                                                                                                                                                                    <li><a class="dropdown-item h4 m-0" href="#">中型</a></li>
+                                                                                                                                                                                                                                                                                                                    <li><a class="dropdown-item h4 m-0" href="#">小型</a></li>
+                                                                                                                                                                                                                                                                                                                </ul>
 
-                                                                                                                                                                                                                                                                                        <h3 class="w-25 m-0"></h3>
-                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothPrice"
-                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
-                                                                                                                                                                                                                                                                                                placeholder="輸入價格" type="number" autocomplete="off"></input></div>
-                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothsum"
-                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
-                                                                                                                                                                                                                                                                                                placeholder="輸入數量" type="number" autocomplete="off"></input><i
-                                                                                                                                                                                                                                                                                                class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
-                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                `)
+                                                                                                                                                                                                                                                                                                                <h3 class="w-25 m-0"></h3>
+                                                                                                                                                                                                                                                                                                                <div class="w-25"><input name="setboothslist[${i}].boothPrice"
+                                                                                                                                                                                                                                                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
+                                                                                                                                                                                                                                                                                                                        placeholder="輸入價格" type="number" autocomplete="off"></input></div>
+                                                                                                                                                                                                                                                                                                                <div class="w-25"><input name="setboothslist[${i}].boothsum"
+                                                                                                                                                                                                                                                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
+                                                                                                                                                                                                                                                                                                                        placeholder="輸入數量" type="number" autocomplete="off"></input><i
+                                                                                                                                                                                                                                                                                                                        class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
+                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                        `)
             i++
         })
 
