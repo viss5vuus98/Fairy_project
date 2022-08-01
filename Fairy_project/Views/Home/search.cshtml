@@ -9,6 +9,19 @@
     font-weight: 900;
 }
 
+.H3-TEXT {
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    white-space : nowrap;
+    text-overflow: ellipsis;
+   /* display: -webkit-box;
+    display: -webkit-box-orient;*/
+    
+    max-height:33.11px;
+    min-height:33.11px;
+
+}
+
 /*.card {
   min-height: 100%;
   background: white;
@@ -83,7 +96,9 @@
                         <a href="#" class="btn btn-dark stretched-link">詳細資訊</a>
                     </div>
                 </div>*@
+                
                 <div class="col-md-4 col-sm-6" style="margin-top:30px;">
+                    <div class="products d-flex flex-column card-0">
                 <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
                     <div class="img-wrapper">
                         <img src="@Url.Content("~/images/")@item.ExhibitPImg" class="img-fluid" alt="this is a title">
@@ -96,17 +111,18 @@
                     </div>
                     <figcaption>
                         <h4>
-                            <a href="#" class="flex-grow-1">
+                            <a href="#" class="H3-TEXT" style="display:block;">
                                 @item.ExhibitName
                             </a>
                         </h4>
-                        <p class="card-text">@item.Datefrom~@item.Dateto</p>
+                        <p class="card-text">@item.Datefrom.ToString("yyyy/MM/dd")~@item.Dateto.ToString("yyyy/MM/dd")</p>
                         <p>單價：@item.TicketPrice</p>
                         @*<p class="card_description">
                             @item.ExDescription
                         </p>*@
                     </figcaption>
                 </figure>
+                </div>
             </div>
             }
         </div>
