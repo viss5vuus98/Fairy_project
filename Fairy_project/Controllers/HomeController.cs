@@ -35,14 +35,14 @@ public class HomeController : Controller
     {
         return View();
     }
-    [Route("Home/exhibitionDetail/{exhibitId}")]
+    [Route("Home/exhibitionDetail")]
     public IActionResult exhibitionDetail(string exhibitId)
     {
 
-        var id = Convert.ToInt32(exhibitId);
+        //var id = Convert.ToInt32(exhibitId);
         //eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
         //{
-        var exhibition = _context.Exhibitionsses.First(m => m.ExhibitId == id);
+        //var exhibition = _context.Exhibitionsses.First(m => m.ExhibitId == id);
         //};
 
 
@@ -54,7 +54,7 @@ public class HomeController : Controller
         //    return View();
         //}
         //IList<eDrtailViewModel> manufactures = _context.boothMaps.OrderBy(m => m).Take(3);
-        return View(exhibition);
+        return View();
     }
 
     public ActionResult GetData()

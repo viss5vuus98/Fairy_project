@@ -1,38 +1,170 @@
 ﻿@*@model Fairy_project.Models.Exhibition;*@
 @*@model Fairy_project.ViewModels.eDrtailViewModel;*@
 @{
+    Layout = "_LayoutB5";
+}
+@*@{
     ViewData["Title"] = "Privacy Policy";
 
-}
+}*@
 @section Style
 {
     <link rel="stylesheet" href="~/css/exhibitionDetil.css" asp-append-version="true" />
 }
-<section class="exhibition">
-    <div class="exhibition_poster"><img src="" alt=""></div>
-    @*ToDo:資料庫圖片有問題*@
-    <div class="more">down</div>
-    <div class="exhibition_info">
-        <h3 class="exhibition_info_title">@Model.Exhibition.exhibitName</h3>
-        <p class="exhibition_info_date">@String.Format($"{@Model.Exhibition.datefrom:yyyy/MM/dd}")</p>
-        <hr>
-        <p>@Model.Exhibition.ex_Description</p>
-        @*ToDo:展覽描述*@
-        <div class="exhibition_info_btn">
-            <button class="btn btn_buy btn_cart" data-id="@Model.Exhibition.exhibitId">購票</button>
+<section class="main mb-5">
+    <div class="container">
+        <div class="row main_content">
+            <div class="left-content col-xl-9 col-lg-7">
+                <h3 class="exhibit_tiltle">新創生活展</h3>
+                <div class="exhibit_image">
+                    <img src="https://apis.kecc.com.tw/project/kecc/common/uploads/11/SLLS-web_banners_800x600.jpg"
+                         class=".img-fluid img-thumbnail" alt="展覽圖片">
+                </div>
+            </div>
+            <div class="right-content col-xl-3 col-lg-5 mb-lg-3">
+                <h4 class="content_title">活動資訊</h4>
+                <hr>
+                <div class="date_time mb-lg-3">
+                    <h4>時間</h4>
+                    <span class="date_start">2022-08-19</span>~<span class="date_end">2022-08-21</span>
+                </div>
+                <hr>
+                <div class="place mb-lg-3">
+                    <h4>展場位置</h4>
+                    <span class="inner_place">A</span><span>館</span>
+                </div>
+                <hr>
+                <div class="description">
+                    <h4>展覽詳細</h4>
+                    <p class="inner_description">
+                        新創生活展將重新定義有品味又獨具個人風格的生活態度，從經濟、消費、美學到設計，打造成獨特的互動模式，透過參觀實踐生活美學。所有類型展商都是經過精挑細選展現獨特觀點的商品介紹模式，形塑成可以自在認識頂尖生活美學與達人的場域，讓新創生活展成為新生活品味的交流中心。
+                    </p>
+                </div>
+                <hr>
+                <div class="price">
+                    <h4>購買票券</h4>
+                    <p>
+                        <span>票價： </span><span class="inner_price">200</span><span>NT</span>
+                    </p>
+                    <div>
+                        <a href="#" class="btn btn-main btn-small">加入購物車</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+<section class="cards">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-3 col-sm-8">
+                <figure class="wow fadeInLeft animated animated" data-wow-duration="500ms" data-wow-delay="300ms"
+                        style="visibility: visible; animation-duration: 500ms; animation-delay: 300ms; animation-name: fadeInLeft;">
+                    <div class="img-wrapper">
+                        <img src="https://apis.kecc.com.tw/project/kecc/common/uploads/11/thumbnail/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96_m.jpg
+" class="img-responsive" alt="this is a title">
+                        <div class="overlay">
+                            <div class="buttons">
+                                <a rel="gallery" class="fancybox" href="https://apis.kecc.com.tw/project/kecc/common/uploads/11/thumbnail/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96_m.jpg
+">Demo</a>
+                                <a target="_blank" href="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <h4>
+                            <a href="#">
+                                Bottle Mockup
+                            </a>
+                        </h4>
+                        <p>
+                            Lorem ipsum dolor sit.
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-lg-3 col-sm-8">
+                <figure class="wow fadeInLeft animated animated" data-wow-duration="500ms" data-wow-delay="300ms"
+                        style="visibility: visible; animation-duration: 500ms; animation-delay: 300ms; animation-name: fadeInLeft;">
+                    <div class="img-wrapper">
+                        <img src="https://apis.kecc.com.tw/project/kecc/common/uploads/11/thumbnail/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96_m.jpg
+" class="img-responsive" alt="this is a title">
+                        <div class="overlay">
+                            <div class="buttons">
+                                <a rel="gallery" class="fancybox" href="https://apis.kecc.com.tw/project/kecc/common/uploads/11/thumbnail/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96_m.jpg
+">Demo</a>
+                                <a target="_blank" href="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <h4>
+                            <a href="#">
+                                Bottle Mockup
+                            </a>
+                        </h4>
+                        <p>
+                            Lorem ipsum dolor sit.
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-lg-3 col-sm-8">
+                <figure class="wow fadeInLeft animated animated" data-wow-duration="500ms" data-wow-delay="300ms"
+                        style="visibility: visible; animation-duration: 500ms; animation-delay: 300ms; animation-name: fadeInLeft;">
+                    <div class="img-wrapper">
+                        <img src="https://apis.kecc.com.tw/project/kecc/common/uploads/11/thumbnail/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96_m.jpg
+" class="img-responsive" alt="this is a title">
+                        <div class="overlay">
+                            <div class="buttons">
+                                <a rel="gallery" class="fancybox" href="https://apis.kecc.com.tw/project/kecc/common/uploads/11/thumbnail/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96/Meet%E5%A4%A7%E5%8D%97%E6%96%B9-%E5%AE%98%E7%B6%B2%E5%9C%96_m.jpg
+">Demo</a>
+                                <a target="_blank" href="">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <h4>
+                            <a href="#">
+                                Bottle Mockup
+                            </a>
+                        </h4>
+                        <p>
+                            Lorem ipsum dolor sit.
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</section>
+<!--<section class="exhibition">
+    <div class="exhibition_poster"><img src="" alt=""></div>-->
+@*ToDo:資料庫圖片有問題*@
+<!--<div class="more">down</div>
+<div class="exhibition_info">
+    <h3 class="exhibition_info_title"></h3>
+    <p class="exhibition_info_date"></p>
+    <hr>
+    <p></p>-->
+@*ToDo:展覽描述*@
+<!--<div class="exhibition_info_btn">
+            <button class="btn btn_buy btn_cart" data-id="">購票</button>
+        </div>
+    </div>
+</section>-->
 @*VM or Js*@
-<div class="store-section">
+<!--<div class="store-section">
     <h3 class="store_title">參展廠商</h3>
     <div class="card-content">
         <div class="cards">
             <div class="card store_cards_card border-0">
                 <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" class="card-img-top" alt="...">
-                <div class="card-body">
-                    @*<p class="card-text">@Model.Manufactures</p>*@
-                </div>
+                <div class="card-body">-->
+@*<p class="card-text">@Model.Manufactures</p>*@
+<!--</div>
             </div>
             <div class="card store_cards_card border-0">
                 <img src="https://images.unsplash.com/photo-1578763727915-a976fa77f8c4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=938&q=80" class="card-img-top" alt="...">
@@ -48,9 +180,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 @*VM or Js*@
-<section class="recommend">
+<!--<section class="recommend">
     <div class="left_container">
     </div>
     <div class="right_container">
@@ -58,4 +190,4 @@
         <div class="recommendMore"></div>
     </div>
 </section>
-<script src="~/js/eDetail.js" asp-append-version="true"></script>
+<script src="~/js/eDetail.js" asp-append-version="true"></script>-->
