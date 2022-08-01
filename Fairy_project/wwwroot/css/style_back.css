@@ -11509,7 +11509,7 @@ p {
   font-size: 0.98rem;
 }
 
-::-moz-selection {
+/*::-moz-selection {
   background-color: #9e6de0;
   color: #ffffff;
 }
@@ -11517,7 +11517,7 @@ p {
 ::selection {
   background-color: #9e6de0;
   color: #ffffff;
-}
+}*/
 
 button,
 a {

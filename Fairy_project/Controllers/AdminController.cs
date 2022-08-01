@@ -20,7 +20,7 @@ namespace Fairy_project.Controllers
             _context = context;
         }
         // GET: AdminController
-        public IActionResult Master()
+        public IActionResult Index()
         {
             foreach (var exhibition in _context.Exhibitionsses)
             {
@@ -251,7 +251,7 @@ namespace Fairy_project.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Master");
+            return RedirectToAction("Index");
         }
 
 
@@ -341,7 +341,7 @@ namespace Fairy_project.Controllers
 
             }
             await _context.SaveChangesAsync();
-            return RedirectToAction("Master");
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> ChangeExhibitState(int exhibitId)
@@ -350,7 +350,7 @@ namespace Fairy_project.Controllers
             Exhibitionss exhibition = e.FirstOrDefault();
             exhibition.ExhibitStatus = 2;
             await _context.SaveChangesAsync();
-            return RedirectToAction("Master");
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> DeleteExhibition(int exhibitId)
@@ -365,7 +365,7 @@ namespace Fairy_project.Controllers
                 }
             }
             await _context.SaveChangesAsync();
-            return RedirectToAction("Master");
+            return RedirectToAction("Index");
         }
 
         public IActionResult _ApplyPartial_Search(int exhibitId, int? b_num, int? checkstate, int? offset, int? status)
