@@ -363,22 +363,7 @@ textarea {
         background-color: #cfad8e;
     }
 
-.btnBoothLv {
-    width: auto;
-    color: #3b3131;
-    padding: 0.5rem 1rem;
-    background-color: #e6d4c4;
-}
 
-    .btnBoothLv:hover {
-        color: #3b3131;
-        border: solid 5px rgb(230,212,196,0.5);
-    }
-
-    .btnBoothLv:active, .btnBoothLv:focus {
-        color: #3b3131;
-        background-color: #cfad8e;
-    }
 
 ul#train {
     padding: 0;

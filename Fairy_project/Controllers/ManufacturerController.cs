@@ -16,7 +16,7 @@ namespace Fairy_project.Controllers
         {
             return View();
         }
-         public IActionResult IndexNew()
+         public IActionResult IndexOld()
         {
             return View();
         }
@@ -26,10 +26,11 @@ namespace Fairy_project.Controllers
             return View();
         }
 
-        public IActionResult ApplyStand(int boothId,int e_Id)
+        public IActionResult ApplyStand(string boothId, string e_Id, string mid)
         {
             ViewBag.BId = boothId;
             ViewBag.EId = e_Id;
+            ViewBag.MId = mid;
             return View();
         }
         public IActionResult StandProcess()

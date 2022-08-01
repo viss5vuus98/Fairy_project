@@ -116,7 +116,7 @@ input[type=tel]:focus {
   outline: 0;
 }
 
-.btn-main, .btn-small, .btn-transparent {
+.btn-main , .btn-small, .btn-transparent {
   background: #655E7A;
   color: #fff;
   display: inline-block;
@@ -127,11 +127,15 @@ input[type=tel]:focus {
   border-radius: 0;
   transition: all 0.2s ease;
 }
-.btn-main.btn-icon i, .btn-icon.btn-small i, .btn-icon.btn-transparent i {
-  font-size: 16px;
-  vertical-align: middle;
-  margin-right: 5px;
-}
+    .btn-main a {
+        color: #fff;
+        text-decoration:none;
+    }
+    .btn-main.btn-icon i, .btn-icon.btn-small i, .btn-icon.btn-transparent i {
+        font-size: 16px;
+        vertical-align: middle;
+        margin-right: 5px;
+    }
 .btn-main:hover, .btn-small:hover, .btn-transparent:hover {
   background: #353240;
   color: #fff;
@@ -2160,6 +2164,31 @@ ul.dropdown-menu li {
   background: #655E7A;
   border: 1px solid #655E7A;
 }
+.widget.widget-tag ul li.active a{
+        color: #fff;
+        background: #655E7A;
+        border: 1px solid #655E7A;
+}
+    .widget.widget-tag ul li button{
+        color: #837f7e;
+        display: inline-block;
+        padding: 8px 15px;
+        border: 1px solid #dedede;
+        border-radius: 30px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+    .widget.widget-tag ul li button:hover {
+        color: #fff;
+        background: #655E7A;
+        border: 1px solid #655E7A;
+    }
+
+.widget.widget-tag ul li.active button{
+        color: #fff;
+        background: #655E7A;
+        border: 1px solid #655E7A;
+}
 
 /*=================================================================
   Latest Posts
@@ -2650,13 +2679,25 @@ ul.dropdown-menu li {
   transition: 0.3s;
   display: none;
 }
+.showsize {
+    width: 380px;
+    height: 312px;
+}
 @media (max-width: 480px) {
   .scroll-to-top {
     bottom: 15px;
     right: 15px;
   }
+    .showsize {
+        width: 280px;
+        height: 280px;
+    }
 }
 .scroll-to-top:hover {
   background-color: #333;
 }
+ul{
+   list-style:none;
+}
 /*# sourceMappingURL=style.css.map */
+
