@@ -41,12 +41,23 @@
                                     </p>
                                 </div>
                                 <div class="col-lg-3 col-md-12 col-12 d-flex flex-column justify-content-center">
-                                    <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
-                                    <h5 class="my-2">@Model.applylist[i].manufactureName</h5>
-                                    <h5 class="my-2">負責人：@Model.applylist[i].mfPerson</h5>
-                                    <h5 class="my-2">統編：@Model.applylist[i].manufactureAcc</h5>
-                                    <h5 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h5>
-                                    <div class="d-flex h-25 justify-content-around align-items-center mt-5 my-3">
+                                    <img class="w-75 my-3 rounded-circle border border-1 align-self-center" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
+
+                                    <ul class="list-group my-3">
+                                        <li class="list-group-item" aria-disabled="true">@Model.applylist[i].manufactureName</li>
+                                        <li class="list-group-item">負責人：@Model.applylist[i].mfPerson</li>
+                                        <li class="list-group-item">統編：@Model.applylist[i].manufactureAcc</li>
+                                        <li class="list-group-item">TEL：@Model.applylist[i].mfPhoneNum</li>
+                                    </ul>
+
+                                    @*<div class="d-flex flex-column my-3">
+                                        <h5 class="my-2">@Model.applylist[i].manufactureName</h5>
+                                        <h5 class="my-2">負責人：@Model.applylist[i].mfPerson</h5>
+                                        <h5 class="my-2">統編：@Model.applylist[i].manufactureAcc</h5>
+                                        <h5 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h5>
+                                    </div>*@
+
+                                    <div class="d-flex h-25 justify-content-around align-items-center">
 
                                         @{
                                             if (Model.applylist[i].checkState == 0)
@@ -85,7 +96,7 @@
                                         </i>
                                     </div>
                                 }
-                                if(Model.applylist[i].checkState == 2)
+                                if (Model.applylist[i].checkState == 2)
                                 {
                                     <hr>
                                     <div class="row justify-content-around align-items-center my-3">
@@ -94,7 +105,7 @@
                                         <i class="col-lg-2 col-12 my-3 fa-regular fa-square-check fa-3x pe-none" data-bum="@Model.applylist[i].boothNumber">
                                             <span class="h5 fw-bolder">對帳</span>
                                         </i>
-                                    </div>                                    
+                                    </div>
                                 }
                             }
                         </div>
