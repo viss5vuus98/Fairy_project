@@ -100,7 +100,20 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+#expecteincome:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
 
+#expectedpeople:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+#ticketpriceinput:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
 
 #manufacturerreport ul li a:active {
     background-color: #B6B6B4;

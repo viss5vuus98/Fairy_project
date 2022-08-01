@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <div class="d-flex justify-content-around align-items-center my-2">
+                        <div class="d-flex justify-content-between align-items-center my-2">
                             <h2 class="m-0">@item.ExhibitName</h2>
                             @if (item.ExhibitStatus == 1)
                             {
@@ -75,6 +75,7 @@
                                 <span class="mx-3 badge bg-success text-dark fs-6 fw-normal h-25">舉辦</span>
                             }
                         </div>
+                        <p>@date</p>
                         <p>@item.ExDescription</p>
                     </div>
                 </div>

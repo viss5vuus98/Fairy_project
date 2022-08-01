@@ -5,12 +5,12 @@
         for (int i = 0; i < Model.applylist.Count; i++)
         {
             <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 border border-1 bg2 apply">
-                <h3 class="w-25 m-0">@Model.applylist[i].manufactureName</h3>
-                <h3 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h3>
-                <h3 href="" class="w-25 m-0 border-0 text-reset bg2">
+                <h4 class="w-25 m-0 ">@Model.applylist[i].manufactureName</h4>
+                <h4 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h4>
+                <h4 href="" class="w-25 m-0 border-0 text-reset bg2">
                     <a href="" class="text-reset" data-toggle="modal"
                data-target="#A_@Model.applylist[i].applyNum" data-whatever="@@mdo">@Model.applylist[i].boothNumber</a>
-                </h3>
+                </h4>
                 <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
                     <div class="modal-dialog modal-xl">
@@ -18,7 +18,7 @@
                             <div class="row mx-3">
                                 <div class="col-lg-9 col-md-12 col-12">
                                     <div class="d-flex justify-content-between pt-4">
-                                        <h2 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h2>
+                                        <h3 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h3>
 
                                         @{
                                             if (Model.applylist[i].boothLv == 3)
@@ -42,18 +42,18 @@
                                 </div>
                                 <div class="col-lg-3 col-md-12 col-12 d-flex flex-column justify-content-center">
                                     <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
-                                    <h4 class="my-2">@Model.applylist[i].manufactureName</h4>
-                                    <h4 class="my-2">負責人：@Model.applylist[i].mfPerson</h4>
-                                    <h4 class="my-2">統編：@Model.applylist[i].manufactureAcc</h4>
-                                    <h4 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h4>
+                                    <h5 class="my-2">@Model.applylist[i].manufactureName</h5>
+                                    <h5 class="my-2">負責人：@Model.applylist[i].mfPerson</h5>
+                                    <h5 class="my-2">統編：@Model.applylist[i].manufactureAcc</h5>
+                                    <h5 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h5>
                                     <div class="d-flex h-25 justify-content-around align-items-center mt-5 my-3">
 
                                         @{
                                             if (Model.applylist[i].checkState == 0)
                                             {
-                                                <i class="my-3 fa-regular fa-circle-check fa-4x text-success checkmao" data-bum="@Model.applylist[i].boothNumber">
+                                                <i class="my-3 fa-regular fa-circle-check fa-3x text-success checkmao" data-bum="@Model.applylist[i].boothNumber">
                                                 </i>
-                                                <i href="" class="my-3 fa-regular fa-circle-xmark fa-4x text-danger checkmax" data-bum="@Model.applylist[i].boothNumber"></i>
+                                                <i href="" class="my-3 fa-regular fa-circle-xmark fa-3x text-danger checkmax" data-bum="@Model.applylist[i].boothNumber"></i>
                                             }
                                             else if (Model.applylist[i].checkState == 1 || Model.applylist[i].checkState == 2)
                                             {
@@ -78,8 +78,8 @@
                                 {
                                     <hr>
                                     <div class="row justify-content-around align-items-center my-3">
-                                        <h4 class="col-lg-4 col-12">匯款日期：2022 / 7 / 26</h4>
-                                        <h4 class="col-lg-4 col-12"> 匯款末五碼：12345</h4>
+                                        <h5 class="col-lg-4 col-12">匯款日期：2022 / 7 / 26</h5>
+                                        <h5 class="col-lg-4 col-12"> 匯款末五碼：12345</h5>
                                         <i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-bum="@Model.applylist[i].boothNumber">
                                             <span class="h5 fw-bolder">對帳</span>
                                         </i>
@@ -89,9 +89,9 @@
                                 {
                                     <hr>
                                     <div class="row justify-content-around align-items-center my-3">
-                                        <h4 class="col-lg-4 col-12">匯款日期：2022 / 7 / 26</h4>
-                                        <h4 class="col-lg-4 col-12"> 匯款末五碼：12345</h4>
-                                        <i class="col-lg-2 col-12 my-3 fa-regular fa-square-check fa-4x pe-none" data-bum="@Model.applylist[i].boothNumber">
+                                        <h5 class="col-lg-4 col-12">匯款日期：2022 / 7 / 26</h5>
+                                        <h5 class="col-lg-4 col-12"> 匯款末五碼：12345</h5>
+                                        <i class="col-lg-2 col-12 my-3 fa-regular fa-square-check fa-3x pe-none" data-bum="@Model.applylist[i].boothNumber">
                                             <span class="h5 fw-bolder">對帳</span>
                                         </i>
                                     </div>                                    
@@ -104,19 +104,19 @@
                 @{
                     if (Model.applylist[i].checkState == 0)
                     {
-                        <h3 class="w-25 m-0 text-warning">待審核</h3>
+                        <h4 class="w-25 m-0 text-warning">待審核</h4>
                     }
                     else if (Model.applylist[i].checkState == 1)
                     {
-                        <h3 class="w-25 m-0 text-danger">尚未付款</h3>
+                        <h4 class="w-25 m-0 text-danger">尚未付款</h4>
                     }
                     else if (Model.applylist[i].checkState == 2)
                     {
-                        <h3 class="w-25 m-0 text-success">已付款</h3>
+                        <h4 class="w-25 m-0 text-success">已付款</h4>
                     }
                     else if (Model.applylist[i].checkState == 3)
                     {
-                        <h3 class="w-25 m-0 text-secondary">未通過</h3>
+                        <h4 class="w-25 m-0 text-secondary">未通過</h4>
                     }
                 }
             </div>
@@ -125,27 +125,16 @@
 
 
         <div class="d-flex justify-content-around w-100">
-            <div class="col-lg-2 col-sm-1 col-1 text-start my-3 mx-2">
-                <a href="" class="text-reset p-0 my-3">
-                    <i class="fa-solid fa-chevron-left opacity-75 fa-2x p-0"></i>
-                </a>
-            </div>
-
-            <ul id="pagelist" class="col-lg-7 col-sm-8 col-8 d-flex list-unstyled justify-content-center align-items-center text-center m-0">
+            <ul id="pagelist" class="col-lg-10 col-sm-8 col-8 d-flex list-unstyled justify-content-center align-items-center text-center m-0 my-3">
                 @{
                     int page = 1;
                     for (int i = 0; i < Model.applysum; i += 10)
                     {
-                        <li><a class="btn border-0 fs-4 px-lg-3 mx-lg-3 mx-sm-1 rounded-pill bg1 page">@Html.Raw(page)</a></li>
+                        <li><a class="btn border-0 fs-4 px-lg-3 mx-lg-2 mx-sm-1 rounded-pill bg1 page">@Html.Raw(page)</a></li>
                         page++;
                     }
                 }
             </ul>
-            <div class="col-lg-2 col-sm-1 col-1 text-end my-3 mx-2">
-                <a href="" class="text-reset p-0 my-3">
-                    <i class="fa-solid fa-chevron-right opacity-75 fa-2x p-0"></i>
-                </a>
-            </div>
         </div>
     }
 

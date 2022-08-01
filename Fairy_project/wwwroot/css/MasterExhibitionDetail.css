@@ -39,10 +39,6 @@ input[type="datetime-local"]:focus {
     box-shadow: none;
 }
 
-#ticketpriceinput:focus {
-    border-color: rgb(222, 226, 230);
-    box-shadow: none;
-}
 
 #contentinput {
     resize: none;
@@ -68,6 +64,18 @@ label {
 
 input {
     outline: none;
+}
+#expecteincome:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+#expectedpeople:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+#ticketpriceinput:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
 }
 
 select{

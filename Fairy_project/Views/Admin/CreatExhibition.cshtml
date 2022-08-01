@@ -19,21 +19,21 @@
                                class="fa-regular fa-pen-to-square opacity-75 fa-xl text-center"></i>
                         </label>
                     </div>
-                    <input asp-for="exhibitName" id="titleinput" type="text" class="form-control text-center" placeholder="展覽標題"
+                    <input asp-for="exhibitName" id="titleinput" type="text" class="fs-3 form-control text-center" placeholder="展覽標題"
                            aria-label="Username" aria-describedby="basic-addon1" autocomplete="off">
                 </div>
             </div>
-            <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-dark py-3 fs-5">規劃</span>
+            <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-dark py-3 fs-6">規劃</span>
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12 col-12 my-5">
                 <div id="areaedit" class="d-flex justify-content-center align-items-end">
-                    <h2 class="">
+                    <h5 class="">
                         No.
                         <input asp-for="exhibitId" class="h2 pe-none border-0 w-50" value="" readonly>
-                    </h2>
+                    </h5>
                     <div class="dropdown d-inline-block mb-1">
-                        <button class="btn btn-outline-dark border btn-lg dropdown-toggle" type="button"
+                        <button class="fs-6 btn btn-outline-dark border btn-lg dropdown-toggle" type="button"
                                 id="selecarea" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                 data-display="static">
                             展區
@@ -81,22 +81,22 @@
             <div class="col-lg-6 col-sm-12 col-12 fs-1 px-0 pe-xl-2 pe-0 text-center">
                 <div class="input-group input-group-lg">
                     <div class="input-group-prepend">
-                        <label class="input-group-text mdi mdi-account" for="datefrom">
+                        <label class="input-group-text mdi mdi-account fs-6" for="datefrom">
                             起始日期
                         </label>
                     </div>
-                    <input id="datefrom" type="datetime-local" class="form-control" placeholder="Username"
+                    <input id="datefrom" type="datetime-local" class="fs-6 form-control" placeholder="Username"
                            aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12 col-12 px-0 fs-1 px-0 ps-xl-2 ps-0 text-center">
                 <div class="input-group input-group-lg">
                     <div class="input-group-prepend">
-                        <label class="input-group-text mdi mdi-account" for="dateto">
+                        <label class="input-group-text mdi mdi-account fs-6" for="dateto">
                             結束日期
                         </label>
                     </div>
-                    <input id="dateto" type="datetime-local" class="form-control" placeholder="Username"
+                    <input id="dateto" type="datetime-local" class="fs-6 form-control" placeholder="Username"
                            aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </div>
@@ -104,10 +104,10 @@
         <div class="row align-items-center my-3 bg-light">
             <div class="col-12 rounded-3 position-relative text-center border p-0">
                 <textarea asp-for="ex_description" id="contentinput"
-                          class="col-11 h3 rounded-3 border-0 my-5" rows="15" placeholder="輸入詳細"
+                          class="col-11 h5 rounded-3 border-0 my-5" rows="15" placeholder="輸入詳細"
                           autocomplete="off" readonly></textarea>
                 <i id="editcontent"
-                   class="fa-regular fa-pen-to-square fa-3x m-2 p-2 rounded-3 opacity-75 position-absolute bottom-0 end-0"
+                   class="fa-regular fa-pen-to-square fa-2x m-2 p-2 rounded-3 opacity-75 position-absolute bottom-0 end-0"
                    href="#"></i>
             </div>
         </div>
@@ -117,7 +117,7 @@
                     <div class="card-header" id="headingBorderBottomOne">
                         <h2 class="mb-0">
                             <div class="d-flex justify-content-between">
-                                <h2 class="m-0 px-3 my-3">票卷管理</h2>
+                                <h4 class="m-0 px-3 my-3">票卷管理</h4>
                                 <div class="d-flex align-items-center">
                                     <h2 class="text-end m-0 mx-3"></h2>
 
@@ -137,7 +137,7 @@
                             <div class="col-md-6 col-xl-4">
                                 <div class="card mx-4 my-2 p-4 border border-1">
                                     <div class="card-body text-center">
-                                        <h3 class="card-title my-4">預計進場人數</h3>
+                                        <h4 class="card-title my-4">預計進場人數</h4>
                                         <input asp-for="ex_personTime" id="expectedpeople" type="number"
                                                class="text-center border-0 border-secondary border-bottom my-4 py-3 form-control fs-4"
                                                placeholder="輸入數字" autocomplete="off"></input>
@@ -147,7 +147,7 @@
                             <div class="col-md-6 col-xl-4">
                                 <div class="card mx-4 my-2  p-4 border border-1">
                                     <div class="card-body text-center">
-                                        <h3 class="card-title my-4">預計收益金額</h3>
+                                        <h4 class="card-title my-4">預計收益金額</h4>
                                         <input asp-for="ex_totalImcome" id="expecteincome" type="number"
                                                class="text-center border-0 border-secondary border-bottom my-4 py-3 form-control fs-4"
                                                placeholder="輸入數字" autocomplete="off"></input>
@@ -159,7 +159,7 @@
                             <div class="col-md-6 col-xl-4">
                                 <div class="card mx-4 my-2  p-4 border border-1">
                                     <div class="card-body text-center">
-                                        <h3 class="card-title my-1">門票定價</h3>
+                                        <h4 class="card-title my-1">門票定價</h4>
                                         <i id="editticketprice"
                                            class="fa-regular fa-pen-to-square fa-lg p-0 mx-3 my-4 opacity-75">
                                             自訂
@@ -186,13 +186,13 @@
                     <div class="card-header" id="headingBorderBottomOne">
                         <h2 class="mb-0">
                             <div class="d-flex justify-content-between">
-                                <h2 class="m-0 px-3 my-3">攤位管理</h2>
+                                <h4 class="m-0 px-3 my-3">攤位管理</h4>
                                 <div class="d-flex align-items-center">
                                     <h2 class="text-end m-0 mx-3"></h2>
                                     <button type="button" data-toggle="collapse"
                                             data-target="#collapseBorderBottomO" aria-expanded="true"
                                             aria-controls="collapseBorderBottomOne">
-                                        <i class="fa-solid fa-chevron-down fa-1x mx-3 opacity-75"></i>
+                                        <i class="fa-solid fa-chevron-down fa-sm mx-3 opacity-75"></i>
                                     </button>
                                 </div>
                             </div>
@@ -206,15 +206,15 @@
 
 
                             <div class="col-lg-10 col-sm-12 my-3 py-3 d-flex flex-wrap text-center border border-1 rounded-3 ">
-                                <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位等級</h3>
-                                <h3 class="col-lg-3 col-sm-6 col-12 m-0"></h3>
-                                <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位價格</h3>
-                                <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位數量</h3>
+                                <h4 class="col-lg-3 col-sm-6 col-12 m-0">攤位等級</h4>
+                                <h4 class="col-lg-3 col-sm-6 col-12 m-0"></h4>
+                                <h4 class="col-lg-3 col-sm-6 col-12 m-0">攤位價格</h4>
+                                <h4 class="col-lg-3 col-sm-6 col-12 m-0">攤位數量</h4>
                             </div>
 
                             <div class="col-10 d-flex align-items-center text-center border rounded-pill border-1">
                                 <a id="addbooth" href="#" class="py-3 w-100 h-100 border-0 text-reset">
-                                    <i class="w-100 h-100 fa-solid fa-plus fa-3x "></i>
+                                    <i class="w-100 h-100 fa-solid fa-plus fa-2x "></i>
                                 </a>
                             </div>
                         </div>
@@ -223,8 +223,8 @@
             </div>
         </div>
         <div class="row justify-content-around my-5">
-            <button type="submit" class="btn btn-lg btn-dark col-lg-3 col-sm-3 col-4 fs-2">儲存</button>
-            <button type="button" class="btn btn-lg btn-danger col-lg-3 col-sm-3 col-4 fs-2">刪除展覽</button>
+            <button type="submit" class="btn btn-outline-dark col-lg-2 col-sm-4 col-4 fs-4">儲存</button>
+            <a asp-action="Index" class="btn btn-outline-dark col-lg-2 col-sm-4 col-4 fs-4">回上一頁</a>
         </div>
     </form>
 </div>
@@ -531,30 +531,30 @@
         $('#addbooth').on('click', (e) => {
             e.preventDefault();
             $(e.target).closest('div').before(`<div
-                                                                class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
-                                                                <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
-                                                                    data-toggle="dropdown" aria-expanded="false"><input
-                                                                        name="setboothslist[${i}].boothLv"
-                                                                        class="pe-none w-75 text-center border-0 h4 m-0 c1 blv"
-                                                                        value="攤位等級"></input><i
-                                                                        class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i></button>
-                                                                <ul class="dropdown-menu ms-5 text-center p-0">
-                                                                    <li><a class="dropdown-item h4 m-0" href="#">大型</a></li>
-                                                                    <li><a class="dropdown-item h4 m-0" href="#">中型</a></li>
-                                                                    <li><a class="dropdown-item h4 m-0" href="#">小型</a></li>
-                                                                </ul>
+                                                                                class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
+                                                                                <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
+                                                                                    data-toggle="dropdown" aria-expanded="false"><input
+                                                                                        name="setboothslist[${i}].boothLv"
+                                                                                        class="pe-none w-75 text-center border-0 h5 m-0 c1 blv"
+                                                                                        value="攤位等級"></input><i
+                                                                                        class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-2"></i></button>
+                                                                                <ul class="dropdown-menu ms-5 text-center p-0">
+                                                                                    <li><a class="dropdown-item h5 m-0" href="#">大型</a></li>
+                                                                                    <li><a class="dropdown-item h5 m-0" href="#">中型</a></li>
+                                                                                    <li><a class="dropdown-item h5 m-0" href="#">小型</a></li>
+                                                                                </ul>
 
-                                                                <h3 class="w-25 m-0"></h3>
-                                                                <div class="w-25"><input name="setboothslist[${i}].boothPrice"
-                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
-                                                                        placeholder="輸入價格" type="number" autocomplete="off"></input></div>
-                                                                <div class="w-25"><input name="setboothslist[${i}].boothsum"
-                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
-                                                                        placeholder="輸入數量" type="number" autocomplete="off"></input><i
-                                                                        class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
-                                                                </div>
-                                                            </div>
-                        `)
+                                                                                <h3 class="w-25 m-0"></h3>
+                                                                                <div class="w-25"><input name="setboothslist[${i}].boothPrice"
+                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
+                                                                                        placeholder="輸入價格" type="number" autocomplete="off"></input></div>
+                                                                                <div class="w-25"><input name="setboothslist[${i}].boothsum"
+                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
+                                                                                        placeholder="輸入數量" type="number" autocomplete="off"></input><i
+                                                                                        class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
+                                                                                </div>
+                                                                            </div>
+                                        `)
             i++
         })
 

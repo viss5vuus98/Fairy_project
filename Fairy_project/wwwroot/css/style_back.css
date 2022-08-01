@@ -90,8 +90,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  margin-top: 0;
-  margin-bottom: 1rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
 }
 
 abbr[title],
@@ -371,11 +372,11 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  font-size: 2.34375rem;
+  font-size: 1.9rem;
 }
 
 h2, .h2 {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
 }
 
 h3, .h3 {
@@ -383,7 +384,7 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-size: 1.40625rem;
+  font-size: 1.1rem;
 }
 
 h5, .h5 {
