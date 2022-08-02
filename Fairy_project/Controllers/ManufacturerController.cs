@@ -25,7 +25,7 @@ namespace Fairy_project.Controllers
         {
             return View();
         }
-
+        [HttpPost]
         public IActionResult ApplyStand(string boothId, string e_Id, string mid)
         {
             ViewBag.BId = boothId;
