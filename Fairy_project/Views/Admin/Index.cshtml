@@ -81,29 +81,39 @@
     })
 
     $('#searchexhibitionss').on('change', (e) => {
+        searchexhibitionss();
+    })
+    $('#searchstate').find('button').on('click', (e) => {
+        $(e.target).toggleClass('select')
+        searchexhibitionss();
+    })
+    $('#searchdatefrom').on('change', (e) => {
+        searchexhibitionss();
+    })
+    $('#searchdateto').on('change', (e) => {
+        searchexhibitionss();
+    })
+    function searchexhibitionss() {
         let state = []
         let data = {
-            keyword: $(e.target).val(),
+            keyword: $('#searchexhibitionss').val(),
             state,
             datefrom: $('#searchdatefrom').val(),
             dateto: $('#searchdateto').val(),
         }
-        $('#searchstate').find('.active').each(function() {
+        $('#searchstate').find('.select').each(function() {
             data.state.push($(this).index() + 1);
         })
         console.log(data.state.length);
-
-        if ($('#search1'))
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("_Exhibition_Search")',
-                data,
-            }).done((result) => {
-                alert(result)
-                $('#searchresult').html(result)
-            }).fail(() => {
-                console.log("pagefail")
-            })
-
-    })
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("_Exhibition_Search")',
+            data,
+        }).done((result) => {
+            //alert(result)
+            $('#searchresult').html(result)
+        }).fail(() => {
+            console.log("pagefail")
+        })
+    }
 </script>

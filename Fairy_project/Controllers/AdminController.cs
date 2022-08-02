@@ -554,30 +554,27 @@ namespace Fairy_project.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> _Exhibition_Search(string keyword, List<int> state, DateTime datefrom, DateTime dateto)
+        public async Task<IActionResult> _Exhibition_Search(string? keyword, List<int>? state, DateTime? datefrom, DateTime? dateto)
         {
 
-            //var q = from e in _context.Exhibitionsses where state.Contains((int)e.ExhibitStatus) select e;
-            var q = _context.Exhibitionsses.Where(e =>(e.ExhibitName.Contains(keyword)||e.ExDescription.Contains(keyword))&& state.Contains((int)e.ExhibitStatus));
-            List<Exhibitionss> el = q.ToList();
-            Console.WriteLine("-------------------------" + el.Count());
+            Console.WriteLine("-------------------------");
+            var q = _context.Exhibitionsses.Where(e => e.ExhibitStatus != 4);
+            if (keyword !=null)
+            {
+                 q = q.Where(e => e.ExhibitName.Contains(keyword) || e.ExDescription.Contains(keyword));
+            }
+            if(state.Count() > 0)
+            {
+                q = q.Where(e => state.Contains((int)e.ExhibitStatus));
+
+            }
+            if (datefrom!=null&& dateto!=null)
+            {
+                q = q.Where(e => e.Datefrom.Date >= datefrom && e.Dateto.Date <= dateto);                    
+            }
+            List<Exhibitionss> el = q.OrderBy(e=>e.ExhibitStatus).ToList();
+
             return PartialView("_ExhibitionPartial", el);
-
-
-
-            //if (keyword != null)
-            //{
-            //    var e = _context.Exhibitionsses.Where(e => e.ExhibitName.Contains(keyword) || e.ExDescription.Contains(keyword)).OrderBy(e => e.ExhibitStatus);
-            //    List<Exhibitionss> elist = e.ToList();
-            //    return PartialView("_ExhibitionPartial", elist);
-            //}
-            //else
-            //{
-            //    List<Exhibitionss> elist = _context.Exhibitionsses.Where(e => e.ExhibitStatus != 4).ToList();
-            //    return PartialView("_ExhibitionPartial", elist);
-            //}
-
-            //List<Exhibitionss>list = string.IsNullOrEmpty(keyword) ? true : _context.Exhibitionsses.Where(e => e.ExhibitName.Contains(keyword) || e.ExDescription.Contains(keyword)).OrderBy(e => e.ExhibitStatus);
         }
     }
 }
