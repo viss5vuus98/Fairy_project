@@ -122,6 +122,7 @@ namespace Fairy_project.Controllers
             {
                 int days = new TimeSpan(Convert.ToDateTime(exhibition.Dateto).Ticks - Convert.ToDateTime(exhibition.Datefrom).Ticks).Days;
                 int totalperson = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).Count();
+                model.insum = totalperson;
                 if (totalperson != 0)
                 {
                     model.averageperson = totalperson / days;
@@ -145,7 +146,6 @@ namespace Fairy_project.Controllers
                 model.yesterdayperson = yesterdayperson;
                 model.soldprice = exhibition.TicketPrice * totalperson;
                 model.soldsum = _context.Ticketsses.Where(t => t.EId == exhibitId).Count();
-                model.insum = totalperson;
             }
             return View(model);
         }
@@ -306,8 +306,8 @@ namespace Fairy_project.Controllers
                 }
             }
             _context.Exhibitionsses.Add(exhibition);
-            Exhibitionss laste =  _context.Exhibitionsses.OrderBy(e=>e.ExhibitId).Last();
-            int eid = laste.ExhibitId +1;
+            Exhibitionss laste = _context.Exhibitionsses.OrderBy(e => e.ExhibitId).Last();
+            int eid = laste.ExhibitId + 1;
 
 
             if (model.setboothslist != null)
@@ -551,6 +551,33 @@ namespace Fairy_project.Controllers
                 i++;
             }
             return Json(new { reportday = reportday, reportsum = reportsum });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> _Exhibition_Search(string keyword, List<int> state, DateTime datefrom, DateTime dateto)
+        {
+
+            //var q = from e in _context.Exhibitionsses where state.Contains((int)e.ExhibitStatus) select e;
+            var q = _context.Exhibitionsses.Where(e =>(e.ExhibitName.Contains(keyword)||e.ExDescription.Contains(keyword))&& state.Contains((int)e.ExhibitStatus));
+            List<Exhibitionss> el = q.ToList();
+            Console.WriteLine("-------------------------" + el.Count());
+            return PartialView("_ExhibitionPartial", el);
+
+
+
+            //if (keyword != null)
+            //{
+            //    var e = _context.Exhibitionsses.Where(e => e.ExhibitName.Contains(keyword) || e.ExDescription.Contains(keyword)).OrderBy(e => e.ExhibitStatus);
+            //    List<Exhibitionss> elist = e.ToList();
+            //    return PartialView("_ExhibitionPartial", elist);
+            //}
+            //else
+            //{
+            //    List<Exhibitionss> elist = _context.Exhibitionsses.Where(e => e.ExhibitStatus != 4).ToList();
+            //    return PartialView("_ExhibitionPartial", elist);
+            //}
+
+            //List<Exhibitionss>list = string.IsNullOrEmpty(keyword) ? true : _context.Exhibitionsses.Where(e => e.ExhibitName.Contains(keyword) || e.ExDescription.Contains(keyword)).OrderBy(e => e.ExhibitStatus);
         }
     }
 }

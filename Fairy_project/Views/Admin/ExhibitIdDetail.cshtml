@@ -29,7 +29,7 @@
             @{
                 if (Model.exhibitStatus == 1)
                 {
-                    <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-dark py-3 fs-6">規劃</span>
+                    <span class="col-lg-1 col-sm-2 col-2 badge bg-danger py-3 fs-6">規劃</span>
                     <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden />
                 }
                 else if (Model.exhibitStatus == 2)
@@ -39,7 +39,7 @@
                 }
                 else if (Model.exhibitStatus == 3)
                 {
-                    <span class="col-lg-1 col-sm-2 col-2 badge bg-success text-dark py-3 fs-6">舉辦</span>
+                    <span class="col-lg-1 col-sm-2 col-2 badge bg-success py-3 fs-6">舉辦</span>
                     <input asp-for="exhibitStatus" value="@Model.exhibitStatus" hidden />
                 }
             }
@@ -195,9 +195,9 @@
                     <div class="col-lg-6 col-sm-12 col-12 fs-1 px-0 pe-xl-2 pe-0 text-center">
                         <div class="input-group input-group-lg">
                             <div class="input-group-prepend">
-                                <label class="input-group-text mdi mdi-account fs-6" for="datefrom">
+                                <span class="input-group-text mdi mdi-account fs-6" for="datefrom">
                                     起始日期
-                                </label>
+                                </span>
                             </div>
                             <input asp-for="datefrom" id="fromdateinput" type="datetime-local" class="fs-6 form-control"
                            value="@Convert.ToDateTime(Model.datefrom).ToString("yyyy-MM-dd hh:mm")" readonly>
@@ -206,9 +206,9 @@
                     <div class="col-lg-6 col-sm-12 col-12 px-0 fs-1 px-0 ps-xl-2 ps-0 text-center">
                         <div class="input-group input-group-lg">
                             <div class="input-group-prepend">
-                                <label class="input-group-text mdi mdi-account fs-6" for="dateto">
+                                <span class="input-group-text mdi mdi-account fs-6" for="dateto">
                                     結束日期
-                                </label>
+                                </span>
                             </div>
                             <input asp-for="dateto" id="todateinput" type="datetime-local" class="fs-6 form-control" value="@Convert.ToDateTime(Model.dateto).ToString("yyyy-MM-dd hh:mm")" readonly>
                         </div>
@@ -363,19 +363,19 @@
                                                 @{
                                                     if (Model.insum < Model.ex_personTime)
                                                     {
-                                                        <h4 class="fw-bold text-danger">@(Model.insum -Model.ex_personTime) <span class="c2">人</span></h4>
+                                                        <h4 class="fw-bold text-danger">@(Model.insum - Model.ex_personTime) <span class="c2">人</span></h4>
                                                     }
                                                     else
                                                     {
-                                                        <h4 class="fw-bold text-success">+@(Model.insum -Model.ex_personTime) <span class="c2">人</span></h4>
+                                                        <h4 class="fw-bold text-success">+@(Model.insum - Model.ex_personTime) <span class="c2">人</span></h4>
                                                     }
                                                     if (Model.soldprice < Model.ex_totalImcome)
                                                     {
-                                                        <h4 class="p-2 text-danger">@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h4>
+                                                        <h4 class="p-2 text-danger">@(Model.soldprice - Model.ex_totalImcome)$<span class="c2"> NT</span></h4>
                                                     }
                                                     else
                                                     {
-                                                        <h4 class="p-2 text-success">+@(Model.soldprice-Model.ex_totalImcome)$<span class="c2"> NT</span></h4>
+                                                        <h4 class="p-2 text-success">+@(Model.soldprice - Model.ex_totalImcome)$<span class="c2"> NT</span></h4>
 
                                                     }
                                                 }
@@ -390,8 +390,11 @@
                                             </div>
                                             <input id="ticketpriceinput" type="text" class="form-control text-center fs-6"
                                                placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"
-                                               value="200$" readonly>
-                                        </div>
+                                               value="@Model.ticket_Peice" readonly>
+                                            <input asp-for="ticket_Peice" id="ticketpriceinput" type="number" value="@Model.ticket_Peice" hidden>
+                                            <input asp-for="ex_personTime" id="expectedpeople" type="number" value="@Model.ex_personTime" hidden>
+                                        <input asp-for="ex_totalImcome" id="expecteincome" type="number" value="@Model.ex_totalImcome" hidden>
+                                    </div>
 
                                         <div class="col-lg-9 col-md-8 col-12 my-3 d-flex">
                                             <div class="form-group d-flex align-items-center w-50 m-0">
@@ -996,14 +999,15 @@
     </form>
 </div>*@
 
+@*<script src="~/js/jquery_admin..js"></script>*@
+@*<script src="~/js/bootstrap.bundle_admin.js"></script>*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"
+        integrity="sha512-zjlf0U0eJmSo1Le4/zcZI51ks5SjuQXkU0yOdsOBubjSmio9iCUp8XPLkEAADZNBdR9crRy3cniZ65LF2w8sRA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 @section Scripts
 
     {
-    <script src="~/js/bootstrap.bundle_admin.js"></script>
-    <script src="~/js/jquery_admin..js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"
-        integrity="sha512-zjlf0U0eJmSo1Le4/zcZI51ks5SjuQXkU0yOdsOBubjSmio9iCUp8XPLkEAADZNBdR9crRy3cniZ65LF2w8sRA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $('.areaoption').on('click', (e) => {
             console.log(e.target)
@@ -1319,30 +1323,30 @@
         $('#addbooth').on('click', (e) => {
             e.preventDefault();
             $(e.target).closest('div').before(`<div
-                                                                                                                                                                                                                                                                                                                                                class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
-                                                                                                                                                                                                                                                                                                                                                <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
-                                                                                                                                                                                                                                                                                                                                                    data-toggle="dropdown" aria-expanded="false"><input
-                                                                                                                                                                                                                                                                                                                                                        name="setboothslist[${i}].boothLv"
-                                                                                                                                                                                                                                                                                                                                                        class="pe-none w-75 text-center border-0 h5 m-0 c1 blv"
-                                                                                                                                                                                                                                                                                                                                                        value="攤位等級"></input><i
-                                                                                                                                                                                                                                                                                                                                                        class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-2"></i></button>
-                                                                                                                                                                                                                                                                                                                                                <ul class="dropdown-menu ms-5 text-center p-0">
-                                                                                                                                                                                                                                                                                                                                                    <li><a class="dropdown-item h5 m-0" href="#">大型</a></li>
-                                                                                                                                                                                                                                                                                                                                                    <li><a class="dropdown-item h5 m-0" href="#">中型</a></li>
-                                                                                                                                                                                                                                                                                                                                                    <li><a class="dropdown-item h5 m-0" href="#">小型</a></li>
-                                                                                                                                                                                                                                                                                                                                                </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                        class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
+                                                                                                                                                                                                                                                                                                                                                                                                        <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
+                                                                                                                                                                                                                                                                                                                                                                                                            data-toggle="dropdown" aria-expanded="false"><input
+                                                                                                                                                                                                                                                                                                                                                                                                                name="setboothslist[${i}].boothLv"
+                                                                                                                                                                                                                                                                                                                                                                                                                class="pe-none w-75 text-center border-0 h5 m-0 c1 blv"
+                                                                                                                                                                                                                                                                                                                                                                                                                value="攤位等級"></input><i
+                                                                                                                                                                                                                                                                                                                                                                                                                class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-2"></i></button>
+                                                                                                                                                                                                                                                                                                                                                                                                        <ul class="dropdown-menu ms-5 text-center p-0">
+                                                                                                                                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">大型</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">中型</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">小型</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
 
-                                                                                                                                                                                                                                                                                                                                                <h3 class="w-25 m-0"></h3>
-                                                                                                                                                                                                                                                                                                                                                <div class="w-25"><input name="setboothslist[${i}].boothPrice"
-                                                                                                                                                                                                                                                                                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
-                                                                                                                                                                                                                                                                                                                                                        placeholder="輸入價格" type="number" autocomplete="off"></input></div>
-                                                                                                                                                                                                                                                                                                                                                <div class="w-25"><input name="setboothslist[${i}].boothsum"
-                                                                                                                                                                                                                                                                                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
-                                                                                                                                                                                                                                                                                                                                                        placeholder="輸入數量" type="number" autocomplete="off"></input><i
-                                                                                                                                                                                                                                                                                                                                                        class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
-                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                        `)
+                                                                                                                                                                                                                                                                                                                                                                                                        <h3 class="w-25 m-0"></h3>
+                                                                                                                                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothPrice"
+                                                                                                                                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
+                                                                                                                                                                                                                                                                                                                                                                                                                placeholder="輸入價格" type="number" autocomplete="off"></input></div>
+                                                                                                                                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothsum"
+                                                                                                                                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
+                                                                                                                                                                                                                                                                                                                                                                                                                placeholder="輸入數量" type="number" autocomplete="off"></input><i
+                                                                                                                                                                                                                                                                                                                                                                                                                class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                `)
             i++
         })
 

@@ -4,8 +4,8 @@
     {
     <link rel="stylesheet" href="~/css/Master.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/style_back.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/css/bootstrap-admin.css">
-}
+        @*    <link rel="stylesheet" href="~/css/bootstrap-admin.css">*@
+    }
     @{
     Layout = "_Admin_Layout";
 }
@@ -35,66 +35,75 @@
     </div>
 </div>*@
 <div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-xs-12 col-12 p-0">
-            <a href="@Url.Action("CreatExhibition")" class="text-reset" style="text-decoration: none
-">
-                <div id="newe" class="card h-75 justify-content-center align-items-center">
-                    <i class="fa-solid fa-plus fa-4x"></i>
-                </div>
-            </a>
+    <div class="row align-items-center justify-content-around">
+        <div class="col-lg-4 col-md-6 col-12 my-3">
+            <div id="searchstate" class="d-flex">
+                <button type="button" data-toggle="button" autocomplete="off"
+                        class="flex-grow-1 px-0 mx-2 btn btn-outline-danger btn-pill">
+                    規劃
+                </button>
+                <button type="button" data-toggle="button" autocomplete="off"
+                        class="flex-grow-1 px-0 mx-2 btn btn-outline-warning btn-pill">
+                    籌備
+                </button>
+                <button type="button" data-toggle="button" autocomplete="off"
+                        class="flex-grow-1 px-0 mx-2 btn btn-outline-success btn-pill">
+                    舉辦
+                </button>
+            </div>
         </div>
 
-        @foreach (var item in Model)
-        {
-            string date = $"{Convert.ToDateTime(item.Datefrom).ToString("yyyy/MM/dd")} ~ {Convert.ToDateTime(item.Dateto).ToString("yyyy/MM/dd")}";
-            string imgsrc = Url.Content($"~/images/{item.ExhibitPreImg}");
-            <div class="col-lg-4 col-md-6 col-xs-12 p-0">
-                <div class="card">
-                    <div class="card-img"
-                     style="background-image:url(@imgsrc);">
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <a asp-controller="Admin" asp-action="ExhibitIdDetail" asp-route-exhibitId="@item.ExhibitId">編輯</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="d-flex justify-content-between align-items-center my-2">
-                            <h2 class="m-0">@item.ExhibitName</h2>
-                            @if (item.ExhibitStatus == 1)
-                            {
-                                <span class="mx-3 badge bg-danger text-dark fs-6 fw-normal h-25">規劃</span>
-                            }
-                            else if (item.ExhibitStatus == 2)
-                            {
-                                <span class="mx-3 badge bg-warning text-dark fs-6 fw-normal h-25">籌備</span>
-                            }
-                            else if (item.ExhibitStatus == 3)
-                            {
-                                <span class="mx-3 badge bg-success text-dark fs-6 fw-normal h-25">舉辦</span>
-                            }
-                        </div>
-                        <p>@date</p>
-                        <p>@item.ExDescription</p>
-                    </div>
-                </div>
-            </div>
-        }
+        <div class="col-lg-4 col-md-6 col-12 d-flex align-items-center my-3">
+            <input id="searchdatefrom" type="date" class="p-0 form-control border-0">
+            <span class="bg-light border-0 mx-2">至</span>
+            <input id="searchdateto" type="date" class="p-0 form-control border-0">
+        </div>
+        <div class="col-lg-4 col-md-12 col-12 my-3">
+            <input id="searchexhibitionss" type="search" placeholder="">
+        </div>
+    </div>
+    <div id="searchresult" class="row">
+        <partial name="_ExhibitionPartial.cshtml"></partial>
     </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
+@*<script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
         integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
         crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>*@
 
 
 <script>
     $('#btn').on('click', (e) => {
-        console.log(e.target);
         alert();
+    })
+
+    $('#searchexhibitionss').on('change', (e) => {
+        let state = []
+        let data = {
+            keyword: $(e.target).val(),
+            state,
+            datefrom: $('#searchdatefrom').val(),
+            dateto: $('#searchdateto').val(),
+        }
+        $('#searchstate').find('.active').each(function() {
+            data.state.push($(this).index() + 1);
+        })
+        console.log(data.state.length);
+
+        if ($('#search1'))
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("_Exhibition_Search")',
+                data,
+            }).done((result) => {
+                alert(result)
+                $('#searchresult').html(result)
+            }).fail(() => {
+                console.log("pagefail")
+            })
+
     })
 </script>

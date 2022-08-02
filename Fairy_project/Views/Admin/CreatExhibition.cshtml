@@ -81,9 +81,9 @@
             <div class="col-lg-6 col-sm-12 col-12 fs-1 px-0 pe-xl-2 pe-0 text-center">
                 <div class="input-group input-group-lg">
                     <div class="input-group-prepend">
-                        <label class="input-group-text mdi mdi-account fs-6" for="datefrom">
+                        <span class="input-group-text mdi mdi-account fs-6" for="datefrom">
                             起始日期
-                        </label>
+                        </span>
                     </div>
                     <input id="datefrom" type="datetime-local" class="fs-6 form-control" placeholder="Username"
                            aria-label="Username" aria-describedby="basic-addon1">
@@ -92,9 +92,9 @@
             <div class="col-lg-6 col-sm-12 col-12 px-0 fs-1 px-0 ps-xl-2 ps-0 text-center">
                 <div class="input-group input-group-lg">
                     <div class="input-group-prepend">
-                        <label class="input-group-text mdi mdi-account fs-6" for="dateto">
+                        <span class="input-group-text mdi mdi-account fs-6" for="dateto">
                             結束日期
-                        </label>
+                        </span>
                     </div>
                     <input id="dateto" type="datetime-local" class="fs-6 form-control" placeholder="Username"
                            aria-label="Username" aria-describedby="basic-addon1">
@@ -383,8 +383,8 @@
 *@
 @section Scripts
     {
-    <script src="~/js/bootstrap.bundle_admin.js"></script>
-    <script src="~/js/jquery_admin..js"></script>
+@*    <script src="~/js/bootstrap.bundle_admin.js"></script>
+    <script src="~/js/jquery_admin..js"></script>*@
     <script>
         $('.areaoption').on('click', (e) => {
             $('#selecarea').text($(e.target).text())
