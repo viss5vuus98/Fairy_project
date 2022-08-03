@@ -24,7 +24,6 @@ i {
 }
 
 #titleinput {
-    outline: none;
     transition: .2s;
     pointer-events: none;
     background-color: #fafafa;
@@ -32,16 +31,21 @@ i {
 
     #titleinput:focus {
         background-color: #E5E4E2;
+        border-color: rgb(222, 226, 230);
+        box-shadow: none;
     }
+input[type="datetime-local"]:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
 
 #contentinput {
     resize: none;
     outline: none;
 }
 
-    #contentinput:focus {
-        background-color: #fafafa;
-    }
+
 
 .checkmao:hover {
     opacity: .6;
@@ -61,6 +65,18 @@ label {
 input {
     outline: none;
 }
+#expecteincome:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+#expectedpeople:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+#ticketpriceinput:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
 
 select{
     outline:none;
@@ -74,9 +90,25 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+#searchdatefrom:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
 
+#searchdatefrom:hover {
+    border-color: #5C5858;
+}
 
-#manufacturerreport ul li a:active {
+#searchdateto:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+#searchdateto:hover {
+    border-color: #5C5858;
+}
+
+#manufacturerreport23 ul li a:active {
     background-color: #B6B6B4;
 }
 

@@ -1,6 +1,7 @@
 ﻿using Fairy_project.Models;
 using Fairy_project.ViewModels;
 using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using System.Linq;
 
 namespace Fairy_project.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly woowoContext _context;
@@ -20,7 +22,7 @@ namespace Fairy_project.Controllers
             _context = context;
         }
         // GET: AdminController
-        public IActionResult Master()
+        public IActionResult Index()
         {
             foreach (var exhibition in _context.Exhibitionsses)
             {
@@ -75,7 +77,7 @@ namespace Fairy_project.Controllers
             List<BoothMapss> boothMapsses = b.ToList();
             foreach (Appliess Apply in Appliess)
             {
-                foreach(BoothMapss booth in boothMapsses)
+                foreach (BoothMapss booth in boothMapsses)
                 {
                     if (Apply.BoothNumber == booth.BoothNumber)
                     {
@@ -118,25 +120,35 @@ namespace Fairy_project.Controllers
                 model.setboothslist.Add(booth1);
             }
 
-            int days = new TimeSpan(Convert.ToDateTime(exhibition.Dateto).Ticks - Convert.ToDateTime(exhibition.Datefrom).Ticks).Days;
-            int totalperson = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).Count();
-            model.averageperson = totalperson / days;
-            List<Ticketss> tl = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).ToList();
-            //var t = from tl in _context.Ticketsses where tl.EId == exhibitId && tl.Enterstate == 1 && tl.Entertime. == DateTime.Now.AddDays(-1).Date select tl;
-            //t.Entertime == DateTime.Now.AddDays(-1).Date
-            int yesterdayperson = 0;
-            foreach (var item in tl)
+            if (exhibition.ExhibitStatus == 3)
             {
-                if (Convert.ToDateTime(item.Entertime).Date == DateTime.Now.AddDays(-1).Date)
+                int days = new TimeSpan(Convert.ToDateTime(exhibition.Dateto).Ticks - Convert.ToDateTime(exhibition.Datefrom).Ticks).Days;
+                int totalperson = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).Count();
+                model.insum = totalperson;
+                if (totalperson != 0)
                 {
-                    yesterdayperson++;
+                    model.averageperson = totalperson / days;
                 }
+                else
+                {
+                    model.averageperson = 0;
+                }
+                List<Ticketss> tl = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).ToList();
+                //var t = from tl in _context.Ticketsses where tl.EId == exhibitId && tl.Enterstate == 1 && tl.Entertime. == DateTime.Now.AddDays(-1).Date select tl;
+                //t.Entertime == DateTime.Now.AddDays(-1).Date
+                int yesterdayperson = 0;
+                foreach (var item in tl)
+                {
+                    if (Convert.ToDateTime(item.Entertime).Date == DateTime.Now.AddDays(-1).Date)
+                    {
+                        yesterdayperson++;
+                    }
+                }
+                Console.WriteLine("=========================================================" + yesterdayperson);
+                model.yesterdayperson = yesterdayperson;
+                model.soldprice = exhibition.TicketPrice * totalperson;
+                model.soldsum = _context.Ticketsses.Where(t => t.EId == exhibitId).Count();
             }
-            Console.WriteLine("=========================================================" + yesterdayperson);
-            model.yesterdayperson = yesterdayperson;
-            model.soldprice = exhibition.TicketPrice * totalperson;
-            model.soldsum = _context.Ticketsses.Where(t => t.EId == exhibitId).Count();
-            model.insum = totalperson;
             return View(model);
         }
 
@@ -241,18 +253,15 @@ namespace Fairy_project.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Master");
+            return RedirectToAction("Index");
         }
 
 
-        [Route("/Admin/{action}/{idnew}")]
-        public IActionResult CreatExhibition(int idnew)
+        public IActionResult CreatExhibition()
         {
-            ViewBag.idnew = idnew;
             return View();
         }
 
-        [Route("/Admin/{action}/{idnew}")]
         [HttpPost]
         public async Task<IActionResult> CreatExhibition(CreatExhibitionViewModel model)
         {
@@ -267,36 +276,41 @@ namespace Fairy_project.Controllers
             exhibition.ExPersonTime = model.ex_personTime;
             exhibition.ExTotalImcome = model.ex_totalImcome;
             exhibition.TicketPrice = model.ticket_Peice;
-            if (model.areaNum == "A")
+            exhibition.AreaNum = model.areaNum;
+
+            if (model.exhibit_P_img != null)
             {
-                exhibition.AreaNum = 1;
-            }
-            if (model.areaNum == "B")
-            {
-                exhibition.AreaNum = 2;
+                string Pimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_P_img.FileName);
+                exhibition.ExhibitPImg = Pimgname;
+                using (var stream = System.IO.File.Create(img_dir + Pimgname))
+                {
+                    await model.exhibit_P_img.CopyToAsync(stream);
+                }
             }
 
-            string Pimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_P_img.FileName);
-            exhibition.ExhibitPImg = Pimgname;
-            using (var stream = System.IO.File.Create(img_dir + Pimgname))
+            if (model.exhibit_T_img != null)
             {
-                await model.exhibit_P_img.CopyToAsync(stream);
+                string Timgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_T_img.FileName);
+                exhibition.ExhibitTImg = Timgname;
+                using (var stream = System.IO.File.Create(img_dir + Timgname))
+                {
+                    await model.exhibit_T_img.CopyToAsync(stream);
+                }
             }
 
-            string Timgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_T_img.FileName);
-            exhibition.ExhibitTImg = Timgname;
-            using (var stream = System.IO.File.Create(img_dir + Timgname))
+            if (model.exhibit_Pre_img != null)
             {
-                await model.exhibit_T_img.CopyToAsync(stream);
-            }
-
-            string Preimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_Pre_img.FileName);
-            exhibition.ExhibitPreImg = Preimgname;
-            using (var stream = System.IO.File.Create(img_dir + Preimgname))
-            {
-                await model.exhibit_Pre_img.CopyToAsync(stream);
+                string Preimgname = DateTime.Now.ToString("yyyyMMdHHmmss") + myRand.Next(1000, 10000).ToString() + Path.GetExtension(model.exhibit_Pre_img.FileName);
+                exhibition.ExhibitPreImg = Preimgname;
+                using (var stream = System.IO.File.Create(img_dir + Preimgname))
+                {
+                    await model.exhibit_Pre_img.CopyToAsync(stream);
+                }
             }
             _context.Exhibitionsses.Add(exhibition);
+            Exhibitionss laste = _context.Exhibitionsses.OrderBy(e => e.ExhibitId).Last();
+            int eid = laste.ExhibitId + 1;
+
 
             if (model.setboothslist != null)
             {
@@ -321,7 +335,7 @@ namespace Fairy_project.Controllers
                             booths.BoothLv = 1;
                         }
                         booths.BoothPrice = model.setboothslist[i].boothPrice;
-                        booths.EId = model.exhibitId;
+                        booths.EId = eid;
                         _context.BoothMapsses.Add(booths);
                         boothnumber++;
                     }
@@ -329,7 +343,7 @@ namespace Fairy_project.Controllers
 
             }
             await _context.SaveChangesAsync();
-            return RedirectToAction("Master");
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> ChangeExhibitState(int exhibitId)
@@ -338,7 +352,7 @@ namespace Fairy_project.Controllers
             Exhibitionss exhibition = e.FirstOrDefault();
             exhibition.ExhibitStatus = 2;
             await _context.SaveChangesAsync();
-            return RedirectToAction("Master");
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> DeleteExhibition(int exhibitId)
@@ -353,10 +367,10 @@ namespace Fairy_project.Controllers
                 }
             }
             await _context.SaveChangesAsync();
-            return RedirectToAction("Master");
+            return RedirectToAction("Index");
         }
 
-        public IActionResult _ApplyPartial_Search(int exhibitId, int? b_num, int? checkstate, int? offset,int? status)
+        public IActionResult _ApplyPartial_Search(int exhibitId, int? b_num, int? checkstate, int? offset, int? status)
         {
             ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
             if (status == 3 && b_num.HasValue)
@@ -439,7 +453,7 @@ namespace Fairy_project.Controllers
                 amodel.exhibitId = exhibitId;
                 var e = _context.Exhibitionsses.Where(e => e.ExhibitId == exhibitId).FirstOrDefault();
                 amodel.exhibitStatus = e.ExhibitStatus;
-            }            
+            }
             return PartialView("_ApplyPartial", amodel);
         }
 
@@ -468,7 +482,7 @@ namespace Fairy_project.Controllers
             return modellist;
         }
 
-        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? boothNumber,bool? fail)
+        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? boothNumber, bool? fail)
         {
             var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == boothNumber);
             var b = _context.BoothMapsses.Where(b => b.EId == exhibitId && b.BoothNumber == boothNumber);
@@ -512,10 +526,10 @@ namespace Fairy_project.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> SearchTicketReport(int exhibitId,DateTime datefrom,DateTime dateto)
+        public async Task<IActionResult> SearchTicketReport(int exhibitId, DateTime datefrom, DateTime dateto)
         {
-            var t = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate==1 && DateTime.Compare((DateTime)t.Entertime, datefrom) == 1 && DateTime.Compare((DateTime)t.Entertime, dateto.AddDays(1)) == -1).OrderBy(t => t.Entertime);
-            List<Ticketss>ticketsses = t.ToList();
+            var t = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1 && DateTime.Compare((DateTime)t.Entertime, datefrom) == 1 && DateTime.Compare((DateTime)t.Entertime, dateto.AddDays(1)) == -1).OrderBy(t => t.Entertime);
+            List<Ticketss> ticketsses = t.ToList();
             List<string> reportday = new List<string>();
             List<int> reportsum = new List<int>();
 
@@ -527,7 +541,7 @@ namespace Fairy_project.Controllers
                 reportday.Add(Convert.ToDateTime(day).ToString("MM-dd"));
                 for (int j = 0; j < ticketsses.Count; j++)
                 {
-                    if (Convert.ToDateTime(ticketsses[j].Entertime).Date==day.Date)
+                    if (Convert.ToDateTime(ticketsses[j].Entertime).Date == day.Date)
                     {
                         reportsum[i]++;
                     }
@@ -539,6 +553,30 @@ namespace Fairy_project.Controllers
                 i++;
             }
             return Json(new { reportday = reportday, reportsum = reportsum });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> _Exhibition_Search(string? keyword, List<int>? state, DateTime? datefrom, DateTime? dateto)
+        {
+
+            Console.WriteLine("-------------------------");
+            var q = _context.Exhibitionsses.Where(e => e.ExhibitStatus != 4);
+            if (keyword !=null)
+            {
+                 q = q.Where(e => e.ExhibitName.Contains(keyword) || e.ExDescription.Contains(keyword));
+            }
+            if(state.Count() > 0)
+            {
+                q = q.Where(e => state.Contains((int)e.ExhibitStatus));
+
+            }
+            if (datefrom!=null&& dateto!=null)
+            {
+                q = q.Where(e => e.Datefrom.Date >= datefrom && e.Dateto.Date <= dateto);                    
+            }
+            List<Exhibitionss> el = q.OrderBy(e=>e.ExhibitStatus).ToList();
+
+            return PartialView("_ExhibitionPartial", el);
         }
     }
 }
