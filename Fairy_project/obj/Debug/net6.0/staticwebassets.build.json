@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wfvc7fPJZaRH/KNz9MaDCb10zcynK4+S5LOEEymKC18=",
+  "Hash": "c7V2lFnv18GeaahMj+5kgHmQ6Ww5toUm3T5pHpz7dzU=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -2805,12 +2805,12 @@
       "OriginalItemSpec": "wwwroot/images/header.png"
     },
     {
-      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/homeLogo.jpeg",
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/homeLogo.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
       "BasePath": "_content/Fairy_project",
-      "RelativePath": "images/homeLogo.jpeg",
+      "RelativePath": "images/homeLogo.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -2819,7 +2819,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/homeLogo.jpeg"
+      "OriginalItemSpec": "wwwroot/images/homeLogo.jpg"
     },
     {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/horizontalposter1.png",

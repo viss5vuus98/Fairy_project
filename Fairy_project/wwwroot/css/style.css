@@ -229,7 +229,10 @@ a:hover {
     .navbar .nav-item:last-child .nav-link {
         padding-right: 0;
     }
-
+.logo-image {
+    width: 60px;
+    height: 60px;
+}
 .dropdown-menu {
     background: #222222;
     border: 0;

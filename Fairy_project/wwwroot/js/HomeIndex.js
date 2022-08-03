@@ -26,7 +26,7 @@ const View = {
                         <div class="overlay">
                             <div class="buttons">
                                 <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
-                                <a target="_blank" href="Home/exhibitionDetail">Details</a>
+                                <a target="" href="Home/exhibitionDetail/${data[i].exhibitId}">Details</a>
                             </div>
                         </div>
                     </div>

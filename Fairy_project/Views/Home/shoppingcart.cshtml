@@ -326,12 +326,12 @@
             // 刪除 sessionStorage
             console.log($(this).prev().val())
             var ticketid = JSON.parse(sessionStorage.getItem('tickets'))
-            console.log(ticketid);
+            @*console.log(ticketid);*@
             if (ticketid.length > 0) {    // ticketid.length是null,Cannot read properties of null (reading 'length')
                 var newArray = ticketid.filter((item) => item != $(this).prev().val());
                 sessionStorage.setItem('tickets', JSON.stringify(newArray));
             }
-            console.log(newArray);
+            @*console.log(newArray);*@
         })
 
         $(".ticket").on("keyup", ".count", function() {

@@ -35,11 +35,16 @@ public class HomeController : Controller
     {
         return View();
     }
-    [Route("Home/exhibitionDetail")]
-    public IActionResult exhibitionDetail(string exhibitId)
+    [Route("Home/exhibitionDetail/{id}")]
+    public IActionResult exhibitionDetail(string id)
     {
+        var exId = Convert.ToInt32(id);
 
-        //var id = Convert.ToInt32(exhibitId);
+        eDrtailViewModel eDrtailVM = new eDrtailViewModel()
+        {
+            Exhibition = _context.Exhibitionsses.First(e => e.ExhibitId == exId)
+        };
+
         //eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
         //{
         //var exhibition = _context.Exhibitionsses.First(m => m.ExhibitId == id);
@@ -54,7 +59,7 @@ public class HomeController : Controller
         //    return View();
         //}
         //IList<eDrtailViewModel> manufactures = _context.boothMaps.OrderBy(m => m).Take(3);
-        return View();
+        return View(eDrtailVM);
     }
 
     public ActionResult GetData()
@@ -110,7 +115,7 @@ public class HomeController : Controller
     public IActionResult getAllExhibition()
     {
         DateTime dtToday = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
-        var exhibitions = _context.Exhibitionsses.Where(m => m.Datefrom > dtToday);
+        var exhibitions = _context.Exhibitionsses.Where(m => m.Datefrom > dtToday).Take(6);
         return Json(exhibitions);
     }
 
@@ -158,11 +163,31 @@ public class HomeController : Controller
         return Json(theManufactures);
     }
 
+    [HttpPost]
+    public IActionResult GetInvideManufactures([FromBody] GetIdClassModel idClass)
+    {
+        var booths = _context.BoothMapsses.Where(m => m.EId == idClass.Ex_id).ToList();
+        IList<Manufacturess> manufacturesses = new List<Manufacturess>();
+        //if (booths[0].MfId != null)
+        //{
+        //    foreach (var booth in booths)
+        //    {
+        //        manufacturesses.Add(_context.Manufacturesses.First(m => m.ManufactureId == booth.MfId));
+        //    }
+        //    eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
+        //    {
+        //        Manufactures = manufacturesses,
+        //        booths = booths
+        //    };
+        //    return Json(eDrtailViewModel);
+        //}
+        return Json(booths);
+    }
+
     //search exhibition keyword
     [HttpPost]
     public IActionResult searchKeyWord([FromBody] KeyWord keyWord)
     {
-        Console.WriteLine(keyWord.ex_keyWord + "1111111111111");
         string key = Regex.Replace(keyWord.ex_keyWord, @"\s", "");
         var exhibitions = _context.Exhibitionsses.Where(m => m.ExhibitName.Contains(key) && m.ExhibitStatus == 1);
         return Json(exhibitions);

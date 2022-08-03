@@ -1,6 +1,6 @@
-﻿body {
+﻿/*body {
 }
-
+*/
 #QRcode {
     width: 300px;
     height: 300px;
@@ -8,6 +8,12 @@
     box-shadow: 3px 0 13px 5px rgba(100, 112, 134, 0.6);
 }
 
+.ticket_section {
+    margin-top: 200px;
+}
+/*section {
+    margin-top: 500px;
+}*/
 .modal-content {
     border: 0.5px solid #666;
     background-color: #f6f7f8;
