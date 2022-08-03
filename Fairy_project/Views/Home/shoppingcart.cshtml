@@ -240,9 +240,9 @@
 
         //取得資料動態生成
         let array = []
-        const value = JSON.parse(sessionStorage.getItem('tickets')) || []
-        ////console.log(value)  // [{id : 34}] value[0].id
-        var id = "1|2|3|";
+        const value = JSON.parse(sessionStorage.getItem('TicketList')) || []
+        //console.log(value.id)  // [{id : 34}] value[0].id
+        var id = "1|2|9|";
         for (let i = 0; i < value.length; i++) {
             id += value[i].id + "|";
         }
@@ -303,11 +303,11 @@
             console.log(array)
         });
 
-        const cartList = JSON.parse(sessionStorage.getItem('tickets')) || []
-        cartList.push(1)
-        cartList.push(2)
-        cartList.push(3)
-        sessionStorage.setItem('tickets', JSON.stringify(cartList))
+        //const cartList = JSON.parse(sessionStorage.getItem('TicketList')) || []
+        //cartList.push(1)
+        //cartList.push(2)
+        //cartList.push(3)
+        //sessionStorage.setItem('TicketList', JSON.stringify(cartList))
 
 
         //按鈕事件
@@ -325,18 +325,43 @@
 
             // 刪除 sessionStorage
             console.log($(this).prev().val())
-            var ticketid = JSON.parse(sessionStorage.getItem('tickets'))
-            @*console.log(ticketid);*@
-            if (ticketid.length > 0) {    // ticketid.length是null,Cannot read properties of null (reading 'length')
-                var newArray = ticketid.filter((item) => item != $(this).prev().val());
-                sessionStorage.setItem('tickets', JSON.stringify(newArray));
+            var ticketid = JSON.parse(sessionStorage.getItem('TicketList'))
+            console.log(ticketid[0].id);
+            if(ticketid.length > 0) {    // ticketid.length是null,Cannot read properties of null (reading 'length')
+                var newArray = ticketid.filter((item) => item.id != $(this).prev().val());
+                sessionStorage.setItem('TicketList', JSON.stringify(newArray));
             }
-            @*console.log(newArray);*@
+            console.log(newArray);
         })
 
-        $(".ticket").on("keyup", ".count", function() {
+    //    const cartList = JSON.parse(sessionStorage.getItem('TicketList')) || []
+    //    const exhibition = {
+    //    id: 1,
+    //    count: 1,
+    //    }
+    //    const exhibition2 = {
+    //    id: 2,
+    //    count: 1,
+    //    }
+    //    const exhibition3 = {
+    //    id: 9,
+    //    count: 1,
+    //    }
+    //cartList.push(exhibition)
+    //cartList.push(exhibition2)
+    //cartList.push(exhibition3)
+    //sessionStorage.setItem('TicketList', JSON.stringify(cartList))
+
+    //const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
+    //    for (let i = 0; i < obj.length;i++){
+    //        console.log(obj[i].count)
+    //        obj[i].count = $().val()
+    //    }
+
+        $(".ticket").on("keyup", ".count", function(e) {
             if (parseInt($(this).val()) < 1) {
                 alert("請輸入大於0的正整數")
+                $(this).val(1)
             }
             if (parseInt($(this).val()) > 1) {
                 $(this).prev().attr('disabled', false);
@@ -353,6 +378,13 @@
             }
             $("#totalprice").text("");
             $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);
+            const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
+            console.log($(this).val())
+            console.log($('.count').index())
+        for (let i = 0; i < obj.length;i++){
+            //obj[i].count = $(this).val()
+            //console.log(obj[i].count)
+        }
         })
 
         $(".ticket").on("click", ".plus", function() {
@@ -460,7 +492,7 @@
                     //alert("成功")
                     console.log(data)
                 })
-                sessionStorage.removeItem('tickets');
+                sessionStorage.removeItem('TicketList');
             //}
         })
 

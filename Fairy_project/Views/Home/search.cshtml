@@ -58,10 +58,10 @@
 
         <form asp-action="search" >
                 <div class="input-group">
-                    <a asp-controller="Home" asp-action="search" asp-route-id="1" class="btn btn-dark">單價遞增</a>
-                    <a asp-controller="Home" asp-action="search" asp-route-id="2" class="btn btn-dark">單價遞減</a>
                     <input type="date" name="dtStart"/>
                     <input type="date" name="dtEnd"/>
+                    <a asp-controller="Home" asp-action="search" asp-route-id="1" class="btn btn-dark">單價遞增</a>
+                    <a asp-controller="Home" asp-action="search" asp-route-id="2" class="btn btn-dark">單價遞減</a>
                     <span class="input-group-text">展覽關鍵字</span>
                     <input type="text" class="form-control" name="txtKeyword" />
                     <input type="submit" value="搜尋" class="btn btn-dark" />
@@ -89,8 +89,8 @@
                         <img src="@Url.Content("~/images/")@item.ExhibitPImg" class="img-fluid" alt="this is a title">
                         <div class="overlay">
                             <div class="buttons">
-                                <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
-                                <a target="_blank" href="single-portfolio.html">Details</a>
+                                <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">AddCart</a>
+                                <a target="" href="@Url.Action("exhibitionDetail","Home")/@item.ExhibitId">Details</a>
                             </div>
                         </div>
                     </div>
