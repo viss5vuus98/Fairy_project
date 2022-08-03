@@ -20,52 +20,51 @@
                     <form class="checkout-form" method="post" enctype="multipart/form-data" action="@Url.Action("createApplies")">
 
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top:5%">
 
                             <label for="full_name">攤位編號</label>
-                            <input asp-for="BoothNumber" value="BoothNumber" type="text" style="width:60%;" class="form-control" id="full_name" placeholder="" disabled="disabled">
+                            <input asp-for="BoothNumber" value="@ViewBag.BId" type="text" style="width:60%;" class="form-control" id="full_name" placeholder="" disabled="disabled">
                         </div>
 
 
 
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top:3%">
 
-                            <label for="user_address">攤位描述</label>
 
-                            <textarea asp-for="MfDescription" name="descript" style="font-size:12px" cols="55" rows="10"></textarea>
+                            <textarea asp-for="MfDescription" name="descript" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;攤位描述" style="font-size:12px; border:1px solid #dedede;" cols="55" rows="10"></textarea>
                         </div>
 
+                        <div style="border:none;margin-left:6%">
+                        <label for="MfPImginput" class="custom-file-upload">
+                            上傳廠商照片
+                        </label>
+                        <input id="MfPImginput" type="file" name="MfPImg" style="width:60%;" accept=".png,.jpg"/>
+                       
 
+                        <label for="MfLogoinput" class="custom-file-upload">
+                            上傳LOGO照片
+                        </label>
+                        <input id="MfLogoinput" type="file" name="MfPImg" style="width:60%;" accept=".png,.jpg"/>
+             </div>
 
-                        <div class="form-group">
-                            <label for="MfPImginput">廠商照片</label>
-                           
-                            <input type="file" id="MfPImginput" name="MfPImg" class="form-control" style="width:60%;" accept=".png,.jpg">
-
-                        </div>
-
-                        <div class="form-group">
-                            <label for="MfLogoinput">LOGO照片</label>
-                        
-                            <input type="file" id="MfLogoinput"  name="MfLogo" class="form-control" style="width:60%;" accept=".png,.jpg">
-
-                        </div>
+                       
 
 
 
                         @*要藏起來的*@
                         <div class="form-group">
-                            <input  asp-for="MfId" type="text" name="number" class="form-control form-control-lg" style="width:60%;border-color:#ACC2C2">
+                            <input asp-for="MfId" value="@ViewBag.MfId" type="text" name="number" class="form-control form-control-lg" style="width:60%;border-color:#ACC2C2" hidden>
                         </div>
                         <div class="form-group">
-                            <input asp-for="EId"  type="text" name="number" class="form-control form-control-lg" style="width:60%;border-color:#ACC2C2">
+                            <input asp-for="EId" value="@ViewBag.EId" type="text" name="number" class="form-control form-control-lg" style="width:60%;border-color:#ACC2C2" hidden>
                         </div>
 
 
 
-
+                        <div style="border:none;margin-left:20%;margin-top:5%">
                         <button type="submit" class="btn btn-main">送出</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -75,7 +74,7 @@
             <div class="col-md-6">
 
                 <div>
-                    <img id="MfPImg"  />
+                    <img id="MfPImg" />
                 </div>
                 <div style="margin-top:5%">
                     <img id="MfLogo" />
@@ -91,7 +90,7 @@
     @section Scripts
 
     {
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
         integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
@@ -102,8 +101,8 @@
 
 
 
-        <script>
-            $('#MfPImginput').on('change', (e) => {
+    <script>
+        $('#MfPImginput').on('change', (e) => {
             let readfile = new FileReader();
             readfile.readAsDataURL(e.target.files[0])
             readfile.addEventListener('load', () => {
@@ -119,6 +118,6 @@
             })
         })
 
-        </script>
+    </script>
 
     }
