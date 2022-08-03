@@ -263,10 +263,11 @@
             <div class="col-md-12">
                 <div class="block">
                     <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">
-                        還沒有加入會員 ?</h2>
-                        <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">加入會員立即使用電子票券，一起來看展吧</p>
-                        <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s"
-                           data-wow-duration="500ms">立即註冊</a>
+                        還沒有加入會員 ?
+                    </h2>
+                    <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">加入會員立即使用電子票券，一起來看展吧</p>
+                    <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s"
+                       data-wow-duration="500ms">立即註冊</a>
                 </div>
             </div>
 
@@ -362,13 +363,16 @@
 @section Scripts
     {
     <script>
-        @*sessionStorage.removeItem('Info')
+        sessionStorage.removeItem('Info')
 
-        const personId = @TempData["memberId"];
-        const personInfos = {
-            id: personId,
+        const personId = @TempData["memberId"]
+        if (personId != 0) {
+            const personInfos = {
+                id: personId,
+            }
+            sessionStorage.setItem('Info', JSON.stringify(personInfos))
         }
-        sessionStorage.setItem('Info', JSON.stringify(personInfos))*@
+
 
         const root = @Url.Content("~/images/")
 

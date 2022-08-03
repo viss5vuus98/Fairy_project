@@ -4,10 +4,11 @@
 
 //render member's tickets
 const ticketList = []
-const memberId = JSON.parse(sessionStorage.getItem("Info"))
+const memberId = JSON.parse(sessionStorage.getItem("Info")).id
 const carouselInner = document.querySelector('.carousel-inner')
 
-axios.post('/api/Member/Post/getTicketsss', { "Mf_id": 6 })
+
+axios.post('/api/Member/Post/getTicketsss', { "Mf_id": memberId})
     .then(res => {
         
         for (let i = 0; i < res.data.tickets.length; i++) {
@@ -23,9 +24,10 @@ axios.post('/api/Member/Post/getTicketsss', { "Mf_id": 6 })
     )
 function renderCards(ticketList) {
     let pannelHTML = '';
-    for (let i = 0; i < ticketList.length; i++) {
-        if (i == 0) {
-            pannelHTML += `
+    if (ticketList.length > 0) {
+        for (let i = 0; i < ticketList.length; i++) {
+            if (i == 0) {
+                pannelHTML += `
             <div class="carousel-item active">
                 <div class=" d-flex w-auto">
                     <div class="btn-group-vertical">
@@ -37,8 +39,8 @@ function renderCards(ticketList) {
                 </div>
             </div>
             `
-        } else {
-            pannelHTML += `
+            } else {
+                pannelHTML += `
                 <div class="carousel-item">
                     <div class=" d-flex w-auto">
                         <div class="btn-group-vertical">
@@ -50,9 +52,12 @@ function renderCards(ticketList) {
                     </div>
                 </div>
                 `
-        }
+            }
+        }       
+    } else {
+        pannelHTML += '<div>您還沒有購買票券</div>'
     }
-    carouselInner.innerHTML = pannelHTML
+    carouselInner.innerHTML = pannelHTML    
 }
 
 
