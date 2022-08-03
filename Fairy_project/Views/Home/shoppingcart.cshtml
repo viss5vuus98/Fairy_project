@@ -241,12 +241,12 @@
         //取得資料動態生成
         let array = []
         const value = JSON.parse(sessionStorage.getItem('TicketList')) || []
-        //console.log(value.id)  // [{id : 34}] value[0].id
-        var id = "1|2|9|";
+        //console.log(value.id)  // [{"id":1,"count":1}] value[0].id
+        var id = "";
         for (let i = 0; i < value.length; i++) {
             id += value[i].id + "|";
         }
-        //console.log(id);
+        console.log(id);
         $.ajax({
             type: "POST",
             url: "@Url.Action("shoppingcart")",
@@ -278,7 +278,7 @@
                                 </div>
                                 <div class="d-flex" >
                                     數量:<button type="button" class="minus"><i class="fa-solid fa-minus"></i></button>
-                                    <input type="text" style="width:80px;text-align: center;" class="count" value="1"
+                                    <input type="text" style="width:80px;text-align: center;" class="count" 
                                     oninput="value=value.replace(/[^0-9]/g,'')">
                                     <button type="button" class="plus"><i class="fa-solid fa-plus"></i></button>
                                 </div>
@@ -289,10 +289,19 @@
                         </div>
                     </div>
                 </div>`)
-                $(".minus").attr('disabled', true);
+                // load 取得 sessionStorage count 的值
+                const loadcount = JSON.parse(sessionStorage.getItem('TicketList')) || []
+                $('.count').eq(i).val(loadcount[i].count)
+
+                if ($('.count').val() <= 1) {
+                    $(".minus").attr('disabled', true);
+                } else {
+                    $(".minus").attr('disabled', false);
+                }
                 $(".smallcount").last().append(`小計:<p>${parseInt($(".originprice").children().last().text()) * $(".count").last().val()}</p>`);
             }
 
+            // 計算總價
             sum = 0;
             var smallcount = $(".smallcount p");
             for (let i = 0; i < smallcount.length; i++) {
@@ -300,15 +309,8 @@
             }
             $("#totalprice").text("");
             $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);
-            console.log(array)
+            console.log(array)       
         });
-
-        //const cartList = JSON.parse(sessionStorage.getItem('TicketList')) || []
-        //cartList.push(1)
-        //cartList.push(2)
-        //cartList.push(3)
-        //sessionStorage.setItem('TicketList', JSON.stringify(cartList))
-
 
         //按鈕事件
         var sum = 0;
@@ -334,31 +336,7 @@
             console.log(newArray);
         })
 
-    //    const cartList = JSON.parse(sessionStorage.getItem('TicketList')) || []
-    //    const exhibition = {
-    //    id: 1,
-    //    count: 1,
-    //    }
-    //    const exhibition2 = {
-    //    id: 2,
-    //    count: 1,
-    //    }
-    //    const exhibition3 = {
-    //    id: 9,
-    //    count: 1,
-    //    }
-    //cartList.push(exhibition)
-    //cartList.push(exhibition2)
-    //cartList.push(exhibition3)
-    //sessionStorage.setItem('TicketList', JSON.stringify(cartList))
-
-    //const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
-    //    for (let i = 0; i < obj.length;i++){
-    //        console.log(obj[i].count)
-    //        obj[i].count = $().val()
-    //    }
-
-        $(".ticket").on("keyup", ".count", function(e) {
+        $(".ticket").on("keyup", ".count", function() {
             if (parseInt($(this).val()) < 1) {
                 alert("請輸入大於0的正整數")
                 $(this).val(1)
@@ -378,13 +356,11 @@
             }
             $("#totalprice").text("");
             $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);
+
+            // sessionStorage 的值修改
             const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
-            console.log($(this).val())
-            console.log($('.count').index())
-        for (let i = 0; i < obj.length;i++){
-            //obj[i].count = $(this).val()
-            //console.log(obj[i].count)
-        }
+            obj[$(this).closest('.container').index()-1].count = $(this).val()
+            sessionStorage.setItem('TicketList', JSON.stringify(obj));
         })
 
         $(".ticket").on("click", ".plus", function() {
@@ -404,6 +380,11 @@
             }
             $("#totalprice").text("");
             $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);
+
+            // sessionStorage 的值修改
+            const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
+            obj[$(this).closest('.container').index()-1].count = $(this).prev().val()
+            sessionStorage.setItem('TicketList', JSON.stringify(obj));
         })
 
         $(".ticket").on("click", ".minus", function() {
@@ -421,6 +402,11 @@
             }
             $("#totalprice").text("");
             $("#totalprice").append(`總金額:<p style="font-size:24px;margin-top: 5px;">${sum}</p>元`);
+
+            // sessionStorage 的值修改
+            const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
+            obj[$(this).closest('.container').index()-1].count = $(this).next().val()
+            sessionStorage.setItem('TicketList', JSON.stringify(obj));
         })
 
         //前往付款
@@ -466,6 +452,8 @@
             $(".second").hide();
             $(".third").show();
             //console.log(array);
+
+            // 取得指定 input value
             let input = [];
             $('.count').each(function(index) {
                 if ($(this).val() != '') {
