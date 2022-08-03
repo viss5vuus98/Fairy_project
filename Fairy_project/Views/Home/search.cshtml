@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Fairy_project.Models.Exhibitionss>
 
+
 <style>
     .search {
         width: 100%;
@@ -55,34 +56,34 @@
         </div>
         </div>*@
 
-            <div class="col-md-4 col-sm-6" style="margin-top:30px;">
-                <div class="products d-flex flex-column card-0">
-                    <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
-                        <div class="img-wrapper">
-                            <img src="@Url.Content("~/images/")@item.ExhibitPImg" class="img-fluid" alt="this is a title">
-                            <div class="overlay">
-                                <div class="buttons">
+                <div class="col-md-4 col-sm-6" style="margin-top:30px;">
+                    <div class="products d-flex flex-column card-0">
+                        <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                            <div class="img-wrapper">
+                                <img src="@Url.Content("~/images/")@item.ExhibitPImg" class="img-fluid" alt="this is a title">
+                                <div class="overlay">
+                                    <div class="buttons">
                                     @*<button class="btn btn_buy btn_cart" data-id="@item.ExhibitId">購票</button>*@
-                                    <a rel="gallery" class="fancybox btn_cart" href="#">加入購物車</a>
-                                    <a target="_blank" href="#">展覽詳細資訊</a>
+                                        <a rel="gallery" class="fancybox btn_cart" href="#">加入購物車</a>
+                                        <a target="_blank" href="#">展覽詳細資訊</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <figcaption>
-                            <h4>
-                                <a href="#" class="H3-TEXT" style="display:block;">
+                            <figcaption>
+                                <h4>
+                                    <a href="#" class="H3-TEXT" style="display:block;">
                                     @item.ExhibitName
-                                </a>
-                            </h4>
-                            <p class="card-text">@item.Datefrom.ToString("yyyy/MM/dd")~@item.Dateto.ToString("yyyy/MM/dd")</p>
-                            <p>單價：@item.TicketPrice</p>
+                                    </a>
+                                </h4>
+                                <p class="card-text">@item.Datefrom.ToString("yyyy/MM/dd")~@item.Dateto.ToString("yyyy/MM/dd")</p>
+                                <p>單價：@item.TicketPrice</p>
                             @*<p class="card_description">
                         @item.ExDescription
                         </p>*@
-                        </figcaption>
-                    </figure>
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
-            </div>
         }
     </div>
 </div>
