@@ -11,12 +11,12 @@ namespace Fairy_project.Controllers
         {
             _woowocontext = woowocontext;
         }
-      //  [Authorize(Roles = "Admin,Manufacturer")]
+        //  [Authorize(Roles = "Admin,Manufacturer")]
         public IActionResult Index()
         {
             return View();
         }
-         public IActionResult IndexOld()
+        public IActionResult IndexOld()
         {
             return View();
         }
@@ -42,8 +42,8 @@ namespace Fairy_project.Controllers
         [HttpGet]
         public IActionResult getAllExhibition()
         {
-           // DateTime dtToday = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
-           var exhibitions = _woowocontext.Exhibitionsses.Where(m => m.ExhibitStatus == 2);
+            // DateTime dtToday = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+            var exhibitions = _woowocontext.Exhibitionsses.Where(m => m.ExhibitStatus == 2);
             return Json(exhibitions);
         }
 
@@ -66,15 +66,25 @@ namespace Fairy_project.Controllers
             return Json(applies);
         }
 
+
         //create the exhibition of applies 新增申請 傳入applies內的物件
         [HttpPost]
-        public bool createApplies([FromBody] Appliess apply)
+        public IActionResult createApplies(Appliess apply)
         {
-            _woowocontext.Appliesses.Add(apply);
-            _woowocontext.SaveChanges();
-            return true;
-        }
 
+            Appliess appliess = new Appliess()
+            {
+                MfId = Convert.ToInt32(apply.MfId),
+                EId = Convert.ToInt32(apply.EId),
+                MfDescription = apply.MfDescription,
+
+
+            };
+            _woowocontext.Appliesses.Add(appliess);
+            _woowocontext.SaveChanges();
+            return Redirect("Index");
+
+        }
         //get the manufactures of applies 找一個廠商的所有審核 傳入Mf_id
         [HttpPost]
         public IActionResult getMfApplies([FromBody] GetIdClassModel idClass)
