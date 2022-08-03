@@ -6,9 +6,18 @@ body {
     font-family: 'Noto Sans TC', sans-serif;
 }
 
-.card_description {
+.card_title {
+    width: 300px;
     overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.card_description {
+    height: 80px
+    /*    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;*/
 }
 /*.bg1 {
     background-color: #fafafa;

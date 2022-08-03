@@ -7,7 +7,6 @@ const ticketList = []
 const memberId = JSON.parse(sessionStorage.getItem("Info")).id
 const carouselInner = document.querySelector('.carousel-inner')
 
-
 axios.post('/api/Member/Post/getTicketsss', { "Mf_id": memberId})
     .then(res => {
         
@@ -23,33 +22,36 @@ axios.post('/api/Member/Post/getTicketsss', { "Mf_id": memberId})
         console.log(err)
     )
 function renderCards(ticketList) {
-    let pannelHTML = '';
+    let pannelHTML = ``;
     if (ticketList.length > 0) {
         for (let i = 0; i < ticketList.length; i++) {
+            const dateStart = new Date(ticketList[i].exhibition.datefrom).toLocaleDateString()
+            const dataEnd = new Date(ticketList[i].exhibition.dateto).toLocaleDateString()
                 pannelHTML += `
-                    < div class="ticket-container" >
+                    <div class="ticket-container">
                         <div class="card-img">
                             <img src="${root}${ticketList[i].exhibition.exhibitTImg}" alt="Ticket Image" class="ticket_card_img">
-                                    </div>
-                            <div class="ticket_card_body">
-                                <h4>${ticketList[i].exhibition.exhibitName}</h4>
-                                <div class="ticket_date">
-                                    <span>${ticketList[i].exhibition.datefrom}</span> ~ <span>${ticketList[i].exhibition.dateto}</span>
-                                </div>
-                                <div class="ticket_status">
-                                    開始中
-                            </div>
-                                <div class="btn_section">
-                                    <button type="button" class="btn btn-dark btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">入場</button>
-                                    <button type="button" class="btn btn-dark btn-give" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#give_Modal">贈票</button>
-                                </div>
-                            </div>
                         </div>
+                        <div class="ticket_card_body">
+                            <h4>${ticketList[i].exhibition.exhibitName}</h4>
+                            <div class="ticket_date">
+                                <span>${dateStart}</span> ~ <span>${dataEnd}</span>
+                            </div>
+                            <div class="ticket_status">
+                                開始中
+                            </div>
+                            <div class="btn_section">
+                                <button type="button" class="btn btn-dark btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">入場</button>
+                                <button type="button" class="btn btn-dark btn-give" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#give_Modal">贈票</button>
+                            </div>
+                        </div>                        
+                    </div>
                 `
         }       
     } else {
         pannelHTML += '<div>您還沒有購買票券</div>'
     }
+    console.log(pannelHTML)
     carouselInner.innerHTML = pannelHTML    
 }
 

@@ -28,7 +28,6 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        TempData["MemberId"] = 0;
         return View();
     }
 

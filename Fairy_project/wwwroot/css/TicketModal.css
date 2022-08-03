@@ -8,9 +8,9 @@
     box-shadow: 3px 0 13px 5px rgba(100, 112, 134, 0.6);
 }
 
-.ticket_section {
-    margin-top: 200px;
-}
+/*.ticket_section {
+    margin-top: 300px;
+}*/
 /*section {
     margin-top: 500px;
 }*/
@@ -79,15 +79,17 @@
     border: 0px;
 }
 
-    .btn-qrmodal:hover {
-        background-color: #c0b0a2;
-        border: 0.8px solid #b7b7b7;
-    }
+.btn-qrmodal:hover {
+    background-color: #c0b0a2;
+    border: 0.8px solid #b7b7b7;
+}
 .ticket-content {
     height: 500px;
     margin: 0 auto;
     overflow-y: scroll;
     padding: 1rem 0;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
 }
 
 .ticket_card_img {
