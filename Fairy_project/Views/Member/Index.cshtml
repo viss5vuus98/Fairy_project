@@ -4,7 +4,60 @@
         @*<link rel="stylesheet" href="~/css/GroupA.css" asp-append-version="true" />*@
         <link rel="stylesheet" href="~/css/TicketModal.css" asp-append-version="true"/>
     }
+    <div class="modal fade" id="QRcode_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="QRModal-title">Ex title</h5>
+                </div>
+                <div class="QRmodal-body" id="QR-body">
+                    <div id="QRcode"></div>
+                </div>
+                <div class="QRmodal-footer">
+                    <div class="ticket_date">
+                        <p class="date">
+                            <i class="fa-regular fa-calendar-days date-i"></i>
+                            <span class="date-from date_span">2022/7/20></span>
+                        </p>
+                        <p><span class="date_span date_mid">~</span></p>
+                        <p class="date">
+                            <i class="fa-regular fa-calendar-days date-i"></i>
+                            <span class="date-to date_span">2022/10/28></span>
+                        </p>
+                    </div>
+                    <div class="qr_btn">
+                        <button type="button" class="btn btn-secondary btn-qrmodal" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="give_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ticket-title">輸入贈送人的信箱</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="ticket-body" id="ticket-body">
+                    <form>
+                        <div>
+                            <label for="give_modal_email" class="form-label"></label>
+                            <input type="email" calss="form-control" id="give_modal_email" aria-describedby="emailHelp" name="email" value="對象信箱" required />
+                            <input type="text" class="give_order" name="order">
 
+                        </div>
+                        <div>
+                            <button class="btn btn-primary submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="ticket-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="mb-5 ticket_section">
         <div class="container">
             <div class="row ticket-content carousel-inner">
@@ -86,60 +139,8 @@
             </div>
         </div>
     </section>
-    <!--<div class="modal fade" id="QRcode_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="QRModal-title">Ex title</h5>
-                </div>
-                <div class="QRmodal-body" id="QR-body">
-                    <div id="QRcode"></div>
-                </div>
-                <div class="QRmodal-footer">
-                    <div class="ticket_date">
-                        <p class="date">
-                            <i class="fa-regular fa-calendar-days date-i"></i>
-                            <span class="date-from date_span">2022/7/20></span>
-                        </p>
-                        <p><span class="date_span date_mid">~</span></p>
-                        <p class="date">
-                            <i class="fa-regular fa-calendar-days date-i"></i>
-                            <span class="date-to date_span">2022/10/28></span>
-                        </p>
-                    </div>
-                    <div class="qr_btn">
-                        <button type="button" class="btn btn-secondary btn-qrmodal" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="give_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ticket-title">輸入贈送人的信箱</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="ticket-body" id="ticket-body">
-                    <form>
-                        <div>
-                            <label for="give_modal_email" class="form-label"></label>
-                            <input type="email" calss="form-control" id="give_modal_email" aria-describedby="emailHelp" name="email" value="對象信箱" required />
-                            <input type="text" class="give_order" name="order">
-                            
-                        </div>
-                        <div>
-                            <button class="btn btn-primary submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="ticket-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--
+    
     <div class="container">-->
         @*<h1>@User.Identity.Name</h1>*@
         @*<h1>@User.Claims.ToString()</h1>*@

@@ -26,40 +26,32 @@ function renderCards(ticketList) {
     let pannelHTML = '';
     if (ticketList.length > 0) {
         for (let i = 0; i < ticketList.length; i++) {
-            if (i == 0) {
                 pannelHTML += `
-            <div class="carousel-item active">
-                <div class=" d-flex w-auto">
-                    <div class="btn-group-vertical">
-                        <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
-                        <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                        <button type="button" class="btn-size-bottom btn-give" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#give_Modal">分票</button>
-                    </div>
-                    <img src="${root}${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="...">
-                </div>
-            </div>
-            `
-            } else {
-                pannelHTML += `
-                <div class="carousel-item">
-                    <div class=" d-flex w-auto">
-                        <div class="btn-group-vertical">
-                            <button type="button" class="btn-size-top btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">QRCODE</button>
-                            <div style="background-color:#DDCFC2 ;width:196px;height:4px;"></div>
-                            <button type="button" class="btn-size-bottom btn-give" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#give_Modal">分票</button>
+                    < div class="ticket-container" >
+                        <div class="card-img">
+                            <img src="${root}${ticketList[i].exhibition.exhibitTImg}" alt="Ticket Image" class="ticket_card_img">
+                                    </div>
+                            <div class="ticket_card_body">
+                                <h4>${ticketList[i].exhibition.exhibitName}</h4>
+                                <div class="ticket_date">
+                                    <span>${ticketList[i].exhibition.datefrom}</span> ~ <span>${ticketList[i].exhibition.dateto}</span>
+                                </div>
+                                <div class="ticket_status">
+                                    開始中
+                            </div>
+                                <div class="btn_section">
+                                    <button type="button" class="btn btn-dark btn-qrcode" data-exid="${ticketList[i].exhibition.exhibitId}" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">入場</button>
+                                    <button type="button" class="btn btn-dark btn-give" data-order="${ticketList[i].ticket.orderNum}" data-bs-toggle="modal" data-bs-target="#give_Modal">贈票</button>
+                                </div>
+                            </div>
                         </div>
-                        <img src="${root}${ticketList[i].exhibition.exhibitTImg}" class="d-block w-100-h-setting" alt="Ticket Image">
-                    </div>
-                </div>
                 `
-            }
         }       
     } else {
         pannelHTML += '<div>您還沒有購買票券</div>'
     }
     carouselInner.innerHTML = pannelHTML    
 }
-
 
 
 
