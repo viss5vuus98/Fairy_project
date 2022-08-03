@@ -34,13 +34,13 @@
                              id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto justify-content-around">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
-                                        Home
+                                    <a class="nav-link" href="@Url.Action("Index", "Admin")">
+                                        管理
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">購物車</a>
+                                    <a class="nav-link" href="@Url.Action("Report", "Admin")">報表</a>
                                 </li>
                                 @*                                <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

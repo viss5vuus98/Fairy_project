@@ -10,7 +10,7 @@ namespace Fairy_project.Models
         public int? MId { get; set; }
         public int? Price { get; set; }
         public int? Enterstate { get; set; }
-        public DateTime? Entertime { get; set; }
+        public DateTime Entertime { get; set; }
         public DateTime? Ordertime { get; set; }
         public string? PresonName { get; set; }
         public string? PersonNumber { get; set; }

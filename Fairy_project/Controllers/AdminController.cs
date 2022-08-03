@@ -122,29 +122,40 @@ namespace Fairy_project.Controllers
 
             if (exhibition.ExhibitStatus == 3)
             {
-                int days = new TimeSpan(Convert.ToDateTime(exhibition.Dateto).Ticks - Convert.ToDateTime(exhibition.Datefrom).Ticks).Days;
                 int totalperson = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).Count();
                 model.insum = totalperson;
-                if (totalperson != 0)
+                //int days = new TimeSpan(Convert.ToDateTime(exhibition.Dateto).Ticks - Convert.ToDateTime(exhibition.Datefrom).Ticks).Days;
+                //if (totalperson != 0)
+                //{
+                //    model.averageperson = totalperson / days;
+                //}
+                //else
+                //{
+                //    model.averageperson = 0;
+                //}
+                int mostpeoplt = 0;
+                for (var day = exhibition.Datefrom.Date; day.Date <= exhibition.Dateto.Date; day = day.AddDays(1))
                 {
-                    model.averageperson = totalperson / days;
-                }
-                else
-                {
-                    model.averageperson = 0;
-                }
-                List<Ticketss> tl = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).ToList();
-                //var t = from tl in _context.Ticketsses where tl.EId == exhibitId && tl.Enterstate == 1 && tl.Entertime. == DateTime.Now.AddDays(-1).Date select tl;
-                //t.Entertime == DateTime.Now.AddDays(-1).Date
-                int yesterdayperson = 0;
-                foreach (var item in tl)
-                {
-                    if (Convert.ToDateTime(item.Entertime).Date == DateTime.Now.AddDays(-1).Date)
+                    var q = from t in _context.Ticketsses where t.EId == exhibitId && (DateTime)t.Entertime.Date == day.Date && t.Enterstate == 1 select t;
+                    if (mostpeoplt < q.Count())
                     {
-                        yesterdayperson++;
+                        mostpeoplt = q.Count();
                     }
                 }
-                Console.WriteLine("=========================================================" + yesterdayperson);
+                model.mostpeople = mostpeoplt;
+                Console.WriteLine("=========================================================" + mostpeoplt);
+                
+                int yesterdayperson = 0;
+                var qq = from t in _context.Ticketsses where t.EId == exhibitId && (DateTime)t.Entertime.Date == DateTime.Now.AddDays(-1).Date && t.Enterstate == 1 select t;
+                List<Ticketss> tl = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).ToList();
+                yesterdayperson = qq.Count();
+                //foreach (var item in tl)
+                //{
+                //    if (Convert.ToDateTime(item.Entertime).Date == DateTime.Now.AddDays(-1).Date)
+                //    {
+                //        yesterdayperson++;
+                //    }
+                //}
                 model.yesterdayperson = yesterdayperson;
                 model.soldprice = exhibition.TicketPrice * totalperson;
                 model.soldsum = _context.Ticketsses.Where(t => t.EId == exhibitId).Count();
@@ -561,22 +572,51 @@ namespace Fairy_project.Controllers
 
             Console.WriteLine("-------------------------");
             var q = _context.Exhibitionsses.Where(e => e.ExhibitStatus != 4);
-            if (keyword !=null)
+            if (keyword != null)
             {
-                 q = q.Where(e => e.ExhibitName.Contains(keyword) || e.ExDescription.Contains(keyword));
+                q = q.Where(e => e.ExhibitName.Contains(keyword) || e.ExDescription.Contains(keyword));
             }
-            if(state.Count() > 0)
+            if (state.Count() > 0)
             {
                 q = q.Where(e => state.Contains((int)e.ExhibitStatus));
 
             }
-            if (datefrom!=null&& dateto!=null)
+            if (datefrom != null && dateto != null)
             {
-                q = q.Where(e => e.Datefrom.Date >= datefrom && e.Dateto.Date <= dateto);                    
+                q = q.Where(e => e.Datefrom.Date >= datefrom && e.Dateto.Date <= dateto);
             }
-            List<Exhibitionss> el = q.OrderBy(e=>e.ExhibitStatus).ToList();
-
+            List<Exhibitionss> el = q.OrderBy(e => e.ExhibitStatus).ToList();
             return PartialView("_ExhibitionPartial", el);
+        }
+
+        public IActionResult Report()
+        {
+            ViewBag.ename = _context.Exhibitionsses.Where(e => e.ExhibitStatus == 4).Select(e=>e.ExhibitName).ToList();
+            return View();
+        }
+
+        public IActionResult DateSearchExhibition(int? year, int? month)
+        {
+            List<string> ename = new List<string>();
+            if (year.HasValue && month.HasValue)
+            {
+                ename = _context.Exhibitionsses.Where(e => e.ExhibitStatus == 4 && e.Datefrom.Year == year && e.Datefrom.Month == month).Select(e => e.ExhibitName).ToList();
+            }
+            else if (year.HasValue)
+            {
+                ename = _context.Exhibitionsses.Where(e => e.ExhibitStatus == 4 && e.Datefrom.Year == year).Select(e => e.ExhibitName).ToList();
+            }
+            else if (month.HasValue)
+            {
+                ename = _context.Exhibitionsses.Where(e => e.ExhibitStatus == 4 && e.Datefrom.Month == month).Select(e => e.ExhibitName).ToList();
+            }
+            Console.WriteLine("-------------+++++++++++++++++++-----------" + ename[0]);
+            return Json(new { ename = ename });
+        }
+
+        public Task<IActionResult> ReportShow(string ename)
+        {
+            
         }
     }
 }
