@@ -9,43 +9,16 @@
     font-weight: 900;
 }
 
-/*.card {
-  min-height: 100%;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: #444;
-  position: relative;
-  top: 0;
-  transition: all .1s ease-in;
+.H3-TEXT {
+    /*-webkit-line-clamp: 1;*/
+    overflow: hidden;
+    white-space : nowrap;
+    text-overflow: ellipsis;
+   /* display: -webkit-box;
+    display: -webkit-box-orient;*/
+    max-height:33.11px;
+    min-height:33.11px;
 }
-
-.card:hover {
-  top: -10px;
-  box-shadow: 0 4px 5px rgba(0,0,0,0.2);
-}
-
-.card {
-  background-size: cover;
-  background-position: center center;
-}
-
-.card p { 
-  flex-grow: 1;
-  line-height: 1.4;
-}
-
-.stretched-link::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    content: "";
-}*/
 
 </style>
 
@@ -83,31 +56,34 @@
                         <a href="#" class="btn btn-dark stretched-link">詳細資訊</a>
                     </div>
                 </div>*@
+                
                 <div class="col-md-4 col-sm-6" style="margin-top:30px;">
-                <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
-                    <div class="img-wrapper">
-                        <img src="@Url.Content("~/images/")@item.ExhibitPImg" class="img-fluid" alt="this is a title">
-                        <div class="overlay">
-                            <div class="buttons">
-                                <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
-                                <a target="_blank" href="single-portfolio.html">Details</a>
+                    <div class="products d-flex flex-column card-0">
+                        <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
+                            <div class="img-wrapper">
+                                <img src="@Url.Content("~/images/")@item.ExhibitPImg" class="img-fluid" alt="this is a title">
+                                <div class="overlay">
+                                    <div class="buttons">
+                                        <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
+                                        <a target="_blank" href="single-portfolio.html">Details</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <figcaption>
+                                <h4>
+                                    <a href="#" class="H3-TEXT" style="display:block;">
+                                        @item.ExhibitName
+                                    </a>
+                                </h4>
+                                <p class="card-text">@item.Datefrom.ToString("yyyy/MM/dd")~@item.Dateto.ToString("yyyy/MM/dd")</p>
+                                <p>單價：@item.TicketPrice</p>
+                                @*<p class="card_description">
+                                    @item.ExDescription
+                                </p>*@
+                            </figcaption>
+                        </figure>
                     </div>
-                    <figcaption>
-                        <h4>
-                            <a href="#" class="flex-grow-1">
-                                @item.ExhibitName
-                            </a>
-                        </h4>
-                        <p class="card-text">@item.Datefrom~@item.Dateto</p>
-                        <p>單價：@item.TicketPrice</p>
-                        @*<p class="card_description">
-                            @item.ExDescription
-                        </p>*@
-                    </figcaption>
-                </figure>
-            </div>
+                </div>
             }
         </div>
     </div>
