@@ -166,21 +166,21 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult GetInvideManufactures([FromBody] GetIdClassModel idClass)
     {
-        var booths = _context.BoothMapsses.Where(m => m.EId == idClass.Ex_id).ToList();
+        var booths = _context.BoothMapsses.Where(m => m.EId == idClass.Ex_id).ToList()??new List<BoothMapss>();
         IList<Manufacturess> manufacturesses = new List<Manufacturess>();
-        //if (booths[0].MfId != null)
-        //{
-        //    foreach (var booth in booths)
-        //    {
-        //        manufacturesses.Add(_context.Manufacturesses.First(m => m.ManufactureId == booth.MfId));
-        //    }
-        //    eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
-        //    {
-        //        Manufactures = manufacturesses,
-        //        booths = booths
-        //    };
-        //    return Json(eDrtailViewModel);
-        //}
+        if (booths.Count == 0)
+        {
+            foreach (var booth in booths)
+            {
+                manufacturesses.Add(_context.Manufacturesses.First(m => m.ManufactureId == booth.MfId));
+            }
+            eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
+            {
+                Manufactures = manufacturesses,
+                booths = booths
+            };
+            return Json(eDrtailViewModel);
+        }
         return Json(booths);
     }
 
