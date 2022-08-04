@@ -1,62 +1,61 @@
 ﻿@model IEnumerable<Fairy_project.Models.Exhibitionss>
 
-<style>
-.search {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-    font-weight: 900;
-}
 
-.H3-TEXT {
-    /*-webkit-line-clamp: 1;*/
-    overflow: hidden;
-    white-space : nowrap;
-    text-overflow: ellipsis;
-   /* display: -webkit-box;
-    display: -webkit-box-orient;*/
-    max-height:33.11px;
-    min-height:33.11px;
-}
+<style>
+    .search {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+        font-weight: 900;
+    }
+
+    .H3-TEXT {
+        /*-webkit-line-clamp: 1;*/
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        /* display: -webkit-box;
+        display: -webkit-box-orient;*/
+        max-height: 33.11px;
+        min-height: 33.11px;
+    }
 
 </style>
 
 
-    <div class="container" style="margin-top:200px;margin-bottom:100px;">
+<div class="container" style="margin-top:200px;margin-bottom:100px;">
 
-        <div class="search">
-            <h2>展覽搜尋</h2>
+    <div class="search">
+        <h2>展覽搜尋</h2>
+    </div>
+
+    <form asp-action="search">
+        <div class="input-group">
+            <input type="date" name="dtStart" />
+            <input type="date" name="dtEnd" />
+            <a asp-controller="Home" asp-action="search" asp-route-id="1" class="btn btn-dark">單價遞增</a>
+            <a asp-controller="Home" asp-action="search" asp-route-id="2" class="btn btn-dark">單價遞減</a>
+            <span class="input-group-text">展覽關鍵字</span>
+            @*<input type="text" class="form-control" name="txtKeyword" />*@
+            <input type="text" class="form-control" name="txtKeyword" placeholder="請輸入展覽名稱" autocomplete="off">
+            <input type="submit" value="搜尋" class="btn btn-dark" />
         </div>
+    </form>
 
-        <form asp-action="search" >
-                <div class="input-group">
-                    <a asp-controller="Home" asp-action="search" asp-route-id="1" class="btn btn-dark">單價遞增</a>
-                    <a asp-controller="Home" asp-action="search" asp-route-id="2" class="btn btn-dark">單價遞減</a>
-                    <input type="date" name="dtStart"/>
-                    <input type="date" name="dtEnd"/>
-                    <span class="input-group-text">展覽關鍵字</span>
-                    <input type="text" class="form-control" name="txtKeyword" />
-                    <input type="submit" value="搜尋" class="btn btn-dark" />
-                </div>
-        </form>
+    <div class="row" style="margin-top:50px;">
+        @foreach (var item in Model)
+        {
+            @*<div class="card col-12 col-sm-6 col-md-4 d-flex" style="width: 18rem;margin-top:50px;">
+        <img src="@Url.Content("~/images/")@item.ExhibitPImg" class="card-img-top" alt="@item.ExhibitName">
+        <div class="card-body">
+        <h5 class="card-title flex-grow-1">@item.ExhibitName</h5>
+        <p class="card-text">@item.Datefrom~@item.Dateto</p>
+        <p>單價：@item.TicketPrice</p>
+        <a href="#" class="btn btn-dark stretched-link">詳細資訊</a>
+        </div>
+        </div>*@
 
-
-
-
-        <div class="row">
-            @foreach(var item in Model)
-            {
-                @*<div class="card col-12 col-sm-6 col-md-4 d-flex" style="width: 18rem;margin-top:50px;">
-                    <img src="@Url.Content("~/images/")@item.ExhibitPImg" class="card-img-top" alt="@item.ExhibitName">
-                    <div class="card-body">
-                        <h5 class="card-title flex-grow-1">@item.ExhibitName</h5>
-                        <p class="card-text">@item.Datefrom~@item.Dateto</p>
-                        <p>單價：@item.TicketPrice</p>
-                        <a href="#" class="btn btn-dark stretched-link">詳細資訊</a>
-                    </div>
-                </div>*@
-                
                 <div class="col-md-4 col-sm-6" style="margin-top:30px;">
                     <div class="products d-flex flex-column card-0">
                         <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
@@ -64,26 +63,47 @@
                                 <img src="@Url.Content("~/images/")@item.ExhibitPImg" class="img-fluid" alt="this is a title">
                                 <div class="overlay">
                                     <div class="buttons">
-                                        <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
-                                        <a target="_blank" href="single-portfolio.html">Details</a>
+                                    @*<button class="btn btn_buy btn_cart" data-id="@item.ExhibitId">購票</button>*@
+                                        <a rel="gallery" class="fancybox btn_cart" href="#">加入購物車</a>
+                                        <a target="_blank" href="#">展覽詳細資訊</a>
                                     </div>
                                 </div>
                             </div>
                             <figcaption>
                                 <h4>
                                     <a href="#" class="H3-TEXT" style="display:block;">
-                                        @item.ExhibitName
+                                    @item.ExhibitName
                                     </a>
                                 </h4>
                                 <p class="card-text">@item.Datefrom.ToString("yyyy/MM/dd")~@item.Dateto.ToString("yyyy/MM/dd")</p>
                                 <p>單價：@item.TicketPrice</p>
-                                @*<p class="card_description">
-                                    @item.ExDescription
-                                </p>*@
+                            @*<p class="card_description">
+                        @item.ExDescription
+                        </p>*@
                             </figcaption>
                         </figure>
                     </div>
                 </div>
-            }
-        </div>
+        }
     </div>
+</div>
+
+    <script>
+    //    const cartList = JSON.parse(sessionStorage.getItem('TicketList')) || []
+    //    const exhibition = {
+    //    id: 1,
+    //    count: 1,
+    //    }
+    //    const exhibition2 = {
+    //    id: 2,
+    //    count: 1,
+    //    }
+    //    const exhibition3 = {
+    //    id: 9,
+    //    count: 1,
+    //    }
+    //cartList.push(exhibition)
+    //cartList.push(exhibition2)
+    //cartList.push(exhibition3)
+    //sessionStorage.setItem('TicketList', JSON.stringify(cartList))
+    </script>
