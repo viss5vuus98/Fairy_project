@@ -437,16 +437,16 @@
         //submit表單送出
 
         $("#pay").click(function() {
-            //if ($("#name").val() == '' || $("#cellphone").val() == '' || $("#Email").val() == '' || $(".radio input:radio[name=option]:checked").val() == null) {
-            //    alert('請輸入完整資訊');
-            //} else {
+            if ($("#name").val() == '' || $("#cellphone").val() == '' || $("#Email").val() == '' || $(".radio input:radio[name=option]:checked").val() == null) {
+                alert('請輸入完整資訊');
+            } else {
             $(".orderprice").append(`<h5>${sum}</h5>元`);
             $(".ordertime").append(`<h5>${currentDateTime}</h5>`)
             $(".ordername").append(`<h5>${$("#name").val()}</h5>`);
             $(".orderphone").append(`<h5>${$("#cellphone").val()}</h5>`);
             $(".orderemail").append(`<h5>${$("#Email").val()}</h5>`);
             $(".orderinfo").append(`<h5>${$(".radio input:radio[name=option]:checked").val()}</h5>`)
-            //alert("您已成功付款");
+            alert("您已成功付款");
             $(window).scrollTop(0);
             $(".first").hide();
             $(".second").hide();
@@ -481,7 +481,7 @@
                     console.log(data)
                 })
                 sessionStorage.removeItem('TicketList');
-            //}
+            }
         })
 
 

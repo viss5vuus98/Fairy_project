@@ -300,11 +300,11 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult clearCart([Formbody] List<TicketRoot> obj)
     {
-        //for (int i = 0; i < obj.Count; i++)
-        //{
-        //    _context.Ticketsses.Add(obj[i].ticket);
-        //}
-        //_context.SaveChanges();
+        for (int i = 0; i < obj.Count; i++)
+        {
+            _context.Ticketsses.Add(obj[i].ticket);
+        }
+        _context.SaveChanges();
         return Json(obj);
     }
 
