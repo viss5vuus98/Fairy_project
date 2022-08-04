@@ -91,6 +91,14 @@ namespace Fairy_project.Controllers
             }
         }
 
+        //Get Mf verifyCode 
+        [HttpPost]
+        public IActionResult getMFVerifyCode([FromBody] MfQrCode mfQrCode)
+        {
+            string verifyCode = $"MF|{mfQrCode.ex_id}|{mfQrCode.mf_id}|{mfQrCode.boothNum}";
+            return Json(verifyCode);
+        }
+
         [HttpPost, Route("giveTicket")]
         public IActionResult giveTicket([FromBody] SussessMessage message)
         {

@@ -308,6 +308,8 @@ public class HomeController : Controller
         return Json(obj);
     }
 
+    //postQrcode
+
     [HttpPost]
     public IActionResult postQrCode([FromBody] QrCode ticket)
     {
@@ -332,5 +334,29 @@ public class HomeController : Controller
         }
     }
 
+    //postMfQrcode
+
+    [HttpPost]
+    public IActionResult postMfQrCode([FromBody] MfQrCode mfQrCode)
+    {
+        int exId = Convert.ToInt32(mfQrCode.ex_id);
+        int boothNum = Convert.ToInt32(mfQrCode.boothNum);
+        int mfId = Convert.ToInt32(mfQrCode.mf_id);
+        IList<BoothMapss> booths = _context.BoothMapsses.Where(b => b.EId == exId && b.BoothState == 2).ToList();
+        if (booths.Count > 0)
+        {
+            var TheBooth = booths.FirstOrDefault(b => b.BoothNumber == boothNum);
+            if (TheBooth.MfId == mfId)
+            {
+                return Json("歡迎入場");
+            }
+            else
+            {
+                return Json("無效攤位");
+            }
+        }
+
+        return Json("無效展覽");
+    }
 }
 
