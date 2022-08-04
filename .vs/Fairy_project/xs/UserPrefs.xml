@@ -1,28 +1,21 @@
 ﻿<Properties StartupConfiguration="{160F8584-3AAA-4CEB-BF5C-47355F4D95FA}|Default">
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/wwwroot/js/memberTicket.js">
     <Files>
-      <File FileName="Fairy_project/wwwroot/css/Index.css" Line="5" Column="7" />
-      <File FileName="Fairy_project/wwwroot/js/HomeIndex.js" Line="64" Column="17" />
-      <File FileName="Fairy_project/wwwroot/css/TicketModal.css" Line="175" Column="16" />
-      <File FileName="Fairy_project/wwwroot/js/memberTicket.js" Line="3" Column="1" />
-      <File FileName="Fairy_project/Views/Member/Index.cshtml" Line="94" Column="7" />
-      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="5" Column="27" />
-      <File FileName="Fairy_project/Views/Shared/_Layout.cshtml" Line="186" Column="25" />
-      <File FileName="Fairy_project/Views/Home/exhibitionDetail.cshtml" Line="4" Column="5" />
-      <File FileName="Fairy_project/wwwroot/css/templateB5.css" Line="51" Column="2" />
-      <File FileName="Fairy_project/Views/Home/shoppingcart.cshtml" Line="449" Column="13" />
-      <File FileName="Fairy_project/Controllers/HomeController.cs" Line="307" Column="32" />
+      <File FileName="Fairy_project/wwwroot/js/memberTicket.js" Line="78" Column="53" />
+      <File FileName="Fairy_project/Controllers/MemberController.cs" Line="1" Column="1" />
+      <File FileName="Fairy_project/Controllers/HomeController.cs" Line="331" Column="1" />
+      <File FileName="Fairy_project/Models/Ticketss.cs" Line="6" Column="34" />
+      <File FileName="Fairy_project/Models/Permissionss.cs" Line="1" Column="1" />
+      <File FileName="Fairy_project/Models/idClassModel.cs" Line="21" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
@@ -33,7 +26,10 @@
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
-                <Node name="js" expanded="True" />
+                <Node name="js" expanded="True">
+                  <Node name="memberTicket.js" selected="True" />
+                </Node>
+                <Node name="lib" expanded="True" />
               </Node>
             </Node>
           </Node>

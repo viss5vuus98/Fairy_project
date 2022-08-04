@@ -17,5 +17,11 @@ namespace Fairy_project.Models
         public string dateStart { get; set; }
         public string dateEnd { get; set; }
     }
+
+    public class QrCode
+    {
+        public int Ex_id { get; set; }
+        public string VerificationCode { get; set; }
+    }
 }
 

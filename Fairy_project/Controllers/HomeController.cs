@@ -308,5 +308,26 @@ public class HomeController : Controller
         return Json(obj);
     }
 
+    [HttpPost]
+    public IActionResult postVCode([FromBody] QrCode ticket)
+    {
+        var ticketCoent = _context.Ticketsses.First(t => t.VerificationCode == ticket.VerificationCode)??new Ticketss();
+        if(ticketCoent.VerificationCode != null)
+        {
+            var exId = ticketCoent.EId;
+            if (exId == Convert.ToInt32(ticket.Ex_id))
+            {
+                return Json("成功進入");
+            }
+            else
+            {
+                return Json("展覽錯誤");
+            }
+        }else
+        {
+            return Json("無此票券");
+        }
+    }
+
 }
 
