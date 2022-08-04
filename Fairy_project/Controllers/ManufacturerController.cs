@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using Fairy_project.Models;
+using Fairy_project.ViewModels;
 
 namespace Fairy_project.Controllers
 {
@@ -33,10 +34,15 @@ namespace Fairy_project.Controllers
             model.EId = Convert.ToInt32(e_Id);
             model.MfId = Convert.ToInt32(mid);
 
+
          return View(model);
         }
-        public IActionResult StandProcess()
+        public IActionResult StandProcess(string boothId, string e_Id, string mid)
         {
+           
+            TempData["boothId"] = Convert.ToInt32(boothId);
+            TempData["e_Id"] = Convert.ToInt32(e_Id);
+            TempData["mid"] = Convert.ToInt32(mid);   
             return View();
         }
 
@@ -73,18 +79,24 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult createApplies(Appliess apply)
         {
+            Console.WriteLine("--------------------------------" + apply.EId);
+            Console.WriteLine("--------------------------------" + apply.MfDescription);
 
             Appliess appliess = new Appliess()
             {
                 MfId = Convert.ToInt32(apply.MfId),
                 EId = Convert.ToInt32(apply.EId),
+                BoothNumber = Convert.ToInt32(apply.BoothNumber),
+                MfPImg = apply.MfPImg,
+                MfLogo = apply.MfLogo,
                 MfDescription = apply.MfDescription,
+                CheckState = 0,
 
 
             };
             _woowocontext.Appliesses.Add(appliess);
             _woowocontext.SaveChanges();
-            return Redirect("Index");
+            return Redirect("StandProcess");
 
         }
         //get the manufactures of applies 找一個廠商的所有審核 傳入Mf_id

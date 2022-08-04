@@ -1,5 +1,5 @@
-﻿@using Fairy_project.ViewModels;
-
+﻿
+@model Appliess
 @section Style{
 
     <link rel="stylesheet" href="~/css/MNFstyleIndex.css" asp-append-version="true" />
@@ -90,7 +90,7 @@
                         <input id="eId"  name="e_Id" value="" />
                         <input id="bNum" name="boothId" value="" />
                         <input id="mId" name="mid" value="@TempData["manufactureId"]"/>
-                        <button type="submit" class="btn btn-main"><a  asp-action="ApplyStand">提交申請</a></button>
+                        <button type="submit" class="btn btn-main">提交申請</button>
                     </form>
 
                 </div>
@@ -110,7 +110,11 @@
     <script src="~/js/MFNscriptIndex.js"></script>
 
     <script>
-
+        const mfID=@TempData["manufactureId"]
+        const info = {
+            id:mfID,
+        }
+        sessionStorage.setItem('Info',JSON.stringify(info))
         let exhibition = new Array();
         axios.get('@Url.Action("getAllExhibition")')
             .then(res => {

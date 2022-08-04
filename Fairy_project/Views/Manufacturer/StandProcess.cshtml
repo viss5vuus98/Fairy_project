@@ -1,4 +1,6 @@
-﻿@*
+﻿@model Appliess;
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -101,6 +103,16 @@
     <script src="~/lib/plugins/shuffle/shuffle.min.js"></script>
     <script src="~/lib/plugins/SyoTimer/jquery.syotimer.min.js"></script>
     <script src="~/js/MFNscriptIndex.js"></script>
+    <script>
+        let mfId=JSON.parse( sessionStorage.getItem('Info'));
+        console.log(mfId.id)
+        axios.post('@Url.Action("getMfApplies")', { "Mf_id": mfId.id})
+    .then(res => console.log(res.data))
+$(() => {
+    let  =  $(".tabCommon")
+
+})
+          </script>
 }
 
 
