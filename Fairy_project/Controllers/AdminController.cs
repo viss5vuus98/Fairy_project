@@ -63,6 +63,7 @@ namespace Fairy_project.Controllers
             model.exhibit_P_img = exhibition.ExhibitPImg;
             model.exhibit_T_img = exhibition.ExhibitTImg;
             model.exhibit_Pre_img = exhibition.ExhibitPreImg;
+            model.areaNum = exhibition.AreaNum;
             model.datefrom = exhibition.Datefrom;
             model.dateto = exhibition.Dateto;
             model.ex_description = exhibition.ExDescription;
@@ -144,7 +145,7 @@ namespace Fairy_project.Controllers
                 }
                 model.mostpeople = mostpeoplt;
                 Console.WriteLine("=========================================================" + mostpeoplt);
-                
+
                 int yesterdayperson = 0;
                 var qq = from t in _context.Ticketsses where t.EId == exhibitId && (DateTime)t.Entertime.Date == DateTime.Now.AddDays(-1).Date && t.Enterstate == 1 select t;
                 List<Ticketss> tl = _context.Ticketsses.Where(t => t.EId == exhibitId && t.Enterstate == 1).ToList();
@@ -179,15 +180,15 @@ namespace Fairy_project.Controllers
             exhibition.ExPersonTime = model.ex_personTime;
             exhibition.ExTotalImcome = model.ex_totalImcome;
             exhibition.TicketPrice = model.ticket_Peice;
-
-            if (model.areaNumstring == "A")
-            {
-                exhibition.AreaNum = 1;
-            }
-            else if (model.areaNumstring == "B")
-            {
-                exhibition.AreaNum = 2;
-            }
+            exhibition.AreaNum = model.areaNum;
+            //if (model.areaNumstring == "A")
+            //{
+            //    exhibition.AreaNum = 1;
+            //}
+            //else if (model.areaNumstring == "B")
+            //{
+            //    exhibition.AreaNum = 2;
+            //}
 
             if (model.fexhibit_T_img != null)
             {
@@ -591,7 +592,7 @@ namespace Fairy_project.Controllers
 
         public IActionResult Report()
         {
-            ViewBag.ename = _context.Exhibitionsses.Where(e => e.ExhibitStatus == 4).Select(e=>e.ExhibitName).ToList();
+            ViewBag.ename = _context.Exhibitionsses.Where(e => e.ExhibitStatus == 4).Select(e => e.ExhibitName).ToList();
             return View();
         }
 
@@ -614,9 +615,86 @@ namespace Fairy_project.Controllers
             return Json(new { ename = ename });
         }
 
-        public Task<IActionResult> ReportShow(string ename)
+        public IActionResult ReportShow(string ename)
         {
-            
+            Exhibitionss e = _context.Exhibitionsses.Where(e => e.ExhibitName == ename).FirstOrDefault();
+            string name = e.ExhibitName;
+            string edate = Convert.ToDateTime(e.Datefrom).ToShortDateString() + " ~ " + Convert.ToDateTime(e.Dateto).ToShortDateString();
+            decimal people = 0;
+            if (_context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() != 0)
+            {
+                //decimal enterpeople = _context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count();
+                //decimal soldtickets = _context.Ticketsses.Where(t => t.EId == e.ExhibitId).Count();
+                //people = _context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() / _context.Ticketsses.Where(t => t.EId == e.ExhibitId).Count();
+                people = Math.Round((decimal)_context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() / _context.Ticketsses.Where(t => t.EId == e.ExhibitId).Count() * 100, 0);
+            }
+            else
+            {
+                people = 0;
+            }
+            decimal booth = 0;
+            if (_context.BoothMapsses.Where(b => b.EId == e.ExhibitId && b.BoothState == 1).Count() != 0)
+            {
+                booth = Math.Round((decimal)_context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 3).Count() / _context.BoothMapsses.Where(b => b.EId == e.ExhibitId).Count() * 100, 0);
+            }
+            else
+            {
+                booth = 0;
+            }
+            int averageperson = 0;
+            if (_context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() != 0)
+            {
+                averageperson = _context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() / new TimeSpan(Convert.ToDateTime(e.Dateto).Ticks - Convert.ToDateTime(e.Datefrom).Ticks).Days;
+            }
+            else
+            {
+                averageperson = 0;
+            }
+
+            int? pricesum = 0;
+            //List<Dictionary<int, int>> boothandprice = new List<Dictionary<int, int>>();
+            List<BoothMapss> b = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 3).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).ToList();
+            if (b.Count != 0)
+            {
+                foreach (var item in b)
+                {
+                    pricesum += item.BoothPrice;
+                }
+            }
+            pricesum += _context.Ticketsses.Where(t => t.EId == e.ExhibitId).Select(t => t.Price).Sum();
+
+            int female = _context.Membersses.Where(m => _context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Select(t => t.MId).ToList().Contains(m.MemberId) && m.Gender == "2").Count();
+            int male = _context.Membersses.Where(m => m.Gender == "1" && _context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Select(t => t.MId).ToList().Contains(m.MemberId)).Count();
+
+
+            var t = _context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1);
+            List<Ticketss> ticketsses = t.ToList();
+            List<string> datepick = new List<string>();
+            List<string> datereport = new List<string>();
+            List<int> reportsum = new List<int>();
+            int i = 0;
+
+            for (var day = e.Datefrom; day <= e.Dateto; day = day.AddDays(1))
+            {
+                reportsum.Add(0);
+                datepick.Add(Convert.ToDateTime(day).ToString("yyyy-MM-dd"));
+                datereport.Add(Convert.ToDateTime(day).ToString("MM-dd"));
+
+                for (int j = 0; j < ticketsses.Count; j++)
+                {
+                    if (Convert.ToDateTime(ticketsses[j].Entertime).Date == day.Date)
+                    {
+                        reportsum[i]++;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                i++;
+            }
+
+            return Json(new { ename = name, edate = edate, people = people, booth = booth, averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport= datereport });
         }
     }
 }

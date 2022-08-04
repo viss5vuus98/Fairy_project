@@ -58,9 +58,9 @@
                                 <button class="fs-6 btn btn-outline-dark border btn-lg dropdown-toggle" type="button"
                                     id="selecarea" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                     data-display="static">
-                                    展區
+                                    @Model.areaNumstring
                                 </button>
-                                <input asp-for="areaNum" type="text" id="area" hidden>
+                                <input asp-for="areaNum" type="text" id="area" value="@Model.areaNum" hidden>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item areaoption" href="#">A</a>
                                     <a class="dropdown-item areaoption" href="#">B</a>
@@ -75,11 +75,11 @@
                             @{
                                 if (Model.areaNumstring == "A")
                                 {
-                                    <h5 class="w-25 h-25 py-2 px-0 bg2 border border-1 text-center">展區 @Model.areaNumstring</h5>
+                                    <h5 class="w-25 h-25 py-2 px-0 bg2 border border-1 text-center">@Model.areaNumstring</h5>
                                 }
                                 else if (Model.areaNumstring == "B")
                                 {
-                                    <h5 class="w-25 h-25 py-2 px-0 bg2 border border-1 text-center">展區 @Model.areaNumstring</h5>
+                                    <h5 class="w-25 h-25 py-2 px-0 bg2 border border-1 text-center">@Model.areaNumstring</h5>
                                 }
                             }
                         </div>
@@ -103,7 +103,7 @@
                         if (Model.exhibitStatus != 3)
                         {
                             <label for="ticketimginput" class="d-inline">
-                                <input asp-for="exhibit_T_img" type="file" id="ticketimginput" hidden
+                                <input asp-for="fexhibit_T_img" type="file" id="ticketimginput" hidden
                                accept=".png,.jpg">
                                 <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0"></i>
                             </label>
@@ -125,7 +125,7 @@
                         if (Model.exhibitStatus != 3)
                         {
                             <label for="horizontalposterimageinput" class="d-inline">
-                                <input asp-for="exhibit_Pre_img" type="file" id="horizontalposterimageinput" hidden
+                                <input asp-for="fexhibit_Pre_img" type="file" id="horizontalposterimageinput" hidden
                                accept=".png,.jpg">
                                 <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0"></i>
                             </label>
@@ -151,7 +151,7 @@
                         if (Model.exhibitStatus != 3)
                         {
                             <label for="verticalposterimageinput" class="d-inline">
-                                <input asp-for="exhibit_P_img" type="file" id="verticalposterimageinput" hidden
+                                <input asp-for="fexhibit_P_img" type="file" id="verticalposterimageinput" hidden
                                accept=".png,.jpg">
                                 <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute bottom-0 end-0 translate-middle"
                                href="#"></i>
