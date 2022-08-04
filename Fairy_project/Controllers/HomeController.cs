@@ -309,14 +309,17 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult postVCode([FromBody] QrCode ticket)
+    public IActionResult postQrCode([FromBody] QrCode ticket)
     {
-        var ticketCoent = _context.Ticketsses.First(t => t.VerificationCode == ticket.VerificationCode)??new Ticketss();
+        var ticketCoent = _context.Ticketsses.FirstOrDefault(t => t.VerificationCode == ticket.VerificationCode && t.Enterstate == 0)??new Ticketss();
         if(ticketCoent.VerificationCode != null)
         {
             var exId = ticketCoent.EId;
             if (exId == Convert.ToInt32(ticket.Ex_id))
             {
+                ticketCoent.Enterstate = 1;
+                ticketCoent.Entertime = DateTime.Now;
+                _context.SaveChanges();
                 return Json("成功進入");
             }
             else

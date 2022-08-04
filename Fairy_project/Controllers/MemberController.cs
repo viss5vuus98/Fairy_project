@@ -28,7 +28,7 @@ namespace Fairy_project.Controllers
         [HttpPost, Route("getTicketsss")]
         public IActionResult getTicketsss([FromBody] GetIdClassModel idClass)
         {
-            var tickets = _context.Ticketsses.Where(m => m.MId == idClass.Mf_id).ToList();
+            var tickets = _context.Ticketsses.Where(m => m.MId == idClass.Mf_id && m.Enterstate == 0).ToList();
 
             List<Exhibitionss> exhibitions = new List<Exhibitionss>();
             if (tickets != null)
