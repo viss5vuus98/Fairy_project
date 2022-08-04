@@ -619,7 +619,7 @@ namespace Fairy_project.Controllers
         {
             Exhibitionss e = _context.Exhibitionsses.Where(e => e.ExhibitName == ename).FirstOrDefault();
             string name = e.ExhibitName;
-            string edate = Convert.ToDateTime(e.Datefrom).ToShortDateString() + " ~ " + Convert.ToDateTime(e.Dateto).ToShortDateString();
+            string edate = Convert.ToDateTime(e.Datefrom).ToShortDateString() + " - " + Convert.ToDateTime(e.Dateto).ToShortDateString();
             decimal people = 0;
             if (_context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() != 0)
             {
@@ -694,7 +694,40 @@ namespace Fairy_project.Controllers
                 i++;
             }
 
-            return Json(new { ename = name, edate = edate, people = people, booth = booth, averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport= datereport });
+            return Json(new { ename = name, edate = edate, people = people, booth = booth, averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport = datereport });
         }
+        public IActionResult RenderChart(string? edate, string? ename)
+        {
+            edate.Split(" - ").ToList();
+            Console.WriteLine("--------------------" + Convert.ToDateTime(edate.Split(" - ")[0]));
+            DateTime datefrom = Convert.ToDateTime(edate.Split(" - ")[0]);
+            DateTime dateto = Convert.ToDateTime(edate.Split(" - ")[1]);
+            int eid =  _context.Exhibitionsses.Where(e => e.ExhibitName == ename).Select(e => e.ExhibitId).FirstOrDefault();
+
+            var t = _context.Ticketsses.Where(t => t.EId == eid && t.Enterstate == 1 && DateTime.Compare((DateTime)t.Entertime, datefrom) == 1 && DateTime.Compare((DateTime)t.Entertime, dateto.AddDays(1)) == -1).OrderBy(t => t.Entertime);
+            List<Ticketss> ticketsses = t.ToList();
+            List<string> reportday = new List<string>();
+            List<int> reportsum = new List<int>();
+            int i = 0;
+            for (var day = datefrom; day <= dateto; day = day.AddDays(1))
+            {
+                reportsum.Add(0);
+                reportday.Add(Convert.ToDateTime(day).ToString("MM-dd"));
+                for (int j = 0; j < ticketsses.Count; j++)
+                {
+                    if (Convert.ToDateTime(ticketsses[j].Entertime).Date == day.Date)
+                    {
+                        reportsum[i]++;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                i++;
+            }
+            return Json(new { reportday = reportday, reportsum = reportsum });
+        }
+
     }
 }

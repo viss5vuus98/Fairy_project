@@ -109,7 +109,7 @@
 
     <div class="row py-2 mb-3">
         <div class="col-8">
-            <h2 id="ename" class="m-0">展覽名稱</h2>
+            <h2 id="enametitle" class="m-0">展覽名稱</h2>
         </div>
         <div class="col-4">
             <p id="edate" class="edate">舉辦期間</p>
@@ -175,7 +175,7 @@
         <div class="col-lg-3 col-12 text-center">
             <canvas class="border border-1 rounded-3 p-3" id="myChart"></canvas>
             <input type="text" class="w-100 border-0 border-bottom text-center py-2 my-4" id="datepicker"
-                   placeholder="選擇日期">
+                   placeholder="選擇日期" autocomplete="off">
 
         </div>
     </div>
@@ -199,110 +199,141 @@
 
         $('#year').on('change', (e) => {
             $('#ename').html('<option value="">展覽名稱</option>')
-            changedate();
+            if ($(e.target).val() != '年') {
+                changedate();
+            }
         })
         $('#month').on('change', (e) => {
             $('#ename').html('<option value="">展覽名稱</option>')
-            changedate();
+            if ($(e.target).val() != '月') {
+                changedate();
+            }
         })
         $('#ename').on('change', (e) => {
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("ReportShow")',
-                data: {
-                    ename: $(e.target).val(),
-                },
-            }).done((result) => {
-                alert(result)
-                $('#datepicker').val('')
-                $('#peoplebar').css('width', `${result.people}%`)
-                $('#people').text(`${result.people}%`)
-                $('#boothbar').css('width', `${result.booth}%`)
-                $('#booth').text(`${result.booth}%`)
-                $('#averageperson').text(`${result.averageperson}人`)
-                $('#pricesum').text(`$${result.pricesum}`)
-
-                //----------日期選擇器
-                if (picker != undefined) {
-                    picker.clearSelection();
-                    picker.destroy();
-                    console.log('des')
-                }
-                $('#datepicker').val(`${result.datepick[0]} - ${result.datepick.pop()}`)
-                const allowedDates = result.datepick;
-                picker = new Litepicker({
-                    element: document.getElementById('datepicker'),
-                    singleMode: false,
-                    tooltipNumber: (totalDays) => {
-                        return totalDays - 1;
+            if ($(e.target).val() != '展覽名稱') {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("ReportShow")',
+                    data: {
+                        ename: $(e.target).val(),
                     },
-                    lockDaysFilter: (date1, pickedDates) => {
-                        return !allowedDates.includes(date1.format('YYYY-MM-DD'));
+                }).done((result) => {
+                    //alert(result)
+                    $('#enametitle').text(`${result.ename}`)
+                    $('#edate').text(`${result.edate}`)
+                    $('#datepicker').val('')
+                    $('#peoplebar').css('width', `${result.people}%`)
+                    $('#people').text(`${result.people}%`)
+                    $('#boothbar').css('width', `${result.booth}%`)
+                    $('#booth').text(`${result.booth}%`)
+                    $('#averageperson').text(`${result.averageperson}人`)
+                    $('#pricesum').text(`$${result.pricesum}`)
+
+                    //----------日期選擇器
+                    if (picker != undefined) {
+                        picker.clearSelection();
+                        picker.destroy();
+                        console.log('des')
                     }
+                    $('#datepicker').val(`${result.datepick[0]} - ${result.datepick.pop()}`)
+                    const allowedDates = result.datepick;
+                    picker = new Litepicker({
+                        element: document.getElementById('datepicker'),
+                        singleMode: false,
+                        tooltipNumber: (totalDays) => {
+                            return totalDays - 1;
+                        },
+                        lockDaysFilter: (date1, pickedDates) => {
+                            return !allowedDates.includes(date1.format('YYYY-MM-DD'));
+                        },
+                        setup: (picker) => {
+                            picker.on('selected', (data) => {
+                                console.log('event')
+                                $.ajax({
+                                    type: 'GET',
+                                    url: '@Url.Action("RenderChart")',
+                                    data: {
+                                        edate: $('#datepicker').val(),
+                                        ename: $(e.target).val(),
+                                    },
+                                }).done((data) => {
+                                    //alert(data)
+                                    barchart(data.reportday, data.reportsum)
+                                }).fail(() => {
+                                    console.log("pagefail")
+                                })
+                            });
+                        },
+                    })
+                    piechart(result.female, result.male)
+                    barchart(result.datereport, result.reportsum)
+                }).fail(() => {
+                    console.log("pagefail")
                 })
-                //----------圓餅圖表
-                let chartStatus = Chart.getChart("myChart");
-                if (chartStatus != undefined) {
-                    chartStatus.destroy();
-                }
-                var ctx = document.getElementById('myChart');
-                var myChart = new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                        labels: [
-                            '女',
-                            '男',
-                        ],
-                        datasets: [{
-                            label: 'My First Dataset',
-                            data: [result.female, result.male],
-                            backgroundColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(54, 162, 235)',
-                            ],
-                            height: '500px',
-                            hoverOffset: 4,
-                        }]
-                    },
-                });
-                //----------圖表
-                let chartStatus2 = Chart.getChart("myChart2");
-                if (chartStatus2 != undefined) {
-                    chartStatus2.destroy();
-                }
-                var ctx2 = document.getElementById('myChart2');
-                var myChart2 = new Chart(ctx2, {
-                    type: 'bar',
-                    data: {
-                        labels: result.datereport,
-                        datasets: [{
-                            label: '進場人數',
-                            data: result.reportsum,
-                            backgroundColor: [
-                                '#5C5858',
-                            ],
-                            borderWidth: 0,
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                stacked: true
-                            },
-                            y: {
-                                stacked: true
-                            }
-                        }
-                    }
-                });
-
-
-            }).fail(() => {
-                console.log("pagefail")
-            })
+            }
 
         })
+        //----------圓餅圖表
+        function barchart(datereport, reportsum) {
+            let chartStatus2 = Chart.getChart("myChart2");
+            if (chartStatus2 != undefined) {
+                chartStatus2.destroy();
+            }
+            var ctx2 = document.getElementById('myChart2');
+            var myChart2 = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: datereport,
+                    datasets: [{
+                        label: '進場人數',
+                        data: reportsum,
+                        backgroundColor: [
+                            '#5C5858',
+                        ],
+                        borderWidth: 0,
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: true
+                        }
+                    }
+                }
+            });
 
+        }
+        //----------圖表
+        function piechart(female, male) {
+            let chartStatus = Chart.getChart("myChart");
+            if (chartStatus != undefined) {
+                chartStatus.destroy();
+            }
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        '女',
+                        '男',
+                    ],
+                    datasets: [{
+                        label: 'My First Dataset',
+                        data: [female, male],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                        ],
+                        height: '500px',
+                        hoverOffset: 4,
+                    }]
+                },
+            });
+
+        }
         function changedate() {
             $.ajax({
                 type: 'GET',
@@ -313,7 +344,7 @@
                 },
             }).done((result) => {
                 let ename = Array.from(result.ename)
-                htmlstr = '<option value="">展覽名稱</option>'
+                 htmlstr = '<option value="">展覽名稱</option>'
                 for (let i = 0; i < ename.length; i++) {
                     htmlstr += `<option value="${ename[i]}">${ename[i]}</option>`
                 }
