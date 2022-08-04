@@ -4,7 +4,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Controllers/MemberController.cs">
     <Files>
       <File FileName="Fairy_project/wwwroot/js/memberTicket.js" Line="63" Column="67" />
-      <File FileName="Fairy_project/Controllers/MemberController.cs" Line="31" Column="101" />
+      <File FileName="Fairy_project/Controllers/MemberController.cs" Line="31" Column="87" />
       <File FileName="Fairy_project/Controllers/HomeController.cs" Line="321" Column="54" />
       <File FileName="Fairy_project/Models/Ticketss.cs" Line="6" Column="34" />
       <File FileName="Fairy_project/Models/Permissionss.cs" Line="1" Column="1" />
@@ -16,9 +16,7 @@
         <State name="__root__">
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="MemberController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
