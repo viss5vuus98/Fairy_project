@@ -6,7 +6,7 @@
 
 }
 
-    <section class="portfolio-work m-3 ">
+    <section class="portfolio-work " style="margin-top:5%">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -86,8 +86,8 @@
                 <div class="col-lg-4 text-right align-self-end">
                     <div class="dataform">
                     </div>
-                    <form method="post" action="@Url.Action("ApplyStand")">
-                        <input id="eId" name="e_Id" value="" />
+                    <form method="post"  action="@Url.Action("ApplyStand","Manufacturer") ">
+                        <input id="eId"  name="e_Id" value="" />
                         <input id="bNum" name="boothId" value="" />
                         <input id="mId" name="mid" value="@TempData["manufactureId"]"/>
                         <button type="submit" class="btn btn-main"><a  asp-action="ApplyStand">提交申請</a></button>

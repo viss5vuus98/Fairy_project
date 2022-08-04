@@ -3039,3 +3039,4 @@ G:\RE0CODING\Fairy_project\Fairy_project\obj\Debug\net6.0\refint\Fairy_project.d
 G:\RE0CODING\Fairy_project\Fairy_project\obj\Debug\net6.0\Fairy_project.pdb
 G:\RE0CODING\Fairy_project\Fairy_project\obj\Debug\net6.0\Fairy_project.genruntimeconfig.cache
 G:\RE0CODING\Fairy_project\Fairy_project\obj\Debug\net6.0\ref\Fairy_project.dll
+C:\Users\Student\Desktop\ISPAN\Fairy_project\Fairy_project\obj\Debug\net6.0\scopedcss\Views\Shared\_Admin_Layout.cshtml.rz.scp.css

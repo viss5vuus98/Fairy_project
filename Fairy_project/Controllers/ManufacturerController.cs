@@ -11,7 +11,7 @@ namespace Fairy_project.Controllers
         {
             _woowocontext = woowocontext;
         }
-        //  [Authorize(Roles = "Admin,Manufacturer")]
+        [Authorize(Roles = "Manufacturer")]
         public IActionResult Index()
         {
             return View();
@@ -28,10 +28,12 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult ApplyStand(string boothId, string e_Id, string mid)
         {
-            ViewBag.BId = boothId;
-            ViewBag.EId = e_Id;
-            ViewBag.MId = mid;
-            return View();
+            Appliess model = new Appliess();
+            model.BoothNumber = Convert.ToInt32(boothId);
+            model.EId = Convert.ToInt32(e_Id);
+            model.MfId = Convert.ToInt32(mid);
+
+         return View(model);
         }
         public IActionResult StandProcess()
         {
