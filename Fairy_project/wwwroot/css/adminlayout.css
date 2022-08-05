@@ -1,4 +1,8 @@
-﻿
+﻿.logo-image {
+    width: 60px;
+    height: 60px;
+}
+
 .top-bar {
     position: fixed;
     top: 0;
