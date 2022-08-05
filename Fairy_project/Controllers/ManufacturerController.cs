@@ -20,15 +20,10 @@ namespace Fairy_project.Controllers
             _woowocontext = woowocontext;
         }
         [Authorize(Roles = "Manufacturer")]
-        public IActionResult Index()
+        public IActionResult Apply()
         {
             return View();
         }
-        public IActionResult IndexOld()
-        {
-            return View();
-        }
-
         public IActionResult Policy()
         {
             return View();
@@ -44,12 +39,10 @@ namespace Fairy_project.Controllers
 
          return View(model);
         }
-        public IActionResult StandProcess(string boothId, string e_Id, string mid)
+        public IActionResult Index()
         {
            
-            TempData["boothId"] = Convert.ToInt32(boothId);
-            TempData["e_Id"] = Convert.ToInt32(e_Id);
-            TempData["mid"] = Convert.ToInt32(mid);   
+
             return View();
         }
 
