@@ -77,7 +77,15 @@ namespace Fairy_project.Controllers
             return Json(applies);
         }
 
-
+        [HttpPost]
+        public async Task<IActionResult> updateApplies(string id, string time ,string fivenum)
+        {
+            string message =time+","+fivenum;
+            var a = _woowocontext.Appliesses.FirstOrDefault(b => b.ApplyNum == Convert.ToInt32(id));
+            a.Message+=message;
+            _woowocontext.Appliesses.Update(a);
+            return Redirect("Index");
+        }
         //create the exhibition of applies 新增申請 傳入applies內的物件
         [HttpPost]
         public async Task<IActionResult> createApplies(CreatAppliessViewModels apply)
