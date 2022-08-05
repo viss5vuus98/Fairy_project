@@ -10,6 +10,12 @@
         <link rel="stylesheet" href="~/css/MNFstyleIndex.css" asp-append-version="true" />
 
 }
+
+    @{
+    Layout ="_Layout_manuf";
+    
+}
+
     <div class="container" style="margin-top:10%">
         <div class="row">
             <div class="col-md-6">
@@ -17,7 +23,7 @@
                     <h4 class="widget-title">申請攤位</h4>
 
 
-                    <form class="checkout-form" method="post" action="@Url.Action("createApplies","Manufacturer")">
+                    <form class="checkout-form" method="post" enctype="multipart/form-data" action="@Url.Action("createApplies","Manufacturer")">
 
 
                         <div class="form-group" style="margin-top:5%">
