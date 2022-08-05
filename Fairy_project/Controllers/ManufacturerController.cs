@@ -1,7 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Fairy_project.Models;
+﻿using Fairy_project.Models;
 using Fairy_project.ViewModels;
+using Humanizer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Data.Entity;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 
 namespace Fairy_project.Controllers
 {
@@ -77,23 +84,42 @@ namespace Fairy_project.Controllers
 
         //create the exhibition of applies 新增申請 傳入applies內的物件
         [HttpPost]
-        public IActionResult createApplies(Appliess apply)
+        public async Task<IActionResult> createApplies(CreatAppliessViewModels apply )
         {
-            Console.WriteLine("--------------------------------" + apply.EId);
-            Console.WriteLine("--------------------------------" + apply.MfDescription);
+            string img_dir = @$"wwwroot/images/";
+      
+            Random rnd = new Random();
 
-            Appliess appliess = new Appliess()
+            Appliess appliess = new Appliess();
+
+            appliess.MfId = Convert.ToInt32(apply.MfId);
+            appliess.EId = Convert.ToInt32(apply.EId);
+            appliess.BoothNumber = Convert.ToInt32(apply.BoothNumber);
+            appliess.MfDescription = apply.MfDescription;
+            appliess.CheckState = 0;
+            if (apply.MfPImg != null)
             {
-                MfId = Convert.ToInt32(apply.MfId),
-                EId = Convert.ToInt32(apply.EId),
-                BoothNumber = Convert.ToInt32(apply.BoothNumber),
-                MfPImg = apply.MfPImg,
-                MfLogo = apply.MfLogo,
-                MfDescription = apply.MfDescription,
-                CheckState = 0,
+                string pimgName = DateTime.Now.ToString("yyyyMMddHHmmss") + rnd.Next(1000, 10000).ToString() + Path.GetExtension(apply.MfPImg.FileName);
+                appliess.MfPImg= pimgName;
+                using (var stream = System.IO.File.Create(img_dir + pimgName))
+                {
+                    await apply.MfPImg.CopyToAsync(stream);
+                }
+            }
+            if (apply.MfLogo != null)
+            {
+               string LimgName = DateTime.Now.ToString("yyyyMMddHHmmss") + rnd.Next(1000, 10000).ToString() + Path.GetExtension(apply.MfLogo.FileName);
+                appliess.MfLogo= LimgName;
+                using (var stream = System.IO.File.Create(img_dir + LimgName))
+                {
+                    await apply.MfLogo.CopyToAsync(stream);
+                }
+            }
 
 
-            };
+            
+
+
             _woowocontext.Appliesses.Add(appliess);
             _woowocontext.SaveChanges();
             return Redirect("StandProcess");
