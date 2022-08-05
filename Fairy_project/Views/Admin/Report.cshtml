@@ -58,7 +58,7 @@
                                     @{
                                         for (int i = DateTime.Now.Year; i < DateTime.Now.AddYears(10).Year; i++)
                                         {
-                                            <option value="@i">@i</option>
+                                                    <option value="@i">@i</option>
                                         }
                                     }
                                 </select>
@@ -69,7 +69,7 @@
                                     @{
                                         for (int i = 1; i < 13; i++)
                                         {
-                                            <option value="@i">@i 月</option>
+                                                    <option value="@i">@i 月</option>
                                         }
                                     }
                                 </select>
@@ -80,7 +80,7 @@
                                     @{
                                         foreach (var ename in ViewBag.ename)
                                         {
-                                            <option value="@ename">@ename</option>
+                                                    <option value="@ename">@ename</option>
                                         }
 
                                     }
@@ -115,7 +115,7 @@
 
     </div>
     <div class="row m-0 px-5 align-items-start justify-content-center my-1">
-        <div class="col-lg-4 px-5 col-12">
+        <div class="col-lg-3 col-12">
             <div class="card card-default">
                 <div class="card-header">
                     <h2>入場比例</h2>
@@ -148,21 +148,42 @@
             </div>            <!-- <button type="button" class="btn btn-light w-100 border border-1">Button</button> -->
 
         </div>
-
-        <div class="col-lg-4 px-5 col-12">
+        <div class="col-lg-3 col-12">
             <div class="card card-default">
-                <div class="d-flex p-5 justify-content-lg-start">
+                <div class="d-flex p-5 justify-content-between">
+                    <i class="fa-solid fa-ticket-simple  fa-3x align-self-center me-5 my-3"></i>
+                    <div class="text-right">
+                        <p>售票額</p>
+                        <span id="soldticket" class="h4 d-block m-0"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card card-default">
+                <div class="d-flex p-5 justify-content-between">
+                    <i class="fa-solid fa-person-booth   fa-3x align-self-center me-5 my-3"></i>
+                    <div class="text-right">
+                        <p>承租額</p>
+                        <span id="soldbooth" class="h4 d-block m-0"></span>
+                    </div>
+                </div>
+            </div>
+            <!-- <button type="button" class="btn btn-light w-100 border border-1">Button</button> -->
+        </div>
+
+        <div class="col-lg-3 col-12">
+            <div class="card card-default">
+                <div class="d-flex p-5 justify-content-between">
                     <i class="fa-solid fa-person fa-3x align-self-center me-5 my-3"></i>
-                    <div class="text-left">
+                    <div class="text-right">
                         <p>平均入場人數</p>
                         <span id="averageperson" class="h4 d-block m-0">0人</span>
                     </div>
                 </div>
             </div>
             <div class="card card-default">
-                <div class="d-flex p-5 justify-content-lg-start">
+                <div class="d-flex p-5 justify-content-between">
                     <i class="fa-solid fa-dollar-sign fa-3x align-self-center me-5 my-3"></i>
-                    <div class="text-left">
+                    <div class="text-right">
                         <p>總收益</p>
                         <span id="pricesum" class="h4 d-block m-0">$0</span>
                     </div>
@@ -225,6 +246,10 @@
                     $('#people').text(`${result.people}%`)
                     $('#boothbar').css('width', `${result.booth}%`)
                     $('#booth').text(`${result.booth}%`)
+
+                    $('#soldticket').text(`${result.soldticketsum} / $${result.soldticketprice}`)
+                    $('#soldbooth').text(`${result.soldboothsum} / $${result.soldboothprice}`)
+
                     $('#averageperson').text(`${result.averageperson}人`)
                     $('#pricesum').text(`$${result.pricesum}`)
 
@@ -343,7 +368,7 @@
                 },
             }).done((result) => {
                 let ename = Array.from(result.ename)
-                 htmlstr = '<option value="">展覽名稱</option>'
+                htmlstr = '<option value="">展覽名稱</option>'
                 for (let i = 0; i < ename.length; i++) {
                     htmlstr += `<option value="${ename[i]}">${ename[i]}</option>`
                 }

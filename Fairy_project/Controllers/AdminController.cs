@@ -611,7 +611,6 @@ namespace Fairy_project.Controllers
             {
                 ename = _context.Exhibitionsses.Where(e => e.ExhibitStatus == 4 && e.Datefrom.Month == month).Select(e => e.ExhibitName).ToList();
             }
-            Console.WriteLine("-------------+++++++++++++++++++-----------" + ename[0]);
             return Json(new { ename = ename });
         }
 
@@ -641,6 +640,13 @@ namespace Fairy_project.Controllers
             {
                 booth = 0;
             }
+
+
+            int soldticketsum = _context.Ticketsses.Where(t=>t.EId == e.ExhibitId).Count();
+            int? soldticketprice = _context.Ticketsses.Where(t=>t.EId==e.ExhibitId).Select(t=>t.Price).Sum();
+            int soldboothsum = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Count();
+            int? soldboothprice = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Select(b=>b.BoothPrice).Sum();
+
             int averageperson = 0;
             if (_context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() != 0)
             {
@@ -653,7 +659,7 @@ namespace Fairy_project.Controllers
 
             int? pricesum = 0;
             //List<Dictionary<int, int>> boothandprice = new List<Dictionary<int, int>>();
-            List<BoothMapss> b = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 3).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).ToList();
+            List<BoothMapss> b = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).ToList();
             if (b.Count != 0)
             {
                 foreach (var item in b)
@@ -694,12 +700,11 @@ namespace Fairy_project.Controllers
                 i++;
             }
 
-            return Json(new { ename = name, edate = edate, people = people, booth = booth, averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport = datereport });
+            return Json(new { ename = name, edate = edate, people = people, booth = booth, soldticketsum = soldticketsum, soldticketprice = soldticketprice, soldboothsum = soldboothsum, soldboothprice = soldboothprice,  averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport = datereport });
         }
         public IActionResult RenderChart(string? edate, string? ename)
         {
             edate.Split(" - ").ToList();
-            Console.WriteLine("--------------------" + Convert.ToDateTime(edate.Split(" - ")[0]));
             DateTime datefrom = Convert.ToDateTime(edate.Split(" - ")[0]);
             DateTime dateto = Convert.ToDateTime(edate.Split(" - ")[1]);
             int eid =  _context.Exhibitionsses.Where(e => e.ExhibitName == ename).Select(e => e.ExhibitId).FirstOrDefault();
