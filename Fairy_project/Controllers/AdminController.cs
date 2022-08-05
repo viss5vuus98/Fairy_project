@@ -775,7 +775,7 @@ namespace Fairy_project.Controllers
                     ticketCoent.Enterstate = 1;
                     ticketCoent.Entertime = DateTime.Now;
                     _context.SaveChanges();
-                    return Json("成功進入");
+                    return Json("歡迎入場");
                 }
                 else
                 {
@@ -801,7 +801,7 @@ namespace Fairy_project.Controllers
                 var TheBooth = booths.FirstOrDefault(b => b.BoothNumber == boothNum);
                 if (TheBooth.MfId == mfId)
                 {
-                    return Json("歡迎入場");
+                    return Json("成功進入");
                 }
                 else
                 {

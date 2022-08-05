@@ -64,7 +64,7 @@
     </div>
     <div id="searchresult" class="row">
         <div class="modal fade" id="qrmodal" tabindex="-1" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
+             aria-hidden="true" data-eid="1">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content bg2">
                     <div class="row mx-3">
@@ -84,15 +84,16 @@
         integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
         crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>*@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="~/lib/instascan/instascan.min.js" asp-append-version="true"></script>
 
 
 <script>
 
     const constraints = {
-        'video': true,
-        'audio': true
-    }
+            'video': true,
+            'audio': true
+        }
     navigator.mediaDevices.getUserMedia(constraints)
         .then(stream => {
             console.log('Got MediaStream:', stream);
@@ -102,23 +103,40 @@
         });
     let mystring
     let scanner = new Instascan.Scanner({ video: document.getElementById('scanner') });
-    scanner.addListener('scan', function(content) {
-    @*console.log(content);*@
-            verifyString = content
-        console.log(typeof (verifyString))
-        //ToDO:取得廠商QrCode 傳入展覽Id 攤位Id 攤位Id
-        const splitStr = verifyString.split('|')
+    scanner.addListener('scan', function (content) {
+        //取得展覽id//
+        const exhibitId = document.getElementById('qrmodal').dataset.eid
+        //ToDO:取得廠商QrCode =>傳入展覽Id 攤位Id 攤位Id//
+        const splitStr = content.split('|')
         if (splitStr[0] === "MF") {
-            axios.post('@Url.Action("postMfQrCode", "Home")', { ex_id: splitStr[1], mf_id: splitStr[2], boothNum: splitStr[3] })
+            if (splitStr[1] !== exhibitId) {
+                return
+            }
+            axios.post('@Url.Action("postMfQrCode")', { ex_id: splitStr[1], mf_id: splitStr[2], boothNum: splitStr[3] })
                 .then(res => {
+                    //成功回傳："成功進入"; 查無展覽回傳："無效展覽"; 攤位編號錯誤："無效攤位" //
                     console.log(res.data)
                 })
                 .catch(err => console.log(err))
+        } else {
+            //非廠商 檢查會員QrCode//
+            axios.post('@Url.Action("postQrCode", "Home")', { Ex_id: Number(exhibitId), VerificationCode: content })
+                .then(res => {
+                    //成功回傳："歡迎入場"; 查無展覽回傳："展覽錯誤"; 票券編號錯誤："無此票券"//
+                    console.log(res.data)
+                })
+                .catch(err => { console.log(err)})
         }
-
-
-
-
+    })
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No cameras found.');
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
 
 
 
