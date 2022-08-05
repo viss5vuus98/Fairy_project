@@ -9,6 +9,11 @@
 
   <ItemGroup>
     <Content Remove="Views\Manufacturer\StandProcess1.cshtml" />
+    <Content Remove="Views\Manufacturer\_mf_Layout .cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Manufacturer\_mf_Layout .cshtml.css" />
   </ItemGroup>
 
   <ItemGroup>
