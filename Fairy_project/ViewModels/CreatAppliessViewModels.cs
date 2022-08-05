@@ -3,9 +3,9 @@
     public class CreatAppliessViewModels
     {
         public int ApplyNum { get; set; }
-        public int? EId { get; set; }
-        public int? MfId { get; set; }
-        public int? BoothNumber { get; set; }
+        public string? EId { get; set; }
+        public string? MfId { get; set; }
+        public string? BoothNumber { get; set; }
         public int? CheckState { get; set; }
         public IFormFile? MfLogo { get; set; }
         public IFormFile? MfPImg { get; set; }

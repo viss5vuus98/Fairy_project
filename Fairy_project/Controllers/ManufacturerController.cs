@@ -12,6 +12,8 @@ using System.Linq;
 
 namespace Fairy_project.Controllers
 {
+
+    [Authorize(Roles = "Manufacturer")]
     public class ManufacturerController : Controller
     {
         private readonly woowoContext _woowocontext;
@@ -19,7 +21,6 @@ namespace Fairy_project.Controllers
         {
             _woowocontext = woowocontext;
         }
-        [Authorize(Roles = "Manufacturer")]
         public IActionResult Apply()
         {
             return View();
@@ -37,11 +38,13 @@ namespace Fairy_project.Controllers
             model.MfId = Convert.ToInt32(mid);
 
 
-         return View(model);
+            return View(model);
         }
         public IActionResult Index()
         {
-           
+
+
+
 
             return View();
         }
@@ -77,11 +80,16 @@ namespace Fairy_project.Controllers
 
         //create the exhibition of applies 新增申請 傳入applies內的物件
         [HttpPost]
-        public async Task<IActionResult> createApplies(CreatAppliessViewModels apply )
+        public async Task<IActionResult> createApplies(CreatAppliessViewModels apply)
         {
             string img_dir = @$"wwwroot/images/";
-      
+
             Random rnd = new Random();
+            var b = _woowocontext.BoothMapsses.FirstOrDefault(b => b.EId == Convert.ToInt32(apply.EId) && b.BoothNumber == Convert.ToInt32(apply.BoothNumber));
+
+
+            b.BoothState = 1;
+            b.MfId = Convert.ToInt32(apply.MfId);
 
             Appliess appliess = new Appliess();
 
@@ -90,10 +98,12 @@ namespace Fairy_project.Controllers
             appliess.BoothNumber = Convert.ToInt32(apply.BoothNumber);
             appliess.MfDescription = apply.MfDescription;
             appliess.CheckState = 0;
+
             if (apply.MfPImg != null)
             {
                 string pimgName = DateTime.Now.ToString("yyyyMMddHHmmss") + rnd.Next(1000, 10000).ToString() + Path.GetExtension(apply.MfPImg.FileName);
-                appliess.MfPImg= pimgName;
+                appliess.MfPImg = pimgName;
+                b.MfPImg = pimgName;
                 using (var stream = System.IO.File.Create(img_dir + pimgName))
                 {
                     await apply.MfPImg.CopyToAsync(stream);
@@ -101,21 +111,23 @@ namespace Fairy_project.Controllers
             }
             if (apply.MfLogo != null)
             {
-               string LimgName = DateTime.Now.ToString("yyyyMMddHHmmss") + rnd.Next(1000, 10000).ToString() + Path.GetExtension(apply.MfLogo.FileName);
-                appliess.MfLogo= LimgName;
+                string LimgName = DateTime.Now.ToString("yyyyMMddHHmmss") + rnd.Next(1000, 10000).ToString() + Path.GetExtension(apply.MfLogo.FileName);
+                appliess.MfLogo = LimgName;
+                b.MfLogo = LimgName;
                 using (var stream = System.IO.File.Create(img_dir + LimgName))
                 {
                     await apply.MfLogo.CopyToAsync(stream);
                 }
             }
+            Console.WriteLine("-------------------------" + b);
 
 
-            
 
 
             _woowocontext.Appliesses.Add(appliess);
+            _woowocontext.BoothMapsses.Update(b);
             _woowocontext.SaveChanges();
-            return Redirect("StandProcess");
+            return Redirect("Index");
 
         }
         //get the manufactures of applies 找一個廠商的所有審核 傳入Mf_id
@@ -138,8 +150,35 @@ namespace Fairy_project.Controllers
         [HttpPost]
         public IActionResult GetAllBooth([FromBody] GetIdClassModel idClass)
         {
-            var booths = _woowocontext.BoothMapsses.Where(m => m.EId == idClass.Ex_id);
+            var booths = _woowocontext.BoothMapsses.Where(m => m.EId == idClass.Ex_id && m.BoothState == 0);
             return Json(booths);
         }
+        //抓廠商申請跟展覽名稱
+        [HttpPost]
+            public IActionResult getMfAppliesAndExhibitions([FromBody] GetIdClassModel idClass)
+        {
+
+            var applies = _woowocontext.Appliesses.Where(m => m.MfId == idClass.Mf_id).ToList();
+
+
+
+            List<Exhibitionss> exhibitions = new List<Exhibitionss>();
+            if (applies != null)
+            {
+                foreach (var apply in applies)
+                {
+                    exhibitions.Add(_woowocontext.Exhibitionsses.First(ex => ex.ExhibitId == apply.EId));
+                }
+                GetMfsApplyAndExName getMfsApplyAndExName = new GetMfsApplyAndExName() 
+                { 
+                    exhibition = exhibitions,
+                    appliess = applies,
+                };
+                return Json(getMfsApplyAndExName);
+            }
+
+            return Json(applies);
+        }
+
     }
 }
