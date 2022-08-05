@@ -20,7 +20,13 @@
              style="background-image:url(@imgsrc);">
                 <div class="overlay">
                     <div class="overlay-content">
-                        <a asp-controller="Admin" asp-action="ExhibitIdDetail" asp-route-exhibitId="@item.ExhibitId">編輯</a>
+                        <a asp-controller="Admin" asp-action="ExhibitIdDetail" asp-route-exhibitId="@item.ExhibitId" class="mx-2">編輯</a>
+                        @{
+                            if (item.ExhibitStatus == 3)
+                            {
+                                <a asp-controller="Admin" asp-action="ExhibitIdDetail" asp-route-exhibitId="@item.ExhibitId" class="mx-2">掃碼</a>
+                            }
+                        }
                     </div>
                 </div>
             </div>

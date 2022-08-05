@@ -39,6 +39,8 @@ namespace Fairy_project.ViewModels
         public int? soldsum { get; set; }
 
         public int? insum { get; set; }
+        
+        public int? mostpeople  { get; set; }   
 
     }
 }
