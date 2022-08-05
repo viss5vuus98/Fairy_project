@@ -24,7 +24,8 @@
                         @{
                             if (item.ExhibitStatus == 3)
                             {
-                                <a asp-controller="Admin" asp-action="ExhibitIdDetail" asp-route-exhibitId="@item.ExhibitId" class="mx-2">掃碼</a>
+                                <a id="qrcode" class="mx-2" data-toggle="modal"
+                           data-target="#qrmodal" data-whatever="@@mdo">掃碼</a>
                             }
                         }
                     </div>
