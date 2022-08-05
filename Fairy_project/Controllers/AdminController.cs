@@ -642,10 +642,10 @@ namespace Fairy_project.Controllers
             }
 
 
-            int soldticketsum = _context.Ticketsses.Where(t=>t.EId == e.ExhibitId).Count();
-            int? soldticketprice = _context.Ticketsses.Where(t=>t.EId==e.ExhibitId).Select(t=>t.Price).Sum();
+            int soldticketsum = _context.Ticketsses.Where(t => t.EId == e.ExhibitId).Count();
+            int? soldticketprice = _context.Ticketsses.Where(t => t.EId == e.ExhibitId).Select(t => t.Price).Sum();
             int soldboothsum = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Count();
-            int? soldboothprice = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Select(b=>b.BoothPrice).Sum();
+            int? soldboothprice = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Select(b => b.BoothPrice).Sum();
 
             int averageperson = 0;
             if (_context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() != 0)
@@ -700,14 +700,14 @@ namespace Fairy_project.Controllers
                 i++;
             }
 
-            return Json(new { ename = name, edate = edate, people = people, booth = booth, soldticketsum = soldticketsum, soldticketprice = soldticketprice, soldboothsum = soldboothsum, soldboothprice = soldboothprice,  averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport = datereport });
+            return Json(new { ename = name, edate = edate, people = people, booth = booth, soldticketsum = soldticketsum, soldticketprice = soldticketprice, soldboothsum = soldboothsum, soldboothprice = soldboothprice, averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport = datereport });
         }
         public IActionResult RenderChart(string? edate, string? ename)
         {
             edate.Split(" - ").ToList();
             DateTime datefrom = Convert.ToDateTime(edate.Split(" - ")[0]);
             DateTime dateto = Convert.ToDateTime(edate.Split(" - ")[1]);
-            int eid =  _context.Exhibitionsses.Where(e => e.ExhibitName == ename).Select(e => e.ExhibitId).FirstOrDefault();
+            int eid = _context.Exhibitionsses.Where(e => e.ExhibitName == ename).Select(e => e.ExhibitId).FirstOrDefault();
 
             var t = _context.Ticketsses.Where(t => t.EId == eid && t.Enterstate == 1 && DateTime.Compare((DateTime)t.Entertime, datefrom) == 1 && DateTime.Compare((DateTime)t.Entertime, dateto.AddDays(1)) == -1).OrderBy(t => t.Entertime);
             List<Ticketss> ticketsses = t.ToList();
@@ -733,6 +733,85 @@ namespace Fairy_project.Controllers
             }
             return Json(new { reportday = reportday, reportsum = reportsum });
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [HttpPost]
+        public IActionResult postQrCode([FromBody] QrCode ticket)
+        {
+            var ticketCoent = _context.Ticketsses.FirstOrDefault(t => t.VerificationCode == ticket.VerificationCode && t.Enterstate == 0) ?? new Ticketss();
+            if (ticketCoent.VerificationCode != null)
+            {
+                var exId = ticketCoent.EId;
+                if (exId == Convert.ToInt32(ticket.Ex_id))
+                {
+                    ticketCoent.Enterstate = 1;
+                    ticketCoent.Entertime = DateTime.Now;
+                    _context.SaveChanges();
+                    return Json("成功進入");
+                }
+                else
+                {
+                    return Json("展覽錯誤");
+                }
+            }
+            else
+            {
+                return Json("無此票券");
+            }
+        }
+
+
+        [HttpPost]
+        public IActionResult postMfQrCode([FromBody] MfQrCode mfQrCode)
+        {
+            int exId = Convert.ToInt32(mfQrCode.ex_id);
+            int boothNum = Convert.ToInt32(mfQrCode.boothNum);
+            int mfId = Convert.ToInt32(mfQrCode.mf_id);
+            IList<BoothMapss> booths = _context.BoothMapsses.Where(b => b.EId == exId && b.BoothState == 2).ToList();
+            if (booths.Count > 0)
+            {
+                var TheBooth = booths.FirstOrDefault(b => b.BoothNumber == boothNum);
+                if (TheBooth.MfId == mfId)
+                {
+                    return Json("歡迎入場");
+                }
+                else
+                {
+                    return Json("無效攤位");
+                }
+            }
+
+            return Json("無效展覽");
+        }
+
 
     }
 }
