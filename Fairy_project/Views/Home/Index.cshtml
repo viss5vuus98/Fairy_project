@@ -125,15 +125,16 @@
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="block wow fadeInLeft" data-wow-delay=".3s" data-wow-duration="500ms">
-                    <h2>
-                        ABOUT ME
-                    </h2>
-                    <p>
-                        這裡可以變成選擇入口的地方
-                    </p>
-                    <p>
-                        會員登入後這邊可以變成輪波
-                    </p>
+                    @*<h2>
+                            ABOUT ME
+                        </h2>
+                        <p>
+                            這裡可以變成選擇入口的地方
+                        </p>
+                        <p>
+                            會員登入後這邊可以變成輪波
+                        </p>*@
+                    <video id="scanner"></video>
                 </div>
 
             </div>
@@ -356,13 +357,58 @@
         e.stopPropagation();
         $('.imglist div').css('opacity', '1');
     })</script>*@
-<partial name="_memberId"/>
+<partial name="_memberId" />
 
 @section Scripts
     {
+    <script src="~/lib/instascan/instascan.min.js" asp-append-version="true"></script>
     <script>
-        const root = @Url.Content("~/images/")
+        const root = @Url.Content("~/images/");
 
+        const constraints = {
+            'video': true,
+            'audio': true
+        }
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(stream => {
+                console.log('Got MediaStream:', stream);
+            })
+            .catch(error => {
+                console.error('Error accessing media devices.', error);
+            });
+        let mystring
+        let scanner = new Instascan.Scanner({ video: document.getElementById('scanner') });
+        scanner.addListener('scan', function (content) {
+            @*console.log(content);*@
+            verifyString = content
+            console.log(typeof (verifyString))
+             //ToDO:取得廠商QrCode 傳入展覽Id 攤位Id 攤位Id
+            const splitStr = verifyString.split('|')
+            if (splitStr[0] === "MF") {
+                axios.post('@Url.Action("postMfQrCode", "Home")', { ex_id: splitStr[1], mf_id: splitStr[2], boothNum: splitStr[3] })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                    .catch(err => console.log(err))
+            }
+
+
+            //ToDO:取得會員QrCode 傳入展覽Id
+                axios.post('@Url.Action("postQrCode", "Home")', { Ex_id: 1, VerificationCode: verifyString})
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(err => { console.log(err)})
+        });
+        Instascan.Camera.getCameras().then(function (cameras) {
+            if (cameras.length > 0) {
+                scanner.start(cameras[0]);
+            } else {
+                console.error('No cameras found.');
+            }
+        }).catch(function (e) {
+            console.error(e);
+        });
     </script>
     <script src="~/js/HomeIndex.js" asp-append-version="true"></script>
 }

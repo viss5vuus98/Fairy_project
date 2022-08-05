@@ -308,5 +308,55 @@ public class HomeController : Controller
         return Json(obj);
     }
 
+    //postQrcode
+
+    [HttpPost]
+    public IActionResult postQrCode([FromBody] QrCode ticket)
+    {
+        var ticketCoent = _context.Ticketsses.FirstOrDefault(t => t.VerificationCode == ticket.VerificationCode && t.Enterstate == 0)??new Ticketss();
+        if(ticketCoent.VerificationCode != null)
+        {
+            var exId = ticketCoent.EId;
+            if (exId == Convert.ToInt32(ticket.Ex_id))
+            {
+                ticketCoent.Enterstate = 1;
+                ticketCoent.Entertime = DateTime.Now;
+                _context.SaveChanges();
+                return Json("成功進入");
+            }
+            else
+            {
+                return Json("展覽錯誤");
+            }
+        }else
+        {
+            return Json("無此票券");
+        }
+    }
+
+    //postMfQrcode
+
+    [HttpPost]
+    public IActionResult postMfQrCode([FromBody] MfQrCode mfQrCode)
+    {
+        int exId = Convert.ToInt32(mfQrCode.ex_id);
+        int boothNum = Convert.ToInt32(mfQrCode.boothNum);
+        int mfId = Convert.ToInt32(mfQrCode.mf_id);
+        IList<BoothMapss> booths = _context.BoothMapsses.Where(b => b.EId == exId && b.BoothState == 2).ToList();
+        if (booths.Count > 0)
+        {
+            var TheBooth = booths.FirstOrDefault(b => b.BoothNumber == boothNum);
+            if (TheBooth.MfId == mfId)
+            {
+                return Json("歡迎入場");
+            }
+            else
+            {
+                return Json("無效攤位");
+            }
+        }
+
+        return Json("無效展覽");
+    }
 }
 

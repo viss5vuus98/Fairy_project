@@ -28,7 +28,7 @@ namespace Fairy_project.Controllers
         [HttpPost, Route("getTicketsss")]
         public IActionResult getTicketsss([FromBody] GetIdClassModel idClass)
         {
-            var tickets = _context.Ticketsses.Where(m => m.MId == idClass.Mf_id).ToList();
+            var tickets = _context.Ticketsses.Where(m => m.MId == idClass.Mf_id && m.Enterstate == 0).ToList();
 
             List<Exhibitionss> exhibitions = new List<Exhibitionss>();
             if (tickets != null)
@@ -89,6 +89,14 @@ namespace Fairy_project.Controllers
                 ticket.VerificationCode = vfCode;
                 _context.SaveChanges();
             }
+        }
+
+        //Get Mf verifyCode 
+        [HttpPost]
+        public IActionResult getMFVerifyCode([FromBody] MfQrCode mfQrCode)
+        {
+            string verifyCode = $"MF|{mfQrCode.ex_id}|{mfQrCode.mf_id}|{mfQrCode.boothNum}";
+            return Json(verifyCode);
         }
 
         [HttpPost, Route("giveTicket")]
