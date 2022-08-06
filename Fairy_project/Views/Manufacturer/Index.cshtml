@@ -70,20 +70,23 @@
                 else if (checkState == 1) {
                   statemessage ='  <span class="badge badge-warning mx-2">尚未付款</span>'
                   returnmessage =`
+                            <form method="post"  action="@Url.Action("updateApplies","Manufacturer")>
                                <div class="d-flex justify-content-around">
                                 <div class="w-50">
                                     <p class="m-0">轉帳日期時間</p>
-                                    <input name=" user_email" type="datetime-local" class="form-control w-75 h-25"
-                                           placeholder="轉帳日期時間">
+                                    <input name="time" type="datetime-local" class="form-control w-75 h-25"
+                                           placeholder="轉帳日期時間"> 
+                                           <input name="id" class="form-control w-75 h-25"9  placeholder="轉帳日期時間" hidden value="${appliessList[i].appliess.applyNum}">
                                     <p class="m-0">轉帳末五碼</p>
-                                    <input name="user_email" type="text" class="form-control w-75 h-25"
+                                    <input name="fivenum" type="text" class="form-control w-75 h-25"
                                            placeholder="">
                                 </div>
                                 <div class="align-self-end text-right">
-                                    <a href="" class="btn btn-small my-2">提交</a>
+                                    <input type="submit" class="btn btn-small my-2" value="提交"/>
                                     <p>將會依據提交時間進行對帳</p>
                                 </div>
                             </div>
+                                </form>
                   `
                 }
                 else if (checkState == 2) {
@@ -97,7 +100,7 @@
                                      <div class="text-right">
                                         <p>入場時間：AM0900</p>
                                         <p>入場入口：${area}區13</p>
-                                        <p>攤位編號：${area}${appliessList[i].exhibition.boothNumber}</p>
+                                        <p>攤位編號：${area}${appliessList[i].appliess.boothNumber}</p>
                                         <a href="" class="btn btn-small my-2">電子通行證</a>
                                     </div>
                     `;
