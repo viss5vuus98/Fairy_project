@@ -175,14 +175,18 @@ namespace Fairy_project.Controllers
             {
                 foreach (var apply in applies)
                 {
-                    exhibitions.Add(_woowocontext.Exhibitionsses.First(ex => ex.ExhibitId == apply.EId));
+                    
+                    exhibitions.Add(_woowocontext.Exhibitionsses.FirstOrDefault(ex => ex.ExhibitId == apply.EId && ex.ExhibitStatus!=4));
+                    
                 }
                 GetMfsApplyAndExName getMfsApplyAndExName = new GetMfsApplyAndExName() 
                 { 
                     exhibition = exhibitions,
                     appliess = applies,
                 };
+
                 return Json(getMfsApplyAndExName);
+
             }
 
             return Json(applies);

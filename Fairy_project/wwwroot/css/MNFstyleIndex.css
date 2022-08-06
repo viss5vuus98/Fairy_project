@@ -443,6 +443,9 @@ input[type=tel]:focus {
   border: none;
 }
 
+.tabCommon{
+ min-height: 1vh;
+}
 .tabCommon .nav-tabs {
   border-bottom: 0;
   margin-bottom: 10px;
