@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Home/Index.cshtml">
     <Files>
-      <File FileName="Fairy_project/Controllers/ManufacturerController.cs" Line="79" Column="53" />
+      <File FileName="Fairy_project/Controllers/ManufacturerController.cs" Line="79" Column="1" />
       <File FileName="Fairy_project/Views/Manufacturer/ApplyStand.cshtml" Line="72" Column="1" />
       <File FileName="Fairy_project/Controllers/MemberController.cs" Line="101" Column="1" />
       <File FileName="Fairy_project/Models/idClassModel.cs" Line="27" Column="26" />
@@ -21,9 +21,7 @@
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
+                <Node name="Home" expanded="True" />
                 <Node name="Manufacturer" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
