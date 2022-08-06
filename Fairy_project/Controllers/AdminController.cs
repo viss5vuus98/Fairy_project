@@ -9,6 +9,7 @@ using System.Data.Entity;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 
 namespace Fairy_project.Controllers
 {
@@ -735,9 +736,30 @@ namespace Fairy_project.Controllers
         }
 
 
+        public IActionResult ToHomePage()
+        {
+            TempData["layout"] = "admin";
+            return RedirectToAction("Index", "Home");
+        }
 
 
+        public IActionResult sendmail(string email, string title, string content)
+        {
+            var mail = new MailMessage();
+            mail.To.Add($"{email}");
+            mail.Subject = $"{title}";
+            mail.Body = $"{content}";
+            mail.From = new MailAddress("zxc995116@gmail.com", "woohouse");
+            var smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new System.Net.NetworkCredential("zxc995116@gmail.com", "rpsxltaiqhdmupnp"),
+                EnableSsl = true
+            };
+            smtp.Send(mail);
+            mail.Dispose();
 
+            return NoContent();
+        }
 
 
 
@@ -764,7 +786,7 @@ namespace Fairy_project.Controllers
 
 
         [HttpPost]
-        public IActionResult postQrCode([FromBody] QrCode ticket)
+        public IActionResult postQrCode(QrCode ticket)
         {
             var ticketCoent = _context.Ticketsses.FirstOrDefault(t => t.VerificationCode == ticket.VerificationCode && t.Enterstate == 0) ?? new Ticketss();
             if (ticketCoent.VerificationCode != null)
@@ -775,7 +797,8 @@ namespace Fairy_project.Controllers
                     ticketCoent.Enterstate = 1;
                     ticketCoent.Entertime = DateTime.Now;
                     _context.SaveChanges();
-                    return Json("歡迎入場");
+                    //return Json("歡迎入場");
+                    return Json(new { returnstring = $"歡迎{ticketCoent.MId}入場" });
                 }
                 else
                 {
