@@ -209,6 +209,9 @@ input[type=tel]:focus {
 .mt-50 {
   margin-top: 50px;
 }
+.mt-100 {
+  margin-top: 100px;
+}
 
 .btn:focus {
   color: #ddd;
@@ -2701,6 +2704,9 @@ ul.dropdown-menu li {
 }
 ul{
    list-style:none;
+}
+.minH{
+    min-height:552px;
 }
 /*# sourceMappingURL=style.css.map */
 
