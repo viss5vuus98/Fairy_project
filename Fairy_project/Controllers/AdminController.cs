@@ -9,6 +9,7 @@ using System.Data.Entity;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 
 namespace Fairy_project.Controllers
 {
@@ -137,6 +138,8 @@ namespace Fairy_project.Controllers
                 int mostpeoplt = 0;
                 for (var day = exhibition.Datefrom.Date; day.Date <= exhibition.Dateto.Date; day = day.AddDays(1))
                 {
+
+                    //var q = from t in _context.Ticketsses where t.EId == exhibitId && (DateTime)t.Entertime.Date == day.Date && t.Enterstate == 1 select t;
                     var q = from t in _context.Ticketsses where t.EId == exhibitId && (DateTime)t.Entertime.Date == day.Date && t.Enterstate == 1 select t;
                     if (mostpeoplt < q.Count())
                     {
@@ -387,7 +390,7 @@ namespace Fairy_project.Controllers
             ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
             if (status == 3 && b_num.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2 && a.BoothNumber == b_num);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2 && a.BoothNumber == b_num).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -402,7 +405,7 @@ namespace Fairy_project.Controllers
             }
             else if (status == 3)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -416,7 +419,7 @@ namespace Fairy_project.Controllers
             }
             else if (b_num.HasValue && checkstate.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate && a.BoothNumber == b_num).Skip((int)offset).Take(10);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate && a.BoothNumber == b_num).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate && a.BoothNumber == b_num).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -430,7 +433,7 @@ namespace Fairy_project.Controllers
             }
             else if (b_num.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == b_num).Skip((int)offset).Take(10);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == b_num).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == b_num).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -444,7 +447,7 @@ namespace Fairy_project.Controllers
             }
             else if (checkstate.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate).Skip((int)offset).Take(10);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -458,7 +461,7 @@ namespace Fairy_project.Controllers
             }
             else
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId).Skip((int)offset).Take(10);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId).Count();
                 List<Appliess> applies = a.ToList();
                 amodel.applylist = Search(applies);
@@ -494,20 +497,48 @@ namespace Fairy_project.Controllers
             return modellist;
         }
 
-        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? boothNumber, bool? fail)
+        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? applynum, bool? fail)
         {
-            var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == boothNumber);
-            var b = _context.BoothMapsses.Where(b => b.EId == exhibitId && b.BoothNumber == boothNumber);
+            var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.ApplyNum == applynum);
             Appliess apply = a.FirstOrDefault();
+            var b = _context.BoothMapsses.Where(b => b.EId == exhibitId && b.BoothNumber == apply.BoothNumber);
             BoothMapss booth = b.FirstOrDefault();
             if (fail.HasValue)
             {
                 apply.CheckState = 3;
+                //string? email = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail).ToString();
+                //string title = "woohouse-您的攤位申請未通過";
+
+                //string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).ToString();
+                //string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).ToString();
+                //string content = $"親愛的廠商{mname}您好：\n很抱歉，您申請參加{ename}{booth.BoothNumber}號攤位未通過";
+                //Console.WriteLine($"------------------------------------{_context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail)}");
+                //sendmail(email, title, content);
+
+                //var mail = new MailMessage();
+                //mail.To.Add($"{email}");
+                //mail.Subject = $"{title}";
+                //mail.Body = $"{content}";
+                //mail.From = new MailAddress("zxc995116@gmail.com", "woohouse");
+                //var smtp = new SmtpClient("smtp.gmail.com", 587)
+                //{
+                //    Credentials = new System.Net.NetworkCredential("zxc995116@gmail.com", "rpsxltaiqhdmupnp"),
+                //    EnableSsl = true
+                //};
+                //smtp.Send(mail);
+                //mail.Dispose();
+
             }
             if (apply.CheckState == 0)
             {
+                List<Appliess>? to3 = _context.Appliesses.Where(a => a.BoothNumber == apply.BoothNumber).ToList();
+                foreach (var item in to3)
+                {
+                    item.CheckState = 3;
+                }
                 apply.CheckState = 1;
                 booth.BoothState = 1;
+                booth.MfId = apply.MfId;
             }
             else if (apply.CheckState == 1)
             {
@@ -642,10 +673,10 @@ namespace Fairy_project.Controllers
             }
 
 
-            int soldticketsum = _context.Ticketsses.Where(t=>t.EId == e.ExhibitId).Count();
-            int? soldticketprice = _context.Ticketsses.Where(t=>t.EId==e.ExhibitId).Select(t=>t.Price).Sum();
+            int soldticketsum = _context.Ticketsses.Where(t => t.EId == e.ExhibitId).Count();
+            int? soldticketprice = _context.Ticketsses.Where(t => t.EId == e.ExhibitId).Select(t => t.Price).Sum();
             int soldboothsum = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Count();
-            int? soldboothprice = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Select(b=>b.BoothPrice).Sum();
+            int? soldboothprice = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Select(b => b.BoothPrice).Sum();
 
             int averageperson = 0;
             if (_context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() != 0)
@@ -700,14 +731,14 @@ namespace Fairy_project.Controllers
                 i++;
             }
 
-            return Json(new { ename = name, edate = edate, people = people, booth = booth, soldticketsum = soldticketsum, soldticketprice = soldticketprice, soldboothsum = soldboothsum, soldboothprice = soldboothprice,  averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport = datereport });
+            return Json(new { ename = name, edate = edate, people = people, booth = booth, soldticketsum = soldticketsum, soldticketprice = soldticketprice, soldboothsum = soldboothsum, soldboothprice = soldboothprice, averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport = datereport });
         }
         public IActionResult RenderChart(string? edate, string? ename)
         {
             edate.Split(" - ").ToList();
             DateTime datefrom = Convert.ToDateTime(edate.Split(" - ")[0]);
             DateTime dateto = Convert.ToDateTime(edate.Split(" - ")[1]);
-            int eid =  _context.Exhibitionsses.Where(e => e.ExhibitName == ename).Select(e => e.ExhibitId).FirstOrDefault();
+            int eid = _context.Exhibitionsses.Where(e => e.ExhibitName == ename).Select(e => e.ExhibitId).FirstOrDefault();
 
             var t = _context.Ticketsses.Where(t => t.EId == eid && t.Enterstate == 1 && DateTime.Compare((DateTime)t.Entertime, datefrom) == 1 && DateTime.Compare((DateTime)t.Entertime, dateto.AddDays(1)) == -1).OrderBy(t => t.Entertime);
             List<Ticketss> ticketsses = t.ToList();
@@ -733,6 +764,114 @@ namespace Fairy_project.Controllers
             }
             return Json(new { reportday = reportday, reportsum = reportsum });
         }
+
+
+        public IActionResult ToHomePage()
+        {
+            TempData["layout"] = "admin";
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        public void sendmail(string email, string title, string content)
+        {
+            var mail = new MailMessage();
+            mail.To.Add($"{email}");
+            mail.Subject = $"{title}";
+            mail.Body = $"{content}";
+            mail.From = new MailAddress("zxc995116@gmail.com", "woohouse");
+            var smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new System.Net.NetworkCredential("zxc995116@gmail.com", "rpsxltaiqhdmupnp"),
+                EnableSsl = true
+            };
+            smtp.Send(mail);
+            mail.Dispose();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        [HttpPost]
+        public IActionResult postQrCode([FromBody] QrCode ticket)
+        {
+            var ticketCoent = _context.Ticketsses.FirstOrDefault(t => t.VerificationCode == ticket.VerificationCode && t.Enterstate == 0) ?? new Ticketss();
+            if (ticketCoent.VerificationCode != null)
+            {
+                var exId = ticketCoent.EId;
+                if (exId == Convert.ToInt32(ticket.Ex_id))
+                {
+                    ticketCoent.Enterstate = 1;
+                    ticketCoent.Entertime = DateTime.Now;
+                    _context.SaveChanges();
+                    return Json($"歡迎會員No.{ticketCoent.MId}入場");
+                }
+                else
+                {
+                    return Json("展覽錯誤");
+                }
+            }
+            else
+            {
+                return Json("無此票券");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult postMfQrCode([FromBody] MfQrCode mfQrCode)
+        {
+            int exId = Convert.ToInt32(mfQrCode.ex_id);
+            int boothNum = Convert.ToInt32(mfQrCode.boothNum);
+            int mfId = Convert.ToInt32(mfQrCode.mf_id);
+            IList<BoothMapss> booths = _context.BoothMapsses.Where(b => b.EId == exId && b.BoothState == 1).ToList();
+            if (booths.Count > 0)
+            {
+                var TheBooth = booths.FirstOrDefault(b => b.BoothNumber == boothNum);
+                if (TheBooth.MfId == mfId)
+                {
+                    return Json("廠商成功進入");
+                }
+                else
+                {
+                    return Json("無效攤位");
+                }
+            }
+
+            return Json("無效展覽");
+        }
+
 
     }
 }

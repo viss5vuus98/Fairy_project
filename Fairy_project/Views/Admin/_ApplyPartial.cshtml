@@ -62,9 +62,9 @@
                                         @{
                                             if (Model.applylist[i].checkState == 0)
                                             {
-                                                <i class="my-3 fa-regular fa-circle-check fa-3x text-success checkmao" data-bum="@Model.applylist[i].boothNumber">
+                                                <i class="my-3 fa-regular fa-circle-check fa-3x text-success checkmao" data-applynum="@Model.applylist[i].applyNum">
                                                 </i>
-                                                <i href="" class="my-3 fa-regular fa-circle-xmark fa-3x text-danger checkmax" data-bum="@Model.applylist[i].boothNumber"></i>
+                                                <i href="" class="my-3 fa-regular fa-circle-xmark fa-3x text-danger checkmax" data-applynum="@Model.applylist[i].applyNum"></i>
                                             }
                                             else if (Model.applylist[i].checkState == 1 || Model.applylist[i].checkState == 2)
                                             {
@@ -91,7 +91,7 @@
                                     <div class="row justify-content-around align-items-center my-3">
                                         <h5 class="col-lg-4 col-12">匯款日期：2022 / 7 / 26</h5>
                                         <h5 class="col-lg-4 col-12"> 匯款末五碼：12345</h5>
-                                        <i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-bum="@Model.applylist[i].boothNumber">
+                                        <i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-applynum="@Model.applylist[i].applyNum">
                                             <span class="h5 fw-bolder">對帳</span>
                                         </i>
                                     </div>
