@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "spHkpfEpU1Uv/Ljt1MzQcRZrpzUFdjycCx4oES5CVVc=",
+  "Hash": "1Ic8D+EpWAVAAJe6AZRvc90CYJaPQKD2jRJCBSp211Y=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -2992,6 +2992,40 @@
       "OriginalItemSpec": "wwwroot\\images\\202208051047116867.png"
     },
     {
+      "Identity": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\images\\202208071413584428.jpg",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208071413584428.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\202208071413584428.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\images\\202208071413586043.jpg",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208071413586043.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\202208071413586043.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\images\\20220841037463325.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -4165,6 +4199,23 @@
       "OriginalItemSpec": "wwwroot\\images\\P13.png"
     },
     {
+      "Identity": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\images\\P14.jpg",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/P14.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\P14.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\images\\pic_001.jpg",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -4435,6 +4486,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\ticket1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\images\\Ticket14.jpg",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/Ticket14.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Ticket14.jpg"
     },
     {
       "Identity": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\wwwroot\\images\\ticket2.png",
