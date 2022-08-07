@@ -390,7 +390,7 @@ namespace Fairy_project.Controllers
             ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
             if (status == 3 && b_num.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2 && a.BoothNumber == b_num).OrderBy(a=>a.BoothNumber);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2 && a.BoothNumber == b_num).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -497,20 +497,45 @@ namespace Fairy_project.Controllers
             return modellist;
         }
 
-        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? boothNumber, bool? fail)
+        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? applynum, bool? fail)
         {
-            var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == boothNumber);
-            var b = _context.BoothMapsses.Where(b => b.EId == exhibitId && b.BoothNumber == boothNumber);
+            var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.ApplyNum == applynum);
             Appliess apply = a.FirstOrDefault();
+            Console.WriteLine("---------------------------" + apply.ApplyNum);
+            var b = _context.BoothMapsses.Where(b => b.EId == exhibitId && b.BoothNumber == apply.BoothNumber);
             BoothMapss booth = b.FirstOrDefault();
             if (fail.HasValue)
             {
                 apply.CheckState = 3;
+                string email = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail).ToString();
+                string title = "woohouse-您的攤位申請未通過";
+
+                string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).ToString();
+                string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).ToString();
+                string content = $"親愛的廠商{mname}您好：\n很抱歉，您申請參加{ename}{booth.BoothNumber}號攤位未通過";
+                Console.WriteLine("------------------------------------"+ email, title, content);
+                sendmail(email, title, content);
+
+                //var mail = new MailMessage();
+                //mail.To.Add($"{email}");
+                //mail.Subject = $"{title}";
+                //mail.Body = $"{content}";
+                //mail.From = new MailAddress("zxc995116@gmail.com", "woohouse");
+                //var smtp = new SmtpClient("smtp.gmail.com", 587)
+                //{
+                //    Credentials = new System.Net.NetworkCredential("zxc995116@gmail.com", "rpsxltaiqhdmupnp"),
+                //    EnableSsl = true
+                //};
+                //smtp.Send(mail);
+                //mail.Dispose();
+
+
+
             }
             if (apply.CheckState == 0)
             {
                 List<Appliess>? to3 = _context.Appliesses.Where(a => a.BoothNumber == apply.BoothNumber).ToList();
-                foreach(var item in to3)
+                foreach (var item in to3)
                 {
                     item.CheckState = 3;
                 }
@@ -751,7 +776,7 @@ namespace Fairy_project.Controllers
         }
 
 
-        public IActionResult sendmail(string email, string title, string content)
+        public void sendmail(string email, string title, string content)
         {
             var mail = new MailMessage();
             mail.To.Add($"{email}");
@@ -765,8 +790,6 @@ namespace Fairy_project.Controllers
             };
             smtp.Send(mail);
             mail.Dispose();
-
-            return NoContent();
         }
 
 
@@ -805,7 +828,7 @@ namespace Fairy_project.Controllers
 
 
         [HttpPost]
-        public IActionResult postQrCode([FromBody]QrCode ticket)
+        public IActionResult postQrCode([FromBody] QrCode ticket)
         {
             var ticketCoent = _context.Ticketsses.FirstOrDefault(t => t.VerificationCode == ticket.VerificationCode && t.Enterstate == 0) ?? new Ticketss();
             if (ticketCoent.VerificationCode != null)
