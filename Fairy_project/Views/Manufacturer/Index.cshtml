@@ -1,17 +1,11 @@
 ﻿@model GetMfsApplyAndExName;
 
-
-
-
 @{
+    Layout = "_Layout_manuf";
+
 }
 @section Style{
     <link rel="stylesheet" href="~/css/MNFstyleIndex.css" asp-append-version="true" />
-}
-
-    @{
-    Layout = "_Layout_manuf";
-
 }
 
 <div class="container p-0" style="margin-top:10%">
@@ -75,7 +69,7 @@
                                 <div class="w-50">
                                     <p class="m-0">轉帳日期時間</p>
                                     <input name="time" type="datetime-local" class="form-control w-75 h-25"
-                                           placeholder="轉帳日期時間"> 
+                                           placeholder="轉帳日期時間">
                                            <input name="id" class="form-control w-75 h-25"9  placeholder="轉帳日期時間" hidden value="${appliessList[i].appliess.applyNum}">
                                     <p class="m-0">轉帳末五碼</p>
                                     <input name="fivenum" type="text" class="form-control w-75 h-25"

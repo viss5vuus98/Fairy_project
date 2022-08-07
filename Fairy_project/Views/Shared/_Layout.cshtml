@@ -8,28 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico">
     <title>Template</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" asp-append-version="true">
-    <!-- Ionicons Fonts Css -->
-    <link rel="stylesheet" href="~/lib/plugins/ionicons/ionicons.min.css">
-    <!-- animate css -->
-    <link rel="stylesheet" href="~/lib/plugins/animate-css/animate.css">
-    <!-- Hero area slider css-->
-    <link rel="stylesheet" href="~/lib/plugins/slider/slider.css">
-    <!-- slick slider -->
-    <link rel="stylesheet" href="~/lib/plugins/slick/slick.css">
-    <!-- Fancybox -->
-    <link rel="stylesheet" href="~/lib/plugins/facncybox/jquery.fancybox.css">
-    <!-- hover -->
-    <link rel="stylesheet" href="~/lib/plugins/hover/hover-min.css">
-        <!-- Magnify Popup -->
-    <link rel="stylesheet" href="~/lib/plugins/magnific-popup/magnific-popup.css">
-    <!-- googlefont -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
-    <!-- template CSS -->
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true">
     @await RenderSectionAsync("Style", required: false)
+    <!-- template CSS -->
+    <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true">
 </head>
 <body>
     <!-- Navbar -->
@@ -48,12 +29,6 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
-                                 <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("shoppingcart", "Home")">購物車</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("search", "Home")">搜尋</a>
-                            </li>
                             @*<ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                             <a class="nav-link" href="index.html">
@@ -105,13 +80,12 @@
             <div class="row content-justify-between">
                 <div class="col-md-8 col-6 text-center text-lg-left text-md-left">
                     <p class="copyright">
-                        &copy 2022 Design and Developed by <a href="http://www.Themefisher.com"
-                                                              target="_blank">合展屋展覽館</a>. <br>
+                        &copy 2022 Design and Developed by <a href="http://www.Themefisher.com" target="_blank">合展屋展覽館</a>. <br>
                         開放時間：週二至週日，上午9:30至下午5:30 (週一、除夕休館)
                         <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">&reg;WooHouse</a>
                     </p>
                 </div>
-                <div class="col-md-4 col-6">
+                <div class="col-md-4 col-12">
                     <!-- Social Media -->
                     <ul class="social text-center text-md-right text-lg-right">
                         <li>
@@ -140,26 +114,6 @@
         </div>
     </footer>
     @*------footer------*@
-       <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    <!-- Form Validation -->
-    <script src="~/lib/plugins/form-validation/jquery.form.js"></script>
-    <script src="~/lib/plugins/form-validation/jquery.validate.min.js"></script>
-    <!-- slick slider -->
-    <script src="~/lib/plugins/slick/slick.min.js"></script>
-    <!-- bootstrap js -->
-    <!-- wow js -->
-    <script src="~/lib/plugins/wow-js/wow.min.js"></script>
-    <!-- slider js -->
-    <script src="~/lib/plugins/slider/slider.js"></script>
-    <script src="~/lib/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <!-- Fancybox -->
-    <script src="~/lib/plugins/facncybox/jquery.fancybox.js"></script>
-    <!-- Fontawesome -->
-    <script src="https://kit.fontawesome.com/49896da301.js" crossorigin="anonymous"></script>
-    <!-- axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- template main js -->
     <script src="~/js/main.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
      <script>

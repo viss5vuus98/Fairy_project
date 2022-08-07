@@ -1,13 +1,19 @@
 ﻿@model IEnumerable<Fairy_project.Models.Exhibitionss>
 
+@{
+    Layout = "_LayoutB5_Admin";
+}
 @section Style
     {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/Master.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/style_back.css" asp-append-version="true">
-        @*    <link rel="stylesheet" href="~/css/bootstrap-admin.css">*@
-    }
-    @{
-    Layout = "_Admin_Layout";
+    @*    <link rel="stylesheet" href="~/css/bootstrap-admin.css">*@
 }
 
 @{
@@ -15,25 +21,25 @@
 }
 
 @*<div class="container-fluid">
-    <div class="row">
-        <div class="d-flex flex-row justify-content-center align-items-center">
-            <input class="col-2 m-3 p-2 fs-4 h-50 border-1 border-secondary bg2" type="text" placeholder="關鍵字">
-            <span class="h3">自</span>
-            <input class="col-1 h4 bg2 p-1 my-3 mx-3 rounded-3 border-0" type="date">
-            <span class="h3">到</span>
-            <input class="col-1 h4 bg2 p-1 my-3 mx-3 rounded-3 border-0" type="date">
-            <input type="checkbox" class="btn-check " id="btn-1" autocomplete="off">
-            <label class="btn btn-outline-danger rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-1">規劃中</label>
-            <input type="checkbox" class="btn-check " id="btn-2" autocomplete="off">
-            <label class="btn btn-outline-warning rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-2">籌備中</label>
-            <input type="checkbox" class="btn-check " id="btn-3" autocomplete="off">
-            <label class="btn btn-outline-success rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-3">舉辦中</label>
-            <input type="checkbox" class="btn-check " id="btn-4" autocomplete="off">
-            <label class="btn btn-outline-dark rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-4">已結束</label>
-            <i class="fa-solid fa-magnifying-glass opacity-75 fa-2x mx-2"></i>
+        <div class="row">
+            <div class="d-flex flex-row justify-content-center align-items-center">
+                <input class="col-2 m-3 p-2 fs-4 h-50 border-1 border-secondary bg2" type="text" placeholder="關鍵字">
+                <span class="h3">自</span>
+                <input class="col-1 h4 bg2 p-1 my-3 mx-3 rounded-3 border-0" type="date">
+                <span class="h3">到</span>
+                <input class="col-1 h4 bg2 p-1 my-3 mx-3 rounded-3 border-0" type="date">
+                <input type="checkbox" class="btn-check " id="btn-1" autocomplete="off">
+                <label class="btn btn-outline-danger rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-1">規劃中</label>
+                <input type="checkbox" class="btn-check " id="btn-2" autocomplete="off">
+                <label class="btn btn-outline-warning rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-2">籌備中</label>
+                <input type="checkbox" class="btn-check " id="btn-3" autocomplete="off">
+                <label class="btn btn-outline-success rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-3">舉辦中</label>
+                <input type="checkbox" class="btn-check " id="btn-4" autocomplete="off">
+                <label class="btn btn-outline-dark rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-4">已結束</label>
+                <i class="fa-solid fa-magnifying-glass opacity-75 fa-2x mx-2"></i>
+            </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 <div class="container">
     <div class="row align-items-center justify-content-around">
         <div class="col-lg-4 col-md-6 col-12 my-3">
@@ -67,15 +73,136 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-@*<script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
-        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-        crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>*@
+@section Scripts{
+    <script src="~/js/jquery_admin.js"></script>
+    <script src="~/js/bootstrap.bundle_admin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
+                integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+                crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
-<script>
+    <script>
+    // scroll//
+        (function($) {
+            "use strict";
+
+            $.fn.scrollingTo = function(opts) {
+                var defaults = {
+                    animationTime: 1000,
+                    easing: "",
+                    callbackBeforeTransition: function() { },
+                    callbackAfterTransition: function() { },
+                };
+
+                var config = $.extend({}, defaults, opts);
+
+                $(this).click(function(e) {
+                    var eventVal = e;
+                    e.preventDefault();
+
+                    var $section = $(document).find($(this).data("section"));
+                    if ($section.length < 1) {
+                        return false;
+                    }
+
+                    if ($("html, body").is(":animated")) {
+                        $("html, body").stop(true, true);
+                    }
+
+                    var scrollPos = $section.offset().top;
+                    if ($(window).scrollTop() == scrollPos) {
+                        return false;
+                    }
+
+                    config.callbackBeforeTransition(eventVal, $section);
+                    $("html, body").animate(
+                        {
+                            scrollTop: scrollPos + "px",
+                        },
+                        config.animationTime,
+                        config.easing,
+                        function() {
+                            config.callbackAfterTransition(eventVal, $section);
+                        }
+                    );
+                });
+            };
+
+            jQuery(document).ready(function() {
+                "use strict";
+                new WOW().init();
+
+                (function() {
+                    jQuery(".smooth-scroll").scrollingTo();
+                })();
+            });
+
+            $(document).ready(function() {
+                "use strict";
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() > 50) {
+                        $(".navbar-brand a").css("color", "#fff");
+                        $(".top-bar").removeClass("animated-header");
+                    } else {
+                        $(".navbar-brand a").css("color", "inherit");
+                        $(".top-bar").addClass("animated-header");
+                    }
+                });
+
+                $(".clients-logo-slider").slick({
+                    dots: false,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                            },
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                            },
+                        },
+                    ],
+                });
+            });
+
+            // fancybox
+            $(".fancybox").fancybox({
+                padding: 0,
+                openEffect: "elastic",
+                openSpeed: 450,
+                closeEffect: "elastic",
+                closeSpeed: 350,
+                closeClick: true,
+                helpers: {
+                    title: {
+                        type: "inside",
+                    },
+                    overlay: {
+                        css: {
+                            background: "rgba(0,0,0,0.8)",
+                        },
+                    },
+                },
+            });
+        });
+
+
+//========================================//
+
+
     $('#btn').on('click', (e) => {
         alert();
     })
@@ -116,4 +243,7 @@
             console.log("pagefail")
         })
     }
-</script>
+    </script>
+}
+
+

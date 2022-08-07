@@ -1,16 +1,18 @@
 ﻿<Properties StartupConfiguration="{160F8584-3AAA-4CEB-BF5C-47355F4D95FA}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Home/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Shared/_LayoutB5.cshtml">
     <Files>
-      <File FileName="Fairy_project/Controllers/ManufacturerController.cs" Line="79" Column="1" />
-      <File FileName="Fairy_project/Views/Manufacturer/ApplyStand.cshtml" Line="72" Column="1" />
-      <File FileName="Fairy_project/Controllers/MemberController.cs" Line="101" Column="1" />
-      <File FileName="Fairy_project/Models/idClassModel.cs" Line="27" Column="26" />
-      <File FileName="Fairy_project/Controllers/HomeController.cs" Line="362" Column="1" />
-      <File FileName="Fairy_project/wwwroot/js/site.js" Line="1" Column="1" />
-      <File FileName="Fairy_project/wwwroot/js/HomeIndex.js" Line="25" Column="78" />
-      <File FileName="Fairy_project/Views/Home/Index.cshtml" Line="385" Column="48" />
+      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="58" Column="15" />
+      <File FileName="Fairy_project/Views/Shared/_Admin_Layout.cshtml" Line="7" Column="16" />
+      <File FileName="Fairy_project/Views/Shared/_LayoutB5_Admin.cshtml" Line="10" Column="21" />
+      <File FileName="Fairy_project/Views/Admin/CreatExhibition.cshtml" Line="8" Column="1" />
+      <File FileName="Fairy_project/Views/Admin/ExhibitIdDetail.cshtml" Line="4" Column="6" />
+      <File FileName="Fairy_project/Views/Admin/Report.cshtml" Line="12" Column="1" />
+      <File FileName="Fairy_project/wwwroot/css/Master.css" Line="1" Column="1" />
+      <File FileName="Fairy_project/Views/Admin/_ExhibitionPartial.cshtml" Line="17" Column="50" />
+      <File FileName="Fairy_project/wwwroot/css/templateB5.css" Line="52" Column="2" />
+      <File FileName="Fairy_project/wwwroot/css/Layout.css" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,14 +23,23 @@
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="Admin" expanded="True" />
                 <Node name="Home" expanded="True" />
+                <Node name="Login" expanded="True" />
                 <Node name="Manufacturer" expanded="True" />
-                <Node name="Shared" expanded="True" />
+                <Node name="Member" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_LayoutB5.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
                 <Node name="js" expanded="True" />
                 <Node name="lib" expanded="True">
                   <Node name="instascan" expanded="True" />
+                  <Node name="plugins" expanded="True">
+                    <Node name="hover" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
             </Node>
@@ -40,9 +51,9 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
 </Properties>

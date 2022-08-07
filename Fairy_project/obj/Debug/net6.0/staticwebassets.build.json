@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MnH5qgxw6hPiYIpmgbh+8OKMHkbtBzXXjGKq/4TGk6I=",
+  "Hash": "Sq5gPTvKVr51D/4tpx/Fb1wYWjS074VtSQxpvl9VkBY=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -1207,6 +1207,23 @@
       "OriginalItemSpec": "wwwroot/css/Index.css"
     },
     {
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/css/Layout.css",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "css/Layout.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/Layout.css"
+    },
+    {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/css/login.css",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -1358,23 +1375,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/style_back.css"
-    },
-    {
-      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/css/style.css",
-      "SourceId": "Fairy_project",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
-      "BasePath": "_content/Fairy_project",
-      "RelativePath": "css/style.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/style.css"
     },
     {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/css/templateB5.css",
@@ -3177,6 +3177,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/202208051537528032.jpg"
+    },
+    {
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/202208060101131209.jpeg",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208060101131209.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/202208060101131209.jpeg"
+    },
+    {
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/202208060101137836.jpeg",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208060101137836.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/202208060101137836.jpeg"
     },
     {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/20220841037463325.png",
