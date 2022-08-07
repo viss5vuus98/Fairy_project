@@ -390,7 +390,7 @@ namespace Fairy_project.Controllers
             ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
             if (status == 3 && b_num.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2 && a.BoothNumber == b_num);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2 && a.BoothNumber == b_num).OrderBy(a=>a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -405,7 +405,7 @@ namespace Fairy_project.Controllers
             }
             else if (status == 3)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -419,7 +419,7 @@ namespace Fairy_project.Controllers
             }
             else if (b_num.HasValue && checkstate.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate && a.BoothNumber == b_num).Skip((int)offset).Take(10);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate && a.BoothNumber == b_num).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate && a.BoothNumber == b_num).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -433,7 +433,7 @@ namespace Fairy_project.Controllers
             }
             else if (b_num.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == b_num).Skip((int)offset).Take(10);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == b_num).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.BoothNumber == b_num).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -447,7 +447,7 @@ namespace Fairy_project.Controllers
             }
             else if (checkstate.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate).Skip((int)offset).Take(10);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == checkstate).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
@@ -461,7 +461,7 @@ namespace Fairy_project.Controllers
             }
             else
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId).Skip((int)offset).Take(10);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId).Count();
                 List<Appliess> applies = a.ToList();
                 amodel.applylist = Search(applies);
@@ -509,8 +509,14 @@ namespace Fairy_project.Controllers
             }
             if (apply.CheckState == 0)
             {
+                List<Appliess>? to3 = _context.Appliesses.Where(a => a.BoothNumber == apply.BoothNumber).ToList();
+                foreach(var item in to3)
+                {
+                    item.CheckState = 3;
+                }
                 apply.CheckState = 1;
                 booth.BoothState = 1;
+                booth.MfId = apply.MfId;
             }
             else if (apply.CheckState == 1)
             {
