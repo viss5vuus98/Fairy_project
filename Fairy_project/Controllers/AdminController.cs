@@ -500,34 +500,18 @@ namespace Fairy_project.Controllers
         public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? applynum, bool? fail)
         {
             var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.ApplyNum == applynum);
-            Appliess apply = a.FirstOrDefault();
+            Appliess apply =  a.FirstOrDefault();
             var b = _context.BoothMapsses.Where(b => b.EId == exhibitId && b.BoothNumber == apply.BoothNumber);
             BoothMapss booth = b.FirstOrDefault();
             if (fail.HasValue)
             {
                 apply.CheckState = 3;
-                //string? email = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail).ToString();
-                //string title = "woohouse-您的攤位申請未通過";
-
-                //string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).ToString();
-                //string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).ToString();
-                //string content = $"親愛的廠商{mname}您好：\n很抱歉，您申請參加{ename}{booth.BoothNumber}號攤位未通過";
-                //Console.WriteLine($"------------------------------------{_context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail)}");
-                //sendmail(email, title, content);
-
-                //var mail = new MailMessage();
-                //mail.To.Add($"{email}");
-                //mail.Subject = $"{title}";
-                //mail.Body = $"{content}";
-                //mail.From = new MailAddress("zxc995116@gmail.com", "woohouse");
-                //var smtp = new SmtpClient("smtp.gmail.com", 587)
-                //{
-                //    Credentials = new System.Net.NetworkCredential("zxc995116@gmail.com", "rpsxltaiqhdmupnp"),
-                //    EnableSsl = true
-                //};
-                //smtp.Send(mail);
-                //mail.Dispose();
-
+                string email = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail).FirstOrDefault().ToString();
+                string title = "woohouse-您的攤位申請未通過";
+                string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).FirstOrDefault().ToString();
+                string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).FirstOrDefault().ToString();
+                string content = $"親愛的廠商{mname}您好：\n很抱歉，您申請參加{ename}之{booth.BoothNumber}號攤位未通過\n詳情請至woo.com登入後查看，謝謝您";
+                sendmail(email, title, content);
             }
             if (apply.CheckState == 0)
             {
@@ -773,30 +757,30 @@ namespace Fairy_project.Controllers
         }
 
 
-        public void sendmail(string email, string title, string content)
+        public async void sendmail(string email, string title, string content)
         {
+            //new一個C#內建的寄信物件
             var mail = new MailMessage();
+            //加入寄件人
             mail.To.Add($"{email}");
+            //主旨
             mail.Subject = $"{title}";
+            //信件內容
             mail.Body = $"{content}";
+            //從我建好smtp的這個zxc995116信箱發送 名稱顯示woohouse
             mail.From = new MailAddress("zxc995116@gmail.com", "woohouse");
+            //SMTP PORT物件
             var smtp = new SmtpClient("smtp.gmail.com", 587)
             {
+                //這行請直接照著打才能用我的信箱
                 Credentials = new System.Net.NetworkCredential("zxc995116@gmail.com", "rpsxltaiqhdmupnp"),
                 EnableSsl = true
             };
-            smtp.Send(mail);
+            //寄出
+            await smtp.SendMailAsync(mail);
+            //清除這個mail物件
             mail.Dispose();
         }
-
-
-
-
-
-
-
-
-
 
 
 
