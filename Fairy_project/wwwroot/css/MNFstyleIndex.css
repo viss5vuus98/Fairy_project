@@ -1049,10 +1049,10 @@ ul.dropdown-menu li {
   position: relative;
   padding: 0;
 }
-.portfolio-item img {
-  width: 100%;
-  height: auto;
-}
+    .portfolio-item img {
+        width: 100%;
+        height: 100%;
+    }
 .portfolio-item:hover .portfolio-hover {
   visibility: visible;
   opacity: 1;
@@ -2698,6 +2698,11 @@ ul.dropdown-menu li {
 }
 ul{
    list-style:none;
+}
+img {
+    vertical-align: middle;
+    border-style: none;
+    object-fit: cover;
 }
 /*# sourceMappingURL=style.css.map */
 
