@@ -501,20 +501,19 @@ namespace Fairy_project.Controllers
         {
             var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.ApplyNum == applynum);
             Appliess apply = a.FirstOrDefault();
-            Console.WriteLine("---------------------------" + apply.ApplyNum);
             var b = _context.BoothMapsses.Where(b => b.EId == exhibitId && b.BoothNumber == apply.BoothNumber);
             BoothMapss booth = b.FirstOrDefault();
             if (fail.HasValue)
             {
                 apply.CheckState = 3;
-                string email = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail).ToString();
-                string title = "woohouse-您的攤位申請未通過";
+                //string? email = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail).ToString();
+                //string title = "woohouse-您的攤位申請未通過";
 
-                string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).ToString();
-                string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).ToString();
-                string content = $"親愛的廠商{mname}您好：\n很抱歉，您申請參加{ename}{booth.BoothNumber}號攤位未通過";
-                Console.WriteLine("------------------------------------"+ email, title, content);
-                sendmail(email, title, content);
+                //string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).ToString();
+                //string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).ToString();
+                //string content = $"親愛的廠商{mname}您好：\n很抱歉，您申請參加{ename}{booth.BoothNumber}號攤位未通過";
+                //Console.WriteLine($"------------------------------------{_context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail)}");
+                //sendmail(email, title, content);
 
                 //var mail = new MailMessage();
                 //mail.To.Add($"{email}");
@@ -528,8 +527,6 @@ namespace Fairy_project.Controllers
                 //};
                 //smtp.Send(mail);
                 //mail.Dispose();
-
-
 
             }
             if (apply.CheckState == 0)
