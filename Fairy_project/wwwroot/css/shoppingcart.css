@@ -102,13 +102,24 @@
 }
 
 
-.total {
+.total1 {
     width: 100%;
     margin-top: 50px;
     justify-content: space-between;
+    padding-top: 100px;
 }
 
-.total p {
+.total1 p {
+    font-size: 20px;
+}
+
+.total2 {
+    width: 100%;
+    justify-content: space-around;
+    padding-top: 50px;
+}
+
+.total2 p {
     font-size: 20px;
 }
 
@@ -121,10 +132,6 @@
 
 .btn {
     height: 40px;
-}
-
-svg {
-    margin-top: 100px;
 }
 
 /*.form-group {
@@ -164,7 +171,7 @@ h5 {
 }*/
 
 #totalprice{
-    font-size: 24px;
+    font-size: 20px;
 }
 
 
@@ -244,6 +251,26 @@ button{
 
 .checkout-form .checkout-country-code .form-group:last-child {
     width: calc(55% - 2px);
+}
+
+.checkout-form {
+    display: block;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.block{
+    padding: 0 15px;
+    text-align: center;
+}
+
+.oderdetial{
+    display: flex;
+    flex-grow: 1;
 }
 
 @media (max-width: 770px) {

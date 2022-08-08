@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fgyjpgV8KTCtcof9jvzysbMxCPaAjEHbkRuPr7rPxLo=",
+  "Hash": "2TGGOjOI7x3lpF0VGDd7g/5BPv8w//F54Bn4UU8eJP8=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -5421,6 +5421,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\tscc091149943.jpg"
+    },
+    {
+      "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verified.png",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/verified.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\verified.png"
     },
     {
       "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\images\\verticalposter1.png",

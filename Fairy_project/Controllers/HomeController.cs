@@ -216,6 +216,8 @@ public class HomeController : Controller
     {
         if (string.IsNullOrEmpty(txtKeyword))
         {
+            ViewBag.dtStart = dtStart;
+            ViewBag.dtEnd = dtEnd;
             DateTime dateStart = Convert.ToDateTime(dtStart);
             DateTime dateEnd = Convert.ToDateTime(dtEnd);
             var exhibitions = _context.Exhibitionsses.Where(m => m.Datefrom > dateStart && m.Dateto < dateEnd && 1 < m.ExhibitStatus && m.ExhibitStatus < 4);
@@ -223,6 +225,7 @@ public class HomeController : Controller
         }
         else
         {
+            ViewBag.txtKeyword = txtKeyword;
             var exhibitions = _context.Exhibitionsses
             .Where(m => m.ExhibitName.Contains(txtKeyword) && 1 < m.ExhibitStatus && m.ExhibitStatus < 4)
             .OrderBy(m => m.ExhibitId)
@@ -304,7 +307,7 @@ public class HomeController : Controller
         {
             _context.Ticketsses.Add(obj[i].ticket);
         }
-        _context.SaveChanges();
+        //_context.SaveChanges();
         return Json(obj);
     }
 

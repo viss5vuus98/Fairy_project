@@ -1145,3 +1145,21 @@ article {
         padding: 4px 12px;
     }
 
+
+    .aboutcard{
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 20px 0;
+    }
+
+    .about{
+        margin-top:50px;
+    }
+
+    .about a{
+        display: block;
+    }
+
+    .about a:hover{
+        background-color: yellow;
+    }
