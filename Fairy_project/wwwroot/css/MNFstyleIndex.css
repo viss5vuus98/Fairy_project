@@ -2705,5 +2705,8 @@ img {
     vertical-align: middle;
     border-style: none;
 }
+.minH{
+    min-height:552px;
+}
 /*# sourceMappingURL=style.css.map */
 
