@@ -136,11 +136,10 @@ function show() {
 $(
     () => {
     let li = $("ul.size-title li")
-    $(li.eq(0).addClass("active").find("a").attr('href')).siblings(".booth-zone").hide();
+    $(li.eq(0).addClass("active").find("a").attr('href')).siblings(".booth-list").hide();
     li.click(function () {
-        $($(this).find('a').attr("href")).show().siblings(".booth-zone").hide();
+        $($(this).find('a').attr("href")).show().siblings(".booth-list").hide();
         $(this).addClass('active').siblings(".active").removeClass("active");
-       
     })
     }
 )

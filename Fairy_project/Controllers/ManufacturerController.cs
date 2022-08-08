@@ -96,7 +96,8 @@ namespace Fairy_project.Controllers
             var b = _woowocontext.BoothMapsses.FirstOrDefault(b => b.EId == Convert.ToInt32(apply.EId) && b.BoothNumber == Convert.ToInt32(apply.BoothNumber));
 
 
-            
+            b.BoothState = 1;
+            b.MfId = Convert.ToInt32(apply.MfId);
 
             Appliess appliess = new Appliess();
 
@@ -126,11 +127,13 @@ namespace Fairy_project.Controllers
                     await apply.MfLogo.CopyToAsync(stream);
                 }
             }
+            Console.WriteLine("-------------------------" + b);
 
 
 
 
             _woowocontext.Appliesses.Add(appliess);
+            _woowocontext.BoothMapsses.Update(b);
             _woowocontext.SaveChanges();
             return Redirect("Index");
 
@@ -172,18 +175,14 @@ namespace Fairy_project.Controllers
             {
                 foreach (var apply in applies)
                 {
-                    
-                    exhibitions.Add(_woowocontext.Exhibitionsses.FirstOrDefault(ex => ex.ExhibitId == apply.EId && ex.ExhibitStatus!=4));
-                    
+                    exhibitions.Add(_woowocontext.Exhibitionsses.First(ex => ex.ExhibitId == apply.EId));
                 }
                 GetMfsApplyAndExName getMfsApplyAndExName = new GetMfsApplyAndExName() 
                 { 
                     exhibition = exhibitions,
                     appliess = applies,
                 };
-
                 return Json(getMfsApplyAndExName);
-
             }
 
             return Json(applies);
