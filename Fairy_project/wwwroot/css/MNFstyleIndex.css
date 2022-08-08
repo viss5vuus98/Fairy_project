@@ -635,6 +635,7 @@ input[type=tel]:focus {
 /*--
 	Header Start 
 --*/
+/*
 header {
   background: #fff;
   padding: 20px 0;
@@ -993,6 +994,7 @@ ul.dropdown-menu li {
   background-size: cover;
   padding: 100px 0;
 }
+    */
 @media (max-width: 768px) {
   .feature {
     background-image: none !important;
