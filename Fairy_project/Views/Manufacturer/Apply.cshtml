@@ -93,9 +93,9 @@
                     <div class="dataform">
                     </div>
                     <form method="post"  action="@Url.Action("ApplyStand","Manufacturer") ">
-                        <input id="eId"  name="e_Id" value="" />
-                        <input id="bNum" name="boothId" value="" />
-                        <input id="mId" name="mid" value=""/>
+                        <input id="eId"  name="e_Id" value="" hidden/>
+                        <input id="bNum" name="boothId" value="" hidden/>
+                        <input id="mId" name="mid" value="" hidden/>
                         <button type="submit" class="btn btn-main">提交申請</button>
                     </form>
 
@@ -240,7 +240,7 @@ let eName;
                     <h4>攤位尺寸：360cm x 180cm</h4>
                     </p>
                     <div class="price-title text-right">
-                        <h2>攤位價格：${currentBooth.data(`price`)}$</h2>
+                        <h4>攤位價格：${currentBooth.data(`price`)}$</h4>
                         <p>請於申請通過後盡快完成付款</p>
                     </div>`)
 
@@ -250,7 +250,7 @@ let eName;
                     <h4>攤位尺寸：240cm x 120cm</h4>
                     </p>
                     <div class="price-title text-right">
-                        <h2>攤位價格：${currentBooth.data(`price`)}$</h2>
+                        <h4>攤位價格：${currentBooth.data(`price`)}$</h4>
                         <p>請於申請通過後盡快完成付款</p>
                     </div>`)
 
@@ -262,7 +262,7 @@ let eName;
                     <h4>攤位尺寸：120cm x 60cm</h4>
                     </p>
                     <div class="price-title text-right">
-                        <h2>攤位價格：${currentBooth.data(`price`)}$</h2>
+                        <h4>攤位價格：${currentBooth.data(`price`)}$</h4>
                         <p>請於申請通過後盡快完成付款</p>
                     </div>`)
                
