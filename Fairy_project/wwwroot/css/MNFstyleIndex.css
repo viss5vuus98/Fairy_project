@@ -209,6 +209,9 @@ input[type=tel]:focus {
 .mt-50 {
   margin-top: 50px;
 }
+.mt-100 {
+  margin-top: 100px;
+}
 
 .btn:focus {
   color: #ddd;
@@ -443,6 +446,9 @@ input[type=tel]:focus {
   border: none;
 }
 
+.tabCommon{
+ min-height: 1vh;
+}
 .tabCommon .nav-tabs {
   border-bottom: 0;
   margin-bottom: 10px;
@@ -1049,10 +1055,10 @@ ul.dropdown-menu li {
   position: relative;
   padding: 0;
 }
-    .portfolio-item img {
-        width: 100%;
-        height: 100%;
-    }
+.portfolio-item img {
+  width: 100%;
+  height: auto;
+}
 .portfolio-item:hover .portfolio-hover {
   visibility: visible;
   opacity: 1;
@@ -2699,10 +2705,8 @@ ul.dropdown-menu li {
 ul{
    list-style:none;
 }
-img {
-    vertical-align: middle;
-    border-style: none;
-    object-fit: cover;
+.minH{
+    min-height:552px;
 }
 /*# sourceMappingURL=style.css.map */
 

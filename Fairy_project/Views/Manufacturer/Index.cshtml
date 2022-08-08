@@ -1,18 +1,23 @@
 ﻿@model GetMfsApplyAndExName;
 
-@{
-    Layout = "_Layout_manuf";
 
+
+
+@{
 }
 @section Style{
     <link rel="stylesheet" href="~/css/MNFstyleIndex.css" asp-append-version="true" />
 }
 
+    @{
+    Layout = "_Layout_manuf";
+
+}
+
 <div class="container p-0" style="margin-top:10%">
-    <div class="row">
+    <div class="row minH">
         <div class="col-lg-12 mt-5 mt-lg-0">
             <div class="tabCommon">
-
             </div>
         </div>
     </div>
@@ -38,7 +43,7 @@
                     appliessList.push(appliessObj)
                 }
                 console.log(appliessList)
-               renderApply(appliessList)
+                renderApply(appliessList)
             })
             .catch(err => console.log(err))
         function renderApply(appliessList) {
@@ -46,92 +51,92 @@
             if (appliessList.length > 0) {
                 for (let i = 0; i < appliessList.length; i++) {
 
-                let dateFrom = `${appliessList[i].exhibition.datefrom}`;
-                let dateTo = `${appliessList[i].exhibition.dateto}`;
-                let checkState = `${appliessList[i].appliess.checkState}`;
-                let statemessage = '';
-                let returnmessage = '';
-                let area = '';
-                if (checkState == 0) {
-                    statemessage ='  <span class="badge badge-info mx-2">尚未審核</span>'
-                    returnmessage =
-                    `
-                            <div class="">
-                                <h4 class="py-5 text-info">謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知</h4>
-                            </div>
-                    `
-                }
-                else if (checkState == 1) {
-                  statemessage ='  <span class="badge badge-warning mx-2">尚未付款</span>'
-                  returnmessage =`
-                            <form method="post"  action="@Url.Action("updateApplies","Manufacturer")>
-                               <div class="d-flex justify-content-around">
-                                <div class="w-50">
-                                    <p class="m-0">轉帳日期時間</p>
-                                    <input name="time" type="datetime-local" class="form-control w-75 h-25"
-                                           placeholder="轉帳日期時間">
-                                           <input name="id" class="form-control w-75 h-25"9  placeholder="轉帳日期時間" hidden value="${appliessList[i].appliess.applyNum}">
-                                    <p class="m-0">轉帳末五碼</p>
-                                    <input name="fivenum" type="text" class="form-control w-75 h-25"
-                                           placeholder="">
-                                </div>
-                                <div class="align-self-end text-right">
-                                    <input type="submit" class="btn btn-small my-2" value="提交"/>
-                                    <p>將會依據提交時間進行對帳</p>
-                                </div>
-                            </div>
-                                </form>
-                  `
-                }
-                else if (checkState == 2) {
-                    statemessage = '<span class="badge badge-success mx-2">Pass</span>';
-                    if (appliessList[i].exhibition.areaNum==1) {
-                        area = 'A';
-                    } else if(appliessList[i].exhibition.areaNum==2) {
-                        area = 'B';
+                    let dateFrom = `${appliessList[i].exhibition.datefrom}`;
+                    let dateTo = `${appliessList[i].exhibition.dateto}`;
+                    let checkState = `${appliessList[i].appliess.checkState}`;
+                    let statemessage = '';
+                    let returnmessage = '';
+                    let area = '';
+                    if (checkState == 0) {
+                        statemessage = '  <span class="badge badge-info mx-2">尚未審核</span>'
+                        returnmessage =
+                            `
+                                    <div class="">
+                                        <h4 class="py-5 text-info">謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知</h4>
+                                    </div>
+                            `
                     }
-                    returnmessage = `
-                                     <div class="text-right">
-                                        <p>入場時間：AM0900</p>
-                                        <p>入場入口：${area}區13</p>
-                                        <p>攤位編號：${area}${appliessList[i].appliess.boothNumber}</p>
-                                        <a href="" class="btn btn-small my-2">電子通行證</a>
+                    else if (checkState == 1) {
+                        statemessage = '  <span class="badge badge-warning mx-2">尚未付款</span>'
+                        returnmessage = `
+                                    <form method="post"  action="@Url.Action("updateApplies","Manufacturer")>
+                                       <div class="d-flex justify-content-around">
+                                        <div class="w-50">
+                                            <p class="m-0">轉帳日期時間</p>
+                                            <input name="time" type="datetime-local" class="form-control w-75 h-25"
+                                                   placeholder="轉帳日期時間">
+                                                   <input name="id" class="form-control w-75 h-25"9  placeholder="轉帳日期時間" hidden value="${appliessList[i].appliess.applyNum}">
+                                            <p class="m-0">轉帳末五碼</p>
+                                            <input name="fivenum" type="text" class="form-control w-75 h-25"
+                                                   placeholder="">
+                                        </div>
+                                        <div class="align-self-end text-right">
+                                            <input type="submit" class="btn btn-small my-2" value="提交"/>
+                                            <p>將會依據提交時間進行對帳</p>
+                                        </div>
                                     </div>
-                    `;
-                }
-                else {
-                    statemessage ='<span class="badge badge-danger mx-2">Fail</span>'
-                    returnmessage =
-                        `
-                            <div class="">
-                                <h4 class="py-5 text-danger">資料提供不全</h4>
-                            </div>`;
+                                        </form>
+                          `
+                    }
+                    else if (checkState == 2) {
+                        statemessage = '<span class="badge badge-success mx-2">Pass</span>';
+                        if (appliessList[i].exhibition.areaNum == 1) {
+                            area = 'A';
+                        } else if (appliessList[i].exhibition.areaNum == 2) {
+                            area = 'B';
+                        }
+                        returnmessage = `
+                                             <div class="text-right">
+                                                <p>入場時間：AM0900</p>
+                                                <p>入場入口：${area}區13</p>
+                                                <p>攤位編號：${area}${appliessList[i].appliess.boothNumber}</p>
+                                                <a href="" class="btn btn-small my-2">電子通行證</a>
+                                            </div>
+                            `;
+                    }
+                    else {
+                        statemessage = '<span class="badge badge-danger mx-2">Fail</span>'
+                        returnmessage =
+                            `
+                                    <div class="">
+                                        <h4 class="py-5 text-danger">資料提供不全</h4>
+                                    </div>`;
 
-                }
-                const root = @Url.Content("~/images/")
-                pannelHTML += `
-                    <div class="tab-content d-flex my-3" id="myTabContent">
-                            <div class="col-lg-5">
-                                <div class="about-img">
-                                    <img class="img-fluid" src="${root}${appliessList[i].appliess.mfLogo}"">
-                                </div>
-                            </div>
-                            <div class="col-lg-7 mt-5 mt-lg-0">
-                                <div class="pl-0 pl-lg-4">
-                                    <div class="d-flex justify-content-between align-items-center px-2 my-1">
-                                        <h3 class="m-0">申請編號</h3>
-                                        <h3 class="m-0">No.${appliessList[i].appliess.applyNum}${statemessage}</h3>
+                    }
+                    const root = @Url.Content("~/images/")
+                        pannelHTML += `
+                            <div class="tab-content d-flex my-3" id="myTabContent">
+                                    <div class="col-lg-5">
+                                        <div class="about-img">
+                                            <img class="img-fluid" src="${root}${appliessList[i].appliess.mfLogo}"">
+                                        </div>
                                     </div>
-                                    <div class="py-3">
-                                        <h2>${appliessList[i].exhibition.exhibitName}</h2>
-                                        <p class="text-left">${dateFrom.slice(0, 10)} ~ ${dateTo.slice(0, 10)}</p>
+                                    <div class="col-lg-7 mt-5 mt-lg-0">
+                                        <div class="pl-0 pl-lg-4">
+                                            <div class="d-flex justify-content-between align-items-center px-2 my-1">
+                                                <h3 class="m-0">申請編號</h3>
+                                                <h3 class="m-0">No.${appliessList[i].appliess.applyNum}${statemessage}</h3>
+                                            </div>
+                                            <div class="py-3">
+                                                <h2>${appliessList[i].exhibition.exhibitName}</h2>
+                                                <p class="text-left">${dateFrom.slice(0, 10)} ~ ${dateTo.slice(0, 10)}</p>
+                                            </div>
+                                            ${returnmessage}
+                                        </div>
                                     </div>
-                                    ${returnmessage}
                                 </div>
-                            </div>
-                        </div>
 
-                   `
+                           `
                 }
             }
             else {
