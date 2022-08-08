@@ -307,7 +307,7 @@ public class HomeController : Controller
         {
             _context.Ticketsses.Add(obj[i].ticket);
         }
-        //_context.SaveChanges();
+        _context.SaveChanges();
         return Json(obj);
     }
 
