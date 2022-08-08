@@ -8,7 +8,7 @@
     @{
     Layout = "_Admin_Layout";
 }
-<div class="container">
+<div class="container mt-5">
     <form action="@Url.Action("CreatExhibition")" method="post" enctype="multipart/form-data">
         <div class="row align-items-center justify-content-center my-3">
             <div class="col-lg-11 col-sm-10 col-10 text-start">
@@ -25,26 +25,29 @@
             </div>
             <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-dark py-3 fs-6">規劃</span>
         </div>
-        <div class="row">
-            <div class="col-lg-6 col-sm-12 col-12 my-5">
+        <div class="row my-3">
+            <div class="col-12 d-flex justify-content-around align-items-center px-5 mt-4">
                 <div id="areaedit" class="d-flex justify-content-center align-items-end">
                     <h5 class="">
                         No.
                         <input asp-for="exhibitId" class="h2 pe-none border-0 w-50" value="" readonly>
                     </h5>
-                    <div class="dropdown d-inline-block mb-1">
-                        <button class="fs-6 btn btn-outline-dark border btn-lg dropdown-toggle" type="button"
-                                id="selecarea" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                data-display="static">
-                            展區
-                        </button>
-                        <input asp-for="areaNum" type="text" id="area" hidden>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item areaoption" href="#">A</a>
-                            <a class="dropdown-item areaoption" href="#">B</a>
-                        </div>
+                </div>
+                <div class="dropdown d-inline-block mb-1">
+                    <button class="fs-6 btn btn-outline-dark border btn-lg dropdown-toggle" type="button"
+                            id="selecarea" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            data-display="static">
+                        展區
+                    </button>
+                    <input asp-for="areaNum" type="text" id="area" hidden>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item areaoption" href="#">A</a>
+                        <a class="dropdown-item areaoption" href="#">B</a>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-12 col-12 my-5">
 
                 <div class="position-relative my-4 border border-1 rounded-2">
                     <img id="ticketimg" class="w-100" src="~/images/ticketdefault.png" alt="">
@@ -64,9 +67,9 @@
                     </label>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-12 col-12 p-lg-5 p-sm-2">
+            <div class="col-lg-6 col-sm-12 col-12 p-lg-5 p-sm-2  d-flex flex-column justify-content-center">
                 <div class="position-relative rounded-2 border border-1">
-                    <img id="verticalposterimage" class=" w-100" src="~/images/verticalposterdefault.png">
+                    <img id="verticalposterimage" class=" w-100" src="~/images/horizontalposterdefault.png">
                     <label for="verticalposterimageinput" class="d-inline">
                         <input asp-for="exhibit_P_img" type="file" id="verticalposterimageinput" hidden
                                accept=".png,.jpg">
@@ -383,7 +386,7 @@
 *@
 @section Scripts
     {
-@*    <script src="~/js/bootstrap.bundle_admin.js"></script>
+    @*    <script src="~/js/bootstrap.bundle_admin.js"></script>
     <script src="~/js/jquery_admin..js"></script>*@
     <script>
         $('.areaoption').on('click', (e) => {
@@ -531,30 +534,30 @@
         $('#addbooth').on('click', (e) => {
             e.preventDefault();
             $(e.target).closest('div').before(`<div
-                                                                                class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
-                                                                                <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
-                                                                                    data-toggle="dropdown" aria-expanded="false"><input
-                                                                                        name="setboothslist[${i}].boothLv"
-                                                                                        class="pe-none w-75 text-center border-0 h5 m-0 c1 blv"
-                                                                                        value="攤位等級"></input><i
-                                                                                        class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-2"></i></button>
-                                                                                <ul class="dropdown-menu ms-5 text-center p-0">
-                                                                                    <li><a class="dropdown-item h5 m-0" href="#">大型</a></li>
-                                                                                    <li><a class="dropdown-item h5 m-0" href="#">中型</a></li>
-                                                                                    <li><a class="dropdown-item h5 m-0" href="#">小型</a></li>
-                                                                                </ul>
+                                                                                                class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
+                                                                                                <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
+                                                                                                    data-toggle="dropdown" aria-expanded="false"><input
+                                                                                                        name="setboothslist[${i}].boothLv"
+                                                                                                        class="pe-none w-75 text-center border-0 h5 m-0 c1 blv"
+                                                                                                        value="攤位等級"></input><i
+                                                                                                        class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-2"></i></button>
+                                                                                                <ul class="dropdown-menu ms-5 text-center p-0">
+                                                                                                    <li><a class="dropdown-item h5 m-0" href="#">大型</a></li>
+                                                                                                    <li><a class="dropdown-item h5 m-0" href="#">中型</a></li>
+                                                                                                    <li><a class="dropdown-item h5 m-0" href="#">小型</a></li>
+                                                                                                </ul>
 
-                                                                                <h3 class="w-25 m-0"></h3>
-                                                                                <div class="w-25"><input name="setboothslist[${i}].boothPrice"
-                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
-                                                                                        placeholder="輸入價格" type="number" autocomplete="off"></input></div>
-                                                                                <div class="w-25"><input name="setboothslist[${i}].boothsum"
-                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
-                                                                                        placeholder="輸入數量" type="number" autocomplete="off"></input><i
-                                                                                        class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
-                                                                                </div>
-                                                                            </div>
-                                        `)
+                                                                                                <h3 class="w-25 m-0"></h3>
+                                                                                                <div class="w-25"><input name="setboothslist[${i}].boothPrice"
+                                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
+                                                                                                        placeholder="輸入價格" type="number" autocomplete="off"></input></div>
+                                                                                                <div class="w-25"><input name="setboothslist[${i}].boothsum"
+                                                                                                        class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
+                                                                                                        placeholder="輸入數量" type="number" autocomplete="off"></input><i
+                                                                                                        class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
+                                                                                                </div>
+                                                                                            </div>
+                                                        `)
             i++
         })
 
