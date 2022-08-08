@@ -485,6 +485,8 @@ namespace Fairy_project.Controllers
                 model.mf_logo = applies[i].MfLogo;
                 model.mf_P_img = applies[i].MfPImg;
                 model.mf_Description = applies[i].MfDescription;
+                model.boothLv = _context.BoothMapsses.Where(b => b.BoothNumber == applies[i].BoothNumber).Select(b => b.BoothLv).FirstOrDefault();
+                model.boothPrice = _context.BoothMapsses.Where(b => b.BoothNumber == applies[i].BoothNumber).Select(b => b.BoothPrice).FirstOrDefault();
                 var m = _context.Manufacturesses.Where(m => m.ManufactureId == applies[i].MfId);
                 Manufacturess manufactures = m.FirstOrDefault();
                 model.manufactureId = manufactures.ManufactureId;
@@ -510,43 +512,56 @@ namespace Fairy_project.Controllers
                 string title = "woohouse-您的攤位申請未通過";
                 string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).FirstOrDefault().ToString();
                 string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).FirstOrDefault().ToString();
-                string content = $"親愛的廠商{mname}您好：\n很抱歉，您申請參加{ename}之{booth.BoothNumber}號攤位未通過\n詳情請至woo.com登入後查看，謝謝您";
+                string content = $"親愛的廠商{mname}您好：\n很抱歉，您申請參加{ename}之{booth.BoothNumber}號攤位未通過\n詳情請登入後查看，謝謝您";
                 sendmail(email, title, content);
             }
             if (apply.CheckState == 0)
             {
+
                 List<Appliess>? to3 = _context.Appliesses.Where(a => a.BoothNumber == apply.BoothNumber).ToList();
                 foreach (var item in to3)
                 {
                     item.CheckState = 3;
                 }
+                string email = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail).FirstOrDefault().ToString();
+                string title = "woohouse-您的攤位申請已通過";
+                string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).FirstOrDefault().ToString();
+                string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).FirstOrDefault().ToString();
+                string content = $"親愛的廠商{mname}您好：\n您申請參加{ename}之{booth.BoothNumber}號攤位已通過\n詳情請登入後查看，謝謝您";
                 apply.CheckState = 1;
-                booth.BoothState = 1;
-                booth.MfId = apply.MfId;
             }
             else if (apply.CheckState == 1)
             {
                 apply.CheckState = 2;
+                booth.BoothState = 1;
+                booth.MfId = apply.MfId;
+                string email = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail).FirstOrDefault().ToString();
+                string title = "woohouse-您的攤位付款已對帳";
+                string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).FirstOrDefault().ToString();
+                string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).FirstOrDefault().ToString();
+                string content = $"親愛的廠商{mname}您好：\n您申請參加{ename}之{booth.BoothNumber}號攤位已確認對帳\n詳情請登入後查看，謝謝您";
             }
             await _context.SaveChangesAsync();
 
             int applysum = 0;
             int? applysumprice = 0;
             applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Count();
-            var aa = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2);
-            var bb = _context.BoothMapsses.Where(b => b.EId == exhibitId);
-            List<Appliess> Appliess = aa.ToList();
-            List<BoothMapss> boothMapsses = bb.ToList();
-            foreach (Appliess Apply in Appliess)
-            {
-                foreach (BoothMapss Booth in boothMapsses)
-                {
-                    if (Apply.BoothNumber == Booth.BoothNumber)
-                    {
-                        applysumprice += Booth.BoothPrice;
-                    }
-                }
-            }
+            applysumprice = _context.BoothMapsses.Where(b => b.EId == exhibitId && _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Select(a => a.BoothNumber).Contains(b.BoothNumber)).Select(b => b.BoothPrice).Sum();
+
+            //var aa = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2);
+            //var bb = _context.BoothMapsses.Where(b => b.EId == exhibitId);
+            //List<Appliess> Appliess = aa.ToList();
+            //List<BoothMapss> boothMapsses = bb.ToList();
+            //foreach (Appliess Apply in Appliess)
+            //{
+            //    foreach (BoothMapss Booth in boothMapsses)
+            //    {
+            //        if (Apply.BoothNumber == Booth.BoothNumber)
+            //        {
+            //            applysumprice += Booth.BoothPrice;
+            //        }
+            //    }
+            //}
 
             return Json(new { applysum = applysum, applysumprice = applysumprice });
         }
@@ -634,6 +649,10 @@ namespace Fairy_project.Controllers
             Exhibitionss e = _context.Exhibitionsses.Where(e => e.ExhibitName == ename).FirstOrDefault();
             string name = e.ExhibitName;
             string edate = Convert.ToDateTime(e.Datefrom).ToShortDateString() + " - " + Convert.ToDateTime(e.Dateto).ToShortDateString();
+            bool priceattain;
+            bool peopleattain;
+            int? ExTotalImcome = e.ExTotalImcome;
+            int? ExPersonTime = e.ExPersonTime;
             decimal people = 0;
             if (_context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() != 0)
             {
@@ -661,6 +680,23 @@ namespace Fairy_project.Controllers
             int? soldticketprice = _context.Ticketsses.Where(t => t.EId == e.ExhibitId).Select(t => t.Price).Sum();
             int soldboothsum = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Count();
             int? soldboothprice = _context.BoothMapsses.Where(b => b.EId == e.ExhibitId && _context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Select(a => a.BoothNumber).ToList().Contains(b.BoothNumber)).Select(b => b.BoothPrice).Sum();
+            
+            if (e.ExTotalImcome < soldticketprice + soldticketprice)
+            {
+                priceattain = true;
+            }
+            else
+            {
+                priceattain = false;
+            }
+            if (e.ExPersonTime<_context.Ticketsses.Where(t=>t.EId == e.ExhibitId && t.Enterstate == 1).Count())
+            {
+                peopleattain = true;
+            }
+            else
+            {
+                peopleattain = false;
+            }
 
             int averageperson = 0;
             if (_context.Ticketsses.Where(t => t.EId == e.ExhibitId && t.Enterstate == 1).Count() != 0)
@@ -715,7 +751,7 @@ namespace Fairy_project.Controllers
                 i++;
             }
 
-            return Json(new { ename = name, edate = edate, people = people, booth = booth, soldticketsum = soldticketsum, soldticketprice = soldticketprice, soldboothsum = soldboothsum, soldboothprice = soldboothprice, averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport = datereport });
+            return Json(new { ename = name, edate = edate, people = people, booth = booth, soldticketsum = soldticketsum, soldticketprice = soldticketprice, soldboothsum = soldboothsum, soldboothprice = soldboothprice, averageperson = averageperson, pricesum = pricesum, female = female, male = male, datepick = datepick, reportsum = reportsum, datereport = datereport, exTotalImcome = ExTotalImcome, exPersonTime  = ExPersonTime, priceattain = priceattain , peopleattain = peopleattain });
         }
         public IActionResult RenderChart(string? edate, string? ename)
         {

@@ -58,7 +58,7 @@
                                     @{
                                         for (int i = DateTime.Now.Year; i < DateTime.Now.AddYears(10).Year; i++)
                                         {
-                                                    <option value="@i">@i</option>
+                                                                <option value="@i">@i</option>
                                         }
                                     }
                                 </select>
@@ -69,7 +69,7 @@
                                     @{
                                         for (int i = 1; i < 13; i++)
                                         {
-                                                    <option value="@i">@i 月</option>
+                                                                <option value="@i">@i 月</option>
                                         }
                                     }
                                 </select>
@@ -80,7 +80,7 @@
                                     @{
                                         foreach (var ename in ViewBag.ename)
                                         {
-                                                    <option value="@ename">@ename</option>
+                                                                <option value="@ename">@ename</option>
                                         }
 
                                     }
@@ -108,11 +108,20 @@
 
 
     <div class="row py-2 m-0 mb-3">
-        <div class="col-12 px-5">
+        <div class="col-lg-6 col-12 px-5 text-left">
             <h2 id="enametitle" class="m-0">展覽名稱</h2>
             <p id="edate" class="edate">舉辦期間</p>
         </div>
-
+        <div id="attain" class="col-lg-6 col-12 px-5 d-flex flex-column align-items-end">
+            <a id="priceattain" tabindex="0" class="btn btn-outline-danger col-lg-2 col-6 p-0 my-1 py-1" role="button" data-toggle="popover" data-trigger="focus"
+               title="預期收益金額" data-content="">
+                預期收益未達成
+            </a>
+            <a id="peopleattain" tabindex="0" class="btn btn-outline-danger col-lg-2 col-6 p-0 my-1 py-1" role="button" data-toggle="popover" data-trigger="focus"
+               title="預期進場人數" data-content="">
+                預期人數未達成
+            </a>
+        </div>
     </div>
     <div class="row m-0 px-5 align-items-start justify-content-center my-1">
         <div class="col-lg-3 col-12">
@@ -208,11 +217,13 @@
 @section Scripts
 
     {
+    <script src="~/js/custom.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"
         integrity="sha512-zjlf0U0eJmSo1Le4/zcZI51ks5SjuQXkU0yOdsOBubjSmio9iCUp8XPLkEAADZNBdR9crRy3cniZ65LF2w8sRA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     <script>
         var picker;
@@ -253,6 +264,21 @@
                     $('#averageperson').text(`${result.averageperson}人`)
                     $('#pricesum').text(`$${result.pricesum}`)
 
+                    $('#priceattain').attr('data-content', `$${result.exTotalImcome}`)
+                    $('#peopleattain').attr('data-content', `${result.exPersonTime}人`)
+
+                    if (result.priceattain) {
+                        $('#priceattain').removeClass('btn-outline-danger').addClass('btn-outline-success').text('預期收益已達成')
+                    }
+                    else {
+                        $('#priceattain').removeClass('btn-outline-success').addClass('btn-outline-danger').text('預期收益未達成')
+                    }
+                    if (result.peopleattain) {
+                        $('#peopleattain').removeClass('btn-outline-danger').addClass('btn-outline-success').text('預期人數已達成')
+                    }
+                    else{
+                        $('#peopleattain').removeClass('btn-outline-success').addClass('btn-outline-danger').text('預期人數未達成')
+                    }
                     //----------日期選擇器
                     if (picker != undefined) {
                         picker.clearSelection();

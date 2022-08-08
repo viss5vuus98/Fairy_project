@@ -29,5 +29,7 @@ namespace Fairy_project.ViewModels
         public int? boothLv { get; set; }
         public int? boothPrice { get; set; }
 
+        public int? atm5 { get; set; }
+
     }
 }

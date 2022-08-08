@@ -358,11 +358,11 @@
                                                     }
                                                     if (Model.soldprice < Model.ex_totalImcome)
                                                     {
-                                                                                <h4 class="p-2 text-danger">@(Model.soldprice - Model.ex_totalImcome)$<span class="c2"> NT</span></h4>
+                                                                                <h4 class="p-2 text-danger">$@(Model.soldprice - Model.ex_totalImcome)<span class="c2"> NT</span></h4>
                                                     }
                                                     else
                                                     {
-                                                                                <h4 class="p-2 text-success">+@(Model.soldprice - Model.ex_totalImcome)$<span class="c2"> NT</span></h4>
+                                                                                <h4 class="p-2 text-success">+$@(Model.soldprice - Model.ex_totalImcome)<span class="c2"> NT</span></h4>
 
                                                     }
                                                             }
@@ -1364,8 +1364,8 @@
                 }).done((result) => {
                     //console.log(result)
                     //$(e.target).closest('.modal').next().text('已付款').removeClass('text-danger').addClass('text-success')
-                    //$('#applysum').text(`${result.applysum} / NT `)
-                    //$('#applysumprice').text(`${result.applysumprice}`)
+                    $('#applysum').text(`${result.applysum} / NT `)
+                    $('#applysumprice').text(`$ ${result.applysumprice}`)
                     //$(e.target).removeClass('checkmoney').addClass('pe-none')
 
                     refreshapply()
@@ -1384,7 +1384,8 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     data-toggle="dropdown" aria-expanded="false"><input
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        name="setboothslist[${i}].boothLv"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        name="setboothslist[${i}].
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        "
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         class="pe-none w-75 text-center border-0 h5 m-0 c1 blv"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         value="攤位等級"></input><i
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-2"></i></button>

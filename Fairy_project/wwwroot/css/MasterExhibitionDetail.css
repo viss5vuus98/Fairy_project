@@ -115,3 +115,10 @@ input::-webkit-inner-spin-button {
 #areaedit ul li a:active {
     background-color: #B6B6B4;
 }
+
+#logoimg {
+    min-width:180px;
+    min-height:180px;
+    max-width:180px;
+    max-width:180px;
+}

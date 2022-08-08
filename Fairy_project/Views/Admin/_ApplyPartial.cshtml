@@ -9,7 +9,7 @@
                 <h4 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h4>
                 <h4 href="" class="w-25 m-0 border-0 text-reset bg2">
                     <a href="" class="text-reset" data-toggle="modal"
-               data-target="#A_@Model.applylist[i].applyNum" data-whatever="@@mdo">@Model.applylist[i].boothNumber</a>
+               data-target="#A_@Model.applylist[i].applyNum" data-whatever="@@mdo">@Model.applylist[i].boothNumber 號攤</a>
                 </h4>
                 <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
@@ -41,7 +41,7 @@
                                     </p>
                                 </div>
                                 <div class="col-lg-3 col-md-12 col-12 d-flex flex-column justify-content-center">
-                                    <img class="w-75 my-3 rounded-circle border border-1 align-self-center" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")" alt="">
+                                    <img id="logoimg" class="w-75 my-3 rounded-circle border border-1 align-self-center" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")">
 
                                     <ul class="list-group my-3">
                                         <li class="list-group-item" aria-disabled="true">@Model.applylist[i].manufactureName</li>
