@@ -288,6 +288,7 @@ body {
 
 textarea {
     resize: none;
+    outline: none;
 }
 
 
@@ -667,4 +668,29 @@ img[src=""], img:not([src]) {
 }
 
 
+.MfPImgarea {
+    width: 600px;
+    height: 340px;
+    background-color: #EFEFF1;
+}
 
+.MfLogoarea {
+    width: 261px;
+    height: 225px;
+    background-color: #EFEFF1;
+}
+@media (max-width: 480px) {
+
+    .MfPImgarea {
+        margin-top: 5%;
+        width: 280px;
+        height: 170px;
+       
+    }
+
+    .MfLogoarea {
+        width: 130px;
+        height: 112px;
+       
+    }
+}
