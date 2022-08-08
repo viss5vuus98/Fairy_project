@@ -487,11 +487,11 @@
             let ticket = [];
             for (let i = 0; i < array.length; i++) {
                 for (let j = 0; j < input[i]; j++) {                                //"mId":"${memberid.id}"
-                ticket.push(JSON.parse(`{"ticket":{"eId":"${array[i].exhibitions.exhibitId}","mId":"${memberid.id}","price":"${array[i].exhibitions.ticketPrice}","enterstate":"0","presonName":"${$("#name").val()}","personNumber":"${$("#cellphone").val()}","payTime":"${time}"}}`))
+                ticket.push(JSON.parse(`{"ticket":{"eId":"${array[i].exhibitions.exhibitId}","mId":"${memberid.id}","price":"${array[i].exhibitions.ticketPrice}","enterstate":"0","enterTime":"0001年01月01日","presonName":"${$("#name").val()}","personNumber":"${$("#cellphone").val()}","payTime":"${time}"}}`))
                 }
             }
             console.log(ticket);
-
+                @*axios.post("@Url.Action("clearCart","Home")", { ticket }).then(res=>console.log(res.data))*@
                 $.ajax({
                     type: "POST",
                     url: "@Url.Action("clearCart")",

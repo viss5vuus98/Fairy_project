@@ -185,17 +185,17 @@ public class HomeController : Controller
     }
 
     //search exhibition keyword
-    [HttpPost]
-    public IActionResult searchKeyWord([FromBody] KeyWord keyWord)
-    {
-        string key = Regex.Replace(keyWord.ex_keyWord, @"\s", "");
-        var exhibitions = _context.Exhibitionsses.Where(m => m.ExhibitName.Contains(key) && m.ExhibitStatus == 1);
-        return Json(exhibitions);
-    }
+    //[HttpPost]
+    //public IActionResult searchKeyWord([FromBody] KeyWord keyWord)
+    //{
+    //    string key = Regex.Replace(keyWord.ex_keyWord, @"\s", "");
+    //    var exhibitions = _context.Exhibitionsses.Where(m => m.ExhibitName.Contains(key) && 1 < m.ExhibitStatus && m.ExhibitStatus < 4);
+    //    return Json(exhibitions);
+    //}
 
     public IActionResult search(int id = 1)
     {
-        var exhibitions = _context.Exhibitionsses.Where(m => m.ExhibitStatus == 1).OrderBy(m => m.ExhibitId).ToList();
+        var exhibitions = _context.Exhibitionsses.Where(m => 1 < m.ExhibitStatus && m.ExhibitStatus < 4).OrderBy(m => m.ExhibitId).ToList();
         IList<Exhibitionss> products = null;
 
         if (id == 1)
@@ -218,13 +218,13 @@ public class HomeController : Controller
         {
             DateTime dateStart = Convert.ToDateTime(dtStart);
             DateTime dateEnd = Convert.ToDateTime(dtEnd);
-            var exhibitions = _context.Exhibitionsses.Where(m => m.Datefrom > dateStart && m.Dateto < dateEnd && m.ExhibitStatus == 1);
+            var exhibitions = _context.Exhibitionsses.Where(m => m.Datefrom > dateStart && m.Dateto < dateEnd && 1 < m.ExhibitStatus && m.ExhibitStatus < 4);
             return View(exhibitions);           
         }
         else
         {
             var exhibitions = _context.Exhibitionsses
-            .Where(m => m.ExhibitName.Contains(txtKeyword) && m.ExhibitStatus == 1)
+            .Where(m => m.ExhibitName.Contains(txtKeyword) && 1 < m.ExhibitStatus && m.ExhibitStatus < 4)
             .OrderBy(m => m.ExhibitId)
             .ToList();
             return View(exhibitions);
@@ -232,14 +232,14 @@ public class HomeController : Controller
     }
 
     //search exhibition date
-    [HttpPost]
-    public IActionResult searchDate([FromBody] SearchDate searchDate)
-    {
-        DateTime dtStart = Convert.ToDateTime(searchDate.dateStart);
-        DateTime dtEnd = Convert.ToDateTime(searchDate.dateEnd);
-        var exhibitions = _context.Exhibitionsses.Where(m => m.Dateto > dtStart && m.Datefrom < dtEnd && m.ExhibitStatus == 1);
-        return Json(exhibitions);
-    }
+    //[HttpPost]
+    //public IActionResult searchDate([FromBody] SearchDate searchDate)
+    //{
+    //    DateTime dtStart = Convert.ToDateTime(searchDate.dateStart);
+    //    DateTime dtEnd = Convert.ToDateTime(searchDate.dateEnd);
+    //    var exhibitions = _context.Exhibitionsses.Where(m => m.Dateto > dtStart && m.Datefrom < dtEnd && m.ExhibitStatus == 1);
+    //    return Json(exhibitions);
+    //}
 
     //radom tickets VerificationCode
     [HttpPost]

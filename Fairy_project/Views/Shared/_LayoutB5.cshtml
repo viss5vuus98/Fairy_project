@@ -18,7 +18,7 @@
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
                         <div class="container-fluid">
-                            <a href="#index">
+                            <a href="@Url.Action("Index", "Home")">
                                 <img class="logo-image" src="~/images/homeLogo.jpg" alt="">
                             </a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -29,7 +29,7 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto mb-lg-0">
                                     <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                                        <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Home")">Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" aria-current="page" href="@Url.Action("shoppingcart", "Home")">購物車</a>
@@ -47,7 +47,7 @@
                                         <a class="nav-link" href="@Url.Action("search", "Home")">搜尋</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="#">登出</a>
+                                        <a class="nav-link" aria-current="page" href="@Url.Action("Index", "Home")" id="out">登出</a>
                                     </li>
                                 </ul>
                             </div>
@@ -109,6 +109,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
             integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
             crossorigin="anonymous"></script>
+    <script>
+       document.getElementById('out').addEventListener('click', function() {
+        sessionStorage.clear();
+       })
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

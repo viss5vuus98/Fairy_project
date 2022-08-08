@@ -64,8 +64,8 @@
                                 <div class="overlay">
                                     <div class="buttons">
                                     @*<button class="btn btn_buy btn_cart" data-id="@item.ExhibitId">購票</button>*@
-                                        <a rel="gallery" class="fancybox btn_cart" href="#">加入購物車</a>
-                                        <a target="_blank" href="#">展覽詳細資訊</a>
+                                        @*<a rel="gallery" class="fancybox btn_cart" href="#">加入購物車</a>*@
+                                        <a target="" href="@Url.Action("exhibitionDetail","Home")/@item.ExhibitId">展覽詳細資訊</a>
                                     </div>
                                 </div>
                             </div>
