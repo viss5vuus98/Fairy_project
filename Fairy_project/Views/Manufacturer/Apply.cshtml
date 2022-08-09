@@ -1,17 +1,11 @@
-﻿
-@model Appliess
+﻿@model Appliess
 @section Style{
-
     <link rel="stylesheet" href="~/css/MNFstyleIndex.css" asp-append-version="true" />
 
 }
-
-
     @{
     Layout ="_Layout_manuf";
-    
 }
-
     <section class="portfolio-work " style="margin-top:5%">
         <div class="container">
             <div class="row">
@@ -32,7 +26,6 @@
                         </div>
                         <div class="row shuffle-wrapper" id="showList">
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-12 my-5">
@@ -103,13 +96,8 @@
             </div>
         </div>
     </section>
-
-
-
     @section Scripts{
-
     <script src="~/lib/slick-carousel/slick.min.js" asp-append-version="true"></script>
-
     <!-- filter -->
     <script src="~/lib/plugins/shuffle/shuffle.min.js"></script>
     <script src="~/lib/plugins/SyoTimer/jquery.syotimer.min.js"></script>
@@ -146,25 +134,26 @@ $(() => {
 
 
                 const root = @Url.Content("~/images/")
-                    showlist.append(`<div class="col-lg-4 col-sm-6 portfolio-item shuffle-item showsize"  data-groups="[&quot;${zoneTag}&quot;]">
-                                                                <img src="${root}${exhibition[i].exhibitPreImg}" alt="">
-                                                                <div class="portfolio-hover">
-                                                                    <ul class="portfolio-content">
-                                                                    <li>
-                                                                        <a href="${root}${exhibition[i].exhibitPreImg}" class="portfolio-popup"></a>
-                                                                        <button data-id="${exhibition[i].exhibitId}" data-name="${exhibition[i].exhibitName}" class="h3 btn btn-woo">${exhibition[i].exhibitName}</button>
-                                                                        <p class="m-0">${datefrom.slice(0, 10)} ~ ${dateto.slice(0, 10)}</p>
-                                                                    </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>`)
+                    showlist.append(`
+                    <div class="col-lg-4 col-sm-6 portfolio-item shuffle-item showsize"  data-groups="[&quot;${zoneTag}&quot;]">
+                        <img src="${root}${exhibition[i].exhibitPreImg}" alt="">
+                        <div class="portfolio-hover">
+                            <ul class="portfolio-content">
+                            <li>
+                                <a href="${root}${exhibition[i].exhibitPreImg}" class="portfolio-popup"></a>
+                                <button data-id="${exhibition[i].exhibitId}" data-name="${exhibition[i].exhibitName}" class="h3 btn btn-woo">${exhibition[i].exhibitName}</button>
+                                <p class="m-0">${datefrom.slice(0, 10)} ~ ${dateto.slice(0, 10)}</p>
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                                                    `)
             }
             show();
             AddClick();
-
         }
         let eid;
-let eName;
+        let eName;
         function AddClick() {
             $(".portfolio-content").click((e) => {
                 let data = [];
@@ -179,8 +168,6 @@ let eName;
                         .catch(err => console.log(err));
                 }
             })
-
-
             let boothdata = [];
             let btnLv = $(".btnBoothLv")
             function chooseLv(data) {
@@ -190,7 +177,6 @@ let eName;
             }
             //遍例攤位
             btnLv.click((e) => {
-            
                 let id = $(e.target).attr("id");
                 console.log(id);
                 $("#big").empty();
@@ -213,25 +199,18 @@ let eName;
                 let check3 = $("#small").children();
                 if (check1.length <= 0) {
                     $("#big").append(`<div> 無此尺寸攤位 </div>`)
-
                 }
                 if (check2.length <= 0) {
                     $("#middle").append(`<div> 無此尺寸攤位 </div>`)
-
                 }
                 if (check3.length <= 0) {
                     $("#small").append(`<div> 無此尺寸攤位 </div>`)
-
                 }
             })
                     $(".booth").click((e) => {
             $(".dataform").empty();
-
-
             let currentBooth = $(e.target);
             $('#bNum').val(currentBooth.val());
-            
-           
             let currentBoothLv = currentBooth.data('lv')
             console.log($('#bNum').val());
             console.log(currentBoothLv);
@@ -255,7 +234,8 @@ let eName;
                     </div>`)
 
             }
-            else if (currentBoothLv == 1) {
+           else if (currentBoothLv == 1) 
+           {
            $(".dataform").prepend(`
            <h4>${eName}</h4>
            <h4 class="mb-3">您選取的攤位編號：${currentBooth.data('num')}</h4>
@@ -265,15 +245,10 @@ let eName;
                         <h4>攤位價格：${currentBooth.data(`price`)}$</h4>
                         <p>請於申請通過後盡快完成付款</p>
                     </div>`)
-               
-
-            }
+           }
         })
-        
-
         }
     </script>
     }
     @*
-
     *@
