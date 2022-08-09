@@ -51,11 +51,11 @@
                                     </ul>
 
                                     @*<div class="d-flex flex-column my-3">
-                                        <h5 class="my-2">@Model.applylist[i].manufactureName</h5>
-                                        <h5 class="my-2">負責人：@Model.applylist[i].mfPerson</h5>
-                                        <h5 class="my-2">統編：@Model.applylist[i].manufactureAcc</h5>
-                                        <h5 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h5>
-                                    </div>*@
+                        <h5 class="my-2">@Model.applylist[i].manufactureName</h5>
+                        <h5 class="my-2">負責人：@Model.applylist[i].mfPerson</h5>
+                        <h5 class="my-2">統編：@Model.applylist[i].manufactureAcc</h5>
+                        <h5 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h5>
+                        </div>*@
 
                                     <div class="d-flex h-25 justify-content-around align-items-center">
 
@@ -77,6 +77,7 @@
                                             {
                                                 <i class="pe-none my-3 fa-solid fa-file-excel fa-4x text-danger">
                                                     <span class="h5">FAIL</span>
+                                                    <p class="m-0 mt-3">@Model.applylist[i].message</p>
                                                 </i>
                                             }
                                         }
@@ -89,19 +90,30 @@
                                 {
                                     <hr>
                                     <div class="row justify-content-around align-items-center my-3">
-                                        <h5 class="col-lg-4 col-12">匯款日期：2022 / 7 / 26</h5>
-                                        <h5 class="col-lg-4 col-12"> 匯款末五碼：12345</h5>
-                                        <i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-applynum="@Model.applylist[i].applyNum">
-                                            <span class="h5 fw-bolder">對帳</span>
-                                        </i>
+                                        @{
+                                            if (Model.applylist[i].paytime != null && Model.applylist[i].message != null)
+                                            {
+                                                <h5 class="col-lg-4 col-12">匯款日期：@Model.applylist[i].paytime</h5>
+                                                <h5 class="col-lg-4 col-12"> 匯款末五碼：@Model.applylist[i].message</h5>
+                                                <i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-applynum="@Model.applylist[i].applyNum">
+                                                    <span class="h5 fw-bolder">對帳</span>
+                                                </i>
+                                            }
+                                            else
+                                            {
+                                                <h5 class="col-lg-4 col-12">廠商尚未回傳匯款資訊...</h5>
+                                                //<h5 class="col-lg-4 col-12"> 匯款末五碼：@Model.applylist[i].atm5</h5>
+                                            }
+                                        }
+
                                     </div>
                                 }
                                 if (Model.applylist[i].checkState == 2)
                                 {
                                     <hr>
                                     <div class="row justify-content-around align-items-center my-3">
-                                        <h5 class="col-lg-4 col-12">匯款日期：2022 / 7 / 26</h5>
-                                        <h5 class="col-lg-4 col-12"> 匯款末五碼：12345</h5>
+                                        <h5 class="col-lg-4 col-12">匯款日期：@Model.applylist[i].paytime</h5>
+                                        <h5 class="col-lg-4 col-12"> 匯款末五碼：@Model.applylist[i].message</h5>
                                         <i class="col-lg-2 col-12 my-3 fa-regular fa-square-check fa-3x pe-none" data-bum="@Model.applylist[i].boothNumber">
                                             <span class="h5 fw-bolder">對帳</span>
                                         </i>

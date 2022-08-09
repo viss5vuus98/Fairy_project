@@ -488,6 +488,8 @@ namespace Fairy_project.Controllers
                 model.boothLv = _context.BoothMapsses.Where(b => b.BoothNumber == applies[i].BoothNumber).Select(b => b.BoothLv).FirstOrDefault();
                 model.boothPrice = _context.BoothMapsses.Where(b => b.BoothNumber == applies[i].BoothNumber).Select(b => b.BoothPrice).FirstOrDefault();
                 var m = _context.Manufacturesses.Where(m => m.ManufactureId == applies[i].MfId);
+                model.message = applies[i].Message;
+                model.paytime = applies[i].PayTime;
                 Manufacturess manufactures = m.FirstOrDefault();
                 model.manufactureId = manufactures.ManufactureId;
                 model.manufactureAcc = manufactures.ManufactureAcc;
@@ -499,15 +501,16 @@ namespace Fairy_project.Controllers
             return modellist;
         }
 
-        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? applynum, bool? fail)
+        public async Task<IActionResult> ChangeBoothApplyState(int exhibitId, int? applynum, string? fail)
         {
             var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.ApplyNum == applynum);
             Appliess apply = a.FirstOrDefault();
             var b = _context.BoothMapsses.Where(b => b.EId == exhibitId && b.BoothNumber == apply.BoothNumber);
             BoothMapss booth = b.FirstOrDefault();
-            if (fail.HasValue)
+            if (fail != null)
             {
                 apply.CheckState = 3;
+                apply.Message = fail;
                 string email = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.MfEmail).FirstOrDefault().ToString();
                 string title = "woohouse-您的攤位申請未通過";
                 string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).FirstOrDefault().ToString();
