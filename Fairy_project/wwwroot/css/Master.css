@@ -86,9 +86,8 @@ p {
 
         .card:hover .card-content,
         .card.hover .card-content {
-            box-shadow: inset 0 3px 0 0 #ccc;
-/*            border-color: #ccc;
-*/        }
+            box-shadow: inset 0 3px 0 0 #c0b0a2;
+        }
 
         .card:hover .card-img .overlay,
         .card.hover .card-img .overlay {
@@ -139,9 +138,9 @@ p {
 
                 .card-img .overlay .overlay-content a:hover,
                 .card-img .overlay .overlay-content a.hover {
-                    background: #fff;
+                    background: #c0b0a2;
                     border-color: #fff;
-                    color: rgba(0, 0, 0);
+                    color: #fff;
                 }
 
 .card-content {
