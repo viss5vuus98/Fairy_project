@@ -13314,8 +13314,8 @@ p {
 }
 
 ::selection {
-    background-color: #9e6de0;
-    color: #ffffff;
+/*    background-color: #9e6de0;
+    color: #ffffff;*/
 }
 
 button,
