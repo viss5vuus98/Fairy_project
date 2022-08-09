@@ -65,8 +65,8 @@ namespace Fairy_project.Controllers
             model.exhibit_T_img = exhibition.ExhibitTImg;
             model.exhibit_Pre_img = exhibition.ExhibitPreImg;
             model.areaNum = exhibition.AreaNum;
-            model.datefrom = exhibition.Datefrom;
-            model.dateto = exhibition.Dateto;
+            model.datefrom = (DateTime)exhibition.Datefrom;
+            model.dateto = (DateTime)exhibition.Dateto;
             model.ex_description = exhibition.ExDescription;
             model.ex_personTime = exhibition.ExPersonTime;
             model.ex_totalImcome = exhibition.ExTotalImcome;

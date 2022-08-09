@@ -30,6 +30,7 @@ namespace Fairy_project.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=tcp:pohaniii.database.windows.net,1433;Initial Catalog=woowo;Persist Security Info=False;User ID=ispan;Password=P@ssw0rd-iii;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
@@ -61,6 +62,10 @@ namespace Fairy_project.Models
                 entity.Property(e => e.MfLogo).HasColumnName("mf_logo");
 
                 entity.Property(e => e.MfPImg).HasColumnName("mf_P_img");
+
+                entity.Property(e => e.PayTime)
+                    .HasPrecision(0)
+                    .HasColumnName("payTime");
             });
 
             modelBuilder.Entity<Areass>(entity =>

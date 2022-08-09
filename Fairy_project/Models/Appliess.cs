@@ -14,5 +14,6 @@ namespace Fairy_project.Models
         public string? MfPImg { get; set; }
         public string? MfDescription { get; set; }
         public string? Message { get; set; }
+        public DateTime? PayTime { get; set; }
     }
 }
