@@ -95,10 +95,6 @@ namespace Fairy_project.Controllers
             Random rnd = new Random();
             var b = _woowocontext.BoothMapsses.FirstOrDefault(b => b.EId == Convert.ToInt32(apply.EId) && b.BoothNumber == Convert.ToInt32(apply.BoothNumber));
 
-
-            b.BoothState = 1;
-            b.MfId = Convert.ToInt32(apply.MfId);
-
             Appliess appliess = new Appliess();
 
             appliess.MfId = Convert.ToInt32(apply.MfId);
