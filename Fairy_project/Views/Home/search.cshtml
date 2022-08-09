@@ -57,13 +57,13 @@
 
     <form asp-action="search">
         <div class="input-group">
-            <input type="date" name="dtStart" />
-            <input type="date" name="dtEnd" />
+            <input type="date" name="dtStart" value="@ViewBag.dtStart"/>
+            <input type="date" name="dtEnd" value="@ViewBag.dtEnd"/>
             <a asp-controller="Home" asp-action="search" asp-route-id="1" class="btn btn-dark">單價遞增</a>
             <a asp-controller="Home" asp-action="search" asp-route-id="2" class="btn btn-dark">單價遞減</a>
             <span class="input-group-text">展覽關鍵字</span>
             @*<input type="text" class="form-control" name="txtKeyword" />*@
-            <input type="text" class="form-control" name="txtKeyword" placeholder="請輸入展覽名稱" autocomplete="off">
+            <input type="text" class="form-control" name="txtKeyword" placeholder="請輸入展覽名稱" autocomplete="off" value="@ViewBag.txtKeyword">
             <input type="submit" value="搜尋" class="btn btn-dark" />
         </div>
     </form>
@@ -113,28 +113,12 @@
     </div>
 </div>
 
-    <script>
-    //    const cartList = JSON.parse(sessionStorage.getItem('TicketList')) || []
-    //    const exhibition = {
-    //    id: 1,
-    //    count: 1,
-    //    }
-    //    const exhibition2 = {
-    //    id: 2,
-    //    count: 1,
-    //    }
-    //    const exhibition3 = {
-    //    id: 9,
-    //    count: 1,
-    //    }
-    //cartList.push(exhibition)
-    //cartList.push(exhibition2)
-    //cartList.push(exhibition3)
-    //sessionStorage.setItem('TicketList', JSON.stringify(cartList))
-    </script>
-
     @section Scripts
     {
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
     }
+
+    <script>
+        
+    </script>
 

@@ -102,13 +102,24 @@
 }
 
 
-.total {
+.total1 {
     width: 100%;
     margin-top: 50px;
     justify-content: space-between;
+    padding-top: 100px;
 }
 
-.total p {
+.total1 p {
+    font-size: 20px;
+}
+
+.total2 {
+    width: 100%;
+    justify-content: space-around;
+    padding-top: 50px;
+}
+
+.total2 p {
     font-size: 20px;
 }
 
@@ -121,10 +132,6 @@
 
 .btn {
     height: 40px;
-}
-
-svg {
-    margin-top: 100px;
 }
 
 /*.form-group {
@@ -164,7 +171,7 @@ h5 {
 }*/
 
 #totalprice{
-    font-size: 24px;
+    font-size: 20px;
 }
 
 
@@ -246,25 +253,45 @@ button{
     width: calc(55% - 2px);
 }
 
-@media (max-width: 770px) {
-    .rowinfor {
-        justify-content: center;
-    }
-
-    .rowinfor div {
-        margin: 0 45px;
-        text-align: center;
-    }
-
-    .btn1 {
-        margin-bottom: 0px;
-    }
-
-    .buttons{
-        display: flex;
-        flex-wrap: nowrap;
-        flex-shrink: 1;
-    }
+.checkout-form {
+    display: block;
 }
+
+h2 {
+    text-align: center;
+    padding: 30px 0;
+    border-bottom: 5px solid gray;
+}
+
+.block{
+    padding: 0 15px;
+    text-align: center;
+}
+
+.orderdetial{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.verified-icon img{
+    width:100%;
+}
+
+.order_detail {
+    /*display: flex;
+    justify-content: space-between;
+    align-items: center;*/
+    border-bottom: 5px solid gray;
+}
+
+.order_detail h5{
+    padding: 20px 0;
+}
+
+.summary-total{
+    padding: 20px 0;
+    font-weight: bold;
+}
+
 
 

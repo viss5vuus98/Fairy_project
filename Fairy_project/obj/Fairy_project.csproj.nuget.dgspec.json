@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[6.4.4, )"
             },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.57.0, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.6, )"

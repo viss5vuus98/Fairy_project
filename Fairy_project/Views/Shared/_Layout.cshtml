@@ -113,11 +113,9 @@
     @*------footer------*@
     <script src="~/js/main.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    @*@await Html.PartialAsync("_ToastPartial")*@
      <script>
-         console.log("544455")
-
         if (sessionStorage.getItem('acount') != null) {
-            console.log("111111111111")
             $('#navbarSupportedContent').append(`
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
