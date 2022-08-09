@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "weAU/rWNFqnVMmqJ6jAVVaFc+Ju7EROYyMbGR5/mPyA=",
+  "Hash": "N3KL6ZV4s0dAgIgtXiAUHWCMYupLs4wtjWUJ7sEPIHU=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -4029,6 +4029,40 @@
       "OriginalItemSpec": "wwwroot\\images\\202208091159319777.png"
     },
     {
+      "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\images\\202208091201466082.png",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208091201466082.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\202208091201466082.png"
+    },
+    {
+      "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\images\\202208091201466450.jpg",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208091201466450.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\202208091201466450.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\images\\20220841037463325.png",
       "SourceId": "Fairy_project",
       "SourceType": "Discovered",
@@ -5914,6 +5948,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\tscc091149943.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\images\\verified.png",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/verified.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\verified.png"
     },
     {
       "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\images\\verticalposter1.png",
