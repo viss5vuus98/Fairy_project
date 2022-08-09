@@ -3042,3 +3042,7 @@ C:\Users\Student\Documents\GitHub\Fairy_project\Fairy_project\obj\Debug\net6.0\r
 C:\Users\Student\Documents\GitHub\Fairy_project\Fairy_project\obj\Debug\net6.0\Fairy_project.pdb
 C:\Users\Student\Documents\GitHub\Fairy_project\Fairy_project\obj\Debug\net6.0\Fairy_project.genruntimeconfig.cache
 C:\Users\Student\Documents\GitHub\Fairy_project\Fairy_project\obj\Debug\net6.0\ref\Fairy_project.dll
+D:\WooHouse_project\Fairy_project\bin\Debug\net6.0\Google.Apis.dll
+D:\WooHouse_project\Fairy_project\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+D:\WooHouse_project\Fairy_project\bin\Debug\net6.0\Google.Apis.Auth.dll
+D:\WooHouse_project\Fairy_project\bin\Debug\net6.0\Google.Apis.Core.dll

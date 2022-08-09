@@ -162,9 +162,9 @@
 
             <div class="block col-md-6 col-xs-12 h-100">
                 <h2 class="widget-title">訂單資訊</h2>
-                <div class="order_detail" style="text-align:left;">
+                    <div class="order_detail" style="text-align:left;">
  
-                </div>
+                    </div>
                 <div class="summary-total">
                     <div class="d-flex" id="totalprice1" style="font-size: 20px;justify-content:flex-end;">
                     </div>
@@ -478,7 +478,7 @@
                 $(".order_detail").text("");
                 const objcount = JSON.parse(sessionStorage.getItem('TicketList')) || []
                 for (let i = 0; i < array.length; i++) {
-                    $(".order_detail").append(`<h5>${array[i].exhibitions.exhibitName}x${objcount[i].count}</h5>`)
+                    $(".order_detail").append(`<div style="display:flex;justify-content: space-between;align-items: center;"><h5>${array[i].exhibitions.exhibitName}x${objcount[i].count}</h5><p>小計:${array[i].exhibitions.ticketPrice * objcount[i].count}</p></div>`)
                 }
             }
         })

@@ -278,6 +278,9 @@ h2 {
 }
 
 .order_detail {
+    /*display: flex;
+    justify-content: space-between;
+    align-items: center;*/
     border-bottom: 5px solid gray;
 }
 
