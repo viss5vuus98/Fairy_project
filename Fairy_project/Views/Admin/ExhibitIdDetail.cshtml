@@ -446,7 +446,7 @@
 
 
 
-                                    <div class="col-lg-10 col-sm-12 my-3 py-3 d-flex flex-wrap text-center border border-1 rounded-3 ">
+                                    <div class="col-lg-11 col-sm-12 my-3 py-3 d-flex flex-wrap text-center border border-1 rounded-3 ">
                                         <h4 class="col-lg-3 col-sm-6 col-12 m-0">攤位等級</h4>
                                         <h4 class="col-lg-3 col-sm-6 col-12 m-0"></h4>
                                         <h4 class="col-lg-3 col-sm-6 col-12 m-0">攤位價格</h4>
@@ -483,7 +483,7 @@
                                             bsum++;
                                         }
                                     }
-                                    <div class="col-10 d-flex align-items-center text-center border rounded-pill border-1">
+                                    <div class="col-11 d-flex align-items-center text-center border rounded-pill border-1">
                                         <a id="addbooth" href="#" class="py-3 w-100 h-100 border-0 text-reset">
                                             <i class="w-100 h-100 fa-solid fa-plus fa-2x "></i>
                                         </a>
@@ -1302,7 +1302,7 @@
             else if ($(e.target).hasClass('page')) {
                 $(e.target).addClass('bg2').removeClass('bg1')
                 data.offset = ($(e.target).text() * 10) - 10
-                refreshapplychangestate()
+                refreshapply()
 
             } else if ($(e.target).hasClass('dropdown-item')) {
                 if ($(e.target).text() == '待審核') {
@@ -1434,7 +1434,7 @@
         $('#addbooth').on('click', (e) => {
             e.preventDefault();
             $(e.target).closest('div').before(`<div
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        class="col-11 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             data-toggle="dropdown" aria-expanded="false"><input
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 name="setboothslist[${i}].
