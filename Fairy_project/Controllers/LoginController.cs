@@ -196,6 +196,7 @@ namespace Fairy_project.Controllers
                 ViewData["Msg"] += "Email:" + payload.Email + "<br>";
                 ViewData["Msg"] += "Name:" + payload.Name + "<br>";
                 ViewData["Msg"] += "Picture:" + payload.Picture;
+                ViewData["acount"] = payload.Email;
             }
 
             return RedirectToAction("Index", "Home");

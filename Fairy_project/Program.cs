@@ -39,6 +39,12 @@ builder.Services.AddSession(options => {
     options.Cookie.HttpOnly = true;
 });
 
+//builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+//{
+//    googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+//    googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+//});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -60,6 +66,7 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.UseSession();
 

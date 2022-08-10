@@ -17,3 +17,5 @@ manufacturesAcc.addEventListener('input', event => {
 $('#login').click(function () {
     sessionStorage.setItem('acount', $('#ac').val())
 })
+
+
