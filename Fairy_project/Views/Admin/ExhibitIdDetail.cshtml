@@ -12,6 +12,7 @@
 
 
 <div class="container mt-5">
+
     <form action="@Url.Action("ExhibitIdDetail")" method="post" enctype="multipart/form-data">
         <div class="row align-items-center my-3">
             <div class="col-lg-11 col-sm-10 col-10 text-start">
@@ -1013,21 +1014,7 @@
 
         $(window).on('load', () => {
             console.log('@Model.datefrom.Date.ToString("yyyy-MM-dd")')
-            $.ajax({
-                type: 'GET',
-                url: '@Url.Action("_ApplyPartial_Search")',
-                data: {
-                    exhibitId: @Model.exhibitId,
-                    offset: 0,
-                    status: @Model.exhibitStatus,
-                },
-            }).done((result) => {
-                $('#partial').html(result)
-                //alert(result)
-            }).fail(() => {
-                console.log("pagefail")
-            })
-
+            refreshapply()
 
             $.ajax({
                 type: 'POST',
@@ -1066,7 +1053,6 @@
             }).fail(() => {
                 console.log("pagefail")
             })
-
         })
 
         $('#searchticketreport').on('click', (e) => {
@@ -1260,12 +1246,53 @@
                 type: 'GET',
                 url: '@Url.Action("_ApplyPartial_Search")',
                 data,
+                beforeSend: function() {
+                    $('#partial').html(spinners)
+                },
             }).done((result) => {
                 $('#partial').html(result)
+                $('.modal-backdrop').remove();
             }).fail(() => {
                 console.log("pagefail")
             })
         }
+
+        function refreshapplychangestate() {
+            if ($('#searchbnuminput').val() != '') {
+                data.b_num = $('#searchbnuminput').val()
+            }
+            if ($('#searchstate').text() != '全部') {
+                data.checkstate = $('#searchstate').attr('data-state')
+            }
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("_ApplyPartial_Search")',
+                data,
+            }).done((result) => {
+                $('#partial').html(result)
+                $('.modal-backdrop').remove();
+            }).fail(() => {
+                console.log("pagefail")
+            })
+        }
+
+
+        var spinners = `<div class="d-flex align-items-center justify-content-center" style="height: 160px">
+                                                                                  <div class="sk-fading-circle">
+                                                                                    <div class="sk-circle1 sk-circle"></div>
+                                                                                    <div class="sk-circle2 sk-circle"></div>
+                                                                                    <div class="sk-circle3 sk-circle"></div>
+                                                                                    <div class="sk-circle4 sk-circle"></div>
+                                                                                    <div class="sk-circle5 sk-circle"></div>
+                                                                                    <div class="sk-circle6 sk-circle"></div>
+                                                                                    <div class="sk-circle7 sk-circle"></div>
+                                                                                    <div class="sk-circle8 sk-circle"></div>
+                                                                                    <div class="sk-circle9 sk-circle"></div>
+                                                                                    <div class="sk-circle10 sk-circle"></div>
+                                                                                    <div class="sk-circle11 sk-circle"></div>
+                                                                                    <div class="sk-circle12 sk-circle"></div>
+                                                                                  </div>
+                                                                                </div>`
 
         $('#manufacturerreport23').on('click', (e) => {
             e.preventDefault();
@@ -1275,7 +1302,8 @@
             else if ($(e.target).hasClass('page')) {
                 $(e.target).addClass('bg2').removeClass('bg1')
                 data.offset = ($(e.target).text() * 10) - 10
-                refreshapply()
+                refreshapplychangestate()
+
             } else if ($(e.target).hasClass('dropdown-item')) {
                 if ($(e.target).text() == '待審核') {
                     $('#searchstate').val($(e.target).text()).removeClass('text-secondary').removeClass('text-danger').removeClass('text-success').addClass('text-warning').attr('data-state', 0)
@@ -1299,9 +1327,6 @@
             e.preventDefault();
             if ($(e.target).hasClass('checkmao')) {
                 let applynum = $(e.target).attr('data-applynum')
-                $('.modal-backdrop').remove();
-                $(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
-                $('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
                 $.ajax({
                     type: 'GET',
                     url: '@Url.Action("ChangeBoothApplyState")',
@@ -1309,25 +1334,35 @@
                         exhibitId: @Model.exhibitId,
                         applynum,
                     },
+                    beforeSend: function() {
+                        $(e.target).parents('.modal-content').append(spinners)
+                        $('body').addClass('pe-none');
+                    },
                 }).done(() => {
+                    refreshapplychangestate()
+                    $('body').removeClass('pe-none');
+
                     //$(e.target).closest('.modal').next().text('尚未付款').removeClass('text-warning').addClass('text-danger')
                     //$(e.target).before('<i class="pe-none my-3 fa-solid fa-clipboard-check fa-4x text-success"><span class="h5">PASS</span></i>')
                     //$(e.target).closest('.row').after(`<hr><div class="row justify-content-around align-items-center my-3"><h4 class="col-4">匯款日期：2022 / 7 / 26</h4><h4 class="col-4"> 匯款末五碼：12345</h4><i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-bum="${boothNumber}"><span class="h5 fw-bolder">對帳</span></i></div>`)
                     //$(e.target).next().remove()
+
+
                     //$(e.target).remove()
-                    refreshapply()
+                    //$('.modal-backdrop').remove();
+                    //$(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
+                    //$('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
                 }).fail(() => {
                     console.log("pagefail")
                 })
             }
             if ($(e.target).hasClass('checkmax')) {
                 let applynum = $(e.target).attr('data-applynum')
-                $('.modal-backdrop').remove();
-                $(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
-                $('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
+                //$('.modal-backdrop').remove();
+                //$(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
+                //$('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
                 let p = prompt('請輸入訊息', '資料提供不全')
-                if (p != '') {
-
+                if (p != '' && p != null) {
                     $.ajax({
                         type: 'GET',
                         url: '@Url.Action("ChangeBoothApplyState")',
@@ -1336,24 +1371,30 @@
                             applynum,
                             fail: p,
                         },
+                        beforeSend: function() {
+                            $(e.target).parents('.modal-content').append(spinners)
+                            $('body').addClass('pe-none');
+                        },
                     }).done(() => {
                         //$(e.target).closest('.modal').next().text('未通過').removeClass('text-warning').addClass('text-secondary')
                         //$(e.target).after('<i class="pe-none my-3 fa-solid fa-file-excel fa-4x text-danger"><span class="h5">FAIL</span></i>')
                         //$(e.target).prev().remove()
                         //$(e.target).remove()
-
-
-                        refreshapply();
+                        $('body').removeClass('pe-none');
+                        refreshapplychangestate();
                     }).fail(() => {
                         console.log("pagefail")
                     })
                 }
+                else {
+                    return
+                }
             }
             if ($(e.target).hasClass('checkmoney')) {
                 $(e.target).toggleClass('fa-square').toggleClass('fa-square-check')
-                $('.modal-backdrop').remove();
-                $(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
-                $('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
+                //$('.modal-backdrop').remove();
+                //$(e.target).closest('.modal').removeClass('show').css('display', 'none').attr('aria-hidden', 'true').removeAttr('aria-modal').removeAttr('role')
+                //$('body').removeClass('modal-open').css('overflow', '').css('padding-right', '')
 
                 $.ajax({
                     type: 'GET',
@@ -1362,18 +1403,29 @@
                         exhibitId: @Model.exhibitId,
                         applynum: $(e.target).attr('data-applynum')
                     },
+                    beforeSend: function() {
+                        $(e.target).parents('.modal-content').append(spinners)
+                        $('body').addClass('pe-none');
+
+                    },
                 }).done((result) => {
                     //console.log(result)
-                    //$(e.target).closest('.modal').next().text('已付款').removeClass('text-danger').addClass('text-success')
                     $('#applysum').text(`${result.applysum} / NT `)
                     $('#applysumprice').text(`$ ${result.applysumprice}`)
+                    //$(e.target).closest('.modal').next().text('已付款').removeClass('text-danger').addClass('text-success')
                     //$(e.target).removeClass('checkmoney').addClass('pe-none')
+                    $('body').removeClass('pe-none');
 
-                    refreshapply()
-
-
+                    refreshapplychangestate()
                 }).fail(() => {
                     console.log("pagefail")
+                })
+            }
+            if ($(e.target).hasClass('applytoggle')) {
+                let etoggle = $(e.target).closest('.apply')
+                $(etoggle).toggleClass('bg1')
+                $(e.target).parent().next().on('click', (e) => {
+                    $(etoggle).removeClass('bg1')
                 })
             }
         })
@@ -1382,31 +1434,31 @@
         $('#addbooth').on('click', (e) => {
             e.preventDefault();
             $(e.target).closest('div').before(`<div
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            data-toggle="dropdown" aria-expanded="false"><input
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                name="setboothslist[${i}].
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="pe-none w-75 text-center border-0 h5 m-0 c1 blv"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                value="攤位等級"></input><i
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-2"></i></button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <ul class="dropdown-menu ms-5 text-center p-0">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">大型</a></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">中型</a></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">小型</a></li>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        class="col-10 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            data-toggle="dropdown" aria-expanded="false"><input
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                name="setboothslist[${i}].
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                "
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="pe-none w-75 text-center border-0 h5 m-0 c1 blv"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                value="攤位等級"></input><i
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-2"></i></button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <ul class="dropdown-menu ms-5 text-center p-0">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">大型</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">中型</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">小型</a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </ul>
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h3 class="w-25 m-0"></h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothPrice"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                placeholder="輸入價格" type="number" autocomplete="off"></input></div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothsum"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                placeholder="輸入數量" type="number" autocomplete="off"></input><i
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h3 class="w-25 m-0"></h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothPrice"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                placeholder="輸入價格" type="number" autocomplete="off"></input></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothsum"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                placeholder="輸入數量" type="number" autocomplete="off"></input><i
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `)
             i++
         })
 

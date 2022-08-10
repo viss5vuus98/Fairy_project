@@ -530,7 +530,8 @@ namespace Fairy_project.Controllers
                 string title = "woohouse-您的攤位申請已通過";
                 string mname = _context.Manufacturesses.Where(m => m.ManufactureId == apply.MfId).Select(m => m.ManufactureName).FirstOrDefault().ToString();
                 string ename = _context.Exhibitionsses.Where(e => e.ExhibitId == apply.EId).Select(e => e.ExhibitName).FirstOrDefault().ToString();
-                string content = $"親愛的廠商{mname}您好：\n您申請參加{ename}之{booth.BoothNumber}號攤位已通過\n詳情請登入後查看，謝謝您";
+                string bprice = _context.BoothMapsses.Where(b => b.EId == apply.EId && b.BoothNumber == apply.BoothNumber).Select(b => b.BoothPrice).FirstOrDefault().ToString();
+                string content = $"親愛的廠商{mname}您好：\n您申請參加{ename}之{booth.BoothNumber}號攤位已通過\n\n\n請於三日內完成轉帳付款\n銀行代碼：000\n帳號：012345678\n金額：{bprice}\n\n\n謝謝您！";
                 sendmail(email, title, content);
 
             }

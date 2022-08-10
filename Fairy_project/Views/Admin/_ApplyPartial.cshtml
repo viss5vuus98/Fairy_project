@@ -4,11 +4,11 @@
     {
         for (int i = 0; i < Model.applylist.Count; i++)
         {
-            <div class="col-lg-10 my-3 py-3 d-flex text-center rounded-3 border border-1 bg2 apply">
+            <div class="col-lg-11 my-3 py-3 d-flex text-center rounded-3 border border-1 apply">
                 <h4 class="w-25 m-0 ">@Model.applylist[i].manufactureName</h4>
                 <h4 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h4>
-                <h4 href="" class="w-25 m-0 border-0 text-reset bg2">
-                    <a href="" class="text-reset" data-toggle="modal"
+                <h4 href="" class="w-25 m-0 border-0 text-reset">
+                    <a href="" class="text-reset applytoggle" data-toggle="modal"
                data-target="#A_@Model.applylist[i].applyNum" data-whatever="@@mdo">@Model.applylist[i].boothNumber 號攤</a>
                 </h4>
                 <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -120,7 +120,9 @@
                                     </div>
                                 }
                             }
+
                         </div>
+
                     </div>
                 </div>
 

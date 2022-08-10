@@ -117,8 +117,15 @@ input::-webkit-inner-spin-button {
 }
 
 #logoimg {
-    min-width:180px;
-    min-height:180px;
-    max-width:180px;
-    max-width:180px;
+    min-width: 180px;
+    min-height: 180px;
+    max-width: 180px;
+    max-height: 180px;
 }
+
+#partial h4 {
+    background-color: none;
+}
+/*#partial .apply {
+    transition: 5s;
+}*/
