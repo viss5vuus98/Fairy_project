@@ -78,13 +78,18 @@ namespace Fairy_project.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> updateApplies(string id, string time ,string fivenum)
-        {
-            string message =time+","+fivenum;
-            var a = _woowocontext.Appliesses.FirstOrDefault(b => b.ApplyNum == Convert.ToInt32(id));
-            a.Message+=message;
+        public IActionResult updateApplies(string id, DateTime time ,string fivenum)
+         {
+            Console.WriteLine("-------------------------------------------------" + id);
+            Console.WriteLine("-------------------------------------------------" + fivenum);
+            Console.WriteLine("-------------------------------------------------" + time.ToString());
+            var a = _woowocontext.Appliesses.First(b => b.ApplyNum == Convert.ToInt32(id));
+            a.PayTime = time;
+            a.Message = fivenum;
             _woowocontext.Appliesses.Update(a);
-            return Redirect("Index");
+            _woowocontext.SaveChanges();
+
+            return NoContent();
         }
         //create the exhibition of applies 新增申請 傳入applies內的物件
         [HttpPost]
@@ -171,10 +176,9 @@ namespace Fairy_project.Controllers
             {
                 foreach (var apply in applies)
                 {
-                    var a = _woowocontext.Exhibitionsses.FirstOrDefault(ex => ex.ExhibitId == apply.EId && ex.ExhibitStatus != 4);
+                    var a = _woowocontext.Exhibitionsses.First(ex => ex.ExhibitId == apply.EId && ex.ExhibitStatus != 4);
                    if (a.ExhibitId != null)
                     {
-
                     exhibitions.Add(a);
                     }
                 }

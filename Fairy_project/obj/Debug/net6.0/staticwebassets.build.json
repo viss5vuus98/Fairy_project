@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "N3KL6ZV4s0dAgIgtXiAUHWCMYupLs4wtjWUJ7sEPIHU=",
+  "Hash": "mK7b9dO8wFyU38rTH+7mMBtlKWX2Ir58lPQzvNqxBjE=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -4061,6 +4061,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\202208091201466450.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\images\\202208101440173098.png",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208101440173098.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\202208101440173098.png"
+    },
+    {
+      "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\images\\202208101440176548.png",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208101440176548.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\202208101440176548.png"
     },
     {
       "Identity": "C:\\Users\\Student\\Desktop\\ISPAN\\Fairy_project\\Fairy_project\\wwwroot\\images\\20220841037463325.png",

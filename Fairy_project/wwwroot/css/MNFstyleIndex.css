@@ -2708,5 +2708,9 @@ img {
 .minH{
     min-height:552px;
 }
+.progress-img {
+    max-height: 255px !important;
+    max-width: 352px  !important;
+}
 /*# sourceMappingURL=style.css.map */
 
