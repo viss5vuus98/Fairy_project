@@ -75,7 +75,6 @@
 
                             returnmessage =
                                 `
-                                        <form method="post" action="@Url.Action("updateApplies","Manufacturer")">
                                             <div class="d-flex justify-content-around clear">
                                                 <div class="w-50">
                                                     <p class="m-0">轉帳日期時間</p>
@@ -85,11 +84,10 @@
                                                     <input name="fivenum" type="text" class="form-control w-75 h-25 atmNum">
                                                 </div>
                                                 <div class="align-self-end text-right">
-                                                    <input type="submit" class="btn btn-small my-2 atmBtn" value="提交"/>
+                                                    <a class="btn btn-small my-2 atmBtn" value="">提交</a>
                                                     <p>將會依據提交時間進行對帳</p>
                                                 </div>
                                             </div>
-                                        </form>
                                         `
                         }
                         else {
@@ -158,8 +156,7 @@
         }
 
         $("#tabCommon").on('click', async function(e) {
-            if ($(e.target).hasClass("atmBtn")) {
-
+            if ($(e.target).hasClass("atmBtn")) {                
                 let input = $(e.target).parent().prev().find("input");
                 let time = input[0].value;
                 let id = input[1].value;
@@ -169,24 +166,22 @@
 
 
 
-                $.ajax({
-                    type: 'POST',
-                    url: '@Url.Action("updateApplies")',
-                    data: {
+                axios.post(
+                     '@Url.Action("updateApplies")',
+                     {
                         time,
                         id,
                         fivenum,
                     },
-                }).done((res) => {
-                    a.children().remove();
-                    a.append(`
+                ).then(res => {
+                    $(a).children().remove();
+                    $(a).append(`
                                 <div class="">
-                                    <h4 class="py-5 text-info">謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知</h4>
+                                    <h4 class="py-5 text-info">${res.data}</h4>
                                </div>
                         `);
-                }).fail(() => {
-                    console.log("pagefail")
-                })
+                }).catch()
+                
 
 
 

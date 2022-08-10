@@ -13,6 +13,7 @@ using System.Linq;
 namespace Fairy_project.Controllers
 {
 
+
     [Authorize(Roles = "Manufacturer")]
     public class ManufacturerController : Controller
     {
@@ -78,19 +79,21 @@ namespace Fairy_project.Controllers
         }
 
         [HttpPost]
-        public IActionResult updateApplies(string id, DateTime time ,string fivenum)
+        public IActionResult updateApplies([FromBody] postPaydate d)
          {
-            Console.WriteLine("-------------------------------------------------" + id);
-            Console.WriteLine("-------------------------------------------------" + fivenum);
-            Console.WriteLine("-------------------------------------------------" + time.ToString());
-            var a = _woowocontext.Appliesses.First(b => b.ApplyNum == Convert.ToInt32(id));
-            a.PayTime = time;
-            a.Message = fivenum;
+            Console.WriteLine("-------------------------------------------------" + d.id);
+            Console.WriteLine("-------------------------------------------------" + d.fivenum);
+            Console.WriteLine("-------------------------------------------------" + d.time.ToString());
+            var a = _woowocontext.Appliesses.First(b => b.ApplyNum == d.id);
+            a.PayTime = d.time;
+            a.Message = d.fivenum;
             _woowocontext.Appliesses.Update(a);
             _woowocontext.SaveChanges();
 
-            return NoContent();
+            //return Json(new { res= "謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知" });
+            return Json("謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知");
         }
+       
         //create the exhibition of applies 新增申請 傳入applies內的物件
         [HttpPost]
         public async Task<IActionResult> createApplies(CreatAppliessViewModels apply)
