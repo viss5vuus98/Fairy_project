@@ -236,6 +236,7 @@ namespace Fairy_project.Controllers
                 }
             }
 
+            Console.WriteLine("----------------------------" + model.setboothslist.Count());
             int boothnumber = 1;
             if (model.setboothslist != null)
             {
