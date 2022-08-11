@@ -13,6 +13,10 @@
     {
       "library": "jcanvas@21.0.1",
       "destination": "wwwroot/lib/jcanvas/"
+    },
+    {
+      "library": "jquery.qrcode@1.0",
+      "destination": "wwwroot/lib/jquery.qrcode/"
     }
   ]
 }

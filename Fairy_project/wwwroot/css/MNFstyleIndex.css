@@ -2712,5 +2712,89 @@ img {
     max-height: 255px !important;
     max-width: 352px  !important;
 }
-/*# sourceMappingURL=style.css.map */
+#QRcode {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    box-shadow: 3px 0 13px 5px rgba(100, 112, 134, 0.6);
+}
+
+/*.ticket_section {
+    margin-top: 300px;
+}*/
+/*section {
+    margin-top: 500px;
+}*/
+.modal-content {
+    border: 0.5px solid #666;
+    background-color: #f6f7f8;
+}
+
+.modal-header {
+    height: 45px;
+}
+
+.modal-title {
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+.QRmodal-body {
+    width: 100%;
+    padding: 2.3rem;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 1rem;
+}
+
+
+.QRmodal-footer {
+    width: 100%;
+}
+
+.ticket_date {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.2rem;
+}
+
+.date_span,
+.date-i {
+    display: inline;
+    line-height: 0.8rem;
+    font-size: 1.2rem;
+    vertical-align: bottom;
+}
+
+.date-i {
+    color: #7d7d7d;
+    margin-right: 0.5rem;
+}
+
+.date_mid {
+    font-size: 1.5rem;
+    color: #7d7d7d;
+}
+
+.qr_btn {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.btn-qrmodal {
+    width: 150px;
+    box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.6);
+    background-color: #eae0d7;
+    color: #5c5858;
+    border: 0px;
+}
+
+    .btn-qrmodal:hover {
+        background-color: #c0b0a2;
+        border: 0.8px solid #b7b7b7;
+    }
+.ticket_date {
+    margin-bottom: 1rem;
+}
 
