@@ -6,6 +6,7 @@
 }
 @section Style{
     <link rel="stylesheet" href="~/css/MNFstyleIndex.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css">
 }
     <div class="modal fade bd-example-modal-lg" id="QrcodeModal" tabindex="-1" role="dialog" aria-labelledby="ropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -38,6 +39,23 @@
         <div class="row minH">
             <div class="col-lg-12 mt-5 mt-lg-0">
                 <div id="tabCommon" class="tabCommon">
+                     <div>
+                        <div class="jelly-triangle">
+                            <div class="jelly-triangle__dot"></div>
+                            <div class="jelly-triangle__traveler"></div>
+                        </div>
+
+                        <svg width="0" height="0" class="jelly-maker">
+                            <defs>
+                                <filter id="uib-jelly-triangle-ooze">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="7.3" result="blur" />
+                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+                                               result="ooze" />
+                                    <feBlend in="SourceGraphic" in2="ooze" />
+                                </filter>
+                            </defs>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,6 +68,7 @@
     <script src="~/lib/plugins/shuffle/shuffle.min.js"></script>
     <script src="~/lib/plugins/SyoTimer/jquery.syotimer.min.js"></script>
     <script src="~/js/MFNscriptIndex.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.css.js"></script>
     <script>
         let appliessList = [];
         let booth = new Array();
@@ -57,6 +76,7 @@
         let mfId = JSON.parse(sessionStorage.getItem('Info')).id;
         axios.post('@Url.Action("getMfAppliesAndExhibitions")', { "Mf_id": mfId })
             .then(res => {
+                $(".tabCommon").empty();   //清空
                 for (let i = 0; i < res.data.appliess.length; i++) {
                     let appliessObj = new Object()
                     appliessObj.appliess = res.data.appliess[i]

@@ -148,38 +148,12 @@
     <script src="~/js/main.js" asp-append-version="true"></script>
             
     <script>
-            let mfID = @TempData["manufactureId"]
-            console.log()
-            let info = {
+        let mfID = @TempData["manufactureId"]
+        let info = {
                 id: mfID,
             }
         sessionStorage.setItem('Info', JSON.stringify(info))
-        //        if (sessionStorage.getItem('acount') != null) {
-        //    $('#navbarSupportedContent').append(`
-        //                    <ul class="navbar-nav ml-auto">
-        //                        <li class="nav-item">
-        //                            <a class="nav-link" href="@Url.Action("Index", "Manufacturer")">
-        //                                Home
-        //                                <span class="sr-only">(current)</span>
-        //                            </a>
-        //                        </li>
-
-
-
-        //                        <li class="nav-item">
-        //                            <a class="nav-link" href="@Url.Action("Apply", "Manufacturer")">申請</a>
-        //                        </li>
-
-        //                        <li class="nav-item">
-        //                            <a class="nav-link" href="@Url.Action("Policy", "Manufacturer")">規範</a>
-        //                        </li>
-
-        //                        <li class="nav-item">
-        //                            <a class="nav-link" href="@Url.Action("Index", "Login")" id="out">登出</a>
-        //                        </li>
-        //                    </ul>
-        //            `)
-        //}
+        
         $('#out').click(
             function() {
             sessionStorage.clear();
