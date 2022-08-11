@@ -1,11 +1,13 @@
 ﻿@model Appliess
+
+@{
+    Layout = "_Layout_manuf";
+}
 @section Style{
     <link rel="stylesheet" href="~/css/MNFstyleIndex.css" asp-append-version="true" />
 
 }
-    @{
-    Layout ="_Layout_manuf";
-}
+
     <section class="portfolio-work " style="margin-top:5%">
         <div class="container">
             <div class="row">
@@ -248,6 +250,10 @@ $(() => {
            }
         })
         }
+
+        $('#out').click(function() {
+            sessionStorage.clear();
+        })
     </script>
     }
     @*

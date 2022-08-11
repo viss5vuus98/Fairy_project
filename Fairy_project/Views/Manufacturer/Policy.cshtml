@@ -1,18 +1,15 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-
+ @{
+    Layout ="_Layout_manuf";
+    
 }
 
 @section Style{
 
     <link rel="stylesheet" href="~/css/GroupA.css" asp-append-version="true" />
 
-}
- @{
-    Layout ="_Layout_manuf";
-    
 }
 
 
@@ -266,7 +263,11 @@
     @*<partial name="_MFooterView" />*@
     @section Scripts{
     <script src="~/js/mfnPolicy.js" asp-append-version="true"></script>
-
+    <script>
+    $('#out').click(function() {
+            sessionStorage.clear();
+        })
+    </script>
     }
 
 

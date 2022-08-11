@@ -13,6 +13,7 @@ using System.Linq;
 namespace Fairy_project.Controllers
 {
 
+
     [Authorize(Roles = "Manufacturer")]
     public class ManufacturerController : Controller
     {
@@ -78,14 +79,21 @@ namespace Fairy_project.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> updateApplies(string id, string time ,string fivenum)
-        {
-            string message =time+","+fivenum;
-            var a = _woowocontext.Appliesses.FirstOrDefault(b => b.ApplyNum == Convert.ToInt32(id));
-            a.Message+=message;
+        public IActionResult updateApplies([FromBody] postPaydate d)
+         {
+            Console.WriteLine("-------------------------------------------------" + d.id);
+            Console.WriteLine("-------------------------------------------------" + d.fivenum);
+            Console.WriteLine("-------------------------------------------------" + d.time.ToString());
+            var a = _woowocontext.Appliesses.First(b => b.ApplyNum == d.id);
+            a.PayTime = d.time;
+            a.Message = d.fivenum;
             _woowocontext.Appliesses.Update(a);
-            return Redirect("Index");
+            _woowocontext.SaveChanges();
+
+            //return Json(new { res= "謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知" });
+            return Json("謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知");
         }
+       
         //create the exhibition of applies 新增申請 傳入applies內的物件
         [HttpPost]
         public async Task<IActionResult> createApplies(CreatAppliessViewModels apply)
@@ -171,10 +179,9 @@ namespace Fairy_project.Controllers
             {
                 foreach (var apply in applies)
                 {
-                    var a = _woowocontext.Exhibitionsses.FirstOrDefault(ex => ex.ExhibitId == apply.EId && ex.ExhibitStatus != 4);
+                    var a = _woowocontext.Exhibitionsses.First(ex => ex.ExhibitId == apply.EId && ex.ExhibitStatus != 4);
                    if (a.ExhibitId != null)
                     {
-
                     exhibitions.Add(a);
                     }
                 }
