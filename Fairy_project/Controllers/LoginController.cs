@@ -176,6 +176,7 @@ namespace Fairy_project.Controllers
         /// 驗證 Google 登入授權
         /// </summary>
         /// <returns></returns>
+        [HttpPost]
         public IActionResult ValidGoogleLogin()
         {
             string? formCredential = Request.Form["credential"]; //回傳憑證

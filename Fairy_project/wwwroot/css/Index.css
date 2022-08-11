@@ -1160,6 +1160,6 @@ article {
         display: block;
     }
 
-    .about a:hover{
-        background-color: yellow;
-    }
+        .about a:hover {
+            background-color: #ddcfc2;
+        }
