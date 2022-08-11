@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="~/css/templateB5.css">
     @*<link rel="stylesheet" href="~/css/adminlayout.css">*@
     @*<link rel="stylesheet" href="~/css/style.css"></link>*@
+    <link rel="stylesheet" href="~/css/adminChat.css" asp-append-version="true" />
 </head>
 <body style="">
     <section class="top-bar animated-header  mb-5">
@@ -47,15 +48,15 @@
                                         <a class="nav-link" href="@Url.Action("Report", "Admin")">報表</a>
                                     </li>
                                     @*                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    會員頁面
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">我的票券</a>
-                                    <a class="dropdown-item" href="gallery.html">會員資料</a>
-                                    </div>
-                                    </li>
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        會員頁面
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="">我的票券</a>
+                                        <a class="dropdown-item" href="gallery.html">會員資料</a>
+                                        </div>
+                                        </li>
                                     *@
                                     <li class="nav-item ">
                                         <a class="nav-link" href="@Url.Action("Index", "Home")">登出</a>
@@ -71,34 +72,142 @@
         </div>
     </section>
     <div class="my-4 py-4"></div>
+
+    @*==chat==*@
+
+    <div class="container mt-4 d-flex justify-content-center align-items-center chat-container">
+        <div class="card user-content">
+            <ul class="user-list" id="user-list">
+                <li class="clearfix">
+                    <i class="fa-solid fa-user-secret me-2 left-content-icon"></i>
+                    <span>36288674</span>
+                </li>
+                <li class="clearfix position-relative">
+                    <i class="fa-solid fa-user-secret me-2 left-content-icon"></i>
+                    <span>ggoo@gmail.com</span>
+                    <span class="position-absolute bottom-50 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
+                        <span class="visually-hidden">New alerts</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="card chat-box" id="chat-card" style="width: 400px; max-width: 400px;">
+            <div class="card-header bg-transparent">
+                <div class="navbar navbar-expand p-0">
+                    <ul class="navbar-nav me-auto align-items-center">
+                        <li class="nav-item">
+                            <a href="#" class="title-image">
+                                <div class="position-relative"
+                                     style="width: 60px;height: 50px;border-radius: 50%;padding: 2px;">
+                                    <img src="~/images/homeLogo.jpg" alt="Logo" class="img-fluid rounded-circle">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">客服中心</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="chat-exit-btn">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body p-4 chat-box-body" id="admin-chat" style="height: 500px; overflow: auto;">
+                <!-- 右對話區塊 -->
+                <div class="d-flex align-items-baseline text-end justify-content-end mb-4">
+                    <!-- 對話框 -->
+                    <div class="pe-2">
+                        <div>
+                            <div class="card card-text d-inline-block p-2 px-3 m-1 right-card-text ">想詢問如何進行退票？</div>
+                        </div>
+                        <div>
+                            <div class="card card-text d-inline-block p-2 px-3 m-1 right-card-text">謝謝</div>
+                        </div>
+                    </div>
+
+                    <!-- avatar -->
+                    <div class="position-relative avatar">
+                        <i class="fa-solid fa-user-secret people"></i>
+                    </div>
+                </div>
+                <!-- ＃右對話區塊 -->
+                <!-- 左對話區塊 -->
+                <div class="d-flex align-items-baseline mb-4">
+                    <!-- avatar -->
+                    <div class="position-relative avatar">
+                        <i class="fa-solid fa-user-astronaut people"></i>
+                        <span class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
+                            <span class="visually-hidden">New alerts</span>
+                        </span>
+                    </div>
+                    <!-- 對話框 -->
+                    <div class="pe-2">
+                        <div>
+                            <div class="card card-text d-inline-block p-2 m-1">查詢中..</div>
+                        </div>
+                        <div>
+                            <div class="card card-text d-inline-block p-2 m-1">請提供您的票券號碼</div>
+                        </div>
+                        <div>
+                            <div class="card card-text d-inline-block p-2 m-1">請提供您的票券號碼</div>
+                        </div>
+                        <div>
+                            <div class="card card-text d-inline-block p-2 m-1">請提供您的票券號碼</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ＃左對話區塊 -->
+
+            </div>
+            <div class="card-footer bg-white position-absolute bottom-0 m-0 p-1 w-100 chat-box-footer">
+                <div class="input-group">
+                    <input type="text" class="form-control border-0" id="input-Admsg" placeholder="Write a message...">
+                    <button class="btn btn-light text-secondary btn-send" id="send-Admsg" date-sendto="">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    @*==#chat==*@
+
     @RenderBody()
     <script src="~/js/jquery_admin..js"></script>
     <script src="~/js/bootstrap.bundle_admin.js"></script>
     @*<script src="~/js/bootstrap.bundle_admin.js"></script>*@
 
     @*    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
-    integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
-    crossorigin="anonymous"></script>*@
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>*@
     @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
-    integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
-    crossorigin="anonymous"></script>*@
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>*@
     @await RenderSectionAsync("Scripts", required: false)
-    <script>
-
-        (function($) {
+    <script>(function ($) {
             "use strict";
 
-            $.fn.scrollingTo = function(opts) {
+            $.fn.scrollingTo = function (opts) {
                 var defaults = {
                     animationTime: 1000,
                     easing: "",
-                    callbackBeforeTransition: function() { },
-                    callbackAfterTransition: function() { },
+                    callbackBeforeTransition: function () { },
+                    callbackAfterTransition: function () { },
                 };
 
                 var config = $.extend({}, defaults, opts);
 
-                $(this).click(function(e) {
+                $(this).click(function (e) {
                     var eventVal = e;
                     e.preventDefault();
 
@@ -123,25 +232,25 @@
                         },
                         config.animationTime,
                         config.easing,
-                        function() {
+                        function () {
                             config.callbackAfterTransition(eventVal, $section);
                         }
                     );
                 });
             };
 
-            jQuery(document).ready(function() {
+            jQuery(document).ready(function () {
                 "use strict";
                 new WOW().init();
 
-                (function() {
+                (function () {
                     jQuery(".smooth-scroll").scrollingTo();
                 })();
             });
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 "use strict";
-                $(window).scroll(function() {
+                $(window).scroll(function () {
                     if ($(window).scrollTop() > 50) {
                         $(".navbar-brand a").css("color", "#fff");
                         $(".top-bar").removeClass("animated-header");
@@ -196,7 +305,6 @@
                     },
                 },
             });
-        });
-    </script>
+        });</script>
 </body>
 </html>
