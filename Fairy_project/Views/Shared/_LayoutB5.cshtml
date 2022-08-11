@@ -12,7 +12,7 @@
     <!-- css template -->
     <link rel="stylesheet" href="~/css/templateB5.css">
     @await RenderSectionAsync("Style", required: false)
-    <section class="top-bar animated-header mb-5">
+    <section class="top-bar animated-header">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -41,6 +41,7 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="@Url.Action("index", "Member")">票券錢包</a>
                                             <a class="dropdown-item" href="#">會員資料</a>
+                                            <a class="dropdown-item" href="@Url.Action("Ticket", "Member")">票券</a>
                                         </div>
                                     </li>
                                     <li class="nav-item">
@@ -55,14 +56,13 @@
                     </nav>
                 </div>
             </div>
-        </div>        
+        </div>
     </section>
 </head>
 <body>
-    <div>
+    <div  style="min-height:780px">
         @RenderBody()
     </div>
-
     <footer id="footer">
         <div class="container">
             <div class="row content-justify-between">
@@ -110,9 +110,9 @@
             integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
             crossorigin="anonymous"></script>
     <script>
-       document.getElementById('out').addEventListener('click', function() {
-        sessionStorage.clear();
-       })
+        document.getElementById('out').addEventListener('click', function() {
+            sessionStorage.clear();
+        })
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

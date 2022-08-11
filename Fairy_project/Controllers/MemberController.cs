@@ -19,10 +19,10 @@ namespace Fairy_project.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
         // load Member's tickets and exhibition
         [HttpPost, Route("getTicketsss")]
@@ -84,7 +84,7 @@ namespace Fairy_project.Controllers
         public void updateVfcode(string vfCode, int orderNum)
         {
             var ticket = _context.Ticketsses.First(t => t.OrderNum == orderNum);
-            if(ticket != null)
+            if (ticket != null)
             {
                 ticket.VerificationCode = vfCode;
                 _context.SaveChanges();
@@ -117,6 +117,16 @@ namespace Fairy_project.Controllers
                 return Json("無此會員");
             }
             return Json("123");
+        }
+
+
+
+        //------------------------------------------------------------------------
+
+
+        public IActionResult Ticket()
+        {
+            return View();
         }
     }
 }
