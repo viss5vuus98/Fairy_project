@@ -111,6 +111,7 @@ $(() => {
     $('#mId').val(mfId.id);
 })
         let exhibition = new Array();
+
         axios.get('@Url.Action("getAllExhibition")')
             .then(res => {
                 console.log(res.data)
@@ -118,6 +119,11 @@ $(() => {
             })
             .then(res => showExhibitName(exhibition))
             .catch(err => console.log(err));
+
+           
+
+
+
 
         function showExhibitName(exhibition) {
             let showlist = $("#showList");
