@@ -149,6 +149,7 @@
             
     <script>
             let mfID = @TempData["manufactureId"]
+            console.log()
             let info = {
                 id: mfID,
             }
@@ -183,8 +184,8 @@
             function() {
             sessionStorage.clear();
         })
-    @await RenderSectionAsync("Scripts", required: false)
     </script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
