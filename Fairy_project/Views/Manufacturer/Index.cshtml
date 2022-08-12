@@ -6,8 +6,10 @@
 }
 @section Style{
     <link rel="stylesheet" href="~/css/MNFstyleIndex.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Mfnshuffle.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css">
 }
+
     <div class="modal fade bd-example-modal-lg" id="QrcodeModal" tabindex="-1" role="dialog" aria-labelledby="ropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -35,11 +37,36 @@
             </div>
         </div>
     </div>
-    <div class="container p-0" style="margin-top:10%">
+    <div class="container p-0" style="margin-top:5%">
+        <div class="row portfolio-work2">
+            <div class="col-md-12">
+                <div class="block">
+                    <div class="portfolio-menu">
+                        <div class="btn-group btn-group-toggle justify-content-center" data-toggle="buttons">
+                            <label class="btn btn-sm btn-primary active">
+                                <input type="radio" name="shuffle-filter" value="all" checked="checked" />全部
+                            </label>
+                            <label class="btn btn-sm btn-primary">
+                                <input type="radio" name="shuffle-filter" value="a" />待審核
+                            </label>
+                            <label class="btn btn-sm btn-primary">
+                                <input type="radio" name="shuffle-filter" value="b" />尚未付款
+                            </label>
+                            <label class="btn btn-sm btn-primary">
+                                <input type="radio" name="shuffle-filter" value="c" />通過
+                            </label>
+                            <label class="btn btn-sm btn-primary">
+                                <input type="radio" name="shuffle-filter" value="d" />未通過
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row minH">
             <div class="col-lg-12 mt-5 mt-lg-0">
-                <div id="tabCommon" class="tabCommon">
-                     <div>
+                <div id="tabCommon" class="shuffle-wrapper tabCommon">
+                    <div>
                         <div class="jelly-triangle">
                             <div class="jelly-triangle__dot"></div>
                             <div class="jelly-triangle__traveler"></div>
@@ -91,7 +118,7 @@
             let pannelHTML = ``;
             if (appliessList.length > 0) {
                 for (let i = 0; i < appliessList.length; i++) {
-
+                    let tag = "";
                     let dateFrom = `${appliessList[i].exhibition.datefrom}`;
                     let dateTo = `${appliessList[i].exhibition.dateto}`;
                     let checkState = `${appliessList[i].appliess.checkState}`;
@@ -108,107 +135,109 @@
                     console.log(area);
 
                     if (checkState == 0) {
+                        tag = "a";
                         statemessage = '  <span class="badge badge-info mx-2">尚未審核</span>'
                         returnmessage =
                             `
-                                                                            <div class="">
-                                                                                <h4 class="py-5 text-info">謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知</h4>
-                                                                            </div>
-                                                                    `
+                                <div class="">
+                                    <h4 class="py-5 text-info">謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知</h4>
+                                </div>
+                        `
                     }
                     else if (checkState == 1) {
+                        tag = "b";
                         statemessage = '  <span class="badge badge-warning mx-2">尚未付款</span>'
                         if (appliessList[i].appliess.payTime == null) {
 
                             returnmessage =
-                                `
-                                                    <div class="d-flex justify-content-around clear">
-                                                        <div class="w-50">
-                                                            <p class="m-0">轉帳日期時間</p>
-                                                            <input name="time" type="datetime-local" class="form-control w-75 h-25 applyTime">
-                                                            <input name="id" class="form-control w-75 h-25 applyNum"   hidden value="${appliessList[i].appliess.applyNum}">
-                                                            <p class="m-0">轉帳末五碼</p>
-                                                            <input name="fivenum" type="text" class="form-control w-75 h-25 atmNum">
-                                                        </div>
-                                                        <div class="align-self-end text-right">
-                                                            <a class="btn btn-small my-2 atmBtn" value="">提交</a>
-                                                            <p>將會依據提交時間進行對帳</p>
-                                                        </div>
-                                                    </div>
-                                                `
+                            `
+                                    <div class="d-flex justify-content-around clear">
+                                        <div class="w-50">
+                                            <p class="m-0">轉帳日期時間</p>
+                                            <input name="time" type="datetime-local" class="form-control w-75 h-25 applyTime">
+                                            <input name="id" class="form-control w-75 h-25 applyNum"   hidden value="${appliessList[i].appliess.applyNum}">
+                                            <p class="m-0">轉帳末五碼</p>
+                                            <input name="fivenum" type="text" class="form-control w-75 h-25 atmNum">
+                                        </div>
+                                        <div class="align-self-end text-right">
+                                            <a class="btn btn-small my-2 atmBtn" value="">提交</a>
+                                            <p>將會依據提交時間進行對帳</p>
+                                        </div>
+                                    </div>
+                             `
                         }
                         else {
                             returnmessage =
-                                `
-                                                            <div class="">
-                                                                <h4 class="py-5 text-info">謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知</h4>
-                                                            </div>
-                                                    `
+                             `
+                                <div class="">
+                                    <h4 class="py-5 text-info">謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知</h4>
+                                </div>
+                             `
                         }
                     }
                     else if (checkState == 2) {
-
-                        console.log(area);
-
+                        tag = "c";
                         statemessage = '<span class="badge badge-success mx-2">Pass</span>';
 
                         returnmessage = `
-                                                                                     <div class="text-right">
-                                                                                        <p>入場時間：AM0900</p>
-                                                                                        <p>入場入口：${area}區13</p>
-                                                                                        <p>攤位編號：${area}${appliessList[i].appliess.boothNumber}</p>
-                                                                                        <button type="button" class="btn btn-small my-2 qrcodeBtn"
-                                                                                        data-name="${appliessList[i].exhibition.exhibitName}"
-                                                                                        data-e="${appliessList[i].appliess.eId}"
-                                                                                        data-m="${appliessList[i].appliess.mfId}"
-                                                                                        data-b="${appliessList[i].appliess.boothNumber}"
-                                                                                        data-df="${dateFrom.slice(0, 10)}"
-                                                                                        data-dt="${dateTo.slice(0, 10)}"
-                                                                                        data-toggle="modal" data-target="#QrcodeModal" >
-                                                                                        電子通行證</button>
-                                                                                    </div>
-                                                                    `;
+                            <div class="text-right">
+                            <p>入場時間：AM0900</p>
+                            <p>入場入口：${area}區13</p>
+                            <p>攤位編號：${area}${appliessList[i].appliess.boothNumber}</p>
+                            <button type="button" class="btn btn-small my-2 qrcodeBtn"
+                            data-name="${appliessList[i].exhibition.exhibitName}"
+                            data-e="${appliessList[i].appliess.eId}"
+                            data-m="${appliessList[i].appliess.mfId}"
+                            data-b="${appliessList[i].appliess.boothNumber}"
+                            data-df="${dateFrom.slice(0, 10)}"
+                            data-dt="${dateTo.slice(0, 10)}"
+                            data-toggle="modal" data-target="#QrcodeModal" >
+                            電子通行證</button>
+                        </div>
+                                                                            `;
                     }
                     else {
+                        tag = "d";
                         statemessage = '<span class="badge badge-danger mx-2">Fail</span>'
                         returnmessage =
                             `
-                                                                            <div class="">
-                                                                                <h4 class="py-5 text-danger">很抱歉，您的申請未通過，因：${appliessList[i].appliess.message}</h4>
-                                                                            </div>`;
+                            <div class="">
+                                <h4 class="py-5 text-danger">很抱歉，您的申請未通過，因：${appliessList[i].appliess.message}</h4>
+                            </div>`;
 
                     }
                     const root = @Url.Content("~/images/")
                         pannelHTML += `
-                                                                    <div class="tab-content d-flex my-3" id="myTabContent">
-                                                                            <div class="col-lg-5">
-                                                                                <div class="about-img">
-                                                                                    <img class="progress-img" src="${root}${appliessList[i].appliess.mfLogo}"">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-7 mt-5 mt-lg-0">
-                                                                                <div class="pl-0 pl-lg-4">
-                                                                                    <div class="d-flex justify-content-between align-items-center px-2 my-1">
-                                                                                        <h3 class="m-0">申請編號</h3>
-                                                                                        <h3 class="m-0">No.${appliessList[i].appliess.applyNum}${statemessage}</h3>
-                                                                                    </div>
-                                                                                    <div class="py-3">
-                                                                                        <h4>${appliessList[i].exhibition.exhibitName}</h4>
-                                                                                        <p class="text-left">${dateFrom.slice(0, 10)} ~ ${dateTo.slice(0, 10)}</p>
-                                                                                    </div>
-                                                                                    ${returnmessage}
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                    <div class="tab-content d-flex my-3 shuffle-item" id="myTabContent" data-groups="[&quot;${tag}&quot;]"
+>
+                            <div class="col-lg-5">
+                                <div class="about-img">
+                                    <img class="progress-img" src="${root}${appliessList[i].appliess.mfLogo}"">
+                                </div>
+                            </div>
+                            <div class="col-lg-7 mt-5 mt-lg-0">
+                                <div class="pl-0 pl-lg-4">
+                                    <div class="d-flex justify-content-between align-items-center px-2 my-1">
+                                        <h3 class="m-0">申請編號</h3>
+                                        <h3 class="m-0">No.${appliessList[i].appliess.applyNum}${statemessage}</h3>
+                                    </div>
+                                    <div class="py-3">
+                                        <h4>${appliessList[i].exhibition.exhibitName}</h4>
+                                        <p class="text-left">${dateFrom.slice(0, 10)} ~ ${dateTo.slice(0, 10)}</p>
+                                    </div>
+                                    ${returnmessage}
+                                </div>
+                            </div>
+                        </div>
 
-                                                                   `
+                        `
                 }
             }
             else {
                 pannelHTML += '<h2>您還尚未申請參與任何展覽</h2>'
             }
             insert.append(pannelHTML);
-
+            show();
         }
 
         $("#tabCommon").on('click', function(e) {
@@ -230,31 +259,31 @@
                 ).then(res => {
                     $(a).children().remove();
                     $(a).append(`
-                                        <div class="">
-                                            <h4 class="py-5 text-info">${res.data}</h4>
-                                       </div>
-                                `);
+                                                <div class="">
+                                                    <h4 class="py-5 text-info">${res.data}</h4>
+                                               </div>
+                                        `);
                 }).catch()
             }
             else if (et.hasClass("qrcodeBtn")) {
-                let name =et.data("name");
-                
+                let name = et.data("name");
+
                 let e = et.data("e");
                 let m = et.data("m");
-                let b =et.data("b");
+                let b = et.data("b");
                 let df = et.data("df");
                 let dt = et.data("dt");
-                showQRcodeModal(name,e,m,b,df,dt)
+                showQRcodeModal(name, e, m, b, df, dt)
             }
         })
-        function showQRcodeModal(name,e,m,b,df,dt) {
+        function showQRcodeModal(name, e, m, b, df, dt) {
             let QRTtitle = $('#QRModal-title');
             console.log(QRTtitle);
             let QRBody = $('#QR-body');
             QRTtitle.text("");
             QRBody.text("");
             QRTtitle.append(`${name}`);
-            QRBody.append( '<div id="QRcode"></div>');
+            QRBody.append('<div id="QRcode"></div>');
             $("#QRcode").qrcode({
                 width: 300,
                 height: 300,
