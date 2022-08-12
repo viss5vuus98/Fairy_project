@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "548WKvD55aLvFtWwdYZkP7/VWurSVct9dm9coG7IQd9songcw63xNDG87STOnnilrBL+xUBb2EGKS9iXlC6jkg==",
+  "dgSpecHash": "Y4usptxqWvxG+uyRy/xWF+8A0eIwwDouVU1fiP8oXWpi3SgOMqE25Y5jb+kAjjxW/Tgl+fVDBi+Kp94qelgVVQ==",
   "success": true,
-  "projectFilePath": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
+  "projectFilePath": "C:\\Users\\Student\\Documents\\GitHub\\Fairy_project\\Fairy_project\\Fairy_project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Student\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Student\\.nuget\\packages\\eo.webbrowser\\22.1.67\\eo.webbrowser.22.1.67.nupkg.sha512",
