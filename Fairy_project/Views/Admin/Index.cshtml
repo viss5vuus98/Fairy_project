@@ -37,7 +37,7 @@
 <style>
     #fontshow {
         opacity: 0;
-        transition: .4s;
+        transition: 1s;
     }
 </style>
 <div class="container">
@@ -77,8 +77,8 @@
                 <div class="modal-content bg2">
                     <div class="row mt-3">
                         <h1 id="fontshow" class="text-center"></h1>
-                        <button id="testfont">test</button>
-                    </div>
+@*                        <button id="testfont">test</button>
+*@                    </div>
                     <div class="row p-5">
                         <video id="scanner"></video>
                     </div>
@@ -98,10 +98,11 @@
         crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>*@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="~/lib/instascan/instascan.min.js"></script>
 
 
 <script>
-    @*const constraints = {
+    const constraints = {
         'video': true,
         'audio': true
     }
@@ -147,7 +148,7 @@
         }
     }).catch(function(e) {
         console.error(e);
-    });*@
+    });
 
 
 

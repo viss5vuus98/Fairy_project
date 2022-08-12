@@ -1,0 +1,125 @@
+﻿body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #fafafa;
+    color: #5C5858;
+}
+
+.bg1 {
+    background-color: #E5E4E2;
+}
+
+.bg2 {
+    background-color: #fafafa;
+}
+
+.c1 {
+    color: #B6B6B4;
+}
+
+i {
+    cursor: pointer;
+}
+
+/*body::selection {
+    background: #e5e9f2;
+    color: white;
+}
+*/
+#titleinput {
+    transition: .2s;
+    pointer-events: none;
+    background-color: #fafafa;
+}
+
+    #titleinput:focus {
+        background-color: #E5E4E2;
+        border-color: rgb(222, 226, 230);
+        box-shadow: none;
+    }
+
+/* #ticketimg {
+                min-width: 590px;
+                min-height: 204px;
+                max-width: 624px;
+                max-height: 204px;
+                border: #B6B6B4 2px dashed;
+            }
+
+            #horizontalposterimage {
+                min-width: 670px;
+                min-height: 475px;
+            }
+
+            #verticalposterimage {
+                min-width: 650px;
+                min-height: 770px;
+            } */
+
+
+#contentinput {
+    resize: none;
+    outline: none;
+    pointer-events: none;
+}
+
+    #contentinput:focus {
+        background-color: #fafafa;
+        pointer-events: all;
+        border-color: #e5e9f2;
+        background: none
+    }
+
+#ticketpriceinput {
+    color: #5C5858;
+    pointer-events: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+    background:none;
+}
+textarea{
+    background:none
+}
+
+image {
+    overflow: hidden;
+}
+
+input[type="datetime-local"]:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+#expecteincome:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+#expectedpeople:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+#ticketpriceinput:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+#manufacturerreport ul li a:active {
+    background-color: #B6B6B4;
+}
+
+#areaedit ul li a:active {
+    background-color: #B6B6B4;
+}
+

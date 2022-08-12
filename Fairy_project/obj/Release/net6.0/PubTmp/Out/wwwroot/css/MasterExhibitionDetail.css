@@ -1,0 +1,131 @@
+﻿body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #fafafa;
+    color: #5C5858;
+}
+
+.bg1 {
+    background-color: #E5E4E2;
+}
+
+.bg2 {
+    background-color: #fafafa;
+}
+
+.c1 {
+    color: #B6B6B4;
+}
+.c2 {
+    color: #5C5858;
+}
+
+i {
+    cursor: pointer;
+}
+
+#titleinput {
+    transition: .2s;
+    pointer-events: none;
+    background-color: #fafafa;
+}
+
+    #titleinput:focus {
+        background-color: #E5E4E2;
+        border-color: rgb(222, 226, 230);
+        box-shadow: none;
+    }
+input[type="datetime-local"]:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+
+#contentinput {
+    resize: none;
+    outline: none;
+}
+
+
+
+.checkmao:hover {
+    opacity: .6;
+}
+
+.checkmax:hover {
+    opacity: .6;
+}
+.checkmoney:hover {
+    opacity: .6;
+}
+
+label {
+    cursor: pointer;
+}
+
+input {
+    outline: none;
+}
+#expecteincome:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+#expectedpeople:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+#ticketpriceinput:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+select{
+    outline:none;
+}
+
+#pagelist li a:hover {
+    background-color: #B6B6B4;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+#searchdatefrom:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+#searchdatefrom:hover {
+    border-color: #5C5858;
+}
+
+#searchdateto:focus {
+    border-color: rgb(222, 226, 230);
+    box-shadow: none;
+}
+
+#searchdateto:hover {
+    border-color: #5C5858;
+}
+
+#manufacturerreport23 ul li a:active {
+    background-color: #B6B6B4;
+}
+
+#areaedit ul li a:active {
+    background-color: #B6B6B4;
+}
+
+#logoimg {
+    min-width: 180px;
+    min-height: 180px;
+    max-width: 180px;
+    max-height: 180px;
+}
+
+#partial h4 {
+    background-color: none;
+}
+/*#partial .apply {
+    transition: 5s;
+}*/

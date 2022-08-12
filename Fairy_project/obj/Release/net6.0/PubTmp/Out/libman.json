@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "slick-carousel@1.8.1",
+      "destination": "wwwroot/slick-carousel/"
+    },
+    {
+      "library": "axios@0.27.2",
+      "destination": "wwwroot/axios/"
+    },
+    {
+      "library": "jcanvas@21.0.1",
+      "destination": "wwwroot/lib/jcanvas/"
+    },
+    {
+      "library": "jquery.qrcode@1.0",
+      "destination": "wwwroot/lib/jquery.qrcode/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "@microsoft/signalr@6.0.8",
+      "destination": "wwwroot/lib/microsoft/signalr"
+    }
+  ]
+}
