@@ -52,11 +52,11 @@ connection.start().then(function () {
 connection.on("userPostover", function (message) {
     console.log(message)
     const ChatDiv = document.createElement("div")
-    ChatDiv.classList.add("d-flex", "align-items-baseline", "text-end", "justify-content-end", "mb-4")
+    ChatDiv.classList.add("d-flex", "align-items-center", "text-end", "justify-content-end", "mb-4")
     ChatDiv.innerHTML = `
                 <div class="pe-2">
                     <div>
-                        <div class="card card-text d-inline-block p-2 px-3 m-1">${message}</div>
+                        <div class="card card-text d-inline-block p-2 m-1 right-card-text">${message}</div>
                     </div>
                 </div>
 
@@ -76,18 +76,15 @@ connection.on("userPostover", function (message) {
 //使用者接收//
 connection.on("userTakeover", function (message) {
     const ChatDiv = document.createElement("div")
-    ChatDiv.classList.add("d-flex", "align-items-baseline", "mb-4")
+    ChatDiv.classList.add("d-flex", "align-items-center", "mb-4")
     ChatDiv.innerHTML = `
             <div class="position-relative avatar">
                 <i class="fa-solid fa-user-astronaut people"></i>
-                <span class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
-                    <span class="visually-hidden">New alerts</span>
-                </span>
             </div>
                 <!-- 對話框 -->
             <div class="pe-2">
                 <div>
-                    <div class="card card-text d-inline-block p-2 m-1">${message}</div>
+                    <div class="card card-text d-inline-block p-2 m-1 left-card-text">${message}</div>
                     <div class="small">01:13PM</div>
                 </div>
             </div>

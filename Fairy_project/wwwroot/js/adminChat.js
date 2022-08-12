@@ -1,6 +1,23 @@
 ﻿const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build()
 const connectIDList = []
 
+// 顯示Chat視窗//
+
+const chatCircle = document.getElementById('chat-circle')
+const chatCard = document.getElementById('chat-container')
+const chatExitBtn = document.getElementById('chat-exit-btn')
+
+chatCircle.addEventListener('click', event => {
+    chatCard.classList.toggle("scaleBox")
+    chatCircle.classList.toggle("scaleBox")
+})
+
+chatExitBtn.addEventListener('click', event => {
+    chatCard.classList.toggle("scaleBox")
+    chatCircle.classList.toggle("scaleBox")
+})
+
+
 //管理者＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝//
 //管理者加入ID//
 
@@ -34,7 +51,6 @@ window.addEventListener('load', () => {
             contentList.forEach(item => item.classList.add("d-none"))
             contentList[index].classList.remove("d-none")
 
-            //按鈕加入sendID 
             document.getElementById('send-Admsg').setAttribute('data-sendto', contentList[index].dataset.sendid)
         }
         
@@ -67,13 +83,14 @@ function sendMsg(event) {
 
 
 //管理者接收//
+
 connection.on("takeover", function (user, message) {    
     if (!connectIDList.includes(user)) {
         connectIDList.push(user)
         document.getElementById('user-list').innerHTML += `
             <li class="clearfix" data-index="${connectIDList.indexOf(user)}">
-                <img src="#" alt="avatar" class="me-2">
-                <p>Vincent Porter</p>
+                <i class="fa-solid fa-user-secret me-2 left-content-icon"></i>
+                <span>36288674</span>
             </li>
             `
         const newChatbody = document.createElement("div")
@@ -84,19 +101,17 @@ connection.on("takeover", function (user, message) {
         newChatbody.classList.add("d-none", "chat-content")
     }
     const ChatDiv = document.createElement("div")
-    ChatDiv.classList.add("d-flex", "align-items-baseline", "mb-4", "chatbox")
+    ChatDiv.classList.add("d-flex", "align-items-center", "mb-4", "chatbox-item")
     ChatDiv.innerHTML += `
             <div class="position-relative avatar">
-                <img src="#" alt="Logo" class="img-fluid rounded-circle">
-                <span class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
-                    <span class="visually-hidden">New alerts</span>
-                </span>
+
+                <i class="fa-solid fa-user-astronaut people"></i>
             </div>
-                <!-- 對話框 -->
+
             <div class="pe-2">
                 <div>
                     <div class="card card-text d-inline-block p-2 m-1">${message}</div>
-                    <div class="small">01:13PM</div>
+                    <div class="small">${new Date().getHours()} : ${new Date().getMinutes()}</div>
                 </div>
             </div>
         `
@@ -108,21 +123,19 @@ connection.on("takeover", function (user, message) {
 
 connection.on("postover", function (message, user) {
     const ChatDiv = document.createElement("div")
-    ChatDiv.classList.add("d-flex", "align-items-baseline", "mb-4")
+    ChatDiv.classList.add("d-flex", "align-items-center", "text-end", "justify-content-end", "mb-4")
     ChatDiv.innerHTML = `
-            <div class="position-relative avatar">
-                <img src="#" alt="Logo" class="img-fluid rounded-circle">
-                <span class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
-                    <span class="visually-hidden">New alerts</span>
-                </span>
-            </div>
-                <!-- 對話框 -->
             <div class="pe-2">
                 <div>
-                    <div class="card card-text d-inline-block p-2 m-1">${message}</div>
-                    <div class="small">01:13PM</div>
+                    <div class="card card-text d-inline-block p-2 m-1 px-3 m-1 right-card-text">${message}</div>
+                    <div class="small">${new Date().getHours()} : ${new Date().getMinutes()}</div>
                 </div>
             </div>
+
+            <div class="position-relative avatar">
+                <i class="fa-solid fa-user-secret people"></i>
+            </div>
+                
         `
     const name = 'chat-content' + connectIDList.indexOf(user).toString()
     document.querySelector(`#${name}`).appendChild(ChatDiv)

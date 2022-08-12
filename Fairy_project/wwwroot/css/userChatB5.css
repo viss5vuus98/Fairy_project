@@ -39,6 +39,7 @@
     bottom: 10px;
     z-index: 990;
     min-width: 0;
+    width: 398px;
 }
 
 .chat-box > .card-header {
