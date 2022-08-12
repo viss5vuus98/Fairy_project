@@ -15,8 +15,9 @@ chatExitBtn.addEventListener('click', event => {
 })
 
 
-const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build()
-
+const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").withAutomaticReconnect().build()
+const acount = sessionStorage.getItem("acount")
+console.log(acount)
 //send Message//
 window.addEventListener('load', () => {
     document.querySelector('#send-msg').addEventListener('click', sendMsg)
@@ -35,7 +36,8 @@ function sendMsg(event) {
     console.log(message)
     //送出訊息至server
     //start存入ID
-    connection.invoke("UserSendMessage", message).catch(function (err) {
+    
+    connection.invoke("UserSendMessage", message, acount).catch(function (err) {
         console.log("錯誤" + err.toString())
     })
     document.querySelector('#input-msg').value = ''
@@ -52,7 +54,7 @@ connection.start().then(function () {
 connection.on("userPostover", function (message) {
     console.log(message)
     const ChatDiv = document.createElement("div")
-    ChatDiv.classList.add("d-flex", "align-items-center", "text-end", "justify-content-end", "mb-4")
+    ChatDiv.classList.add("d-flex", "align-items-baseline", "text-end", "justify-content-end", "mb-4")
     ChatDiv.innerHTML = `
                 <div class="pe-2">
                     <div>
@@ -76,7 +78,7 @@ connection.on("userPostover", function (message) {
 //使用者接收//
 connection.on("userTakeover", function (message) {
     const ChatDiv = document.createElement("div")
-    ChatDiv.classList.add("d-flex", "align-items-center", "mb-4")
+    ChatDiv.classList.add("d-flex", "align-items-baseline", "mb-4")
     ChatDiv.innerHTML = `
             <div class="position-relative avatar">
                 <i class="fa-solid fa-user-astronaut people"></i>

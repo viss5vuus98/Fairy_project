@@ -1,4 +1,4 @@
-﻿const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build()
+﻿const connection = new signalR.HubConnectionBuilder().withAutomaticReconnect().withUrl("/chatHub").build()
 const connectIDList = []
 
 // 顯示Chat視窗//
@@ -30,6 +30,8 @@ connection.start().then(function () {
     }).catch(function (err) {
         console.error(err.toString())
     })
+
+
 
 
 //send Message
@@ -84,13 +86,13 @@ function sendMsg(event) {
 
 //管理者接收//
 
-connection.on("takeover", function (user, message) {    
+connection.on("takeover", function (user, message, acount) {    
     if (!connectIDList.includes(user)) {
         connectIDList.push(user)
         document.getElementById('user-list').innerHTML += `
             <li class="clearfix" data-index="${connectIDList.indexOf(user)}">
                 <i class="fa-solid fa-user-secret me-2 left-content-icon"></i>
-                <span>36288674</span>
+                <span>${acount}</span>
             </li>
             `
         const newChatbody = document.createElement("div")
@@ -101,7 +103,7 @@ connection.on("takeover", function (user, message) {
         newChatbody.classList.add("d-none", "chat-content")
     }
     const ChatDiv = document.createElement("div")
-    ChatDiv.classList.add("d-flex", "align-items-center", "mb-4", "chatbox-item")
+    ChatDiv.classList.add("d-flex", "align-items-baseline", "mb-4", "chatbox-item")
     ChatDiv.innerHTML += `
             <div class="position-relative avatar">
 
@@ -123,7 +125,7 @@ connection.on("takeover", function (user, message) {
 
 connection.on("postover", function (message, user) {
     const ChatDiv = document.createElement("div")
-    ChatDiv.classList.add("d-flex", "align-items-center", "text-end", "justify-content-end", "mb-4")
+    ChatDiv.classList.add("d-flex", "align-items-baseline", "text-end", "justify-content-end", "mb-4")
     ChatDiv.innerHTML = `
             <div class="pe-2">
                 <div>

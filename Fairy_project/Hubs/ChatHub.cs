@@ -45,24 +45,26 @@ namespace signalR_test.Hubs
             //方法 OnConnectedAsync() 是每一個用戶連線後，都會觸發的事件，在這事件裡面可以更新用戶列表。
             await base.OnConnectedAsync();
         }
+
         //方法 OnDisconnectedAsync() 是每一個用戶離線後，都會觸發的事件，在這事件裡面可以更新用戶列表。
 
-        //public override async Task OnDisconnectedAsync(Exception ex)
-        //{
-        //    string id = ConnIDList.Where(p => p == Context.ConnectionId).FirstOrDefault();
-        //    if (id != null)
-        //    {
-        //        ConnIDList.Remove(id);
-        //    }
-        //    // 更新連線 ID 列表
-        //    string jsonString = JsonConvert.SerializeObject(ConnIDList);
-        //    await Clients.All.SendAsync("UpdList", jsonString);
 
-        //    // 更新聊天內容
-        //    await Clients.All.SendAsync("UpdContent", "已離線 ID: " + Context.ConnectionId);
+        public override async Task OnDisconnectedAsync(Exception ex)
+        {
+            string id = ConnAdminIDList.Where(p => p == Context.ConnectionId).FirstOrDefault();
+            if (id != null)
+            {
+                ConnAdminIDList.Remove(id);
+            }
+            //// 更新連線 ID 列表
+            //string jsonString = JsonConvert.SerializeObject(ConnAdminIDList);
+            //await Clients.All.SendAsync("UpdList", jsonString);
 
-        //    await base.OnDisconnectedAsync(ex);
-        //}
+            //// 更新聊天內容
+            //await Clients.All.SendAsync("UpdContent", "已離線 ID: " + Context.ConnectionId);
+
+            await base.OnDisconnectedAsync(ex);
+        }
 
         public async Task Message(string selfID, string message, string sendToID)
         {
@@ -78,11 +80,11 @@ namespace signalR_test.Hubs
         }
 
         //使用者發話
-        public async Task UserSendMessage(string message)
+        public async Task UserSendMessage(string message, string acount)
         {
             if (ConnAdminIDList.Count > 0)
             {
-                await Clients.Client(ConnAdminIDList[0]).SendAsync("takeover", Context.ConnectionId, message);
+                await Clients.Client(ConnAdminIDList[0]).SendAsync("takeover", Context.ConnectionId, message, acount);
                 await Clients.Client(Context.ConnectionId).SendAsync("userPostover", message);
             }
             else
