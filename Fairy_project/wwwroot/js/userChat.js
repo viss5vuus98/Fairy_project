@@ -44,7 +44,7 @@ function sendMsg(event) {
 connection.start().then(function () {
     console.log("Hub 連線完成")
 }).catch(function (err) {
-    console.error(err.toString())
+    console.error(err)
 })
 
 
@@ -61,10 +61,7 @@ connection.on("userPostover", function (message) {
                 </div>
 
                 <div class="position-relative avatar">
-                    <i class="fa-solid fa-user"></i>
-                    <span class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
-                        <span class="visually-hidden">New alerts</span>
-                    </span>
+                    <i class="fa-solid fa-user-secret people"></i>
                 </div>
         `
     const chatContent = document.getElementById('chat-content')
@@ -82,7 +79,7 @@ connection.on("userTakeover", function (message) {
     ChatDiv.classList.add("d-flex", "align-items-baseline", "mb-4")
     ChatDiv.innerHTML = `
             <div class="position-relative avatar">
-                <img src="#" alt="Logo" class="img-fluid rounded-circle">
+                <i class="fa-solid fa-user-astronaut people"></i>
                 <span class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
                     <span class="visually-hidden">New alerts</span>
                 </span>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Fairy_project.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using signalR_test.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddMvc();
+
+builder.Services.AddSignalR();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
     options.Cookie.HttpOnly = true;
@@ -68,5 +71,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/");
 app.MapRazorPages();
 
+//指向Hub的路由
+app.MapHub<ChatHub>("/chatHub");
 app.Run();
 
