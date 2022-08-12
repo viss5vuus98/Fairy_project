@@ -193,13 +193,14 @@
         display: flex;
         align-items: center;
         color: #c4cbca;
+        cursor: pointer;
     }
 
     .user-content .user-list li:hover {
         color: #177e89;
     }
 
-            .user-content.user-list li:hover .left-content-icon {
+            .user-content .user-list li:hover .left-content-icon {
                 border: 3px solid #ff7f11;
                 transform: rotate(-10deg);
             }

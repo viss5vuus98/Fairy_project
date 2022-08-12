@@ -72,7 +72,7 @@ function sendMsg(event) {
     if (message.trim().length === 0) {
         return
     }
-    
+
     //送出訊息至server
     //start存入ID
     connection.invoke("AdminSendMessage", message, sendToID).catch(function (err) {
