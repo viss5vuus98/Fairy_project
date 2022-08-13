@@ -880,7 +880,7 @@ namespace Fairy_project.Controllers
                 var TheBooth = booths.FirstOrDefault(b => b.BoothNumber == boothNum);
                 if (TheBooth.MfId == mfId)
                 {
-                    return Json("廠商成功進入");
+                    return Json($"廠商No.{mfId}成功進入");
                 }
                 else
                 {

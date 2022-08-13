@@ -396,7 +396,7 @@
                                                     @{
                                                         for (var day = Model.datefrom.Date; day.Date <= Model.dateto.Date; day = day.AddDays(1))
                                                         {
-                                                            <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day.AddDays(6)).ToString("yyyy/MM/dd")</option>
+                                                            <option value="@Convert.ToDateTime(day).ToString("yyyy/MM/dd")">@Convert.ToDateTime(day).ToString("yyyy/MM/dd")</option>
                                                         }
                                                     }
                                                 </select>
