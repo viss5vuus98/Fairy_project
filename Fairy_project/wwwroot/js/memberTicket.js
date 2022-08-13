@@ -52,8 +52,7 @@ function renderCards(ticketList) {
                 //`
 
 
-
-            pannelHTML +=`            <div class="col-10 my-5">
+            pannelHTML +=`            <div class="col-10 my-3">
                 <div class="card ticket-content">
                     <div class="card-header bgnone">
                             <h5>${ticketList[i].exhibition.exhibitName}</h4>
