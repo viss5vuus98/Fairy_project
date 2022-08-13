@@ -70,7 +70,7 @@
                 總金額:<p style="font-size:20px;margin-top: 5px;">0</p>元
             </div>
             <div class="buttons">
-                <button type="button" class="btn1 col-md-7 btn btn-main btn-small btn-round" id="keepbuy"><a asp-controller="Home" asp-action="exhibitionDetail">繼續選購</a></button>
+                <a asp-controller="Home" asp-action="search"><button type="button" class="btn1 col-md-7 btn btn-main btn-small btn-round" id="keepbuy">繼續選購</button></a>
                 <button type="button" class="btn1 col-md-7 btn btn-main btn-small btn-round" id="gopay">
                     前往付款
                 </button>
@@ -272,7 +272,7 @@
             </div>
         </div>
         <div class="d-flex" style="justify-content: center;">
-            <button type="button" class="btn1 btn btn-main btn-small btn-round" style="margin-top: 50px;" id="keepshop"><a asp-controller="Home" asp-action="Index">繼續選購</a></button>
+            <a asp-controller="Home" asp-action="Index"><button type="button" class="btn1 btn btn-main btn-small btn-round" style="margin-top: 50px;" id="keepshop">繼續選購</button></a>
         </div>
     </div>
 </main>
