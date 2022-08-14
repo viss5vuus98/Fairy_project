@@ -1,23 +1,9 @@
 ﻿<Properties StartupConfiguration="{160F8584-3AAA-4CEB-BF5C-47355F4D95FA}|Default">
-  <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/wwwroot/js/userChat.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Member/Index.cshtml">
     <Files>
-      <File FileName="Fairy_project/Hubs/ChatHub.cs" Line="87" Column="117" />
-      <File FileName="Fairy_project/Controllers/HomeController.cs" Line="1" Column="1" />
-      <File FileName="Fairy_project/Program.cs" Line="60" Column="22" />
-      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="99" Column="1" />
-      <File FileName="Fairy_project/Views/Shared/_Layout.cshtml" Line="79" Column="41" />
-      <File FileName="Fairy_project/Views/Shared/_Admin_Layout.cshtml" Line="82" Column="127" />
-      <File FileName="Fairy_project/wwwroot/js/adminChat.js" Line="128" Column="58" />
-      <File FileName="Fairy_project/wwwroot/css/userChatB4.css" Line="51" Column="10" />
-      <File FileName="Fairy_project/wwwroot/js/userChat.js" Line="65" Column="55" />
-      <File FileName="Fairy_project/Controllers/LoginController.cs" Line="107" Column="32" />
-      <File FileName="Fairy_project/wwwroot/css/userChatB5.css" Line="18" Column="1" />
+      <File FileName="Fairy_project/Views/Member/Index.cshtml" Line="57" Column="31" />
+      <File FileName="Fairy_project/wwwroot/css/TicketModal.css" Line="1" Column="1" />
+      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="97" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,15 +11,14 @@
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Hubs" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="Member" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
-                <Node name="js" expanded="True">
-                  <Node name="userChat.js" selected="True" />
-                </Node>
               </Node>
             </Node>
           </Node>
@@ -44,5 +29,11 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
