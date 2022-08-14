@@ -9,7 +9,7 @@ namespace Fairy_project.Controllers
 {
     [Authorize(Roles = "Home")]
     [ApiController]
-    [Route("api/Member/Post")]
+    [Route("api/Member/Post/")]
     public class MemberController : Controller
     {
         private readonly woowoContext _context;
@@ -19,10 +19,10 @@ namespace Fairy_project.Controllers
             _context = context;
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         // load Member's tickets and exhibition
         [HttpPost, Route("getTicketsss")]
@@ -39,7 +39,7 @@ namespace Fairy_project.Controllers
                 }
                 TicketsViewModel ticketsViewModel = new TicketsViewModel()
                 {
-                    exhibition = exhibitions,
+                    exhibition = exhibitions.Distinct().ToList(),
                     tickets = tickets,
                 };
                 return Json(ticketsViewModel);
@@ -119,14 +119,12 @@ namespace Fairy_project.Controllers
             return Json("123");
         }
 
-
-
-        //------------------------------------------------------------------------
-
-
-        public IActionResult Ticket()
+        [HttpPost, Route("getTicketOfExhibit")]
+        public IActionResult getTicketOfExhibit([FromBody] GetIdClassModel idClass)
         {
-            return View();
+            Console.WriteLine(idClass.Ex_id + "--------------------");
+            var tickets = _context.Ticketsses.Where(t => t.EId == idClass.Ex_id && t.MId == idClass.Mf_id && t.Enterstate == 0);
+            return Json(tickets);
         }
     }
 }
