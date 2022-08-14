@@ -178,7 +178,7 @@ table {
     border-bottom-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    box-shadow: 6px 5px 10px 1px rgba(0, 0, 0, 0.8);
+    
     opacity: 1;
     transition: opacity .4s ease-out;
 }
@@ -200,6 +200,7 @@ table {
         border-bottom-right-radius: 5px;
         object-fit: cover;
         width: 100%;
+        box-shadow: 6px 5px 10px 1px rgba(0, 0, 0, 0.8);
     }
 
 .ticket-back {
@@ -223,18 +224,19 @@ table {
     display: flex;
     max-width: 610px;
     box-shadow: 2px 2px 12px 3px rgba(0, 0, 0, 0.08);
+    flex-grow: 1;
 }
 
 .ticket-back-img {
     display: flex;
 }
 
-.ticket-back-img {
+.back-left .ticket-back-img {
     width: 250px;
     height: 250px;
 }
 
-.back-img {
+.ticket-back-img .back-img {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     width: 100%;
@@ -263,6 +265,8 @@ table {
     width: 360px;
     height: 250px;
     padding: 10px 30px;
+    border-top: 1px solid #96939B;
+    text-align: center;
 }
 
 .ticket-date {
@@ -317,12 +321,7 @@ table {
     font-size: .9rem;
 }
 
-.ticket-info {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    border-top: 1px solid #96939B;
-}
+
 
 .back-right {
     width: 180px;
@@ -330,6 +329,7 @@ table {
     border-left: 0.18em dashed #000;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    flex-shrink: 1;
 }
 
 .btn-section {

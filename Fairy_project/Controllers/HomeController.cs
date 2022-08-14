@@ -166,20 +166,10 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult GetInvideManufactures([FromBody] GetIdClassModel idClass)
     {
-        var booths = _context.BoothMapsses.Where(m => m.EId == idClass.Ex_id).ToList()??new List<BoothMapss>();
-        IList<Manufacturess> manufacturesses = new List<Manufacturess>();
-        if (booths.Count == 0)
+        var booths = _context.BoothMapsses.Where(m => m.EId == idClass.Ex_id && m.MfId != null).Distinct().ToList()??new List<BoothMapss>();
+        for (int i = 0; i < booths.Count; i++)
         {
-            foreach (var booth in booths)
-            {
-                manufacturesses.Add(_context.Manufacturesses.First(m => m.ManufactureId == booth.MfId));
-            }
-            eDrtailViewModel eDrtailViewModel = new eDrtailViewModel()
-            {
-                Manufactures = manufacturesses,
-                booths = booths
-            };
-            return Json(eDrtailViewModel);
+            var apply = _context.Appliesses.First(a => a.EId == idClass.Ex_id && a.MfId == booths[i].MfId);
         }
         return Json(booths);
     }

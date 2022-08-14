@@ -1,9 +1,8 @@
 ﻿
 //ToDo:重構 分類
 
-const ticketContents = document.querySelectorAll('.ticket-content')
-const leftContent = document.getElementById('ticket-list')
-const cards = document.querySelectorAll('.card')
+const ticketContents = document.querySelectorAll('.ticket-content');
+const leftContent = document.getElementById('ticket-list');
 const exhibitList = [];
 const memberId = JSON.parse(sessionStorage.getItem("Info")).id
 const carouselInner = document.querySelector('.tickets-pannal')
@@ -270,6 +269,7 @@ carouselInner.addEventListener('click', event => {
 
     leftContent.addEventListener('click', event => {
         if (event.target.classList.contains("name")) {
+            const cards = document.querySelectorAll('.card')
             for (let i = 0; i < cards.length; i++) {
                 cards[i].classList.remove('target')
             }
