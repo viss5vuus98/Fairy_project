@@ -204,24 +204,36 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult search(string txtKeyword,string dtStart, string dtEnd)
     {
-        if (string.IsNullOrEmpty(txtKeyword))
+        //if (string.IsNullOrEmpty(txtKeyword))
+        //{
+        //    ViewBag.dtStart = dtStart;
+        //    ViewBag.dtEnd = dtEnd;
+        //    DateTime dateStart = Convert.ToDateTime(dtStart);
+        //    DateTime dateEnd = Convert.ToDateTime(dtEnd);
+        //    var exhibitions = _context.Exhibitionsses.Where(m => m.Datefrom > dateStart && m.Dateto < dateEnd && 1 < m.ExhibitStatus && m.ExhibitStatus < 4);
+        //    return View(exhibitions);
+        //}
+        //else
+        //{
+        if (string.IsNullOrEmpty(txtKeyword) || string.IsNullOrEmpty(dtStart) || string.IsNullOrEmpty(dtEnd))
         {
+            var exhibition = _context.Exhibitionsses.Where(m => 1 < m.ExhibitStatus && m.ExhibitStatus < 4).OrderBy(m => m.ExhibitId).ToList();
+            return View(exhibition);
+        }
+        else
+        {       
+            ViewBag.txtKeyword = txtKeyword;
             ViewBag.dtStart = dtStart;
             ViewBag.dtEnd = dtEnd;
             DateTime dateStart = Convert.ToDateTime(dtStart);
             DateTime dateEnd = Convert.ToDateTime(dtEnd);
-            var exhibitions = _context.Exhibitionsses.Where(m => m.Datefrom > dateStart && m.Dateto < dateEnd && 1 < m.ExhibitStatus && m.ExhibitStatus < 4);
-            return View(exhibitions);           
-        }
-        else
-        {
-            ViewBag.txtKeyword = txtKeyword;
             var exhibitions = _context.Exhibitionsses
-            .Where(m => m.ExhibitName.Contains(txtKeyword) && 1 < m.ExhibitStatus && m.ExhibitStatus < 4)
+            .Where(m => m.ExhibitName.Contains(txtKeyword) && m.Datefrom > dateStart && m.Dateto < dateEnd && 1 < m.ExhibitStatus && m.ExhibitStatus < 4)
             .OrderBy(m => m.ExhibitId)
             .ToList();
             return View(exhibitions);
         }
+        //}
     }
 
     //search exhibition date

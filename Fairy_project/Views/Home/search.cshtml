@@ -57,14 +57,14 @@
 
     <form asp-action="search">
         <div class="input-group">
-            <input type="date" name="dtStart" value="@ViewBag.dtStart"/>
-            <input type="date" name="dtEnd" value="@ViewBag.dtEnd"/>
             <a asp-controller="Home" asp-action="search" asp-route-id="1" class="btn btn-dark btn-41">單價遞增</a>
             <a asp-controller="Home" asp-action="search" asp-route-id="2" class="btn btn-dark btn-41">單價遞減</a>
             <span class="input-group-text">展覽關鍵字</span>
             @*<input type="text" class="form-control" name="txtKeyword" />*@
-            <input type="text" class="form-control" name="txtKeyword" placeholder="請輸入展覽名稱" autocomplete="off" value="@ViewBag.txtKeyword">
-            <input type="submit" value="搜尋" class="btn btn-dark btn-41" />
+            <input type="text" class="form-control" name="txtKeyword" placeholder="請輸入展覽名稱" autocomplete="off" value="@ViewBag.txtKeyword" id="exname">
+            <input type="date" name="dtStart" value="@ViewBag.dtStart" id="dtStart"/>
+            <input type="date" name="dtEnd" value="@ViewBag.dtEnd" id="dtEnd"/>
+            <input type="submit" value="搜尋" class="btn btn-dark btn-41" id="submit" />
         </div>
     </form>
 
@@ -116,9 +116,14 @@
     @section Scripts
     {
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script>
+$('#submit').click(function() {
+    if ($('#exname').val() == '' || $('#dtStart').val() == '' || $('#dtEnd').val() == '') {
+        alert("請輸入展覽名稱和日期")
+    }
+})
+</script>
     }
 
-    <script>
-        
-    </script>
+    
 

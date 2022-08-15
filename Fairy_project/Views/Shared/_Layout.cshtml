@@ -71,11 +71,11 @@
 
     @*==chat==*@
 
-    <div id="chat-circle" class="btn btn-raised btn-toggle scaleBox">
+    @*<div id="chat-circle" class="btn btn-raised btn-toggle scaleBox">
         <div id="chat-overlay">
         </div>
         <i class="fa-solid fa-comment-dots title-icon"></i>
-    </div>
+    </div>*@
     <div class="card mx-auto card-toggle chat-box" id="chat-card" style="max-width: 400px;">
         <div class="card-header bg-transparent">
             <div class="navbar navbar-expand p-0">
@@ -201,7 +201,7 @@
     @await RenderSectionAsync("Scripts", required: false)
     @*@await Html.PartialAsync("_ToastPartial")*@
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.js" asp-append-version="true"></script>
-    <script src="~/js/userChat.js" asp-append-version="true"></script>
+
     <script>
         if (sessionStorage.getItem('acount') != null) {
             $('#navbarSupportedContent').append(`
@@ -233,6 +233,11 @@
                                         </li>
                                     </ul>
                                     `)
+            $('body').append(`<div id="chat-circle" class="btn btn-raised btn-toggle scaleBox">
+            <div id="chat-overlay">
+            </div>
+            <i class="fa-solid fa-comment-dots title-icon"></i>
+            </div>`)
         }
         else {
             $('#navbarSupportedContent').append(`
@@ -248,6 +253,7 @@
             sessionStorage.clear();
         })
     </script>
+            <script src="~/js/userChat.js" asp-append-version="true"></script>
 </body>
 
 </html>
