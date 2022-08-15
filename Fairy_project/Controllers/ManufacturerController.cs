@@ -9,6 +9,8 @@ using System.Data.Entity;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.Mime;
 
 namespace Fairy_project.Controllers
 {
@@ -139,9 +141,43 @@ namespace Fairy_project.Controllers
             _woowocontext.Appliesses.Add(appliess);
             _woowocontext.BoothMapsses.Update(b);
             _woowocontext.SaveChanges();
+
+            var mail = new MailMessage();
+            mail.IsBodyHtml = true;
+            var logopath = $"{img_dir + b.MfLogo}";
+            var pimgpath = $"{img_dir + b.MfPImg}";
+            string ename = _woowocontext.Exhibitionsses.Where(e => e.ExhibitId == b.EId).Select(e => e.ExhibitName).FirstOrDefault().ToString();
+            string bnum = b.BoothNumber.ToString();
+            string bdes = appliess.MfDescription;
+            mail.AlternateViews.Add(await GetEmbeddedImage(logopath, pimgpath, ename, bnum, bdes));
+            mail.To.Add("nita86123@gmail.com");
+            mail.Subject = "TESTTTTTTTT";
+            mail.From = new MailAddress("zxc995116@gmail.com", "woohouse");
+            var smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new System.Net.NetworkCredential("zxc995116@gmail.com", "rpsxltaiqhdmupnp"),
+                EnableSsl = true
+            };
+            await smtp.SendMailAsync(mail);
+            mail.Dispose();
+
             return Redirect("Index");
 
         }
+
+        async private Task<AlternateView> GetEmbeddedImage(string logopath, string pimgpath, string ename, string bnum, string bdes)
+        {
+            LinkedResource res = new LinkedResource(logopath, "image/jpeg");
+            LinkedResource res2 = new LinkedResource(pimgpath, "image/jpeg");
+            res.ContentId = Guid.NewGuid().ToString();
+            res2.ContentId = Guid.NewGuid().ToString();
+            string htmlBody = $"<h2 style='color: #000000;'>以下是您申請 <span style='color: #c0b0a2;'>{ename}</span> 展覽<br>第 <span style='color: #c0b0a2;'>{bnum}</span> 號攤位的申請資訊</h2><div style='width: 1000px;'><h3 style='color: #000000;'>LOGO圖片</h3><img  src='cid:{res.ContentId}' width='60%'><h3 style='color: #000000;'>廠商圖片</h3><img src='cid:{res2.ContentId}' width='80%'><h3 style='color: #000000;'>攤位描述</h3><p>{bdes}</p></div><h2>謝謝您的申請，所有資料均為人工審核，審核完畢後會另行通知</h2>";
+            AlternateView alternateView = AlternateView.CreateAlternateViewFromString(htmlBody, null, MediaTypeNames.Text.Html);
+            alternateView.LinkedResources.Add(res);
+            alternateView.LinkedResources.Add(res2);
+            return alternateView;
+        }
+
         //get the manufactures of applies 找一個廠商的所有審核 傳入Mf_id
         [HttpPost]
         public IActionResult getMfApplies([FromBody] GetIdClassModel idClass)
