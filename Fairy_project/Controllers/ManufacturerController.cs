@@ -179,7 +179,7 @@ namespace Fairy_project.Controllers
             {
                 foreach (var apply in applies)
                 {
-                    var a = _woowocontext.Exhibitionsses.First(ex => ex.ExhibitId == apply.EId && ex.ExhibitStatus != 4);
+                    var a = _woowocontext.Exhibitionsses.First(ex => ex.ExhibitId == apply.EId);
                    if (a.ExhibitId != null)
                     {
                     exhibitions.Add(a);
