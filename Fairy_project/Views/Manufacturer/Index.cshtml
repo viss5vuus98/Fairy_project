@@ -235,7 +235,11 @@
                 }
             }
             else {
-                pannelHTML += '<h2>您還尚未申請參與任何展覽</h2>'
+                pannelHTML += 
+                `<div class="tab-content d-flex my-3 shuffle-item" id="myTabContent" data-groups="[&quot;a&quot;],[&quot;b&quot;],[&quot;c&quot;],[&quot;d&quot;]" style="border:none;">
+                <h2>您還尚未申請參與任何展覽</h2>
+                </div>
+                `
             }
             insert.append(pannelHTML);
             show();
