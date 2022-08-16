@@ -150,7 +150,7 @@ namespace Fairy_project.Controllers
             string bnum = b.BoothNumber.ToString();
             string bdes = appliess.MfDescription;
             mail.AlternateViews.Add(await GetEmbeddedImage(logopath, pimgpath, ename, bnum, bdes));
-            mail.To.Add("nita86123@gmail.com");
+            mail.To.Add("ispanwoo@gmail.com");
             mail.Subject = "TESTTTTTTTT";
             mail.From = new MailAddress("zxc995116@gmail.com", "woohouse");
             var smtp = new SmtpClient("smtp.gmail.com", 587)
