@@ -359,7 +359,7 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:20px;margin-top: 3px;">${sum}</p>元`);
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
             console.log(array)
         });
 
@@ -374,7 +374,7 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:20px;margin-top: 3px;">${sum}</p>元`);
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
 
             // 刪除 sessionStorage
             console.log($(this).prev().val())
@@ -406,7 +406,7 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:20px;margin-top: 3px;">${sum}</p>元`);
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
 
             // sessionStorage 的值修改
             const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
@@ -430,7 +430,7 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:20px;margin-top: 3px;">${sum}</p>元`);
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
 
             // sessionStorage 的值修改
             const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
@@ -452,7 +452,7 @@
                 sum += parseInt(smallcount.eq(i).text());
             }
             $("#totalprice").text("");
-            $("#totalprice").append(`總金額:<p style="font-size:20px;margin-top: 3px;">${sum}</p>元`);
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
 
             // sessionStorage 的值修改
             const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
@@ -473,7 +473,7 @@
                 $(".second").show();
                 $(".third").hide();
                 $("#totalprice1").text("");
-                $("#totalprice1").append(`總金額:<p style="font-size: 20px;margin-top: 3px;">${sum}</p>元`)
+                $("#totalprice1").append(`總金額:<p style="font-size: 20px;">${sum}</p>元`)
 
                 $(".order_detail").text("");
                 const objcount = JSON.parse(sessionStorage.getItem('TicketList')) || []
