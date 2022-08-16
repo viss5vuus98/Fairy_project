@@ -36,7 +36,7 @@
                     <div class="form-group" style="margin-top:3%">
 
 
-                        <textarea asp-for="@Model.MfDescription" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;攤位描述" style="font-size:12px; border:1px solid #dedede;padding:0" cols="51" rows="10"></textarea>
+                        <textarea asp-for="@Model.MfDescription" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;攤位描述" style="font-size:12px; border:1px solid #dedede;padding:0" cols="48" rows="10"></textarea>
                     </div>
 
                     <div style="border:none;margin-left:6%">
@@ -76,14 +76,20 @@
 
 
         <div class="col-md-6">
+            
+            <div class="MfPImgarea position-relative">
+                @*<p>廠商照片預覽圖</p> *@
 
-            <div class="MfPImgarea">
                 <img id="MfPImg" class="MfPImg" />
+                @*<h4 class="imgfont">GONTTTTTTTTT</h4>*@
             </div>
-            <div class="MfLogoarea" style="margin-top:5%">
+            
+            <div class="MfLogoarea  position-relative" style="margin-top:5%">  
+                @*<p>LOGO照片預覽圖</p>*@
                 <img id="MfLogo" class="MfLogo" />
+@*                                <h4 class="logofont">GONTTTTTTTTT</h4>
+*@
             </div>
-
         </div>
 
 
