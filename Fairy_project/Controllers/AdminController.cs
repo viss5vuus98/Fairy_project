@@ -236,7 +236,6 @@ namespace Fairy_project.Controllers
                 }
             }
 
-            Console.WriteLine("----------------------------" + model.setboothslist.Count());
             int boothnumber = 1;
             if (model.setboothslist != null)
             {
@@ -327,12 +326,12 @@ namespace Fairy_project.Controllers
             Exhibitionss laste = _context.Exhibitionsses.OrderBy(e => e.ExhibitId).Last();
             int eid = laste.ExhibitId + 1;
 
-
             if (model.setboothslist != null)
             {
                 int boothnumber = 1;
                 for (int i = 0; i < model.setboothslist.Count(); i++)
                 {
+            Console.WriteLine("------------------56+5645456----------" + model.setboothslist.Count());
                     for (int j = 0; j < model.setboothslist[i].boothsum; j++)
                     {
                         BoothMapss booths = new BoothMapss();
@@ -358,6 +357,7 @@ namespace Fairy_project.Controllers
                 }
 
             }
+
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
