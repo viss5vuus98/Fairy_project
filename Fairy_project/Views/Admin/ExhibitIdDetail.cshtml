@@ -89,11 +89,11 @@
                     @{
                         if (Model.exhibit_T_img != null)
                         {
-                                <img id="ticketimg" class="w-100" src="@Url.Content($"~/images/{Model.exhibit_T_img}")" alt="">
+                                <img id="ticketimg" class="w-100" src="@Url.Content($"~/images/{Model.exhibit_T_img}")" alt="" data-toggle="tooltip" data-placement="top" title="票卷圖片">
                         }
                         else
                         {
-                                <img id="ticketimg" class="w-100" src="~/images/ticketdefault.png" alt="">
+                                <img id="ticketimg" class="w-100" src="~/images/ticketdefault.png" alt="" data-toggle="tooltip" data-placement="top" title="票卷圖片">
                         }
                     }
                     @{
@@ -110,12 +110,12 @@
                 <div class="position-relative rounded-2 border border-1">
                     @{
                         if (Model.exhibit_Pre_img != null)
-                        {
-                                <img id="horizontalposterimage" class="w-100" src="@Url.Content($"~/images/{Model.exhibit_Pre_img}")" alt="">
+                        { 
+                                <img id="horizontalposterimage" class="w-100" src="@Url.Content($"~/images/{Model.exhibit_Pre_img}")" alt="" data-toggle="tooltip" data-placement="top" title="縮圖圖片">
                         }
                         else
                         {
-                                <img id="horizontalposterimage" class="w-100" src="~/images/horizontalposterdefault.png" alt="">
+                                <img id="horizontalposterimage" class="w-100" src="~/images/horizontalposterdefault.png" alt="" data-toggle="tooltip" data-placement="top" title="縮圖圖片">
                         }
                     }
                     @{
@@ -137,11 +137,11 @@
                     @{
                         if (Model.exhibit_P_img != null)
                         {
-                                <img id="verticalposterimage" class="w-100" src="@Url.Content($"~/images/{Model.exhibit_P_img}")" alt="">
+                                <img id="verticalposterimage" class="w-100" src="@Url.Content($"~/images/{Model.exhibit_P_img}")" alt="" data-toggle="tooltip" data-placement="top" title="海報圖片">
                         }
                         else
                         {
-                                <img id="verticalposterimage" class="w-100" src="~/images/horizontalposterdefault.png" alt="">
+                                <img id="verticalposterimage" class="w-100" src="~/images/horizontalposterdefault.png" alt="" data-toggle="tooltip" data-placement="top" title="海報圖片">
                         }
                     }
                     @{
@@ -992,6 +992,7 @@
 @section Scripts
 
     {
+<script src="~/js/custom.js"></script>
     <script>
         $('.areaoption').on('click', (e) => {
             console.log(e.target)
