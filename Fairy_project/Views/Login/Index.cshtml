@@ -65,31 +65,31 @@
                         <h2>會員註冊</h2>
                         <label>
                             <span>電子郵件(登入帳號)</span>
-                            <input asp-for="member.MemberAc" id="memAccount" type="email" required placeholder="example@@gmail.com" />
+                            <input asp-for="member.MemberAc" id="memAccount" type="email" required placeholder="example@@gmail.com" value="koler@gmail.com"/>
                             <input class="d-none" asp-for="permissions.Account" id="M_permissions" type="email"/>
                         </label>
                         <label>
                             <span>密碼</span>
-                            <input asp-for="permissions.Password" type="password" required placeholder="最少8個字元" />
+                            <input asp-for="permissions.Password" type="password" required placeholder="最少8個字元" value="12345678"/>
                         </label>
                         <label>
                             <span>會員名稱</span>
-                            <input asp-for="member.MemberName" type="text" required placeholder="姓名" />
+                            <input asp-for="member.MemberName" type="text" required placeholder="姓名" value="李文翰"/>
                         </label>
                         <div class="gender">
-                            <input type="radio" name="gender" value="男" checked>
+                            <input type="radio" name="gender" value="男" checked/>
                             <label>男</label>
-                            <input type="radio" name="gender" value="女">
+                            <input type="radio" name="gender" value="女"/>
                             <label>女</label>
-                            <input asp-for="member.Gender" type="text" id="gender" style="visibility:hidden;">
+                            <input asp-for="member.Gender" type="text" id="gender" style="visibility:hidden;" value="男"/>
                         </div>
                         <label>
                             <span>地址</span>
-                            <input asp-for="member.Address" type="text" required placeholder="地址" />
+                            <input asp-for="member.Address" type="text" required placeholder="地址" value="高雄市前金區中正四路211號"/>
                         </label>
                         <label>
                             <span>電話</span>
-                            <input asp-for="member.PhoneNumber" type="text" required placeholder="09-1234-5678" maxlength="10" />
+                            <input asp-for="member.PhoneNumber" type="text" required placeholder="09-1234-5678" maxlength="10" value="0912345678"/>
                             <input class="d-none" asp-for="permissions.PermissionsLv" type="text" value="1"/>
                         </label>
                         <div class="form-group">

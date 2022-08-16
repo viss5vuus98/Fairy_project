@@ -212,8 +212,8 @@
                         <img src="images/portfolio/item-6.jpg" class="img-fluid" alt="">
                         <div class="overlay">
                             <div class="buttons">
-                                <a rel="gallery" class="fancybox" href="images/portfolio/item-6.jpg">Demo</a>
-                                <a target="_blank" href="single-portfolio.html">Details</a>
+                                @*<a rel="gallery" class="fancybox" href="images/portfolio/item-6.jpg">Demo</a>*@
+                                <a target="" href="single-portfolio.html">展覽詳細資訊</a>
                             </div>
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                         還沒有加入會員 ?
                     </h2>
                     <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">加入會員立即使用電子票券，一起來看展吧</p>
-                    <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s"
+                    <a href="@Url.Action("Index", "Login")" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s"
                        data-wow-duration="500ms">立即註冊</a>
                 </div>
             </div>

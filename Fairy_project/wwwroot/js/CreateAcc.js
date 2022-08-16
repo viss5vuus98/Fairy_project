@@ -17,3 +17,8 @@ manufacturesAcc.addEventListener('input', event => {
 $('#login').click(function () {
     sessionStorage.setItem('acount', $('#ac').val())
 })
+
+$('.gender input:radio[name=gender]').click(function () {
+    $('#gender').val($(".gender input:radio[name=gender]:checked").val())
+    console.log($(".gender input:radio[name=gender]:checked").val());
+})
