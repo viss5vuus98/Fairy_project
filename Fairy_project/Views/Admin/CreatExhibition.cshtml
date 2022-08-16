@@ -49,7 +49,7 @@
             <div class="col-lg-6 col-sm-12 col-12 my-5">
 
                 <div class="position-relative my-4 border border-1 rounded-2">
-                    <img id="ticketimg" class="w-100" src="~/images/ticketdefault.png" alt="">
+                    <img id="ticketimg" class="w-100" src="~/images/ticketdefault.png" alt="" data-toggle="tooltip" data-placement="top" title="票卷圖片">
                     <label for="ticketimginput" class="d-inline">
                         <input asp-for="exhibit_T_img" type="file" id="ticketimginput" hidden
                                accept=".png,.jpg">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="position-relative rounded-2 border border-1 ">
                     <img id="horizontalposterimage" class="w-100" src="~/images/horizontalposterdefault.png"
-                         alt="">
+                         alt="" data-toggle="tooltip" data-placement="top" title="縮圖圖片">
                     <label for="horizontalposterimageinput" class="d-inline">
                         <input asp-for="exhibit_Pre_img" type="file" id="horizontalposterimageinput" hidden
                                accept=".png,.jpg">
@@ -68,7 +68,7 @@
             </div>
             <div class="col-lg-6 col-sm-12 col-12 p-lg-5 p-sm-2  d-flex flex-column justify-content-center">
                 <div class="position-relative rounded-2 border border-1">
-                    <img id="verticalposterimage" class=" w-100" src="~/images/horizontalposterdefault.png">
+                    <img id="verticalposterimage" class=" w-100" src="~/images/horizontalposterdefault.png" data-toggle="tooltip" data-placement="top" title="海報圖片">
                     <label for="verticalposterimageinput" class="d-inline">
                         <input asp-for="exhibit_P_img" type="file" id="verticalposterimageinput" hidden
                                accept=".png,.jpg">
@@ -387,6 +387,8 @@
     {
     @*    <script src="~/js/bootstrap.bundle_admin.js"></script>
     <script src="~/js/jquery_admin..js"></script>*@
+        <script src="~/js/custom.js"></script>
+
     <script>
         $('.areaoption').on('click', (e) => {
             $('#selecarea').text($(e.target).text())
