@@ -391,8 +391,8 @@ namespace Fairy_project.Controllers
             ExhibitIdDetail_1_ amodel = new ExhibitIdDetail_1_();
             if (status == 3 && b_num.HasValue)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2 && a.BoothNumber == b_num).OrderBy(a => a.BoothNumber);
-                amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Count();
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2 && a.BoothNumber == b_num).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
+                amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2 && a.BoothNumber == b_num).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
                 {
@@ -406,7 +406,7 @@ namespace Fairy_project.Controllers
             }
             else if (status == 3)
             {
-                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).OrderBy(a => a.BoothNumber);
+                var a = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Skip((int)offset).Take(10).OrderBy(a => a.BoothNumber);
                 amodel.applysum = _context.Appliesses.Where(a => a.EId == exhibitId && a.CheckState == 2).Count();
                 List<Appliess> applies = a.ToList();
                 if (offset.HasValue)
