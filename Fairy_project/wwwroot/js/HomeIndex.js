@@ -25,8 +25,7 @@ const View = {
                         <img src="${root}${data[i].exhibitPImg}" class="img-fluid" alt="this is a title">
                         <div class="overlay">
                             <div class="buttons">
-                                <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
-                                <a target="" href="Home/exhibitionDetail/${data[i].exhibitId}">Details</a>
+                                <a target="" href="Home/exhibitionDetail/${data[i].exhibitId}">展覽詳細資訊</a>
                             </div>
                         </div>
                     </div>

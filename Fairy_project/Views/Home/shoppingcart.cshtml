@@ -4,6 +4,7 @@
 @*@{
         Layout = "~/Views/Shared/_LayoutB5.cshtml";
     }*@
+    <title>購物車</title>
 
 @section Style{
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" asp-append-version="true">
@@ -137,15 +138,15 @@
                         <form  class="checkout-form">
                             <div class="form-group">
                                 <label for="card-number">卡號</label>
-                                <input id="card-number" class="form-control" type="tel" placeholder="•••• •••• •••• ••••">
+                                <input id="card-number" class="form-control" type="tel" placeholder="•••• •••• •••• ••••" value="4235-5984-6952-1238">
                             </div>
                             <div class="form-group half-width padding-right">
                                 <label for="card-expiry">到期日</label>
-                                <input id="card-expiry" class="form-control" type="tel" placeholder="MM / YY">
+                                <input id="card-expiry" class="form-control" type="tel" placeholder="MM / YY" value="02/26">
                             </div>
                             <div class="form-group half-width padding-left">
                                 <label for="card-cvc">安全碼</label>
-                                <input id="card-cvc" class="form-control"  type="tel" maxlength="3" placeholder="CVC" >
+                                <input id="card-cvc" class="form-control"  type="tel" maxlength="3" placeholder="CVC" value="594">
                             </div>
                         </form>
                     </div>
