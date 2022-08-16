@@ -1,0 +1,117 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    Layout = "_LayoutB5";
+}
+@section Style
+
+    {
+    <link rel="stylesheet" href="~/css/Ticket.css" asp-append-version="true">
+        @*<link rel="stylesheet" href="~/css/style_back.css" asp-append-version="true">*@
+    }
+
+    <div class="modal fade" id="QRcode_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="QRModal-title">Ex title</h5>
+                </div>
+                <div class="QRmodal-body" id="QR-body">
+                    <div id="QRcode"></div>
+                </div>
+                <div class="QRmodal-footer">
+                    <div class="ticket_date">
+                        <p class="date">
+                            <span class="date-from date_span">2022/7/20</span>
+                        </p>
+                        <p><span class="date_span date_mid">  -  </span></p>
+                        <p class="date">
+                            <span class="date-to date_span">2022/10/28</span>
+                        </p>
+                    </div>
+                    <div class="qr_btn">
+                        <button type="button" class="btn btn-secondary btn-qrmodal" data-bs-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="give_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header my-3">
+                    <h5 class="modal-title" id="ticket-title">送出票券</h5>
+                </div>
+                <div class="ticket-body" id="ticket-body">
+                    <form class="checkout-form">
+                        <div class="form-group">
+                            <label for="full_name">輸入贈送帳號</label>
+                            <input type="text" class="form-control" id="full_name" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="user_address">輸入贈送</label>
+                            <input type="text" class="form-control" id="give_modal_email" placeholder="">
+                        </div>
+                        <div class="checkout-country-code clearfix">
+                            <div class="form-group">
+                                <label for="user_post_code">Zip Code</label>
+                                <input type="text" class="form-control" id="user_post_code" name="zipcode" value="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ticket-footer text-center my-3">
+                    <button class="btn btn-secondary submit btn-main">Submit</button>
+                    <button type="button" class="btn btn-secondary btn-main" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="my-5 py-2"></div>
+    <div class="container my-5">
+        <div class="row justify-content-center carousel-inner my-5">
+
+                @*            <div class="col-10 my-5">
+        <div class="card">
+        <div class="card-header bgnone">123</div>
+        <div class="card-body p-0">
+        <div class="card--image">
+        <img src="~/images/Ticket14.jpg" alt="image">
+        </div>
+        <div class="card--info info--1">
+        <span class="info--text">贈票</span>
+        <div class="icon">
+        <ion-icon name="add-outline"><i class="fa-solid fa-gift fa-xl"></i></ion-icon>
+        </div>
+        <div class="info--image">
+        <img src="" alt="info image">
+        </div>
+        </div>
+        <div class="card--info info--2 btn-qrcode">
+        <span class="info--text">掃碼</span>
+        <div class="icon">
+        <ion-icon name="add-outline"><i class="fa-solid fa-qrcode fa-xl"></i></ion-icon>
+        </div>
+        <div class="info--image">
+        <img src="" alt="info image">
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        *@
+        </div>
+    </div>
+
+        @section Scripts
+        {
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>const root = @Url.Content("~/images/")</script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="~/js/memberTicket.js" asp-append-version="true"></script>
+}

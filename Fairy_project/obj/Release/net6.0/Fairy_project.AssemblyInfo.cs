@@ -11,6 +11,7 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-Fairy_project-2DDFB829-8EAB-4F0F-B049-A7957C796A50")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fairy_project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]

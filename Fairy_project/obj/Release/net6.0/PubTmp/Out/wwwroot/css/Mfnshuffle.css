@@ -1,0 +1,20 @@
+﻿
+.shuffle-item {
+    min-width: 100%;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .shuffle-item {
+        min-width: 720px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .shuffle-item {
+        min-width: 320px;
+    }
+}

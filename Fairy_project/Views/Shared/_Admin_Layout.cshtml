@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    @await RenderSectionAsync("Style", required: false)
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/templateB5.css">
+    @*<link rel="stylesheet" href="~/css/adminlayout.css">*@
+    @*<link rel="stylesheet" href="~/css/style.css"></link>*@
+    <link rel="stylesheet" href="~/css/adminChat.css" asp-append-version="true" />
+</head>
+<body style="">
+    <section class="top-bar animated-header  mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+
+                            <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+                                <img class="logo-image" src="~/images/homeLogo.jpg" alt="logo">
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse"
+                                 id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index", "Admin")">
+                                            管理
+                                            <span class="sr-only">(current)</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Report", "Admin")">報表</a>
+                                    </li>
+                                    @*                                <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        會員頁面
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="">我的票券</a>
+                                        <a class="dropdown-item" href="gallery.html">會員資料</a>
+                                        </div>
+                                        </li>
+                                    *@
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="@Url.Action("Index", "Home")">登出</a>
+                                    </li>
+                                </ul>
+                                <!-- <ul class="navbar-nav ml-auto justify-content-around">
+                                </ul> -->
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="my-4 py-4"></div>
+
+    @*==chat==*@
+    <div id="chat-circle" class="btn btn-raised btn-toggle scaleBox">
+        <div id="chat-overlay">
+        </div>
+        <i class="fa-solid fa-comment-dots title-icon"></i>
+    </div>
+    <div class="container mt-4 d-flex justify-content-center align-items-center chat-container card-toggle" id="chat-container">
+        <div class="card user-content">
+            <ul class="user-list" id="user-list">
+                @*<li class="clearfix">
+                    <i class="fa-solid fa-user-secret me-2 left-content-icon"></i>
+                    <span>36288674</span>
+                </li>
+                <li class="clearfix position-relative">
+                    <i class="fa-solid fa-user-secret me-2 left-content-icon"></i>
+                    <span>ggoo@gmail.com</span>
+                    <span class="position-absolute bottom-50 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
+                        <span class="visually-hidden">New alerts</span>
+                    </span>
+                </li>*@
+            </ul>
+        </div>
+
+
+
+        <div class="card chat-box" id="chat-card" style="width: 400px; max-width: 400px;">
+            <div class="card-header bg-transparent">
+                <div class="navbar navbar-expand p-0">
+                    <ul class="navbar-nav me-auto align-items-center">
+                        <li class="nav-item">
+                            <a href="#" class="title-image">
+                                <div class="position-relative"
+                                     style="width: 60px;height: 50px;border-radius: 50%;padding: 2px;">
+                                    <img src="~/images/homeLogo.jpg" alt="Logo" class="img-fluid rounded-circle">
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">客服中心</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="chat-exit-btn">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body p-4 chat-box-body" id="admin-chat" style="height: 500px; overflow: auto;">
+
+            </div>
+            <div class="card-footer bg-white position-absolute bottom-0 m-0 p-1 w-100 chat-box-footer">
+                <div class="input-group">
+                    <input type="text" class="form-control border-0" id="input-Admsg" placeholder="Write a message...">
+                    <button class="btn btn-light text-secondary btn-send" id="send-Admsg" date-sendto="">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    @*==#chat==*@
+
+    @RenderBody()
+    <script src="~/js/jquery_admin..js"></script>
+    <script src="~/js/bootstrap.bundle_admin.js"></script>
+    @*<script src="~/js/bootstrap.bundle_admin.js"></script>*@
+
+    @*    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>*@
+    @*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+        integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+        crossorigin="anonymous"></script>*@
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js" asp-append-version="true"></script>
+    <script src="~/js/adminChat.js" asp-append-version="true"></script>
+    <script>(function ($) {
+            "use strict";
+
+            $.fn.scrollingTo = function (opts) {
+                var defaults = {
+                    animationTime: 1000,
+                    easing: "",
+                    callbackBeforeTransition: function () { },
+                    callbackAfterTransition: function () { },
+                };
+
+                var config = $.extend({}, defaults, opts);
+
+                $(this).click(function (e) {
+                    var eventVal = e;
+                    e.preventDefault();
+
+                    var $section = $(document).find($(this).data("section"));
+                    if ($section.length < 1) {
+                        return false;
+                    }
+
+                    if ($("html, body").is(":animated")) {
+                        $("html, body").stop(true, true);
+                    }
+
+                    var scrollPos = $section.offset().top;
+                    if ($(window).scrollTop() == scrollPos) {
+                        return false;
+                    }
+
+                    config.callbackBeforeTransition(eventVal, $section);
+                    $("html, body").animate(
+                        {
+                            scrollTop: scrollPos + "px",
+                        },
+                        config.animationTime,
+                        config.easing,
+                        function () {
+                            config.callbackAfterTransition(eventVal, $section);
+                        }
+                    );
+                });
+            };
+
+            jQuery(document).ready(function () {
+                "use strict";
+                new WOW().init();
+
+                (function () {
+                    jQuery(".smooth-scroll").scrollingTo();
+                })();
+            });
+
+            $(document).ready(function () {
+                "use strict";
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > 50) {
+                        $(".navbar-brand a").css("color", "#fff");
+                        $(".top-bar").removeClass("animated-header");
+                    } else {
+                        $(".navbar-brand a").css("color", "inherit");
+                        $(".top-bar").addClass("animated-header");
+                    }
+                });
+
+                $(".clients-logo-slider").slick({
+                    dots: false,
+                    infinite: true,
+                    speed: 300,
+                    slidesToShow: 5,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1,
+                            },
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                            },
+                        },
+                    ],
+                });
+            });
+
+            // fancybox
+            $(".fancybox").fancybox({
+                padding: 0,
+                openEffect: "elastic",
+                openSpeed: 450,
+                closeEffect: "elastic",
+                closeSpeed: 350,
+                closeClick: true,
+                helpers: {
+                    title: {
+                        type: "inside",
+                    },
+                    overlay: {
+                        css: {
+                            background: "rgba(0,0,0,0.8)",
+                        },
+                    },
+                },
+            });
+        });</script>
+</body>
+</html>

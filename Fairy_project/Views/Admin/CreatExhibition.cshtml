@@ -1,0 +1,587 @@
+﻿@model Fairy_project.ViewModels.CreatExhibitionViewModel
+@section Style
+    {
+    <link rel="stylesheet" href="~/css/CreatExhibition.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style_back.css" asp-append-version="true">
+        @*<link rel="stylesheet" href="~/css/bootstrap-admin.css">*@
+    }
+    @{
+    Layout = "_Admin_Layout";
+}
+<div class="container mt-5">
+    <form action="@Url.Action("CreatExhibition")" method="post" enctype="multipart/form-data">
+        <div class="row align-items-center justify-content-center my-3">
+            <div class="col-lg-11 col-sm-10 col-10 text-start">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="titleinput">
+                            <i id="edittitle"
+                               class="fa-regular fa-pen-to-square opacity-75 fa-xl text-center"></i>
+                        </label>
+                    </div>
+                    <input asp-for="exhibitName" id="titleinput" type="text" class="fs-3 form-control text-center" placeholder="展覽標題"
+                           aria-label="Username" aria-describedby="basic-addon1" autocomplete="off">
+                </div>
+            </div>
+            <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-dark py-3 fs-6">規劃</span>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-around align-items-center px-5 mt-4">
+                <div id="areaedit" class="d-flex justify-content-center align-items-end">
+                    <h5 class="">
+                        No.
+                        <input asp-for="exhibitId" class="h2 pe-none border-0 w-50" value="" readonly>
+                    </h5>
+                </div>
+                <div class="dropdown d-inline-block mb-1">
+                    <button class="fs-6 btn btn-outline-dark border btn-lg dropdown-toggle" type="button"
+                            id="selecarea" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            data-display="static">
+                        展區
+                    </button>
+                    <input asp-for="areaNum" type="text" id="area" hidden>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item areaoption" href="#">A</a>
+                        <a class="dropdown-item areaoption" href="#">B</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 col-12 my-5">
+
+                <div class="position-relative my-4 border border-1 rounded-2">
+                    <img id="ticketimg" class="w-100" src="~/images/ticketdefault.png" alt="">
+                    <label for="ticketimginput" class="d-inline">
+                        <input asp-for="exhibit_T_img" type="file" id="ticketimginput" hidden
+                               accept=".png,.jpg">
+                        <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0"></i>
+                    </label>
+                </div>
+                <div class="position-relative rounded-2 border border-1 ">
+                    <img id="horizontalposterimage" class="w-100" src="~/images/horizontalposterdefault.png"
+                         alt="">
+                    <label for="horizontalposterimageinput" class="d-inline">
+                        <input asp-for="exhibit_Pre_img" type="file" id="horizontalposterimageinput" hidden
+                               accept=".png,.jpg">
+                        <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 col-12 p-lg-5 p-sm-2  d-flex flex-column justify-content-center">
+                <div class="position-relative rounded-2 border border-1">
+                    <img id="verticalposterimage" class=" w-100" src="~/images/horizontalposterdefault.png">
+                    <label for="verticalposterimageinput" class="d-inline">
+                        <input asp-for="exhibit_P_img" type="file" id="verticalposterimageinput" hidden
+                               accept=".png,.jpg">
+                        <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute bottom-0 end-0 translate-middle"
+                           href="#"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6 col-sm-12 col-12 fs-1 px-0 pe-xl-2 pe-0 text-center">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text mdi mdi-account fs-6" for="datefrom">
+                            起始日期
+                        </span>
+                    </div>
+                    <input id="datefrom" asp-for="datefrom" type="datetime-local" class="fs-6 form-control" placeholder="Username"
+                           aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 col-12 px-0 fs-1 px-0 ps-xl-2 ps-0 text-center">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text mdi mdi-account fs-6" for="dateto">
+                            結束日期
+                        </span>
+                    </div>
+                    <input id="dateto" asp-for="dateto" type="datetime-local" class="fs-6 form-control" placeholder="Username"
+                           aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center my-3 bg-light">
+            <div class="col-12 rounded-3 position-relative text-center border p-0">
+                <textarea asp-for="ex_description" id="contentinput"
+                          class="col-11 h5 rounded-3 border-0 my-5" rows="15" placeholder="輸入詳細"
+                          autocomplete="off" readonly></textarea>
+                <i id="editcontent"
+                   class="fa-regular fa-pen-to-square fa-2x m-2 p-2 rounded-3 opacity-75 position-absolute bottom-0 end-0"
+                   href="#"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="accordion p-0" id="accordionHeaderBorderBottom">
+                <div class="card">
+                    <div class="card-header" id="headingBorderBottomOne">
+                        <h2 class="mb-0">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="m-0 px-3 my-3">票卷管理</h4>
+                                <div class="d-flex align-items-center">
+                                    <h2 class="text-end m-0 mx-3"></h2>
+
+                                    <button type="button" data-toggle="collapse"
+                                            data-target="#collapseBorderBottomOne" aria-expanded="true"
+                                            aria-controls="collapseBorderBottomOne">
+                                        <i class="fa-solid fa-chevron-down fa-1x mx-3 opacity-75"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </h2>
+                    </div>
+                    <div id="collapseBorderBottomOne" class="collapse show"
+                         aria-labelledby="headingBorderBottomOne" data-parent="#accordionHeaderBorderBottom">
+                        <div id="ticketreport" class="row rounded-3 p-3 my-4 align-items-center">
+
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mx-4 my-2 p-4 border border-1">
+                                    <div class="card-body text-center">
+                                        <h4 class="card-title my-4">預期進場人數</h4>
+                                        <input asp-for="ex_personTime" id="expectedpeople" type="number"
+                                               class="text-center border-0 border-secondary border-bottom my-4 py-3 form-control fs-4"
+                                               placeholder="輸入數字" autocomplete="off"></input>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mx-4 my-2  p-4 border border-1">
+                                    <div class="card-body text-center">
+                                        <h4 class="card-title my-4">預期收益金額</h4>
+                                        <input asp-for="ex_totalImcome" id="expecteincome" type="number"
+                                               class="text-center border-0 border-secondary border-bottom my-4 py-3 form-control fs-4"
+                                               placeholder="輸入數字" autocomplete="off"></input>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-xl-4">
+                                <div class="card mx-4 my-2  p-4 border border-1">
+                                    <div class="card-body text-center">
+                                        <h4 class="card-title my-1">門票定價</h4>
+                                        <i id="editticketprice"
+                                           class="fa-regular fa-pen-to-square fa-lg p-0 mx-3 my-4 opacity-75">
+                                            自訂
+                                        </i>
+                                        <i id="mathticket"
+                                           class="fa-regular fa-keyboard fa-lg p-0 mx-3 my-4 opacity-75">
+                                            試算
+                                        </i>
+                                        <input asp-for="ticket_Peice" id="ticketpriceinput" type="number"
+                                               class="text-danger text-center border-0 border-secondary border-bottom m-0 py-3 form-control mb-3 fs-4"
+                                               placeholder="輸入數字" autocomplete="off"></input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="accordion p-0" id="accordionHeaderBorderBottom">
+                <div class="card">
+                    <div class="card-header" id="headingBorderBottomOne">
+                        <h2 class="mb-0">
+                            <div class="d-flex justify-content-between">
+                                <h4 class="m-0 px-3 my-3">攤位管理</h4>
+                                <div class="d-flex align-items-center">
+                                    <h2 class="text-end m-0 mx-3"></h2>
+                                    <button type="button" data-toggle="collapse"
+                                            data-target="#collapseBorderBottomO" aria-expanded="true"
+                                            aria-controls="collapseBorderBottomOne">
+                                        <i class="fa-solid fa-chevron-down fa-sm mx-3 opacity-75"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </h2>
+                    </div>
+                    <div id="collapseBorderBottomO" class="collapse show"
+                         aria-labelledby="headingBorderBottomOne" data-parent="#accordionHeaderBorderBottom">
+                        <div id="manufacturerreport"
+                             class="row rounded-3 p-3 align-items-center justify-content-center">
+
+
+
+                            <div class="col-lg-11 col-sm-12 my-3 py-3 d-flex flex-wrap text-center border border-1 rounded-3 ">
+                                <h4 class="col-lg-3 col-sm-6 col-12 m-0">攤位等級</h4>
+                                <h4 class="col-lg-3 col-sm-6 col-12 m-0"></h4>
+                                <h4 class="col-lg-3 col-sm-6 col-12 m-0">攤位價格</h4>
+                                <h4 class="col-lg-3 col-sm-6 col-12 m-0">攤位數量</h4>
+                            </div>
+
+                            <div class="col-11 d-flex align-items-center text-center border rounded-pill border-1">
+                                <a id="addbooth" href="#" class="py-3 w-100 h-100 border-0 text-reset">
+                                    <i class="w-100 h-100 fa-solid fa-plus fa-2x "></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-around my-5">
+            <button type="submit" class="btn btn-outline-dark col-lg-2 col-sm-4 col-4 fs-4">儲存</button>
+            <a asp-action="Index" class="btn btn-outline-dark col-lg-2 col-sm-4 col-4 fs-4">回上一頁</a>
+        </div>
+    </form>
+</div>
+
+
+
+@*------------------------------------------------------------------------------------------------------------*@
+@*<div class="container">
+    <form action="@Url.Action("CreatExhibition")" method="post" enctype="multipart/form-data">
+        <div class="row align-items-center my-3">
+            <div class="col-lg-1 col-sm-2 col-4">
+                <i id="edittitle" class="fa-regular fa-pen-to-square fa-4x opacity-75 text-center"></i>
+            </div>
+            <div class="col-lg-10 col-sm-8 col-6 p-0 text-start">
+                <input asp-for="exhibitName" id="titleinput" type="text" class="text-center my-3 py-3 mx-3 border-0 rounded-3 col-11 h1 mx-0 bg1"
+                       placeholder="輸入標題" autocomplete="off">
+            </div>
+            <span class="col-lg-1 col-sm-2 col-2 badge bg-danger text-black fs-3 py-4">規劃</span>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 col-12 my-5">
+                <div id="areaedit" class="d-flex justify-content-around">
+                    <h2 class="mx-5 mb-5 w-50">No.<input asp-for="exhibitId" class="h2 pe-none border-0 w-50 bg2" value="" readonly></h2>
+                    <button class="w-25 h-25 btn px-0 bg2 border border-1 d-flex justify-content-center"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <input asp-for="areaNum" type="text" id="areainput" class="pe-none w-75 text-center border-0 h3 m-0 bg2 c1"
+                               value="展區"></input>
+                        <i class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-3"></i>
+                    </button>
+                    <ul class="dropdown-menu text-center p-0">
+                        <li><a class="dropdown-item h4 m-0" href="#">A</a></li>
+                        <li><a class="dropdown-item h4 m-0" href="#">B</a></li>
+                    </ul>
+                </div>
+                <div class="position-relative my-4">
+                    <img id="ticketimg" class="rounded-3 border border-1 w-100" src="@Url.Content("~/images/ticketdefault.png")"
+                         alt="">
+                    <label for="ticketimginput" class="d-inline">
+                        <input asp-for="exhibit_T_img" type="file" id="ticketimginput" hidden accept=".png,.jpg">
+                        <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0 bg1"></i>
+                    </label>
+                </div>
+                <div class="position-relative">
+                    <img id="horizontalposterimage" class="rounded-3 border border-1 w-100"
+                         src="@Url.Content("~/images/horizontalposterdefault.png")" alt="">
+                    <label for="horizontalposterimageinput" class="d-inline">
+                        <input asp-for="exhibit_Pre_img" type="file" id="horizontalposterimageinput" hidden accept=".png,.jpg">
+                        <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute end-0 bottom-0 bg1"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 col-12 p-lg-5 p-sm-2">
+                <div class="position-relative p-3">
+                    <img id="verticalposterimage" class="rounded-3 border border-1 w-100"
+                         src="@Url.Content("~/images/verticalposterdefault.png")">
+                    <label for="verticalposterimageinput" class="d-inline">
+                        <input asp-for="exhibit_P_img" type="file" id="verticalposterimageinput" hidden accept=".png,.jpg">
+                        <i class="fa-solid fa-file-image fa-2x m-2 p-2 rounded-3 position-absolute bottom-0 end-0 translate-middle bg1"
+                           href="#"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-evenly">
+            <div class="col-lg-1 col-sm-12 col-12 fs-1 text-center">從</div>
+            <div class="col-lg-5 col-sm-12 col-12 text-center">
+                <input asp-for="datefrom" id="fromdateinput" type="datetime-local"
+                       class="w-75 h2 bg1 my-3 p-3 rounded-3 border-0"></input>
+            </div>
+            <div class="col-lg-1 col-sm-12 col-12 fs-1 text-center">到</div>
+            <div class="col-lg-5 col-sm-12 col-12 text-center">
+                <input asp-for="dateto" id="todateinput" type="datetime-local"
+                       class="w-75 h2 bg1 my-3 p-3 rounded-3 border-0"></input>
+            </div>
+        </div>
+        <div class="row align-items-center my-5">
+            <div class="col-12 rounded-3 position-relative text-center border bg1">
+                <textarea asp-for="ex_description" id="contentinput" class="col-11 h3 rounded-3 border-0 my-5 bg1" rows="15"
+                          placeholder="輸入詳細" autocomplete="off" readonly></textarea>
+                <i id="editcontent"
+                   class="fa-regular fa-pen-to-square fa-3x m-2 p-2 rounded-3 opacity-75 position-absolute bottom-0 end-0"
+                   href="#"></i>
+            </div>
+        </div>
+        <div class="row justify-content-between rounded-3 p-3 my-5 bg1">
+            <h2 class="col-6 p-0 m-0">票卷管理</h2>
+            <div class="col-6 text-end">
+                <a id="ticketreportshow" href="" class="text-reset p-0 pt-1">
+                    <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
+                </a>
+            </div>
+        </div>
+        <div id="ticketreport" class="row rounded-3 p-3 align-items-center bg1">
+            <div class="col-12 d-flex justify-content-lg-between justify-content-center flex-wrap p-0">
+                <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                    <h2 class="m-3 fw-bold">預計進場人數</h2>
+                    <input asp-for="ex_personTime" id="expectedpeople" type="number"
+                           class="text-center border-0 border-secondary border-bottom m-3 p-3 h3 bg2"
+                           placeholder="輸入數字" autocomplete="off"></input>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                    <h2 class="m-3 fw-bold">預計收益金額</h2>
+                    <input asp-for="ex_totalImcome" id="expecteincome" type="number"
+                           class="text-center border-0 border-secondary border-bottom m-3 p-3 h3 bg2"
+                           placeholder="輸入數字" autocomplete="off"></input>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-10 col-sm-12 col-12 bg2 d-flex flex-column text-center p-lg-5 p-sm-3 m-lg-5 m-sm-3 p-3 m-3 rounded-3">
+                    <h2 class="m-3 fw-bold">門票價格</h2>
+                    <input asp-for="ticket_Peice" id="ticketpriceinput" type="number"
+                           class="h1 text-center border-0 border-secondary border-bottom fw-bold my-3 py-2 bg2"
+                           autocomplete="off"></input>
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <a id="editticketprice" href="" class="text-reset p-0 my-2 pt-1">
+                            <i class="fa-regular fa-pen-to-square fa-xl p-0 mx-3 opacity-75"> 自訂</i>
+                        </a>
+                        <a id="mathticket" href="" class="text-reset p-0 my-2 pt-1">
+                            <i class="fa-regular fa-keyboard fa-xl p-0 mx-3 opacity-75"> 試算</i></i>
+                        </a>
+                    </div>
+                    <!-- <h6 id="lowprice" class="visually-hidden my-1 text-danger">低於基本價格</h6>
+                    <h6 id="highprice" class="visually-hidden my-1 text-success">高於基本價格</h6> -->
+                </div>
+            </div>
+        </div>
+        <div class="row rounded-3 p-3 my-5 bg1">
+            <h2 class="col-6 p-0 m-0">攤位管理</h2>
+            <div class="col-6 text-end">
+                <a id="manufacturerreportshow" href="" class="text-reset p-0 pt-1">
+                    <i class="fa-solid fa-chevron-down fa-2x p-0 opacity-75"></i>
+                </a>
+            </div>
+        </div>
+        <div id="manufacturerreport" class="row rounded-3 p-3 align-items-center justify-content-center bg1">
+            <div class="col-lg-10 col-sm-12 my-3 py-3 d-flex flex-wrap rounded-pill text-center rounded-3 bg2">
+                <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位等級</h3>
+                <h3 class="col-lg-3 col-sm-6 col-12 m-0"></h3>
+                <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位價格</h3>
+                <h3 class="col-lg-3 col-sm-6 col-12 m-0">攤位數量</h3>
+            </div>
+
+
+
+            <div class="col-10 my-3 py-3 d-flex rounded-pill align-items-center text-center rounded-3 bg2">
+                <a id="addbooth" href="#" class="w-100 h-100 border-0 text-reset bg2">
+                    <i class="w-100 h-100 fa-solid fa-plus fa-3x "></i>
+                </a>
+            </div>
+        </div>
+        <div class="row justify-content-around my-5">
+            <button type="submit" class="btn btn-dark col-lg-3 col-sm-3 col-4 fs-2">儲存修改</button>
+            <!-- <button class="btn btn-warning col-lg-3 col-sm-3 col-4 fs-2">進入籌備</button> -->
+            <button class="btn btn-danger col-lg-3 col-sm-3 col-4 fs-2">刪除展覽</button>
+        </div>
+    </form>
+</div>
+*@
+@section Scripts
+    {
+    @*    <script src="~/js/bootstrap.bundle_admin.js"></script>
+    <script src="~/js/jquery_admin..js"></script>*@
+    <script>
+        $('.areaoption').on('click', (e) => {
+            $('#selecarea').text($(e.target).text())
+            if ($(e.target).text() == 'A') {
+                $('#area').val(1)
+            }
+            else {
+                $('#area').val(2)
+            }
+            console.log($('#area').val());
+        })
+
+        $('#datefrom').on('focus', (e) => {
+
+        })
+        //--------------------------------------------------
+        //$('a').on('click', (e) => {
+        //    e.preventDefault()
+        //})
+
+        //$('#edittitle').on('click', (e) => {
+        //    $('#titleinput').removeClass('text-center').trigger('focus')
+        //    $(e.target).css('pointer-events', 'none')
+        //})
+
+        $('#titleinput').on('focus', (e) => {
+            $('#titleinput').removeClass('text-center')
+        })
+
+
+        $('#titleinput').on('blur', (e) => {
+            $(e.target).addClass('text-center').css('pointer-events', 'none')
+            $('#edittitle').css('pointer-events', 'all')
+        })
+
+
+        $('#ticketimginput').on('change', (e) => {
+            let readfile = new FileReader();
+            readfile.readAsDataURL(e.target.files[0])
+            readfile.addEventListener('load', () => {
+                $('#ticketimg').attr('src', `${readfile.result}`)
+            })
+        })
+
+        $('#horizontalposterimageinput').on('change', (e) => {
+            let readfile = new FileReader();
+            readfile.readAsDataURL(e.target.files[0])
+            readfile.addEventListener('load', () => {
+                $('#horizontalposterimage').attr('src', `${readfile.result}`)
+            })
+        })
+
+        $('#verticalposterimageinput').on('change', (e) => {
+            let readfile = new FileReader();
+            readfile.readAsDataURL(e.target.files[0])
+            readfile.addEventListener('load', () => {
+                $('#verticalposterimage').attr('src', `${readfile.result}`)
+            })
+        })
+
+        $('#editcontent').on('click', (e) => {
+            $('#contentinput').removeAttr('readonly').trigger('focus')
+            $(e.target).css('pointer-events', 'none')
+        })
+
+        $('#contentinput').on('focus', (e) => {
+            $(e.target).parent().toggleClass('border-dark')
+        })
+
+        $('#contentinput').on('blur', (e) => {
+            $(e.target).attr('readonly', 'readonly')
+            $('#editcontent').css('pointer-events', 'all').css('border-color', 'none')
+            $(e.target).parent().toggleClass('border-dark')
+        })
+
+        $('#editticketprice').on('click', (e) => {
+            $('#ticketpriceinput').trigger('focus').css('pointer-events', 'all')
+        })
+
+        $('#ticketpriceinput').on('blur', (e) => {
+            $(e.target).css('pointer-events', 'none')
+        })
+
+        $('#mathticket').on('click', (e) => {
+            e.preventDefault();
+            $('#ticketpriceinput').removeClass('text-danger').removeClass('text-success')
+            if ($('#expectedpeople').val() != 0 && $('#expecteincome').val() != 0) {
+                $('#ticketpriceinput').val(mathticket($('#expectedpeople').val(), $('#expecteincome').val()))
+            }
+        })
+
+        $('#ticketpriceinput').on('change', (e) => {
+            if ($('#expectedpeople').val() != 0 && $('#expecteincome').val() != 0) {
+                if (e.target.value < mathticket($('#expectedpeople').val(), $('#expecteincome').val())) {
+                    $(e.target).removeClass('text-success').addClass('text-danger')
+                }
+                else {
+                    $(e.target).removeClass('text-danger').addClass('text-success')
+                }
+            }
+        })
+
+
+
+
+
+
+        var i = 0;
+
+        $('#manufacturerreport').on('click', (e) => {
+            $('#boothlevel').removeClass('c1').addClass('c2')
+            if ($(e.target).hasClass('dropdown-item')) {
+                e.preventDefault();
+                if ($(e.target).text() == '大型') {
+                    $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+                }
+                else if ($(e.target).text() == '中型') {
+                    $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+                }
+                else if ($(e.target).text() == '小型') {
+                    $(e.target).closest('ul').prev().find('input').val($(e.target).text())
+                }
+            }
+            else if ($(e.target).hasClass('deletebooth')) {
+                $(e.target).parent().parent().remove();
+                i = 0;
+                $('#manufacturerreport').find('.blv').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothLv`)
+                    i++;
+                })
+                i = 0;
+                $('#manufacturerreport').find('.bpri').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothPrice`)
+                    i++;
+                })
+                i = 0;
+                $('#manufacturerreport').find('.bsum').each(function() {
+                    $(this).attr('name', `setboothslist[${i}].boothsum`)
+                    i++;
+                })
+            }
+        })
+
+        $('#addbooth').on('click', (e) => {
+            e.preventDefault();
+            $(e.target).closest('div').before(`<div
+                                                                                                        class="col-11 py-3 my-3 d-flex rounded-pill align-items-center text-center border border-1 rounded-3">
+                                                                                                        <button class="w-25 btn px-0 rounded-pill d-flex justify-content-center"
+                                                                                                            data-toggle="dropdown" aria-expanded="false"><input
+                                                                                                                name="setboothslist[${i}].boothLv"
+                                                                                                                class="pe-none w-75 text-center border-0 h5 m-0 c1 blv"
+                                                                                                                value="攤位等級"></input><i
+                                                                                                                class="fa-solid fa-chevron-down fa-lg opacity-75 ms-2 mt-2"></i></button>
+                                                                                                        <ul class="dropdown-menu ms-5 text-center p-0">
+                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">大型</a></li>
+                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">中型</a></li>
+                                                                                                            <li><a class="dropdown-item h5 m-0" href="#">小型</a></li>
+                                                                                                        </ul>
+
+                                                                                                        <h3 class="w-25 m-0"></h3>
+                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothPrice"
+                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bpri"
+                                                                                                                placeholder="輸入價格" type="number" autocomplete="off"></input></div>
+                                                                                                        <div class="w-25"><input name="setboothslist[${i}].boothsum"
+                                                                                                                class="w-50 text-center h5 m-0 border-0 border-secondary border-bottom py-2 bsum"
+                                                                                                                placeholder="輸入數量" type="number" autocomplete="off"></input><i
+                                                                                                                class="position-absolute mx-3 pt-2 fa-regular fa-trash-can fa-2x deletebooth"></i>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                `)
+            i++
+        })
+
+
+        function mathticket(expectedpeople, expecteincome) {
+            let lowpeople = expectedpeople * 0.5
+            let heightpeople = expectedpeople * 1.5
+            let ticketformath = ((expecteincome / lowpeople) + (expecteincome / heightpeople) + (expecteincome / expectedpeople)) / 3
+            let ticketoriginal = Math.floor(((expecteincome / lowpeople) + (expecteincome / heightpeople) + (expecteincome / expectedpeople)) / 3)
+            let integer = 0
+            let price = "1"
+            while (ticketformath >= 1) {
+                ticketformath = ticketformath / 10
+                integer++
+            }
+            for (let i = 0; i < integer - 2; i++) {
+                price += "0"
+            }
+            return Math.round(ticketoriginal / parseInt(price)) * parseInt(price)
+        }
+    </script>
+
+
+
+}
+
+
+

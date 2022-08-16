@@ -1,0 +1,266 @@
+﻿@model Appliess
+
+@{
+    Layout = "_Layout_manuf";
+}
+@section Style{
+    <link rel="stylesheet" href="~/css/MNFstyleIndex.css" asp-append-version="true" />
+
+}
+
+    <section class="portfolio-work " style="margin-top:5%">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <div class="portfolio-menu">
+                            <div class="btn-group btn-group-toggle justify-content-center" data-toggle="buttons">
+                                <label class="btn btn-sm btn-primary active">
+                                    <input type="radio" name="shuffle-filter" value="all" checked="checked" />全部
+                                </label>
+                                <label class="btn btn-sm btn-primary">
+                                    <input type="radio" name="shuffle-filter" value="a" />A展區
+                                </label>
+                                <label class="btn btn-sm btn-primary">
+                                    <input type="radio" name="shuffle-filter" value="b" />B展區
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row shuffle-wrapper" id="showList">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 my-5">
+                    <div class="widget widget-tag text-center">
+                        <h4 class="widget-title">攤位類型</h4>
+                        <ul class="widget-tag-list size-title">
+                            <li>
+                                <a class="btnBoothLv" role="button" id="btnBoothB" href="#big">大型</a>
+                            </li>
+                            <li>
+                                <a class="btnBoothLv" role="button" id="btnBoothM" href="#middle">中型</a>
+                            </li>
+                            <li>
+                                <a class="btnBoothLv" role="button" id="btnBoothS" href="#small">小型</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12 my-5">
+                    <div class="widget widget-tag text-center">
+                        <h4 class="widget-title">攤位編號</h4>
+                        <ul class="widget-tag-list booth-list booth" id="big">
+                        </ul>
+                        <ul class="widget-tag-list booth-list booth" id="middle">
+                        </ul>
+                        <ul class="widget-tag-list booth-list booth" id="small">
+                        </ul>
+                    </div>
+                    <!-- <h2 class="text-center my-5">此類型已完售!</h2> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mt-5 mt-lg-0">
+                    <div class="pl-0 pl-lg-4">
+                        <i class="ion-quote"></i>
+                        <h4>注意事項</h4>
+                        <p>
+                            1.進場佈置或展出期間及出場時，參展廠商之工作人員出入會場，請一律佩掛主辦單位製發之
+                            工作證始得通行。
+                        </p>
+                        <p>2.使用動力電源之廠商應確實注意安全，不用時或每日離開會場前，應將攤位內所有電源關閉。</p>
+                        <p>
+                            3.參展廠商佈置裝潢或陳列展示產品均不得超過所屬攤位範圍，如有違反規定，主辦單位得要
+                            求改進或逕予拆除。
+                        </p>
+                        <p>
+                            4.展場地面、牆面、柱面等不得挖掘、打洞、改變或使用鋼釘。舖設地毯時，不得使用強力膠
+                            或其他黏著劑直接黏於地面，以免拆除後復原困難，並請愛護會場之一切公共設施。
+                        </p>
+                        <p>
+                            5.會場內除大會廣播器外，廠商請勿使用任何播音器材，廠商自備之閉路電視、投影機、幻燈
+                            機等不在此限，但播放音量以不妨礙到會場及鄰近廠商權益為準
+                        </p>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 text-right align-self-end">
+                    <div class="dataform">
+                    </div>
+                    <form method="post"  action="@Url.Action("ApplyStand","Manufacturer") ">
+                        <input id="eId"  name="e_Id" value="" hidden/>
+                        <input id="bNum" name="boothId" value="" hidden/>
+                        <input id="mId" name="mid" value="" hidden/>
+                        <button type="submit" class="btn btn-main">提交申請</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    @section Scripts{
+    <script src="~/lib/slick-carousel/slick.min.js" asp-append-version="true"></script>
+    <!-- filter -->
+    <script src="~/lib/plugins/shuffle/shuffle.min.js"></script>
+    <script src="~/lib/plugins/SyoTimer/jquery.syotimer.min.js"></script>
+    <script src="~/js/MFNscriptIndex.js"></script>
+
+    <script>
+let mfId=JSON.parse( sessionStorage.getItem('Info'));
+$(() => {
+    $('#mId').val(mfId.id);
+})
+        let exhibition = new Array();
+
+        axios.get('@Url.Action("getAllExhibition")')
+            .then(res => {
+                console.log(res.data)
+                exhibition = res.data
+            })
+            .then(res => showExhibitName(exhibition))
+            .catch(err => console.log(err));
+
+           
+
+
+
+
+        function showExhibitName(exhibition) {
+            let showlist = $("#showList");
+            console.log(showlist);
+            for (let i = 0; i < exhibition.length; i++) {
+                let zoneTag = "";
+                if (exhibition[i].areaNum == 1) {
+                    zoneTag = "a";
+                }
+                else if (exhibition[i].areaNum == 2) {
+                    zoneTag = "b";
+                }
+                let datefrom = `${exhibition[i].datefrom}`;
+
+                let dateto = `${exhibition[i].dateto}`;
+
+
+                const root = @Url.Content("~/images/")
+                    showlist.append(`
+                    <div class="col-lg-4 col-sm-6 portfolio-item shuffle-item showsize"  data-groups="[&quot;${zoneTag}&quot;]">
+                        <img src="${root}${exhibition[i].exhibitPreImg}" alt="">
+                        <div class="portfolio-hover">
+                            <ul class="portfolio-content">
+                            <li>
+                                <a href="${root}${exhibition[i].exhibitPreImg}" class="portfolio-popup"></a>
+                                <button data-id="${exhibition[i].exhibitId}" data-name="${exhibition[i].exhibitName}" class="h3 btn btn-woo">${exhibition[i].exhibitName}</button>
+                                <p class="m-0">${datefrom.slice(0, 10)} ~ ${dateto.slice(0, 10)}</p>
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                                                    `)
+            }
+            show();
+            AddClick();
+        }
+        let eid;
+        let eName;
+        function AddClick() {
+            $(".portfolio-content").click((e) => {
+                let data = [];
+                if ($(e.target).hasClass("btn-woo")) {
+                    eid = $(e.target).data('id')
+                    eName = $(e.target).data('name')
+                    $('#eId').val(eid);
+                    console.log(eid);
+                    axios.post('@Url.Action("GetAllBooth")', { "Ex_id": eid })
+                        .then(res => data = res.data)
+                        .then(res => chooseLv(data))
+                        .catch(err => console.log(err));
+                }
+            })
+            let boothdata = [];
+            let btnLv = $(".btnBoothLv")
+            function chooseLv(data) {
+                boothdata = data
+                return boothdata;
+                console.log(boothdata);
+            }
+            //遍例攤位
+            btnLv.click((e) => {
+                let id = $(e.target).attr("id");
+                console.log(id);
+                $("#big").empty();
+                $("#middle").empty();
+                $("#small").empty();
+                for (let i = 0; i < boothdata.length; i++) {
+                    if (id == "btnBoothB" && boothdata[i]['boothLv'] == 3) {
+                        $("#big").append(`<li><button data-num="${boothdata[i]['boothNumber']}" data-price="${boothdata[i]['boothPrice']}" data-lv="${boothdata[i]['boothLv']}" class="btn btnboothnum" value="${boothdata[i]['boothNumber']}"> ${boothdata[i]['boothNumber']}  </button></li>`)
+                    }
+                    else if (id == "btnBoothM" && boothdata[i]['boothLv'] == 2) {
+                        console.log("中" + boothdata[i]['boothNumber'])
+                        $("#middle").append(`<li><button data-num="${boothdata[i]['boothNumber']}" data-price="${boothdata[i]['boothPrice']}" data-lv="${boothdata[i]['boothLv']}" class="btn btnboothnum" value="${boothdata[i]['boothNumber']}">${boothdata[i]['boothNumber']}</button></li>`)
+                    } else if (id == "btnBoothS" && boothdata[i]['boothLv'] == 1) {
+                        console.log("小" + boothdata[i]['boothNumber'])
+                        $("#small").append(`<li><button data-num="${boothdata[i]['boothNumber']}" data-price="${boothdata[i]['boothPrice']}" data-lv="${boothdata[i]['boothLv']}" class="btn btnboothnum" value="${boothdata[i]['boothNumber']}">${boothdata[i]['boothNumber']}</button></li>`)
+                    }
+                }
+                let check1 = $("#big").children();
+                let check2 = $("#middle").children();
+                let check3 = $("#small").children();
+                if (check1.length <= 0) {
+                    $("#big").append(`<div> 無此尺寸攤位 </div>`)
+                }
+                if (check2.length <= 0) {
+                    $("#middle").append(`<div> 無此尺寸攤位 </div>`)
+                }
+                if (check3.length <= 0) {
+                    $("#small").append(`<div> 無此尺寸攤位 </div>`)
+                }
+            })
+                    $(".booth").click((e) => {
+            $(".dataform").empty();
+            let currentBooth = $(e.target);
+            $('#bNum').val(currentBooth.val());
+            let currentBoothLv = currentBooth.data('lv')
+            console.log($('#bNum').val());
+            console.log(currentBoothLv);
+            if (currentBoothLv == 3) {
+                $(".dataform").prepend(`<h4>${eName}</h4><h4 class="mb-3">您選取的攤位編號：${currentBooth.data('num')}</h4>
+                    <h4>攤位尺寸：360cm x 180cm</h4>
+                    </p>
+                    <div class="price-title text-right">
+                        <h4>攤位價格：${currentBooth.data(`price`)}$</h4>
+                        <p>請於申請通過後盡快完成付款</p>
+                    </div>`)
+
+            }
+            else if (currentBoothLv == 2) {
+                           $(".dataform").prepend(`<h4>${eName}</h4><h4 class="mb-3">您選取的攤位編號：${currentBooth.data('num')}</h4>
+                    <h4>攤位尺寸：240cm x 120cm</h4>
+                    </p>
+                    <div class="price-title text-right">
+                        <h4>攤位價格：${currentBooth.data(`price`)}$</h4>
+                        <p>請於申請通過後盡快完成付款</p>
+                    </div>`)
+
+            }
+           else if (currentBoothLv == 1) 
+           {
+           $(".dataform").prepend(`
+           <h4>${eName}</h4>
+           <h4 class="mb-3">您選取的攤位編號：${currentBooth.data('num')}</h4>
+                    <h4>攤位尺寸：120cm x 60cm</h4>
+                    </p>
+                    <div class="price-title text-right">
+                        <h4>攤位價格：${currentBooth.data(`price`)}$</h4>
+                        <p>請於申請通過後盡快完成付款</p>
+                    </div>`)
+           }
+        })
+        }
+
+        $('#out').click(function() {
+            sessionStorage.clear();
+        })
+    </script>
+    }
+    @*
+    *@

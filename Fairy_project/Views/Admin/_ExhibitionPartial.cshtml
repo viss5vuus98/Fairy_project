@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Fairy_project.Models.Exhibitionss>
+
+
+<div class="col-lg-4 col-md-6 col-xs-12 col-12 p-0">
+    <a href="@Url.Action("CreatExhibition")" class="text-reset" style="text-decoration: none
+">
+        <div id="newe" class="card h-75 justify-content-center align-items-center">
+            <i class="fa-solid fa-plus fa-4x"></i>
+        </div>
+    </a>
+</div>
+
+@foreach (var item in Model)
+{
+    string date = $"{Convert.ToDateTime(item.Datefrom).ToString("yyyy/MM/dd")} ~ {Convert.ToDateTime(item.Dateto).ToString("yyyy/MM/dd")}";
+    string imgsrc = Url.Content($"~/images/{item.ExhibitPreImg}");
+    <div class="col-lg-4 col-md-6 col-xs-12 p-0">
+        <div class="card">
+            <div class="card-img"
+             style="background-image:url(@imgsrc);">
+                <div class="overlay">
+                    <div class="overlay-content">
+                        <a asp-controller="Admin" asp-action="ExhibitIdDetail" asp-route-exhibitId="@item.ExhibitId" class="mx-2">編輯</a>
+                        @{
+                            if (item.ExhibitStatus == 3 || item.ExhibitStatus ==2)
+                            {
+                                <a class="mx-2 qrcode" data-toggle="modal"
+                           data-target="#qrmodal" data-whatever="@@mdo" data-eid="@item.ExhibitId">掃碼</a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="d-flex justify-content-between align-items-center my-2">
+                    <h2 class="m-0">@item.ExhibitName</h2>
+                    @if (item.ExhibitStatus == 1)
+                    {
+                        <span class="mx-3 badge bg-danger fs-6 fw-normal h-25">規劃</span>
+                    }
+                    else if (item.ExhibitStatus == 2)
+                    {
+                        <span class="mx-3 badge bg-warning text-dark fs-6 fw-normal h-25">籌備</span>
+                    }
+                    else if (item.ExhibitStatus == 3)
+                    {
+                        <span class="mx-3 badge bg-success fs-6 fw-normal h-25">舉辦</span>
+                    }
+                </div>
+                <p>@date</p>
+                <p>@item.ExDescription</p>
+            </div>
+        </div>
+    </div>
+}

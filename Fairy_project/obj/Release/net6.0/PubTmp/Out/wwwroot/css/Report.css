@@ -1,0 +1,25 @@
+﻿.hrline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+hr {
+    flex: 1;
+    border: none;
+    height: 2px;
+    background: black;
+}
+
+.form-control:focus {
+    border-color: #BBB;
+    box-shadow: none;
+}
+
+#datepicker {
+    cursor: pointer;
+}
+
+    #datepicker:hover {
+        background-color: #CCC;
+    }

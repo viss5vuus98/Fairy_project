@@ -1,0 +1,551 @@
+﻿@model IEnumerable<Fairy_project.ViewModels.shoppingcartViewModel>
+@using Fairy_project.ViewModels
+
+@*@{
+        Layout = "~/Views/Shared/_LayoutB5.cshtml";
+    }*@
+
+@section Style{
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" asp-append-version="true">
+    <!-- Ionicons Fonts Css -->
+    <link rel="stylesheet" href="~/lib/plugins/ionicons/ionicons.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="~/lib/plugins/animate-css/animate.css">
+    <!-- Hero area slider css-->
+    <link rel="stylesheet" href="~/lib/plugins/slider/slider.css">
+    <!-- slick slider -->
+    <link rel="stylesheet" href="~/lib/plugins/slick/slick.css">
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="~/lib/plugins/facncybox/jquery.fancybox.css">
+    <!-- hover -->
+    <link rel="stylesheet" href="~/lib/plugins/hover/hover-min.css" asp-append-version="true">
+    <!-- Magnify Popup -->
+    <link rel="stylesheet" href="~/lib/plugins/magnific-popup/magnific-popup.css">
+    <!-- googlefont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/shoppingcart.css" rel="stylesheet" asp-append-version="true" />
+}
+
+
+
+<main class="first">
+    <div class="container mt-7 mb-5">
+        <div class="row row-cols-3 row-cols-sm-3">
+            <div class="col text-center">
+                <div class="check-step check-step-finished d-flex flex-column justify-content-center">
+                    <i class="fa-solid fa-list-check" style="font-size: 40px;"></i><span>
+                        STEP
+                        1
+                    </span><span>確認訂單</span>
+                </div>
+            </div>
+            <div class="col text-center">
+                <div class="check-step d-flex flex-column justify-content-center">
+                    <i class="fa-solid fa-circle-minus" style="font-size: 40px;"></i><span>
+                        STEP
+                        2
+                    </span><span>建立訂單</span>
+                </div>
+            </div>
+            <div class="col text-center">
+                <div class="check-step d-flex flex-column justify-content-center">
+                    <i class="fa-solid fa-circle-minus" style="font-size: 40px;"></i><span>
+                        STEP
+                        3
+                    </span><span>完成訂單</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticket">
+        <h3 style="text-align:center;margin-top:200px;margin-bottom:200px;">購物車空空如也~~</h3>
+    </div>
+    <div class="container">
+        <div class="total1 d-flex">
+            <div class="d-flex" id="totalprice">
+                總金額:<p style="font-size:20px;margin-top: 5px;">0</p>元
+            </div>
+            <div class="buttons">
+                <a asp-controller="Home" asp-action="search"><button type="button" class="btn1 col-md-7 btn btn-main btn-small btn-round" id="keepbuy">繼續選購</button></a>
+                <button type="button" class="btn1 col-md-7 btn btn-main btn-small btn-round" id="gopay">
+                    前往付款
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<main class="second">
+    <div class="container">
+        <div class="container mt-7">
+            <div class="row row-cols-3 row-cols-sm-3">
+                <div class="col text-center">
+                    <div class="check-step check-step-finished d-flex flex-column justify-content-center">
+                        <i class="fa-solid fa-list-check" style="font-size: 40px;"></i><span>
+                            STEP
+                            1
+                        </span><span>確認訂單</span>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="check-step check-step-finished d-flex flex-column justify-content-center">
+                        <i class="fa-solid fa-address-card" style="font-size: 40px;"></i><span>
+                            STEP
+                            2
+                        </span><span>建立訂單</span>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="check-step d-flex flex-column justify-content-center">
+                        <i class="fa-solid fa-circle-minus" style="font-size: 40px;"></i><span>
+                            STEP
+                            3
+                        </span><span>完成訂單</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="orderdetial">
+            <div class="block col-md-6 col-xs-12 h-100">
+                <h2>訂購人資訊</h2>
+                <form class="checkout-form">
+                    <div>
+                        <div class="form-group">
+                            <label for="姓名">姓名:</label>
+                            <input type="text" id="name" class="form-control" name="name" placeholder="請輸入姓名" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="手機">手機:</label>
+                            <input type="text" id="cellphone" class="form-control" placeholder="09xxxxxxxx" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email:</label>
+                            <input type="email" id="Email" class="form-control" placeholder="test@@gmail.com" autocomplete="off">
+                        </div>
+                    </div>
+                </form>
+        
+                <h2>付款資訊</h2>
+                <div class="checkout-product-details">
+                    <div class="payment">
+                    <div class="card-details">
+                        <form  class="checkout-form">
+                            <div class="form-group">
+                                <label for="card-number">卡號</label>
+                                <input id="card-number" class="form-control" type="tel" placeholder="•••• •••• •••• ••••">
+                            </div>
+                            <div class="form-group half-width padding-right">
+                                <label for="card-expiry">到期日</label>
+                                <input id="card-expiry" class="form-control" type="tel" placeholder="MM / YY">
+                            </div>
+                            <div class="form-group half-width padding-left">
+                                <label for="card-cvc">安全碼</label>
+                                <input id="card-cvc" class="form-control"  type="tel" maxlength="3" placeholder="CVC" >
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="radio d-block ">
+                <h2>付款資訊</h2>
+                <input type="radio" value="LINEPAY" name='option' /> LINEPAY
+                <input type="radio" value="ATM轉帳" name='option' /> ATM轉帳
+                <input type="radio" value="信用卡付款" name='option' /> 信用卡付款
+            </div>*@
+
+            <div class="block col-md-6 col-xs-12 h-100">
+                <h2 class="widget-title">訂單資訊</h2>
+                    <div class="order_detail" style="text-align:left;">
+ 
+                    </div>
+                <div class="summary-total">
+                    <div class="d-flex" id="totalprice1" style="font-size: 20px;justify-content:flex-end;">
+                    </div>
+                </div>
+                <div class="verified-icon">
+                    <img src="~/images/verified.png">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container">
+            <div class="total2 d-flex">
+                @*<div class="d-flex" id="totalprice1" style="font-size: 24px;">
+                </div>*@
+                <div>
+                    <button type="button" class="btn1 col-md-7 btn btn-main btn-small btn-round" id="pre" style="width:150px;">
+                        上一步
+                    </button>
+                    <button type="submit" class="btn1 col-md-7 btn btn-main btn-small btn-round" id="pay" style="width:150px;">
+                        付款結帳
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<main class="third">
+    <div class="container">
+        <div class="container mt-7">
+            <div class="row row-cols-3 row-cols-sm-3">
+                <div class="col text-center">
+                    <div class="check-step check-step-finished d-flex flex-column justify-content-center">
+                        <i class="fa-solid fa-list-check" style="font-size: 40px;"></i><span>
+                            STEP
+                            1
+                        </span><span>確認訂單</span>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="check-step check-step-finished d-flex flex-column justify-content-center">
+                        <i class="fa-solid fa-address-card" style="font-size: 40px;"></i><span>
+                            STEP
+                            2
+                        </span><span>建立訂單</span>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="check-step check-step-finished d-flex flex-column justify-content-center">
+                        <i class="fa-solid fa-circle-check" style="font-size: 40px;"></i><span>
+                            STEP
+                            3
+                        </span><span>完成訂單</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pay">
+            <h3>訂單已付款,感謝您的訂購</h3>
+        </div>
+        
+        <div class="container" style="margin-top:20px;">
+            <h2>訂單資訊</h2>
+            <div class="row">
+                <div class="col-6">
+                    <h5>訂單金額</h5>
+                </div>
+                <div class="col-6 orderprice d-flex justify-content-center">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h5>訂單日期</h5>
+                </div>
+                <div class="col-6 ordertime">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h5>訂購人姓名</h5>
+                </div>
+                <div class="col-6 ordername">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h5>訂購人電話</h5>
+                </div>
+                <div class="col-6 orderphone">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h5>訂購人Email</h5>
+                </div>
+                <div class="col-6 orderemail">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <h5>付款資訊</h5>
+                </div>
+                <div class="col-6 orderinfo" style="margin-bottom:50px;">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex" style="justify-content: center;">
+            <a asp-controller="Home" asp-action="Index"><button type="button" class="btn1 btn btn-main btn-small btn-round" style="margin-top: 50px;" id="keepshop">繼續選購</button></a>
+        </div>
+    </div>
+</main>
+@section Scripts
+    {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        const root = @Url.Content("~/images/")
+        $(".second").hide();
+        $(".third").hide();
+        //取得今天日期
+        var today = new Date();
+        var currentDateTime = today.getFullYear() + '年' + (today.getMonth() + 1) + '月' + today.getDate() + '日';
+        var time = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+
+
+        //取得資料動態生成
+        let array = []
+        const value = JSON.parse(sessionStorage.getItem('TicketList')) || []
+        //console.log(value.id)  // [{"id":1,"count":1}] value[0].id
+        var id = "";
+        for (let i = 0; i < value.length; i++) {
+            id += value[i].id + "|";
+        }
+        console.log(id);
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("shoppingcart")",
+            dataType: "json",
+            data: { i: id },
+        }).done(function(data) {
+            array = data;
+            //console.log(data);
+        }).then(function(data) {
+            $('.ticket').children().hide();
+            for (let i = 0; i < data.length; i++) {
+                $(".ticket").append(`<div class="container" style="box-shadow: 3px 3px 9px rgba(100,112,134,0.1);">
+                    <div class="rowticket d-flex">
+                        <div class="col-xl-4"><img
+                                src="${root}${data[i].exhibitions.exhibitTImg}"
+                                alt="${data[i].exhibitions.exhibitTImg}" style="border:1px solid gray"></div>
+                        <div class="col-xl-8">
+                            <div class="d-flex" style="justify-content: space-between;">
+                                <h3 style="font-weight: bold;font-style: italic;">${data[i].exhibitions.exhibitName}</h3>
+                                <input type="text" id="eid" value="${data[i].exhibitions.exhibitId}" class="d-none"/>
+                                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-trash-can"></i></button>
+                            </div>
+                            <h5 style="font-size:16px;">${data[i].exhibitions.datefrom}~${data[i].exhibitions.dateto}</h5>
+                            <h5 style="display:none">合展屋展覽館</h5>
+                            <div class="price">
+                                <div class="d-flex originprice">
+                                    原價$
+                                    <p>${data[i].exhibitions.ticketPrice}</p>元
+                                </div>
+                                <div class="d-flex" >
+                                    數量:<button type="button" class="minus"><i class="fa-solid fa-minus"></i></button>
+                                    <input type="text" style="width:80px;text-align: center;" class="count"
+                                    oninput="value=value.replace(/[^0-9]/g,'')">
+                                    <button type="button" class="plus"><i class="fa-solid fa-plus"></i></button>
+                                </div>
+                                <div class="d-flex smallcount">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`)
+                // load 取得 sessionStorage count 的值
+                const loadcount = JSON.parse(sessionStorage.getItem('TicketList')) || []
+                $('.count').eq(i).val(loadcount[i].count)
+
+                if ($('.count').val() <= 1) {
+                    $(".minus").attr('disabled', true);
+                } else {
+                    $(".minus").attr('disabled', false);
+                }
+                $(".smallcount").last().append(`小計:<p>${parseInt($(".originprice").children().last().text()) * $(".count").last().val()}</p>`);
+            }
+
+            // 計算總價
+            sum = 0;
+            var smallcount = $(".smallcount p");
+            for (let i = 0; i < smallcount.length; i++) {
+                sum += parseInt(smallcount.eq(i).text());
+            }
+            $("#totalprice").text("");
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
+            console.log(array)
+        });
+
+        //按鈕事件
+        var sum = 0;
+        $(".ticket").on("click", ".btn-secondary", function() {
+            // 刪除畫面
+            $(this).parent().parent().parent().parent().text("").css("border", "0");
+            sum = 0;
+            var smallcount = $(":not(this)").closest(".col-xl-8").find(".smallcount p");
+            for (let i = 0; i < smallcount.length; i++) {
+                sum += parseInt(smallcount.eq(i).text());
+            }
+            $("#totalprice").text("");
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
+
+            // 刪除 sessionStorage
+            console.log($(this).prev().val())
+            var ticketid = JSON.parse(sessionStorage.getItem('TicketList'))
+            console.log(ticketid[0].id);
+            if(ticketid.length > 0) {    // ticketid.length是null,Cannot read properties of null (reading 'length')
+                var newArray = ticketid.filter((item) => item.id != $(this).prev().val());
+                sessionStorage.setItem('TicketList', JSON.stringify(newArray));
+            }
+            console.log(newArray);
+        })
+
+        $(".ticket").on("keyup", ".count", function() {
+            if (parseInt($(this).val()) < 1) {
+                alert("請輸入大於0的正整數")
+                $(this).val(1)
+            }
+            if (parseInt($(this).val()) > 1) {
+                $(this).prev().attr('disabled', false);
+            } else {
+                $(this).prev().attr('disabled', true);
+            }
+            $(this).parent().next().text("")
+            $(this).parent().next().append(`小計:<p>${parseInt($(this).parent().prev().children().text()) * $(this).val()}</p>`);
+            //購物車總金額
+            sum = 0;
+            var smallcount = $(this).closest(".ticket").find(".smallcount p");
+            for (let i = 0; i < smallcount.length; i++) {
+                sum += parseInt(smallcount.eq(i).text());
+            }
+            $("#totalprice").text("");
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
+
+            // sessionStorage 的值修改
+            const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
+            obj[$(this).closest('.container').index()-1].count = $(this).val()
+            sessionStorage.setItem('TicketList', JSON.stringify(obj));
+        })
+
+        $(".ticket").on("click", ".plus", function() {
+            $(this).prev().val(parseInt($(this).prev().val()) + 1);
+            if (parseInt($(this).prev().val()) > 1) {
+                $(this).prev().prev().attr('disabled', false);
+            } else {
+                $(this).prev().prev().attr('disabled', true);
+            }
+            $(this).parent().next().text("")
+            $(this).parent().next().append(`小計:<p>${parseInt($(this).parent().prev().children().text()) * $(this).prev().val()}</p>`);
+            //購物車總金額
+            sum = 0;
+            var smallcount = $(this).closest(".ticket").find(".smallcount p");
+            for (let i = 0; i < smallcount.length; i++) {
+                sum += parseInt(smallcount.eq(i).text());
+            }
+            $("#totalprice").text("");
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
+
+            // sessionStorage 的值修改
+            const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
+            obj[$(this).closest('.container').index()-1].count = $(this).prev().val()
+            sessionStorage.setItem('TicketList', JSON.stringify(obj));
+        })
+
+        $(".ticket").on("click", ".minus", function() {
+            $(this).next().val(parseInt($(this).next().val()) - 1);
+            if (parseInt($(this).next().val()) <= 1) {
+                $(this).attr('disabled', true);
+            }
+            $(this).parent().next().text("")
+            $(this).parent().next().append(`小計:<p>${parseInt($(this).parent().prev().children().text()) * $(this).next().val()}</p>`);
+            //購物車總金額
+            sum = 0;
+            var smallcount = $(this).closest(".ticket").find(".smallcount p");
+            for (let i = 0; i < smallcount.length; i++) {
+                sum += parseInt(smallcount.eq(i).text());
+            }
+            $("#totalprice").text("");
+            $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
+
+            // sessionStorage 的值修改
+            const obj = JSON.parse(sessionStorage.getItem('TicketList')) || []
+            obj[$(this).closest('.container').index()-1].count = $(this).next().val()
+            sessionStorage.setItem('TicketList', JSON.stringify(obj));
+        })
+
+        //前往付款
+        $("#gopay").click(function() {
+            console.log($('#totalprice').children().text())
+            if ($("*.count").val() == "" || $('#totalprice').children().text() == '0') {
+                alert("數量不能為空值")
+            }
+            else {
+                console.log(sum);
+                $(window).scrollTop(0);
+                $(".first").hide();
+                $(".second").show();
+                $(".third").hide();
+                $("#totalprice1").text("");
+                $("#totalprice1").append(`總金額:<p style="font-size: 20px;">${sum}</p>元`)
+
+                $(".order_detail").text("");
+                const objcount = JSON.parse(sessionStorage.getItem('TicketList')) || []
+                for (let i = 0; i < array.length; i++) {
+                    $(".order_detail").append(`<div style="display:flex;justify-content: space-between;align-items: center;"><h5>${array[i].exhibitions.exhibitName}x${objcount[i].count}</h5><p>小計:${array[i].exhibitions.ticketPrice * objcount[i].count}</p></div>`)
+                }
+            }
+        })
+
+        //上一步
+        $("#pre").click(function() {
+            $(window).scrollTop(0);
+            $(".first").show();
+            $(".second").hide();
+            $(".third").hide();
+        })
+
+        //submit表單送出
+
+        $("#pay").click(function() {
+            if ($("#name").val() == '' || $("#cellphone").val() == '' || $("#Email").val() == '') {
+                alert('請輸入完整資訊');
+            } else {
+            $(".orderprice").append(`<h5>${sum}</h5>元`);
+            $(".ordertime").append(`<h5>${currentDateTime}</h5>`)
+            $(".ordername").append(`<h5>${$("#name").val()}</h5>`);
+            $(".orderphone").append(`<h5>${$("#cellphone").val()}</h5>`);
+            $(".orderemail").append(`<h5>${$("#Email").val()}</h5>`);
+            $(".orderinfo").append(`<h5>信用卡付款</h5>`)
+            alert("您已成功付款");
+            $(window).scrollTop(0);
+            $(".first").hide();
+            $(".second").hide();
+            $(".third").show();
+            //console.log(array);
+
+            // 取得指定 input value
+            let input = [];
+            $('.count').each(function(index) {
+                if ($(this).val() != '') {
+                    input.push($(this).val());
+                }
+            });
+            //console.log(input);
+            const memberid = JSON.parse(sessionStorage.getItem('Info'))
+            console.log(memberid.id);
+            let ticket = [];
+            for (let i = 0; i < array.length; i++) {
+                for (let j = 0; j < input[i]; j++) {                                //"mId":"${memberid.id}"
+                ticket.push(JSON.parse(`{"ticket":{"eId":"${array[i].exhibitions.exhibitId}","mId":"${memberid.id}","price":"${array[i].exhibitions.ticketPrice}","enterstate":"0","enterTime":"0001年01月01日","presonName":"${$("#name").val()}","personNumber":"${$("#cellphone").val()}","payTime":"${time}"}}`))
+                }
+            }
+            console.log(ticket);
+                @*axios.post("@Url.Action("clearCart","Home")", { ticket }).then(res=>console.log(res.data))*@
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("clearCart")",
+                    dataType: "json",
+                    data: { obj: ticket },
+                }).done(function(data) {
+                    //alert("成功")
+                    console.log(data)
+                })
+                sessionStorage.removeItem('TicketList');
+            }
+        })
+
+
+    </script>
+
+
+
+}
+
+

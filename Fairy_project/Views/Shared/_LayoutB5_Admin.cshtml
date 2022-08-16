@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- css template -->
+    @await RenderSectionAsync("Style", required: false)
+    <link rel="stylesheet" href="~/css/templateB5.css">
+    <section class="top-bar animated-header mb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="container-fluid">
+                            <a href="@Url.Action("Index","Home")">
+                                <img class="logo-image" src="~/images/homeLogo.jpg" alt="">
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto justify-content-around">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Index", "Admin")">
+                                            管理
+                                            <span class="sr-only">(current)</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Report", "Admin")">報表</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link" href="">登出</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row content-justify-between">
+                <div class="col-md-8 col-12 text-center text-lg-left text-md-left">
+                    <p class="copyright">
+                        Copyright: Design and Developed by <a href="http://www.Themefisher.com"
+                                                              target="_blank">Themefisher</a>. <br>
+                        Get More Bootstrap Template From Our
+                        <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Store</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-12">
+                    <!-- Social Media -->
+                    <ul class="social text-center text-md-right text-lg-right">
+                        <li>
+                            <a href="http://wwww.fb.com/themefisher" class="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://wwww.twitter.com/themefisher" class="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="Linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://wwww.fb.com/themefisher" class="Google Plus">
+                                <i class="fa-brands fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer> <!-- /#footer -->
+    <script src="~/js/jquery_admin.js"></script>
+    <script src="~/js/bootstrap.bundle_admin.js"></script>
+    <script src="https://kit.fontawesome.com/49896da301.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
+            integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"
+            integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/"
+            crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
+

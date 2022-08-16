@@ -1,0 +1,12 @@
+﻿@if (TempData["MemberId"] != null)
+{
+<script>
+    const memberId = @TempData["memberId"]
+    const info = {
+        id: memberId,
+    }
+    sessionStorage.setItem('Info', JSON.stringify(info))
+</script>
+}
+
+

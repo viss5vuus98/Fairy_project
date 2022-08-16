@@ -1,0 +1,166 @@
+﻿@model Fairy_project.ViewModels.ExhibitIdDetail_1_
+@{
+    if (Model.applylist != null)
+    {
+        for (int i = 0; i < Model.applylist.Count; i++)
+        {
+            <div class="col-lg-11 my-3 py-3 d-flex text-center rounded-3 border border-1 apply">
+                <h4 class="w-25 m-0 ">@Model.applylist[i].manufactureName</h4>
+                <h4 class="w-25 m-0">No.@Model.applylist[i].manufactureId</h4>
+                <h4 href="" class="w-25 m-0 border-0 text-reset">
+                    <a href="" class="text-reset applytoggle" data-toggle="modal"
+               data-target="#A_@Model.applylist[i].applyNum" data-whatever="@@mdo">@Model.applylist[i].boothNumber 號攤</a>
+                </h4>
+                <div class="modal fade" id="A_@Model.applylist[i].applyNum" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content bg2">
+                            <div class="row mx-3">
+                                <div class="col-lg-9 col-md-12 col-12">
+                                    <div class="d-flex justify-content-between pt-4">
+                                        <h3 class="m-0">攤位編號：@Model.applylist[i].boothNumber</h3>
+
+                                        @{
+                                            if (Model.applylist[i].boothLv == 3)
+                                            {
+                                                <h3 class="m-0">大型 / @Model.applylist[i].boothPrice $</h3>
+                                            }
+                                            else if (Model.applylist[i].boothLv == 2)
+                                            {
+                                                <h3 class="m-0">中型 / @Model.applylist[i].boothPrice $</h3>
+                                            }
+                                            else if (Model.applylist[i].boothLv == 1)
+                                            {
+                                                <h3 class="m-0">小型 / @Model.applylist[i].boothPrice $</h3>
+                                            }
+                                        }
+                                    </div>
+                                    <img class="w-100 p-4" src="@Url.Content($"~/images/{Model.applylist[i].mf_P_img}")" alt="">
+                                    <p class="text-start h5 mx-3 p-4">
+                                        @Model.applylist[i].mf_Description
+                                    </p>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-12 d-flex flex-column justify-content-center">
+                                    <img id="logoimg" class="w-75 my-3 rounded-circle border border-1 align-self-center" src="@Url.Content($"~/images/{Model.applylist[i].mf_logo}")">
+
+                                    <ul class="list-group my-3">
+                                        <li class="list-group-item" aria-disabled="true">@Model.applylist[i].manufactureName</li>
+                                        <li class="list-group-item">負責人：@Model.applylist[i].mfPerson</li>
+                                        <li class="list-group-item">統編：@Model.applylist[i].manufactureAcc</li>
+                                        <li class="list-group-item">TEL：@Model.applylist[i].mfPhoneNum</li>
+                                    </ul>
+
+                                    @*<div class="d-flex flex-column my-3">
+                        <h5 class="my-2">@Model.applylist[i].manufactureName</h5>
+                        <h5 class="my-2">負責人：@Model.applylist[i].mfPerson</h5>
+                        <h5 class="my-2">統編：@Model.applylist[i].manufactureAcc</h5>
+                        <h5 class="my-2">TEL：@Model.applylist[i].mfPhoneNum</h5>
+                        </div>*@
+
+                                    <div class="d-flex h-25 justify-content-around align-items-center">
+
+                                        @{
+                                            if (Model.applylist[i].checkState == 0)
+                                            {
+                                                <i class="my-3 fa-regular fa-circle-check fa-3x text-success checkmao" data-applynum="@Model.applylist[i].applyNum">
+                                                </i>
+                                                <i href="" class="my-3 fa-regular fa-circle-xmark fa-3x text-danger checkmax" data-applynum="@Model.applylist[i].applyNum"></i>
+                                            }
+                                            else if (Model.applylist[i].checkState == 1 || Model.applylist[i].checkState == 2)
+                                            {
+
+                                                <i class="pe-none my-3 fa-solid fa-clipboard-check fa-4x text-success">
+                                                    <span class="h5">PASS</span>
+                                                </i>
+                                            }
+                                            else if (Model.applylist[i].checkState == 3)
+                                            {
+                                                <i class="pe-none my-3 fa-solid fa-file-excel fa-4x text-danger">
+                                                    <span class="h5">FAIL</span>
+                                                    <p class="m-0 mt-3">@Model.applylist[i].message</p>
+                                                </i>
+                                            }
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                            @{
+                                if (Model.applylist[i].checkState == 1)
+                                {
+                                    <hr>
+                                    <div class="row justify-content-around align-items-center my-3">
+                                        @{
+                                            if (Model.applylist[i].paytime != null && Model.applylist[i].message != null)
+                                            {
+                                                <h5 class="col-lg-4 col-12">匯款日期：@Model.applylist[i].paytime</h5>
+                                                <h5 class="col-lg-4 col-12"> 匯款末五碼：@Model.applylist[i].message</h5>
+                                                <i class="col-2 my-3 fa-regular fa-square fa-4x checkmoney" data-applynum="@Model.applylist[i].applyNum">
+                                                    <span class="h5 fw-bolder">對帳</span>
+                                                </i>
+                                            }
+                                            else
+                                            {
+                                                <h5 class="col-lg-4 col-12">廠商尚未回傳匯款資訊...</h5>
+                                                //<h5 class="col-lg-4 col-12"> 匯款末五碼：@Model.applylist[i].atm5</h5>
+                                            }
+                                        }
+
+                                    </div>
+                                }
+                                if (Model.applylist[i].checkState == 2)
+                                {
+                                    <hr>
+                                    <div class="row justify-content-around align-items-center my-3">
+                                        <h5 class="col-lg-4 col-12">匯款日期：@Model.applylist[i].paytime</h5>
+                                        <h5 class="col-lg-4 col-12"> 匯款末五碼：@Model.applylist[i].message</h5>
+                                        <i class="col-lg-2 col-12 my-3 fa-regular fa-square-check fa-3x pe-none" data-bum="@Model.applylist[i].boothNumber">
+                                            <span class="h5 fw-bolder">對帳</span>
+                                        </i>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+
+                @{
+                    if (Model.applylist[i].checkState == 0)
+                    {
+                        <h4 class="w-25 m-0 text-warning">待審核</h4>
+                    }
+                    else if (Model.applylist[i].checkState == 1)
+                    {
+                        <h4 class="w-25 m-0 text-danger">尚未付款</h4>
+                    }
+                    else if (Model.applylist[i].checkState == 2)
+                    {
+                        <h4 class="w-25 m-0 text-success">已付款</h4>
+                    }
+                    else if (Model.applylist[i].checkState == 3)
+                    {
+                        <h4 class="w-25 m-0 text-secondary">未通過</h4>
+                    }
+                }
+            </div>
+        }
+
+
+
+        <div class="d-flex justify-content-around w-100">
+            <ul id="pagelist" class="col-lg-10 col-sm-8 col-8 d-flex list-unstyled justify-content-center align-items-center text-center m-0 my-3">
+                @{
+                    int page = 1;
+                    for (int i = 0; i < Model.applysum; i += 10)
+                    {
+                        <li><a class="btn border-0 fs-4 px-lg-3 mx-lg-2 mx-sm-1 rounded-pill bg1 page">@Html.Raw(page)</a></li>
+                        page++;
+                    }
+                }
+            </ul>
+        </div>
+    }
+
+}

@@ -1,4 +1,5 @@
 ﻿<Properties StartupConfiguration="{160F8584-3AAA-4CEB-BF5C-47355F4D95FA}|Default">
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Controllers/AdminController.cs">
     <Files>
       <File FileName="Fairy_project/Models/Manager.cs" Line="13" Column="45" />
@@ -8,6 +9,25 @@
       <File FileName="Fairy_project/Program.cs" Line="1" Column="1" />
       <File FileName="Fairy_project/Views/Home/exhibitionDetail.cshtml" Line="15" Column="64" />
       <File FileName="Fairy_project/Controllers/AdminController.cs" Line="30" Column="40" />
+=======
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Home/Index.cshtml">
+    <Files>
+      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="13" Column="82" />
+      <File FileName="Fairy_project/Views/Home/exhibitionDetail.cshtml" Line="59" Column="1" />
+      <File FileName="Fairy_project/wwwroot/js/eDetail.js" Line="71" Column="13" />
+      <File FileName="Fairy_project/wwwroot/css/TicketsPage.css" Line="168" Column="34" />
+      <File FileName="Fairy_project/Views/Member/Index.cshtml" Line="1" Column="1" />
+      <File FileName="Fairy_project/wwwroot/css/exhibitionDetil.css" Line="95" Column="2" />
+      <File FileName="Fairy_project/Controllers/HomeController.cs" Line="30" Column="6" />
+      <File FileName="Fairy_project/Views/Home/Index.cshtml" Line="61" Column="1" />
+      <File FileName="Fairy_project/wwwroot/js/HomeIndex.js" Line="70" Column="27" />
+>>>>>>> develop2
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,11 +35,16 @@
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
               <Node name="Controllers" expanded="True" />
+<<<<<<< HEAD
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
+=======
+>>>>>>> develop2
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
-                <Node name="Manufacturer" expanded="True" />
+                <Node name="Home" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+                <Node name="Member" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
@@ -36,11 +61,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

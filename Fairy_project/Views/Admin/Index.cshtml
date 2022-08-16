@@ -1,0 +1,214 @@
+﻿@model IEnumerable<Fairy_project.Models.Exhibitionss>
+
+@section Style
+    {
+    <link rel="stylesheet" href="~/css/Master.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style_back.css" asp-append-version="true">
+        @*    <link rel="stylesheet" href="~/css/bootstrap-admin.css">*@
+    }
+    @{
+    Layout = "_Admin_Layout";
+}
+
+@{
+    int idnew = 1;
+}
+
+@*<div class="container-fluid">
+    <div class="row">
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <input class="col-2 m-3 p-2 fs-4 h-50 border-1 border-secondary bg2" type="text" placeholder="關鍵字">
+            <span class="h3">自</span>
+            <input class="col-1 h4 bg2 p-1 my-3 mx-3 rounded-3 border-0" type="date">
+            <span class="h3">到</span>
+            <input class="col-1 h4 bg2 p-1 my-3 mx-3 rounded-3 border-0" type="date">
+            <input type="checkbox" class="btn-check " id="btn-1" autocomplete="off">
+            <label class="btn btn-outline-danger rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-1">規劃中</label>
+            <input type="checkbox" class="btn-check " id="btn-2" autocomplete="off">
+            <label class="btn btn-outline-warning rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-2">籌備中</label>
+            <input type="checkbox" class="btn-check " id="btn-3" autocomplete="off">
+            <label class="btn btn-outline-success rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-3">舉辦中</label>
+            <input type="checkbox" class="btn-check " id="btn-4" autocomplete="off">
+            <label class="btn btn-outline-dark rounded-pill col-1 m-2 py-2 px-0 fs-4" for="btn-4">已結束</label>
+            <i class="fa-solid fa-magnifying-glass opacity-75 fa-2x mx-2"></i>
+        </div>
+    </div>
+</div>*@
+<style>
+    #fontshow {
+        opacity: 0;
+        transition: 1s;
+    }
+</style>
+<div class="container">
+    <div class="row align-items-center justify-content-around">
+        <div class="col-lg-4 col-md-6 col-12 my-3">
+            <div id="searchstate" class="d-flex">
+@*                <a href="@Url.Action("sendmail",new{email = "zxc995116@gmail.com",title = "test" ,content = "testp"})">
+                    TEST
+                </a>*@
+                <button type="button" data-toggle="button" autocomplete="off"
+                        class="flex-grow-1 px-0 mx-2 btn btn-outline-danger btn-pill">
+                    規劃
+                </button>
+                <button type="button" data-toggle="button" autocomplete="off"
+                        class="flex-grow-1 px-0 mx-2 btn btn-outline-warning btn-pill">
+                    籌備
+                </button>
+                <button type="button" data-toggle="button" autocomplete="off"
+                        class="flex-grow-1 px-0 mx-2 btn btn-outline-success btn-pill">
+                    舉辦
+                </button>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-12 d-flex align-items-center my-3">
+            <input id="searchdatefrom" type="date" class="p-0 form-control border-0">
+            <span class="bg-light border-0 mx-2">至</span>
+            <input id="searchdateto" type="date" class="p-0 form-control border-0">
+        </div>
+        <div class="col-lg-4 col-md-12 col-12 my-3">
+            <input id="searchexhibitionss" type="search" placeholder="">
+        </div>
+    </div>
+        <div class="modal fade" id="qrmodal" tabindex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true" data-eid="1">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content bg2">
+                    <div class="row mt-3">
+                        <h1 id="fontshow" class="text-center"></h1>
+@*                        <button id="testfont">test</button>
+*@                    </div>
+                    <div class="row p-5">
+                        <video id="scanner"></video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div id="searchresult" class="row">
+
+        <partial name="_ExhibitionPartial.cshtml"></partial>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+@*<script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.10.1/dist/umd/popper.min.js"
+        integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>*@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="~/lib/instascan/instascan.min.js"></script>
+
+
+<script>
+    const constraints = {
+        'video': true,
+        'audio': true
+    }
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then(stream => {
+            console.log('Got MediaStream:', stream);
+        })
+        .catch(error => {
+            console.error('Error accessing media devices.', error);
+        });
+    let mystring
+    let scanner = new Instascan.Scanner({ video: document.getElementById('scanner') });
+    scanner.addListener('scan', function(content) {
+        //取得展覽id//
+        const exhibitId = document.getElementById('qrmodal').dataset.eid
+        //ToDO:取得廠商QrCode =>傳入展覽Id 攤位Id 攤位Id//
+        const splitStr = content.split('|')
+        if (splitStr[0] === "MF") {
+            if (splitStr[1] !== exhibitId) {
+                return
+            }
+            axios.post('@Url.Action("postMfQrCode")', { ex_id: splitStr[1], mf_id: splitStr[2], boothNum: splitStr[3] })
+                .then(res => {
+                    $('#fontshow').text(`${res.data}`).css('opacity', '1')
+                    console.log(res.data)
+                })
+                .catch(err => console.log(err))
+        } else {
+            //非廠商 檢查會員QrCode//
+            axios.post('@Url.Action("postQrCode")', { Ex_id: Number(exhibitId), VerificationCode: content })
+                .then(res => {
+                    console.log(res.data)
+                    $('#fontshow').text(`${res.data}`).css('opacity', '1')
+                })
+                .catch(err => { console.log(err) })
+        }
+    })
+    Instascan.Camera.getCameras().then(function(cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No cameras found.');
+        }
+    }).catch(function(e) {
+        console.error(e);
+    });
+
+
+
+
+
+    $('#searchresult').on('click', (e) => {
+        if ($(e.target).hasClass('qrcode')) {
+            $('#qrmodal').attr('data-eid', $(e.target).attr('data-eid'))
+            console.log($('#qrmodal').attr('data-eid'))
+        }
+    })
+
+    $('#testfont').on('click', (e) => {
+        axios.post('@Url.Action("postQrCode")', { Ex_id: Number($('#qrmodal').attr('data-eid')), VerificationCode: "040820221615271cvtmj" })
+            .then(res => {
+                $('#fontshow').text(`${res.data}`).css('opacity', '1')
+                console.log(res.data)
+            })
+            .catch(err => { console.log(err) })
+    })
+
+
+    $('#fontshow').on('transitionend', (e) => {
+        $(e.target).css('opacity', '0')
+    })
+
+    $('#searchexhibitionss').on('change', (e) => {
+        searchexhibitionss();
+    })
+    $('#searchstate').find('button').on('click', (e) => {
+        $(e.target).toggleClass('select')
+        searchexhibitionss();
+    })
+    $('#searchdatefrom').on('change', (e) => {
+        searchexhibitionss();
+    })
+    $('#searchdateto').on('change', (e) => {
+        searchexhibitionss();
+    })
+    function searchexhibitionss() {
+        let state = []
+        let data = {
+            keyword: $('#searchexhibitionss').val(),
+            state,
+            datefrom: $('#searchdatefrom').val(),
+            dateto: $('#searchdateto').val(),
+        }
+        $('#searchstate').find('.select').each(function() {
+            data.state.push($(this).index() + 1);
+        })
+        console.log(data.state.length);
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("_Exhibition_Search")',
+            data,
+        }).done((result) => {
+            //alert(result)
+            $('#searchresult').html(result)
+        }).fail(() => {
+            console.log("pagefail")
+        })
+    }
+</script>

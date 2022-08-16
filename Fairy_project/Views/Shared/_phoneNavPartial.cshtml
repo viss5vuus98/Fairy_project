@@ -1,0 +1,16 @@
+﻿@if (TempData["MemberId"] != null)
+{
+    <ul class="nav_items">
+        <li class="navbar_li"><a class="text-dark navbar_link_a" asp-area="" asp-controller="Member" asp-action="Index">票券頁</a></li>
+        <li class="navbar_li"><a class="navbar_link_a" asp-area="" asp-controller="Home" asp-action="shoppingcart">購物車</a></li>
+        <li class="navbar_li"><a class="navbar_link_a"> 登 出</a></li>
+    </ul>
+}
+else
+{
+    <ul class="nav_items">
+        <li class="navbar_li my-2"><a href="" class="navbar_link_a"> 登 入</a></li>
+    </ul>
+}
+
+
