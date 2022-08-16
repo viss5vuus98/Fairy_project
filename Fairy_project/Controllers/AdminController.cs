@@ -331,7 +331,7 @@ namespace Fairy_project.Controllers
             if (model.setboothslist != null)
             {
                 int boothnumber = 1;
-                for (int i = 0; i < model.setboothslist.Count; i++)
+                for (int i = 0; i < model.setboothslist.Count(); i++)
                 {
                     for (int j = 0; j < model.setboothslist[i].boothsum; j++)
                     {
