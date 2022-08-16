@@ -1,5 +1,6 @@
 ﻿const btnCart = document.querySelector('.btn_cart')
 const cartList = JSON.parse(sessionStorage.getItem('TicketList')) || []
+const content = document.getElementById('cards-content')
 btnCart.addEventListener('click', event => {
     const data = event.target.dataset
     const exhibition = {
@@ -10,9 +11,11 @@ btnCart.addEventListener('click', event => {
     if (cartList.length == 0) {
         cartList.push(exhibition)
         sessionStorage.setItem('TicketList', JSON.stringify(cartList))
+        alert('加入購物車!')
     } else if (!cartList.filter(obj => obj.id == exhibition.id).length > 0) {
         cartList.push(exhibition)
         sessionStorage.setItem('TicketList', JSON.stringify(cartList))
+        alert('加入購物車!')
     } else {
         alert('已經加入購物車了')
     }
@@ -65,3 +68,4 @@ function renderBooths(data) {
 }
 
 
+axios.post('')

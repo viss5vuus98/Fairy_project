@@ -1,6 +1,6 @@
 ﻿// 顯示Chat視窗//
 
-const chatCircle = document.getElementById('chat-circle')
+const chatCircle = document.querySelector('#chat-circle')
 const chatCard = document.getElementById('chat-card')
 const chatExitBtn = document.getElementById('chat-exit-btn')
 
