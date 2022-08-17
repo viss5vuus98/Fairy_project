@@ -261,12 +261,12 @@
     }
 
 .ticket-content {
-    height: 500px;
+/*    height: 500px;
     margin: 150px auto 100px auto;
     overflow-y: scroll;
     padding: 1rem 0;
     border-top: 1px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;*/
 }
 
 .ticket_card_img {

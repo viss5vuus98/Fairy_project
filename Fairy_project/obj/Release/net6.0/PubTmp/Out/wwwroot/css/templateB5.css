@@ -155,7 +155,7 @@ a:hover {
     }
 
     .navbar-nav .dropdown-item:hover {
-        color: #02bdd5 !important;
+        color: #ddcfc2 !important;
         background: transparent;
     }
 
@@ -253,7 +253,7 @@ ul.social-icons {
     }
 
     .navbar-nav .dropdown-item:hover {
-        color: #02bdd5 !important;
+        color: #ddcfc2 !important;
         background: transparent;
     }
 
@@ -279,7 +279,7 @@ ul.social-icons {
     }
 
         #footer .copyright a {
-            color: #02bdd5;
+            color: #ddcfc2;
         }
 
     #footer .social {
@@ -294,7 +294,7 @@ ul.social-icons {
 
             #footer .social li a {
                 font-size: 22px;
-                color: #02bdd5;
+                color: #ddcfc2;
             }
 
 .cd-headline.slide .cd-words-wrapper {

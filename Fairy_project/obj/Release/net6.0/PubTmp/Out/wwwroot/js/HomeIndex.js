@@ -7,10 +7,10 @@ const VModel = {
                 const exhibitionList = []
                 exhibitionList.push(...res.data)
                 View.renderExhibitions(exhibitionList)
+                View.renderCarousel(exhibitionList)
             })
             .catch(err => console.log(err))
-    },
-
+    }
 }
 
 const View = {
@@ -25,8 +25,7 @@ const View = {
                         <img src="${root}${data[i].exhibitPImg}" class="img-fluid" alt="this is a title">
                         <div class="overlay">
                             <div class="buttons">
-                                <a rel="gallery" class="fancybox" href="images/portfolio/item-1.jpg">Demo</a>
-                                <a target="" href="Home/exhibitionDetail/${data[i].exhibitId}">Details</a>
+                                <a target="" href="Home/exhibitionDetail/${data[i].exhibitId}">展覽詳細資訊</a>
                             </div>
                         </div>
                     </div>
@@ -58,6 +57,30 @@ const View = {
             }
 
         })
+    },
+    renderCarousel(exhibitionList) {
+        const carouselList = []
+        const carousel = document.querySelector('.carousel-inner')
+        let index = Math.floor(Math.random() * (exhibitionList.length - 3))
+        carouselList.push(...exhibitionList.slice(0, 3))
+
+        let innerContent = ''
+        for (let i = 0; i < carouselList.length; i++) {
+            if (i === 0) {
+                innerContent += `
+                    <div class="carousel-item active">
+                        <img src="${root}${carouselList[i].exhibitPImg}" class="d-block img-fluid" alt="IMAGE">
+                    </div>
+                `
+            } else {
+                innerContent += `
+                    <div class="carousel-item">
+                        <img src="${root}${carouselList[i].exhibitPImg}" class="d-block img-fluid" alt="IMAGE">
+                    </div>
+                `
+            }
+        }
+        carousel.innerHTML = innerContent
     }
 }
 

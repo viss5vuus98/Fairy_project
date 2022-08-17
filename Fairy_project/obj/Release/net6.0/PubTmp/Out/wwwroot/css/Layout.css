@@ -106,7 +106,7 @@ a:hover {
     }
 
         .navbar .nav-item .nav-link:hover {
-            color: #02bdd5 !important;
+            color: #ddcfc2 !important;
         }
 
     .navbar .nav-item:last-child .nav-link {
@@ -162,7 +162,7 @@ a:hover {
     }
 
     .dropdown-item:hover {
-        color: #02bdd5 !important;
+        color: #ddcfc2 !important;
         background: transparent;
     }
 
@@ -188,7 +188,7 @@ a:hover {
     }
 
         #footer .copyright a {
-            color: #02bdd5;
+            color: #ddcfc2;
         }
 
     #footer .social {
@@ -203,7 +203,7 @@ a:hover {
 
             #footer .social li a {
                 font-size: 22px;
-                color: #02bdd5;
+                color: #ddcfc2;
             }
 
     #footer .col-6 {
@@ -239,3 +239,4 @@ ul.social-icons {
         text-decoration: none;
     }
 /*# sourceMappingURL=style.css.map */
+/**********************************************/
