@@ -21,7 +21,20 @@
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light">
                         <a class="navbar-brand" href="@Url.Action("Index","Home")">
-                            <img class="logo-image" src="~/images/homeLogo.jpg" alt="logo">
+
+
+
+
+                            <div class="d-flex justify-content-around align-items-center">
+                                <img class="logo-image" src="~/images/homeLogo.jpg" alt="logo">
+                                <div class="m-0 px-1"><font face="sans-serif">合展屋WooHouse</font></div>
+@*                                <div class="m-0 px-1"><font face="sans-serif"></font></div>*@
+                            </div>
+
+
+
+
+
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,36 +44,36 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
                                 @*<ul class="navbar-nav ml-auto">
-                                    <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
-                                    Home
-                                    <span class="sr-only">(current)</span>
-                                    </a>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    會員頁面
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="@Url.Action("index", "Member")">我的票券</a>
-                                    <a class="dropdown-item" href="gallery.html">會員資料</a>
-                                    </div>
-                                    </li>*@
+                                <li class="nav-item">
+                                <a class="nav-link" href="index.html">
+                                Home
+                                <span class="sr-only">(current)</span>
+                                </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                會員頁面
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="@Url.Action("index", "Member")">我的票券</a>
+                                <a class="dropdown-item" href="gallery.html">會員資料</a>
+                                </div>
+                                </li>*@
                                 @*<li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    Blog
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="blog-fullwidth.html">Blog Full</a>
-                                    <a class="dropdown-item" href="blog-left-sidebar.html">Blog Left sidebar</a>
-                                    <a class="dropdown-item" href="blog-right-sidebar.html">Blog Right sidebar</a>
-                                    </div>
-                                    </li>*@
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Blog
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="blog-fullwidth.html">Blog Full</a>
+                                <a class="dropdown-item" href="blog-left-sidebar.html">Blog Left sidebar</a>
+                                <a class="dropdown-item" href="blog-right-sidebar.html">Blog Right sidebar</a>
+                                </div>
+                                </li>*@
                                 @*<li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Logout", "Login")" ">登入</a>
-                                    </li>*@
+                                <a class="nav-link" href="@Url.Action("Logout", "Login")" ">登入</a>
+                                </li>*@
                             </ul>
                         </div>
                     </nav>
@@ -72,9 +85,9 @@
     @*==chat==*@
 
     @*<div id="chat-circle" class="btn btn-raised btn-toggle scaleBox">
-        <div id="chat-overlay">
-        </div>
-        <i class="fa-solid fa-comment-dots title-icon"></i>
+    <div id="chat-overlay">
+    </div>
+    <i class="fa-solid fa-comment-dots title-icon"></i>
     </div>*@
     <div class="card mx-auto card-toggle chat-box" id="chat-card" style="max-width: 400px;">
         <div class="card-header bg-transparent">
@@ -104,12 +117,12 @@
 
             <!-- 左對話區塊 -->
             <!--<div class="d-flex align-items-center mb-4">-->
-                <!-- avatar -->
-                <!--<div class="position-relative avatar">
-                    <i class="fa-solid fa-user-astronaut people"></i>
-                </div>-->
-                <!-- 對話框 -->
-                <!--<div class="pe-2">
+            <!-- avatar -->
+            <!--<div class="position-relative avatar">
+                <i class="fa-solid fa-user-astronaut people"></i>
+            </div>-->
+            <!-- 對話框 -->
+            <!--<div class="pe-2">
                     <div>
                         <div class="card card-text d-inline-block p-2 m-1 left-card-text">你好，請問有什麼需要幫助的嗎？</div>
                         <div class="small">01:13PM</div>
@@ -117,19 +130,16 @@
                 </div>
             </div>-->
             <!-- ＃左對話區塊 -->
-
-
             <!-- 右對話區塊 -->
             <!--<div class="d-flex align-items-center text-end justify-content-end mb-4">-->
-                <!-- 對話框 -->
-                <!--<div class="pe-2">
-                    <div>
-                        <div class="card card-text d-inline-block p-2 px-3 m-1 right-card-text ">想詢問如何進行退票？</div>
-                    </div>
-                </div>-->
-
-                <!-- avatar -->
-                <!--<div class="position-relative avatar">
+            <!-- 對話框 -->
+            <!--<div class="pe-2">
+                <div>
+                    <div class="card card-text d-inline-block p-2 px-3 m-1 right-card-text ">想詢問如何進行退票？</div>
+                </div>
+            </div>-->
+            <!-- avatar -->
+            <!--<div class="position-relative avatar">
                     <i class="fa-solid fa-user-secret people"></i>
                     <span class="position-absolute bottom-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
                         <span class="visually-hidden">New alerts</span>
@@ -205,55 +215,55 @@
     <script>
         if (sessionStorage.getItem('acount') != null) {
             $('#navbarSupportedContent').append(`
-                                    <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("Index", "Home")">
-                                                Home
-                                                <span class="sr-only">(current)</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("shoppingcart", "Home")">購物車</a>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                會員頁面
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="@Url.Action("Index", "Member")">我的票券</a>
-                                                <a class="dropdown-item" href="gallery.html">會員資料</a>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("search", "Home")" >搜尋</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("Index", "Home")" id="out">登出</a>
-                                        </li>
-                                    </ul>
-                                    `)
+                                                    <ul class="navbar-nav ml-auto">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="@Url.Action("Index", "Home")">
+                                                                Home
+                                                                <span class="sr-only">(current)</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="@Url.Action("shoppingcart", "Home")">購物車</a>
+                                                        </li>
+                                                        <li class="nav-item dropdown">
+                                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false">
+                                                                會員頁面
+                                                            </a>
+                                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                <a class="dropdown-item" href="@Url.Action("Index", "Member")">我的票券</a>
+                                                                <a class="dropdown-item" href="gallery.html">會員資料</a>
+                                                            </div>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="@Url.Action("search", "Home")" >搜尋</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="@Url.Action("Index", "Home")" id="out">登出</a>
+                                                        </li>
+                                                    </ul>
+                                                    `)
             $('body').append(`<div id="chat-circle" class="btn btn-raised btn-toggle scaleBox">
-            <div id="chat-overlay">
-            </div>
-            <i class="fa-solid fa-comment-dots title-icon"></i>
-            </div>`)
+                            <div id="chat-overlay">
+                            </div>
+                            <i class="fa-solid fa-comment-dots title-icon"></i>
+                            </div>`)
         }
         else {
             $('#navbarSupportedContent').append(`
-                                    <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("Logout", "Login")" ">登入</a>
+                                                    <ul class="navbar-nav ml-auto">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="@Url.Action("Logout", "Login")" ">登入</a>
 
-                                        </li>
-                                    </ul>
-                                                            `)
+                                                        </li>
+                                                    </ul>
+                                                                            `)
         }
         $('#out').click(function() {
             sessionStorage.clear();
         })
     </script>
-            <script src="~/js/userChat.js" asp-append-version="true"></script>
+    <script src="~/js/userChat.js" asp-append-version="true"></script>
 </body>
 
 </html>
