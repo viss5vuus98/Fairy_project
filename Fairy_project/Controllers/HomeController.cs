@@ -164,14 +164,24 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult GetInvideManufactures([FromBody] GetIdClassModel idClass)
+    public IActionResult GetInviteManufactures([FromBody] GetIdClassModel idClass)
     {
-        var booths = _context.BoothMapsses.Where(m => m.EId == idClass.Ex_id && m.MfId != null).Distinct().ToList()??new List<BoothMapss>();
-        for (int i = 0; i < booths.Count; i++)
+        var booths = _context.BoothMapsses.Where(m => m.EId == idClass.Ex_id && m.MfId != null).Distinct().ToList().Take(3).ToList() ?? new List<BoothMapss>();
+        List<InviteManufactures> inviteManufactures = new List<InviteManufactures>();
+        foreach (var booth in booths)
         {
-            var apply = _context.Appliesses.First(a => a.EId == idClass.Ex_id && a.MfId == booths[i].MfId);
+            Console.WriteLine(booth.MfId);
+            var apply = _context.Appliesses.First(a => a.EId == idClass.Ex_id && a.MfId == booth.MfId);
+            var manufacture = _context.Manufacturesses.First(m => m.ManufactureId == booth.MfId);
+            InviteManufactures invite = new InviteManufactures()
+            {
+                logo = apply.MfLogo,
+                description = apply.MfDescription,
+                name = manufacture.ManufactureName
+            };
+            inviteManufactures.Add(invite);
         }
-        return Json(booths);
+        return Json(inviteManufactures);
     }
 
     //search exhibition keyword

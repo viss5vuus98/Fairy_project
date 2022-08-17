@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "a5dga6OyU4q1Ud/43dFEq5jsQfzQTmu8hCWYpJAy5Sg=",
+  "Hash": "2sBt2Tudse2bS6zrTx+RFWjInXHGIbyAoWNKDHVX/BU=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -4979,6 +4979,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/202208160956549854.jpg"
+    },
+    {
+      "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/202208161616447876.jpg",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208161616447876.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/202208161616447876.jpg"
     },
     {
       "Identity": "/Users/yiliang/ispan_dir/dotNetCore/WooHouse_project/Fairy_project/wwwroot/images/20220841037463325.png",

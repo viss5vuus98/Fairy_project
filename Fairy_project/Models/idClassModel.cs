@@ -30,5 +30,12 @@ namespace Fairy_project.Models
         public string mf_id { get; set; }
         public string boothNum { get; set; }
     }
+
+    public class InviteManufactures
+    {
+        public string logo { get; set; }
+        public string description { get; set; }
+        public string name { get; set; }
+    }
 }
 
