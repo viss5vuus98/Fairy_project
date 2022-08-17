@@ -201,6 +201,10 @@ body {
         border-radius: 0;
     }
 
+    #hero-area .btn {
+        box-shadow: none;
+    }
+
 #call-to-action {
     background: #ddcfc2;
     background-size: cover;
@@ -232,7 +236,7 @@ body {
         #call-to-action .block .btn-contact {
             background: #fff;
             border: 2px solid #fff;
-            color: #02bdd5;
+            color: #555;
             padding: 15px 34px;
             margin-top: 20px;
             font-size: 12px;
@@ -248,8 +252,8 @@ body {
             }
 
             #call-to-action .block .btn-contact:hover {
-                color: #fff;
-                background: #02bdd5;
+                color: #ddcfc2;
+                /*background: #02bdd5;*/
             }
 
 #about {
@@ -437,8 +441,8 @@ figure {
     }
 
         figure .buttons a:hover {
-            background: #02bdd5;
-            border-color: #02bdd5;
+            background: #ddcfc2;
+            border-color: #ddcfc2;
         }
 
         figure .buttons a:focus {
@@ -1160,12 +1164,14 @@ article {
         display: block;
     }
 
-    .about a:hover{
-        background-color: yellow;
-    }
+        .about a:hover {
+            background-color: #ddcfc2;
+        }
 
 .btn-41 {
     color: #fff;
     background-color: #414141;
     border-color: #414141;
 }
+
+/**************************/
