@@ -59,6 +59,7 @@ connection.on("userPostover", function (message) {
                 <div class="pe-2">
                     <div>
                         <div class="card card-text d-inline-block p-2 m-1 right-card-text">${message}</div>
+                        <div class="small">${new Date().getHours()} : ${new Date().getMinutes()}</div>
                     </div>
                 </div>
 
@@ -87,7 +88,7 @@ connection.on("userTakeover", function (message) {
             <div class="pe-2">
                 <div>
                     <div class="card card-text d-inline-block p-2 m-1 left-card-text">${message}</div>
-                    <div class="small">01:13PM</div>
+                    <div class="small">${new Date().getHours()} : ${new Date().getMinutes()}</div>
                 </div>
             </div>
         `
