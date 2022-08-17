@@ -186,7 +186,7 @@
                     付款結帳
                     </button>
                         <h1 class="d-none">藍新金流串接範例</h1>
-                        <div class="card" id="app" style="width:150px;border:0;">
+                        <div class="card d-none" id="app" style="width:150px;border:0;">
                             <div class="card-header d-none">
                                 API 欄位
                             </div>
@@ -538,6 +538,9 @@
                 for (let i = 0; i < array.length; i++) {
                     $(".order_detail").append(`<div style="display:flex;justify-content: space-between;align-items: center;"><h5>${array[i].exhibitions.exhibitName}x${objcount[i].count}</h5><p>小計:${array[i].exhibitions.ticketPrice * objcount[i].count}</p></div>`)
                 }
+                $('#name').val('李文翰')
+                $('#cellphone').val('0912345678')
+                $('#Email').val('koler@gmail.com')
                 $('#Amt').val(sum);
           
             }
@@ -616,7 +619,7 @@
                         , CustomerURL: '@ViewData["CustomerURL"]'
                         , NotifyURL: '@ViewData["NotifyURL"]'
                         , ClientBackURL: '@ViewData["ClientBackURL"]'
-                        , Email: 'kilye@gmail.com'
+                        , Email: 'koler@gmail.com'
                     }
                 }        
             }
