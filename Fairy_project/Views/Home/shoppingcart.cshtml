@@ -338,6 +338,12 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script>
+        //加入進度條
+
+        $(".first").ready(function() {
+            NProgress.start();
+        })
+
         const root = @Url.Content("~/images/")
         $(".second").hide();
         $(".third").hide();
@@ -420,6 +426,13 @@
             $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
             console.log(array)
         });
+
+
+        //結束讀取條
+
+        $(".container").ready(function () {
+            NProgress.done();
+        })
 
         //按鈕事件
         var sum = 0;

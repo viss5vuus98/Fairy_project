@@ -28,6 +28,8 @@
     <!-- template CSS -->
     <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/userChatB4.css" asp-append-version="true" />
+    <!-- nprogerss css-->
+    <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet">
     @await RenderSectionAsync("Style", required: false)
 </head>
 <body>
@@ -41,7 +43,7 @@
                             <div class="d-flex justify-content-around align-items-center">
                                 <img class="logo-image" src="~/images/homeLogo.jpg" alt="logo">
                                 <div class="m-0 px-1"><font face="sans-serif">合展屋WooHouse</font></div>
-@*                                <div class="m-0 px-1"><font face="sans-serif"></font></div>*@
+                                @*                                <div class="m-0 px-1"><font face="sans-serif"></font></div>*@
                             </div>
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -189,6 +191,8 @@
     <script src="https://kit.fontawesome.com/49896da301.js" crossorigin="anonymous"></script>
     <!-- axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- nprogerss js-->
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
     <!-- template main js -->
     <script src="~/js/main.js" asp-append-version="true"></script>
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.js" asp-append-version="true"></script>

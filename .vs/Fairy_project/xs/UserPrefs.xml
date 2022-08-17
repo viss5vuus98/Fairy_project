@@ -6,26 +6,29 @@
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/wwwroot/css/adminChat.css">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Manufacturer/Apply.cshtml">
     <Files>
-      <File FileName="Fairy_project/wwwroot/css/templateB5.css" Line="135" Column="20" />
-      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="28" Column="95" />
-      <File FileName="Fairy_project/Views/Member/Index.cshtml" Line="19" Column="42" />
-      <File FileName="Fairy_project/wwwroot/css/userChatB5.css" Line="121" Column="21" />
-      <File FileName="Fairy_project/wwwroot/css/userChatB4.css" Line="97" Column="1" />
-      <File FileName="Fairy_project/wwwroot/css/adminChat.css" Line="230" Column="1" />
-      <File FileName="Fairy_project/Views/Shared/_Admin_Layout.cshtml" Line="89" Column="57" />
+      <File FileName="Fairy_project/wwwroot/js/memberTicket.js" Line="11" Column="1" />
+      <File FileName="Fairy_project/wwwroot/js/eDetail.js" Line="4" Column="1" />
+      <File FileName="Fairy_project/Views/Shared/_Layout_manuf.cshtml" Line="195" Column="75" />
+      <File FileName="Fairy_project/Views/Shared/_Layout.cshtml" Line="214" Column="75" />
+      <File FileName="Fairy_project/Views/Manufacturer/Index.cshtml" Line="109" Column="1" />
+      <File FileName="Fairy_project/Views/Manufacturer/Policy.cshtml" Line="1" Column="1" />
+      <File FileName="Fairy_project/Views/Manufacturer/ApplyStand.cshtml" Line="1" Column="1" />
+      <File FileName="Fairy_project/Views/Manufacturer/Apply.cshtml" Line="98" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
-              <Node name="Views" expanded="True" />
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True">
-                  <Node name="adminChat.css" selected="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Manufacturer" expanded="True">
+                  <Node name="Apply.cshtml" selected="True" />
                 </Node>
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="js" expanded="True" />
               </Node>
             </Node>
           </Node>

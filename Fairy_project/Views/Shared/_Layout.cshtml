@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico">
-    @*<title>Template</title>*@
+    <title>合展屋Woohouse</title>
     @await RenderSectionAsync("Style", required: false)
+    <!-- nprogerss css-->
+    <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet">
     <!-- template CSS -->
     <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true">
     <link rel="stylesheet" href="~/css/userChatB4.css" asp-append-version="true" />
@@ -28,7 +30,7 @@
                             <div class="d-flex justify-content-around align-items-center">
                                 <img class="logo-image" src="~/images/homeLogo.jpg" alt="logo">
                                 <div class="m-0 px-1"><font face="sans-serif">合展屋WooHouse</font></div>
-@*                                <div class="m-0 px-1"><font face="sans-serif"></font></div>*@
+                                @*                                <div class="m-0 px-1"><font face="sans-serif"></font></div>*@
                             </div>
 
 
@@ -44,36 +46,36 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ml-auto">
                                 @*<ul class="navbar-nav ml-auto">
-                                <li class="nav-item">
-                                <a class="nav-link" href="index.html">
-                                Home
-                                <span class="sr-only">(current)</span>
-                                </a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                會員頁面
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="@Url.Action("index", "Member")">我的票券</a>
-                                <a class="dropdown-item" href="gallery.html">會員資料</a>
-                                </div>
-                                </li>*@
+                                    <li class="nav-item">
+                                    <a class="nav-link" href="index.html">
+                                    Home
+                                    <span class="sr-only">(current)</span>
+                                    </a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    會員頁面
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="@Url.Action("index", "Member")">我的票券</a>
+                                    <a class="dropdown-item" href="gallery.html">會員資料</a>
+                                    </div>
+                                    </li>*@
                                 @*<li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                Blog
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="blog-fullwidth.html">Blog Full</a>
-                                <a class="dropdown-item" href="blog-left-sidebar.html">Blog Left sidebar</a>
-                                <a class="dropdown-item" href="blog-right-sidebar.html">Blog Right sidebar</a>
-                                </div>
-                                </li>*@
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    Blog
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="blog-fullwidth.html">Blog Full</a>
+                                    <a class="dropdown-item" href="blog-left-sidebar.html">Blog Left sidebar</a>
+                                    <a class="dropdown-item" href="blog-right-sidebar.html">Blog Right sidebar</a>
+                                    </div>
+                                    </li>*@
                                 @*<li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Logout", "Login")" ">登入</a>
-                                </li>*@
+                                    <a class="nav-link" href="@Url.Action("Logout", "Login")" ">登入</a>
+                                    </li>*@
                             </ul>
                         </div>
                     </nav>
@@ -85,10 +87,10 @@
     @*==chat==*@
 
     @*<div id="chat-circle" class="btn btn-raised btn-toggle scaleBox">
-    <div id="chat-overlay">
-    </div>
-    <i class="fa-solid fa-comment-dots title-icon"></i>
-    </div>*@
+        <div id="chat-overlay">
+        </div>
+        <i class="fa-solid fa-comment-dots title-icon"></i>
+        </div>*@
     <div class="card mx-auto card-toggle chat-box" id="chat-card" style="max-width: 400px;">
         <div class="card-header bg-transparent">
             <div class="navbar navbar-expand p-0">
@@ -208,6 +210,8 @@
     @*------footer------*@
     <script src="https://kit.fontawesome.com/49896da301.js" crossorigin="anonymous"></script>
     <script src="~/js/main.js" asp-append-version="true"></script>
+    <!-- nprogerss js-->
+    <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     @*@await Html.PartialAsync("_ToastPartial")*@
     <script src="~/lib/microsoft/signalr/dist/browser/signalr.js" asp-append-version="true"></script>
