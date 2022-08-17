@@ -38,7 +38,7 @@
                 <div class="col text-center">
                     <div class="check-step check-step-finished d-flex flex-column justify-content-center">
                         <i class="fa-solid fa-list-check" style="font-size: 40px;"></i><span>
-                            STEP
+                            步驟
                             1
                         </span><span>確認訂單</span>
                     </div>
@@ -46,7 +46,7 @@
                 <div class="col text-center">
                     <div class="check-step d-flex flex-column justify-content-center">
                         <i class="fa-solid fa-circle-minus" style="font-size: 40px;"></i><span>
-                            STEP
+                            步驟
                             2
                         </span><span>建立訂單</span>
                     </div>
@@ -54,7 +54,7 @@
                 <div class="col text-center">
                     <div class="check-step d-flex flex-column justify-content-center">
                         <i class="fa-solid fa-circle-minus" style="font-size: 40px;"></i><span>
-                            STEP
+                            步驟
                             3
                         </span><span>完成訂單</span>
                     </div>
@@ -63,7 +63,7 @@
         </div>
 
         <div class="ticket">
-            <h3 style="text-align:center;margin-top:200px;margin-bottom:200px;">購物車空空如也~~</h3>
+            <h3 style="text-align:center;margin-top:200px;margin-bottom:200px;">購物車尚未購買</h3>
         </div>
         <div class="container">
             <div class="total1 d-flex">
@@ -87,7 +87,7 @@
                     <div class="col text-center">
                         <div class="check-step check-step-finished d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-list-check" style="font-size: 40px;"></i><span>
-                                STEP
+                                步驟
                                 1
                             </span><span>確認訂單</span>
                         </div>
@@ -95,7 +95,7 @@
                     <div class="col text-center">
                         <div class="check-step check-step-finished d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-address-card" style="font-size: 40px;"></i><span>
-                                STEP
+                                步驟
                                 2
                             </span><span>建立訂單</span>
                         </div>
@@ -103,7 +103,7 @@
                     <div class="col text-center">
                         <div class="check-step d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-circle-minus" style="font-size: 40px;"></i><span>
-                                STEP
+                                步驟
                                 3
                             </span><span>完成訂單</span>
                         </div>
@@ -175,19 +175,22 @@
                 <div class="total2 d-flex ">
                     @*<div class="d-flex" id="totalprice1" style="font-size: 24px;">
                 </div>*@
-                    <div class="d-flex justify-content-between w-100">
-                        <button type="button" class="btn1 btn btn-main btn-small btn-round" id="pre" style="width:280px;margin-left:380px;">
+                    <div class="d-flex justify-content-around w-100">
+                        <button type="button" class="btn1 btn btn-main btn-small btn-round" id="pre" style="width:150px;">
                             上一步
                         </button>
-                        @*<button type="submit" class="btn1 col-md-7 btn btn-main btn-small btn-round" id="pay" style="width:150px;">
+                        @*<button type="button" class="btn1 btn btn-main btn-small btn-round" id="pre" style="width:280px;margin-left:380px;">
+                            上一步
+                        </button>*@
+                        <button type="submit" class="btn1 btn btn-main btn-small btn-round" id="pay" style="width:150px;">
                     付款結帳
-                    </button>*@
+                    </button>
                         <h1 class="d-none">藍新金流串接範例</h1>
-                        <div class="card w-100 h-100" id="app" style="width:180px;border:0;padding-left:10px;">
+                        <div class="card" id="app" style="width:150px;border:0;">
                             <div class="card-header d-none">
                                 API 欄位
                             </div>
-                            <div class="card-body ">
+                            <div class="card-body d-none">
                                 <div class="row mb-2">
                                     <div class="col-md-6">
                                         <label class="form-label">商店代號</label>
@@ -239,7 +242,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" id="pay" class="btn1 btn btn-main btn-small btn-round" v-on:click="SendToNewebPay('VACC')">付款結帳</button>
+                            <button type="submit"  class="btn1 btn btn-main btn-small btn-round" v-on:click="SendToNewebPay('VACC')">第三方付款結帳</button>
                         </div>
                     </div>
                 </div>
@@ -253,7 +256,7 @@
                     <div class="col text-center">
                         <div class="check-step check-step-finished d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-list-check" style="font-size: 40px;"></i><span>
-                                STEP
+                                步驟
                                 1
                             </span><span>確認訂單</span>
                         </div>
@@ -261,7 +264,7 @@
                     <div class="col text-center">
                         <div class="check-step check-step-finished d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-address-card" style="font-size: 40px;"></i><span>
-                                STEP
+                                步驟
                                 2
                             </span><span>建立訂單</span>
                         </div>
@@ -269,7 +272,7 @@
                     <div class="col text-center">
                         <div class="check-step check-step-finished d-flex flex-column justify-content-center">
                             <i class="fa-solid fa-circle-check" style="font-size: 40px;"></i><span>
-                                STEP
+                                步驟
                                 3
                             </span><span>完成訂單</span>
                         </div>
@@ -336,7 +339,7 @@
     <script src="https://unpkg.com/vue@3"></script>
     <script>
         const root = @Url.Content("~/images/")
-            $(".second").hide();
+        $(".second").hide();
         $(".third").hide();
         //取得今天日期
         var today = new Date();
@@ -535,7 +538,8 @@
                 for (let i = 0; i < array.length; i++) {
                     $(".order_detail").append(`<div style="display:flex;justify-content: space-between;align-items: center;"><h5>${array[i].exhibitions.exhibitName}x${objcount[i].count}</h5><p>小計:${array[i].exhibitions.ticketPrice * objcount[i].count}</p></div>`)
                 }
-                $('#Amt').val(sum)
+                $('#Amt').val(sum);
+          
             }
         })
 
@@ -614,8 +618,13 @@
                         , ClientBackURL: '@ViewData["ClientBackURL"]'
                         , Email: 'kilye@gmail.com'
                     }
-                }
+                }        
             }
+            //computed:{
+            //    comForm(){
+            //        return addForm;
+            //    }
+            //}
             , methods: {
                 // 傳送至藍新金流
                 SendToNewebPay(ChannelID) {
