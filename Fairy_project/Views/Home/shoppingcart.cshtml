@@ -182,11 +182,11 @@
                         @*<button type="button" class="btn1 btn btn-main btn-small btn-round" id="pre" style="width:280px;margin-left:380px;">
                             上一步
                         </button>*@
-                        <button type="submit" class="btn1 btn btn-main btn-small btn-round" id="pay" style="width:150px;">
+                        @*<button type="submit" class="btn1 btn btn-main btn-small btn-round" id="pay" style="width:150px;">
                     付款結帳
-                    </button>
+                    </button>*@
                         <h1 class="d-none">藍新金流串接範例</h1>
-                        <div class="card d-none" id="app" style="width:150px;border:0;">
+                        <div class="card" id="app" style="width:150px;border:0;">
                             <div class="card-header d-none">
                                 API 欄位
                             </div>
@@ -208,7 +208,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">商品金額</label>
-                                        <input type="text" class="form-control" id="Amt" v-model="addForm.Amt">
+                                        <input type="text" class="form-control" id="Amt" v-model="comform.Amt">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -242,7 +242,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit"  class="btn1 btn btn-main btn-small btn-round" v-on:click="SendToNewebPay('VACC')">第三方付款結帳</button>
+                            <button type="submit" id="pay" class="btn1 btn btn-main btn-small btn-round" v-on:click="SendToNewebPay('VACC')">第三方付款結帳</button>
                         </div>
                     </div>
                 </div>
@@ -338,6 +338,82 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script>
+        // 表單資料
+        const addForm = {
+            MerchantID: '@ViewData["MerchantID"]' //商品代號
+            , MerchantOrderNo: '@ViewData["MerchantOrderNo"]'
+            , ItemDesc: '展覽票卷'
+            , Amt: '1000'
+            , ExpireDate: '@ViewData["ExpireDate"]'
+            , ReturnURL: '@ViewData["ReturnURL"]'
+            , CustomerURL: '@ViewData["CustomerURL"]'
+            , NotifyURL: '@ViewData["NotifyURL"]'
+            , ClientBackURL: '@ViewData["ClientBackURL"]'
+            , Email: 'koler@gmail.com'
+        }
+        const app = Vue.createApp({
+            data() {
+                return {
+                    addForm
+                }        
+            },
+            computed:{
+                comform() {
+                    return this.addForm;
+                }
+            }
+            , methods: {
+                // 傳送至藍新金流
+                SendToNewebPay(ChannelID) {
+                    var self = this;
+
+                    // 組合表單資料
+                    var postData = {};
+                    postData['ChannelID'] = ChannelID;
+                    postData['MerchantID'] = self.addForm.MerchantID;
+                    postData['MerchantOrderNo'] = self.addForm.MerchantOrderNo;
+                    postData['ItemDesc'] = self.addForm.ItemDesc;
+                    postData['Amt'] = self.addForm.Amt;
+                    postData['ExpireDate'] = self.addForm.ExpireDate;
+                    postData['ReturnURL'] = self.addForm.ReturnURL;
+                    postData['CustomerURL'] = self.addForm.CustomerURL;
+                    postData['NotifyURL'] = self.addForm.NotifyURL;
+                    postData['ClientBackURL'] = self.addForm.ClientBackURL;
+                    postData['Email'] = self.addForm.Email;
+
+                    // 使用 jQuery Ajax 傳送至後端
+                    $.ajax({
+                        url: '@Url.Content("~/Home/SendToNewebPay")',
+                        method: 'POST',
+                        dataType: 'json',
+                        data: { inModel: postData, __RequestVerificationToken: $('@Html.AntiForgeryToken()').val() },
+                        success: function(returnObj) {
+                            console.log(returnObj)
+                            // 呼叫藍新金流 API
+                            const form = document.createElement('form');
+                            form.method = 'post';
+                            form.action = 'https://ccore.newebpay.com/MPG/mpg_gateway';//藍新金流驗證網址(測試環境)
+
+                            for (const key in returnObj) {
+                                if (returnObj.hasOwnProperty(key)) {
+                                    const hiddenField = document.createElement('input');
+                                    hiddenField.type = 'hidden';
+                                    hiddenField.name = key;
+                                    hiddenField.value = returnObj[key];
+                                    form.appendChild(hiddenField);
+                                }
+                            }
+                            document.body.appendChild(form);
+                            form.submit();
+                        },
+                        error: function(err) {
+                            alert(err.status + " " + err.statusText + '\n' + err.responseText);
+                        }
+                    });
+                }
+            }
+        });
+        const vm = app.mount('#app');
         const root = @Url.Content("~/images/")
         $(".second").hide();
         $(".third").hide();
@@ -370,8 +446,8 @@
                 $(".ticket").append(`<div class="container" style="box-shadow: 3px 3px 9px rgba(100,112,134,0.1);">
                                                     <div class="rowticket d-flex">
                                                         <div class="col-xl-4"><img
-                                                                src="${root}${data[i].exhibitions.exhibitTImg}"
-                                                                alt="${data[i].exhibitions.exhibitTImg}" style="border:1px solid gray"></div>
+                                                                src="${root}${data[i].exhibitions.exhibitPreImg}"
+                                                                alt="${data[i].exhibitions.exhibitPreImg}" style="border:1px solid gray"></div>
                                                         <div class="col-xl-8">
                                                             <div class="d-flex" style="justify-content: space-between;">
                                                                 <h3 style="font-weight: bold;font-style: italic;">${data[i].exhibitions.exhibitName}</h3>
@@ -541,8 +617,8 @@
                 $('#name').val('李文翰')
                 $('#cellphone').val('0912345678')
                 $('#Email').val('koler@gmail.com')
-                $('#Amt').val(sum);
-          
+                //$('#Amt').val(sum);
+                addForm.Amt = sum;       
             }
         })
 
@@ -566,11 +642,11 @@
                 $(".orderphone").append(`<h5>${$("#cellphone").val()}</h5>`);
                 $(".orderemail").append(`<h5>${$("#Email").val()}</h5>`);
                 $(".orderinfo").append(`<h5>信用卡付款</h5>`)
-                alert("您已成功付款");
+                //alert("您已成功付款");
                 $(window).scrollTop(0);
                 $(".first").hide();
-                $(".second").hide();
-                $(".third").show();
+                //$(".second").hide();
+                //$(".third").show();
                 //console.log(array);
 
                 // 取得指定 input value
@@ -605,81 +681,76 @@
         })
 
 
-        const app = Vue.createApp({
-            data() {
-                return {
-                    // 表單資料
-                    addForm: {
-                        MerchantID: '@ViewData["MerchantID"]' //商品代號
-                        , MerchantOrderNo: '@ViewData["MerchantOrderNo"]'
-                        , ItemDesc: '展覽票卷'
-                        , Amt: '500'
-                        , ExpireDate: '@ViewData["ExpireDate"]'
-                        , ReturnURL: '@ViewData["ReturnURL"]'
-                        , CustomerURL: '@ViewData["CustomerURL"]'
-                        , NotifyURL: '@ViewData["NotifyURL"]'
-                        , ClientBackURL: '@ViewData["ClientBackURL"]'
-                        , Email: 'koler@gmail.com'
-                    }
-                }        
-            }
-            //computed:{
-            //    comForm(){
-            //        return addForm;
-            //    }
-            //}
-            , methods: {
-                // 傳送至藍新金流
-                SendToNewebPay(ChannelID) {
-                    var self = this;
+        //const app = Vue.createApp({
+        //    data() {
+        //        return {
+        //            // 表單資料
+        //            addForm: {
+        //                MerchantID: '@ViewData["MerchantID"]' //商品代號
+        //                , MerchantOrderNo: '@ViewData["MerchantOrderNo"]'
+        //                , ItemDesc: '展覽票卷'
+        //                , Amt: '500'
+        //                , ExpireDate: '@ViewData["ExpireDate"]'
+        //                , ReturnURL: '@ViewData["ReturnURL"]'
+        //                , CustomerURL: '@ViewData["CustomerURL"]'
+        //                , NotifyURL: '@ViewData["NotifyURL"]'
+        //                , ClientBackURL: '@ViewData["ClientBackURL"]'
+        //                , Email: 'koler@gmail.com'
+        //            }
+        //        }        
+        //    }
+        //    , methods: {
+        //        // 傳送至藍新金流
+        //        SendToNewebPay(ChannelID) {
+        //            var self = this;
 
-                    // 組合表單資料
-                    var postData = {};
-                    postData['ChannelID'] = ChannelID;
-                    postData['MerchantID'] = self.addForm.MerchantID;
-                    postData['MerchantOrderNo'] = self.addForm.MerchantOrderNo;
-                    postData['ItemDesc'] = self.addForm.ItemDesc;
-                    postData['Amt'] = self.addForm.Amt;
-                    postData['ExpireDate'] = self.addForm.ExpireDate;
-                    postData['ReturnURL'] = self.addForm.ReturnURL;
-                    postData['CustomerURL'] = self.addForm.CustomerURL;
-                    postData['NotifyURL'] = self.addForm.NotifyURL;
-                    postData['ClientBackURL'] = self.addForm.ClientBackURL;
-                    postData['Email'] = self.addForm.Email;
+        //            // 組合表單資料
+        //            var postData = {};
+        //            postData['ChannelID'] = ChannelID;
+        //            postData['MerchantID'] = self.addForm.MerchantID;
+        //            postData['MerchantOrderNo'] = self.addForm.MerchantOrderNo;
+        //            postData['ItemDesc'] = self.addForm.ItemDesc;
+        //            postData['Amt'] = self.addForm.Amt;
+        //            postData['ExpireDate'] = self.addForm.ExpireDate;
+        //            postData['ReturnURL'] = self.addForm.ReturnURL;
+        //            postData['CustomerURL'] = self.addForm.CustomerURL;
+        //            postData['NotifyURL'] = self.addForm.NotifyURL;
+        //            postData['ClientBackURL'] = self.addForm.ClientBackURL;
+        //            postData['Email'] = self.addForm.Email;
 
-                    // 使用 jQuery Ajax 傳送至後端
-                    $.ajax({
-                        url: '@Url.Content("~/Home/SendToNewebPay")',
-                        method: 'POST',
-                        dataType: 'json',
-                        data: { inModel: postData, __RequestVerificationToken: $('@Html.AntiForgeryToken()').val() },
-                        success: function(returnObj) {
-                            console.log(returnObj)
-                            // 呼叫藍新金流 API
-                            const form = document.createElement('form');
-                            form.method = 'post';
-                            form.action = 'https://ccore.newebpay.com/MPG/mpg_gateway';//藍新金流驗證網址(測試環境)
+        //            // 使用 jQuery Ajax 傳送至後端
+        //            $.ajax({
+        //                url: '@Url.Content("~/Home/SendToNewebPay")',
+        //                method: 'POST',
+        //                dataType: 'json',
+        //                data: { inModel: postData, __RequestVerificationToken: $('@Html.AntiForgeryToken()').val() },
+        //                success: function(returnObj) {
+        //                    console.log(returnObj)
+        //                    // 呼叫藍新金流 API
+        //                    const form = document.createElement('form');
+        //                    form.method = 'post';
+        //                    form.action = 'https://ccore.newebpay.com/MPG/mpg_gateway';//藍新金流驗證網址(測試環境)
 
-                            for (const key in returnObj) {
-                                if (returnObj.hasOwnProperty(key)) {
-                                    const hiddenField = document.createElement('input');
-                                    hiddenField.type = 'hidden';
-                                    hiddenField.name = key;
-                                    hiddenField.value = returnObj[key];
-                                    form.appendChild(hiddenField);
-                                }
-                            }
-                            document.body.appendChild(form);
-                            form.submit();
-                        },
-                        error: function(err) {
-                            alert(err.status + " " + err.statusText + '\n' + err.responseText);
-                        }
-                    });
-                }
-            }
-        });
-        const vm = app.mount('#app');
+        //                    for (const key in returnObj) {
+        //                        if (returnObj.hasOwnProperty(key)) {
+        //                            const hiddenField = document.createElement('input');
+        //                            hiddenField.type = 'hidden';
+        //                            hiddenField.name = key;
+        //                            hiddenField.value = returnObj[key];
+        //                            form.appendChild(hiddenField);
+        //                        }
+        //                    }
+        //                    document.body.appendChild(form);
+        //                    form.submit();
+        //                },
+        //                error: function(err) {
+        //                    alert(err.status + " " + err.statusText + '\n' + err.responseText);
+        //                }
+        //            });
+        //        }
+        //    }
+        //});
+        //const vm = app.mount('#app');
 
 
     </script>
