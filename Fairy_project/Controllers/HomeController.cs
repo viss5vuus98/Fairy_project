@@ -166,11 +166,11 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult GetInviteManufactures([FromBody] GetIdClassModel idClass)
     {
-        var booths = _context.BoothMapsses.Where(m => m.EId == idClass.Ex_id && m.MfId != null).Distinct().ToList().Take(3).ToList() ?? new List<BoothMapss>();
+        var booths = _context.BoothMapsses.Where(m => m.EId == idClass.Ex_id && m.MfId != null).Distinct().Take(3).ToList() ?? new List<BoothMapss>();
         List<InviteManufactures> inviteManufactures = new List<InviteManufactures>();
         foreach (var booth in booths)
         {
-            Console.WriteLine(booth.MfId);
+            Console.WriteLine(booth.MfId + "-----------------------------");
             var apply = _context.Appliesses.First(a => a.EId == idClass.Ex_id && a.MfId == booth.MfId);
             var manufacture = _context.Manufacturesses.First(m => m.ManufactureId == booth.MfId);
             InviteManufactures invite = new InviteManufactures()
@@ -179,6 +179,9 @@ public class HomeController : Controller
                 description = apply.MfDescription,
                 name = manufacture.ManufactureName
             };
+            Console.WriteLine(invite.logo + "-----------------------------");
+            Console.WriteLine(invite.description + "-----------------------------");
+            Console.WriteLine(invite.name + "-----------------------------");
             inviteManufactures.Add(invite);
         }
         return Json(inviteManufactures);

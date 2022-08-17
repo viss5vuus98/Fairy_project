@@ -67,7 +67,7 @@ function getBooths(exhibitId) {
 //    }
 //}
 
-
+console.log(btnCart.dataset.id)
 axios.post(rootUrl + 'GetInviteManufactures', { "Ex_id": btnCart.dataset.id })
     .then(res => {
         console.log(res.data)
@@ -81,7 +81,7 @@ axios.post(rootUrl + 'GetInviteManufactures', { "Ex_id": btnCart.dataset.id })
 function renderCards(data) {
     const cardsContent = document.getElementById('cards-content')
     let innerContent = '<div class="col-lg-1"></div>';
-    for (let i = 0; i <= 3; i++) {
+    for (let i = 0; i < 3; i++) {
         innerContent += `
              <div class="col-lg-3 col-sm-8">
                 <figure class="wow fadeInLeft animated animated" data-wow-duration="500ms" data-wow-delay="300ms"
@@ -100,5 +100,5 @@ function renderCards(data) {
         `
     }
     innerContent += '<div class="col-lg-1"></div>';
-    cardsContent.innerHTML = innerContent
+    cardsContent.innerHTML += innerContent
 }

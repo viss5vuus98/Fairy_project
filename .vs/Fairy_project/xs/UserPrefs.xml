@@ -6,29 +6,31 @@
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/wwwroot/js/eDetail.js">
     <Files>
       <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="13" Column="82" />
-      <File FileName="Fairy_project/Views/Home/exhibitionDetail.cshtml" Line="59" Column="1" />
+      <File FileName="Fairy_project/Views/Home/exhibitionDetail.cshtml" Line="50" Column="14" />
+      <File FileName="Fairy_project/wwwroot/js/eDetail.js" Line="79" Column="1" />
+      <File FileName="Fairy_project/Controllers/HomeController.cs" Line="154" Column="28" />
       <File FileName="Fairy_project/wwwroot/css/TicketsPage.css" Line="168" Column="34" />
-      <File FileName="Fairy_project/wwwroot/js/eDetail.js" Line="71" Column="11" />
-      <File FileName="Fairy_project/wwwroot/js/HomeIndex.js" Line="70" Column="27" />
-      <File FileName="Fairy_project/wwwroot/js/userChat.js" Line="91" Column="99" />
       <File FileName="Fairy_project/wwwroot/js/adminChat.js" Line="116" Column="99" />
-      <File FileName="Fairy_project/Controllers/HomeController.cs" Line="167" Column="47" />
       <File FileName="Fairy_project/Models/idClassModel.cs" Line="29" Column="42" />
+      <File FileName="Fairy_project/Views/Home/Index.cshtml" Line="366" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
               </Node>
-              <Node name="Models" expanded="True" />
               <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True" />
+                <Node name="css" expanded="True" />
+                <Node name="js" expanded="True">
+                  <Node name="eDetail.js" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
