@@ -94,14 +94,36 @@
     display: none;
 }
 
+#chat-circle::after {
+    content: "會員";
+    color: #000;
+    font-size: .5rem;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+}
 
+#chat-circle::before {
+    content: "服務";
+    color: #000;
+    font-size: .5rem;
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    font-weight: 600;
+}
 
 .fa-comment-dots.title-icon {
     position: absolute;
     top: 50%;
     right: 50%;
     transform: translateX(50%) translateY(-50%);
-    font-size: 30px;
+    font-size: 20px;
     z-index: 98;
     color: #c0b0a2;
 }
