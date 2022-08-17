@@ -239,7 +239,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn1 btn btn-main btn-small btn-round" v-on:click="SendToNewebPay('VACC')">付款結帳</button>
+                            <button type="submit" id="pay" class="btn1 btn btn-main btn-small btn-round" v-on:click="SendToNewebPay('VACC')">付款結帳</button>
                         </div>
                     </div>
                 </div>
@@ -605,8 +605,8 @@
                     addForm: {
                         MerchantID: '@ViewData["MerchantID"]' //商品代號
                         , MerchantOrderNo: '@ViewData["MerchantOrderNo"]'
-                        , ItemDesc: '測試商品'
-                        , Amt: ''
+                        , ItemDesc: '展覽票卷'
+                        , Amt: '500'
                         , ExpireDate: '@ViewData["ExpireDate"]'
                         , ReturnURL: '@ViewData["ReturnURL"]'
                         , CustomerURL: '@ViewData["CustomerURL"]'
