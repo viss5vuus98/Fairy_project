@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.ico">
-    @*<title>Template</title>*@
+    <title>合展屋</title>
     @await RenderSectionAsync("Style", required: false)
     <!-- template CSS -->
     <link rel="stylesheet" href="~/css/Layout.css" asp-append-version="true">
@@ -141,7 +141,7 @@
         </div>
         <div class="card-footer bg-white m-0 p-1 w-100 chat-box-footer">
             <div class="input-group">
-                <input type="text" class="form-control border-0" id="input-msg" placeholder="Write a message...">
+                <input type="text" class="form-control border-0" id="input-msg" placeholder="輸入想問的問題...">
                 <button class="btn btn-light text-secondary btn-send" id="send-msg" date-self="">
                     <i class="fa-solid fa-paper-plane"></i>
                 </button>
@@ -208,7 +208,7 @@
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item">
                                             <a class="nav-link" href="@Url.Action("Index", "Home")">
-                                                Home
+                                                首頁
                                                 <span class="sr-only">(current)</span>
                                             </a>
                                         </li>

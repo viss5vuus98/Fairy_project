@@ -36,7 +36,7 @@
                     <div class="form-group" style="margin-top:3%">
 
 
-                        <textarea asp-for="@Model.MfDescription" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;攤位描述" style="font-size:12px; border:1px solid #dedede;padding:0" cols="51" rows="10"></textarea>
+                        <textarea asp-for="@Model.MfDescription" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;攤位描述" style="font-size:12px; border:1px solid #dedede;padding:0" cols="48" rows="10"></textarea>
                     </div>
 
                     <div style="border:none;margin-left:6%">
@@ -76,14 +76,24 @@
 
 
         <div class="col-md-6">
+            
+            <div class="MfPImgarea position-relative">
+                <div id="clearMf" class="position-absolute" style="top:144px; left:250px;">
+                廠商照片預覽圖
 
-            <div class="MfPImgarea">
+                
+            </div> 
+
                 <img id="MfPImg" class="MfPImg" />
+                @*<h4 class="imgfont">GONTTTTTTTTT</h4>*@
             </div>
-            <div class="MfLogoarea" style="margin-top:5%">
+            
+            <div class="MfLogoarea  position-relative" style="margin-top:5% ">  
+                <div id="clearLg" class="position-absolute" style="top:100px; left:80px;">LOGO照片預覽圖</div>
                 <img id="MfLogo" class="MfLogo" />
+@*                                <h4 class="logofont">GONTTTTTTTTT</h4>
+*@
             </div>
-
         </div>
 
 
@@ -110,6 +120,7 @@
             let readfile = new FileReader();
             readfile.readAsDataURL(e.target.files[0])
             readfile.addEventListener('load', () => {
+                $('#clearMf').empty();
                 $('#MfPImg').attr('src', `${readfile.result}`)
             })
         })
@@ -118,6 +129,7 @@
             let readfile = new FileReader();
             readfile.readAsDataURL(e.target.files[0])
             readfile.addEventListener('load', () => {
+                 $('#clearLg').empty();
                 $('#MfLogo').attr('src', `${readfile.result}`)
             })
         })
