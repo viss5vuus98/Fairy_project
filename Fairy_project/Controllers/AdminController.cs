@@ -676,7 +676,7 @@ namespace Fairy_project.Controllers
             decimal booth = 0;
             if (_context.BoothMapsses.Where(b => b.EId == e.ExhibitId && b.BoothState == 1).Count() != 0)
             {
-                booth = Math.Round((decimal)_context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 3).Count() / _context.BoothMapsses.Where(b => b.EId == e.ExhibitId).Count() * 100, 0);
+                booth = Math.Round((decimal)_context.Appliesses.Where(a => a.EId == e.ExhibitId && a.CheckState == 2).Count() / _context.BoothMapsses.Where(b => b.EId == e.ExhibitId).Count() * 100, 0);
             }
             else
             {

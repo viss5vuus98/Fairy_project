@@ -13405,7 +13405,7 @@ button {
 /* ===== BUTTONS ===== */
 .btn {
     text-transform: uppercase;
-    box-shadow: none !important;
+    /*box-shadow: none !important;*/
     padding: 0.3125rem 1rem;
 }
 
