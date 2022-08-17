@@ -68,7 +68,7 @@
         <div class="container">
             <div class="total1 d-flex">
                 <div class="d-flex" id="totalprice">
-                    總金額:<p style="font-size:20px;margin-top: 5px;">0</p>元
+                    總金額:<p style="font-size:20px;">0</p>元
                 </div>
                 <div class="buttons">
                     <a asp-controller="Home" asp-action="search"><button type="button" class="btn1 col-md-7 btn btn-main btn-small btn-round" id="keepbuy">繼續選購</button></a>
@@ -218,7 +218,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label">付款人電子信箱</label>
-                                        <input type="text" class="form-control" id="Email" v-model="addForm.Email">
+                                        <input type="text" class="form-control" id="Email" v-model="comform.Email">
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -478,10 +478,10 @@
                 const loadcount = JSON.parse(sessionStorage.getItem('TicketList')) || []
                 $('.count').eq(i).val(loadcount[i].count)
 
-                if ($('.count').val() <= 1) {
-                    $(".minus").attr('disabled', true);
+                if ($('.count').eq(i).val() <= 1) {
+                    $(".minus").eq(i).attr('disabled', true);
                 } else {
-                    $(".minus").attr('disabled', false);
+                    $(".minus").eq(i).attr('disabled', false);
                 }
                 $(".smallcount").last().append(`小計:<p>${parseInt($(".originprice").children().last().text()) * $(".count").last().val()}</p>`);
             }
@@ -496,6 +496,14 @@
             $("#totalprice").append(`總金額:<p style="font-size:20px;">${sum}</p>元`);
             console.log(array)
         });
+
+        $('.count').each(function() {
+            if ($('.count').val() <= 1) {
+                $(this).prev().attr('disabled', true);
+            } else {
+                $(this).prev().attr('disabled', false);
+            }
+        })
 
         //按鈕事件
         var sum = 0;
@@ -618,8 +626,12 @@
                 $('#cellphone').val('0912345678')
                 $('#Email').val('koler@gmail.com')
                 //$('#Amt').val(sum);
-                addForm.Amt = sum;       
+                addForm.Amt = sum;
             }
+        })
+
+        $('#Email').change(function() {
+            addForm.Email = $("#Email").val();
         })
 
         //上一步
