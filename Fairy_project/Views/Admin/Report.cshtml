@@ -227,7 +227,13 @@
 
     <script>
         var picker;
+        $('.container-flued').ready(function () {
+            NProgress.start();
+        })
 
+        $('.card-default').ready(function () {
+            NProgress.done();
+        })
         $('#year').on('change', (e) => {
             $('#ename').html('<option value="">展覽名稱</option>')
             if ($(e.target).val() != '年') {

@@ -6,12 +6,17 @@
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Home/shoppingcart.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Admin/Report.cshtml">
     <Files>
       <File FileName="Fairy_project/wwwroot/js/eDetail.js" Line="58" Column="26" />
-      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="167" Column="6" />
+      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="13" Column="83" />
       <File FileName="Fairy_project/Views/Home/CallbackCustomer.cshtml" Line="130" Column="26" />
-      <File FileName="Fairy_project/Views/Home/shoppingcart.cshtml" Line="349" Column="9" />
+      <File FileName="Fairy_project/Views/Home/shoppingcart.cshtml" Line="350" Column="1" />
+      <File FileName="Fairy_project/Views/Shared/_Admin_Layout.cshtml" Line="168" Column="13" />
+      <File FileName="Fairy_project/Views/Admin/Index.cshtml" Line="105" Column="1" />
+      <File FileName="Fairy_project/Views/Admin/ExhibitIdDetail.cshtml" Line="974" Column="108" />
+      <File FileName="Fairy_project/Views/Admin/CreatExhibition.cshtml" Line="394" Column="31" />
+      <File FileName="Fairy_project/Views/Admin/Report.cshtml" Line="234" Column="47" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,14 +24,12 @@
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True">
-                  <Node name="shoppingcart.cshtml" selected="True" />
+                <Node name="Admin" expanded="True">
+                  <Node name="Report.cshtml" selected="True" />
                 </Node>
+                <Node name="Home" expanded="True" />
                 <Node name="Manufacturer" expanded="True" />
                 <Node name="Shared" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="js" expanded="True" />
               </Node>
             </Node>
           </Node>

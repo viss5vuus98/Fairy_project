@@ -102,6 +102,11 @@
 
 
 <script>
+    $(".container").ready(function () {
+        NProgress.start();
+    })
+
+
     const constraints = {
         'video': true,
         'audio': true
@@ -211,4 +216,7 @@
             console.log("pagefail")
         })
     }
+    $("#container").ready(function () {
+        NProgress.done();
+    })
 </script>

@@ -390,6 +390,14 @@
         <script src="~/js/custom.js"></script>
 
     <script>
+        $('.container').ready(function () {
+            NProgress.start();
+        })
+
+        $('.accordion').ready(function () {
+            NProgress.done();
+        })
+
         $('.areaoption').on('click', (e) => {
             $('#selecarea').text($(e.target).text())
             if ($(e.target).text() == 'A') {

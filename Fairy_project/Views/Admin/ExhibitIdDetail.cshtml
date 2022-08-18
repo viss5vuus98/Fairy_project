@@ -994,6 +994,14 @@
     {
 <script src="~/js/custom.js"></script>
     <script>
+        $(".container").ready(function () {
+            NProgress.start();
+        })
+
+        $(".titleinput").ready(function () {
+            NProgress.done();
+        })
+
         $('.areaoption').on('click', (e) => {
             console.log(e.target)
             $('#selecarea').text($(e.target).text())
@@ -1484,7 +1492,6 @@
             }
             return Math.round(ticketoriginal / parseInt(price)) * parseInt(price)
         }
-
     </script>
 }
 
