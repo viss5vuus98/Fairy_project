@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/JO0/27N20jfLM7iANbShX4rf67G1uu54kg7ghDS1TY=",
+  "Hash": "JHzboueOQp8IatEWMggAb/963Ok8Ba3LIlfhDtap6uM=",
   "Source": "Fairy_project",
   "BasePath": "_content/Fairy_project",
   "Mode": "Default",
@@ -4945,6 +4945,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\202208160956549854.jpg"
+    },
+    {
+      "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\images\\202208161616447876.jpg",
+      "SourceId": "Fairy_project",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\",
+      "BasePath": "_content/Fairy_project",
+      "RelativePath": "images/202208161616447876.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\202208161616447876.jpg"
     },
     {
       "Identity": "D:\\WooHouse_project\\Fairy_project\\wwwroot\\images\\20220841037463325.png",
