@@ -52,8 +52,8 @@ btnCart.addEventListener('click', event => {
         });
     } else {
         swal({
-            title: "感謝您",
-            text: "已將商品加入購物車",
+            /*title: "感謝您",*/
+            text: "商品已加入購物車",
             icon: "info",
             button: "返回",
         });

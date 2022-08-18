@@ -115,11 +115,17 @@
 
     @section Scripts
     {
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
 <script>
-$('#submit').click(function() {
+$('#submit').click(function(e) {
     if ($('#exname').val() == '' || $('#dtStart').val() == '' || $('#dtEnd').val() == '') {
-        alert("請輸入展覽名稱和日期")
+        e.preventDefault();
+        swal({
+            text: "請輸入展覽名稱和日期",
+            icon: "info",
+            button: "返回",
+        });
     }
 })
 </script>
