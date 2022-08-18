@@ -335,12 +335,20 @@
     </main>
     @section Scripts
     {
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script>
+        @*$(window).ready(function () {
+            swal({
+                title: "感謝您",
+                text: "成功付款",
+                icon: "success",
+             button: "返回",
+        });
+    })*@
         $(".first").ready(function(){
             NProgress.start();
-
         })
         // 表單資料
         const addForm = {
@@ -615,7 +623,11 @@
         $("#gopay").click(function() {
             console.log($('#totalprice').children().text())
             if ($("*.count").val() == "" || $('#totalprice').children().text() == '0') {
-                alert("數量不能為空值")
+                swal({
+                    title: "錯誤",
+                    text: "購物車不能為空值!",
+                    icon: "error",
+                });
             }
             else {
                 console.log(sum);
@@ -655,7 +667,11 @@
 
         $("#pay").click(function() {
             if ($("#name").val() == '' || $("#cellphone").val() == '' || $("#Email").val() == '') {
-                alert('請輸入完整資訊');
+                swal({
+                    title: "",
+                    text: "請輸入完整資訊",
+                    icon: "info",
+                });
             } else {
                 $(".orderprice").append(`<h5>${sum}</h5>元`);
                 $(".ordertime").append(`<h5>${currentDateTime}</h5>`)

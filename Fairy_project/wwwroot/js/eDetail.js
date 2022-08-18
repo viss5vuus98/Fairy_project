@@ -35,13 +35,28 @@ btnCart.addEventListener('click', event => {
     if (cartList.length == 0) {
         cartList.push(exhibition)
         sessionStorage.setItem('TicketList', JSON.stringify(cartList))
-        alert('加入購物車!')
+        swal({
+            title: "感謝您",
+            text: "成功加入購物車!",
+            icon: "success",
+            button: "返回",
+        });
     } else if (!cartList.filter(obj => obj.id == exhibition.id).length > 0) {
         cartList.push(exhibition)
         sessionStorage.setItem('TicketList', JSON.stringify(cartList))
-        alert('加入購物車!')
+        swal({
+            title: "感謝您",
+            text: "成功加入購物車!",
+            icon: "success",
+            button: "返回",
+        });
     } else {
-        alert('已經加入購物車了')
+        swal({
+            title: "感謝您",
+            text: "已將商品加入購物車",
+            icon: "info",
+            button: "返回",
+        });
     }
     //if (cartList.find(item => item.id == exhibition.id).length >= 1) {
     //    cartList.push(exhibition)
