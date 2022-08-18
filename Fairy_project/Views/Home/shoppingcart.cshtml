@@ -338,6 +338,10 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script>
+        $(".first").ready(function(){
+            NProgress.start();
+
+        })
         // 表單資料
         const addForm = {
             MerchantID: '@ViewData["MerchantID"]' //商品代號
@@ -485,6 +489,11 @@
                 }
                 $(".smallcount").last().append(`小計:<p>${parseInt($(".originprice").children().last().text()) * $(".count").last().val()}</p>`);
             }
+
+            $('.container').ready(function(){
+                NProgress.done();
+
+            })
 
             // 計算總價
             sum = 0;

@@ -6,16 +6,17 @@
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Manufacturer/Apply.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Home/shoppingcart.cshtml">
     <Files>
-      <File FileName="Fairy_project/wwwroot/js/memberTicket.js" Line="11" Column="1" />
-      <File FileName="Fairy_project/wwwroot/js/eDetail.js" Line="4" Column="1" />
+      <File FileName="Fairy_project/wwwroot/js/memberTicket.js" Line="9" Column="22" />
+      <File FileName="Fairy_project/wwwroot/js/eDetail.js" Line="10" Column="23" />
       <File FileName="Fairy_project/Views/Shared/_Layout_manuf.cshtml" Line="195" Column="75" />
-      <File FileName="Fairy_project/Views/Shared/_Layout.cshtml" Line="214" Column="75" />
+      <File FileName="Fairy_project/Views/Shared/_Layout.cshtml" Line="215" Column="39" />
       <File FileName="Fairy_project/Views/Manufacturer/Index.cshtml" Line="109" Column="1" />
       <File FileName="Fairy_project/Views/Manufacturer/Policy.cshtml" Line="1" Column="1" />
       <File FileName="Fairy_project/Views/Manufacturer/ApplyStand.cshtml" Line="1" Column="1" />
       <File FileName="Fairy_project/Views/Manufacturer/Apply.cshtml" Line="98" Column="14" />
+      <File FileName="Fairy_project/Views/Home/shoppingcart.cshtml" Line="495" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,9 +24,11 @@
           <Node name="Fairy_project" expanded="True">
             <Node name="Fairy_project" expanded="True">
               <Node name="Views" expanded="True">
-                <Node name="Manufacturer" expanded="True">
-                  <Node name="Apply.cshtml" selected="True" />
+                <Node name="Home" expanded="True">
+                  <Node name="shoppingcart.cshtml" selected="True" />
                 </Node>
+                <Node name="Manufacturer" expanded="True" />
+                <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="js" expanded="True" />
