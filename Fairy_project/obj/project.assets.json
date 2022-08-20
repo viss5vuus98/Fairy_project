@@ -10836,9 +10836,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CHEIN MEI LIN\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Student\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -10846,18 +10844,12 @@
       "projectUniqueName": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
       "projectName": "Fairy_project",
       "projectPath": "D:\\WooHouse_project\\Fairy_project\\Fairy_project.csproj",
-      "packagesPath": "C:\\Users\\CHEIN MEI LIN\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
       "outputPath": "D:\\WooHouse_project\\Fairy_project\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\CHEIN MEI LIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
