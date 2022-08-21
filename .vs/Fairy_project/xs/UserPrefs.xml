@@ -6,17 +6,18 @@
   <MonoDevelop.Ide.ItemProperties.Fairy__project PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/wwwroot/js/memberTicket.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Fairy_project/Views/Shared/_LayoutB5.cshtml">
     <Files>
       <File FileName="Fairy_project/Controllers/MemberController.cs" Line="105" Column="10" />
-      <File FileName="Fairy_project/wwwroot/js/memberTicket.js" Line="24" Column="11" />
       <File FileName="Fairy_project/Views/Member/Index.cshtml" Line="24" Column="131" />
+      <File FileName="Fairy_project/wwwroot/css/TicketsPage.css" Line="647" Column="10" />
       <File FileName="Fairy_project/wwwroot/js/ticketsVue.js" Line="79" Column="38" />
       <File FileName="Fairy_project/Models/idClassModel.cs" Line="39" Column="6" />
       <File FileName="Fairy_project/ViewModels/TicketsViewModel.cs" Line="21" Column="30" />
       <File FileName="Fairy_project/Controllers/LoginController.cs" Line="101" Column="1" />
-      <File FileName="Fairy_project/wwwroot/css/TicketsPage.css" Line="156" Column="11" />
-      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="1" Column="1" />
+      <File FileName="Fairy_project/Views/Shared/_LayoutB5.cshtml" Line="48" Column="42" />
+      <File FileName="Fairy_project/wwwroot/css/shoppingcart.css" Line="293" Column="18" />
+      <File FileName="Fairy_project/Views/Shared/_Layout.cshtml" Line="234" Column="62" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,13 +29,13 @@
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Member" expanded="True" />
-                <Node name="Shared" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_LayoutB5.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
-                <Node name="js" expanded="True">
-                  <Node name="memberTicket.js" selected="True" />
-                </Node>
+                <Node name="js" expanded="True" />
               </Node>
             </Node>
           </Node>
