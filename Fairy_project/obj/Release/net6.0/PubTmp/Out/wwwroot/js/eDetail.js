@@ -1,6 +1,30 @@
 ﻿const btnCart = document.querySelector('.btn_cart')
-const cartList = JSON.parse(sessionStorage.getItem('TicketList')) || []
+const cartList = JSON.parse(sessionStorage.getItem('TicketList')) || [];
 const content = document.getElementById('cards-content')
+
+// 請求攔截器//
+
+axios.interceptors.request.use(function (config) {
+    // 在發送请求之前
+
+    NProgress.start();
+    return config;
+}, function (error) {
+    // 請求錯誤
+
+    return Promise.reject(error);
+});
+
+// 響應攔截器//
+
+axios.interceptors.response.use((response) => {
+    NProgress.done();
+    return response
+}, (error) => {
+    return Promise.reject(error)
+})
+
+
 btnCart.addEventListener('click', event => {
     const data = event.target.dataset
     const exhibition = {
@@ -11,13 +35,28 @@ btnCart.addEventListener('click', event => {
     if (cartList.length == 0) {
         cartList.push(exhibition)
         sessionStorage.setItem('TicketList', JSON.stringify(cartList))
-        alert('加入購物車!')
+        swal({
+            title: "感謝您",
+            text: "成功加入購物車!",
+            icon: "success",
+            button: "返回",
+        });
     } else if (!cartList.filter(obj => obj.id == exhibition.id).length > 0) {
         cartList.push(exhibition)
         sessionStorage.setItem('TicketList', JSON.stringify(cartList))
-        alert('加入購物車!')
+        swal({
+            title: "感謝您",
+            text: "成功加入購物車!",
+            icon: "success",
+            button: "返回",
+        });
     } else {
-        alert('已經加入購物車了')
+        swal({
+            /*title: "感謝您",*/
+            text: "商品已加入購物車",
+            icon: "info",
+            button: "返回",
+        });
     }
     //if (cartList.find(item => item.id == exhibition.id).length >= 1) {
     //    cartList.push(exhibition)
@@ -67,7 +106,7 @@ function getBooths(exhibitId) {
 //    }
 //}
 
-
+console.log(btnCart.dataset.id)
 axios.post(rootUrl + 'GetInviteManufactures', { "Ex_id": btnCart.dataset.id })
     .then(res => {
         console.log(res.data)
@@ -81,7 +120,7 @@ axios.post(rootUrl + 'GetInviteManufactures', { "Ex_id": btnCart.dataset.id })
 function renderCards(data) {
     const cardsContent = document.getElementById('cards-content')
     let innerContent = '<div class="col-lg-1"></div>';
-    for (let i = 0; i <= 3; i++) {
+    for (let i = 0; i < 3; i++) {
         innerContent += `
              <div class="col-lg-3 col-sm-8">
                 <figure class="wow fadeInLeft animated animated" data-wow-duration="500ms" data-wow-delay="300ms"
@@ -100,5 +139,5 @@ function renderCards(data) {
         `
     }
     innerContent += '<div class="col-lg-1"></div>';
-    cardsContent.innerHTML = innerContent
+    cardsContent.innerHTML += innerContent
 }

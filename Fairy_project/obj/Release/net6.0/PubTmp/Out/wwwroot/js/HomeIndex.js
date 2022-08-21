@@ -1,4 +1,24 @@
-﻿//Render Exhibitions
+﻿// 請求攔截器//
+axios.interceptors.request.use(function (config) {
+    // 在發送请求之前
+    NProgress.start();
+    return config;
+}, function (error) {
+    // 請求錯誤
+    return Promise.reject(error);
+});
+
+// 響應攔截器//
+
+axios.interceptors.response.use((response) => {
+    NProgress.done();
+    return response
+}, (error) => {
+    return Promise.reject(error)
+})
+
+
+//Render Exhibitions
 
 const VModel = {
     getData() {

@@ -381,7 +381,7 @@
 
                     // 組合表單資料
                     var postData = {};
-                    postData['ChannelID'] = ChannelID;
+                    //postData['ChannelID'] = ChannelID;
                     postData['MerchantID'] = self.addForm.MerchantID;
                     postData['MerchantOrderNo'] = self.addForm.MerchantOrderNo;
                     postData['ItemDesc'] = self.addForm.ItemDesc;
@@ -392,7 +392,7 @@
                     postData['NotifyURL'] = self.addForm.NotifyURL;
                     postData['ClientBackURL'] = self.addForm.ClientBackURL;
                     postData['Email'] = self.addForm.Email;
-
+                    console.log(ChannelID);
                     // 使用 jQuery Ajax 傳送至後端
                     $.ajax({
                         url: '@Url.Content("~/Home/SendToNewebPay")',
