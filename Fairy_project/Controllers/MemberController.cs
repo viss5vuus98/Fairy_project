@@ -4,6 +4,7 @@ using Fairy_project.Models;
 using Fairy_project.ViewModels;
 using NuGet.Packaging;
 using System.Diagnostics;
+using System.Net.Sockets;
 
 namespace Fairy_project.Controllers
 {
@@ -103,7 +104,7 @@ namespace Fairy_project.Controllers
         public IActionResult giveTicket([FromBody] SussessMessage message)
         {
 
-            Console.WriteLine(message.eamil + "---------------------------");
+
             var targetMember = _context.Membersses.First(m => m.MemberAc == message.eamil) ?? new Memberss();
             if (targetMember.MemberAc != null)
             {
@@ -111,20 +112,32 @@ namespace Fairy_project.Controllers
                 var ticket = _context.Ticketsses.First(t => t.OrderNum == orderNum);
                 ticket.MId = targetMember.MemberId;
                 _context.SaveChanges();
+                return Json(ticket.EId);
             }
             else
             {
                 return Json("無此會員");
-            }
-            return Json("123");
+            }           
         }
 
         [HttpPost, Route("getTicketOfExhibit")]
         public IActionResult getTicketOfExhibit([FromBody] GetIdClassModel idClass)
         {
             Console.WriteLine(idClass.Ex_id + "--------------------");
-            var tickets = _context.Ticketsses.Where(t => t.EId == idClass.Ex_id && t.MId == idClass.Mf_id && t.Enterstate == 0);
-            return Json(tickets);
+            var tickets = _context.Ticketsses.Where(t => t.EId == idClass.Ex_id && t.MId == idClass.Mf_id && t.Enterstate == 0).ToList();
+            var getExhibit = _context.Exhibitionsses.First(e => e.ExhibitId == idClass.Ex_id);
+            IList<TicketsDetail> ticketList = new List<TicketsDetail>();
+            for (int i = 0; i < tickets.Count(); i++)
+            {
+                TicketsDetail ticket = new TicketsDetail()
+                {
+                    ticket = tickets[i],
+                    exhibit = getExhibit
+                };
+                ticketList.Add(ticket);
+            }
+
+            return Json(ticketList);
         }
     }
 }

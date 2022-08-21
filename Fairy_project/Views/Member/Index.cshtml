@@ -6,295 +6,154 @@
 @section Style{
     <link rel="stylesheet" href="~/css/TicketsPage.css" asp-append-version="true" />
 }
-<div class="modal fade" id="QRcode_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="QRModal-title">Ex title</h5>
-            </div>
-            <div class="QRmodal-body" id="QR-body">
-                <div id="QRcode"></div>
-            </div>
-            <div class="QRmodal-footer">
-                <div class="ticket_date">
-                    <span>請至展場入口處驗票</span>
+<div id="app">
+    <div class="modal fade" id="QRcode_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="QRModal-title">{{QRTtitle}}</h5>
                 </div>
-                <div class="qr_btn">
-                    <button type="button" class="btn btn-secondary btn-qrmodal" data-bs-dismiss="modal">關閉</button>
+                <div class="QRmodal-body" id="QR-body">
+                    <div id="QRcode"></div>
+                </div>
+                <div class="QRmodal-footer">
+                    <div class="ticket_date">
+                        <span>請至展場入口處驗票</span>
+                    </div>
+                    <div class="qr_btn">
+                        <button type="button" class="btn btn-secondary btn-qrmodal" data-bs-dismiss="modal" @@click="reminTicket()">關閉</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="give_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="ticket-title">送出票券</h5>
-            </div>
-            <div class="ticket-body" id="ticket-body">
-                <form class="checkout-form">
-                    <div class="form-group">
-                        <label for="full_name">輸入贈送帳號</label>
-                        <input type="text" class="form-control" id="give_modal_email" required placeholder="">
-                    </div>
-                    <div class="form-group d-none">
-                        <label for="user_address">輸入贈送</label>
-                        <input type="text" class="form-control" id="give_order" placeholder="">
-                    </div>
-                    <div class="checkout-country-code clearfix">
+    <div class="modal fade" id="give_Modal" tabindex="-1" aria-labelledby="ropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ticket-title">送出票券</h5>
+                </div>
+                <div class="ticket-body" id="ticket-body">
+                    <form class="checkout-form">
                         <div class="form-group">
-                            <label for="user_post_code">輸入贈送詞</label>
-                            <input type="text" class="form-control" id="user_post_code" name="zipcode" value="">
+                            <label for="full_name">輸入贈送帳號</label>
+                            <input type="text" class="form-control" id="give_modal_email" required placeholder="">
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div class="give-model-footer">
-                <button class="btn btn-secondary submit btn-main">送出</button>
-                <button type="button" class="btn btn-secondary btn-main" data-bs-dismiss="modal">關閉</button>
+                        <div class="form-group d-none">
+                            <label for="user_address">輸入贈送</label>
+                            <input type="text" class="form-control" id="give_order" placeholder="" :value="orderNum">
+                        </div>
+                        <div class="checkout-country-code clearfix">
+                            <div class="form-group">
+                                <label for="user_post_code">輸入贈送詞</label>
+                                <input type="text" class="form-control" id="user_post_code" name="zipcode" value="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="give-model-footer">
+                    <button class="btn btn-secondary give-ticket-submit btn-main" :exid="exid" @@click="giveSubmit(exid)">送出</button>
+                    <button type="button" class="btn btn-secondary btn-main" data-bs-dismiss="modal">關閉</button>
+                </div>
             </div>
         </div>
     </div>
+    <section class="mb-5 ticket_section main">
+        <div id="ticket-list" class="list-content card-list-panel py-4 scrollbar">
+            <h4>票券列表</h4>
+            <div v-for="exhibit in exhibitList" class="card">
+                <p class="name" :data-exid="exhibit.exhibitId" @@click="selectExhibit(exhibit)">{{exhibit.exhibitName}}</p>
+            </div>
+        </div>
+        <div class="main-content container">
+            <div class="row tickets-pannal">
+                    <div v-for="(item, index) in remaining" :key="index" class="ticket-content mx-auto">
+                        <div class="flip-ticket">
+                            <div class="ticket-front">
+                                <div class="ticket-img">
+                                    <img :src="getImage(item.exhibit.exhibitTImg)" alt="">
+                                </div>
+                            </div>
+                            <div class="ticket-back">
+                                <div class="back-left">
+                                    <div class="ticket-back-img">
+                                        <img :src="getImage(item.exhibit.exhibitPImg)" alt="ticket" class="back-img">
+                                        <p class="admit-one">
+                                            <span>ADMIT ONE</span>
+                                            <span>單人入場</span>
+                                            <span>ADMIT ONE</span>
+                                        </p>
+                                    </div>
+                                    <div class="ticket-info">
+                                        <div class="ticket-date">
+                                            <span class="year">{{dateStart(item.exhibit.datefrom).getFullYear()}}</span>
+                                            <span class="month">{{dateStart(item.exhibit.datefrom).getMonth()}}</span>
+                                            <span>月</span>
+                                            <span class="month">{{dateStart(item.exhibit.datefrom).getDate()}}</span>
+                                            <span>日</span>
+                                            <span>~</span>
+                                            <span class="month">{{dateEnd(item.exhibit.dateto).getMonth()}}</span>
+                                            <span>月</span>
+                                            <span class="month">{{dateEnd(item.exhibit.dateto).getDate()}}</span>
+                                            <span>日</span>
+                                        </div>
+                                        <div class="ticket-body">
+                                            <h3 class="ticket-title">{{item.exhibit.exhibitName}}</h3>
+                                            <div class="time">
+                                                <span class="time-open">9:00 AM</span>
+                                                <span>To</span>
+                                                <span class="time-close">5:00 PM</span>
+                                            </div>
+                                            <div class="area">
+                                                <span>請至</span>
+                                                <span>{{item.exhibit.areaNum}}館</span>
+                                                <span>入場</span>
+                                            </div>
+                                        </div>
+                                        <div class="ticket-footer">
+                                            <span>高雄市前金區中正四路211號</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back-right">
+                                    <p class="admit-one right">
+                                        <span>ADMIT ONE</span>
+                                        <span>單人入場</span>
+                                        <span>ADMIT ONE</span>
+                                    </p>
+                                    <div class="btn-section">
+                                        <div class="btn-give give" :data-exid="item.exhibit.exhibitId" :data-order="item.ticket.orderNum" data-bs-toggle="modal"
+                                             data-bs-target="#give_Modal">
+                                            <span class="info--text give" @@click="giveTicketModal(item)">贈票</span>
+                                            <div class="icon give" :data-exid="item.exhibit.exhibitId" :data-order="item.ticket.orderNum">
+                                                <i @@click="giveTicketModal(item)" class="fa-solid fa-gift fa-xl give" :data-exid="item.exhibit.exhibitId" :data-order="item.ticket.orderNum"></i>
+                                            </div>
+                                        </div>
+                                        <div class="btn-qrcode qr" @@click="showQRcodeModal(item)" :data-exid="item.exhibit.exhibitId"
+                                             :data-order="item.ticket.orderNum" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">
+                                            <span class="info--text qr" @@click="showQRcodeModal(item)"  :data-exid="item.exhibit.exhibitId"
+                                                  :data-order="item.ticket.orderNum">掃碼</span>
+                                            <div class="icon qr" @@click="showQRcodeModal(item)">
+                                                <i class="fa-solid fa-qrcode fa-xl qr" @@click="showQRcodeModal(item)" :data-exid="item.exhibit.exhibitId"
+                                                   :data-order="item.ticket.orderNum"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 </div>
-<section class="mb-5 ticket_section main">
-    @*<div class="ticket-content carousel-inner">
-
-        </div>*@
-    <div id="ticket-list" class="list-content card-list-panel py-4 scrollbar">
-        <h4>票券列表</h4>
-    </div>
-    <div class="main-content container">
-        <div class="row tickets-pannal">
-            @*<div class="ticket-content mx-auto">
-                <div class="flip-ticket">
-                    <div class="ticket-front">
-                        <div class="ticket-img">
-                            <img src="~/images/T02.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="ticket-back">
-                        <div class="back-left">
-                            <div class="ticket-back-img">
-                                <img src="~/images/P02.jpg" alt="ticket" class="back-img">
-                                <p class="admit-one">
-                                    <span>ADMIT ONE</span>
-                                    <span>單人入場</span>
-                                    <span>ADMIT ONE</span>
-                                </p>
-                            </div>
-                            <div class="ticket-info">
-                                <div class="ticket-date">
-                                    <span class="year">2022</span>
-                                    <span class="month">8</span>
-                                    <span>月</span>
-                                    <span class="month">19</span>
-                                    <span>日</span>
-                                    <span>~</span>
-                                    <span class="month">8</span>
-                                    <span>月</span>
-                                    <span class="month">21</span>
-                                    <span>日</span>
-                                </div>
-                                <div class="ticket-body">
-                                    <h3 class="ticket-title">高雄國際食品展覽</h3>
-                                    <div class="time">
-                                        <span class="time-open">9:00 AM</span>
-                                        <span>To</span>
-                                        <span class="time-close">5:00 PM</span>
-                                    </div>
-                                    <div class="area">
-                                        <span>請至</span>
-                                        <span>A館</span>
-                                        <span>入場</span>
-                                    </div>
-                                </div>
-                                <div class="ticket-footer">
-                                    <span>高雄市前金區中正四路211號</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back-right">
-                            <p class="admit-one right">
-                                <span>ADMIT ONE</span>
-                                <span>單人入場</span>
-                                <span>ADMIT ONE</span>
-                            </p>
-                            <div class="btn-section">
-                                <div class="btn-give" data-order="1" data-bs-toggle="modal"
-                                     data-bs-target="#give_Modal">
-                                    <span class="info--text">贈票</span>
-                                    <div class="icon">
-                                        <ion-icon name="add-outline"><i class="fa-solid fa-gift fa-xl"></i></ion-icon>
-                                    </div>
-                                </div>
-                                <div class="btn-qrcode" data-exid="1"
-                                     data-order="1" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">
-                                    <span class="info--text">掃碼</span>
-                                    <div class="icon">
-                                        <ion-icon name="add-outline"><i class="fa-solid fa-qrcode fa-xl"></i></ion-icon>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ticket-content mx-auto">
-                <div class="flip-ticket">
-                    <div class="ticket-front">
-                        <div class="ticket-img">
-                            <img src="~/images/T02.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="ticket-back">
-                        <div class="back-left">
-                            <div class="ticket-back-img">
-                                <img src="~/images/P02.jpg" alt="ticket" class="back-img">
-                                <p class="admit-one">
-                                    <span>ADMIT ONE</span>
-                                    <span>單人入場</span>
-                                    <span>ADMIT ONE</span>
-                                </p>
-                            </div>
-                            <div class="ticket-info">
-                                <div class="ticket-date">
-                                    <span class="year">2022</span>
-                                    <span class="month">8</span>
-                                    <span>月</span>
-                                    <span class="month">19</span>
-                                    <span>日</span>
-                                    <span>~</span>
-                                    <span class="month">8</span>
-                                    <span>月</span>
-                                    <span class="month">21</span>
-                                    <span>日</span>
-                                </div>
-                                <div class="ticket-body">
-                                    <h3 class="ticket-title">高雄國際食品展覽</h3>
-                                    <div class="time">
-                                        <span class="time-open">9:00 AM</span>
-                                        <span>To</span>
-                                        <span class="time-close">5:00 PM</span>
-                                    </div>
-                                    <div class="area">
-                                        <span>請至</span>
-                                        <span>A館</span>
-                                        <span>入場</span>
-                                    </div>
-                                </div>
-                                <div class="ticket-footer">
-                                    <span>高雄市前金區中正四路211號</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back-right">
-                            <p class="admit-one right">
-                                <span>ADMIT ONE</span>
-                                <span>單人入場</span>
-                                <span>ADMIT ONE</span>
-                            </p>
-                            <div class="btn-section">
-                                <div class="btn-give" data-order="1" data-bs-toggle="modal" data-bs-target="#give_Modal">
-                                    <span class="info--text">贈票</span>
-                                    <div class="icon">
-                                        <ion-icon name="add-outline"><i class="fa-solid fa-gift fa-xl"></i></ion-icon>
-                                    </div>
-                                </div>
-                                <div class="btn-qrcode" data-exid="1" data-order="1" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">
-                                    <span class="info--text">掃碼</span>
-                                    <div class="icon">
-                                        <ion-icon name="add-outline"><i class="fa-solid fa-qrcode fa-xl"></i></ion-icon>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ticket-content mx-auto">
-                <div class="flip-ticket">
-                    <div class="ticket-front">
-                        <div class="ticket-img">
-                            <img src="~/images/T02.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="ticket-back">
-                        <div class="back-left">
-                            <div class="ticket-back-img">
-                                <img src="~/images/P02.jpg" alt="ticket" class="back-img">
-                                <p class="admit-one">
-                                    <span>ADMIT ONE</span>
-                                    <span>單人入場</span>
-                                    <span>ADMIT ONE</span>
-                                </p>
-                            </div>
-                            <div class="ticket-info">
-                                <div class="ticket-date">
-                                    <span class="year">2022</span>
-                                    <span class="month">8</span>
-                                    <span>月</span>
-                                    <span class="month">19</span>
-                                    <span>日</span>
-                                    <span>~</span>
-                                    <span class="month">8</span>
-                                    <span>月</span>
-                                    <span class="month">21</span>
-                                    <span>日</span>
-                                </div>
-                                <div class="ticket-body">
-                                    <h3 class="ticket-title">高雄國際食品展覽</h3>
-                                    <div class="time">
-                                        <span class="time-open">9:00 AM</span>
-                                        <span>To</span>
-                                        <span class="time-close">5:00 PM</span>
-                                    </div>
-                                    <div class="area">
-                                        <span>請至</span>
-                                        <span>A館</span>
-                                        <span>入場</span>
-                                    </div>
-                                </div>
-                                <div class="ticket-footer">
-                                    <span>高雄市前金區中正四路211號</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="back-right">
-                            <p class="admit-one right">
-                                <span>ADMIT ONE</span>
-                                <span>單人入場</span>
-                                <span>ADMIT ONE</span>
-                            </p>
-                            <div class="btn-section">
-                                <div class="btn-give" data-order="1" data-bs-toggle="modal" data-bs-target="#give_Modal">
-                                    <span class="info--text">贈票</span>
-                                    <div class="icon">
-                                        <ion-icon name="add-outline"><i class="fa-solid fa-gift fa-xl"></i></ion-icon>
-                                    </div>
-                                </div>
-                                <div class="btn-qrcode" data-exid="1" data-order="1" data-bs-toggle="modal" data-bs-target="#QRcode_Modal">
-                                    <span class="info--text">掃碼</span>
-                                    <div class="icon">
-                                        <ion-icon name="add-outline"><i class="fa-solid fa-qrcode fa-xl"></i></ion-icon>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-        </div>
-    </div>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
 
 @section Scripts
     {
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script>const root = @Url.Content("~/images/")</script>
-    <script src="~/js/memberTicket.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="~/js/ticketsVue.js" asp-append-version="true"></script>
 }
 

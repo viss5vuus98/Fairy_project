@@ -11,7 +11,7 @@
     "Fairy_project": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:36320",
+      "applicationUrl": "http://localhost:13492",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

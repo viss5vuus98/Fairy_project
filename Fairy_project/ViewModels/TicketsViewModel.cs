@@ -14,6 +14,17 @@ namespace Fairy_project.ViewModels
         public string eamil { get; set; }
         public int order { get; set; }
     }
+
+    public class TicketsDetail
+    {
+        public Ticketss ticket { get; set; }
+        public Exhibitionss exhibit { get; set; }
+    }
+
+    public class Tickets
+    {
+        public IList<TicketsDetail> tickets { get; set; }
+    }
 }
 
                     
