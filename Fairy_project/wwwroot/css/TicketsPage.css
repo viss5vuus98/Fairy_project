@@ -157,6 +157,7 @@ table {
     left: -1000px;
 }
 
+
 .flip-ticket {
     position: relative;
     width: 100%;
@@ -467,6 +468,11 @@ table {
 }
 
 /*eff*/
+.fade-enter-to {
+    animation-name: dealCardsAnimation;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
 
 @keyframes dealCardsAnimation {
     to {
