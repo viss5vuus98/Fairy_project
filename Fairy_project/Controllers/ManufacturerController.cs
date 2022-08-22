@@ -151,7 +151,7 @@ namespace Fairy_project.Controllers
             string bdes = appliess.MfDescription;
             mail.AlternateViews.Add(await GetEmbeddedImage(logopath, pimgpath, ename, bnum, bdes));
             mail.To.Add("ispanwoo@gmail.com");
-            mail.Subject = "TESTTTTTTTT";
+            mail.Subject = "WooHouse通知信";
             mail.From = new MailAddress("zxc995116@gmail.com", "woohouse");
             var smtp = new SmtpClient("smtp.gmail.com", 587)
             {

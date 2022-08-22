@@ -154,8 +154,9 @@ table {
     padding: 0;
     perspective: 700px;
     position: relative;
-    left: -1000px;
+    left: -1100px;
 }
+
 
 .flip-ticket {
     position: relative;
@@ -467,6 +468,11 @@ table {
 }
 
 /*eff*/
+.fade-enter-to {
+    animation-name: dealCardsAnimation;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+}
 
 @keyframes dealCardsAnimation {
     to {
@@ -646,15 +652,17 @@ table {
 
 .btn-qrmodal {
     width: 150px;
-    box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.6);
-    background-color: #eae0d7;
-    color: #5c5858;
+    box-shadow: 1px 0 13px 0 rgba(0, 0, 0, 0.6);
+    background-color: #414141;
+    color: #ffffff;
     border: 0px;
 }
 
     .btn-qrmodal:hover {
         background-color: #c0b0a2;
+        color: #000;
         border: 0.8px solid #b7b7b7;
+        box-shadow: 1px 0 13px 3px rgba(0, 0, 0, 0.8);
     }
 
 

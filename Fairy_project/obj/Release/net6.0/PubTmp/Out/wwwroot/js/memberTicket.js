@@ -278,10 +278,9 @@ carouselInner.addEventListener('click', event => {
     
     const target = event.target
     console.log(target)
-        if (target.matches('.btn-qrcode')) {
+        if (target.matches('.qr')) {
             showQRcodeModal(target.dataset.exid, target.dataset.order)
-        } else if (target.matches('.give')) {
-            console.log(target.dataset.order)
+        } else if (target.matches('.give')) {    
             giveTicket(target.dataset.exid ,target.dataset.order)
         }
     })
@@ -322,6 +321,7 @@ carouselInner.addEventListener('click', event => {
 
 
 function showQRcodeModal(id, order) {
+    console.log('11')
     const QRTtitle = document.querySelector('#QRModal-title');
     const QRBody = document.querySelector('#QR-body');
     axios.post('/api/Member/Post/getVerificationCode', { "Ex_id": id, "Mf_id": order})
@@ -348,25 +348,35 @@ function showQRcodeModal(id, order) {
 function giveTicket(exid, orderNum) {
     const giveOrder = document.querySelector('#give_order')
     giveOrder.value = orderNum
-    document.querySelector('.submit').setAttribute('data-exid', exid)
+    document.querySelector('.give-ticket-submit').setAttribute('data-exid', exid)
+
+
 }
 
-const submit = document.querySelector('.submit')
+const submit = document.querySelector('.give-ticket-submit')
 
 submit.addEventListener('click', e => {
     e.preventDefault()
     const email = document.querySelector('#give_modal_email').value
     const order = Number(document.querySelector('#give_order').value)
-    if (email.trim().length > 0 && document.querySelector('#give_order').value.trim().length > 0) {
+    console.log(email)
+    console.log(order)
+    if (email.trim().length > 0) {
         axios.post('/api/Member/Post/giveTicket', { "eamil": email, "order": order })
             .then(res => {
-                model.getTicket(id, memberId)
+                console.log(res.data)
+                model.getTicket(res.data, memberId)
                 alert('成功寄送')
+                document.getElementById('give_Modal').setAttribute('style', 'display: none;')
+
+                //刪除div
+                //更改body
+
             })
             .catch(err => console.log(err))
     } else {
         alert('輸入錯誤')
     }
-    
 })
+
 
